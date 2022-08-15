@@ -80,24 +80,59 @@ const valueAtIndex = (headNode, targetIndex) => {
 // A -> B -> C
 // 1st prev = null, next = B,
 
-// Reverse linkedList
+// Reverse linkedList - has O(1) space complexity as it only requires variable assignments
 const iterativeReverseLinkedList = (headNode) => {
   let prev = null
   let current = headNode
   while (current !== null) {
-    const next = current.next
-    current.next = prev
-    prev = current
-    current = next
+    const next = current.next // Store next node
+    current.next = prev  // Set next node to previous node
+    prev = current // set Previous node to current node
+    current = next // Set current Node to next node for following iteration
   }
   return prev
 }
 
-// Reverse linkedList
+// Reverse linkedList - Higher O(n) space complexity
 const recursiveReverseLinkedList = (headNode, prev = null) => {
   if (headNode === null) return prev
   const next = headNode.next
   recursiveReverseLinkedList(next, headNode)
+}
+
+const iterativeZipperList = (head1, head2) => {
+  let tail = head1;
+  let current1 = head1;
+  let current2 = head2;
+  let count = 0;
+
+  while (current1 !== null && current2 !== null) {
+    if (count % 2 === 0) {
+      tail.next = current2;
+      current2 = current2.next;
+    } else {
+      tail.next = current1;
+      current1 = current1.next;
+    }
+    tail = tail.next;
+    count += 1;
+  }
+  if (current1 !== null) tail.next = current1;
+  if (current2 !== null) tail.next = current2;
+  return tail;
+}
+
+const recursiveZipperList = (head1, head2) => {
+  if (head1 === null && head2 === null) return null // Base case
+  if (head1 === null) return head2
+  if (head2 === null) return head1
+
+  const next1 = head1.next
+  const next2 = head2.next
+
+  head1.next = head2
+  head2.next = recursiveZipperList(next1, next2)
+  return head1
 }
 
 
@@ -131,3 +166,5 @@ console.log(valueAtIndex(a, 2)) // Should return C
 console.log(valueAtIndex(num1, 3)) // Should return 4
 console.log(iterativeReverseLinkedList(num1))
 console.log(recursiveReverseLinkedList(num1))
+console.log(iterativeZipperList(a, num1))
+// console.log(recursiveZipperList(a, num1))
