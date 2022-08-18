@@ -24,17 +24,22 @@ class Stack {
     return this.count
   }
 
+  isEmpty = () => {
+    return this.count === 0 ? true : false
+  }
 }
 
-const videoGames = new Stack()
-videoGames.push('Deadpool')
-videoGames.push('The Witcher 3')
-videoGames.push('Doom')
+const videoGameStack = new Stack()
+console.log(videoGameStack.isEmpty()) // Should be true
+videoGameStack.push('Deadpool')
+console.log(videoGameStack.isEmpty()) // Should be false
 
-console.log('videoGames: ', videoGames)
+videoGameStack.push('The Witcher 3')
+videoGameStack.push('Doom')
 
-console.log(videoGames.size()) // Should be 3
-videoGames.pop() // Pops off Doom
+console.log(videoGameStack.size()) // Should be 3
+videoGameStack.pop() // Pops off Doom
 
-console.log('videoGames: ', videoGames.peek()) // Should be The Witcher 3
-console.log(videoGames.size()) // Should be 2
+console.log(videoGameStack.peek()) // Should be The Witcher 3
+
+console.log(videoGameStack.size()) // Should be 2
