@@ -1,5 +1,7 @@
 # Stacks
 
+Linear Data Structure
+
 - Uses LIFO (Last-in First-Out) ordering
 
 ## Operations
