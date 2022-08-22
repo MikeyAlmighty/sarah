@@ -1,0 +1,25 @@
+# The Interview Process
+
+Interviewer will assess your performance based on:
+
+- Analytical skills (How long spent on solving problem, How optimal solution).
+- Coding skills
+- Technical Knowledge
+- Experience
+- Culture fit (Communication skills)
+
+Companies accept false negatives (Good candidates not getting an offer).
+They fear false positives (bad candidate getting an offer).
+
+There is no strict measurement/grading, it's **relative** to an interviewers opinion compared to how other candidates did.
+
+| Data Structures       | Algorithms            | Concepts
+| -----------           | -----------           | ---------
+| Linked Lists          | Breadth-First Search  | Bit Manipulation
+| Trees, Tries & Graphs | Depth-First Search    | Memory (Stack vs Heap)
+| Stacks & Queues       | Binary Search         | Recursion
+| Heaps                 | Merge Sort            | Dynamic Programming
+| Vectors / ArrayLists  | Quick Sort            | Big O Time & Spacej
+| Hash Tables           |                       |
+
+git@github.com:careercup/CtCI-6th-Edition-JavaScript.git
