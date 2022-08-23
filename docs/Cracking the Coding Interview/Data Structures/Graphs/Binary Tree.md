@@ -1,4 +1,7 @@
 # Binary Tree
+[Binary Tree Algorithms for Technical Interviews - Full Course
+](https://www.youtube.com/watch?v=fAAZixBzIAI)
+
 
 - Every node has at **MOST** 2 children (0, 1 or 2 children per node)
 - Exactly 1 root
