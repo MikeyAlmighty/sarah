@@ -121,6 +121,15 @@ const recursiveMinTreeValue = (root) => {
   return Math.min(root.val, recursiveMinTreeValue(root.left),recursiveMinTreeValue(root.right))
 }
 
+// Finds the maximum path from root to leaf (DFS)
+const maxPathSum = (root) => {
+  if (!root) return -Infinity
+  if (root.left === null && root.right === null) return root.val // Leaf Node: root.left === null && root.right === null
+  const leftVal = maxPathSum(root.left)
+  const rightVal = maxPathSum(root.right)
+  return root.val + Math.max(leftVal, rightVal)
+}
+
 console.log(iterativeDepthFirstValues(a))
 console.log(recursiveDepthFirstValues(a))
 
@@ -145,7 +154,14 @@ num2.left = num4
 num2.right = num5
 num3.right = num6
 
+//      11
+//    /   \
+//   35    12
+//  /  \    \
+// 6    3    2
+
 console.log(recursiveTreeSum(num1)) // Should be 69
 console.log(iterativeTreeSum(num1)) // Should be 69
 console.log(minTreeValue(num1)) // Should be 2
 console.log(recursiveMinTreeValue(num1)) // Should be 2
+console.log(maxPathSum(num1)) // Should be 52
