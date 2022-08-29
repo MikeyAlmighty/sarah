@@ -9,7 +9,7 @@
 
 Empty tree (0 Nodes), is also a Binary Tree.
 
-See [Implementation + Examples](./binary-tree.js)
+See [Implementation + Examples](Trees/binary-tree.js)
 
 Node exploring can be achieved by either [BFS](../../Algorithms/Breadth%20First%20Search.md) or [DFS](../../Algorithms//Depth%20First%20Search.md)
 

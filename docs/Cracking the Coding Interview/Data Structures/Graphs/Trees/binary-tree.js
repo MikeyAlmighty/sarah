@@ -165,3 +165,5 @@ console.log(iterativeTreeSum(num1)) // Should be 69
 console.log(minTreeValue(num1)) // Should be 2
 console.log(recursiveMinTreeValue(num1)) // Should be 2
 console.log(maxPathSum(num1)) // Should be 52
+
+console.log(reverseBinaryTree(a))
