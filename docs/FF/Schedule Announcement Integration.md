@@ -68,3 +68,63 @@
     "id": "35721069-4259-4acd-ae70-14cc71046f0e"
 }
 ```
+
+Filter gapFillers (v2/media/fillers?type) by type, where type:
+- Minor Denomination => PreRecordedCent
+- Major Denomination => PreRecordedRandLong
+- Major And Minor Denomination => PreRecordedRandShort and PreRecordedValue
+
+```json
+[
+    {
+        "description": "Steve Wood Eng 83 Rand",
+        "file": "https://cdn.fullfacing.io/audio/cfaf0a8c-9364-4c6b-875e-f115aea9b5ea.mp3",
+        "fileSize": 21280,
+        "code": "Spar-PRS-000481",
+        "active": true,
+        "clientId": "083fb8da-564f-48d6-ba4b-0d29447528f2",
+        "accountIds": [],
+        "value": "83",
+        "type": "PreRecordedRandShort",
+        "prefix": "PRS",
+        "valid": true,
+        "duration": "PT1S",
+        "country": "South Africa",
+        "format": "MP3",
+        "voiceOverId": "49cdf17b-a72e-4df2-b632-355e1ae18d5d",
+        "locale": "en-ZA",
+        "approved": true,
+        "legacy": {},
+        "tags": [],
+        "deleted": false,
+        "createdAt": "2022-02-03T07:26:38",
+        "updatedAt": "2022-02-03T07:26:38",
+        "id": "c262d2dd-c4e9-464f-b554-6fac7c50b842"
+    },
+    {
+        "description": "Steve Wood Eng 31 Rand",
+        "file": "https://cdn.fullfacing.io/audio/e1c4a183-8d10-4a17-b13f-21a216234728.mp3",
+        "fileSize": 22116,
+        "code": "Spar-PRS-000429",
+        "active": true,
+        "clientId": "083fb8da-564f-48d6-ba4b-0d29447528f2",
+        "accountIds": [],
+        "value": "31",
+        "type": "PreRecordedRandShort",
+        "prefix": "PRS",
+        "valid": true,
+        "duration": "PT1S",
+        "country": "South Africa",
+        "format": "MP3",
+        "voiceOverId": "49cdf17b-a72e-4df2-b632-355e1ae18d5d",
+        "locale": "en-ZA",
+        "approved": true,
+        "legacy": {},
+        "tags": [],
+        "deleted": false,
+        "createdAt": "2022-02-03T07:26:36",
+        "updatedAt": "2022-02-03T07:26:36",
+        "id": "0f8da032-b560-493c-9359-b1cf1c263b77"
+    },
+]
+```

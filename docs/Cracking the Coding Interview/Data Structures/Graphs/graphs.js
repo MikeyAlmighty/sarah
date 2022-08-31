@@ -82,3 +82,104 @@ const breadthFirstHasPath = (graph, source, destination) => {
 console.log(iterativeHasPath(graph, 'a', 'f')) // should return true
 console.log(recursiveHasPath(graph, 'a', 'e')) // should return true
 console.log(breadthFirstHasPath(graph, 'a', 'e')) // should return true
+
+// Undirected Graph
+
+// Convert Edge List to Adjacency List (Easier to work with)
+// Generates Graph nodes as keys, with values being neighbors
+const buildGraph = (edges) => {
+  const graph = {}
+
+  for (let edge of edges) {
+    const [a, b] = edge // Pair of nodes, edge = ['i', 'j']
+    if (!(a in graph)) graph[a] = []
+    if (!(b in graph)) graph[b] = []
+    graph[a].push(b)
+    graph[b].push(a)
+  }
+  return graph
+}
+
+// Every pair represents a connection between the two nodes
+const edges = [
+  ["i", "j"],
+  ["k", "i"],
+  ["m", "k"],
+  ["k", "l"],
+  ["o", "n"],
+ ]
+
+const undirectedPath = (edges, nodeA, nodeB) => {
+  const graph = buildGraph(edges)
+  return hasPath(graph, nodeA, nodeB, new Set()) // We use Set here as its lookup is O(1) compared to an array which is O(n)
+}
+
+const hasPath = (graph, src, destination, visited) => {
+  if (src === destination) return true
+  if (visited.has(src)) return false
+
+  visited.add(src)
+
+  for (let neighbor of graph[src]) {
+    if(hasPath(graph, neighbor, destination, visited)) return true
+  }
+  return false
+}
+
+console.log(undirectedPath(edges, 'j', 'm')) // Should return true
+console.log(undirectedPath(edges, 'j', 's')) // Should return false
+
+// Count the amount of "full" node connections (Components)
+const connectedComponentCount = (graph) => {
+  const visited = new Set()
+  let count = 0
+
+  for (let node in graph) {
+    if (explore(graph, node, visited)) count +=1
+  }
+  return count
+}
+
+const explore = (graph, currNode, visited) => {
+  if (visited.has(String(currNode))) return false
+  visited.add(String(currNode))
+
+  for (let neighbor of graph[currNode]) {
+    explore(graph, neighbor, visited)
+  }
+  return true
+}
+
+const undirectedGraph = {
+  0: [8, 1, 5],
+  1: [0],
+  5: [0, 8],
+  8: [0, 5],
+  2: [3, 4],
+  3: [2, 4],
+  4: [3, 2],
+}
+
+console.log(connectedComponentCount(undirectedGraph))
+
+const largestComponent = (graph) => {
+  const visited = new Set()
+  let largest = 0
+  for (let node in graph) {
+    const size = exploreSize(graph, node, visited)
+    if(size > largest) return largest = size
+  }
+  return largest
+}
+
+const exploreSize = (graph, currNode, visited) => {
+  if (visited.has(String(currNode))) return 0
+  visited.add(String(currNode))
+  let size = 1 //
+  for (let neighbor of graph[currNode]) {
+    size += exploreSize(graph, neighbor, visited)
+  }
+  return size
+}
+
+console.log(largestComponent(undirectedGraph))
