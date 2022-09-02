@@ -183,3 +183,32 @@ const exploreSize = (graph, currNode, visited) => {
 }
 
 console.log(largestComponent(undirectedGraph))
+
+const edges_1 = [
+  ['w', 'x'],
+  ['x', 'y'],
+  ['z', 'y'],
+  ['z', 'v'],
+  ['w', 'v'],
+]
+
+const shortestPath = (edges, source, destination) => {
+  const graph = buildGraph(edges)
+  const visited = new Set([source])
+  const queue = [ [source, 0] ]
+  while (queue.length > 0) {
+    const [node, distance] = queue.shift()
+
+    if (node === destination) return distance
+
+    for (let neighbor of graph[node]) {
+      if (!visited.has(neighbor)) {
+        visited.add(neighbor)
+        queue.push([neighbor, distance + 1])
+      }
+    }
+  }
+  return -1
+}
+
+console.log(shortestPath(edges_1, 'v', 'x'))
