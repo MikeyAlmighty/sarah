@@ -100,7 +100,7 @@ const buildGraph = (edges) => {
   return graph
 }
 
-// Every pair represents a connection between the two nodes
+// Every pair represents a bi-directional connection/edge between two nodes
 const edges = [
   ["i", "j"],
   ["k", "i"],
@@ -175,7 +175,7 @@ const largestComponent = (graph) => {
 const exploreSize = (graph, currNode, visited) => {
   if (visited.has(String(currNode))) return 0
   visited.add(String(currNode))
-  let size = 1 //
+  let size = 1
   for (let neighbor of graph[currNode]) {
     size += exploreSize(graph, neighbor, visited)
   }
@@ -212,3 +212,81 @@ const shortestPath = (edges, source, destination) => {
 }
 
 console.log(shortestPath(edges_1, 'v', 'x'))
+
+// Takes in a grid containing Water ("W") and Land ("L") nodes.
+// Function returns the number of islands on the grid.
+// An island is a vertically or horizontally connected region of land.
+const islandCount = (grid) => {
+  const visited = new Set()
+  let count = 0
+  for (let row = 0; row < grid.length; row++) {
+    for (let column = 0; column < grid[0].length; column++) {
+      if (exploreEarthGraph(grid, row, column, visited) === true) count ++
+    }
+  }
+  return count
+}
+
+const exploreEarthGraph = (grid, row, column, visited) => {
+  const rowInBounds = 0 <= row && row < grid.length
+  const columnInBounds = 0 <= column && column < grid[0].length
+  if (!rowInBounds || !columnInBounds) return false
+
+  if (grid[row][column] === 'W') return false // Exclude Water blocks
+  const position = `${row},${column}`
+  if (visited.has(position)) return false // Cycle prevention
+
+  // If we reach this point (Passes guards), it's a land block so we need to do a DFS traversal
+  visited.add(position)
+  exploreEarthGraph(grid, row - 1, column, visited)
+  exploreEarthGraph(grid, row + 1, column, visited)
+  exploreEarthGraph(grid, row, column - 1, visited)
+  exploreEarthGraph(grid, row, column + 1, visited)
+  return true
+}
+
+const earthGraph = [
+  ['W', 'L', 'W', 'W', 'W', 'W'],
+  ['W', 'L', 'W', 'W', 'W', 'W'],
+  ['W', 'W', 'W', 'W', 'L', 'W'],
+  ['W', 'W', 'W', 'L', 'L', 'W'],
+  ['L', 'W', 'W', 'W', 'L', 'L'],
+  ['L', 'L', 'W', 'W', 'W', 'W']
+]
+
+console.log(islandCount(earthGraph)) // Should return 3
+
+// Returns the smallest island count
+const minIsland = (grid) => {
+  const visited = new Set()
+  let min = Infinity
+
+  for (let row = 0; row < grid.length; row++) {
+    for (let column = 0; column < grid[0].length; column++) {
+      const size = exploreEarthGraphForMin(grid, row, column, visited)
+      if (size > 0 && size < min) min = size
+    }
+  }
+
+  return min
+}
+
+const exploreEarthGraphForMin = (grid, row, column, visited) => {
+  const rowInBounds = 0 <= row && row < grid.length
+  const columnInBounds = 0 <= column && column < grid[0].length
+  if (!rowInBounds || !columnInBounds) return 0
+
+  if (grid[row][column] === 'W') return 0 // Exclude Water blocks
+  const position = `${row},${column}`
+  if (visited.has(position)) return 0 // Cycle prevention
+  visited.add(position)
+
+  let size = 1 // 1 because we include current block (Part of island)
+  size += exploreEarthGraph(grid, row - 1, column, visited)
+  size += exploreEarthGraph(grid, row + 1, column, visited)
+  size += exploreEarthGraph(grid, row, column - 1, visited)
+  size += exploreEarthGraph(grid, row, column + 1, visited)
+  return size
+}
+
+console.log(minIsland(earthGraph)) // Should return 2
