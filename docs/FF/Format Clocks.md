@@ -44,3 +44,9 @@ Silence Segment => Won't allow any form of Music/Schedules/Format clock elements
 
 #### Music segment with Format Clock Elements inserted within
 Music Segment => Select music => Play order => Play Options => Select format clock element type => Select format clock category => Format clock element play order => Play duration (How many times within current music segment)
+
+# Discussion session (02/11/2022)
+## Updates
+
+- Step 2: Pick a Playlist or pick bunch of tracks
+- When picking format clock element (Sequence? or random) [Remove step. 5]
