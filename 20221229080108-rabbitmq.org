@@ -1,0 +1,15 @@
+:PROPERTIES:
+:ID:       1e8d9841-49a6-4eaf-b0e2-7f1eb395ab38
+:END:
+#+title: RabbitMQ
+
+Solves problem where clients want to talk to another clients.
+
+Instead of clients talking to some other client(s) (Ends up as spaghetti), RabbitMQ Server adds a intermediary [[id:e9e4b353-df8d-487d-b0e0-ba76b256912f][Message Broker]] layer.
+
+Publisher establishes connection (bi-directional) using [[id:e8bde5c1-2b63-45d7-b636-c91b8a7ccf5d][AMQP]] to the RabbitMQ Server
+Consumer establishes connection (bi-directional) using [[id:e8bde5c1-2b63-45d7-b636-c91b8a7ccf5d][AMQP]] to the RabbitMQ Server.
+
+Server *pushes* messages to Consumer.
+
+Channel - Connections within connection between Publisher to Server/Server to Consumer. (Multiplexing - bring a "lot" of stuff into one pipe.)
