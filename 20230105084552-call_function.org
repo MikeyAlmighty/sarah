@@ -1,0 +1,39 @@
+:PROPERTIES:
+:ID:       daeb08e2-e643-424b-a955-042296459dee
+:END:
+#+title: .call Function
+
+The `call()` method calls the function with a given `this` value and arguments provided individually.
+
+Note: This function is almost identical to `apply()`, except that `call()` accepts an *argument list*, while `apply()` accepts a *single array of arguments*.
+Example:
+Apply: `func.apply(this, ['eat', 'bananas'])`
+Call: `func.call(this, 'eat', 'bananas').`
+
+(See [[id:c6d839c6-173e-48f0-9051-07a19629a644][.apply Function]])
+
+Function borrowing
+
+#+BEGIN_SRC js
+
+const person = {
+  firstName: 'Dead',
+  lastName: 'Pool',
+}
+
+
+const printName = function (){
+  console.log(this.firstName, this.lastName)
+}
+
+printName.call(person) // Prints Dead Pool
+
+const person2 = {
+  firstName: 'Aqua',
+  lastName: 'Man'
+}
+
+printName.call(person2) // Prints Aqua Man
+// OR
+printName.call({ firstName: 'Bat' }) // Prints Bat Man
+#+END_SRC

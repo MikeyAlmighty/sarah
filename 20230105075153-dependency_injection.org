@@ -1,0 +1,34 @@
+:PROPERTIES:
+:ID:       603830d5-23b1-46f9-beb1-11000d5077b4
+:END:
+#+title: Dependency Injection
+
+Design pattern in which an `object` or `function` receives other `objects` or `functions` that it *depends* on.
+A form of `inversion of control`, dependency injection aims to *separate* the concerns of constructing objects and using them, leading to loosely coupled programs.
+
+
+In the code block below, fetch exists globally (window.fetch)
+
+#+BEGIN_SRC js
+const getData = (id) => {
+   return fetch(`someUrl/${id}`)
+            .then(response => response.json())
+            .then(data => data.results[0])
+}
+#+END_SRC
+
+* Dependency Injection Example:
+
+#+BEGIN_SRC js
+const getData = (fetch, id) => {
+   return fetch(`someUrl/${id}`)
+            .then(response => response.json())
+            .then(data => data.results[0])
+}
+
+getData(window.fetch)
+
+#+END_SRC
+
+
+This makes it easier for testing as it inverts control to the implementer of the function. ([[id:2cff43ac-6262-4793-bd6e-eceb3b8ce1fa][Inversion of Control]])
