@@ -1,0 +1,22 @@
+# Switch Case
+
+```java
+Scanner scanner = new Scanner(System.in);
+System.out.println("Please enter user authorization level: ");
+String role = scanner.nextLine();
+switch (role) {
+    case "endUser" : {
+        System.out.println("User is a mere End user");
+        break;
+    }
+    case "admin" : {
+        System.out.println("User is Admin level");
+        break;
+    }
+    default: {
+        System.out.println("Nein");
+        break;
+    }
+}
+scanner.close();
+```
