@@ -1,0 +1,46 @@
+# Inheritance
+
+Base Class/ Super Class/Parent Class
+^
+Sub class/ Child Class
+
+use `extends` keyword to inherit a Class.
+
+Note: All classes `extend/inherit` the **Object** Class
+
+```java
+// UIControl (Parent)
+package com.demo;
+
+public class UIControl {
+    private boolean isEnabled = true;
+    
+    public void enable() {
+        isEnabled = true;
+    }
+
+    public void disable() {
+        isEnabled = false;
+    }
+
+    public boolean isEnabled() {
+        return isEnabled;
+    }
+}
+```
+
+```java
+// TextBox (Child)
+package com.demo;
+
+public class TextBox extends UIControl {
+   private String text = "";
+
+   public void setText(String text) {
+    this.text = text;
+   }
+   public void clear() {
+    text = "";
+   }
+}
+```

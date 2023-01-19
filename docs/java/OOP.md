@@ -1,3 +1,11 @@
+# Objet Oriented Programming (OOP)
+
+## Benefits
+- Reduce Complexity
+- Easier Maintenance
+- Code reuse
+- Faster Development
+
 ```java
 public class Pen {
     // Attributes

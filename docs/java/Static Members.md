@@ -1,0 +1,32 @@
+# Static (Class) Members
+
+
+When we want to present a concept that should exist in a single place.
+Value is independent of objects but we want to share it across all objects.
+
+FACT: `main` method is `static` so that the JRE can directly call this method without having to create an object.
+
+Below example `numberOfEmployees` does not pertain to each instance (object) but rather all instances.
+
+```java
+// ...Main
+var employee = new Employee(50_000, 20);
+var employee1 = new Employee(50_000, 20);
+var employee2 = new Employee(50_000, 20);
+var employee3 = new Employee(50_000, 20);
+System.out.println(Employee.numberOfEmployees); // 4
+// ...
+
+public class Employee {
+    private int baseSalary;
+    private int hourlyRate;
+
+    public static int numberOfEmployees;
+
+    public Employee(int baseSalary) {
+        setBaseSalary(baseSalary);
+        setHourlyRate(0);
+        numberOfEmployees++;
+    }
+}
+```
