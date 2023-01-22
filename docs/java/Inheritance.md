@@ -8,6 +8,8 @@ use `extends` keyword to inherit a Class.
 
 Note: All classes `extend/inherit` the **Object** Class
 
+## Example
+
 ```java
 // UIControl (Parent)
 package com.demo;
@@ -42,5 +44,29 @@ public class TextBox extends UIControl {
    public void clear() {
     text = "";
    }
+}
+```
+
+## Constructors and Inheritance
+
+Use `super()` to call Base class constructor
+```java
+// Child / Sub Class
+public class TextBox extends UIControl {
+   public TextBox() {
+      super(true); // Call to Base (Parent) constructor
+      System.out.println("TextBox");
+   }
+}
+```
+
+```java
+// Parent / Base Class
+public class UIControl {
+    private boolean isEnabled = true;
+    public UIControl(boolean isEnabled) {
+        this.isEnabled = isEnabled;
+       System.out.println("UIControl");
+    }
 }
 ```

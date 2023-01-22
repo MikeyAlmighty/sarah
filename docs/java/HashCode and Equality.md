@@ -34,3 +34,58 @@ System.out.println(box1.toString()); // com.demo.TextBox@6b95977
 int parsedHash = Integer.parseInt("6b95977", 16);
 System.out.println(parsedHash); // 112810359
 ```
+
+## Comparing instances
+### Point.java
+```java
+package com.demo;
+
+public class Point {
+    private int X;
+    private int Y;
+
+    public Point(int x, int y) {
+        X = x;
+        Y = y;
+    }
+
+    public int getX() {
+        return X;
+    }
+    public void setX(int x) {
+        X = x;
+    }
+    public int getY() {
+        return Y;
+    }
+    public void setY(int y) {
+        Y = y;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(this == obj) return true; // Check reference equality
+        if (!(obj instanceof Point))
+          return false;
+        var other = (Point)obj;
+        return other.X == X && other.Y == Y;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(X, Y);
+    }
+}
+```
+## Main.java
+```java
+package com.demo;
+
+public class Main {
+    public static void main(String[] args) {
+        var point1 = new Point(1, 2);
+        var point2 = new Point(1, 2);
+        System.out.println(point1.equals(point2));
+    }
+}
+```
