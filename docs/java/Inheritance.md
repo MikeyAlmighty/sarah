@@ -70,3 +70,9 @@ public class UIControl {
     }
 }
 ```
+
+Note: Do **NOT** create deep inheritance hierarchies!
+
+## Multiple inheritance
+Multiple inheritance is not supported in Java.
+(All classes extend the Object class, so we'd run into the diamond problem).
