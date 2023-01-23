@@ -1,0 +1,242 @@
+:PROPERTIES:
+:ID:       f24ef31b-b8af-42f2-9dc0-60be84875957
+:END:
+#+title: Exceptions
+
+* Types of Exceptions
+** Checked
+(Compile time) Developer should anticipate and handle errors
+
+#+begin_src java
+var reader = new FileReader("file.txt"); // Throws: FileNotFoundException
+#+end_src
+
+** Unchecked
+(Run time) =NullPointerException=
+#+begin_src java
+public static void show(){
+    sayHello(null);
+}
+
+public static void sayHello(String name) {
+    System.out.println(name.toUpperCase());
+}
+#+end_src
+
+=ArithmeticException=: Divide by 0
+=IllegalArgumentException=: invalid argument passed
+=IndexOutOfBoundsException=: invalid index called in an array
+
+** Errors
+=StackOverflowError=
+
+* Hierarchy
+
+                        Throwable
+  Exception(checked)                  Error
+RuntimeException(unchecked)
+
+* Catching Exceptions
+** Single
+#+begin_src java
+try {
+    var reader = new FileReader("file.txt");
+} catch (FileNotFoundException e) {
+    e.printStackTrace();
+}
+#+end_src
+
+** Multiple
+#+begin_src java
+try {
+    var reader = new FileReader("file.txt");
+    var value = reader.read();
+} catch (FileNotFoundException e) {
+    e.printStackTrace();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+#+end_src
+
+Note: (=FileNotFoundException= is derived from =IOException=) so we can catch both Exceptions in this case, i.e.:
+#+begin_src java
+try {
+    var reader = new FileReader("file.txt");
+    var value = reader.read();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+#+end_src
+
+Use =|= to inline exceptions, i.e:
+#+begin_src java
+try {
+    var reader = new FileReader("file.txt");
+    var value = reader.read();
+    new SimpleDateFormat().parse("");
+} catch (IOException | ParseException e) {
+    e.printStackTrace();
+}
+#+end_src
+
+** Finally
+Used to release external resources (File handles, network connections, DB Connections etc.)
+#+begin_src java
+FileReader reader = null;
+try {
+    reader = new FileReader("file.txt");
+    var value = reader.read();
+} catch (IOException e) {
+    e.printStackTrace();
+} finally {
+    if (reader != null) {
+        try {
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+#+end_src
+
+=Note=: Above is not pretty, we can use =try with resources= statement to explicitly close connections.
+
+#+begin_src java
+try (var reader = new FileReader("file.txt")){
+    var value = reader.read();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+// OR
+try (
+    var reader = new FileReader("file.txt");
+    var writer = new FileWriter("somefile.txt");
+){
+    var value = reader.read();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+#+end_src
+
+* Throwing Exceptions
+Defensive programming: (Good for library or framework) Or Input from user
+** Unchecked Exception example
+#+begin_src java
+public void deposit(float value) {
+ if(value <= 0) throw new IllegalArgumentException();
+ System.out.println("Deposited: " + value);
+}
+#+end_src
+
+** Checked Exception example
+#+begin_src java
+public void deposit(float value) throws IOException {
+  if (value <= 0) throw new IOException();
+  System.out.println("Deposited: " + value);
+}
+#+end_src
+
+Then we handle it where used:
+#+begin_src java
+public static void main(String[] args) {
+    var account = new Account();
+    try {
+        account.deposit(-10);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+#+end_src
+
+Re throwing error:
+#+begin_src java
+public static void main(String[] args) throws IOException {
+    var account = new Account();
+    try {
+        account.deposit(-10);
+    } catch (Throwable e) { // or (Exception e)
+        e.printStackTrace();
+        throw e;
+    }
+}
+#+end_src
+
+* Custom Exceptions
+
+=InsufficientFundsException.java=
+#+begin_src java
+public class InsufficientFundsException extends Exception {
+    public InsufficientFundsException(){
+        super("Insufficient Funds in your account");
+    }
+    public InsufficientFundsException(String message){
+        super(message);
+    }
+}
+#+end_src
+
+=Account.java=
+#+begin_src java
+public class Account {
+   private float balance;
+   public void deposit(float value) throws IOException {
+    if (value <= 0) throw new IOException();
+    System.out.println("Deposited: " + value);
+   }
+    public void withdraw(float value) throws InsufficientFundsException {
+        if (value > balance) throw new InsufficientFundsException(); // OR with a provided message throw new InsufficientFundsException("Poor Twat");
+    }
+}
+#+end_src
+
+=ExceptionsDemo.java=
+#+begin_src java
+public class ExceptionsDemo {
+    public static void show() {
+        var account = new Account();
+        try {
+            account.withdraw(10);
+        } catch (InsufficientFundsException e) {
+            System.out.println(e.getMessage()); // Insufficient Funds in your account
+        }
+    }
+}
+#+end_src
+
+** Chaining Exceptions
+Used a lot for libraries/framework code.
+
+I.e. We can say =InsufficientFundsException= is derived from =AccountException=
+=AccountException.java=
+#+begin_src java
+public class AccountException extends Exception {
+    public AccountException(Exception cause){
+        super(cause);
+    }
+}
+#+end_src
+
+=Account.java=
+#+begin_src java
+public class Account {
+   private float balance;
+    public void withdraw(float value) throws AccountException {
+        if (value > balance)
+          throw new AccountException(new InsufficientFundsException()); // InsufficientFundsException
+    }
+}
+#+end_src
+
+Results in a nice stack trace when caught:
+#+begin_src java
+com.exceptions.AccountException: com.exceptions.InsufficientFundsException: Insufficient Funds in your account
+        at com.demo.Account.withdraw(Account.java:16)
+        at com.exceptions.ExceptionsDemo.show(ExceptionsDemo.java:9)
+        at com.demo.Main.main(Main.java:8)
+Caused by: com.exceptions.InsufficientFundsException: Insufficient Funds in your account
+#+end_src
+
+#+begin_src java
+e.initCause();
+var cause = e.getCause();
+#+end_src
