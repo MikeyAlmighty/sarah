@@ -1,0 +1,42 @@
+* Final Classes and Methods
+:PROPERTIES:
+:CUSTOM_ID: final-classes-and-methods
+:END:
+** Final Class
+:PROPERTIES:
+:CUSTOM_ID: final-class
+:END:
+Can *NOT* extend a final class
+
+#+begin_src java
+final class SuperHero {
+    public void power(){
+    }
+}
+
+// Throws an error
+class DeadPool extends SuperHero {
+}
+#+end_src
+
+** Final Methods
+:PROPERTIES:
+:CUSTOM_ID: final-methods
+:END:
+Can *NOT* override final methods
+
+#+begin_src java
+class SuperHero {
+    final public void power(){
+        System.out.println("Superhero class");
+    }
+}
+
+class DeadPool extends SuperHero {
+    // Throws an error
+    @Override
+    public void power(){ 
+        System.out.println("DeadPool class");
+    }
+}
+#+end_src

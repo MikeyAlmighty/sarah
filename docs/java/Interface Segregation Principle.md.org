@@ -1,0 +1,35 @@
+* Interface Segregation Principle
+:PROPERTIES:
+:CUSTOM_ID: interface-segregation-principle
+:END:
+ISP splits interfaces that are very large into smaller and more specific
+ones so that clients will only have to know about the methods that are
+of interest to them. =Resizable.java=
+
+#+begin_src java
+package com.demo;
+
+public interface Resizable {
+   void resize(int size);
+}
+#+end_src
+
+=Draggable.java=
+
+#+begin_src java
+package com.demo;
+
+public interface Draggable {
+    void drag();
+}
+#+end_src
+
+=UIWidget.java=
+
+#+begin_src java
+package com.demo;
+
+public interface UIWidget extends Draggable, Resizable {
+   void render();
+}
+#+end_src

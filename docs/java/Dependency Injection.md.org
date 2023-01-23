@@ -1,0 +1,69 @@
+* Dependency Injection
+:PROPERTIES:
+:CUSTOM_ID: dependency-injection
+:END:
+Our classes should not instantiate their dependencies.
+
+** Constructor Injection
+:PROPERTIES:
+:CUSTOM_ID: constructor-injection
+:END:
+
+#+begin_quote
+For mandatory dependencies (or aiming for immutability).
+
+#+end_quote
+
+- Ensures that dependency is present (Will fail without)
+- Can create immutable classes *issues*: Possible to run into Circular
+  dependency issues
+
+#+begin_src java
+// Main.java
+public static void main(String[] args) {
+    var calculator = new TaxCalculator2018(10_000);
+    // Poor mans dependency injection
+    var report = new TaxReport(calculator); // Constructor Injection
+}
+
+// TaxReport.java
+public class TaxReport {
+    private TaxCalculator calculator;
+
+    public TaxReport(TaxCalculator calculator) {
+        this.calculator = calculator;
+    }
+}
+#+end_src
+
+** Setter Injection
+:PROPERTIES:
+:CUSTOM_ID: setter-injection
+:END:
+
+#+begin_quote
+For optional or changeable dependencies.
+
+#+end_quote
+
+Change dependencies of class throughout lifetime of application.
+
+#+begin_src java
+public static void main(String[] args) {
+    var calculator2 = new TaxCalculator2018(9_000);
+    report.setCalculator(calculator2); // Setter Injection
+
+    report.show();
+}
+#+end_src
+
+** Method Injection
+:PROPERTIES:
+:CUSTOM_ID: method-injection
+:END:
+#+begin_src java
+public static void main(String[] args) {
+    var report = new TaxReport(new TaxCalculator2018(9_000));
+    report.show(calculator3); // Method injection
+}
+#+end_src

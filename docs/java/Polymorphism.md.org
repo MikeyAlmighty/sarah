@@ -1,0 +1,42 @@
+* Polymorphism
+:PROPERTIES:
+:CUSTOM_ID: polymorphism
+:END:
+(Poly: Many, Morph: Forms = Many Forms)
+
+#+begin_src java
+package com.demo;
+
+class SuperHero {
+    public void power(){
+        System.out.println("Ka Pow!");
+    }
+}
+
+class DeadPool extends SuperHero {
+    public void power(){
+        System.out.println("Eat chimichangas!");
+    }
+}
+
+class Batman extends SuperHero {
+    public void power(){
+        System.out.println("Throw Batarang!");
+    }
+}
+
+class AquaMan extends SuperHero {
+    public void power(){
+        System.out.println("Dolphin call!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        var dp = new DeadPool();
+        dp.power(); // Eat Chimichangas
+        var batman = new Batman();
+        batman.power(); // Throw Batarang
+    }
+}
+#+end_src
