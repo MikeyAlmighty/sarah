@@ -1,6 +1,5 @@
 # Static (Class) Members
 
-
 When we want to present a concept that should exist in a single place.
 Value is independent of objects but we want to share it across all objects.
 
