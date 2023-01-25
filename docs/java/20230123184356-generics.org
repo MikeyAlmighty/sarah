@@ -1,0 +1,120 @@
+:PROPERTIES:
+:ID:       ba915d24-80bf-4d9c-951a-351da356e216
+:END:
+#+title: Generics
+
+* Example
+=GenericList.java=
+#+begin_src java
+public class GenericList<T> {
+    private T[] items = (T[]) new Object[10];
+    private int count;
+
+    public void add(T item) {
+        items[count++] = item;
+    }
+
+    public T get(int index) {
+        return items[index];
+    }
+}
+#+end_src
+
+=Main.java=
+#+begin_src java
+public class Main {
+    public static void main(String[] args) {
+       var stringList = new GenericList<String>();
+       stringList.add("DeadPool");
+       stringList.add("Batman");
+       System.out.println(stringList.get(1));
+       var numList = new GenericList<Integer>();
+       numList.add(69);
+       numList.add(420);
+       System.out.println(numList.get(0));
+    }
+}
+#+end_src
+
+OR
+
+* Autoboxing
+Automatic conversion that the Java compiler makes between the =primitive types= and their corresponding object =wrapper classes=.
+
+Can't store primitive values (float, int, boolean etc.) you *need* to use the Wrapper reference type (Float, Integer, Boolean).
+=numList.add(1);= // Takes in an *Instance* of Integer, but we can pass in a primitive integer (1 in this case).
+Java compiler puts integer value inside a =box=.
+
+#+begin_src java
+public static void main(String[] args) {
+  GenericList<String> stringList = new GenericList<>(); // No need for unnecessary second Wrapper reference <String>
+  GenericList<Integer> numList = new GenericList<>();
+  numList.add(1); // Boxing
+  var number = numList.get(0); // Unboxing
+}
+#+end_src
+
+
+* Unboxing
+Converts Wrapper reference into integer
+=var number = numList.get(0);= Returns an `Instance` of the Integer class stored in a primitive Integer (Extracts value which is  stored in that Integer object).
+
+* Constraints
+
+Here we are constraining our Generic Class to only allow instances of =Number= (String won't work)
+
+Note: =<T extends Number>= is called a *Bounded Type paramater*
+
+#+begin_src java
+// GenericList.java
+public class GenericList<T extends Number> {
+    private T[] items = (T[]) new Object[10];
+    private int count;
+
+    public void add(T item) {
+        items[count++] = item;
+    }
+
+    public T get(int index) {
+        return items[index];
+    }
+}
+// Main.java
+public static void main(String[] args) {
+    GenericList<String> stringList = new GenericList<>(); // Compilation Error
+    GenericList<Integer> numList = new GenericList<>();  // Okay
+}
+#+end_src
+
+#+begin_src java
+public class GenericList<T extends Comparable & Cloneable> {
+    private T[] items = (T[]) new Object[10];
+    private int count;
+
+    public void add(T item) {
+        items[count++] = item;
+    }
+
+    public T get(int index) {
+        return items[index];
+    }
+}
+#+end_src
+
+* Type Erasue
+
+When we have multiple interface constraints,  i.e.: =GenericList<T extends Comparable & Cloneable>= , Java Compiler will take the *Left Most*  (in this case =Comparable=) Type to replace all =T= (Erases all type paramaters and replaces with Class/Interface pending on constraints).
+If there are no constraints, all (generic) =T= will be replaced by =Object= class.
+
+Oracle definition:
+- Replace all type parameters in generic types with their bounds or Object if the type parameters are unbounded. The produced bytecode, therefore, contains only ordinary classes, interfaces, and methods.
+- Insert type casts if necessary to preserve type safety.
+- Generate bridge methods to preserve polymorphism in extended generic types.
+
+See [[id:978e88bf-bfac-4a29-a851-048441593c54][Comparable Interface]]
+
+* [[id:da34a311-c25d-4d96-accf-60b35cf11cb7][Generic Methods]]
+
+* [[id:80ca3273-689f-425e-8fbb-b60fa157368b][Multiple Type Paramters]]
+
+* [[id:ffe1e06a-8d8c-4e7f-87ce-c017aec04fd2][Generic Wildcards]]

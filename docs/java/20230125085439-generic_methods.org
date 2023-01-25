@@ -1,0 +1,47 @@
+:PROPERTIES:
+:ID:       da34a311-c25d-4d96-accf-60b35cf11cb7
+:END:
+#+title: Generic Methods
+
+(See [[id:978e88bf-bfac-4a29-a851-048441593c54][Comparable Interface]])
+
+=Utils.java=
+#+begin_src java
+public class Utils {
+   public static <T extends Comparable<T>>  T max(T first, T second) {
+    return (first.compareTo(second) < 0) ? second : first;
+   }
+}
+#+end_src
+
+
+=User.java=
+#+begin_src java
+public class User implements Comparable<User> {
+    private int age;
+
+    public User(int age) {
+        this.age = age;
+    }
+
+    @Override
+    public int compareTo(User other) {
+        return age - other.age;
+    }
+
+    @Override
+    public String toString() {
+        return "age=" + age;
+    }
+}
+#+end_src
+
+=Main.java=
+#+begin_src java
+public class Main {
+    public static void main(String[] args) {
+        var max = Utils.max(new User(27), new User(46));
+        System.out.println(max);
+    }
+}
+#+end_src

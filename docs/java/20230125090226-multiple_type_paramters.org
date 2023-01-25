@@ -1,0 +1,39 @@
+:PROPERTIES:
+:ID:       80ca3273-689f-425e-8fbb-b60fa157368b
+:END:
+#+title: Multiple Type Paramters
+
+=Utils.java=
+#+begin_src java
+public class Utils {
+   public static <K, V> void print(K key, V value){
+    System.out.println(key + "=" + value);
+   }
+}
+#+end_src
+
+=Main.java=
+
+#+begin_src java
+public static void main(String[] args) {
+    Utils.print(1, "DeadPool"); // 1=Deadpool
+}
+#+end_src
+
+
+Class example:
+
+=KeyValuePair.java=
+#+begin_src java
+package com.demo;
+
+public class KeyValuePair <K, V> {
+   private K key ;
+   private V value ;
+    public KeyValuePair(K key, V value) {
+        this.key = key;
+        this.value = value;
+    }
+}
+
+#+end_src

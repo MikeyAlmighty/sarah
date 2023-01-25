@@ -1,0 +1,52 @@
+:PROPERTIES:
+:ID:       ffe1e06a-8d8c-4e7f-87ce-c017aec04fd2
+:END:
+#+title: Generic Wildcards
+
+=<?>= : unknown Type (Wildcard)
+
+Note: =Accountant extends Employee=
+
+* =extends=
+Upper Bound
+#+begin_src java
+public static void main(String[] args) {
+    ArrayList<Employee> employees = new ArrayList<>();
+    ArrayList<Accountant> accountants = new ArrayList<>();
+    employees = accountants; // Compilation Error (Type Mismatch)
+}
+#+end_src
+
+Below we are saying that =ArrayList<? extends Employee>= Accepts any =Subclass= (read: lower) of Employee (or Employee itself).
+(Below compiles successfully as Account is a subclass of Employee.)
+
+#+begin_src java
+public static void main(String[] args) {
+    ArrayList<? extends Employee> employees = new ArrayList<>();
+    ArrayList<Accountant> accountants = new ArrayList<>();
+    employees = accountants; // Okay!
+}
+#+end_src
+
+
+* =Super=
+Lower Bound
+(Prevents subclasses)
+#+begin_src java
+public static void main(String[] args) {
+    ArrayList<? super Employee> employees = new ArrayList<>();
+    ArrayList<Accountant> accountants = new ArrayList<>();
+    employees = accountants; // Compilation Error (Type Mismatch)
+}
+#+end_src
+
+Below we are saying that =ArrayList<? super Employee>= Accepts any Employee or Employee's Base(Parent) class. - Which in this case is =Object=.
+(Below compiles successfully as Account is a subclass of Employee.)
+
+#+begin_src java
+public static void main(String[] args) {
+    ArrayList<? super Employee> employees = new ArrayList<>();
+    ArrayList<Object> accountants = new ArrayList<>();
+    employees = accountants; // Okay!
+}
+#+end_src

@@ -1,0 +1,40 @@
+:PROPERTIES:
+:ID:       978e88bf-bfac-4a29-a851-048441593c54
+:END:
+#+title: Comparable Interface
+
+Used to compare an object of the same class with an instance of that class
+=Interface Comparable<T>=
+
+=User.java=
+#+begin_src java
+public class User implements Comparable<User> {
+    private int age;
+
+    public User(int age) {
+        this.age = age;
+    }
+
+    @Override
+    public int compareTo(User other) {
+        return age - other.age;
+    }
+
+}
+#+end_src
+
+=Main.java=
+#+begin_src java
+public class Main {
+    public static void main(String[] args) {
+        var mikey = new User(27);
+        var ryan = new User(46);
+        if (mikey.compareTo(ryan) < 0)
+            System.out.println("Mikey < Ryan");
+        else if (mikey.compareTo(ryan) == 0 )
+            System.out.println("Mikey == Ryan ");
+        else
+            System.out.println("Mikey > Ryan ");
+    }
+}
+#+end_src
