@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       c1706198-b4a9-49fc-8fd4-2fc630992b15
+:END:
+#+title: Set Interface
+
+Collection without Duplicates (Does not guarantee order/ Only guarantees uniqueness)
+
+=HashSet=
+
+We can easily get rid of duplicates by passing in our =Collection= into a HashSet.
+
+#+begin_src java
+public static void show() {
+  Collection<String> collection = new ArrayList<>();
+  Collections.addAll(collection, "Sky", "Is", "Blue", "Blue");
+  Set<String> set = new HashSet<>(collection);
+}
+#+end_src
+
+#+begin_src java
+public class SetDemo {
+   public static void show() {
+    Set<String> set1 = new HashSet<>(Arrays.asList("A", "B", "C"));
+
+    Set<String> set2 = new HashSet<>(Arrays.asList("B", "C", "D"));
+
+    // Combine (Union) two sets
+    set1.addAll(set2);  // A, B, C, D
+
+    // Intersection between two sets
+    set1.retainAll(set2); // B, C
+
+    set1.removeAll(set2); // A
+   }
+}
+#+end_src

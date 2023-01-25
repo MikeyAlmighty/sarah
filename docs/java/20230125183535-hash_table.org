@@ -1,0 +1,59 @@
+:PROPERTIES:
+:ID:       657549c9-6957-48d7-8739-eb9aa8b74564
+:END:
+#+title: Hash Table or HashMap
+
+A =hash table= (or =hashMap=) is a data structure that is used to store keys/value pairs.
+It uses a =hash= function to compute an =index= into an array in which an element will be inserted or searched.
+By using a good hash function, hashing can work well.
+Under reasonable assumptions, the average time required to search for an element in a hash table is O(1).
+
+There is a possibility that *Collisions* can occur.
+One solution: If there is a collision, store both at that index (in a bucket).
+
+In Java we have a =Map= Interface.
+Not a [[id:3ac6b5d7-7c52-4d9c-b31e-d31b4c5e9b64][Collection Interface]], Not an [[id:4e4c185e-e55f-4508-8420-4fffb249a4d5][Iterable Interface]] either (Something entirely different).
+
+
+#+begin_src java
+public class MapDemo {
+   public static void show(){
+    var customer1 = new Customer("Todd", "e1");
+    var customer2 = new Customer("Ben", "e2");
+     Map<String, Customer> map = new HashMap<>();
+     map.put(customer1.getEmail(), customer1);
+     map.put(customer2.getEmail(), customer2);
+
+     var response = map.get("e2");
+     System.out.println(response); // Ben
+
+
+     System.out.println(map.get("e3")); // null
+
+     // Default
+     var unknown = new Customer("Unknown", "");
+     System.out.println(map.getOrDefault("e3", unknown)); // Unknown
+
+     // Contains
+     var exists = map.containsKey("e2");
+     System.out.println(exists); // true
+
+     // Replace
+     System.out.println(map.replace("e1", new Customer("Tommy", null)));
+
+     // Iteration over Keys
+     for (var key: map.keySet())
+        System.out.println(key);
+
+     for (var entry: map.entrySet()) {
+        System.out.println(entry); // e1=Tommy
+        System.out.println(entry.getKey()); // e1
+        System.out.println(entry.getValue()); // Tommy
+     }
+
+     for (var customer: map.values())
+        System.out.println(customer);
+
+   }
+}
+#+end_src

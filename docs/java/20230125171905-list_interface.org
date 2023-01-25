@@ -1,0 +1,32 @@
+:PROPERTIES:
+:ID:       9e1830e8-ee1a-486c-810a-fe7d4e768ed0
+:END:
+#+title: List Interface
+
+Ordered collection (Aka Sequence), accessed via index.
+
+=ArrayList=
+=LinkedList=
+
+
+#+begin_src java
+public class ListDemo {
+    public static void show(){
+        List<String> list = new ArrayList<>();
+        list.add("DeadPool");
+        list.add("Batman");
+        list.add("AquaMan");
+        list.add(1, "Robin");
+        Collections.addAll(list, "A", "B", "C");
+        System.out.println(list);
+
+        System.out.println(list.get(2));
+
+        // Replace
+        list.set(2, "Robin Hood");
+
+        // from (incl) to (excl)
+        list.subList(0, 2);
+    }
+}
+#+end_src

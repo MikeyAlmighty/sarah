@@ -1,0 +1,60 @@
+:PROPERTIES:
+:ID:       0bb4fbde-2390-4d1d-bea0-b492068942fc
+:END:
+#+title: Comparator Interface
+
+=EmailComparator.java=
+#+begin_src java
+import java.util.Comparator;
+
+public class EmailComparator implements Comparator<Customer>{
+    @Override
+    public int compare(Customer o1, Customer o2) {
+        return o1.getEmail().compareTo(o2.getEmail());
+    }
+}
+#+end_src
+
+=Customer.java=
+#+begin_src java
+public class Customer implements Comparable<Customer> {
+   private String name;
+   private String email;
+
+    public Customer(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public int compareTo(Customer other) {
+        return name.compareTo(other.name);
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
+}
+#+end_src
+
+
+=Main.java=
+#+begin_src java
+public static void main(String[] args) {
+    List<Customer> customers = new ArrayList<>();
+    customers.add(new Customer("Charlie", "e1"));
+    customers.add(new Customer("Ben", "e2"));
+    customers.add(new Customer("Amy", "e3"));
+    Collections.sort(customers, new EmailComparator()); // Pass in comparator
+    System.out.println(customers); // [Charlie, Ben, Amy]
+}
+#+end_src

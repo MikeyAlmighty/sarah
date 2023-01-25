@@ -1,0 +1,39 @@
+:PROPERTIES:
+:ID:       3ac6b5d7-7c52-4d9c-b31e-d31b4c5e9b64
+:END:
+#+title: Collection Interface
+
+Add to Collection
+Remove existing
+Check if Exists
+
+Because Collections extend the [[id:4e4c185e-e55f-4508-8420-4fffb249a4d5][Iterable Interface]], we can iterate using a for each loop.
+
+=CollectionsDemo.java=
+#+begin_src java
+public class CollectionsDemo {
+    public static void show() {
+        Collection<String> collection = new ArrayList<>();
+        collection.add("A");
+        collection.add("B");
+        collection.add("C");
+        Collections.addAll(collection, "D", "E", "F" );
+        System.out.println(collection);
+        System.out.println(collection.size());
+
+        collection.remove("A");
+
+        System.out.println(collection);
+        System.out.println(collection.contains("B"));
+        collection.clear();
+        System.out.println(collection.isEmpty());
+
+        var objectArray = collection.toArray();
+        var stringArray = collection.toArray(new String[0]);
+
+        Collection<String> other = new ArrayList<>();
+        other.addAll(collection);
+        System.out.println(collection.equals(other));
+    }
+}
+#+end_src

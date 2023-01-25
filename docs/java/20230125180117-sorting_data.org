@@ -1,0 +1,40 @@
+:PROPERTIES:
+:ID:       1d6c849a-6158-4c05-8132-84c0fbabebbc
+:END:
+#+title: Sorting Data
+
+* [[id:978e88bf-bfac-4a29-a851-048441593c54][Comparable Interface]]
+=Customer.java=
+#+begin_src java
+public class Customer implements Comparable<Customer> {
+   private String name;
+
+    public Customer(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public int compareTo(Customer other) {
+        return name.compareTo(other.name);
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
+}
+#+end_src
+
+=Main.java=
+#+begin_src java
+public static void main(String[] args) {
+    List<Customer> customers = new ArrayList<>();
+    customers.add(new Customer("Charlie"));
+    customers.add(new Customer("Ben"));
+    customers.add(new Customer("Amy"));
+    Collections.sort(customers);
+    System.out.println(customers); // [Amy, Ben, Charlie]
+}
+#+end_src
+
+* [[id:0bb4fbde-2390-4d1d-bea0-b492068942fc][Comparator Interface]]

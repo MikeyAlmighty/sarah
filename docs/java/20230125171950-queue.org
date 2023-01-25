@@ -1,0 +1,29 @@
+:PROPERTIES:
+:ID:       7c6d7629-dc6b-4b6f-87b9-bb553ca93f80
+:END:
+#+title: Queue Interface
+
+Resource shared amongst many consumers. (Based upon order we receive them)
+I.e. Printer
+FIFO
+
+[[id:c15715e2-eec9-457a-9869-497cb0d451f6][PriorityQueue]]
+
+=QueueDemo.java=
+#+begin_src java
+public class QueueDemo {
+   public static void show(){
+    Queue<String> queue = new ArrayDeque<>();
+    queue.add("C");
+    queue.add("A");
+    queue.add("B");
+
+    queue.peek(); // Returns false if empty
+    queue.element(); // Throws Exception (NoSuchElementException) if empty
+
+    queue.remove(); // Throws Exception
+    queue.poll(); // Returns null if empty
+    System.out.println(queue);
+   }
+}
+#+end_src

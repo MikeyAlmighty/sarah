@@ -1,0 +1,66 @@
+:PROPERTIES:
+:ID:       4e4c185e-e55f-4508-8420-4fffb249a4d5
+:END:
+#+title: Iterable Interface
+
+Iterable allows us to iterate over an object *without* knowing anything about implementation
+
+For Each loops are syntactic sugar over an Iterable Object
+
+=GenericList.java=
+#+begin_src java
+import java.util.Iterator;
+
+public class GenericList<T> implements Iterable<T> {
+   private T[] items = (T[])  new Object[10];
+   private int count;
+
+   public void add(T item) {
+    items[count++] = item;
+   }
+
+   public T get(int index) {
+    return items[index];
+   }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new ListIterator(this);
+    }
+
+    private class ListIterator implements Iterator<T> {
+        private GenericList<T> list;
+        private int index;
+
+        public ListIterator(GenericList<T> list) {
+            this.list = list;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return (index < list.count);
+        }
+
+        @Override
+        public T next() {
+            return list.items[index++];
+        }
+    }
+}
+#+end_src
+
+
+=Main.java=
+#+begin_src java
+public static void main(String[] args) {
+    var shoppingList = new GenericList<String>();
+
+    shoppingList.add("Bread");
+    shoppingList.add("Eggs");
+    shoppingList.add("Milk");
+
+    for (var item: shoppingList) {
+        System.out.println(item);
+    }
+}
+#+end_src
