@@ -1,0 +1,42 @@
+:PROPERTIES:
+:ID:       22c37042-9e7a-4798-8f9f-e94043bd08c9
+:END:
+#+title: Predicate
+
+Operation that takes object, checks to see if that object satisifies some criteria. (Filter data)
+
+Specials:
+Interface BiPredicate <T, U> (Takes two arguments ) returns Boolean
+
+Primitives:
+=IntPredicate=, =LongPredicate=, =DoublePredicate=
+
+
+
+#+begin_src java
+public static void show() {
+    Predicate<String> isLongerThan5 = str -> str.length() > 5;
+    var result = isLongerThan5.test("Sky");
+    System.out.println(result); // false
+
+    var result1 = isLongerThan5.test("DeadPool");
+    System.out.println(result1); // true
+}
+#+end_src
+
+
+Combining Predicates:
+
+#+begin_src java
+public static void show() {
+    Predicate<String> hasLeftBrace = str -> str.startsWith("{");
+    Predicate<String> hasRightBrace = str -> str.endsWith("}");
+
+    Predicate<String> hasLeftAndRightBrace = hasLeftBrace.and(hasRightBrace);
+
+    var result = hasLeftAndRightBrace.test("{DeadPool}");
+    System.out.println(result); // true
+}
+#+end_src
+
+We can call =.and (&&)=, =.negate (!)=, =.or (||)= on a Predicate.

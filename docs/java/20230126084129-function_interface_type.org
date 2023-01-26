@@ -1,0 +1,91 @@
+:PROPERTIES:
+:ID:       3e0d2401-bab9-464c-b5a2-55311ce13349
+:END:
+#+title: Function Interface Type
+
+*Map* value to *different* value.
+
+=Interface Function <T, R>=
+
+T = Type of Argument
+R = Type of Result
+
+There are special flavors:
+=BiFunction= (Takes in two arguments and returns a result) =Interface BiFunction<T, U, R>=
+* Primitives:
+
+1. *Return Type* is paramterized
+=IntFunction= (Takes in primitive int)
+Also have =LongFunction=, =DoubleFunction= etc.
+
+2. *Argument Type* is paramterized
+=ToIntFunction= (Function that returns primitive integer)
+
+3. *Both Argument and Return type are paramterized*
+=IntToLongFunction=
+
+#+begin_src java
+public static void show() {
+    // Takes a String and returns int
+    Function<String, Integer> map = str -> str.length();
+
+    var stringLength = map.apply("Sky");
+    System.out.println(stringLength);
+}
+#+end_src
+
+* Function Compostion
+
+#+begin_src java
+public static void show() {
+    // Have "key:value"
+    // first: "key=value"
+    // second: "{key=value}"
+
+    // First
+    Function<String, String> replaceColon = str -> str.replace(":", "=");
+    // Second
+    Function<String, String> addBraces = str -> "{" + str + "}";
+
+    var result = replaceColon
+                    .andThen(addBraces)
+                    .apply("key:value");
+
+    System.out.println(result); // "{key=value}"
+
+    // Alternatively using `compose`:
+    var result1 = addBraces
+                    .compose(replaceColon)
+                    .apply("key:value");
+
+
+    System.out.println(result1); // "{key=value}"
+}
+#+end_src
+
+* BinaryOperator
+
+#+begin_src java
+public static void show() {
+
+    BinaryOperator<Integer> add = (num1, num2) -> num1 + num2;
+    Function<Integer, Integer> square = num1 -> num1 * num1;
+
+    var result = add
+                    .andThen(square)
+                    .apply(1, 2);
+    System.out.println(result); // 9
+}
+#+end_src
+
+* UnaryOperator
+
+#+begin_src java
+public static void show() {
+    UnaryOperator<Integer> square = n -> n * n;
+    UnaryOperator<Integer> increment = n -> n + 1;
+
+    var result = increment.andThen(square).apply(1);
+    System.out.println(result);
+}
+#+end_src

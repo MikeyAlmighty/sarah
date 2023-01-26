@@ -1,0 +1,30 @@
+:PROPERTIES:
+:ID:       fb3382b0-1b41-4106-b212-87a11c7bb068
+:END:
+#+title: Lambda Expressions
+
+(See: [[id:ee47463f-63e6-4f16-b2c0-8da318878700][Anonymous Inner Classes]], Lambda Expressions use even less code!)
+
+
+#+begin_src java
+public class LambdasDemo {
+   public static void show() {
+
+    // Lambda Expression
+    greet(message -> System.out.println(message));
+    // OR Store Lambda Expression in variable
+    Printer printer = message -> System.out.println("message");
+
+    public static void greet(Printer printer){
+        printer.print("Hello World");
+    }
+  }
+}
+
+#+end_src
+
+In a =Lambda Expression=  =this= refers to current instance of =LambdasDemo= class.
+
+In an [[id:ee47463f-63e6-4f16-b2c0-8da318878700][Anonymous Inner Classes]]  =this=  refers to the current instance of the anonymous inner class
+
+*Can't* have instance =fields/State= in a [[id:fb3382b0-1b41-4106-b212-87a11c7bb068][Lambda Expressions]] (Only local variables declared in enclosing object and static objects/fields in instance class).

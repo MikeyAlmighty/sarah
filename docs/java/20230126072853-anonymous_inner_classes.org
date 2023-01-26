@@ -1,0 +1,41 @@
+:PROPERTIES:
+:ID:       ee47463f-63e6-4f16-b2c0-8da318878700
+:END:
+#+title: Anonymous Inner Classes
+
+(See [[id:fb3382b0-1b41-4106-b212-87a11c7bb068][Lambda Expressions]])
+Inner class without a name for which only a single object is created.
+
+=Printer.java=
+#+begin_src java
+public interface Printer {
+    void print(String message);
+}
+#+end_src
+
+=LambdasDemo.java=
+#+begin_src java
+public class LambdasDemo {
+   public static void show() {
+    // Anonymous Inner Class
+    greet(new Printer() {
+        @Override
+        public void print(String message) {
+           System.out.println(message);
+        }
+    });
+   }
+
+    // Lambda Expression
+    greet(message -> System.out.println(message));
+
+   public static void greet(Printer printer){
+    printer.print("Hello World");
+   }
+}
+#+end_src
+
+
+In an [[id:ee47463f-63e6-4f16-b2c0-8da318878700][Anonymous Inner Classes]]  =this=  refers to the current instance of the anonymous inner class
+
+In [[id:fb3382b0-1b41-4106-b212-87a11c7bb068][Lambda Expressions]] =this= refers to current instance of =LambdasDemo= class.

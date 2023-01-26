@@ -1,0 +1,27 @@
+:PROPERTIES:
+:ID:       492a19d5-a760-43b2-986d-ba0b09eb93d5
+:END:
+#+title: Supplier
+
+Represents an operation: Takes *no* input but *produces (supplies)* a value.
+
+* Example
+#+begin_src java
+public static void show() {
+    Supplier<Double> getRandom = () -> Math.random();
+
+    var random = getRandom.get();
+    System.out.println(random);
+}
+#+end_src
+
+** PrimitiveSuppliers: =IntSupplier=, =LongSupplier=, =DoubleSupplier=, =BooleanSupplier=
+
+#+begin_src java
+public static void show() {
+    DoubleSupplier getRandom = () -> Math.random();
+
+    var random = getRandom.getAsDouble();
+    System.out.println(random);
+}
+#+end_src

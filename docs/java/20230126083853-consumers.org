@@ -1,0 +1,32 @@
+:PROPERTIES:
+:ID:       849249f6-b482-49f7-a435-c43d2a8fcb05
+:END:
+#+title: Consumers
+
+Represents operation which takes single argument and returns *no value*.
+
+* Consumer Interface
+
+Consumer takes one argument
+=Bi-consumer= (Takes two arguments)
+Primitive Consumers like =IntConsumer=, =LongConsumer=, =DoubleConsumer=
+
+#+begin_src java
+public class LambdasDemo {
+  public static void show() {
+    List<Integer> list = List.of(1, 2, 3, 4);
+    list.forEach((item) -> System.out.println(item));
+  }
+}
+#+end_src
+
+** Chaining consumers using `andThen`:
+#+begin_src java
+  public static void show() {
+    List<String> list = List.of("a", "b", "c");
+    Consumer<String> print = item -> System.out.println(item);
+    Consumer<String> printToUppercase = item -> System.out.println(item.toUpperCase());
+
+    list.forEach(print.andThen(printToUppercase));
+  }
+#+end_src

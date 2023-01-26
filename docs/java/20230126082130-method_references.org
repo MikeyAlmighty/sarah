@@ -1,0 +1,72 @@
+:PROPERTIES:
+:ID:       0920d681-9481-4a33-8c13-066620b53e57
+:END:
+#+title: Method References
+
+=Printer.java=
+#+begin_src java
+public interface Printer {
+    void print(String message, int age);
+}
+#+end_src
+
+* Static member:
+=LambdasDemo.java=
+#+begin_src java
+public class LambdasDemo {
+   public static void print(String message, int age){
+    System.out.println(message + age);
+   }
+
+   public static void show() {
+    greet((message, age) -> print(message, age));
+    // OR as a Method reference
+    greet(LambdasDemo::print);
+   }
+
+   public static void greet(Printer printer){
+    printer.print("Hello World", 69);
+   }
+}
+#+end_src
+
+* Instance member
+=LambdasDemo.java=
+#+begin_src java
+public class LambdasDemo {
+   public void print(String message, int age){
+    System.out.println(message + age);
+   }
+
+   public static void show() {
+    var demo = new LambdasDemo();
+    greet((message, age) -> demo.print(message, age));
+    // OR as a method Reference:
+    greet(demo::print);
+   }
+
+   public static void greet(Printer printer){
+    printer.print("Hello World", 69);
+   }
+}
+#+end_src
+
+* Constructor
+
+=LambdasDemo.java=
+#+begin_src java
+public class LambdasDemo {
+  public LambdasDemo(String message, int age){
+
+  }
+  public static void show() {
+    greet((message, age) -> new LambdasDemo("Hello World", 32));
+    // OR Method reference
+    greet(LambdasDemo::new);
+  }
+
+   public static void greet(Printer printer){
+    printer.print("Hello World", 69);
+   }
+}
+#+end_src
