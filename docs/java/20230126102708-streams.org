@@ -1,0 +1,102 @@
+:PROPERTIES:
+:ID:       117e6e73-ceb7-4fc5-abb2-3a328ecf274b
+:END:
+#+title: Streams
+
+Process Collection of data
+
+#+ATTR_ORG: :width 900
+[[./assets/Streams.png]]
+
+Creating a stream
+- From a collection
+ #+begin_src java
+ public static void show() {
+    List<Movie> movies = List.of(
+        new Movie("Deadpool", 20),
+        new Movie("Deadpool 2", 15),
+        new Movie("Deadpool 3", 10)
+    );
+
+    var count2 = movies.stream()
+        .filter(movie -> movie.getLikes() > 10)
+        .count();
+
+        System.out.println(count2);
+}
+#+end_src
+
+- From an array
+#+begin_src java
+public static void show() {
+    int[] numbers = { 3, 1, 6};
+    Arrays.stream(numbers)
+            .forEach(n -> System.out.println(n));
+}
+#+end_src
+
+- From arbitrary number of objects
+#+begin_src java
+    Stream.of(1, 2, 3, 4);
+#+end_src
+
+- infinite/finite streams
+
+ #+begin_src java
+    var stream = Stream.generate(() -> Math.random());
+    stream.forEach(n -> System.out.println(n));
+    // stream.limit(3).forEach(n -> System.out.println(n)); // limit of 3
+#+end_src
+
+OR
+
+#+begin_src java
+public static void show() {
+    var stream = Stream.iterate(1, n -> n + 1);
+    stream
+    .limit(3)
+    .forEach(item -> System.out.println(item));
+}
+#+end_src
+
+Every class that implements the [[id:3ac6b5d7-7c52-4d9c-b31e-d31b4c5e9b64][Collection Interface]] can return a =stream=
+
+[[id:a93e9fe3-2d83-44be-87ae-81f01f982050][Mapping]]
+[[id:a3c49da9-bdd0-4a82-aafd-37b2db79dae8][Filtering]]
+[[id:6336835c-2aab-4b99-9215-eeb4deb368c9][Slicing]]
+[[id:c4d5e936-f9c5-490e-81b1-3bfb27545e56][Sorting Stream]]
+[[id:2bff7755-61c8-447a-86cf-4373335dbbb0][Getting Unique elements]]
+[[id:b2f12306-c741-49e3-9543-7b2011441e5a][Reducers]]
+
+A call to =.forEach= is a *terminal* operation
+VS
+One can use =.peek= at any point to "peek" at the stream *without* termintating
+#+begin_src java
+public static void show() {
+        var movieStream = Stream.of(
+                new Movie("b", 15),
+                new Movie("a", 5),
+                new Movie("d", 15),
+                new Movie("e", 35),
+                new Movie("c", 5)
+            );
+            movieStream
+            .peek(movie -> System.out.println("entry: " + movie.getTitle()))
+            .filter(movie -> movie.getLikes() > 10)
+            .peek(movie -> System.out.println("filter: " + movie.getTitle()))
+            .map(Movie::getTitle)
+            .peek(movieTitle -> System.out.println("map: " + movieTitle))
+            .forEach(System.out::println);
+}
+#+end_src
+
+* Primitive Streams
+
+#+begin_src java
+public static void show() {
+    IntStream.range(0, 5)
+            .forEach(System.out::println); // 0 -> 4
+    IntStream.rangeClosed(0, 5)
+                .forEach(System.out::println); // 0 -> 5
+}
+#+end_src

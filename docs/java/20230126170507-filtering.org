@@ -1,0 +1,18 @@
+:PROPERTIES:
+:ID:       a3c49da9-bdd0-4a82-aafd-37b2db79dae8
+:END:
+#+title: Filtering
+
+#+begin_src java
+public static void show() {
+    Predicate<Movie> isPopular = movie -> movie.getLikes() > 10;
+    var stream = Stream.of(
+         new Movie("Deadpool 1", 15),
+         new Movie("Deadpool 2", 5),
+         new Movie("Deadpool 3", 25)
+        );
+        stream
+            .filter(isPopular)
+            .forEach(highRated -> System.out.println(highRated.getTitle()));
+}
+#+end_src

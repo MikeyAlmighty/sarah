@@ -1,0 +1,23 @@
+:PROPERTIES:
+:ID:       9bc5ff65-1c04-4c6d-9498-05d9e1e15662
+:END:
+#+title: Partitioning Elements
+
+#+begin_src java
+public static void show() {
+    Predicate<Movie> greaterThan10 = n -> n.getLikes() > 10;
+    var movieStream = Stream.of(
+            new Movie("b", 15, Genre.ACTION),
+            new Movie("a", 5, Genre.THRILLER),
+            new Movie("d", 15, Genre.ACTION)
+        );
+
+            var result = movieStream
+                    .collect(Collectors.partitioningBy(
+                        greaterThan10,
+                        Collectors.mapping(Movie::getTitle, Collectors.joining(","))
+                    ));
+
+        System.out.println(result.toString()); // {false=a, true=b,d}
+}
+#+end_src

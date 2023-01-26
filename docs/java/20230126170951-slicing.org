@@ -1,0 +1,63 @@
+:PROPERTIES:
+:ID:       6336835c-2aab-4b99-9215-eeb4deb368c9
+:END:
+#+title: Slicing
+
+#+begin_src java
+public static void show() {
+    var stream = Stream.of(
+        new Movie("Deadpool 1", 15),
+        new Movie("Deadpool 2", 5),
+        new Movie("Deadpool 3", 25)
+        );
+
+}
+#+end_src
+
+- limit
+#+begin_src java
+stream
+    .limit(2)
+    .forEach(movie -> System.out.println(movie.getTitle())); // Deadpool1, Deadpool2
+#+end_src
+
+- skip
+#+begin_src java
+stream
+    .skip(2)
+    .forEach(movie -> System.out.println(movie.getTitle())); // Deadpool3
+#+end_src
+
+- takeWhile
+ #+begin_src java
+public static void show() {
+    Predicate<Movie> highestRated = movie -> movie.getLikes() < 26;
+    var stream = Stream.of(
+            new Movie("Deadpool 1", 15),
+            new Movie("Deadpool 2", 5),
+            new Movie("Deadpool 3", 25),
+            new Movie("Shrek 1", 35),
+            new Movie("Shrek 2", 5)
+        );
+        stream
+            .takeWhile(highestRated)
+            .forEach(movie -> System.out.println(movie.getTitle())); // Deadpool 1 Deadpool 2 Deadpool 3
+}
+#+end_src
+
+- dropWhile
+ #+begin_src java
+public static void show() {
+    Predicate<Movie> highestRated = movie -> movie.getLikes() < 25;
+    var stream = Stream.of(
+            new Movie("Deadpool 1", 15),
+            new Movie("Deadpool 2", 5),
+            new Movie("Deadpool 3", 25),
+            new Movie("Shrek 1", 35),
+            new Movie("Shrek 2", 5)
+        );
+        stream
+            .dropWhile(highestRated)
+            .forEach(movie -> System.out.println(movie.getTitle())); // Deadpool 3 Shrek 1 Shrek 2
+}
+#+end_src

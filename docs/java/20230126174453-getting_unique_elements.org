@@ -1,0 +1,20 @@
+:PROPERTIES:
+:ID:       2bff7755-61c8-447a-86cf-4373335dbbb0
+:END:
+#+title: Getting Unique elements
+
+#+begin_src java
+public static void show() {
+    var movieStream = Stream.of(
+            new Movie("b", 15),
+            new Movie("a", 5),
+            new Movie("d", 15),
+            new Movie("e", 35),
+            new Movie("c", 5)
+        );
+        movieStream
+            .map(Movie::getLikes)
+            .distinct()
+            .forEach(System.out::println); // 15 5 35
+}
+#+end_src

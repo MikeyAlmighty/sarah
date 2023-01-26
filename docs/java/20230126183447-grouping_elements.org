@@ -1,0 +1,54 @@
+:PROPERTIES:
+:ID:       a1cbd9a3-5f11-4a1e-82d1-81293b83c597
+:END:
+#+title: Grouping Elements
+
+See: [[id:8558d6b4-889c-4502-bede-0412b48cd23d][Capturing to Collections]]
+
+#+begin_src java
+public static void show() {
+    var movieStream = Stream.of(
+            new Movie("b", 15, Genre.ACTION),
+            new Movie("a", 5, Genre.THRILLER),
+            new Movie("d", 15, Genre.ACTION)
+        );
+
+            var result = movieStream
+            .collect(Collectors.groupingBy(Movie::getGenre));
+
+        System.out.println(result.toString()); // {ACTION=[com.demo.Movie@7852e922, com.demo.Movie@4e25154f], THRILLER=[com.demo.Movie@70dea4e]}
+}
+#+end_src
+
+#+begin_src java
+public static void show() {
+    var movieStream = Stream.of(
+            new Movie("b", 15, Genre.ACTION),
+            new Movie("a", 5, Genre.THRILLER),
+            new Movie("d", 15, Genre.ACTION)
+        );
+
+            var result = movieStream
+            .collect(Collectors.groupingBy(Movie::getGenre, Collectors.counting()));
+
+        System.out.println(result.toString()); // {ACTION=2, THRILLER=1}
+}
+#+end_src
+
+#+begin_src java
+public static void show() {
+    var movieStream = Stream.of(
+            new Movie("b", 15, Genre.ACTION),
+            new Movie("a", 5, Genre.THRILLER),
+            new Movie("d", 15, Genre.ACTION)
+        );
+
+            var result = movieStream
+            .collect(Collectors.groupingBy(
+                Movie::getGenre,
+                    Collectors.mapping(Movie::getTitle, Collectors.joining("$"))
+                    ));
+
+        System.out.println(result.toString()); // {ACTION=b$d, THRILLER=a}
+}
+#+end_src

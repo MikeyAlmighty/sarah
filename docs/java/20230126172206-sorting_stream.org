@@ -1,0 +1,24 @@
+:PROPERTIES:
+:ID:       c4d5e936-f9c5-490e-81b1-3bfb27545e56
+:END:
+#+title: Sorting Stream
+
+Pass a [[id:0bb4fbde-2390-4d1d-bea0-b492068942fc][Comparator Interface]]
+
+#+begin_src java
+    public static void show() {
+        var movieStream = Stream.of(
+                new Movie("b", 15),
+                new Movie("a", 5),
+                new Movie("d", 25),
+                new Movie("e", 35),
+                new Movie("c", 5)
+            );
+            movieStream
+                .sorted(Comparator.comparing(Movie::getTitle))
+                // .sorted((a, b) -> a.getTitle().compareTo(b.getTitle())) //  ^Same as
+                // .sorted(Comparator.comparing(m -> m.getTitle())) // ^Same as
+                .forEach(movie -> System.out.println(movie.getTitle()));
+    }
+// To reverse: .sorted(Comparator.comparing(Movie::getTitle).reversed())
+#+end_src

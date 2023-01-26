@@ -1,0 +1,111 @@
+:PROPERTIES:
+:ID:       b2f12306-c741-49e3-9543-7b2011441e5a
+:END:
+#+title: Reducers
+
+* Matchers
+** =anyMacth=
+#+begin_src java
+public static void show() {
+        Predicate<Movie> greaterThan15 = movie -> movie.getLikes() > 20;
+        var movieStream = Stream.of(
+                new Movie("b", 15),
+                new Movie("a", 5),
+                new Movie("d", 15),
+                new Movie("e", 35),
+                new Movie("c", 5)
+            );
+            var great = movieStream
+              .anyMatch(greaterThan15);
+            System.out.println(great); // true
+}
+#+end_src
+
+** =allMatch=
+#+begin_src java
+    public static void show() {
+        Predicate<Movie> greaterThan15 = movie -> movie.getLikes() > 20;
+        var movieStream = Stream.of(
+                new Movie("b", 15),
+                new Movie("a", 5),
+                new Movie("d", 15),
+                new Movie("e", 35),
+                new Movie("c", 5)
+            );
+            var great = movieStream
+              .allMatch(greaterThan15);
+            System.out.println(great); // false
+    }
+#+end_src
+
+
+
+* =.findFirst=
+#+begin_src java
+public static void show() {
+    var movieStream = Stream.of(
+        new Movie("b", 15),
+        new Movie("a", 5),
+        new Movie("d", 15),
+        new Movie("e", 35),
+        new Movie("c", 5)
+    );
+    var great = movieStream
+        .findFirst()
+        .get();
+    System.out.println(great.getTitle());
+}
+#+end_src
+
+- findAny
+- min
+- max
+ #+begin_src java
+public static void show() {
+    var movieStream = Stream.of(
+            new Movie("b", 15),
+            new Movie("a", 5),
+            new Movie("d", 15),
+            new Movie("e", 35),
+            new Movie("c", 5)
+        );
+        var great = movieStream
+            .max(Comparator.comparing(Movie::getLikes))
+            .get();
+        System.out.println(great.getTitle()); // e
+}
+#+end_src
+
+
+* General Purpose reduction
+#+begin_src java
+public static void show() {
+  var movieStream = Stream.of(
+        new Movie("b", 15),
+        new Movie("a", 5),
+        new Movie("d", 15),
+        new Movie("e", 35),
+        new Movie("c", 5)
+    );
+    Optional<Integer> totalLikes = movieStream
+        .map(Movie::getLikes)
+        .reduce(Integer::sum);
+    System.out.println(totalLikes.orElse(0)); // 75
+}
+// OR
+public static void show() {
+    var movieStream = Stream.of(
+            new Movie("b", 15),
+            new Movie("a", 5),
+            new Movie("d", 15),
+            new Movie("e", 35),
+            new Movie("c", 5)
+        );
+        Integer totalLikes = movieStream
+            .map(Movie::getLikes)
+            .reduce(0, Integer::sum);
+        System.out.println(totalLikes); // 75
+}
+#+end_src
+
+[[id:8558d6b4-889c-4502-bede-0412b48cd23d][Capturing to Collections]]

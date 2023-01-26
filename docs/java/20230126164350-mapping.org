@@ -1,0 +1,27 @@
+:PROPERTIES:
+:ID:       a93e9fe3-2d83-44be-87ae-81f01f982050
+:END:
+#+title: Mapping
+
+* map
+#+begin_src java
+public static void show() {
+    List<Movie> movies = List.of(
+        new Movie("Deadpool", 20),
+        new Movie("Deadpool 2", 15),
+        new Movie("Deadpool 3", 10)
+    );
+    movies.stream()
+            .map(movie -> movie.getTitle())
+            .forEach(movieTitle -> System.out.println(movieTitle));
+}
+#+end_src
+
+* flatMap
+#+begin_src java
+public static void show() {
+    Stream.of(List.of(1, 2, 3), List.of(4, 5, 6))
+            .flatMap(list -> list.stream())
+            .forEach(list -> System.out.println(list));
+}
+#+end_src
