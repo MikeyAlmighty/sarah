@@ -1,0 +1,62 @@
+:PROPERTIES:
+:ID:       65ca35e5-10ef-4a7f-8ee7-7746778cd194
+:END:
+#+title: Thread
+
+#+ATTR_ORG: :width 900
+[[./assets/thread-life-cycle.png]]
+
+=DownloadFileTask=
+#+begin_src java
+public class DownloadFileTask implements Runnable {
+    @Override
+    public void run() {
+    System.out.println("Downloading a file: " + Thread.currentThread().getName());
+        // TODO Auto-generated method stub
+
+    }
+}
+#+end_src
+
+* Starting a thread
+
+=ThreadDemo.java=
+#+begin_src java
+public static void show() {
+        System.out.println(Thread.currentThread().getName());
+        for(var i = 0; i < 10; i++){
+            Thread thread = new Thread(new DownloadFileTask());
+            thread.start();
+        }
+    }
+#+end_src
+
+* =.join= Tell current thread to wait for completion of another thread.
+Allows one thread to wait until another thread completes its execution.
+In simpler words, it means it waits for the other thread to die.
+It has a =void= type and =throws InterruptedException=.
+
+#+begin_src java
+public static void show() {
+    Thread thread = new Thread(new DownloadFileTask());
+    thread.start();
+    try {
+        thread.join(); // Holds up the thread until the download task is finished
+    } catch (InterruptedException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+    System.out.println("File is ready to be scanned");
+}
+#+end_src
+
+* Interrupt a thread
+Simply calling =thread.interrupt= doesn't stop the thread, but sends a request.
+We need to check if a specific thread is interrupted, then we can kill.
+
+(Exception is thrown if we send an interrupt signal to a sleeping thread)
+
+#+begin_src java
+thread.interrupt();
+if (Thread.currentThread().isInterrupted()) return;
+#+end_src

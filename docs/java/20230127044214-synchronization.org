@@ -1,0 +1,106 @@
+:PROPERTIES:
+:ID:       e69555ef-ade4-4b3e-ae63-59d3d6182b33
+:END:
+#+title: Synchronization
+
+** Using =Locks=
+#+begin_src java
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+public class DownloadStatus {
+   private int totalBytes;
+   private Lock lock = new ReentrantLock();
+
+    public int getTotalBytes() {
+        return totalBytes;
+    }
+
+    public void incrementTotalBytes(){
+        lock.lock();
+        try {
+            totalBytes++;
+        }  finally {
+          lock.unlock();
+        }
+    }
+}
+#+end_src
+
+or
+
+#+begin_src java
+public class DownloadStatus {
+   private int totalBytes;
+   private int totalFiles;
+
+    public int getTotalFiles() {
+        return totalFiles;
+    }
+
+    public int getTotalBytes() {
+        return totalBytes;
+    }
+
+    public void incrementTotalBytes(){
+    // Note: "this" here is a MonitorObject,
+    // generally we don't want it to be "this" as it will then lock up this entire object
+    // (NOT allowing the other methods i.e. incrementTotalFiles, to be called thus deminishing throughput) [See below example for proper monitorObject]
+        synchronized (this) {
+            totalBytes++;
+        }
+    }
+
+    public void incrementTotalFiles(){
+        synchronized (this) {
+            totalBytes++;
+        }
+    }
+}
+
+public class DownloadStatus {
+   private int totalBytes;
+   private int totalFiles;
+
+   private Object BytesLock = new Object();
+   private Object FilesLock = new Object();
+
+    public int getTotalFiles() {
+        return totalFiles;
+    }
+
+    public int getTotalBytes() {
+        return totalBytes;
+    }
+
+    public void incrementTotalBytes(){
+        // Now Allows access to incrementTotalFiles
+        synchronized (BytesLock) {
+            totalBytes++;
+        }
+    }
+
+    public void incrementTotalFiles(){
+        synchronized (FilesLock) {
+            totalBytes++;
+        }
+    }
+}
+#+end_src
+
+But be aware as this can cause:
+
+[[id:0d21a149-8534-4902-ac66-7e68794aa12d][Deadlock]]
+[[id:4c2a1b1d-d470-4155-9994-55071ff70d9b][Livelock]]
+
+* We can mark fields as =volatile=
+Ensures changes to an object are visible across threads
+This notifies the JVM to not rely on storing value in CPU cache Write directly to Main memory)
+
+#+begin_src java
+private volatile boolean isDone;
+#+end_src
+
+=.wait= and =.notify=
+
+[[id:8dc610d3-b0f1-471b-b125-4e2409c735ac][Synchronized Collections]]

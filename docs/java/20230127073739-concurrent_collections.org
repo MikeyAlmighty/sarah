@@ -1,0 +1,19 @@
+:PROPERTIES:
+:ID:       ef30166a-db53-4698-bdb9-d969680625d9
+:END:
+#+title: Concurrent Collections
+
+Divide data into segments, different threads can =concurrently= work with different segments (Only one thread per segment)
+
+Faster than [[id:8dc610d3-b0f1-471b-b125-4e2409c735ac][Synchronized Collections]] (As we don't need to create locks)
+
+#+begin_src java
+public class ThreadDemo {
+    public static void show() {
+        Map<Integer, String> map = new ConcurrentHashMap<>();
+        map.put(2, "dead");
+        map.put(3, "Pool");
+        map.remove(1);
+    }
+}
+#+end_src

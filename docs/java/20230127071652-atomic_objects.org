@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       4fbdf6dd-f4c9-4636-b7ff-d61bdd030ba5
+:END:
+#+title: Atomic Objects
+
+#+begin_src java
+public class DownloadStatus {
+    private AtomicInteger totalBytes = new AtomicInteger();
+
+    public int getTotalBytes() {
+        return totalBytes.get(); // Get
+    }
+
+    public void incrementTotalBytes(){
+        totalBytes.incrementAndGet(); // Set ++a
+        // totalBytes.getAndIncrement(); // Set a++
+    }
+}
+#+end_src
+
+When you need multiple threads to update a value *frequently* use a =Adder=
+#+begin_src java
+import java.util.concurrent.atomic.LongAdder;
+
+public class DownloadStatus {
+    private LongAdder totalBytes = new LongAdder();
+
+    public int getTotalBytes() {
+        return totalBytes.intValue();
+    }
+
+    public void incrementTotalBytes(){
+        totalBytes.increment();
+    }
+}
+#+end_src
