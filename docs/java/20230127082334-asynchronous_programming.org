@@ -1,0 +1,53 @@
+:PROPERTIES:
+:ID:       3ed19ef3-8606-45c2-a1d6-cc68bf65d9a8
+:END:
+#+title: Asynchronous Programming
+
+* =CompletableFuture=
+Perform possible asynchronous (non-blocking) computation and trigger dependant computations which could also be asynchronous.
+
+** Blocking Example
+#+begin_src java
+public class MailService {
+    public void send() {
+       LongTask.simulate();
+       System.out.println("Mail was sent");
+    }
+
+}
+
+public static void main(String[] args) {
+        // CompletableFuturesDemo.show();
+        var service = new MailService();
+        // Blocking
+        service.send(); // Takes up Main thread
+}
+#+end_src
+
+** Non-blocking Example
+#+begin_src java
+public class MailService {
+    public void send() {
+       LongTask.simulate();
+       System.out.println("Mail was sent");
+    }
+
+    // Makes it asynchronous
+    public CompletableFuture<Void> sendAsync(){
+       return CompletableFuture.runAsync(() -> send());
+    }
+}
+
+public static void main(String[] args) {
+    // CompletableFuturesDemo.show();
+    var service = new MailService();
+    // Ran in separate thread
+    service.sendAsync();
+    System.out.println("Now!");
+    try {
+        Thread.sleep(5000);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+}
+#+end_src

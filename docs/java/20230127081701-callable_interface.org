@@ -1,0 +1,29 @@
+:PROPERTIES:
+:ID:       a63a636c-d8c7-4ab2-8a7b-14212b54dd19
+:END:
+#+title: Callable Interface
+
+Similar to [[id:ebbf26d8-d3e5-43b0-995a-5b04adee1f08][Runnable Interface]] except =Callable= returns a value.
+=.call=
+
+#+begin_src java
+public static void show () {
+    var executor = Executors.newFixedThreadPool(2); // Pool with 2 workers
+    try {
+        var future = executor.submit(() -> {
+            LongTask.simulate(); // Simulate 3 second
+            return 1;
+        });
+        System.out.println("Do more work");
+        try {
+            var result = future.get();
+        System.out.println(result);
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+    } finally {
+        executor.shutdown(); // Terminate Stops new tasks
+        // executor.shutdownNow(); // Stops current Task and new tasks
+    }
+}
+#+end_src

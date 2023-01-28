@@ -1,0 +1,26 @@
+:PROPERTIES:
+:ID:       d698f7d4-035a-428c-b91b-0807186fde60
+:END:
+#+title: Executor Framework
+
+=Thread pool= - consists of (n) worker threads
+
+(Threads aren't (destroyed/created) they're always existant they just become occupied or freed.)
+
+=ThreadPoolExecutor=
+
+#+begin_src java
+public static void show () {
+    var executor = Executors.newFixedThreadPool(2); // Pool with 2 workers
+    try {
+        executor.submit(() -> {
+            System.out.println(Thread.currentThread().getName());
+        });
+    } finally {
+        executor.shutdown(); // Terminate Stops new tasks
+        // executor.shutdownNow(); // Stops current Task and new tasks
+    }
+}
+#+end_src
+
+[[id:3ed19ef3-8606-45c2-a1d6-cc68bf65d9a8][Asynchronous Programming]]
