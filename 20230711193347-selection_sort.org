@@ -1,0 +1,33 @@
+:PROPERTIES:
+:ID:       d0e0342e-8bba-4ac1-8930-0ac46e6876d1
+:END:
+#+title: Selection Sort
+#+filetags: :Algorithms:
+#+property: header-args :tangle code/algorithms/selectionSort.js
+
+* Selection Sort
+In place comparison sorting algorithm that keeps track of minimum value during each iteration, at the end of each iteration swap variables.
+
+`Time complexity`: O(n<sup>2</sup>)
+
+#+BEGIN_SRC js
+const selectionSort = (array) => {
+  const arr = array.slice()
+  for (let i = 0; i < arr.length - 1; i++) {
+    let min = i
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[min] > arr[j]) {
+        min = j
+      }
+    }
+    let temp = arr[i]
+    arr[i] = arr[min]
+    arr[min] = temp
+  }
+  return arr
+}
+
+const array = [2, 19, 4, 25, 6, 520]
+
+console.log(selectionSort(array))
+#+END_SRC

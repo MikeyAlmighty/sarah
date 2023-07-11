@@ -1,3 +1,0 @@
-# Prisma
-
-https://prisma.io/

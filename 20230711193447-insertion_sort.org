@@ -1,0 +1,28 @@
+:PROPERTIES:
+:ID:       50164b50-7826-4311-8950-7c3e1adbd91d
+:END:
+#+title: Insertion Sort
+#+filetags: :Algorithms:
+#+property: header-args :tangle code/algorithms/insertionSort.js
+
+* Insertion Sort
+
+Useful for arrays that are partially sorted
+
+#+BEGIN_SRC js
+const insertionSort = (array) => {
+  for (let i = 1; i < array.length; i++) {
+    for (let j = i; j > 0; j--) {
+      if (array[j] < array[j-1]) {
+        const temp = array[j]
+        array[j] = array[j-1]
+        array[j-1] = temp
+      } else break
+    }
+  }
+  return array
+}
+
+const array = [1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92]
+console.log(insertionSort(array))
+#+END_SRC
