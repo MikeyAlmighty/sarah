@@ -1,12 +1,3 @@
-:PROPERTIES:
-:ID:       090aa799-0ae4-4517-9ca7-38ae887f2b53
-:END:
-#+property: header-args :tangle bindFunction.js
-#+title: .bind Function
-
-The `bind()` method creates a *new function* that, when called, has its `this` keyword set to the provided value, with a given sequence of arguments preceding any provided when the new function is called.
-
-#+BEGIN_SRC js
 const person = {
   firstName: 'Dead',
   lastName: 'Pool',
@@ -29,4 +20,3 @@ aquaMan() // Prints Aqua Man lives in Cape Town
 // OR
 const batMan = printName.bind({ firstName: 'Bat', lastName: 'Man' }, 'California')
 batMan() // Prints Bat Man lives in California
-#+END_SRC
