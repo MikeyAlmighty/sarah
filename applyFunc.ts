@@ -1,14 +1,3 @@
-:PROPERTIES:
-:ID:       c6d839c6-173e-48f0-9051-07a19629a644
-:END:
-#+title: .apply Function
-#+filetags: :TypeScript:
-#+property: header-args :tangle applyFunc.ts
-
-The `apply()` method calls the specified function with a given `this` value, and arguments provided as an *array* (or an *array-like object*).
-
-
-#+BEGIN_SRC js
 const person = {
   firstName: 'Dead',
   lastName: 'Pool',
@@ -29,4 +18,3 @@ printName.apply(person2, ['Cape Town']) // Prints Aqua Man lives in Cape Town
 // OR
 printName.apply({ firstName: 'Bat', lastName: 'Man' }, ['California']) // Prints Bat Man lives in California
 // expected output: 2
-#+END_SRC
