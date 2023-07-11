@@ -1,0 +1,49 @@
+# Discriminated Unions
+#+property: header-args :tangle discriminatedUnions.ts
+
+[[https://css-tricks.com/typescript-discriminated-unions/][TS Discriminated Unions]]
+
+Given the following interfaces:
+#+BEGIN_SRC js
+interface Cat {
+  weight: number;
+  whiskers: number;
+}
+
+interface Dog {
+  weight: number;
+  friendly: boolean;
+}
+
+let animal: Dog | Cat;
+#+END_SRC
+
+…many developers are surprised (and maybe even angry) to discover that when they do =animal.=, only the `weight` property is valid, and not `whiskers` or `friendly`.
+
+See [Nominal vs Structural Typing](./Nominal%20vs%20Structural%20Typing.md)
+
+
+#+BEGIN_SRC js
+interface Cat_1 {
+  weight: number;
+  whiskers: number;
+  ANIMAL_TYPE: "CAT";
+}
+
+interface Dog_1 {
+  weight: number;
+  friendly: boolean;
+  ANIMAL_TYPE: "DOG";
+}
+#+END_SRC
+
+And now our check becomes a bit more reliable:
+#+BEGIN_SRC js
+let animal_1 : Dog_1 | Cat_1 = {} as any;
+
+if (animal_1.ANIMAL_TYPE === "DOG") {
+  console.log(animal_1.friendly);
+} else {
+  console.log(animal_1.whiskers);
+}
+#+END_SRC
