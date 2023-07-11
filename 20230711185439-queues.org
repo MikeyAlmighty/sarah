@@ -1,0 +1,76 @@
+:PROPERTIES:
+:ID:       4059dbbb-74f3-486d-a6ed-a12b7515a801
+:END:
+#+title: Queues
+#+filetags: :DataStructure:
+#+property: header-args :tangle Queue.js
+
+* Queues
+
+Similar to [[id:ffab4755-0278-47ae-b374-ceb49868e350][Stacks]] except that a *Queue* uses a *FIFO (First-in First-out)* ordering.
+
+** Operations
+Following operations are available on a queue:
+- =enqueue(item)= Add an item to end of list
+- =dequeue()= remove the first (front) item in the list
+- =peek()= Return the top of the queue
+- =isEmpty()= Return boolean on if stack is empty (or not).
+
+  #+BEGIN_SRC js
+class Queue {
+  constructor(){
+    this.storage = []
+  }
+
+  enqueue = (element) => this.storage.push(element)
+
+  dequeue = () => this.storage.shift() // this is an O(n) time complexity, use a linkedList to get O(1)
+
+  peek = () => this.storage.length > 0 ? this.storage[0] : null
+
+  size = () => this.storage.length
+
+  isEmpty = () => this.storage.length === 0 ? true : false
+}
+
+const videoGameQueue = new Queue()
+
+videoGameQueue.enqueue('DeadPool')
+videoGameQueue.enqueue('The Witcher 3')
+videoGameQueue.enqueue('Doom')
+console.log(videoGameQueue.storage)
+
+console.log(videoGameQueue.size()) // Should return 3
+videoGameQueue.dequeue() // Should remove DeadPool
+console.log(videoGameQueue.size()) // Should return 2
+
+class AlternativeQueue {
+  constructor(){
+    this.storage = {}
+    this.head = 0
+    this.tail = 0
+  }
+
+  enqueue = (element) => {
+    this.storage[this.tail] = element
+    this.tail ++
+  }
+
+  dequeue = () => {
+    let removed = this.storage[this.head]
+    delete this.storage[this.head]
+    this.head ++
+    return removed
+  }
+}
+
+const movieQueue = new AlternativeQueue()
+movieQueue.enqueue('DeadPool')
+movieQueue.enqueue('The Witcher')
+movieQueue.enqueue('Doom')
+
+console.log(movieQueue.storage)
+
+movieQueue.dequeue()
+console.log(movieQueue.storage)
+  #+END_SRC
