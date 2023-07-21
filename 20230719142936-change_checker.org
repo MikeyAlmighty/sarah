@@ -1,0 +1,20 @@
+:PROPERTIES:
+:ID:       fccf2646-2780-4c2c-b6ec-eec04227b5f3
+:END:
+#+title: Change Checker
+
+
+- Fetch latest and previous =.mhtml= files from GCS.
+- Extract html using puppeteer (=document.documentElement.innerHTML=).
+
+Build up "LiteDOM" from =.mhtml= files (Wrapping all text with our (impact) own textElement:  =imtxtel=).
+
+CompareBuilder
+
+
+=ElementSimilarityIndex=
+Tag names match +25%
+Element ID attribute is a match +25%
+
+If classname match percentage is greater than (60% - defined in config =comparison.css_index=)
+We increase by + =matchedPercentage/ 100 * 40= %; (To a maximum of 40%)
