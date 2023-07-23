@@ -1,0 +1,41 @@
+:PROPERTIES:
+:ID:       c5e3e2a1-69a0-49fb-9a6d-b1bb56d5d682
+:END:
+#+title: Method Receiver
+#+property: header-args :tangle code/go/methodReceiver.go
+#+filetags: :GoLang:
+
+
+
+#+BEGIN_SRC go
+package main
+
+import (
+	"fmt"
+)
+
+type SuperHero struct {
+	name  string
+	power string
+	HP int8
+}
+
+func main() {
+	sh := New("DeadPool", "Eats Chimichangas")
+	// Prints HP 100
+	fmt.Printf("SuperHero: %s\n power: %s\n HP: %d\n", sh.name, sh.power, sh.HP)
+	sh.decreaseHP()
+	// Prints HP 90
+	fmt.Printf("SuperHero: %s\n power: %s\n HP: %d\n", sh.name, sh.power, sh.HP)
+}
+
+func New(name string, power string) *SuperHero {
+	sh := &SuperHero{ name: name, power: power, HP: 100}
+	return sh
+}
+
+func (sh *SuperHero) decreaseHP() {
+	amount := sh.HP - 10
+	sh.HP = amount
+}
+#+END_SRC
