@@ -1,0 +1,85 @@
+:PROPERTIES:
+:ID:       80b54a5c-fe92-460d-b03f-b1e26742eac7
+:END:
+#+title: Crawler TS refactor
+
+- Add import Aliases
+- Cleanup =promisify(fs.writeFile)= etc.
+- Remove =request= package with internal =fetch=
+- Rewrite Swagger implementation
+- Confirm removal of =TiktokUrlSigner=
+- Find correct import for =const uuid = require('uuid').v4;=
+
+  - TODO: Type:
+
+#+BEGIN_SRC js
+{
+  "url": "http://hipertextual.com/2022/08/avengers-secret-wars-sinopsis-elenco-comic-teorias",
+  "deferred": true,
+  "features": {
+    "content": {
+      "enabled": true
+    },
+    "contentHash": {
+      "enabled": true
+    },
+    "contentMeta": {
+      "enabled": true
+    },
+    "requestMetadata": {
+      "enabled": true,
+      "customFields": {
+        "contentId": "919851",
+        "priority": "",
+        "websiteContentStoreId": "a634394bc6231715731f71004392c1894a561ed1",
+        "pageContentStoreId": "4e4de165210dd96851d2183cc2cba4a66ce9af3d",
+        "contentStoreVersion": "1690902990004",
+        "environment": "mike",
+        "websitePublisherId": "",
+        "websiteDomain": "fund.com",
+        "websitePublisher": ""
+      }
+    },
+
+    "screenshot": {
+      "enabled": true,
+      "storageType": "gcp",
+      "bucket": "content-repo-content-stage",
+      "path": "a634394bc6231715731f71004392c1894a561ed1/4e4de165210dd96851d2183cc2cba4a66ce9af3d/1690902990004.png",
+      "imageType": "png"
+    },
+    "cloudStorageOutput": {
+      "enabled": true,
+      "storageType": "gcp",
+      "bucket": "content-repo-content-stage",
+      "path": "a634394bc6231715731f71004392c1894a561ed1/4e4de165210dd96851d2183cc2cba4a66ce9af3d/1690902990004.json"
+    },
+    "cloudStorageOutputPlainText": {
+      "enabled": true,
+      "storageType": "gcp",
+      "bucket": "content-repo-content-stage",
+      "path": "a634394bc6231715731f71004392c1894a561ed1/4e4de165210dd96851d2183cc2cba4a66ce9af3d/1690902990004.txt"
+    },
+    "snapshot": {
+      "enabled": false,
+      "storageType": "gcp",
+      "bucket": "content-repo-content-stage",
+      "path": "a634394bc6231715731f71004392c1894a561ed1/4e4de165210dd96851d2183cc2cba4a66ce9af3d/1690902990004.mhtml"
+    },
+    "links": {
+      "enabled": true,
+      "sameDomainOnly": true
+    },
+    "pubsubNotification": {
+      "enabled": true,
+      "topic": "content-repo.scraper.notifications",
+      "prefix": "mike"
+    },
+    "disclosure": {
+      "enabled": true,
+      "bucket": "content-repo-content-stage",
+      "path": "a634394bc6231715731f71004392c1894a561ed1/4e4de165210dd96851d2183cc2cba4a66ce9af3d/1690902990004_disclosure.png"
+    }
+  }
+}
+#+END_SRC
