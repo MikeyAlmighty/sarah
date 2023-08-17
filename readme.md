@@ -1,1 +1,3 @@
-# Sarah
+# SARAH
+
+![Sarah](./assets/sarah.jpg)
