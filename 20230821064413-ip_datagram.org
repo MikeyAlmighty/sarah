@@ -1,0 +1,72 @@
+:PROPERTIES:
+:ID:       6fcc1f55-523e-4e97-9311-2ee521d4d7fd
+:END:
+#+title: IP Datagram
+
+IP datagram is a highly structured series of fields that are strictly defined.
+
+#+ATTR_ORG: :width 900
+[[./assets/IPDatagram.png]]
+
+The two primary sections of an IP datagram are the header and the payload:
+
+The maximum size of a single datagram is the largest number you can represent with *16 bits: =65,535=.
+
+* Header
+** 1. Version
+*4 bits*
+Indicates what version of [[id:9bf3b633-f396-4e1b-9b55-6c6b06d60bec][IP]] is being used.
+
+** 2. Header Length
+*4 bits*
+
+** 3. Service Type
+*8 bits*
+Can be used to specify details about quality of service or QoS.
+
+The important takeaway about QoS is that there are services that allow routers to make decisions about which IP datagram maybe more important than others.
+
+** 4. Total Length
+*16 bits*
+Indicates total length of IP Datagram
+
+** 5. Identification Field
+*16 bits*
+Used to group messages together
+
+** 6. Flag Field
+Used to indicate if a datagram is allowed to be [[id:d7051400-f5c9-4cd7-888c-479c6fcd0a04][fragmented]] or to indicate that the datagram has already been fragmented.
+
+** 7. Time To Live (TTL) Field
+This field is an *8 bit* field that indicates how many router hops a datagram can traverse before it's thrown away.
+[[id:4bf28699-146b-4eba-8d34-b3f58a20b68d][Time To Live (TTL)]]
+
+** 8. Protocol Field
+*8 bit*
+Contains data about what transport layer protocol is being used.
+
+The most common transport layer protocols are [[id:690db04e-097b-4e6c-8e78-92e353fc49da][TCP]] and [[id:e71c58f9-1229-4c46-abe6-a963ff4652f7][UDP]].
+
+
+** 9. Header Checksum Field
+This field is a checksum of the *contents* of the entire IP datagram header.
+
+It functions very much like the =ethernet checksum=.
+
+Since the [[id:4bf28699-146b-4eba-8d34-b3f58a20b68d][TTL]] field has to be re-computed at every router that a datagram touches, the checksum field necessarily changes too.
+
+** 10. Source IP Address
+*32 bit*
+
+** 11. Destination IP Address
+*32 bit*
+
+** 12. IP Options
+Optional Field.
+
+Used to set special characteristics for datagrams primarily used for testing purposes.
+
+** 12. Padding
+Series of =0='s to the ensure header is correct *total* size.
+
+* Payload
