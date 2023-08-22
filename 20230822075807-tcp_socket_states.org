@@ -1,0 +1,28 @@
+:PROPERTIES:
+:ID:       dc75bd72-7aa9-48b5-9b66-f5f8a25417e5
+:END:
+#+title: TCP Socket States
+
+* LISTEN
+TCP socket is ready and listening for incoming connections.
+(Server-side only)
+
+* SYN_SENT
+A synchronization request has been sent, but the connection hasn't been established yet.
+(Client-side only)
+
+* SYN_RECEIVED
+This means that a socket previously in a =LISTEN= state has received a =synchronization= request and sent a =SYN/ACK= back, but it hasn't received the final =ACK= from the client yet.
+(Server-side only)
+
+* ESTABLISHED
+TCP connection is in working order and both sides are *free to send each* other data.
+
+* FIN_WAIT
+This means that a =FIN= has been sent but the corresponding =ACK= from the other end hasn't been received yet.
+
+* CLOSE_WAIT
+This means that the connection has been closed at the TCP layer, but that the application that opened the socket hasn't released its hold on the socket yet.
+
+* CLOSED
+This means that the connection has been fully terminated and that no further communication is possible.

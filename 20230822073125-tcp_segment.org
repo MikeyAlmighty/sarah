@@ -1,0 +1,55 @@
+:PROPERTIES:
+:ID:       7b8d5356-7e98-4785-a78f-1cf30c9c2152
+:END:
+#+title: TCP Segment
+
+Made up of:
+* Header
+** Source port
+*16-bits*
+
+A high numbered port chosen from a special section of ports known as ephemeral ports.
+Required to keep lots of outgoing connections separate.
+
+** Destination port
+*16-bits*
+The port of the service the traffic is intended for.
+
+** Sequence number.
+*32-bits*
+Used to keep track of where in a sequence of [[id:690db04e-097b-4e6c-8e78-92e353fc49da][TCP]] segments this one is expected to be.
+
+An [[id:73b06fc5-e631-40ad-828f-741dd84bd15c][Ethernet Frame]] is usually limited in size to *1,518 bytes*,
+
+** Acknowledgement number.
+*32-bits*
+Number of the next expected segment.
+
+** Data offset Field
+*4-bit*
+Communicates how long the [[id:690db04e-097b-4e6c-8e78-92e353fc49da][TCP]] header for this segment is.
+
+** Control Flags
+*6-bits*
+Reserved for the six [[id:b70de003-f81d-4b98-8158-46a9bb7e2039][TCP Control Flags]]
+
+** TCP Window
+A TCP window specifies the range of sequence numbers that might be sent before an acknowledgment is required.
+
+** Checksum
+*16-bits*
+Once all of this segment has been ingested by recipient, the checksum is calculated across the entire segment and is compared with the checksum in the header to make sure that there was no data lost or corruption along the way.
+
+** Urgent Pointer
+*16-bits*
+Used in conjuction with one of the TCP control flags to point out particular segments that might be more important than others.
+
+** Options Pointer
+Sometimes used for more complicated flow control protocols.
+
+** Padding
+Sequence of zeros to ensure that the data payload section begins at the expected location.
+
+* Payload
+
+Contents of data application wants to send to each other
