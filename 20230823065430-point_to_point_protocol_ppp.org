@@ -1,0 +1,46 @@
+:PROPERTIES:
+:ID:       fe39eea8-7c49-4942-9d84-a416722095ff
+:ROAM_ALIASES: PPP
+:END:
+#+title: Point-to Point Protocol (PPP)
+
+A byte-oriented protocol broadly used for high-traffic data transmissions.
+
+PPP functions at the [[id:a6d3f0e4-6871-401d-acea-0a58e4b6891a][2. Data Link Layer]], which transmits data between two devices on the same network.
+
+PPP is strictly point-to-point, so frames can only go to the intended destination.
+
+PPP is designed to link devices, so the endpoints do not need to be the same vendor to work.
+
+* Configuration
+** Multilink
+spreading traffic across multiple distinct PPP connections.
+
+** Compression
+increases throughput by reducing the amount of data in the frame.
+
+** Authentication
+occurs when connected devices exchange authentication messages using one of two methods:
+
+** [[id:a8d5b07d-23ae-4384-8a67-75a14e05bd65][Password Authentication Protocol (PAP)]]
+
+** [[id:a4033b5f-7afd-4fb7-ac05-1ebf5d21e9fe][Challenge Handshake Authentication Protocol (CHAP)]]
+
+** Error detection includes Frame Check Sequence (FCS) and looped link detection.
+
+*** Frame Check Sequence (FCS)
+A number included in the frame calculated over:
+- the Address
+- Control
+- Protocol
+- Information
+- Padding fields
+
+Used to determine if there has been data loss during transmission.
+
+*** Looped link detection
+PPP detects looped links using magic numbers.
+
+A magic number is generated randomly at each end of the connection, so when a looped message is received, the device checks the magic number against its own.
+
+If the line is looped, the number will match the sender's magic number, and the frame is discarded.

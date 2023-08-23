@@ -1,0 +1,28 @@
+:PROPERTIES:
+:ID:       af28e275-e8b6-4bc5-a9b3-ca8dd6b72d46
+:END:
+#+title: PPP Frames
+
+* Flag
+*1 Byte*
+A single byte and lets the receiver know this is the beginning of the frame. Depending on the encapsulation, there may or may not be a start flag or an end flag.
+
+* Address
+*1 Byte*
+Contains the broadcast address.
+
+* Control
+*1 Byte*
+A single byte required for various purposes but also allows a connectionless data link.
+
+* Protocol
+*1 - 3 Bytes*
+Varies from one to three bytes which identify the network protocol of the datagram.
+
+* Data
+*limit of 1500 bytes per frame*
+Where the information you need to transmit is stored
+
+* Frame check sequence (FCS)
+*2 or 4 bytes*
+Used to verify data is intact upon receipt at the endpoint.
