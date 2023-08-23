@@ -1,0 +1,53 @@
+:PROPERTIES:
+:ID:       fe76a7c6-0798-459c-a237-47262c7cfa5b
+:END:
+#+title: IPv6 address
+
+* Shortening an =IPv6 address=:
+
+1. Remove any leading zeros from a group.
+2. Any number of consecutive groups composed of just zeros can be replaced with two colons =::=.
+
+* Anatomy
+NetworkID: First *64 bits*
+HostID: Second *64 bits*
+
+* Reserved Address Spaces
+Documentation: Start with =2001:0db8=
+If it starts with =FF00:xxx= [[id:c4309265-ff27-4592-85f6-3ed4ea47fc18][Multicast]]
+If it starts with =FE80:xxx= [[id:4bb840ff-f8f4-472b-845b-597ebda44648][Link-Local Unicast]]
+
+* Header
+** Version Field
+*4 bit*
+Defines what version of IP is in use
+
+** Traffic Class Field
+*8 bit*
+Defines type of traffic contained within datagram
+
+** Flow Label Field
+*20 bit*
+Used in conjunction with =Traffic Class field= for [[id:88dd44ee-b7ff-4a29-9048-10709d05bb8e][routers]] to make decisions about the quality of service level for a specific datagram.
+
+** Payload Length Field
+*16 bit*
+Defines how long data payload section of datagram is.
+
+** Next Header Field
+*16 bit*
+Optional
+
+** Hop Limit Field
+*8 bit*
+Identical to TTL Field in IPv4 Header
+
+** Source Field
+*128 bit*
+
+** Destination Field
+*128 bit*
+
+* Payload
+
+* [[id:b08f93ee-0bc2-4f6b-badb-42eda2c958fd][IPv6 Tunnels]]
