@@ -1,0 +1,20 @@
+:PROPERTIES:
+:ID:       5146fdc0-5778-4ee2-9faf-b5cc8738d64b
+:END:
+#+title: Permanently Mounting Device
+
+=/etc/fstab=
+
+The first field that we need to add for fstab is the UUID:
+=sudo blkid=
+
+This will show us the UUID for block device IDs aka storage device, IDs. And that's it.
+
+Example =/etc/fstab=:
+#+BEGIN_SRC
+# /dev/sda5
+UUID=be35a709-c787-4198-a903-d5fdc80ab2f8  /  ext3  relatime,errors=remount-ro  0  1
+
+# /dev/sda6
+UUID=cee15eca-5b2e-48ad-9735-eae5ac14bc90  none  swap  sw  0  0
+#+END_SRC
