@@ -1,0 +1,21 @@
+:PROPERTIES:
+:ID:       d8254ab2-b8c6-4dd0-b5d1-ae01e424e805
+:ROAM_ALIASES: "Half Open attack"
+:END:
+#+title: SYN Flood (Half Open Attacks)
+
+(Type of [[id:075ef02e-9d9b-418d-be84-9ca16a1bd79f][DoS Attack]])
+
+Similar to  [[id:3d70b40f-449d-4794-b9b2-ea312ff134a9][Ping Flood]]
+
+Remember that to make a [[id:690db04e-097b-4e6c-8e78-92e353fc49da][TCP]] connection, a client sends a =SYN= packet to a server, it wants to connect to next, the server sends back a =SYN-ACK- message.
+
+Then the client sends an =ACK= message.
+
+In a SYN flood, the server is being bombarded with these =SYN= packets.
+
+The server is sending back =SYN-ACK= packets, but the attacker is not sending =ACK= messages.
+
+This means that the connection stays open and is taking up the server's resources.
+
+Other users will be unable to connect to the server, which is a big problem, since the TCP connection is half open we also refer to SYN floods as =half open attacks=.
