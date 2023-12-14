@@ -1,0 +1,22 @@
+:PROPERTIES:
+:ID:       267d0701-d287-4fd7-b472-4594920cc5bf
+:END:
+#+title: Aggregate functions SQL
+#+property: header-args :tangle code/sql/group_by_with_aggregate.sql
+
+* Aggregate functions ([[id:e86502bc-990e-4ac3-86e9-4b06f475b5e9][SQL]])
+- ~Max()~
+- ~Min()~
+- ~Sum()~
+- ~AVG()~
+- ~Count()~
+
+
+#+BEGIN_SRC sql
+SELECT Department, SUM(orderTotal)
+FROM orders
+GROUP BY Department;
+SELECT Department, AVG(orderTotal)
+FROM orders
+GROUP BY Department;
+#+END_SRC
