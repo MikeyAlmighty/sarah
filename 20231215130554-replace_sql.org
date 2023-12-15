@@ -1,0 +1,22 @@
+:PROPERTIES:
+:ID:       d96fee84-5869-48bd-87df-b4c8b77ebe5b
+:END:
+#+title: Replace (SQL)
+#+property: header-args :tangle code/sql/replace_into.sql
+
+Insert or Update data in a table by deleting and replacing existing records
+
+The ~REPLACE~ command first checks if the new record of data already exists in the table by checking the *primary* or *UNIQUE* key of existing records.
+
+* Insert
+#+BEGIN_SRC sql
+REPLACE [INTO] table_name(column_list)
+VALUES(value_list);
+#+END_SRC
+
+* Update
+#+BEGIN_SRC sql
+REPLACE INTO table
+SET column1 = value1,
+    column2 = value2;
+#+END_SRC
