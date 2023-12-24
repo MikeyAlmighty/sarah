@@ -46,6 +46,7 @@ Object obj = "Upcast Me"; // Widening - Implicit
 #+BEGIN_SRC java
 String casted = (String) obj; // Narrowing - requires cast
 #+END_SRC
+
 A ~subtype~ is a *narrower* type than its ~supertype~ in the sense that it is a specialization of its
 ~supertype~.
 
@@ -56,3 +57,13 @@ A ~subtype~ is a *narrower* type than its ~supertype~ in the sense that it is a 
 ~Widening~ reference conversions do not require any runtime checks and *never* result in an exception during execution.
 
 This is *not* the case for ~narrowing~ reference conversions, which require a runtime check and can throw a ~ClassCastException~ if the conversion is not legal.
+
+* Boxing and Unboxing
+~Boxing~ and ~unboxing~ conversions allow interoperability between *primitive* values and their representation as objects of the ~wrapper types~
+
+#+BEGIN_SRC java
+Integer iRef = 10;  // (1) Implicit boxing: Integer <----- int
+Double dRef = Double.valueOf(3.14); // (2) Explicit boxing: Double <----- double
+int i = iRef; // (3) Implicit unboxing: int <----- Integer
+double d = dRef.doubleValue(); // (4) Explicit unboxing: double <----- Double
+#+END_SRC
