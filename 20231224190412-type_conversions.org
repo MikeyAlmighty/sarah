@@ -1,0 +1,58 @@
+:PROPERTIES:
+:ID:       a290d25a-c231-441d-85d4-1d7be3f3cb3f
+:END:
+#+title: Type Conversions
+#+property: header-args :tangle code/java/type_conversions.java
+
+Some type conversions must be *explicitly* stated in the program, while others are performed *implicitly*.
+
+Type conversions can be checked at *compile time* to guarantee their validity at *runtime*, while others will require an extra check at *runtime*.
+* Widening and Narrowing Primitive Conversions
+** Widening Primitive Conversion
+
+For the ~primitive data types~, the value of a *narrower* data type can be converted to a value of a *wider* data type.
+This is called a [[id:3ef23225-ae37-428e-8ad3-5d7728f59478][Widening Primitive Conversion]]
+
+** Narrowing Primitive Conversion
+
+Converting from a wider primitive type to a narrower primitive type is called a [[id:84dfb549-8f9a-4fc7-8fc0-6a20ca7bc0cc][Narrowing Primitive Conversion]]
+
+*** Char Narrowing
+
+Note that all conversions between ~char~ and the two [[id:2483364b-73d3-4169-92b9-1fea473a9b01][Integer Data Types]] ~byte~ and ~short~ are considered [[id:84dfb549-8f9a-4fc7-8fc0-6a20ca7bc0cc][Narrowing Primitive Conversion]].
+The reason is that the conversions between the *unsigned* type ~char~ and the *signed* types ~byte~ and ~short~ can result in a loss of information.
+
+These ~narrowing conversions~ are done in two steps:
+- First converting the source value to the ~int~ type
+- Then converting the ~int~ value to the ~target~ type
+
+** Legality
+
+It is *not illegal* to use a cast for a ~widening conversion~.
+
+However, the [[id:d5b4004d-b5db-48a2-8e85-09359ca61a42][javac]] will flag any conversion that requires a ~cast~ if none has been specified.
+
+Regardless of any loss of magnitude or precision, widening and narrowing primitive conversions *never* result in a runtime exception.
+
+* Widening and Narrowing Reference Conversions
+** [[id:37010aa8-20aa-40df-8e91-82c5f6476993][Widening Reference Conversion]]
+
+#+BEGIN_SRC java
+Object obj = "Upcast Me"; // Widening - Implicit
+#+END_SRC
+
+** [[id:58a81c47-6038-42ad-ba01-eb85e293884e][Narrowing Reference Conversion]]
+
+#+BEGIN_SRC java
+String casted = (String) obj; // Narrowing - requires cast
+#+END_SRC
+A ~subtype~ is a *narrower* type than its ~supertype~ in the sense that it is a specialization of its
+~supertype~.
+
+** Legality
+
+[[id:d5b4004d-b5db-48a2-8e85-09359ca61a42][javac]] will *reject* casts that are *not* legal or will issue an *unchecked warning* under certain circumstances if type-safety cannot be guaranteed.
+
+~Widening~ reference conversions do not require any runtime checks and *never* result in an exception during execution.
+
+This is *not* the case for ~narrowing~ reference conversions, which require a runtime check and can throw a ~ClassCastException~ if the conversion is not legal.
