@@ -1,20 +1,3 @@
-* Inheritance
-:PROPERTIES:
-:CUSTOM_ID: inheritance
-:ID:       dc175738-5133-433e-9867-ed8f858afbd7
-:END:
-#+property: header-args :tangle ../../code/java/inheritance.java
-Base Class/ Super Class/Parent Class ^ Sub class/ Child Class
-
-use =extends= keyword to inherit a Class.
-
-Note: All classes =extend/inherit= the *Object* Class
-
-** Example
-:PROPERTIES:
-:CUSTOM_ID: example
-:END:
-#+begin_src java
 // UIControl (Parent)
 package com.demo;
 
@@ -33,9 +16,7 @@ public class UIControl {
         return isEnabled;
     }
 }
-#+end_src
 
-#+begin_src java
 // TextBox (Child)
 package com.demo;
 
@@ -49,15 +30,7 @@ public class TextBox extends UIControl {
     text = "";
    }
 }
-#+end_src
 
-** Constructors and Inheritance
-:PROPERTIES:
-:CUSTOM_ID: constructors-and-inheritance
-:END:
-Use =super()= to call Base class constructor
-
-#+begin_src java
 // Child / Sub Class
 public class TextBox extends UIControl {
    public TextBox() {
@@ -65,9 +38,7 @@ public class TextBox extends UIControl {
       System.out.println("TextBox");
    }
 }
-#+end_src
 
-#+begin_src java
 // Parent / Base Class
 public class UIControl {
     private boolean isEnabled = true;
@@ -76,13 +47,3 @@ public class UIControl {
        System.out.println("UIControl");
     }
 }
-#+end_src
-
-Note: Do *NOT* create deep inheritance hierarchies!
-
-** Multiple inheritance
-:PROPERTIES:
-:CUSTOM_ID: multiple-inheritance
-:END:
-Multiple inheritance is not supported in Java. (All classes extend the
-Object class, so we'd run into the diamond problem).
