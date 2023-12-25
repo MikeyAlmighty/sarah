@@ -1,0 +1,28 @@
+:PROPERTIES:
+:ID:       e1c39b97-642d-4d2e-8fba-19dd150e0c67
+:END:
+#+title: Flagging Uninitialized Variables
+#+property: header-args :tangle code/java/flagging_uninitialized.java
+
+The compiler will report an *error* only if an attempt is made to use an ~uninitialized local variable~.
+
+#+BEGIN_SRC java
+public class TooSmartClass {
+  public static void main(String[] args) {
+    double weight = 10.0, thePrice;                    // (1) Local variables
+
+    if (weight <  10.0) thePrice = 20.50;
+    if (weight >  50.0) thePrice = 399.00;
+    if (weight >= 10.0) thePrice = weight * 10.0;      // (2) Always executed
+    System.out.println("The price is: " + thePrice);   // (3) Compile-time error!
+  }
+}
+
+public class VerySmartClass {
+    public static void main(String[] args) {
+        String importantMessage; // Local reference variable
+        System.out.println("The message length is: " + importantMessage.length());// Compile-time error!
+    }
+}
+#+END_SRC
+The golden rule is to ensure that a reference variable, whether *local* or *not*, is assigned a ~reference value~ denoting an object before it is used —that is, to ensure that it does not have the value ~null~.
