@@ -8,10 +8,12 @@ Some type conversions must be *explicitly* stated in the program, while others a
 
 Type conversions can be checked at *compile time* to guarantee their validity at *runtime*, while others will require an extra check at *runtime*.
 * Widening and Narrowing Primitive Conversions
+
 ** Widening Primitive Conversion
 
 For the ~primitive data types~, the value of a *narrower* data type can be converted to a value of a *wider* data type.
 This is called a [[id:3ef23225-ae37-428e-8ad3-5d7728f59478][Widening Primitive Conversion]]
+
 
 ** Narrowing Primitive Conversion
 
@@ -26,6 +28,7 @@ These ~narrowing conversions~ are done in two steps:
 - First converting the source value to the ~int~ type
 - Then converting the ~int~ value to the ~target~ type
 
+
 ** Legality
 
 It is *not illegal* to use a cast for a ~widening conversion~.
@@ -34,12 +37,15 @@ However, the [[id:d5b4004d-b5db-48a2-8e85-09359ca61a42][javac]] will flag any co
 
 Regardless of any loss of magnitude or precision, widening and narrowing primitive conversions *never* result in a runtime exception.
 
+
 * Widening and Narrowing Reference Conversions
+
 ** [[id:37010aa8-20aa-40df-8e91-82c5f6476993][Widening Reference Conversion]]
 
 #+BEGIN_SRC java
 Object obj = "Upcast Me"; // Widening - Implicit
 #+END_SRC
+
 
 ** [[id:58a81c47-6038-42ad-ba01-eb85e293884e][Narrowing Reference Conversion]]
 
@@ -50,6 +56,7 @@ String casted = (String) obj; // Narrowing - requires cast
 A ~subtype~ is a *narrower* type than its ~supertype~ in the sense that it is a specialization of its
 ~supertype~.
 
+
 ** Legality
 
 [[id:d5b4004d-b5db-48a2-8e85-09359ca61a42][javac]] will *reject* casts that are *not* legal or will issue an *unchecked warning* under certain circumstances if type-safety cannot be guaranteed.
@@ -58,9 +65,16 @@ A ~subtype~ is a *narrower* type than its ~supertype~ in the sense that it is a 
 
 This is *not* the case for ~narrowing~ reference conversions, which require a runtime check and can throw a ~ClassCastException~ if the conversion is not legal.
 
+
 * Boxing and Unboxing
+
 ** [[id:2af44b3c-ac25-4fc8-a372-20adc491f7f5][Boxing]]
 ** [[id:2af44b3c-ac25-4fc8-a372-20adc491f7f5][Unboxing]]
 
+* Conversion Contexts
+
 #+ATTR_ORG: :width 900
 [[./assets/type_conversion_contexts.png]]
+
+* [[id:1247d537-67ad-4888-a0b5-b965774d2fe7][Unary Numeric Promotion]]
+* [[id:be91e553-3d67-4440-ab4e-e18e77b5c48a][Binary Numeric Promotion]]

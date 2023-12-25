@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       1247d537-67ad-4888-a0b5-b965774d2fe7
+:END:
+#+title: Unary Numeric Promotion
+
+- If the single operand is of type ~Byte~, ~Short~, ~Character~, or ~Integer~, it is *unboxed*.
+    If the resulting value is narrower than ~int~, it is promoted to a value of type ~int~ by a *widening* conversion.
+- Otherwise, if the single operand is of type ~Long~, ~Float~, or ~Double~, it is *unboxed*.
+- Otherwise, if the single operand is of a type *narrower* than ~int~, its value is promoted to a value of type ~int~ by a *widening* conversion.
+- Otherwise, the operand remains *unchanged*.
+
+In other words, *Unary Numeric Promotion* results in an operand value that is either ~int~ or ~wider~.

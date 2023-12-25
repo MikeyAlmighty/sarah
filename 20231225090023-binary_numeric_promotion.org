@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       be91e553-3d67-4440-ab4e-e18e77b5c48a
+:END:
+#+title: Binary Numeric Promotion
+
+*Binary Numeric Promotion* implicitly applies appropriate widening primitive conversions so that the widest numeric type of a pair of operands is always at least ~int~.
+If ~T~ is the widest numeric type of two operands after any [[id:2af44b3c-ac25-4fc8-a372-20adc491f7f5][unboxing]] conversions have been performed, the
+operands are promoted as follows during binary numeric promotion:
+
+If ~T~ is wider than ~int~, both operands are converted to ~T~; otherwise, both operands are converted to ~int~.
+This means that the resulting type of the operands is at least ~int~.
+
+Binary numeric promotion is applied in the following expressions:
+- Operands of the arithmetic operators ~*, /, %, +,~ and ~-~
+- Operands of the relational operators ~<, <=, >,~ and ~>=~
+- Operands of the numerical equality operators ~==~ and ~!=~
+- Operands of the conditional operator ~? :~, under certain circumstances
