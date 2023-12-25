@@ -1,0 +1,30 @@
+:PROPERTIES:
+:ID:       2af44b3c-ac25-4fc8-a372-20adc491f7f5
+:END:
+#+title: Java Boxing
+#+property: header-args :tangle code/java/boxing_and_unboxing.java
+
+~Boxing~ and ~unboxing~ conversions allow interoperability between *primitive* values and their representation as objects of the ~wrapper types~
+
+*Boxing (aka autoboxing)* conversion converts the value of a ~primitive~ type to a corresponding value of its ~wrapper~ type,
+*Unboxing* conversion converts the value of a ~wrapper~ type to a value of its corresponding ~primitive~ type.
+
+Both *boxing* and *unboxing* conversion are applied *implicitly* in the right context, but the ~wrapper~ classes also provide the static method ~valueOf()~ to explicitly box a ~primitive~ value in a ~wrapper~ object, and the method ~primitiveTypeValue()~ to *explicitly* unbox the value in a ~wrapper~ object as a value of ~primitiveType~.
+
+#+NAME: Boxing
+#+BEGIN_SRC java
+Integer iRef = 10;  // (1) Implicit boxing: Integer <----- int
+Double dRef = Double.valueOf(3.14); // (2) Explicit boxing: Double <----- double
+
+int i = iRef; // (3) Implicit unboxing: int <----- Integer
+double d = dRef.doubleValue(); // (4) Explicit unboxing: double <----- Double
+#+END_SRC
+
+Note that both boxing and unboxing are done *implicitly* in the right context.
+
+*Boxing* allows ~primitive~ values to be used where an object of their ~wrapper type~ is expected, and *unboxing*
+allows the converse.
+
+*Unboxing* makes it possible to use a ~Boolean wrapper~ object as a ~boolean~
+value in a boolean expression, and to use an ~integral wrapper~ object as an ~integral primitive value~ in an arithmetic expression.
+Unboxing a ~wrapper~ reference that has the null value results in a ~NullPointer-Exception~.
