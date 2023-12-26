@@ -1,0 +1,35 @@
+:PROPERTIES:
+:ID:       28b95eeb-be70-4b92-b599-aa95d6d9b5d7
+:END:
+#+title: Method Overloading
+#+property: header-args :tangle code/java/method_overloading.java
+
+Each method has a *signature*, which comprises the ~name~ of the method plus the ~types~ and order of the ~parameters~ in the formal parameter list. Several method implementations *may* have the same name, as long as the method signatures *differ*.
+This practice is called *method overloading*.
+Because overloaded methods have the same name, their parameter lists *must* be different.
+At ~compile time~, the right implementation of an overloaded method is chosen, based on the ~signature~ of the method call.
+
+#+BEGIN_SRC java
+void methodA(int a, double b) { /* ... */ } // (1)
+int methodA(int a) { return a; } // (2)
+int methodA() { return 1; } // (3)
+long methodA(double a, int b) { return b; } // (4)
+long methodA(int x, double y) { return x; } // (5) Not OK as 1 is a duplicate in parameterList.
+
+int halfIt(int a) { return a/2; } // (6)
+double halfIt(int a) { return a/2.0; } // (7) Not OK
+
+// Example
+public static double min(double a, double b)
+public static float min(float a, float b)
+public static int min(int a, int b)
+public static long min(long a, long b)
+#+END_SRC
+
+In the implementation, changing *just* the ~return type~ (as shown at (1) and (2) in the preceding example) is not enough to overload
+a method and will be flagged as a *compile-time* error.
+
+#+BEGIN_SRC java
+int halfIt(int a) { return a/2; } // (1)
+double halfIt(int a) { return a/2.0; } // (2) Not OK
+#+END_SRC

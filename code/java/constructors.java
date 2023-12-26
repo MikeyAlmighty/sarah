@@ -1,13 +1,3 @@
-* Constructors
-:PROPERTIES:
-:CUSTOM_ID: constructors
-:ID:       73a0f36b-e440-486a-bd88-6ca577be3351
-:END:
-#+property: header-args :tangle code/java/constructors.java
-
-The main purpose of constructors is to *set the initial state* of an object, when the object is created by using the ~new~ operator.
-
-#+begin_src java
 // ...
 var employee = new Employee(50_000, 20);
 // ...
@@ -31,13 +21,7 @@ public class Employee {
         this.hourlyRate = baseSalary;
     }
 }
-#+end_src
 
-* Constructor Overloading
-:PROPERTIES:
-:CUSTOM_ID: constructor-overloading
-:END:
-#+begin_src java
 // ...
 var employee = new Employee(50_000); // Constructor 1
 var employee = new Employee(50_000, 20); // Constructor 2
@@ -68,6 +52,3 @@ public class Employee {
         this.hourlyRate = baseSalary;
     }
 }
-#+end_src
-
-Note: You can set a =final= field in a Class constructor
