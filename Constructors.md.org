@@ -7,6 +7,8 @@
 
 The main purpose of constructors is to *set the initial state* of an object, when the object is created by using the ~new~ operator.
 
+** Example
+
 #+begin_src java
 // ...
 var employee = new Employee(50_000, 20);
@@ -32,6 +34,42 @@ public class Employee {
     }
 }
 #+end_src
+
+
+* Namespaces
+
+Class names and method names exist in different namespaces.
+Thus there are no name conflicts where a ~method~ declared at (2) has the same name as the ~constructor~ declared at (1).
+[Although strongly discouraged]
+
+#+begin_src java
+public class Name {
+  Name() {                      // (1) No-argument constructor
+    System.out.println("Constructor");
+  }
+  void Name() {                 // (2) Instance method
+    System.out.println("Method");
+  }
+  public static void main(String[] args) {
+    new Name().Name();          // (3) Constructor call followed by method call
+  }
+}
+#+end_src java
+
+* Default Constructor
+
+A default constructor is a *no-argument* ~constructor~.
+
+The only action taken by the default ~constructor~ is to call the ~superclass~ constructor.
+
+In addition, all instance variables in the object are set to the default value of their type, barring those that are initialized by an initialization expression in their declaration.
+
+If a class defines *any* constructor, the default constructor is *not* generated.
+If such a class requires a *no-argument constructor*, it must provide its own implementation.
+
+#+BEGIN_SRC java
+class_name() { super(); }
+#+END_SRC
 
 * Constructor Overloading
 :PROPERTIES:

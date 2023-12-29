@@ -22,6 +22,8 @@ public class Employee {
     }
 }
 
+class_name() { super(); }
+
 // ...
 var employee = new Employee(50_000); // Constructor 1
 var employee = new Employee(50_000, 20); // Constructor 2
