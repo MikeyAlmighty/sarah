@@ -10,7 +10,7 @@ public class Main {
 class Person {
 
     String name = "Deadpool";
-    { // Initialization block
+    { // Instance Initializer block
         System.out.println("My name is : " + name);
     }
     public Person(String name){
@@ -23,5 +23,5 @@ class Person {
 
 Hello, World!
 My name is : Deadpool
-Creating new PersonShrek
+Creating new Person Shrek
  */
