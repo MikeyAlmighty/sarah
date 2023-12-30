@@ -5,3 +5,18 @@ on:
   push:
     branches:
       - main
+
+jobs:
+  local_development:
+    runs-on: ubuntu-latest
+    name: Upload
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Execute my action
+        uses: ./ # Uses an action in the root directory
+        with:
+          DROPBOX_ACCESS_TOKEN: ${{ secrets.DROPBOX_ACCESS_TOKEN }}
+          DROPBOX_DESTINATION_PATH_PREFIX: "/"
+          GLOB: "*/**/*.org"
+          DEBUG: false
