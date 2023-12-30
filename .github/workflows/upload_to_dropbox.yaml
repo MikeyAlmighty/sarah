@@ -1,6 +1,3 @@
-name: Deploy to Dropbox
-uses: aTable/deploy-to-dropbox@v1.0.7
-
 on:
   push:
     branches:
@@ -13,8 +10,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Execute my action
-        uses: ./ # Uses an action in the root directory
+      - name: Deploy to Dropbox
+        uses: aTable/deploy-to-dropbox@v1.0.7
         with:
           DROPBOX_ACCESS_TOKEN: ${{ secrets.DROPBOX_ACCESS_TOKEN }}
           DROPBOX_DESTINATION_PATH_PREFIX: "/"
