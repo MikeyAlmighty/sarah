@@ -1,0 +1,38 @@
+:PROPERTIES:
+:ID:       f041c4e7-7bfa-4554-9b25-6e6b8e086aec
+:END:
+#+title: Order of Initialization
+#+property: header-args :tangle code/ocp/1/order_of_initialization.java
+
+- ~Fields~ and ~instance initializer blocks~ are run in the order in which they appear in the file.
+- The [[id:73a0f36b-e440-486a-bd88-6ca577be3351][constructor]] runs after all ~fields~ and ~instance initializer blocks~ have run.
+
+#+BEGIN_SRC java
+package main;
+
+public class Main {
+    public static void main(String[] args){
+        System.out.println("Hello, World!");
+        Person p = new Person("Shrek");
+    }
+}
+
+class Person {
+
+    String name = "Deadpool";
+    { // Initialization block
+        System.out.println("My name is : " + name);
+    }
+    public Person(String name){
+        this.name = name;
+        System.out.println("Creating new Person: " + this.name);
+    }
+}
+
+/* OUTPUT
+
+Hello, World!
+My name is : Deadpool
+Creating new PersonShrek
+ */
+#+END_SRC
