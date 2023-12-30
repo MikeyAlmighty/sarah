@@ -1,0 +1,58 @@
+:PROPERTIES:
+:ID:       c09c67cd-b686-417d-8b4b-bb26331a6997
+:END:
+#+title: Declaring Variables
+#+filetags: :OCP:
+#+property: header-args :tangle code/ocp/1/declaring_variables.java
+
+* Declaring Variables
+** Legal Identifiers
+
+- Identifiers *must* begin with a ~letter~, a ~currency symbol~, or a ~_~ symbol.
+    Currency symbols include dollar ($), yuan (¥), euro (€), and so on.
+- Identifiers *can* include numbers but *not* start with them.
+- A single underscore ~_~ is not allowed as an identifier.
+
+- You cannot use the same name as a [[id:5f2b572a-ec31-49de-ba13-95b0c5edb4c0][Java Reserved Keyword]].
+
+#+BEGIN_SRC java
+// OK
+long okidentifier;
+float $OK2Identifier;
+boolean _alsoOK1d3ntifi3r;
+char __SStillOkbutKnotsonice$;
+
+#+END_SRC
+
+** Illegal identifiers
+#+BEGIN_SRC java
+// NOT OK
+int 3DPointClass; // identifiers cannot begin with a number
+byte hollywood@vine; // @ is not a letter, digit, $ or _
+String *$coffee; // * is not a letter, digit, $ or _
+double public; // public is a reserved word
+short _; // a single underscore is not allowed
+#+END_SRC
+
+** Multiple Variable Declaration
+You can declare many variables in the same declaration as long as *they are all of the same type.*
+You can also initialize *any* or *all* of those values inline.
+
+#+BEGIN_SRC java
+// Multiple Variable Declaration and Initialization
+void sandFence() {
+    String s1, s2;
+    String s3 = "yes", s4 = "no";
+}
+#+END_SRC
+
+* Default Values
+
+#+ATTR_ORG: :width 700
+[[./assets/default_values.png]]
+** [[id:10016631-2c29-434f-b5c5-2e2cba7d7c76][Local Variable Type Inference]]
+* [[id:e1c39b97-642d-4d2e-8fba-19dd150e0c67][Flagging Uninitialized Variables]]
+* [[id:77742466-5106-4aba-9a33-343d5e732a44][Variable Lifetimes]]
+* [[id:b691522c-6f33-4e1d-96e2-88233ea5dcb4][.this reference]]
+* [[id:28b95eeb-be70-4b92-b599-aa95d6d9b5d7][Method Overloading]]
+* [[id:73a0f36b-e440-486a-bd88-6ca577be3351][Constructors]]

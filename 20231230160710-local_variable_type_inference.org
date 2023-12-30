@@ -1,0 +1,63 @@
+:PROPERTIES:
+:ID:       10016631-2c29-434f-b5c5-2e2cba7d7c76
+:END:
+#+title: Local Variable Type Inference
+#+property: header-args :tangle code/ocp/1/local_variable_type_inference.java
+
+* Local Variable Type Inference
+You have the option of using the [[id:5f2b572a-ec31-49de-ba13-95b0c5edb4c0][keyword]] ~var~ instead of the type when declaring local variables under certain conditions.
+*Local variable type inference* works with ~local variables~ and *not* ~instance variables~.
+
+#+BEGIN_SRC java
+public class Zoo {
+    public void whatTypeAmI() {
+        var name = "Hello";
+        var size = 7;
+    }
+}
+#+END_SRC
+
+The compiler looks at the code on the line of the declaration and uses it to ~infer~ the type.
+#+BEGIN_SRC java
+// Invalid assignment using var type inference
+public void reassignment() {
+    var number = 7;
+    number = 4;
+    number = "five"; // DOES NOT COMPILE
+}
+
+public void twoTypes() {
+    int a, var b = 3; // DOES NOT COMPILE
+    var n = null;// DOES NOT COMPILE
+}
+#+END_SRC
+
+(While a ~var~ *cannot* be initialized with a ~null~ value without a ~type~, it *can be reassigned* a ~null~ value after it is declared, provided that the underlying data type is a [[id:ef3f4798-9f1d-462f-8eea-df2b75e512f6][reference Type]].)
+
+This code does *not* compile. Remember that for ~local variable type inference~, the compiler looks *only* at the line with the declaration.
+#+BEGIN_SRC java
+/*
+*/
+public void doesNotCompile(boolean check) {
+    var question;
+    question = 1;
+    var answer;
+    if (check) {
+        answer = 2;
+    } else {
+        answer = 3;
+    }
+    System.out.println(answer);
+}
+#+END_SRC
+
+_Exam Trick_
+In this example, ~a~ and ~b~ are method parameters.
+These are *not* local variables. Be on the lookout for ~var~ used with *constructors*, *method parameters*, or *instance variables*.
+Using ~var~ in one of these places is a good exam trick to see if you are paying attention.
+Remember that var is *only* used for ~local variable type inference~!
+#+BEGIN_SRC java
+public int addition(var a, var b) { // DOES NOT COMPILE
+    return a + b;
+}
+#+END_SRC
