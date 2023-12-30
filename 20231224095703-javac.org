@@ -3,5 +3,21 @@
 :END:
 #+title: javac
 
-Java Language Compiler
-part of the JDK.
+Java Language Compiler part of the JDK.
+
+* Example Usage: ~javac packagea/ClassA.java packageb/ClassB.java~
+
+*** Options
+~­cp <classpath>~ Location of classes needed to compile/run program
+~­d <dir>~ Directory in which to place generated class files
+
+** Compiling to another directory
+By default, the ~javac~ command places the compiled classes in the *same directory* as the source code.
+
+It also provides an option to place the class files into a *different* directory.
+The ~­d~ option specifies this *target* directory.
+
+~javac ­d classes packagea/ClassA.java packageb/ClassB.java~ places the compiled classes into the *classes* directory.
+
+** Running from another directory
+~java ­cp classes packageb.ClassB~

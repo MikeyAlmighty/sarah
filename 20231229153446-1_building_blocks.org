@@ -3,7 +3,7 @@
 :END:
 #+title: 1. Building blocks
 #+filetags: :OCP:
-#+property: header-args :tangle code/ocp/chapter1.java
+#+property: header-args :tangle code/ocp/1/summary.java
 
 * Chapter 1. Building Blocks
 ** Exam Objectives
@@ -25,30 +25,27 @@
 |                   |                                                                                                                                                                                     |
 
 ** Compiling
+
+(See also: [[id:17935397-ee6a-41e5-b492-4e3cc99c4c4a][Single File Source Code]])
 Compiled using the [[id:d5b4004d-b5db-48a2-8e85-09359ca61a42][javac]]
 
-Each ~class~ declaration in a source file is compiled into a separate ~class file~, containing its Java bytecode.
-
-The name of this file comprises the name of the class with ~.class~ as its extension.
-
-Although a Java source file can contain more than one class declaration, [[id:d5b4004d-b5db-48a2-8e85-09359ca61a42][javac]] enforces the rule that there can *only be at the most* one class
-in the source file that has ~public access~ ([[id:f7f87f85-1d9b-468a-8947-cd839883c9fa][Top-Level Type]]).
-
-If there is a ~public class~ in the source file, the name of the source file must be the name of the public class with ~.java~ as its extension.
-
-In the *absence* of a public class in the source file, the name of the file can be arbitrary, but still with the ~.java~ extension.
+- Each ~class~ declaration in a source file is compiled into a separate ~class file~, containing its Java bytecode.
+- The name of this file comprises the name of the class with ~.class~ as its extension.
+- Although a Java source file can contain more than one class declaration, [[id:d5b4004d-b5db-48a2-8e85-09359ca61a42][javac]] enforces the rule that there can *only be at the most* one class in the source file that has ~public access~ ([[id:f7f87f85-1d9b-468a-8947-cd839883c9fa][Top-Level Type]]).
+- If there is a ~public class~ in the source file, the name of the source file must be the name of the public class with ~.java~ as its extension.
+- In the *absence* of a public class in the source file, the name of the file can be arbitrary, but still with the ~.java~ extension.
 
 ** Running
 It is the ~bytecode~ in the class files that is executed when a Java program is run—the source code is irrelevant in this regard.
-A Java program is run by the Java Application Launcher, ~java~, which is also part of the JDK.
-The ~java~ command creates an instance of the JVM that executes the bytecode.
+A Java program is run by the Java Application Launcher, ~java~, which is also part of the *JDK*.
+The ~java~ command creates an instance of the *JVM* that executes the bytecode.
 
 ** Packages
 Java ~classes~ are grouped into *packages*
 
 *** WildCards
 
-A shortcut to import all the classes in a package
+A shortcut to import *all* the classes in a package is using a wildcard (~*~)
 #+BEGIN_SRC java
 // WildCards
 import java.util.*; // imports java.util.Random among other things
@@ -62,8 +59,8 @@ public class NumberPicker {
 
 Every class in the ~java.util~ package is available to this program when Java compiles it.
 
-The import statement does *not* bring in ~child packages, fields, or methods~; it imports only ~classes~ *directly under the package*.
-Let’s say you wanted to use the class AtomicInteger in the *java.util.concurrent.atomic* package: ~import java.util.concurrent.atomic.*~
+The import statement does *not* bring in ~child packages, fields, or methods~.
+It imports only ~classes~ *directly under the package*.
 
 *** Redundant imports
 Already imported automatically: ~import java.lang.*~
@@ -97,7 +94,7 @@ import java.nio.file.Paths;
 
 *** Naming Conflicts
 
-Example: Java provides implementations of 2 implementations of the Date class: ~java.util.Date~ and ~java.sql.Date~
+Example: Java provides 2 implementations of the Date class: ~java.util.Date~ and ~java.sql.Date~
 
 #+BEGIN_SRC java
 // Collision
@@ -118,3 +115,6 @@ public class Conflicts {
     java.sql.Date sqlDate;
 }
 #+END_SRC
+
+*** [[id:c13f080f-e542-44d0-8311-5e4cdb388991][Creating a new package]]
+*** [[id:e40da6d4-9a59-46c8-9a2f-c375c0d7dda8][Creating a JAR file]]
