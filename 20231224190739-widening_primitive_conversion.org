@@ -1,13 +1,46 @@
 :PROPERTIES:
 :ID:       3ef23225-ae37-428e-8ad3-5d7728f59478
+:ROAM_ALIASES: casting
 :END:
-#+title: Widening Primitive Conversion
+#+title: Widening Primitive Conversion (aka Casting)
+#+property: header-args :tangle code/ocp/2/casting.java
 
+* Widening Primitive Conversion (aka Casting)
 #+ATTR_ORG: :width 900
 [[./assets/widening_primitive_conversions.png]]
 
 The conversions shown are *transitive*.
+(For example, an ~int~ can be directly converted to a ~double~ without first having to convert it to a ~long~ and a ~float~.)
 
-For example, an ~int~ can be directly converted to a ~double~ without first having to convert it to a ~long~ and a ~float~.
+- *Implicitly* done if casting to a =wider= type.
 
-Usually done *implicitly*
+- *Required* when converting to a =narrower= type.
+(Without casting, the compiler will generate an *error* when trying to put a =wider= data type inside a =narrower= one.)
+
+#+BEGIN_SRC java
+int fur = (int)5;
+int hair = (short) 2;
+String type = (String) "Bird";
+short tail = (short)(4 + 10); // Note parenthesis
+long feathers = 10(long); // DOES NOT COMPILE (Wrong side of value)
+#+END_SRC
+
+#+BEGIN_SRC java
+float egg = 2.0 / 9; // DOES NOT COMPILE
+int tadpole = (int)5 * 2L; // DOES NOT COMPILE
+short frog = 3 ­2.0; // DOES NOT COMPILE
+#+END_SRC
+
+* _Exam Trick_
+** Casting Values vs. Variables
+The second statement does *not* compile because ~hat~ is a *variable*, *not* a value, and both operands are =automatically= promoted to ~int~.
+When working with =values=, the compiler *had enough information to determine the writer’s intent*.
+When working with =variables=, though, there is ambiguity about how to proceed, so the compiler reports an *error*.
+
+The third expression does not compile because =700= triggers an overflow for ~byte~, which has a maximum value of =127=.
+
+#+BEGIN_SRC java
+byte hat = 1;
+short boots = 2 + hat; // DOES NOT COMPILE
+byte gloves = 7 * 100; // DOES NOT COMPILE
+#+END_SRC

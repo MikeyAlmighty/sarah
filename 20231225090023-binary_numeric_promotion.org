@@ -2,6 +2,8 @@
 :ID:       be91e553-3d67-4440-ab4e-e18e77b5c48a
 :END:
 #+title: Binary Numeric Promotion
+#+property: header-args :tangle code/ocp/2/numeric_promotion.java
+
 * Binary Numeric Promotion
 *Binary Numeric Promotion* implicitly applies appropriate ~widening~ primitive conversions so that the =widest= numeric type of a pair of operands is always at least ~int~.
 
@@ -21,7 +23,48 @@ This means that the resulting type of the operands is ~int~.
 4. After all promotion has occurred and the operands have the *same* data type, the =resulting value= will have the *same* data type as its promoted operands.
 
 ** Binary numeric promotion is applied in the following expressions:
-- Operands of the [[id:f6e458df-99cf-45d6-b224-16f325cc1d2b][arithmetic Operators]] ~*, /, %, +,~ and ~-~
+- Operands of the [[id:f6e458df-99cf-45d6-b224-16f325cc1d2b][Arithmetic Operators]] ~*, /, %, +,~ and ~-~
 - Operands of the [[id:bf93d4e3-f501-4e73-ac07-e1c6653831ba][Relational Operators]] ~<, <=, >,~ and ~>=~
-- Operands of the ~numerical~ [[id:700147ef-38e8-47dc-bdda-f675917ae802][Equality Operators]] ~==~ and ~!=~
+- Operands of the *numerical* [[id:700147ef-38e8-47dc-bdda-f675917ae802][Equality Operators]] ~==~ and ~!=~
 - Operands of the [[id:a29b45cb-d2f6-49fd-90c7-4c8f1b8e898a][Conditional Operators]] ~? :~, under certain circumstances
+
+* Examples
+
+#+BEGIN_SRC java
+int x = 1;
+long y = 33;
+var z = x * y; // z is a long
+#+END_SRC
+
+#+BEGIN_SRC java
+short x = 1;
+short y = 33;
+var z = x * y; // z is an int
+#+END_SRC
+
+#+BEGIN_SRC java
+short w = 14;
+float x = 13.0F;
+double y = 30;
+var z = w * x / y; // double
+#+END_SRC
+
+* _Exam Trick_
+
+~short~ values are automatically promoted to ~int~ when applying any [[id:f6e458df-99cf-45d6-b224-16f325cc1d2b][Arithmetic Operators]], with the resulting value being of type ~int~.
+Trying to assign a ~short~ variable with an ~int~ value results in a *compiler error*, as Java thinks you are trying to implicitly convert
+from a =wider= data type to a =smaller= one.
+
+#+BEGIN_SRC java
+short mouse = 10;
+short hamster = 3;
+short capybara = mouse * hamster;// DOES NOT COMPILE
+#+END_SRC
+
+We can fix this expression by [[id:3ef23225-ae37-428e-8ad3-5d7728f59478][casting]], as *there are times that you may want to override the compiler’s default behavior*.
+
+#+BEGIN_SRC java
+short mouse = 10;
+short hamster = 3;
+short capybara = (short)(mouse * hamster);
+#+END_SRC
