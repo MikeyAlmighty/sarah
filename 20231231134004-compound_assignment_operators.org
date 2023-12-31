@@ -1,0 +1,41 @@
+:PROPERTIES:
+:ID:       78097da7-2345-4299-8b00-4608c875fb88
+:END:
+#+title: Compound Assignment Operators
+#+property: header-args :tangle code/ocp/2/compound_assignment_operators.java
+
+* Compound Assignment Operators
+An [[id:32c06110-1f45-4d85-9583-74d13aaa083f][Assignment Operator]]
+
+#+ATTR_ORG: :width 700
+[[./assets/compound_assignment_operators.png]]
+
+#+BEGIN_SRC java
+int camel = 2, giraffe = 3;
+camel = camel * giraffe; // Simple assignment operator
+camel *= giraffe; // Compound assignment operator
+#+END_SRC
+
+The LHS of the ~compound operator~ can be applied only to a variable that is *already* defined and cannot be used to declare a new variable.
+In this example, if =camel= were not already defined, the expression ~camel *= giraffe~ would not compile.
+
+
+** _Exam Trick_
+
+They can also save you from having to explicitly cast a value.
+
+#+BEGIN_SRC java
+long goat = 10;
+int sheep = 5;
+sheep = sheep * goat; // DOES NOT COMPILE
+#+END_SRC
+
+From the [[id:3ef23225-ae37-428e-8ad3-5d7728f59478][previous (variables vs values)]] section, you should be able to spot the problem in the last line.
+
+#+BEGIN_SRC java
+long goat = 10;
+int sheep = 5;
+sheep *= goat; // Explicit cast to (int)
+#+END_SRC
+
+The compound operator will first cast sheep to a long and then do the =multiplication= of two ~long~ values and then *cast* result to an ~int~.
