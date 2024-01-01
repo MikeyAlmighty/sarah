@@ -1,0 +1,30 @@
+:PROPERTIES:
+:ID:       e5c59266-2989-402e-a1cd-f05b5b29d14a
+:END:
+#+title: Logical Operators
+#+property: header-args :tangle code/ocp/2/logical_operators.java
+
+* Logical Operators
+[[id:9bcf2aef-060a-4011-98b5-cb949a9f7d1a][Binary Operators]] revolved around *comparing* two expressions and return a ~boolean~ value.
+
+#+ATTR_ORG: :width 600
+[[./assets/logical_operators.png]]
+
+#+ATTR_ORG: :width 600
+[[./assets/logical_truth_tables.png]]
+
+
+#+BEGIN_SRC java
+boolean eyesClosed = true;
+boolean breathingSlowly = true;
+boolean resting = eyesClosed | breathingSlowly;
+boolean asleep = eyesClosed & breathingSlowly;
+boolean awake = eyesClosed ^ breathingSlowly;
+System.out.println(resting); // true
+System.out.println(asleep); // true
+System.out.println(awake); // false
+#+END_SRC
+
+When they’re applied to =boolean= data types, they’re referred to as ~logical operators~.
+
+Alternatively, when they’re applied to [[id:2483364b-73d3-4169-92b9-1fea473a9b01][numeric data types]], they’re referred to as ~bitwise operators~, as they perform *bitwise comparisons* of the bits that compose the number.

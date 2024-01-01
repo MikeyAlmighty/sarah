@@ -1,0 +1,33 @@
+:PROPERTIES:
+:ID:       4fb44335-373d-438c-b873-d648a962c2f7
+:END:
+#+title: Ternary Operators
+#+property: header-args :tangle code/ocp/2/ternary_operators.java
+
+* Ternary Operators
+A [[id:a29b45cb-d2f6-49fd-90c7-4c8f1b8e898a][Conditional Operator]]
+It is notable in that it is the only operator that takes *three* operands.
+
+#+BEGIN_SRC java
+// booleanExpression ? expression1 : expression2
+int owl = 5;
+int food = owl < 2 ? 3 : 4;
+System.out.println(food); // 4
+#+END_SRC
+
+For the exam, you should know that there is *no* requirement that ~second~ and ~third~
+expressions in ternary operations have the *same* data types, although it does come into play
+when combined with the [[id:32c06110-1f45-4d85-9583-74d13aaa083f][assignment operator]]:
+
+#+BEGIN_SRC java
+int stripes = 7;
+System.out.print((stripes > 5) ? 21 : "Zebra");
+int animal = (stripes < 9) ? 3 : "Horse"; // DOES NOT COMPILE
+#+END_SRC
+
+Both expressions evaluate similar boolean values and return an ~int~ and a ~String~,
+although only the first one will compile.
+
+~System.out.print()~ does not care that the expressions are completely *different* types, because it can convert both to ~Object~ values and call ~toString()~ on them.
+
+On the other hand, the compiler does know that ~"Horse"~ is of the *wrong* data type and cannot be assigned to an ~int~; therefore, it does not allow the code to be compiled.

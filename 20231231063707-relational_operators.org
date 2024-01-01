@@ -2,3 +2,60 @@
 :ID:       bf93d4e3-f501-4e73-ac07-e1c6653831ba
 :END:
 #+title: Relational Operators
+#+property: header-args :tangle code/ocp/2/relational_operators.java
+
+* Relational Operators (~<, <=, >,~ and ~>=~)
+[[id:9bcf2aef-060a-4011-98b5-cb949a9f7d1a][Binary Operators]] revolved around *comparing* two expressions and return a ~boolean~ value.
+
+#+ATTR_ORG: :width 500
+[[./assets/relational_operators.png]]
+
+** Numeric Comparison Operators
+
+#+BEGIN_SRC java
+int gibbonNumFeet = 2, wolfNumFeet = 4, ostrichNumFeet = 2;
+System.out.println(gibbonNumFeet < wolfNumFeet); // true
+System.out.println(gibbonNumFeet <= wolfNumFeet); // true
+System.out.println(gibbonNumFeet >= ostrichNumFeet); // true
+System.out.println(gibbonNumFeet > ostrichNumFeet); // false
+#+END_SRC
+
+** instanceof Operator
+It is useful for determining whether an arbitrary ~object~ is a =member of a particular class or interface= at *runtime*.
+
+#+BEGIN_SRC java
+public void openZoo(Number time) {
+    if (time instanceof Integer)
+        System.out.print((Integer)time + " O'clock");
+    else if (time instanceof Short)
+        System.out.print((Short)time + " O'clock");
+    else
+        System.out.print(time);
+}
+#+END_SRC
+Notice that we cast the ~Integer~ value in this example.
+
+It is common to use casting with ~instanceof~ when working with objects that *can be various different types*, since [[id:3ef23225-ae37-428e-8ad3-5d7728f59478][casting]] gives you access to fields available *only* in the =more specific classes=.
+
+It is considered a good coding practice to use the ~instanceof~ operator *prior* to [[id:3ef23225-ae37-428e-8ad3-5d7728f59478][casting]] from one object to a =narrower= type.
+
+*** Invalid instanceof
+If the compiler can determine that a variable cannot possibly be ~cast~ to a specific class, it reports an error.
+#+BEGIN_SRC java
+public void openZoo(Number time) {
+  if(time instanceof String) // DOES NOT COMPILE
+    System.out.print(time);
+}
+#+END_SRC
+
+*** null and instanceof
+Calling *instanceof* on the ~null~ literal or a ~null reference~ always returns false
+
+#+BEGIN_SRC java
+System.out.print(null instanceof Object); // false
+
+Object noObjectHere = null;
+System.out.print(noObjectHere instanceof String); // false
+
+System.out.print(null instanceof null); // DOES NOT COMPILE
+#+END_SRC

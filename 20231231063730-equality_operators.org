@@ -2,3 +2,60 @@
 :ID:       700147ef-38e8-47dc-bdda-f675917ae802
 :END:
 #+title: Equality Operators
+#+property: header-args :tangle code/ocp/2/equality_operators.java
+
+* Equality Operators (~==~ and ~!=~)
+[[id:9bcf2aef-060a-4011-98b5-cb949a9f7d1a][Binary Operators]] revolved around *comparing* values.
+
+#+ATTR_ORG: :width 500
+[[./assets/equality_operators.png]]
+
+They can be used to:
+- Check if ~two values~ are the *same*.
+- Check if ~one~ numeric value is *less than* or *greater than* another.
+- Perform ~Boolean~ arithmetic.
+
+The equality operator can be applied to [[id:2483364b-73d3-4169-92b9-1fea473a9b01][numeric]] values, ~boolean~ values, and ~objects~
+(including ~String~ and ~null~).
+When applying the equality operator, you *cannot* mix these types.
+Each of the following results in a compiler error:
+
+
+#+BEGIN_SRC java
+boolean monkey = true == 3; // DOES NOT COMPILE
+boolean ape = false != "Grape"; // DOES NOT COMPILE
+boolean gorilla = 10.2 == "Koko"; // DOES NOT COMPILE
+#+END_SRC
+
+** Object comparison
+
+For =object comparison=, the ~equality operator~ is applied to the *references* to the objects,
+*not the objects they point to*.
+
+Two references *are equal if and only if* they point to the *same object* or *both point to null*.
+
+#+BEGIN_SRC java
+var monday = new File("schedule.txt");
+var tuesday = new File("schedule.txt");
+var wednesday = tuesday;
+System.out.println(monday == tuesday); // false
+System.out.println(tuesday == wednesday); // true
+#+END_SRC
+
+** _Exam Trick_
+
+Pay close attention to the =data types= when you see an ~equality operator~ on the exam.
+The exam creators also have a habit of mixing [[id:32c06110-1f45-4d85-9583-74d13aaa083f][assignment Operators]] and ~equality operators~:
+
+#+BEGIN_SRC java
+boolean bear = false;
+boolean polar = (bear = true);
+System.out.println(polar); // true
+#+END_SRC
+
+In some languages, comparing null with any other value is always ~false~, although this
+is *not* the case in Java:
+
+#+BEGIN_SRC java
+System.out.print(null == null); // true
+#+END_SRC

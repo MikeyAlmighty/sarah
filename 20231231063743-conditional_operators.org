@@ -2,3 +2,53 @@
 :ID:       a29b45cb-d2f6-49fd-90c7-4c8f1b8e898a
 :END:
 #+title: Conditional Operators
+#+property: header-args :tangle code/ocp/2/conditional_operators.java
+
+* Conditional Operators (aka short-circuit operators)
+A [[id:9bcf2aef-060a-4011-98b5-cb949a9f7d1a][Binary Operator]]
+
+#+ATTR_ORG: :width 900
+[[./assets/conditional_operators.png]]
+
+Identical to the [[id:e5c59266-2989-402e-a1cd-f05b5b29d14a][logical Operators]], except that the =RHS= of the expression may *never* be evaluated if the final result can be determined by the =LHS= of the expression.
+
+#+BEGIN_SRC java
+int hour = 10;
+boolean zooOpen = true || (hour < 4);
+System.out.println(zooOpen); // true
+#+END_SRC
+
+** Avoiding a =NullPointerException=
+A more common example of where ~conditional operators~ are used is checking for =null=
+objects before performing an operation.
+
+In the following example, if duck is null, the program will throw a =NullPointerException= at *runtime*:
+#+BEGIN_SRC java
+if(duck != null & duck.getAge() < 5) { // Could throw a NullPointerException
+// Do something
+}
+#+END_SRC
+The issue is that the logical =AND (&)= operator evaluates *both* sides of the expression
+
+Does not throw a =NullPointerException=:
+
+#+BEGIN_SRC java
+if(duck != null && duck.getAge()<5) {
+// Do something
+}
+#+END_SRC
+In the example above, if ~duck~ *is* =null=, the conditional prevents a =NullPointerException=
+from ever being thrown, since the evaluation of ~duck.getAge() < 5~ is never reached.
+
+*** _Exam Trick_
+
+Be wary of *short-circuit* behavior on the exam, as questions are known to *alter* a variable on the =RHS= of the expression that may never be reached.
+This is referred to as an ~unperformed side effect~.
+
+#+BEGIN_SRC java
+int rabbit = 6;
+boolean bunny = (rabbit >= 6) || (++rabbit <= 7);
+System.out.println(rabbit); // 6
+#+END_SRC
+Because ~rabbit >= 6~ is *true*, the increment operator on the =RHS= of the expression
+is *never* evaluated, so the output is =6=.
