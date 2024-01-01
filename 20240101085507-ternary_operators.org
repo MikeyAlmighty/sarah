@@ -31,3 +31,25 @@ although only the first one will compile.
 ~System.out.print()~ does not care that the expressions are completely *different* types, because it can convert both to ~Object~ values and call ~toString()~ on them.
 
 On the other hand, the compiler does know that ~"Horse"~ is of the *wrong* data type and cannot be assigned to an ~int~; therefore, it does not allow the code to be compiled.
+
+** Unperformed Side Effects
+
+#+BEGIN_SRC java
+int sheep = 1;
+int zzz = 1;
+int sleep = zzz < 10 ? sheep++ : zzz++;
+System.out.print(sheep + "," + zzz); // 2,1
+#+END_SRC
+
+Notice that since the =LHS= boolean expression was *true*, *only* sheep was incremented.
+
+Contrast the preceding example with the following modification:
+
+#+BEGIN_SRC java
+int sheep = 1;
+int zzz = 1;
+int sleep = sheep >= 10 ? sheep++ : zzz++;
+System.out.print(sheep + "," + zzz); // 1,2
+#+END_SRC
+
+The =LHS= boolean expression evaluates to *false*, only ~zzz~ is *incremented*.
