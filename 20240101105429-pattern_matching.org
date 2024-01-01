@@ -2,3 +2,72 @@
 :ID:       0d176b55-58d1-4441-8048-ebbe90a5c113
 :END:
 #+title: Pattern Matching
+#+filetags: :OCP:
+#+property: header-args :tangle code/ocp/2/pattern_matching.java
+
+* Pattern Matching
+- Introduced in Java 16
+
+Is a technique of *controlling* ~program flow~ that only executes a section of code that *meets certain criteria*.
+It is used in conjunction with [[id:17d8331e-1c9e-485e-9c45-b70bb2951275][if Statements]] statements for greater program control.
+
+** Legacy (pre 16)
+Consider the following code that takes a ~Number~ instance and compares it with the value =5=:
+#+BEGIN_SRC java
+void compareIntegers(Number number) {
+    if(number instanceof Integer) {
+        Integer data = (Integer)number;
+        System.out.print(data.compareTo(5));
+    }
+}
+#+END_SRC
+
+The [[id:3ef23225-ae37-428e-8ad3-5d7728f59478][cast]] is needed since the ~compareTo()~ method is defined on =Integer=, but not on =Number=.
+
+Code that *first checks if a variable is of a particular type* and then *immediately* casts it to *that type* is extremely common in the Java world.
+(See below for shorter variant)
+
+** Patter Variables (Java 16)
+
+#+BEGIN_SRC java
+void compareIntegers(Number number) {
+    if(number instanceof Integer data) {
+        System.out.print(data.compareTo(5));
+    }
+}
+#+END_SRC
+
+The variable ~data~ in this example is referred to as the =pattern variable=.
+Notice that this code also avoids any potential =ClassCastException= because the [[id:3ef23225-ae37-428e-8ad3-5d7728f59478][cast]] operation is executed only if the implicit ~instanceof~ operator returns *true*.
+
+*** Reassigning Pattern Variables
+While possible, it is a bad practice to *reassign* a ~pattern variable~ since doing so can lead to ambiguity about what *is and is not in scope*:
+
+#+BEGIN_SRC java
+if(number instanceof Integer data) {
+    data = 10;
+}
+#+END_SRC
+
+The reassignment can be *prevented* with a ~final~ modifier, but it is better not to reassign the variable at all.
+#+BEGIN_SRC java
+if(number instanceof final Integer data) {
+    data = 10; // DOES NOT COMPILE
+}
+#+END_SRC
+
+** Pattern Variables and Expressions
+
+~Pattern matching~ includes expressions that can be used to filter data out, such as in the following example:
+
+#+BEGIN_SRC java
+void printIntegersGreaterThan5(Number number) {
+    if(number instanceof Integer data && data.compareTo(5) > 0)
+        System.out.print(data);
+}
+#+END_SRC
+
+We can apply a number of *filters*, or *patterns*, so that the [[id:17d8331e-1c9e-485e-9c45-b70bb2951275][if statement]] is executed only in *specific circumstances*.
+Notice that we’re using the pattern variable in an expression in the *same line in which it is declared*.
+
+** Subtypes

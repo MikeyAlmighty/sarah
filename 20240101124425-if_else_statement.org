@@ -1,0 +1,43 @@
+:PROPERTIES:
+:ID:       17d8331e-1c9e-485e-9c45-b70bb2951275
+:ROAM_ALIASES: if/else
+:END:
+#+title: if/else Statement
+#+filetags: :OCP:
+#+property: header-args :tangle code/ocp/2/if_else_statement.java
+
+* If/ Else Statement
+
+#+BEGIN_SRC java
+if(hourOfDay < 11) {
+    System.out.println("Good Morning");
+} else if(hourOfDay < 15) {
+    System.out.println("Good Afternoon");
+} else {
+    System.out.println("Good Evening");
+}
+#+END_SRC
+
+** _Exam Trick_
+
+Common way the exam may try to lead you astray is by providing code where the ~boolean~ expression inside the ~if~ statement is not actually a ~boolean~ expression:
+
+#+BEGIN_SRC java
+int hourOfDay = 1;
+if(hourOfDay) { // DOES NOT COMPILE
+...
+}
+#+END_SRC
+
+(This statement *may* be valid in some other ~programming~ and ~scripting~ languages, but *not* in Java, where =0= and =1= are *not* considered ~boolean~ values.)
+
+** _Exam Trick_
+
+One area where the exam writers will try to trip you up is if statements without braces
+({}):
+
+#+BEGIN_SRC java
+if(hourOfDay < 11)
+    System.out.println("Good Morning");
+    morningGreetingCount++;
+#+END_SRC
