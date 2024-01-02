@@ -7,6 +7,12 @@
 
 * For Each Loop
 
+The ~for­each~ loop declaration is composed of an =initialization= section and an =object= to be iterated over.
+
+The RHS of the *for­each* loop must be one of the following:
+- A built­in Java ~array~
+- An object whose type implements ~java.lang.Iterable~
+
 #+BEGIN_SRC java
 /*
     for (datatype instance: collection) {
@@ -15,6 +21,10 @@
 */
 #+END_SRC
 
+The =LHS= of the ~for-each~ loop must include a =declaration= for an ~instance~ of a variable whose type is *compatible* with the type of the array or collection on the =RHS= of the statement.
+
+On each iteration of the loop, the ~named~ variable on the =LHS= of the statement is assigned a new value from the array or collection on the =RHS=.
+
 #+begin_src java
 String[] fruits = { "Apple", "Mango", "Orange" };
 
@@ -22,3 +32,22 @@ for (String fruit: fruits) {
   System.out.println(fruit);
 }
 #+end_src
+
+** Does not compile
+This first *for­each* loop does *not compile* because ~String~ cannot be used on the =RHS= of the statement.
+
+While a String may represent a list of characters, it has to actually be an array or implement Iterable.
+
+#+BEGIN_SRC java
+String birds = "Jay";
+for(String bird : birds) // DOES NOT COMPILE
+    System.out.print(bird + " ");
+#+END_SRC
+
+This example does *not compile* because the loop type on the =LHS= of the statement is ~int~ and doesn’t match the expected type of ~String~.
+
+#+BEGIN_SRC java
+String[] sloths = new String[3];
+for(int sloth : sloths) // DOES NOT COMPILE
+    System.out.print(sloth + " ");
+#+END_SRC
