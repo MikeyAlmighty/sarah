@@ -3,7 +3,7 @@
 :END:
 #+title: Pattern Matching
 #+filetags: :OCP:
-#+property: header-args :tangle code/ocp/2/pattern_matching.java
+#+property: header-args :tangle code/ocp/3/pattern_matching.java
 
 * Pattern Matching
 - Introduced in Java 16
@@ -13,6 +13,7 @@ It is used in conjunction with [[id:17d8331e-1c9e-485e-9c45-b70bb2951275][if Sta
 
 ** Legacy (pre 16)
 Consider the following code that takes a ~Number~ instance and compares it with the value =5=:
+
 #+BEGIN_SRC java
 void compareIntegers(Number number) {
     if(number instanceof Integer) {
@@ -71,3 +72,34 @@ We can apply a number of *filters*, or *patterns*, so that the [[id:17d8331e-1c9
 Notice that we’re using the ~pattern variable~ in an expression in the *same line in which it is declared*.
 
 ** Subtypes
+
+The ~type~ of the *pattern variable* must be a *subtype* of the variable on the =LHS= of the expression.
+
+#+BEGIN_SRC java
+Integer value = 123;
+if(value instanceof Integer) {}
+if(value instanceof Integer data) {} // DOES NOT COMPILE
+#+END_SRC
+
+While the second line compiles, the last line does not compile because ~pattern matching~ *requires* that the pattern variable type ~Integer~ be a *strict subtype* of ~Integer~.
+
+** Flow Scoping
+
+The compiler applies ~flow scoping~ when working with *pattern matching*.
+~Flow scoping~ means the variable is *only in scope* when the compiler can *definitively* determine its type.
+
+*** _Exam trick_
+
+It might surprise you to learn this code does compile:
+
+#+BEGIN_SRC java
+void printOnlyIntegers(Number number) {
+    if (!(number instanceof Integer data))
+        return;
+    System.out.print(data.intValue());
+}
+#+END_SRC
+
+The method returns if the input *does not* inherit ~Integer~.
+This means that when the last line of the method is reached, the input *must inherit* ~Integer~, and therefore data stays in scope
+*even after* the [[id:17d8331e-1c9e-485e-9c45-b70bb2951275][if Statement]] ends.
