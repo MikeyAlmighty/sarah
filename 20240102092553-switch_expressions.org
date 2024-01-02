@@ -26,15 +26,83 @@ public void printDayOfWeek(int day) {
 
 Each ~case~ or ~default~ expression requires a *semicolon* (as well as the *assignment* itself).
 
+** Rules
+
+*** 1. Return consistent Data Type
+
+*All of the branches* of a ~switch~ expression that *do not* throw an exception must return a =consistent data type= (if the ~switch~ expression returns a value).
+
+#+BEGIN_SRC java
+int measurement = 10;
+int size = switch(measurement) {
+    case 5 -> 1;
+    case 10 -> (short)2;
+    default -> 5;
+    case 20 -> "3"; // DOES NOT COMPILE
+    case 40 -> 4L; // DOES NOT COMPILE
+    case 50 -> null; // DOES NOT COMPILE
+};
+#+END_SRC
+
+*** 2. Yielding Values
+
+If the switch expression returns a value, then every branch that *isn’t* an expression must ~yield a value~.
+
+#+BEGIN_SRC java
+int fish = 5;
+int length = 12;
+var name = switch(fish) {
+    case 1 -> "Goldfish";
+    case 2 -> { yield "Trout"; }
+    case 3 -> {
+        if(length > 10)
+            yield "Blobfish";
+        else
+            yield "Green";
+    }
+    default -> "Swordfish";
+};
+#+END_SRC
+
+The ~yield~ keyword is equivalent to a ~return statement~ within a switch expression and is used to *avoid ambiguity* about whether you meant to exit the block or method around the switch expression.
+
+~Yield~ statements are *required* if the switch statement *returns a value*.
+
+*** 3. Default Branch
+
+A ~default~ branch is required unless *all* cases are covered or no *value* is returned.
+
 ** Multiple value Case Statements
 
 #+BEGIN_SRC java
-public void printSeason(int month) {
-    switch(month) {
-        case 1, 2, 3 -> System.out.print("Winter");
-        case 4, 5, 6 ­> System.out.print("Spring");
-        case 7, 8, 9 -> System.out.print("Summer");
-        case 10, 11, 12 -> System.out.print("Fall");
-    }
+public static String printSeason(int month) throws IllegalStateException {
+    return switch(month) {
+        case 1, 2, 3 -> "Winter";
+        case 4, 5, 6 -> "Spring";
+        case 7, 8, 9 -> "Summer";
+        case 10, 11, 12 -> "Fall";
+        default -> throw new IllegalStateException("Unexpected value: " + month);
+    };
 }
 #+END_SRC
+
+** _Exam trick_
+
+Unlike a regular [[id:0526ffdf-bdb1-4f35-a65f-ef29391f84a3][switch statement]], a *switch expression* can be used with the [[id:32c06110-1f45-4d85-9583-74d13aaa083f][assignment Operator]] and *requires a semicolon* when doing so.
+
+Furthermore, =semicolons= are *required* for ~case expressions~ but *cannot* be used with ~case blocks~:
+
+#+BEGIN_SRC java
+var name = switch(fish) {
+    case 1 -> "Goldfish" // DOES NOT COMPILE (missing semicolon)
+    case 2 -> { yield "Trout"; }; // DOES NOT COMPILE (extra semicolon)
+} // DOES NOT COMPILE (missing semicolon)
+#+END_SRC
+
+** _Exam trick_
+
+*** Does return value
+A ~switch expression~ that =returns a value= *must* handle *all possible* input values.
+
+*** Does NOT return value
+When it does *not* return a value, it is ~optional~.
