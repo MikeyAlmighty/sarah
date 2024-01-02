@@ -1,7 +1,7 @@
 /*
-for (initialization; booleanExpression; updateStatement) {
-    // Body
-}
+    for (initialization; booleanExpression; updateStatement) {
+        // Body
+    }
 */
 
 for (int i = 0; i < 5; i ++) {
