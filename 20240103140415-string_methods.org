@@ -12,127 +12,15 @@ The ~String~ class has *dozens of methods*.
 #+ATTR_ORG: :width 500
 [[./assets/string_indexing.png]]
 
-** 1. length
 
-When determining the *total size or length*, Java uses normal counting again.
+** 1. [[id:cb7f93e2-d511-409b-ae69-f8e74cca18ac][String.length]]
 
-*** Signature
+** 2. [[id:d7c00ac3-5490-4e3d-8924-c82f007a5c47][String.charAt]]
 
-#+BEGIN_SRC java
-public int length()
-#+END_SRC
+** 3. [[id:474b7252-5d9d-4060-bed5-3511cee5b037][String.indexOf]]
 
-**** Example
+** 4. [[id:63641bbf-cae5-46ca-9fab-dbb0079638ce][String.substring]]
 
-#+BEGIN_SRC java
-var name = "animals";
-System.out.println(name.length()); // 7
-#+END_SRC
+** 5. [[id:8a2f6d49-e489-4b32-a566-a901559c85a9][String.toUpperCase/String.toLowerCase]]
 
-** 2. charAt()
-
-The method ~charAt()~ lets you query the =string= to find out what character is *at a specific index*.
-
-*** Signature
-
-#+BEGIN_SRC java
-public char charAt(int index)
-#+END_SRC
-
-The following code shows how to use ~charAt()~:
-
-**** Example
-
-#+BEGIN_SRC java
-var name = "animals";
-
-System.out.println(name.charAt(0)); // a
-System.out.println(name.charAt(6)); // s
-System.out.println(name.charAt(7)); // java.lang.StringIndexOutOfBoundsException: String index out of range: 7
-#+END_SRC
-
-** 3. indexOf()
-
-The method ~indexOf()~ looks at the *characters* in the ~string~ and *finds the first index that matches the desired value*.
-
-The ~indexOf~ method can work with an =individual character= or a =whole String= as input.
-
-It *can also start from a requested position*.
-
-Remember that a ~char~ *can* be passed to an ~int~ parameter type.
-
-
-*** Signature
-
-#+BEGIN_SRC java
-public int indexOf(int ch)
-public int indexOf(int ch, int fromIndex)
-public int indexOf(String str)
-public int indexOf(String str, int fromIndex)
-#+END_SRC
-
-***** _Exam Trick_
-
-On the exam, you’ll only see a ~char~ passed to the parameters named =ch=
-The following code shows how to use ~indexOf()~:
-
-**** Example
-
-#+BEGIN_SRC java
-var name = "animals";
-
-System.out.println(name.indexOf('a')); // 0
-System.out.println(name.indexOf("al")); // 4
-System.out.println(name.indexOf('a', 4)); // 4 (Don't even look at 'a' until the 4th index)
-System.out.println(name.indexOf("al", 5)); // -1 (Doesn't find anything)
-#+END_SRC
-
-** 4. substring()
-
-The method ~substring()~ also looks for =characters in a string=.
-
-It *returns* parts of the *string*.
-
-*** _Exam Trick_
-
-It helps to think of indexes a bit differently for the ~substring~ methods.
-Pretend the indexes are right *before* the character they would point to:
-
-#+ATTR_ORG: :width 500
-[[./assets/substring_indexing.png]]
-
-Notice how the arrow with the =0= points to the character that would have ~index 0~.
-The arrow with the =1= points between characters with indexes 0 and 1.
-
-There are *seven* characters in the String.
-
-Since Java uses *zero­based* indexes, this means the *last character* has an index of =6=.
-The arrow with the =7= points immediately after this *last character*.
-
-This will help you remember that ~endIndex~ doesn’t give an *out­of­bounds exception* when it is one past the end of the String.
-
-*** Signature
-
-#+BEGIN_SRC java
-public String substring(int beginIndex)
-public String substring(int beginIndex, int endIndex)
-#+END_SRC
-
-There is an =optional= second parameter, which is the *end index* you want to stop at.
-
-***** _Exam Trick_
-Notice we said *stop at* rather than *include*.
-
-This means the ~endIndex~ parameter is allowed to be *one past the end of the sequence* if you want to stop at the end of the sequence.
-
-**** Example
-
-#+BEGIN_SRC java
-var name = "animals";
-
-System.out.println(name.substring(3)); // mals
-System.out.println(name.substring(name.indexOf('m'))); // mals
-System.out.println(name.substring(3, 4)); // m
-System.out.println(name.substring(3, 7)); // mals
-#+END_SRC
-
+** 6. [[id:03ad6a6e-d3c6-46f6-b764-63c379c5d0b9][String.equals]]

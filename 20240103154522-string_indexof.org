@@ -1,0 +1,40 @@
+:PROPERTIES:
+:ID:       474b7252-5d9d-4060-bed5-3511cee5b037
+:END:
+#+title: String.indexOf
+#+property: header-args :tangle code/ocp/4/string_indexOf.java
+
+* .indexOf()
+
+The method ~indexOf()~ looks at the *characters* in the ~string~ and *finds the first index that matches the desired value*.
+
+The ~indexOf~ method can work with an =individual character= or a =whole String= as input.
+
+It *can also start from a requested position*.
+
+Remember that a ~char~ *can* be passed to an ~int~ parameter type.
+
+*** Signature
+
+#+BEGIN_SRC java
+public int indexOf(int ch)
+public int indexOf(int ch, int fromIndex)
+public int indexOf(String str)
+public int indexOf(String str, int fromIndex)
+#+END_SRC
+
+**** _Exam Trick_
+
+On the exam, you’ll only see a ~char~ passed to the parameters named =ch=
+The following code shows how to use ~indexOf()~:
+
+**** Example
+
+#+BEGIN_SRC java
+var name = "animals";
+
+System.out.println(name.indexOf('a')); // 0
+System.out.println(name.indexOf("al")); // 4
+System.out.println(name.indexOf('a', 4)); // 4 (Don't even look at 'a' until the 4th index)
+System.out.println(name.indexOf("al", 5)); // -1 (Doesn't find anything)
+#+END_SRC
