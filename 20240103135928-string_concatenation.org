@@ -1,0 +1,31 @@
+:PROPERTIES:
+:ID:       f50bd171-428e-46b7-a854-03d216fad5c9
+:END:
+#+title: String Concatenation
+#+property: header-args :tangle code/ocp/4/string_concatenation.java
+
+* String Concatenation
+
+** Rules
+
+1. If both operands are [[id:2483364b-73d3-4169-92b9-1fea473a9b01][numeric]], =+= means numeric *addition*.
+2. If either operand is a ~String~, =+= means *concatenation*.
+3. The expression is evaluated left to right.
+
+** Examples
+
+#+BEGIN_SRC java
+System.out.println(1 + 2); // 3
+System.out.println("a" + "b"); // ab
+System.out.println("a" + "b" + 3); // ab3
+System.out.println(1 + 2 + "c"); // 3c
+System.out.println("c" + 1 + 2); // c12
+System.out.println("c" + null); // cnull
+#+END_SRC
+
+#+BEGIN_SRC java
+var s = "1"; // s currently holds "1"
+s += "2"; // s currently holds "12"
+s += 3; // s currently holds "123"
+System.out.println(s); // 123
+#+END_SRC
