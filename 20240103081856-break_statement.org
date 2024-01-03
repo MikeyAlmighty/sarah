@@ -1,0 +1,47 @@
+:PROPERTIES:
+:ID:       012deee9-64a6-4aa4-b6e7-8a651d3c96c9
+:END:
+#+title: Break statement
+#+filetags: :OCP:
+#+property: header-args :tangle code/ocp/3/break_statement.java
+
+* Break statement
+As you saw when working with [[id:0526ffdf-bdb1-4f35-a65f-ef29391f84a3][Switch statements]], a ~break~ statement transfers the flow of control out to the *enclosing statement*.
+
+#+BEGIN_SRC java
+optionalLabel: while(booleanExpression) {
+    // Body
+    // Somewhere in the loop
+    break optionalLabel; // Semicolon required
+}
+#+END_SRC
+
+Without a ~label~ (optional) parameter, the ~break~ statement will *terminate the nearest inner loop* it is currently in the process of executing.
+The optional label parameter allows us to break out of a *higher-level outer loop*.
+
+#+BEGIN_SRC java
+public class FindInMatrix {
+    public static void main(String[] args) {
+        int[][] list = {{ 1, 13 },{ 5, 2 },{ 2, 2 }};
+        int searchValue = 2;
+        int positionX = -1;
+        int positionY = -1;
+        PARENT_LOOP: for(int i = 0; i < list.length; i++) {
+            for(int j=0; j < list[i].length; j++) {
+                if(list[i][j] == searchValue) {
+                    positionX = i;
+                    positionY = j;
+                    break PARENT_LOOP;
+                }
+            }
+        }
+        if (positionX == -1 || positionY == -1) {
+            System.out.println("Value " + searchValue + " not found");
+        } else {
+            System.out.println("Value " + searchValue + " found at: " + "(" + positionX + "," + positionY + ")");
+        }
+    }
+}
+#+END_SRC
+
+(See also comparison to [[id:251497c8-f590-45c0-b74b-0426a45062d0][Continue Statement]])

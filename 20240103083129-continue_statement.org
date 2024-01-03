@@ -1,0 +1,73 @@
+:PROPERTIES:
+:ID:       251497c8-f590-45c0-b74b-0426a45062d0
+:END:
+#+title: Continue Statement
+#+filetags: :OCP:
+#+property: header-args :tangle code/ocp/3/continue_statement.java
+
+* Continue Statement
+
+Statement that causes flow to *finish the execution* of the current loop iteration.
+
+#+BEGIN_SRC java
+optionalLabel: while(booleanExpression) {
+    // Body
+    // Somewhere in the loop
+    continue optionalLabel; // semicolon required
+}
+#+END_SRC
+
+You may notice that the syntax of the ~continue~ statement mirrors that of the [[id:012deee9-64a6-4aa4-b6e7-8a651d3c96c9][Break statement]].
+
+In fact, the statements are *identical* in how they are used, but with *different results*.
+
+- The [[id:012deee9-64a6-4aa4-b6e7-8a651d3c96c9][break statement]] *transfers control to the enclosing statement*.
+- The ~continue~ statement *transfers control to the boolean expression that determines if the loop should continue*.
+
+(In other words, it ends the current iteration of the loop.)
+
+Also, like the [[id:012deee9-64a6-4aa4-b6e7-8a651d3c96c9][Break statement]], the ~continue~ statement is applied to the nearest inner loop under execution, using optional label statements to override this behavior.
+
+
+** Continue vs Break
+
+*** Continue
+
+#+BEGIN_SRC java
+for (int i = 1; i < 11; i++){
+    if (i == 5) {
+        continue; // Just continue
+    }
+    System.out.println("The value is: " + i);
+}
+
+/*
+    The value is: 1
+    The value is: 2
+    The value is: 3
+    The value is: 4
+    The value is: 6
+    The value is: 7
+    The value is: 8
+    The value is: 9
+    The value is: 10
+*/
+#+END_SRC
+
+*** Break
+
+#+BEGIN_SRC java
+for (int i = 1; i < 11; i++){
+    if (i == 5) {
+        break; // Break out
+    }
+    System.out.println("The value is: " + i);
+}
+
+/*
+    The value is: 1
+    The value is: 2
+    The value is: 3
+    The value is: 4
+*/
+#+END_SRC
