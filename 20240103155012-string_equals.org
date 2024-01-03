@@ -6,17 +6,25 @@
 
 * .equals()
 
-When determining the *total size or length*, Java uses normal counting again.
+The ~equals()~ method checks whether two *String* objects *contain exactly the same characters* in the *same order*.
+
+You might have noticed that ~equals()~ takes an *Object* rather than a *String*.
+
+This is because the method is the same for =all objects=.
+
+If you pass in something that *isn’t* a ~String~, it will just return ~false~.
+
+In Java, ~String~ values are =case­sensitive=. ("abc" != "ABC")
 
 *** Signature
 
 #+BEGIN_SRC java
-public int length()
+public boolean equals(Object obj)
 #+END_SRC
 
 **** Example
 
 #+BEGIN_SRC java
-var name = "animals";
-System.out.println(name.length()); // 7
+System.out.println("abc".equals("ABC")); // false
+System.out.println("ABC".equals("ABC")); // true
 #+END_SRC

@@ -1,4 +1,4 @@
-public int length()
+public boolean equals(Object obj)
 
-var name = "animals";
-System.out.println(name.length()); // 7
+System.out.println("abc".equals("ABC")); // false
+System.out.println("ABC".equals("ABC")); // true
