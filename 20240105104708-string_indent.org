@@ -1,0 +1,30 @@
+:PROPERTIES:
+:ID:       d3643990-b8a2-417b-93e3-b5fcf5d6c20f
+:END:
+#+title: String.indent
+#+property: header-args :tangle code/ocp/4/string_indent.java
+
+* ~String.indent()~
+
+The ~indent~ method:
+
+- If you pass a =positive number= it *adds* the same number of blank spaces to the *beginning of each line*.
+
+- If you pass a =Negative number= it tries to *remove* that number of whitespace characters from the *beginning of the line*.
+
+- If you pass =zero=, the indentation will *not change*.
+
+** Signature
+
+#+BEGIN_SRC java
+public String indent(int numberSpaces)
+#+END_SRC
+
+*** Example
+
+#+BEGIN_SRC java
+String text = " My favourite movie is: deadpool";
+System.out.println(text); //  " My favourite movie is: deadpool"
+System.out.println(text.indent(-1)); // "My favourite movie is: deadpool"
+System.out.println(text.indent(1)); // "  My favourite movie is: deadpool"
+#+END_SRC
