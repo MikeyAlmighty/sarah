@@ -2,3 +2,27 @@
 :ID:       496a8303-fa30-41b3-96fb-4e7c1b677982
 :END:
 #+title: String.translateEscapes
+#+property: header-args :tangle code/ocp/4/string_translateEscapes.java
+
+* String.translateEscapes()
+
+When we escape characters, we use a single backslash.
+
+For example, ~\t~ is a *tab*.
+
+If we don’t want this behavior, we add another backslash to escape the backslash, so ~\\t~ is the literal string ~\t~.
+The ~translateEscapes()~ method takes these *literals* and turns them into the equivalent *escaped* character.
+
+** Signature
+
+#+BEGIN_SRC java
+public String translateEscapes()
+#+END_SRC
+
+*** Example
+
+#+BEGIN_SRC java
+var str = "1\\t2";
+System.out.println(str); // 1\t2
+System.out.println(str.translateEscapes()); // 1    2
+#+END_SRC
