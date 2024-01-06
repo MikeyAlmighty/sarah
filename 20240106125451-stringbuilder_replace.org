@@ -1,0 +1,44 @@
+:PROPERTIES:
+:ID:       5ec54700-2395-4cdc-9da2-ffbef6ec2c23
+:END:
+#+title: StringBuilder.replace
+#+property: header-args :tangle code/ocp/4/StringBuilder_replace.java
+
+* ~.replace()~
+
+** Signature
+
+#+BEGIN_SRC java
+public StringBuilder replace(int startIndex, int endIndex, String newString)
+#+END_SRC
+
+*** Example
+
+First, Java deletes the characters starting with index =3= and ending right before index =6=.
+This gives us ~pig dirty~.
+
+Then Java inserts the value ~"sty"~ in =that position=.
+
+In this example, the number of characters removed and inserted are the same. (However, there is no reason they have to be.)
+
+#+BEGIN_SRC java
+var builder = new StringBuilder("pigeon dirty");
+builder.replace(3, 6, "sty");
+System.out.println(builder); // pigsty dirty
+#+END_SRC
+
+
+**** _Exam Trick_
+
+The below code prints ~"pig"~.
+
+Remember, the method is first doing a *logical delete*.
+The ~replace()~ method allows specifying a *second* parameter that is *past the end* of the ~StringBuilder~.
+
+That means *only the first three characters remain*.
+
+#+BEGIN_SRC java
+var builder = new StringBuilder("pigeon dirty");
+builder.replace(3, 100, "");
+System.out.println(builder); // pig
+#+END_SRC

@@ -1,0 +1,25 @@
+:PROPERTIES:
+:ID:       0fd3d1f3-3241-4fd0-bcc4-71f7fa03d8cd
+:END:
+#+title: StringBuilder.insert
+#+property: header-args :tangle code/ocp/4/StringBuilder_insert.java
+
+* ~.insert()~
+
+Adds =characters= to the ~StringBuilder~ at the requested index and *returns a reference* to the current ~StringBuilder~.
+
+** Signature
+
+#+BEGIN_SRC java
+public StringBuilder insert(int offset, String str)
+#+END_SRC
+
+*** Example
+
+#+BEGIN_SRC java
+var sb = new StringBuilder("animals");
+sb.insert(7, "-"); // sb = animals-
+sb.insert(0, "-"); // sb = -animals-
+sb.insert(4, "-"); // sb = ­ani-mals-
+System.out.println(sb);
+#+END_SRC

@@ -2,3 +2,66 @@
 :ID:       ffe9bdf4-50cb-432a-85bc-5a32200380a4
 :END:
 #+title: StringBuilder
+#+property: header-args :tangle code/ocp/4/stringBuilder.java
+
+
+* ~StringBuilder~
+
+Unlike the [[id:afe76105-5f94-4dac-a929-e7a7dcdb5983][String class]], ~StringBuilder~ is *not* immutable.
+
+** Signature
+
+#+BEGIN_SRC java
+StringBuilder sb1 = new StringBuilder(); // empty sequence of characters
+StringBuilder sb2 = new StringBuilder("animal"); // animal
+StringBuilder sb3 = new StringBuilder(10); // Initial capacity
+#+END_SRC
+
+** Example
+
+#+BEGIN_SRC java
+StringBuilder alpha = new StringBuilder();
+for (char current = 'a'; current <= 'z'; current++) {
+    alpha.append(current);
+}
+System.out.println(alpha); // abcdefghijklmnopqrstuvwxyz
+#+END_SRC
+
+** Mutability and Chaining
+
+When we chained ~String~ method calls, the result was a *new* ~String~ with the answer.
+Chaining ~StringBuilder~ methods doesn’t work this way.
+
+Instead, the ~StringBuilder~ *changes its own state and returns a reference to itself*:
+
+#+BEGIN_SRC java
+StringBuilder sb = new StringBuilder("start"); // sb = start
+
+sb.append("+middle"); // sb = start+middle
+
+StringBuilder same = sb.append("+end"); // sb = start+middle+end
+#+END_SRC
+
+*** _Exam Trick_
+There’s only *one* ~StringBuilder~ object here.
+
+We know that because ~new StringBuilder()~ is called *only once*!
+
+#+BEGIN_SRC java
+StringBuilder a = new StringBuilder("abc");
+StringBuilder b = a.append("de");
+b = b.append("f").append("g");
+System.out.println("a = " + a); // abcdefg
+System.out.println("b = " + b); // abcdefg
+#+END_SRC
+
+On =line 6=, those *two* variables are still *referring to that same object*, which now has a value of ~"abcdefg"~.
+
+*** Methods
+
+**** [[id:6800ccf4-e0a1-41a9-8618-f952173bcb4d][StringBuilder.append]]
+**** [[id:0fd3d1f3-3241-4fd0-bcc4-71f7fa03d8cd][StringBuilder.insert]]
+**** [[id:9808d612-53f4-4b51-b926-1c065047711c][StringBuilder.delete]]
+**** [[id:5ec54700-2395-4cdc-9da2-ffbef6ec2c23][StringBuilder.replace]]
+**** [[id:02412a54-508e-4f57-85e8-6bdd48508a92][StringBuilder.reverse]]
+**** [[id:98a2b73f-e560-45c2-bcb1-40c6cd044777][StringBuilder.toString]]

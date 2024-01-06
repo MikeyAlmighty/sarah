@@ -1,0 +1,23 @@
+:PROPERTIES:
+:ID:       98a2b73f-e560-45c2-bcb1-40c6cd044777
+:END:
+#+title: StringBuilder.toString
+#+property: header-args :tangle code/ocp/4/StringBuilder_toString.java
+
+* ~.toString()~
+
+The ~Object~ class contains a ~toString()~ method that many classes provide custom implementations of.
+
+(The ~StringBuilder~ class is one of these.)
+
+Often ~StringBuilder~ is used internally for performance purposes, but the end result needs to be a ~String~.
+
+** Example
+
+For example, maybe it needs to be passed to another method that is expecting a ~String~.
+
+#+BEGIN_SRC java
+var sb = new StringBuilder("ABC");
+String s = sb.toString();
+System.out.println(s); // ABC
+#+END_SRC

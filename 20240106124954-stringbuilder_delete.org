@@ -1,0 +1,38 @@
+:PROPERTIES:
+:ID:       9808d612-53f4-4b51-b926-1c065047711c
+:END:
+#+title: StringBuilder.delete
+#+property: header-args :tangle code/ocp/4/StringBuilder_delete.java
+
+* ~.delete()~
+
+Removes =characters= from to the ~StringBuilder~ sequence and *returns a reference* to the current ~StringBuilder~.
+
+The ~deleteCharAt()~ method is convenient when you want to delete *only one* character.
+
+** Signature
+
+#+BEGIN_SRC java
+public StringBuilder delete(int startIndex, int endIndex)
+public StringBuilder deleteCharAt(int index)
+#+END_SRC
+
+*** Example
+
+We *delete* the characters *starting with* index =1= and ending right *before* index =3=.
+
+However, the *remaining value is only four characters long*, so it throws a ~StringIndexOutOfBoundsException~.
+
+#+BEGIN_SRC java
+var sb = new StringBuilder("abcdef");
+sb.delete(1, 3); // sb = adef
+sb.deleteCharAt(5); // Exception
+#+END_SRC
+
+If you specify a second parameter that is *past the end* of the ~StringBuilder~, Java will just assume you meant the *end*.
+That means this code is legal:
+
+#+BEGIN_SRC java
+var sb = new StringBuilder("abcdef");
+sb.delete(1, 100); // sb = a
+#+END_SRC
