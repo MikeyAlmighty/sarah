@@ -1,0 +1,59 @@
+:PROPERTIES:
+:ID:       c9f56ad5-e1fa-4c7a-86d4-7fdc6eea2dd5
+:END:
+#+title: Java Equality
+#+property: header-args :tangle code/ocp/4/equality.java
+
+* Java Equality
+
+** Comparing ~equals()~ and ~==~
+
+- Watch: [[youtube:AoUVdLWLFQw][YouTube]]
+  - Primitive Types compare by value
+  - Reference types compare by Object reference equality (Aka same position in memory)
+
+Consider the following code that uses ~==~ with objects:
+
+#+BEGIN_SRC java
+var one = new StringBuilder();
+var two = new StringBuilder();
+var three = one.append("a");
+System.out.println(one == two); // false
+System.out.println(one == three); // true
+#+END_SRC
+
+Since the example above isn’t dealing with [[id:46582863-7f97-448d-bbc7-f7da4c1e7574][primitives]], we know to look for whether the ~references~ are *referring* to the *same* object.
+
+The ~one~ and ~two~ variables are both completely *separate* [[id:ffe9bdf4-50cb-432a-85bc-5a32200380a4][StringBuilder]] objects, giving us two objects.
+
+Remember how ~StringBuilder~ methods like to return the *current reference for chaining*?
+
+This means ~one~ and ~three~ *both* point to the *same object*.
+
+You saw earlier that [[id:03ad6a6e-d3c6-46f6-b764-63c379c5d0b9][.equals()]] uses *logical equality* rather than *object reference equality* for ~String~ objects:
+
+#+BEGIN_SRC java
+var x = "Hello World";
+var z = " Hello World".trim();
+System.out.println(x.equals(z)); // true
+#+END_SRC
+
+This works because the authors of the ~String~ class implemented a standard method called ~equals()~ to check the values inside the ~String~ rather than the *string reference* itself.
+
+If a class doesn’t have an ~equals()~ method, Java determines *whether the references point to the same object*, which is exactly what ~==~ does.
+
+In case you are wondering, the authors of [[id:ffe9bdf4-50cb-432a-85bc-5a32200380a4][StringBuilder]] did *not implement* ~equals()~.
+
+If you call ~equals()~ on two [[id:ffe9bdf4-50cb-432a-85bc-5a32200380a4][StringBuilder]] instances, it will check *reference equality*.
+You can call ~toString()~ on [[id:ffe9bdf4-50cb-432a-85bc-5a32200380a4][StringBuilder]] to get a ~String~ to check for equality instead.
+
+*** _Exam Trick_
+
+#+BEGIN_SRC java
+var name = "a"; // String
+var builder = new StringBuilder("a"); // StringBuilder
+System.out.println(name == builder); // DOES NOT COMPILE
+#+END_SRC
+
+Remember that ~==~ is checking for *object reference equality*.
+The compiler is smart enough to know that two references *can’t* possibly point to the same object when they are *completely different types*.

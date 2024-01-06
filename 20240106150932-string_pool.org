@@ -1,0 +1,68 @@
+:PROPERTIES:
+:ID:       850caa0e-d255-4199-a78a-90a02a8621ca
+:ROAM_ALIASES: "String Pool" "Intern Pool"
+:END:
+#+title: String Pool
+#+property: header-args :tangle code/ocp/4/string_pool.java
+
+* String Pool (aka Intern Pool)
+
+[[id:afe76105-5f94-4dac-a929-e7a7dcdb5983][Strings]] use a lot of memory
+
+In some production applications, they can use a large amount of memory in the entire program.
+
+Java realizes that *many strings repeat in the program* and solves this issue by reusing common ones.
+
+The ~String Pool~, also known as the ~Intern Pool~, is a location in the (=JVM=) that collects all these [[id:afe76105-5f94-4dac-a929-e7a7dcdb5983][strings]].
+
+The ~String Pool~ contains =literal values= and =constants= that appear in your program.
+
+For example, ~"name"~ is a =literal= and therefore goes into the string pool.
+The ~myObject.toString()~ method returns a string~ but *not* a =literal=, so it does *not* go into the string pool.
+
+#+BEGIN_SRC java
+var x = "Hello World";
+var y = "Hello World";
+System.out.println(x == y); // true
+#+END_SRC
+
+Remember that a String is *immutable* and literals are =pooled=.
+
+The =JVM= created only one =literal= in memory.
+
+The ~x~ and ~y~ variables *both* point to the *same location in memory*; therefore, the statement outputs =true=.
+
+** [[id:6d4a536d-4ef5-4e76-9556-e39ddc4543ca][Intern Method]]
+
+** _Exam Trick_
+
+#+BEGIN_SRC java
+var x = "Hello World";
+var z = " Hello World".trim();
+System.out.println(x == z); // false
+#+END_SRC
+
+In the above example, we don’t have two of the same [[id:afe76105-5f94-4dac-a929-e7a7dcdb5983][String]] literal.
+
+Although ~x~ and ~z~ happen to evaluate to the same string, *one is computed* at ~runtime~.
+
+Since it *isn’t* the same at ~compile­time~, a new [[id:afe76105-5f94-4dac-a929-e7a7dcdb5983][String]] object is created.
+
+
+#+BEGIN_SRC java
+var singleString = "hello world";
+var concat = "hello ";
+concat += "world";
+System.out.println(singleString == concat); // false
+#+END_SRC
+
+(For the below example) The *former* says to use the ~String Pool~ normally.
+The second says, “No, JVM, I really don’t want you to use the string pool. Please create a new object for me even though it is less efficient.”:
+
+#+BEGIN_SRC java
+var x = "Hello World";
+var y = new String("Hello World"); // explicitly telling the JVM to create a new Object in memory
+System.out.println(x == y); // false
+#+END_SRC
+
+For the opposite you can call the [[id:6d4a536d-4ef5-4e76-9556-e39ddc4543ca][Intern Method]]

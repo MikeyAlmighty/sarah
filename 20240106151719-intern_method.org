@@ -1,0 +1,31 @@
+:PROPERTIES:
+:ID:       6d4a536d-4ef5-4e76-9556-e39ddc4543ca
+:END:
+#+title: Intern Method
+#+property: header-args :tangle code/ocp/4/intern_method.java
+
+* Intern Method
+
+The ~intern()~ method will use an object in the [[id:850caa0e-d255-4199-a78a-90a02a8621ca][String Pool]] if one is present.
+
+** Signature
+
+#+BEGIN_SRC java
+public String intern();
+#+END_SRC
+
+*** Example
+First we tell Java to use the [[id:850caa0e-d255-4199-a78a-90a02a8621ca][String Pool]] normally for ~name~.
+Then, for ~name2~, we tell Java to create a *new* object using the constructor but to *intern* it and use the [[id:850caa0e-d255-4199-a78a-90a02a8621ca][String Pool]] anyway.
+
+Since both variables point to the *same reference* in the [[id:850caa0e-d255-4199-a78a-90a02a8621ca][String Pool]], we can use the ~==~ operator.
+
+#+BEGIN_SRC java
+var name = "Hello World";
+var name2 = new String("Hello World").intern();
+System.out.println(name == name2); // true
+#+END_SRC
+
+**** _Exam Trick_
+Remember to never use ~intern()~ or ~==~ to compare *String objects* in your code.
+The only time you should have to deal with these is on the exam.
