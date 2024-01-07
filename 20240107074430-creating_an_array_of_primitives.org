@@ -1,0 +1,61 @@
+:PROPERTIES:
+:ID:       2224ce47-ddac-4f11-965b-9dc6c649ca5a
+:END:
+#+title: Creating an Array of Primitives
+#+property: header-args :tangle code/ocp/4/primitive_arrays.java
+
+* Creating an Array of Primitives
+
+#+BEGIN_SRC java
+// int - Type of Array
+// 3 - size of array
+int[] numbers = new int[3];
+#+END_SRC
+
+When you use this form to instantiate an array, all elements are set to the *default value* for that ~type~.
+
+#+BEGIN_SRC java
+int[] moreNumbers = new int[] {42, 55, 99};
+#+END_SRC
+
+Java recognizes that this expression is redundant.
+(Since you are specifying the type of the array on the =LHS=, Java already knows the ~type~.
+And since you are specifying the initial values, it already knows the ~size~.
+
+** Anonymous Array
+
+As a shortcut, Java lets you write this:
+
+#+BEGIN_SRC java
+int[] moreNumbers = {42, 55, 99};
+#+END_SRC
+
+This approach is called an =anonymous array=, it is anonymous because you don’t specify the ~type~ and ~size~.
+
+All valid:
+#+BEGIN_SRC java
+int[] numAnimals;
+int [] numAnimals2;
+int []numAnimals3;
+int numAnimals4[];
+int numAnimals5 [];
+#+END_SRC
+
+** Multiple Array Declaration
+
+*Two* ~int~ =Arrays=
+#+BEGIN_SRC java
+int[] ids, types;
+#+END_SRC
+
+*** _Exam Trick_
+
+*One* ~int~ array and one type ~int~
+#+BEGIN_SRC java
+int ids[], types;
+#+END_SRC
+
+Java sees this line of code and thinks something like this:
+
+“They want two variables of type int. The first one is called ~ids[]~. This one is an ~int[]~ called ~ids~.
+The second one is just called ~types~. No brackets, so it is a *regular integer*.”

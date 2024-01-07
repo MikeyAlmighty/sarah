@@ -1,0 +1,33 @@
+:PROPERTIES:
+:ID:       ad9ac5fa-5b6b-470d-b3b6-79a86e6d3380
+:END:
+#+title: Arrays
+#+filetags: :OCP:
+#+property: header-args :tangle code/ocp/4/arrays.java
+
+* Arrays
+
+An array is an *area of memory* on the [[id:dbcc90ea-bf9d-4bf5-9872-36b5794b88f0][Heap]] with space for a designated number of elements.
+
+A [[id:afe76105-5f94-4dac-a929-e7a7dcdb5983][String]] is implemented as an ~array~ with some methods that you might want to use when dealing with characters specifically.
+
+A [[id:ffe9bdf4-50cb-432a-85bc-5a32200380a4][StringBuilder]] is implemented as an ~array~ where the array object is *replaced with a new, bigger array object* when it runs out of space to store all the characters.
+
+If we didn’t want to use a [[id:afe76105-5f94-4dac-a929-e7a7dcdb5983][string]] for some reason, we could use an array of char [[id:46582863-7f97-448d-bbc7-f7da4c1e7574][primitives]] directly:
+
+#+BEGIN_SRC java
+char[] letters;
+#+END_SRC
+(This wouldn’t be very convenient because we’d lose all the =special= properties String gives us)
+
+** [[id:2224ce47-ddac-4f11-965b-9dc6c649ca5a][Creating an Array of Primitives]]
+** [[id:939b7ef7-fdb3-4e99-b858-4ede1a064ade][Creating an Array of Reference Variables]]
+
+*** toString
+Java provides a method that prints an array nicely - ~Arrays.toString(X)~:
+
+#+BEGIN_SRC java
+String[] names = { "DeadPool", "BatMan", "AquaMan" };
+System.out.println(names.toString()); // [Ljava.lang.String;@3fee733d
+System.out.println(Arrays.toString(names)); // [DeadPool, BatMan, AquaMan]
+#+END_SRC
