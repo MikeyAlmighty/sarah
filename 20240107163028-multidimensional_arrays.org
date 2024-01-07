@@ -1,0 +1,47 @@
+:PROPERTIES:
+:ID:       b9c11422-0e4c-468e-8fae-e13791b864f3
+:END:
+#+title: Multidimensional Arrays
+#+property: header-args :tangle code/ocp/4/multidimensional_arrays.java
+
+* Multidimensional Arrays
+
+You can locate them with the ~type~ or ~variable~ name in the declaration, just as before:
+
+#+BEGIN_SRC java
+int[][] vars1; // 2D array
+int vars2 [][]; // 2D array
+int[] vars3[]; // 2D array
+int[] vars4 [], space [][]; // a 2D AND a 3D array
+#+END_SRC
+
+You can specify the *size* of your multidimensional [[id:ad9ac5fa-5b6b-470d-b3b6-79a86e6d3380][arrays]] in the declaration if you like:
+
+#+BEGIN_SRC java
+String [][] rectangle = new String[3][2];
+#+END_SRC
+
+The result of this statement is an [[id:ad9ac5fa-5b6b-470d-b3b6-79a86e6d3380][array]] rectangle with three elements, each of which refers to an array of two elements.
+
+#+ATTR_ORG: :width 700
+[[./assets/multidimensional_array_rectangle.png]]
+
+** Looping
+
+#+BEGIN_SRC java
+var twoD = new int[3][2];
+
+for(int i = 0; i < twoD.length; i++) {
+    for(int j = 0; j < twoD[i].length; j++)
+        System.out.print(twoD[i][j] + " "); // print element
+    System.out.println(); // time for a new row
+}
+#+END_SRC
+
+#+BEGIN_SRC java
+for(int[] inner : twoD) {
+    for(int num : inner)
+        System.out.print(num + " ");
+    System.out.println();
+}
+#+END_SRC
