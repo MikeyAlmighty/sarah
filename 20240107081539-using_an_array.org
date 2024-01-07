@@ -1,0 +1,33 @@
+:PROPERTIES:
+:ID:       550094a3-6212-4f32-a473-9e331afbbb53
+:END:
+#+title: Using an array
+#+property: header-args :tangle code/ocp/4/array_usage.java
+
+* Using an array
+
+#+BEGIN_SRC java
+String[] mammals = {"monkey", "chimp", "donkey"};
+System.out.println(mammals.length); // 3
+System.out.println(mammals[0]); // monkey
+System.out.println(mammals[1]); // chimp
+System.out.println(mammals[2]); // donkey
+#+END_SRC
+
+** _Exam Trick_
+
+Note that there are no parentheses after ~length~ since it is *not a method*
+
+#+BEGIN_SRC java
+String[] mammals = {"monkey", "chimp", "donkey"};
+System.out.println(mammals.length()); // DOES NOT COMPILE
+#+END_SRC
+
+
+(below) Even though all six elements of the array are =null=, there are still six of them.
+The length attribute does not consider what is in the array; it only considers how many slots have been *allocated*.
+
+#+BEGIN_SRC java
+var birds = new String[6];
+System.out.println(birds.length); // 6
+#+END_SRC
