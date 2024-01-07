@@ -1,0 +1,28 @@
+:PROPERTIES:
+:ID:       4670277c-8ea0-4e70-9815-d795bedea99b
+:END:
+#+title: Math.round
+#+property: header-args :tangle code/ocp/4/math_round.java
+
+* .round()
+
+The ~round()~ method gets rid of the decimal portion of the value, choosing the next higher number if appropriate.
+If the fractional part is =.5= or higher, we *round up*.
+
+** Signature
+
+#+BEGIN_SRC java
+public static long round(double num)
+public static int round(float num)
+#+END_SRC
+
+*** Example
+
+There are two overloaded methods to ensure that there is enough room to store a rounded ~double~ if needed.
+The following shows how to use this method:
+
+#+BEGIN_SRC java
+long low = Math.round(123.45); // 123
+long high = Math.round(123.50); // 124
+int fromFloat = Math.round(123.45f); // 123
+#+END_SRC
