@@ -1,12 +1,3 @@
-:PROPERTIES:
-:ID:       1a328fa4-9b9f-4856-88f3-fd490bce565b
-:END:
-#+title: Array Sorting
-#+property: header-args :tangle code/ocp/4/array_sorting.java
-
-* Array Sorting
-
-#+BEGIN_SRC java
 import java.util.*; // import whole package including Arrays
 import java.util.Arrays; // import just Arrays
 
@@ -22,5 +13,3 @@ Arrays.sort(names);
 
 for (String name: names)
     System.out.println(name);
-
-#+END_SRC

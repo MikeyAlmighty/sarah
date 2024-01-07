@@ -1,0 +1,32 @@
+:PROPERTIES:
+:ID:       77196205-79e1-4284-bdec-cc31786e5729
+:END:
+#+title: Array Searching
+#+property: header-args :tangle code/ocp/4/array_searching.java
+
+* Array Searching
+
+Java also provides a convenient way to *search*, but only if the array is already [[id:1a328fa4-9b9f-4856-88f3-fd490bce565b][sorted]].
+
+#+ATTR_ORG: :width 700
+[[./assets/binary_search_rules.png]]
+
+
+#+BEGIN_SRC java
+int[] numbers = { 2, 4, 6, 8 };
+
+System.out.println(Arrays.binarySearch(numbers, 2)); // 0
+System.out.println(Arrays.binarySearch(numbers, 4)); // 1
+System.out.println(Arrays.binarySearch(numbers, 1)); // -1
+System.out.println(Arrays.binarySearch(numbers, 3)); // -2
+System.out.println(Arrays.binarySearch(numbers, 9)); // -5
+#+END_SRC
+
+Although ~1~ isn’t in the list, the search can determine that it should be inserted at element ~0~ to *preserve the sorted order*.
+Since ~0~ already means something for array indexes, Java needs to *subtract 1* to give us the answer of ~–1~.
+
+Although ~3~ isn’t in the list, it would need to be inserted at element ~1~ to preserve the sorted order.
+
+We *negate* and *subtract 1* for consistency, getting ~–1 –1~, also known as ~–2~.
+
+Finally, ~9~ should be inserted at index ~4~. We again negate and subtract 1, getting ~–4 –1~, also known as ~–5~.
