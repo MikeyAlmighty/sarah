@@ -1,0 +1,39 @@
+:PROPERTIES:
+:ID:       8c94e8eb-ce1e-4af2-b8c8-86c538456d03
+:END:
+#+title: Date­Time API
+#+property: header-args :tangle code/ocp/4/date_time.java
+
+* Date­Time API
+To use it, add this import to your program:
+
+#+BEGIN_SRC java
+import java.time.*; // import time classes
+#+END_SRC
+
+
+** Types
+
+*** 1. [[id:82317bb4-49e8-4783-aaac-d4d1ae819447][LocalDate]]
+*** 2. [[id:dd1e2a29-2a02-4323-b043-9def30a388e5][LocalTime]]
+*** 3. [[id:538ad23c-716d-409d-9846-88be3830d32a][LocalDateTime]]
+*** 4. [[id:d606a825-fdcb-4746-95c0-ff693073d4ac][ZonedDateTime]]
+
+*** _Exam Trick_
+
+Also, we did not use a [[id:73a0f36b-e440-486a-bd88-6ca577be3351][Constructors]] in any of the examples.
+The ~Date~ and ~Time~ classes have *private constructors* along with *static methods* that return *instances*.
+
+#+BEGIN_SRC java
+var d = new LocalDate(); // DOES NOT COMPILE
+#+END_SRC
+
+*Don’t* fall for this. You are *not* allowed to construct a ~date~ or ~time~ object directly.
+
+*** _Exam Trick_
+
+Another trick is what happens when you pass *invalid* numbers to of(), for example:
+
+#+BEGIN_SRC java
+var d = LocalDate.of(2022, Month.JANUARY, 32) // DateTimeException
+#+END_SRC

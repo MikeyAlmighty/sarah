@@ -1,0 +1,41 @@
+:PROPERTIES:
+:ID:       d606a825-fdcb-4746-95c0-ff693073d4ac
+:END:
+#+title: ZonedDateTime
+#+property: header-args :tangle code/ocp/4/zoned_date_time.java
+
+* ZonedDateTime
+
+Combine [[id:e7a68c33-2456-4108-b231-8ba2da041987][Dates]], [[id:a42af966-fad4-4c63-9669-14d1911dd4c0][Times]] and a  =TimeZone= into one object:
+
+*** Signature
+
+#+BEGIN_SRC java
+public static ZonedDateTime of(int year, int month, int dayOfMonth, int hour, int minute, int second, int nanos, ZoneId zone)
+public static ZonedDateTime of(LocalDate date, LocalTime time, ZoneId zone)
+public static ZonedDateTime of(LocalDateTime dateTime, ZoneId zone)
+#+END_SRC
+
+**** Example
+
+We start by getting the =TimeZone= object.
+Then we use one of three approaches to create the ~ZonedDateTime~.
+The first passes all of the fields individually. We don’t recommend this approach­there are too many numbers, and it is hard to read.
+
+A better approach is to pass a [[id:82317bb4-49e8-4783-aaac-d4d1ae819447][LocalDate]] object and a [[id:dd1e2a29-2a02-4323-b043-9def30a388e5][LocalTime]] object, or a [[id:538ad23c-716d-409d-9846-88be3830d32a][LocalDateTime]] object:
+#+BEGIN_SRC java
+var zone = ZoneId.of("US/Eastern");
+var date1 = LocalDate.of(2022, Month.JANUARY, 20);
+var time1 = LocalTime.of(6, 15); // hour and minute
+var dateTime1 = LocalDateTime.of(2022, Month.JANUARY, 20, 6, 15, 30);
+
+var zoned1 = ZonedDateTime.of(2022, 1, 20, 6, 15, 30, 200, zone);
+var zoned2 = ZonedDateTime.of(date1, time1, zone);
+var zoned3 = ZonedDateTime.of(dateTime1, zone);
+
+System.out.println(ZonedDateTime.now()); // 2024-01-09T07:39:43.899106228+02:00[Africa/Johannesburg]
+#+END_SRC
+
+***** _Exam Trick_
+
+Notice that there isn’t an option to pass in the ~Month~ enum.
