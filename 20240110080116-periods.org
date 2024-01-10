@@ -1,0 +1,109 @@
+:PROPERTIES:
+:ID:       ac780a7c-43ae-4d1c-99b9-e14006e79591
+:END:
+#+title: Periods
+#+property: header-args :tangle code/ocp/4/periods.java
+
+* Periods
+
+A ZooKeeper has decided to switch out the animal's toys every three months
+
+#+BEGIN_SRC java
+public static void main(String[] args) {
+    var start = LocalDate.of(2022, Month.JANUARY, 1);
+    var end = LocalDate.of(2022, Month.MARCH, 30);
+    performAnimalEnrichment(start, end);
+}
+private static void performAnimalEnrichment(LocalDate start, LocalDate end) {
+    var upTo = start;
+    while (upTo.isBefore(end)) { // check if still before end
+        System.out.println("give new toy: " + upTo);
+        upTo = upTo.plusMonths(1); // add a month
+    }
+}
+#+END_SRC
+
+** Using Periods
+
+#+BEGIN_SRC java
+public static void main(String[] args) {
+    var start = LocalDate.of(2022, Month.JANUARY, 1);
+    var end = LocalDate.of(2022, Month.MARCH, 30);
+    var monthly = Period.ofMonths(1); // create a period
+    performAnimalEnrichment(start, end, monthly);
+}
+
+private static void performAnimalEnrichment(LocalDate start, LocalDate end, Period period) { // uses the generic period
+    var upTo = start;
+    while (upTo.isBefore(end)) {
+        System.out.println("give new toy: " + upTo);
+        upTo = upTo.plus(period); // adds the period
+    }
+}
+#+END_SRC
+
+The ~method~ can add an arbitrary period of time that is passed in.
+
+This allows us to *reuse* the same method for *different periods* of time as our zookeeper changes their mind.
+
+There are =five= ways to create a ~Period~ class:
+
+#+BEGIN_SRC java
+var annually = Period.ofYears(1);  // every 1 year
+var quarterly = Period.ofMonths(3); // every 3 months
+var everyThreeWeeks = Period.ofWeeks(3); // every 3 weeks
+var everyOtherDay = Period.ofDays(2); // every 2 days
+var everyYearAndAWeek = Period.of(1, 0, 7); // every year and 7 days
+#+END_SRC
+
+*** _Exam Trick_
+
+There’s one catch. You *cannot* chain methods when creating a Period.
+Only the *last method* is used because the ~Period.of~ methods are =static= methods.
+
+**** Example
+
+#+BEGIN_SRC java
+var wrong = Period.ofYears(1).ofWeeks(1); // every week (Instead of everyYearAndWeek)
+#+END_SRC
+
+This tricky code is really like writing the following:
+
+#+BEGIN_SRC java
+var wrong = Period.ofYears(1);
+wrong = Period.ofWeeks(1);
+#+END_SRC
+
+That’s why the ~of()~ method allows you to pass in the number of ~years~, ~months~, and ~days~.
+They are all included in the *same period*. (You will get a compiler warning about this.)
+
+*** Format
+
+#+BEGIN_SRC java
+System.out.println(Period.of(1,2,3)); // P1Y2M3D
+System.out.println(Period.ofMonths(3)); // P3M
+#+END_SRC
+
+As you can see, the ~P~ always starts out the ~String~ to show it is a *period measure*.
+Then come the *number* of ~years~, *number* of ~months~, and *number* of ~days~.
+
+If any of these are zero, they are omitted.
+
+*** Example
+
+#+BEGIN_SRC java
+var date = LocalDate.of(2022, 1, 20);
+var dateTime = LocalDateTime.of(date, time);
+var period = Period.ofMonths(1);
+
+System.out.println(date.plus(period)); // 2022–02–20
+System.out.println(dateTime.plus(period)); // 2022–02–20T06:15
+#+END_SRC
+
+#+BEGIN_SRC java
+var time = LocalTime.of(6, 15);
+var period = Period.ofMonths(1);
+
+System.out.println(time.plus(period)); // Exception
+#+END_SRC
+This won’t work. Java throws an =UnsupportedTemporalTypeException= and complains that we attempted to use an Unsupported unit: ~Months~.

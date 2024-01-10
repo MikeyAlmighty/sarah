@@ -1,0 +1,43 @@
+:PROPERTIES:
+:ID:       bdd64d03-3bb6-4aa4-8407-83e2829e72f6
+:END:
+#+title: Adding To Dates
+#+property: header-args :tangle code/ocp/4/adding_to_dates.java
+
+* Adding To Dates
+
+The ~Date~ and ~Time~ classes are immutable.
+
+Remember to assign the results of these methods to a =reference variable= so they are not lost.
+
+** Example
+
+#+BEGIN_SRC java
+var date = LocalDate.of(2022, Month.JANUARY, 20);
+
+System.out.println(date); // 2022–01–20
+
+date = date.plusDays(2);
+System.out.println(date); // 2022–01–22
+
+date = date.plusWeeks(1);
+System.out.println(date); // 2022–01–29
+
+date = date.plusMonths(1);
+System.out.println(date); // 2022–02–28
+
+date = date.plusYears(5);
+System.out.println(date); // 2027–02–28
+#+END_SRC
+
+*** _Exam Trick_
+
+#+BEGIN_SRC java
+var date = LocalDate.of(2024, Month.JANUARY, 20);
+date = date.plusMinutes(1); // DOES NOT COMPILE
+#+END_SRC
+
+[[id:82317bb4-49e8-4783-aaac-d4d1ae819447][LocalDate]] does *not* contain ~Time~.
+This means that you *cannot* add =minutes= (~Time~) to it.
+
+(This can be tricky in a chained sequence of ~addition/subtraction~ operations)

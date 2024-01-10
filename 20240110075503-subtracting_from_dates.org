@@ -1,0 +1,50 @@
+:PROPERTIES:
+:ID:       ff2c44a3-d3bf-4415-92d0-5f01243bbc42
+:END:
+#+title: Subtracting From Dates
+#+property: header-args :tangle code/ocp/4/subtracting_from_dates.java
+
+* Subtracting From Dates
+
+The ~Date~ and ~Time~ classes are immutable.
+
+Remember to assign the results of these methods to a =reference variable= so they are not lost.
+
+#+BEGIN_SRC java
+var date = LocalDate.of(2024, Month.JANUARY, 20);
+var time = LocalTime.of(5, 15);
+var dateTime = LocalDateTime.of(date, time);
+
+System.out.println(dateTime); // 2024–01–20T05:15
+
+dateTime = dateTime.minusDays(1);
+System.out.println(dateTime); // 2024–01–19T05:15
+
+dateTime = dateTime.minusHours(10);
+System.out.println(dateTime); // 2024–01–18T19:15
+
+dateTime = dateTime.minusSeconds(30);
+System.out.println(dateTime); // 2024–01–18T19:14:30
+#+END_SRC
+
+** Method Chaining
+#+BEGIN_SRC java
+var date = LocalDate.of(2024, Month.JANUARY, 20);
+var time = LocalTime.of(5, 15);
+
+var dateTime = LocalDateTime.of(date, time)
+                  .minusDays(1).minusHours(10).minusSeconds(30);
+#+END_SRC
+
+*** _Exam Trick_
+
+#+BEGIN_SRC java
+var date = LocalDate.of(2024, Month.JANUARY, 20);
+date = date.miusMinutes(1); // DOES NOT COMPILE
+#+END_SRC
+
+[[id:82317bb4-49e8-4783-aaac-d4d1ae819447][LocalDate]] does *not* contain ~Time~.
+
+This means that you *cannot* add =subtract= (~Time~) to it.
+
+(This can be tricky in a chained sequence of ~addition/subtraction~ operations)
