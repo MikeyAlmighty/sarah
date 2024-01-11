@@ -1,0 +1,33 @@
+:PROPERTIES:
+:ID:       0b8acbe2-0b2b-4829-8aab-804dde49cabf
+:END:
+#+title: Method Name
+#+property: header-args :tangle code/ocp/5/method_names.java
+
+* Method Name
+
+~Method names~ follow the *same* rules we practiced with variable names in [[id:34f737cd-7010-42aa-9f37-5136eb75a44e][1. Building blocks]].
+
+An identifier may only contain:
+- letters
+- numbers
+- currency symbols
+- _ (underscore)
+
+Also, the *first* character is *not* allowed to be a ~number~, and [[id:5f2b572a-ec31-49de-ba13-95b0c5edb4c0][reserved words]] are *not allowed*.
+
+Finally, the single underscore character is *not allowed*.
+(By convention, methods begin with a ~lowercase letter~, but they are not required to.)
+
+** Example
+
+#+BEGIN_SRC java
+public class BeachTrip {
+    public void jog1() {}
+    public void 2jog() {} // DOES NOT COMPILE
+    public jog3 void() {} // DOES NOT COMPILE
+    public void Jog_$() {}
+    public _() {} // DOES NOT COMPILE
+    public void() {} // DOES NOT COMPILE
+}
+#+END_SRC

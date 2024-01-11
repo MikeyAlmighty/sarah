@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       5e81a1a6-e8f3-40c5-923c-58124deef377
+:END:
+#+title: Return Type
+#+filetags: :OCP:
+
+* Return Type
+
+It must appear after any [[id:0d43fdee-5463-4f66-8b65-ae9a7b4b74e2][Access Modifiers]] or [[id:78bf41e5-259a-4c97-8df7-1685989e3d8c][Optional Specifiers]] and *before* the ~method name~.
+
+The ~return type~ might be:
+- An actual Java type such as ~String~ or ~int~.
+- ~void~ keyword.
+
+Methods with a ~return type~ other than ~void~ are required to have a *return* statement inside the [[id:fff07be1-7a8f-4e01-8012-89aaad44c01a][Method Body]].
+
+- This ~return~ statement must include the ~primitive~ or ~object~ to be returned.
+- Methods that have a return type of ~void~ are permitted to have a ~return~ statement with *no value returned* or *omit* the return statement entirely.
+
+*** Example *void* ~return type~:
+
+#+BEGIN_SRC java
+public void swim(int distance) {
+    if(distance <= 0) {
+        // Exit early, nothing to do!
+        return;
+    }
+System.out.print("Fish is swimming " + distance + " meters");
+}
+#+END_SRC
+
+
+** _Exam Trick_
+
+Remember that a method must have a return type. If no value is returned, the ~void~ keyword must be used.
+You *cannot omit* the ~return type~.

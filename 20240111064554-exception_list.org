@@ -1,0 +1,25 @@
+:PROPERTIES:
+:ID:       cbf64210-6a29-471a-a788-43b2c01ea3e0
+:END:
+#+title: Exception List
+#+property: header-args :tangle code/ocp/5/exception_list.java
+
+* Exception List
+In Java, code can *indicate* that something went wrong by *throwing* an ~exception~
+
+While the ~list of exceptions~ is *optional*, it *may* be required by the compiler, depending on what appears inside the [[id:fff07be1-7a8f-4e01-8012-89aaad44c01a][Method Body]].
+
+** Example
+
+#+BEGIN_SRC java
+public void zeroExceptions() {}
+public void oneException() throws IllegalArgumentException {}
+#+END_SRC
+
+** Multiple Exceptions
+
+You can *list* as many types of ~exceptions~ as you want in this clause, separated by =commas=
+
+#+BEGIN_SRC java
+public void twoExceptions() throws IllegalArgumentException, InterruptedException {}
+#+END_SRC
