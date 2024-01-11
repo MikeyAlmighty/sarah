@@ -42,7 +42,7 @@ private static void performAnimalEnrichment(LocalDate start, LocalDate end, Peri
 }
 #+END_SRC
 
-The ~method~ can add an arbitrary period of time that is passed in.
+The ~method~ can add an arbitrary period of =time= that is passed in.
 
 This allows us to *reuse* the same method for *different periods* of time as our zookeeper changes their mind.
 
@@ -58,7 +58,8 @@ var everyYearAndAWeek = Period.of(1, 0, 7); // every year and 7 days
 
 *** _Exam Trick_
 
-There’s one catch. You *cannot* chain methods when creating a Period.
+There’s one catch.
+You *cannot* chain methods when creating a Period.
 Only the *last method* is used because the ~Period.of~ methods are =static= methods.
 
 **** Example
