@@ -1,0 +1,41 @@
+:PROPERTIES:
+:ID:       c3b63bdb-4626-410b-aaa5-ff623855e62d
+:END:
+#+title: Instants
+#+property: header-args :tangle code/ocp/4/instants.java
+
+* Instants
+
+The ~Instant~ class represents a *specific moment in time in the GMT time zone*.
+
+#+BEGIN_SRC java
+var now = Instant.now();
+// do something time consuming
+var later = Instant.now();
+var duration = Duration.between(now, later);
+System.out.println(duration.toMillis()); // Returns number milliseconds
+#+END_SRC
+
+
+#+BEGIN_SRC java
+var date = LocalDate.of(2022, 5, 25);
+var time = LocalTime.of(11, 55, 00);
+var zone = ZoneId.of("US/Eastern");
+var zonedDateTime = ZonedDateTime.of(date, time, zone);
+
+var instant = zonedDateTime.toInstant(); // 2022–05–25T15:55:00Z
+
+System.out.println(zonedDateTime); // 2022–05–25T11:55–04:00[US/Eastern]
+System.out.println(instant); // 202–05–25T15:55:00Z
+#+END_SRC
+
+The =last= two lines represent the same moment in time.
+The [[id:d606a825-fdcb-4746-95c0-ff693073d4ac][ZonedDateTime]] includes a *time zone*.
+
+The ~Instant~ gets rid of the time zone and turns it into an Instant of time in =GMT=.
+
+** _Exam Trick_
+
+You *cannot* convert a [[id:538ad23c-716d-409d-9846-88be3830d32a][LocalDateTime]] to an ~Instant~.
+Remember that an ~Instant~ is a *point in time*.
+A [[id:538ad23c-716d-409d-9846-88be3830d32a][LocalDateTime]] does *not* contain a =time zone=, and it is therefore not universally recognized around the world as the same moment in time.
