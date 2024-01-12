@@ -1,0 +1,62 @@
+:PROPERTIES:
+:ID:       0d8e8caf-96d3-4fd2-b0ae-460b7b93d6ae
+:END:
+#+title: Package Access Modifier
+#+property: header-args :tangle code/ocp/5/package_access_modifier.java
+
+* Package Access Modifier
+
+With ~package access~, the method can be called only from a =class= in the *same package*.
+This one is tricky because there is *no* keyword.
+
+You simply *omit* the =access modifier=.
+
+When there is no access modifier, Java *assumes package access*.
+
+~Package access~ is sometimes referred to as =package-private= or =default access=.
+
+** Example
+
+#+BEGIN_SRC java
+package pond.duck;
+
+public class MotherDuck {
+    String noise = "quack";
+    void quack() {
+    System.out.print(noise); // package access is ok
+    }
+}
+
+package pond.duck;
+
+public class GoodDuckling {
+    public void makeNoise() {
+        var duck = new MotherDuck();
+        duck.quack(); // package access is ok
+        System.out.print(duck.noise); // package access is ok
+    }
+}
+#+END_SRC
+
+Notice that all the =classes= covered so far are in the *same package*, ~pond.duck~.
+This allows ~package access~ to work.
+
+** Negative Example
+
+#+BEGIN_SRC java
+package pond.swan;
+
+// import another package
+import pond.duck.MotherDuck;
+
+public class BadCygnet {
+    public void makeNoise() {
+        var duck = new MotherDuck();
+        duck.quack(); // DOES NOT COMPILE
+        System.out.print(duck.noise); // DOES NOT COMPILE
+    }
+}
+#+END_SRC
+~BadCygnet~ is in the ~pond.swan~ package, and the code *doesn’t compile*.
+
+Remember that when there is *no* access modifier on a member, only =classes= in the *same package* can *access* the member.

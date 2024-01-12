@@ -1,0 +1,38 @@
+:PROPERTIES:
+:ID:       0ea2ebdc-e6b9-405e-be35-ce90462279fe
+:END:
+#+title: Private Access Modifier
+#+property: header-args :tangle code/ocp/5/private_access_modifier.java
+
+* Private Access Modifier
+
+The ~private~ modifier means the method can be called only from *within the same class*.
+
+Only code in the *same class* can =call= ~private methods~ or =access= ~private fields~.
+
+** Example
+#+BEGIN_SRC java
+package pond.duck;
+
+public class FatherDuck {
+    private String noise = "quack";
+    private void quack() {
+        System.out.print(noise); // private access is ok
+    }
+}
+
+package pond.duck;
+
+public class BadDuckling {
+    public void makeNoise() {
+        var duck = new FatherDuck();
+        duck.quack(); // DOES NOT COMPILE
+        System.out.print(duck.noise); // DOES NOT COMPILE
+    }
+}
+#+END_SRC
+
+** _Exam Trick_
+
+In the previous example, ~FatherDuck~ and ~BadDuckling~ are in *separate files*, but what if they were declared in the same file?
+Even then, the code would *still not compile* as Java prevents access *outside* the =class=.
