@@ -3,14 +3,30 @@
 :END:
 #+title: Optional Specifiers
 #+filetags: :OCP:
+#+property: header-args :tangle code/ocp/5/optional_method_specifiers.java
 
 * Optional Specifiers
 
 Unlike with [[id:0d43fdee-5463-4f66-8b65-ae9a7b4b74e2][Access Modifiers]], you can have *multiple* specifiers in the same method (although not all combinations are legal).
 
-When this happens, you can specify them in *any order*.
+When this happens, you can specify them in *a   ny order*.
 
-And since these specifiers are optional, you are allowed to not have any of them at all. This means you can have *zero* or *more* ~specifiers~ in a ~method declaration~.
+You can have *zero* or *more* ~specifiers~ in a ~method declaration~.
+
+#+ATTR_ORG: :width 650
+[[./assets/optional_method_specifiers.png]]
+
+#+BEGIN_SRC java
+public class Exercise {
+    public void bike1() {}
+    public final void bike2() {}
+    public static final void bike3() {}
+    public final static void bike4() {}
+    public modifier void bike5() {} // DOES NOT COMPILE
+    public void final bike6() {}  // DOES NOT COMPILE
+    final public void bike7() {}
+}
+#+END_SRC
 
 ** _Exam Trick_
 
