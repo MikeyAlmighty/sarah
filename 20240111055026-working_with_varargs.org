@@ -2,3 +2,70 @@
 :ID:       68baee3c-a388-4f42-b24b-605e792c6c0a
 :END:
 #+title: Working with Varargs
+#+property: header-args :tangle code/ocp/5/working_with_varargs.java
+
+* Working with Varargs
+
+** Creating Methods with [[id:9bb3ac0e-af2c-4243-9ae2-f2bfbee868c3][Varargs]]
+
+Rules for Creating a Method with a Varargs Parameter
+
+1. A ~method~ can have at *most* one [[id:9bb3ac0e-af2c-4243-9ae2-f2bfbee868c3][varargs]] =parameter=.
+2. If a ~method~ contains a [[id:9bb3ac0e-af2c-4243-9ae2-f2bfbee868c3][varargs]] parameter, it must be the *last* parameter in the list.
+
+#+BEGIN_SRC java
+public class VisitAttractions {
+    public void walk1(int... steps) {}
+    public void walk2(int start, int... steps) {}
+    public void walk3(int... steps, int start) {} // DOES NOT COMPILE
+    public void walk4(int... start, int... steps) {} // DOES NOT COMPILE
+}
+#+END_SRC
+
+** Calling Methods with [[id:9bb3ac0e-af2c-4243-9ae2-f2bfbee868c3][Varargs]]
+
+#+BEGIN_SRC java
+// Pass an array
+int[] data = new int[] {1, 2, 3};
+walk1(data);
+
+// Pass a list of values
+walk1(1,2,3);
+
+public void walk1(int... steps) {
+    int[] step2 = steps; // Not necessary, but shows steps is of type int[]
+    System.out.print(step2.length);
+}
+#+END_SRC
+
+** Accessing Elements of [[id:9bb3ac0e-af2c-4243-9ae2-f2bfbee868c3][Varargs]]
+
+Accessing a [[id:9bb3ac0e-af2c-4243-9ae2-f2bfbee868c3][varargs]] parameter is just like accessing an ~array~.
+It uses *array indexing*.
+
+#+BEGIN_SRC java
+public static void run(int... steps) {
+    System.out.print(steps[1]);
+}
+public static void main(String[] args) {
+    run(11, 77);// 77
+}
+#+END_SRC
+
+** Using [[id:9bb3ac0e-af2c-4243-9ae2-f2bfbee868c3][Varargs]] with Other Method Paramters
+
+#+BEGIN_SRC java
+public class DogWalker {
+    public static void walkDog(int start, int... steps) {
+        System.out.println(steps.length);
+    }
+
+    public static void main(String[] args) {
+        walkDog(1); // 0
+        walkDog(1, 2); // 1
+        walkDog(1, 2, 3); // 2
+        walkDog(1, new int[] {4, 5}); // 2
+        walkDog(1, null); // Triggers NullPointerException
+    }
+}
+#+END_SRC
