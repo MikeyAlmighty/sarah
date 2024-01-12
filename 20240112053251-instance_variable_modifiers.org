@@ -1,0 +1,48 @@
+:PROPERTIES:
+:ID:       ce19a18e-7f0c-475c-a05b-facbf29af10d
+:END:
+#+title: Instance Variable Modifiers
+#+property: header-args :tangle code/ocp/5/instance_variable_modifiers.java
+
+* Instance Variable Modifiers
+
+Same as [[id:0d43fdee-5463-4f66-8b65-ae9a7b4b74e2][Method Access Modifiers]]
+
+** Optional Specifiers for Instance Variables
+
+Instance variables can also use ~optional specifiers~:
+
+#+ATTR_ORG: :width 600
+[[./assets/instance_variable_optional_specifiers.png]]
+
+*** final
+
+If an instance variable is marked ~final~, then it must be *assigned* a value when it is *declared* or when the *object is instantiated*.
+
+**** Example
+
+The ~age~ variable is given a value when it is declared, while the ~fishEaten~ variable is assigned a value in an =instance initializer=.
+The ~name~ variable is given a value in the =no-argument constructor=.
+
+Failing to initialize an instance variable (or assigning a value more than once) will lead to a *compiler error*.
+
+#+BEGIN_SRC java
+public class PolarBear {
+    final int age = 10;
+    final int fishEaten;
+    final String name;
+
+    { fishEaten = 10; }
+
+    public PolarBear() {
+        name = "Robert";
+    }
+}
+#+END_SRC
+
+**** _Exam Trick_
+
+In [[id:34f737cd-7010-42aa-9f37-5136eb75a44e][1. Building blocks]], we show that =instance variables= receive *default* values based on their ~type~ when not set.
+For example, ~int~ receives a default value of =0=, while an ~object reference~ receives a default value of =null=.
+The compiler does *not* apply a default value to ~final~ variables, though.
+A ~final~ instance or ~final~ static variable must receive a value when it is *declared* or as *part of initialization*.
