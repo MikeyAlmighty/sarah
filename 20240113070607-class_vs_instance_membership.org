@@ -1,0 +1,93 @@
+:PROPERTIES:
+:ID:       856bbd74-4651-4dc8-92d9-c9a2d280b85f
+:END:
+#+title: Class VS Instance Membership
+#+filetags: :OCP:
+#+property: header-args :tangle code/ocp/5/class_vs_instance_membership.java
+
+* Class VS Instance Membership
+
+=static= member *cannot* call an ~instance~ member without referencing an ~instance~ of the ~class~.
+
+
+** Example problem rookies make
+
+The compiler will give you an *error* about making a =static= reference to an ~instance~ method.
+
+#+BEGIN_SRC java
+public class MantaRay {
+    private String name = "Sammy";
+    public static void first() { }
+    public static void second() { }
+
+    public void third() { System.out.print(name); }
+
+    public static void main(String args[]) {
+        first();
+        second();
+        third(); // DOES NOT COMPILE (Not static)
+    }
+}
+#+END_SRC
+
+One cannot simply add static to third as ~name~ is an *instance* variable:
+
+#+BEGIN_SRC java
+public static void third() { System.out.print(name); } // DOES NOT COMPILE
+#+END_SRC
+
+*** Fix 1
+
+Add =static= to the ~name~ variable as well.
+
+#+BEGIN_SRC java
+public class MantaRay {
+    private static String name = "Sammy";
+    // ...
+    public static void third() { System.out.print(name); }
+    // ...
+}
+#+END_SRC
+
+*** Fix 2
+
+The second solution would have been to call ~third()~ as an *instance* method and not use =static= for the method or the variable.
+
+#+BEGIN_SRC java
+public class MantaRay {
+    private String name = "Sammy";
+    public static void first() { }
+    public static void second() { }
+    public void third() { System.out.print(name); }
+
+    public static void main(String args[]) {
+        first();
+        second();
+        var ray = new MantaRay();
+        ray.third();
+    }
+}
+#+END_SRC
+
+** _Exam Trick_
+
+The exam creators like this topic alot!
+
+A ~static~ method or ~instance~ method *can call* a ~static~ method because ~static~ methods *don’t* require an object to use.
+*Only* an ~instance~ method can call another ~instance~ method on the same class without using a reference variable, because ~instance~ methods *do* require an object.
+(Similar logic applies for ~instance~ and ~static~ variables)
+
+*** Example
+Suppose we have a ~Giraffe~ class:
+
+#+BEGIN_SRC java
+public class Giraffe {
+    public void eat(Giraffe g) {}
+    public void drink() {};
+    public static void allGiraffeGoHome(Giraffe g) {}
+    public static void allGiraffeComeOut() {}
+}
+#+END_SRC
+
+#+ATTR_ORG: :width 700
+[[./assets/static_vs_instance_cells.png]]

@@ -2,10 +2,30 @@
 :ID:       9bf0baad-0fb0-400b-8d2f-8d89132815be
 :END:
 #+title: Designing Static Methods and Variables
+#+property: header-args :tangle code/ocp/5/static_methods_and_variables.java
 
 * Designing Static Methods and Variables
 
 ~Methods~ and ~variables~ declared =static= don’t require an /instance/ of the ~class~.
 
-** [[id:90b4776a-f230-4e13-b1a1-248b48026677][Static Variable]]
+** Example
+
+A common use for =static= variables is counting the number of ~instances~:
+
+#+BEGIN_SRC java
+public class Counter {
+    private static int count;
+    public Counter() { count++; }
+    public static void main(String[] args) {
+        Counter c1 = new Counter();
+        Counter c2 = new Counter();
+        Counter c3 = new Counter();
+        System.out.println(count); // 3
+    }
+}
+#+END_SRC
+
+** [[id:90b4776a-f230-4e13-b1a1-248b48026677][Static Variables]]
 ** [[id:71f8ac46-9cca-4866-b701-8f5a7f9f7fc0][Static Methods]]
+
+** [[id:856bbd74-4651-4dc8-92d9-c9a2d280b85f][Class VS Instance Membership]]
