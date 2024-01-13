@@ -1,0 +1,176 @@
+:PROPERTIES:
+:ID:       2085746a-5d79-403a-a417-5a0ef14f9933
+:END:
+#+title: Protected Access Modifier
+#+property: header-args :tangle code/ocp/5/protected_access_modifier.java
+
+* Protected Access Modifier
+
+The ~protected~ modifier means the method can be called only from a class in the *same* =package= or a =subclass=.
+
+~Protected access~ allows everything that package access does, and more.
+The ~protected access~ modifier adds the ability to access members of a parent class.
+
+For now, we cover the simplest possible use of a ~subclass~.
+
+
+** Simple Example
+
+In the following example, the  ~ClownFish (subClass)~ of the ~Fish (parentClass)~, using the =extends= keyword to connect them:
+
+By =extending= a ~class~, the ~subclass~ gains access to all *protected and public* members of the ~parent class~, as if they were declared in the ~subclass~.
+
+
+#+BEGIN_SRC java
+public class Fish {}
+public class ClownFish extends Fish {}
+#+END_SRC
+
+
+If the two classes are in the same package, then the subclass also gains access to all ~package members~.
+
+** Example
+
+#+BEGIN_SRC java
+
+// Parent Class
+package pond.shore;
+
+public class Bird {
+    protected String text = "floating";
+    protected void floatInWater() {
+        System.out.print(text); // protected access is ok
+    }
+}
+
+// subclass (Different package than Bird):
+package pond.goose;
+
+import pond.shore.Bird;
+
+public class Gosling extends Bird {
+    public void swim() {
+        floatInWater(); // protected access is ok
+        System.out.print(text); // protected access is ok
+    }
+    public static void main(String[] args) {
+        new Gosling().swim();
+    }
+}
+#+END_SRC
+
+(Above) *Extending* means creating a ~subclass~ that has access to any =protected= or =public members= of the ~parentClass~.
+Running this program prints floating twice: once from calling ~floatInWater()~, and once from the print statement in ~swim()~.
+Since ~Gosling~ is a =subclass= of ~Bird~, it can access these members even though it is in a different package.
+
+Remember that ~protected~ also gives us access to everything that [[id:0d8e8caf-96d3-4fd2-b0ae-460b7b93d6ae][package access]] does.
+This means a ~class~ in the *same package* as ~Bird~ can access its *protected* members.
+
+#+BEGIN_SRC java
+package pond.shore; // Same package as Bird
+
+public class BirdWatcher {
+    public void watchBird() {
+        Bird bird = new Bird();
+        bird.floatInWater(); // protected access is ok
+        System.out.print(bird.text); // protected access is ok
+    }
+}
+#+END_SRC
+
+Since ~Bird~ and ~BirdWatcher~ are in the *same package*, ~BirdWatcher~ can access its protected members
+
+** Negative Example
+
+~BirdWatcherFromAfar~ is *not in the same package* as ~Bird~, and it *doesn’t* inherit from ~Bird~ therefore it *cannot* access the members from ~Bird~.
+
+#+BEGIN_SRC java
+package pond.inland; // Different package than Bird
+
+import pond.shore.Bird;
+
+public class BirdWatcherFromAfar { // Not a subclass of Bird
+    public void watchBird() {
+        Bird bird = new Bird();
+        bird.floatInWater(); // DOES NOT COMPILE
+        System.out.print(bird.text); // DOES NOT COMPILE
+    }
+}
+#+END_SRC
+
+
+*** _Exam Trick_
+
+#+BEGIN_SRC java
+package pond.swan; // Different package than Bird
+
+import pond.shore.Bird;
+
+public class Swan extends Bird { // Swan is a subclass of Bird
+    public void swim() {
+        floatInWater(); // LINE 5: protected access is ok
+        System.out.print(text); // LINE 6: protected access is ok
+    }
+    public void helpOtherSwanSwim() {
+        Swan other = new Swan(); // LINE 9
+
+        other.floatInWater(); // LINE 10: subclass access to superclass
+        System.out.print(other.text); // LINE 11: subclass access to superclass
+    }
+
+    public void helpOtherBirdSwim() {
+        Bird other = new Bird(); // LINE: 14
+
+        other.floatInWater(); // LINE 15: DOES NOT COMPILE
+        System.out.print(other.text); // LINE 16: DOES NOT COMPILE
+    }
+}
+#+END_SRC
+
+~Swan~ is not in the same package as ~Bird~ but does =extend= it, which implies it has *access* to the ~protected~ members of ~Bird~ since it is a =subclass=.
+
+***** Inheritance
+
+- =Lines 5 and 6= refer to *protected* members via /inheriting/ them.
+
+***** Instantiation
+
+=Lines 10 and 11= also successfully use *protected* members of ~Bird~.
+
+This is allowed because these lines refer to a ~Swan~ object. ~Swan~ inherits from ~Bird~, so this is okay.
+(It is sort of a two-phase check.)
+
+The ~Swan~ class is allowed to use *protected* members of ~Bird~, and we are *referring* to a ~Swan~ object.
+
+(Granted, it is a Swan object created on =line 9= rather than an inherited one, but it is still a Swan object.)
+
+***** Failed Compilation
+
+=Lines 15 and 16= do *not* compile.
+
+Wait a minute. They are almost exactly the same as =lines 10 and 11=!
+
+There’s one key difference.
+
+This time a ~Bird~ *reference* is used rather than *inheritance*.
+
+It is created on =Line 14=.
+
+~Bird~ is in a *different* package, and this code isn’t *inheriting* from ~Bird~, so it doesn’t get to use *protected members*.
+
+
+Say what, now? We just got through saying repeatedly that ~Swan~ inherits from ~Bird~. And it does.
+
+However, the *variable reference isn’t* ~Swan~.
+
+The code just happens to be in the ~Swan~ class.
+
+**** Rules
+
+The *protected* rules apply under two scenarios:
+
+- A ~member~ is used without /referring/ to a *variable*.
+    (This is the case on =lines 5 and 6=. In this case, we are taking advantage of *inheritance*, and *protected access is allowed*.)
+
+- A ~member~ is used /through/ a *variable*.
+    (This is the case on =lines 10, 11, 15, and 16=. In this case, the rules for the ~reference~ type of the variable are what matter. If it is a ~subclass~, *protected access is allowed*.)
