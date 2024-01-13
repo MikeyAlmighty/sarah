@@ -1,0 +1,41 @@
+:PROPERTIES:
+:ID:       90b4776a-f230-4e13-b1a1-248b48026677
+:END:
+#+title: Static Variable
+#+property: header-args :tangle code/ocp/5/static_variable.java
+
+* Static Variable
+
+You can think of a =static= variable as being a member of the single ~class~ object that exists *independently* of any *instances* of that ~class~.
+
+*** Example
+
+#+BEGIN_SRC java
+public class Penguin {
+    String name;
+    static String nameOfTallestPenguin;
+}
+#+END_SRC
+
+We see that each ~Penguin~ instance is updated with its own unique name. The ~nameOfTallestPenguin~ field is =static= and therefore *shared*, though, so anytime it is updated, it *impacts all instances* of the ~class~.
+
+#+BEGIN_SRC java
+public static void main(String[] unused) {
+    var p1 = new Penguin();
+    p1.name = "Lilly";
+    p1.nameOfTallestPenguin = "Lilly";
+
+    var p2 = new Penguin();
+    p2.name = "Willy";
+    p2.nameOfTallestPenguin = "Willy";
+
+    System.out.println(p1.name); // Lilly
+    System.out.println(p1.nameOfTallestPenguin); // Willy
+
+    System.out.println(p2.name); // Willy
+    System.out.println(p2.nameOfTallestPenguin); // Willy
+}
+#+END_SRC
+
+** Access
+See: [[id:11df9fd0-ceac-43be-aeba-9028fb7cfa60][Accessing a Static Variable or Method]]

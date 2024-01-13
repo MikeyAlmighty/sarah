@@ -1,0 +1,34 @@
+:PROPERTIES:
+:ID:       11df9fd0-ceac-43be-aeba-9028fb7cfa60
+:END:
+#+title: Accessing a Static Variable or Method
+#+property: header-args :tangle code/ocp/5/accessing_static_variables_and_methods.java
+
+* Accessing a Static Variable or Method
+
+Accessing a =static= member is easy.
+
+You just put the ~Class~ name before the =method= or =variable=
+
+** Example
+
+#+BEGIN_SRC java
+public class Snake {
+    public static long hiss = 2;
+}
+System.out.println(Snake.hiss); // 2
+#+END_SRC
+
+*** _Exam Trick_
+
+Java doesn’t care that ~s~ happens to be ~null~. Since we are looking for a =static= variable, it doesn’t matter:
+
+#+BEGIN_SRC java
+Snake s = new Snake();
+System.out.println(s.hiss); // s is a Snake
+s = null;
+System.out.println(s.hiss); // s is still a Snake
+#+END_SRC
+
+Remember to look at the ~reference~ type for a variable when you see a =static= ~method~ or ~variable~.
+The exam creators will try to trick you into thinking a =NullPointerException= is thrown because the variable happens to be ~null~. Don’t be fooled!

@@ -1,0 +1,27 @@
+:PROPERTIES:
+:ID:       71f8ac46-9cca-4866-b701-8f5a7f9f7fc0
+:END:
+#+title: Static Methods
+#+property: header-args :tangle code/ocp/5/static_methods.java
+
+* Static Methods
+
+In addition to ~main()~ methods, =static= methods have two main purposes:
+
+1. For *utility* or *helper methods* that *don’t* require any ~object state~. Since there is *no* need to access ~instance~ variables, having =static= methods eliminates the need for the caller to /instantiate/ an ~object~ just to call the method.
+
+2. For *state* that is *shared* by all /instances/ of a ~class~, like a counter. All instances must share the same state. Methods that merely use that state should be static as well.
+
+** Example
+
+#+BEGIN_SRC java
+public class Koala {
+    public static int count = 0;
+    public static void main(String[] args) { // static method
+        System.out.print(count); // static variable
+    }
+}
+#+END_SRC
+
+** Access
+See: [[id:11df9fd0-ceac-43be-aeba-9028fb7cfa60][Accessing a Static Variable or Method]]
