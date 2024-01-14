@@ -2,12 +2,20 @@
 :ID:       28b95eeb-be70-4b92-b599-aa95d6d9b5d7
 :END:
 #+title: Method Overloading
-#+property: header-args :tangle code/java/method_overloading.java
+#+property: header-args :tangle code/ocp/5/method_overloading.java
 
-Each method has a *signature*, which comprises the ~name~ of the method plus the ~types~ and order of the ~parameters~ in the formal parameter list. Several method implementations *may* have the same name, as long as the method signatures *differ*.
+* Method Overloading
+
+Each method has a *signature*, which comprises the ~name~ of the method plus the ~types~ and order of the ~parameters~ in the formal [[id:94f7186e-22e8-4636-bc8c-a4cc040d9073][parameter list]].
+Several method implementations *may* have the same name, as long as the method signatures *differ*.
+
 This practice is called *method overloading*.
-Because overloaded methods have the same name, their parameter lists *must* be different.
-At ~compile time~, the right implementation of an overloaded method is chosen, based on the ~signature~ of the method call.
+
+Because *overloaded* methods have the same name, their parameter lists *must* be different.
+
+At ~compile time~, the *right implementation* of an ~overloaded~ method is chosen, based on the ~signature~ of the method call.
+
+** Example
 
 #+BEGIN_SRC java
 void methodA(int a, double b) { /* ... */ } // (1)
@@ -33,3 +41,83 @@ a method and will be flagged as a *compile-time* error.
 int halfIt(int a) { return a/2; } // (1)
 double halfIt(int a) { return a/2.0; } // (2) Not OK
 #+END_SRC
+
+** Reference Types
+
+*** Example
+
+#+BEGIN_SRC java
+public class Pelican {
+    public void fly(String s) {
+        System.out.print("string");
+    }
+    public void fly(Object o) {
+        System.out.print("object");
+    }
+    public static void main(String[] args) {
+        var p = new Pelican();
+        p.fly("test"); // string
+        System.out.print("-"); // -
+        p.fly(56); // object
+        // string-object
+    }
+}
+#+END_SRC
+
+** Primitive Types
+The answer is =int­long=.
+
+The first call passes an ~int~ and sees an exact match.
+The second call passes a ~long~ and also sees an exact match.
+
+*** Example
+
+#+BEGIN_SRC java
+public class Ostrich {
+    public void fly(int i) {
+        System.out.print("int");
+    }
+    public void fly(long l) {
+        System.out.print("long");
+    }
+    public static void main(String[] args) {
+        var p = new Ostrich();
+        p.fly(123); // int
+        System.out.print("-"); // -
+        p.fly(123L); // long
+        // int-long
+    }
+}
+#+END_SRC
+
+**** _Exam Trick_
+
+If we comment out the overloaded method with the ~int~ parameter list, the output becomes =long­long=.
+
+Java has no problem calling a *larger* primitive.
+
+(However, it will not do so unless a better match is not found.)
+
+** Autoboxing
+
+These method overloads are valid.
+
+*** Example
+
+#+BEGIN_SRC java
+public class Kiwi {
+    public void fly(int numMiles) {}
+    public void fly(Integer numMiles) {}
+}
+#+END_SRC
+
+**** _Exam Trick_
+Java tries to use the most specific [[id:94f7186e-22e8-4636-bc8c-a4cc040d9073][parameter list]] it can find.
+
+This is true for [[id:2af44b3c-ac25-4fc8-a372-20adc491f7f5][autoboxing]] as well as other matching types.
+
+This means calling ~fly(3)~ will call the first method.
+
+When the *primitive* ~int~ version isn’t present, Java will [[id:2af44b3c-ac25-4fc8-a372-20adc491f7f5][autobox]].
+
+However, when the *primitive* ~int~ version *is* provided, there is *no* reason for Java to do the extra work of autoboxing.
