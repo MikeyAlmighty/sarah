@@ -1,0 +1,55 @@
+:PROPERTIES:
+:ID:       9e29a41f-3c36-4887-9264-e218f92a76d8
+:END:
+#+title: Creating a Constructor
+#+property: headear-args :tangle code/ocp/6/creating_a_construcotr.java
+
+* Creating a Constructor
+
+The name of the *constructor*, ~Bunny~, matches the name of the class, ~Bunny~, and there is *no return type*, *not even void*.
+
+** Example
+
+#+BEGIN_SRC java
+public class Bunny {
+    public Bunny() {
+        System.out.println("Hop");
+    }
+    public bunny() {} // DOES NOT COMPILE
+    public void Bunny() {} // DOES NOT COMPILE
+}
+#+END_SRC
+
+*** _Exam Trick_
+Like ~method parameters~, ~constructor parameters~ can be any valid class, array, or [[id:46582863-7f97-448d-bbc7-f7da4c1e7574][primitive Type]], including ~generics~, but may *not* include ~var~.
+
+**** Example
+
+#+BEGIN_SRC java
+public class Bonobo {
+    public Bonobo(var food) { // DOES NOT COMPILE
+
+    }
+}
+#+END_SRC
+
+** Multiple Constructors (Constructor Overloading)
+
+A ~class~ *can* have multiple ~constructors~, as long as each ~constructor~ has a unique ~constructor~ signature.
+In this case, that means the ~constructor~ parameters *must* be *distinct*.
+
+Like methods with the same name but different signatures, declaring multiple constructors with different signatures is referred to as =constructor overloading=.
+
+#+BEGIN_SRC java
+public class Turtle {
+    private String name;
+    public Turtle() {
+        name = "John Doe";
+    }
+    public Turtle(int age) {}
+    public Turtle(long age) {}
+    public Turtle(String newName, String... favoriteFoods) {
+    name = newName;
+    }
+}
+#+END_SRC
