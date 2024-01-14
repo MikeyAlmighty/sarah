@@ -2,3 +2,38 @@
 :ID:       1ffe8cd5-e295-4f94-8fb0-3eb7ec6c3b4a
 :END:
 #+title: Returning Objects
+
+* Returning Objects
+
+A ~copy~ is made of the [[id:46582863-7f97-448d-bbc7-f7da4c1e7574][primitive]] or [[id:ef3f4798-9f1d-462f-8eea-df2b75e512f6][reference]]  and returned from the method.
+
+Most of the time, this ~returned~ value is used.
+For example, it might be stored in a variable.
+
+** Example
+
+#+BEGIN_SRC java
+public class ZooTickets {
+    public static void main(String[] args) {
+        int tickets = 2; // tickets = 2
+        String guests = "abc"; // guests = abc
+        addTickets(tickets); // tickets = 2
+        guests = addGuests(guests); // guests = abcd
+        System.out.println(tickets + guests); // 2abcd
+    }
+
+    public static int addTickets(int tickets) {
+        tickets++;
+        return tickets;
+    }
+
+    public static String addGuests(String guests) {
+        guests += "d";
+        return guests;
+    }
+ }
+#+END_SRC
+
+* _Exam Trick_
+
+If the returned value is not used, the result is ignored. Watch for this on the exam. Ignored returned values are tricky.
