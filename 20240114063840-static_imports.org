@@ -1,0 +1,73 @@
+:PROPERTIES:
+:ID:       17f335ce-26e0-4376-afc3-2092875622f6
+:END:
+#+title: Static Imports
+#+property: header-args :tangle code/ocp/4/static_imports.java
+
+* Static Imports
+
+*Regular imports* are for importing ~classes~, while *static imports* are for importing =static= members of ~classes~ like *variables* and *methods*.
+
+
+Just like regular imports, you can use a *wildcard* or import a *specific member*.
+The idea is that you shouldn’t have to specify where *each* =static= method or variable comes from each time you use it.
+
+An example of when =static imports= shine is when you are referring to a lot of constants in another ~class~.
+
+** Example (Regular Import)
+
+#+BEGIN_SRC java
+import java.util.List;
+import java.util.Arrays;
+
+public class Imports {
+    public static void main(String[] args) {
+        List<String> list = Arrays.asList("one", "two");
+    }
+}
+#+END_SRC
+
+** Example (Static Import)
+
+In this example, we are specifically importing the ~asList~ method.
+This means that any time we refer to ~asList~ in the ~class~, it will call ~Arrays.asList()~.
+
+#+BEGIN_SRC java
+import java.util.List;
+import static java.util.Arrays.asList; // static import
+
+public class ZooParking {
+    public static void main(String[] args) {
+        List<String> list = asList("one", "two"); // No Arrays. prefix
+    }
+}
+#+END_SRC
+
+*** Negative Example
+
+#+BEGIN_SRC java
+import static java.util.Arrays; // DOES NOT COMPILE (Tries to use a static import to import a class)
+import static java.util.Arrays.asList;
+static import java.util.Arrays.*; // DOES NOT COMPILE
+
+public class BadZooParking {
+    public static void main(String[] args) {
+        Arrays.asList("one"); // DOES NOT COMPILE (Should just be asList("One");)
+    }
+}
+#+END_SRC
+
+*** _Exam Trick_
+
+In [[id:34f737cd-7010-42aa-9f37-5136eb75a44e][1. Building blocks]], you learned that importing *two* ~classes~ with the same name gives a *compiler error*.
+This is *true* of =static= imports as well.
+
+The compiler will complain if you try to explicitly do a =static import= of two [[id:71f8ac46-9cca-4866-b701-8f5a7f9f7fc0][static methods]] with the *same* name or two [[id:90b4776a-f230-4e13-b1a1-248b48026677][static variables]] with the *same* name.
+
+Here’s an example:
+#+BEGIN_SRC java
+import static zoo.A.TYPE;
+import static zoo.B.TYPE; // DOES NOT COMPILE
+#+END_SRC
+
+Luckily, when this happens, we can just refer to the =static= members via their ~class~ name in the code instead of trying to use a =static import=.

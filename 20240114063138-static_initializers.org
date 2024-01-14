@@ -1,0 +1,61 @@
+:PROPERTIES:
+:ID:       9b5e5215-73c3-412e-8a72-57dc575c1ee9
+:END:
+#+title: Static Initializers
+#+property: header-args :tangle code/ocp/4/static_initializers.java
+
+* Static Initializers
+
+They add the =static= keyword to specify that they should be run when the class is *first loaded*.
+
+All =static= initializers run when the ~class~ is *first used, in the order they are defined*.
+The statements in them run and *assign* any =static= variables as needed.
+
+
+The static initializer is the first assignment.
+
+** Example
+
+#+BEGIN_SRC java
+private static final int NUM_SECONDS_PER_MINUTE;
+private static final int NUM_MINUTES_PER_HOUR;
+private static final int NUM_SECONDS_PER_HOUR;
+
+static {
+    NUM_SECONDS_PER_MINUTE = 60;
+    NUM_MINUTES_PER_HOUR = 60;
+}
+static {
+    NUM_SECONDS_PER_HOUR = NUM_SECONDS_PER_MINUTE * NUM_MINUTES_PER_HOUR;
+}
+#+END_SRC
+
+** Negative Example
+
+The compiler gives a *compiler error* because it knows that the ~static blocks~ are the only place the variable could possibly be *initialized*.
+
+#+BEGIN_SRC java
+private static int one;
+private static final int two;
+private static final int three = 3;
+private static final int four; // DOES NOT COMPILE
+static {
+    one = 1;
+    two = 2;
+    three = 3; // DOES NOT COMPILE
+    two = 4; // DOES NOT COMPILE (Initialzed to 2, 2 LINES above)
+}
+#+END_SRC
+
+** _Exam Trick_
+
+Try to Avoid =static= and ~Instance Initializers~
+
+Using =static= and ~instance initializers~ can make your code much harder to read.
+
+Everything that could be done in an instance initializer could be done in a constructor instead.
+
+Many people find the constructor approach easier to read.
+
+There is a common case to use a ~static initializer~:
+when you need to initialize a =static= field and the code to do so requires *more than one line.*
