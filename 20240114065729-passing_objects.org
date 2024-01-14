@@ -1,0 +1,50 @@
+:PROPERTIES:
+:ID:       7befebdf-dfb2-4c9f-a269-bae0baf534ec
+:END:
+#+title: Passing Objects
+#+property: header-args :tangle code/ocp/5/passing_objects.java
+
+* Passing Objects
+
+Assignments made in the method do *not* affect the caller. (In both [[id:46582863-7f97-448d-bbc7-f7da4c1e7574][Primitive Types]] and [[id:ef3f4798-9f1d-462f-8eea-df2b75e512f6][Reference Types]]).
+** Example
+
+#+BEGIN_SRC java
+public class Dog {
+    public static void main(String[] args) {
+        String name = "Webby";
+        speak(name);
+        System.out.print(name); // Webby
+    }
+    public static void speak(String name) {
+        name = "Georgette";
+    }
+}
+#+END_SRC
+
+
+** Example
+
+The variable ~sb~ is a copy of the variable ~name~.
+Both *point to the same* ~StringBuilder~, which means that changes made to the ~StringBuilder~ are available to *both* references.
+
+#+BEGIN_SRC java
+public static void main(String[] args) {
+    StringBuilder name = new StringBuilder("Webby");
+    speak(name);
+    System.out.println(name); // WebbyGeorgette
+}
+
+public static void speak(StringBuilder sb) {
+    sb.append("Georgette");
+}
+#+END_SRC
+
+#+ATTR_ORG: :width 500
+[[./assets/copying_reference_by_value.png]]
+
+** _Exam Trick_
+
+To review, Java uses *pass­by­value* to get data into a method.
+- *Assigning* a new ~primitive~ or ~reference~ to a parameter *doesn’t * change the caller.
+- *Calling methods* on a ~reference to an object~ *CAN* affect the caller.

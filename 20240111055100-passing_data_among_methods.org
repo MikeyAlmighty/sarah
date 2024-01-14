@@ -2,3 +2,27 @@
 :ID:       5abc014e-1d13-4b57-80ca-ec233c6fff44
 :END:
 #+title: Passing Data among Methods
+#+property: header-args :tangle code/ocp/5/passing_data_among_methods.java
+
+* Passing Data among Methods
+
+Java is a *pass­by­value* language.
+This means that a =copy= of the variable is made and the method receives that =copy=.
+
+Assignments made in the method do *not* affect the caller. (In both [[id:46582863-7f97-448d-bbc7-f7da4c1e7574][Primitive Types]] and [[id:ef3f4798-9f1d-462f-8eea-df2b75e512f6][Reference Types]]).
+
+** Example
+
+#+BEGIN_SRC java
+public static void main(String[] args) {
+    int num = 4;
+    newNumber(num);
+    System.out.print(num); // 4
+}
+public static void newNumber(int num) {
+    num = 8;
+}
+#+END_SRC
+
+** [[id:7befebdf-dfb2-4c9f-a269-bae0baf534ec][Passing Objects]]
+** [[id:1ffe8cd5-e295-4f94-8fb0-3eb7ec6c3b4a][Returning Objects]]
