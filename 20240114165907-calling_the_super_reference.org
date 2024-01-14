@@ -1,0 +1,33 @@
+:PROPERTIES:
+:ID:       4ce14c53-4def-46aa-a295-6cc316b11fe9
+:END:
+#+title: Calling the super Reference
+
+* Calling the super Reference
+
+** Example
+
+#+BEGIN_SRC java
+// Reptile.java
+public class Reptile {
+    protected int speed = 10;
+}
+// Crocodile.java
+public class Crocodile extends Reptile {
+    protected int speed = 20;
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public int getParentSpeed() {
+        return super.speed;
+    }
+
+    public static void main(String[] data) {
+        var croc = new Crocodile();
+        System.out.println(croc.getSpeed()); // 20
+        System.out.println(croc.getParentSpeed()); // 10
+    }
+}
+#+END_SRC

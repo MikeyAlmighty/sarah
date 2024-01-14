@@ -1,0 +1,24 @@
+:PROPERTIES:
+:ID:       1c4ebba7-11a2-4cc9-ae17-c5386352af26
+:END:
+#+title: Accessing the this Reference
+#+property: headear-args :tangle code/ocp/6/this_reference.java
+
+* Accessing the this Reference
+
+The ~this~ reference refers to the current instance of the class and can be used to access any member of the class, including inherited members.
+
+** Example
+
+#+BEGIN_SRC java
+public class Flamingo {
+    private String color = null;
+    public void setColor(String color) {
+    this.color = color;
+}
+public static void main(String... unused) {
+    var f = new Flamingo();
+    f.setColor("PINK");
+    System.out.print(f.color);
+}
+#+END_SRC

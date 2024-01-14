@@ -2,14 +2,30 @@
 :ID:       8e0bae56-3a80-4227-ad57-4c5fd3070cd5
 :END:
 #+title: Class Access Modifiers
+#+property: headear-args :tangle code/ocp/6/class_access_modifiers.java
 
 * Class Access Modifiers
 
-#+ATTR_ORG: :width 700
-[[./assets/class_modifiers.png]]
+Like ~variables~ and ~methods~, you can apply [[id:0d43fdee-5463-4f66-8b65-ae9a7b4b74e2][Access Modifiers]] to =classes=.
 
-** [[id:4a127dcb-cc6c-466d-a91b-9940462bf0c8][Final Classes]]
-** [[id:3893ce2e-cd85-4914-ba26-d7c7c732eb02][Abstract Classes]]
-** [[id:2a7e16f3-0259-454d-98e1-bce0a180f5c9][Sealed Classes]]
-** [[id:23324ae6-19e4-45b2-9f70-f4bd8972a992][Non-Sealed Classes]]
-** [[id:e396590e-1d60-4298-ac01-55ab3d49a722][Static Classes]]
+** _Exam Trick_
+
+#+BEGIN_SRC java
+// Bear.java
+class Bird {}
+class Bear {}
+class Fish {}
+#+END_SRC
+
+Trying to declare a [[id:f7f87f85-1d9b-468a-8947-cd839883c9fa][Top-Level]] class with ~protected~ or ~private~ class will lead to a compiler error, though:
+
+#+BEGIN_SRC java
+// ClownFish.java
+protected class ClownFish{} // DOES NOT COMPILE
+// BlueTang.java
+private class BlueTang {} // DOES NOT COMPILE
+#+END_SRC
+
+Does that mean a class can never be declared protected or private?
+Not exactly. In [[id:77ca30c7-05f2-4219-a8b5-c552c3f1eced][7. Beyond Classes]], we present ~nested~ types and show that when you define a =class= *inside another,* it
+can use any ~access modifier~.
