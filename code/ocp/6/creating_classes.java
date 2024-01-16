@@ -1,12 +1,3 @@
-:PROPERTIES:
-:ID:       ffe80d3b-b8d3-44b1-b628-aff04d5eccb8
-:END:
-#+title: Creating Classes
-#+property: header-args :tangle code/ocp/6/creating_classes.java
-
-* Creating Classes
-
-#+BEGIN_SRC java
 // Animal.java
 public class Animal {
     private int age;
@@ -34,8 +25,3 @@ public class Lion extends Animal {
         lion.roar();
     }
 }
-#+END_SRC
-
-** [[id:8e0bae56-3a80-4227-ad57-4c5fd3070cd5][Class Access Modifiers]]
-** [[id:1c4ebba7-11a2-4cc9-ae17-c5386352af26][Accessing the this Reference]]
-** [[id:4ce14c53-4def-46aa-a295-6cc316b11fe9][Calling the super Reference]]
