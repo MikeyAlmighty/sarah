@@ -1,18 +1,3 @@
-:PROPERTIES:
-:ID:       0a79945a-f107-4cba-85d0-4c824c6598e4
-:END:
-#+title: Calling Parent Constructors with super()
-#+property: header-args :tangle code/ocp/6/calling_parent_constructors_with_super.java
-
-* Calling Parent Constructors with super()
-
-The first statement of every constructor is a call to a *parent* constructor using ~super()~ or *another* constructor in the class using [[id:6d0ddb05-83c3-4a23-bf52-9fab2633bd99][this()]].
-
-~super()~, calls a *parent* constructor.
-
-** Example
-
-#+BEGIN_SRC java
 public class Animal {
     private int age;
 
@@ -21,9 +6,7 @@ public class Animal {
         this.age = age;
     }
 }
-#+END_SRC
 
-#+BEGIN_SRC java
 public class Zebra extends Animal {
     public Zebra(int age) {
         super(age); // Refers to constructor in Animal
@@ -32,15 +15,7 @@ public class Zebra extends Animal {
         this(4); // Refers to constructor in Zebra with ~int~ argument
     }
 }
-#+END_SRC
 
-** _Exam Trick_
-
-Like calling [[id:6d0ddb05-83c3-4a23-bf52-9fab2633bd99][this()]], calling ~super()~ can only be used as the *first* statement of the constructor.
-
-*** Example (Non callable)
-
-#+BEGIN_SRC java
 public class Zoo {
     public Zoo() {
         System.out.println("Zoo created");
@@ -54,13 +29,7 @@ public class Zoo {
         super(); // DOES NOT COMPILE
     }
 }
-#+END_SRC
 
-** Overloaded Parent Constructors
-
-*** Example
-
-#+BEGIN_SRC java
 public class Animal {
     private int age;
     private String name;
@@ -86,18 +55,7 @@ public class Gorilla extends Animal {
         super(5); // Calls the second Animal constructor
     }
 }
-#+END_SRC
 
-
-*** _Exam Trick_
-
-The [[id:d5b4004d-b5db-48a2-8e85-09359ca61a42][javac]] automatically inserts a call to the no­argument constructor ~super()~ if you do *not* explicitly call ~this()~ or ~super()~ as the first line of a constructor.
-
-For example, the following three class and constructor definitions are equivalent, because the *compiler* will automatically convert them all to the last example.
-
-**** Example
-
-#+BEGIN_SRC java
 public class Donkey {}
 
 public class Donkey {
@@ -109,4 +67,3 @@ public class Donkey {
         super();
     }
 }
-#+END_SRC

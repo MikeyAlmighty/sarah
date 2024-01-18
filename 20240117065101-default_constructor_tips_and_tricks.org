@@ -1,0 +1,63 @@
+:PROPERTIES:
+:ID:       68584fc1-3dde-48e5-badb-67d43e5e875a
+:END:
+#+title: Default Constructor Tips and Tricks
+#+property: header-args :tangle code/ocp/6/default_constructor_tips.java
+
+* Default Constructor Tips and Tricks
+
+** Example
+
+What happens if we define a ~subclass~ with no =constructors=, or a ~subclass~ with a =constructor= that doesn’t include a ~super()~ reference?
+
+#+BEGIN_SRC java
+public class Mammal {
+    public Mammal(int age) {}
+}
+
+public class Seal extends Mammal {} // DOES NOT COMPILE
+
+public class Elephant extends Mammal {
+    public Elephant() {} // DOES NOT COMPILE
+}
+#+END_SRC
+
+The answer is that neither ~subclass~ compiles.
+Since ~Mammal~ defines a =constructor=, the compiler does *not* insert a =no-argument constructor=.
+
+The compiler will insert a default =no-argument constructor= into ~Seal~, though, but it will be a simple implementation that just calls a *nonexistent* ~parent~ =default constructor=.
+
+#+BEGIN_SRC java
+public class Seal extends Mammal {
+    public Seal() {
+        super(); // DOES NOT COMPILE
+    }
+}
+#+END_SRC
+
+Likewise, ~Elephant~ will *not* compile for similar reasons.
+The compiler doesn’t see a call to ~super()~ or ~this()~ as the first line of the constructor so it inserts a call to a nonexistent =no­argument= ~super()~ automatically.
+
+#+BEGIN_SRC java
+public class Elephant extends Mammal {
+    public Elephant() {
+        super(); // DOES NOT COMPILE
+    }
+}
+#+END_SRC
+
+*** Solution
+
+#+BEGIN_SRC java
+public class Seal extends Mammal {
+    public Seal() {
+        super(6); // Explicit call to parent constructor
+    }
+}
+
+public class Elephant extends Mammal {
+    public Elephant() {
+        super(4); // Explicit call to parent constructor
+    }
+}
+#+END_SRC
