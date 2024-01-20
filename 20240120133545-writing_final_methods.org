@@ -2,5 +2,44 @@
 :ID:       56d8ca97-9a85-4619-834b-163e9dd7c645
 :END:
 #+title: Writing Final Methods
+#+property: header-args :tangle code/ocp/6/final_methods.java
 
 * Writing Final Methods
+
+~final~ methods *cannot* be [[id:c67b24a4-82f7-4423-83a9-75fc1c566166][overriden]].
+By marking a method ~final~, you forbid a ~child~ class from replacing this method.
+
+This rule is in place both when you [[id:c67b24a4-82f7-4423-83a9-75fc1c566166][override a method]] and when you *hide* a method.
+
+In other words, you *cannot* [[id:19ea09af-1aa5-4247-b608-13333950e8c0][hiding a static method]] in a ~child~ class if it is marked ~final~ in the ~parent~ class.
+
+** Example
+
+In this example, the instance method ~hasFeathers()~ is marked as ~final~ in the ~parent~ class =Bird=, so the ~child~ class =Penguin= *cannot* override the ~parent~ method, resulting in
+a *compiler error*.
+
+The ~static~ method ~flyAway()~ is also marked ~final~, so it cannot be hidden in the ~subclass~.
+
+In this example, whether or not the child method uses the ~final~ keyword is *irrelevant* ­ the code will *not compile* either way.
+
+This rule applies only to *inherited* methods.
+
+For example, if the two methods were marked ~private~ in the ~parent~ =Bird= class, then the =Penguin= class, as defined, *would compile*.
+
+In that case, the ~private~ methods would be *redeclared*, *not overridden or hidden*.
+
+#+BEGIN_SRC java
+public class Bird {
+    public final boolean hasFeathers() {
+        return true;
+    }
+    public final static void flyAway() {}
+}
+
+public class Penguin extends Bird {
+    public final boolean hasFeathers() { // DOES NOT COMPILE
+        return false;
+    }
+    public final static void flyAway() {} // DOES NOT COMPILE
+}
+#+END_SRC

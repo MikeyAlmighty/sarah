@@ -2,5 +2,48 @@
 :ID:       19ea09af-1aa5-4247-b608-13333950e8c0
 :END:
 #+title: Hiding static Methods
+#+property: header-args :tangle code/ocp/6/hiding_static_methods.java
 
 * Hiding static Methods
+
+A ~static~ method cannot be overridden because class objects do not inherit from each other in the same way as instance objects.
+
+On the other hand, they can be *hidden*.
+
+A *hidden* method occurs when a ~child~ class defines a ~static~ method with the same name and signature as an inherited static method defined in a ~parent~ class.
+
+Method hiding is similar to but not exactly the same as [[id:c67b24a4-82f7-4423-83a9-75fc1c566166][method overriding]].
+
+The previous four rules for [[id:c67b24a4-82f7-4423-83a9-75fc1c566166][overriding]] a method must be followed when a method is *hidden*.
+
+A new fifth rule is added for hiding a method:
+5. The method defined in the ~child~ class must be marked as ~static~ if it is marked as ~static~ in a ~parent~ class.
+
+*method hiding* - if the two methods *are* marked ~static~
+*method overriding*- if the two methds are *not* marked ~static~.
+
+** Example
+In this example, the code compiles and runs.
+
+The ~eat()~ method in the ~Panda~ class *hides* the ~eat()~ method in the ~Bear~ class, printing ="Panda is chewing"= at *runtime*.
+Because they are both marked as ~static~, this is *not* considered an [[id:c67b24a4-82f7-4423-83a9-75fc1c566166][overriden method]].
+
+That said, there is still some *inheritance* going on.
+If you remove the ~eat()~ declaration in the ~Panda~ class, then the program prints ="Bear is eating"= instead.
+
+#+BEGIN_SRC java
+public class Bear {
+    public static void eat() {
+        System.out.println("Bear is eating");
+    }
+}
+
+public class Panda extends Bear {
+    public static void eat() {
+        System.out.println("Panda is chewing");
+    }
+    public static void main(String[] args) {
+        eat();
+    }
+}
+#+END_SRC

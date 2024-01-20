@@ -2,5 +2,45 @@
 :ID:       a6c7507b-e399-48a8-a8af-7f29fd05eaad
 :END:
 #+title: Hiding Variables
+#+property: header-args :tangle code/ocp/6/hiding_variables.java
 
 * Hiding Variables
+
+Java *doesn’t* allow variables to be [[id:c67b24a4-82f7-4423-83a9-75fc1c566166][overriden]].
+
+Variables can be [[id:f294b0be-3fad-4ea8-8d51-963401914b09][hidden]], though.
+
+This creates *two* distinct copies of the variable within an instance of the ~child~ class:
+- one instance defined in the ~parent~ class.
+- one defined in the ~child~ class.
+
+As when hiding a [[id:19ea09af-1aa5-4247-b608-13333950e8c0][static Method]], you can’t override a variable; you can only *hide* it.
+
+Let’s take a look at a hidden variable:
+
+** Example
+
+#+BEGIN_SRC java
+class Carnivore {
+    protected boolean hasFur = false;
+}
+public class Meerkat extends Carnivore {
+    protected boolean hasFur = true;
+}
+public static void main(String[] args) {
+    Meerkat m = new Meerkat();
+    Carnivore c = m;
+    System.out.println(m.hasFur); // true
+    System.out.println(c.hasFur); // false
+}
+#+END_SRC
+
+(above) Both of these ~classes~ define a ~hasFur~ variable, but with different values.
+
+Even though only *one* object is created by the ~main()~ method, both variables exist *independently of each other*.
+
+The output changes depending on the reference variable used.
+
+*** _Exam Trick_
+
+For now, you just need to know that [[id:c67b24a4-82f7-4423-83a9-75fc1c566166][overriding a method]] replaces the ~parent~ method on all reference variables (other than ~super~), whereas hiding a method or [[id:a6c7507b-e399-48a8-a8af-7f29fd05eaad][variables]] replaces the member only if a ~child~ reference type is used.
