@@ -2,5 +2,74 @@
 :ID:       4c5559e6-f5d3-49e8-b33f-8aa16fac4b17
 :END:
 #+title: Initializing final Fields
+#+property: header-args :tangle code/ocp/6/initializing_final_fields.java
 
 * Initializing final Fields
+
+#+BEGIN_SRC java
+public class MouseHouse {
+    private final int volume;
+    private final String name = "The Mouse House"; // Declaration assignment
+    {
+        volume = 10; // Instance Initializer assignment
+    }
+}
+#+END_SRC
+
+Unlike ~static~ class members, though, ~final instance~ fields can also be set in a =constructor=.
+The =constructor= is part of the *initialization* process, so it is allowed to assign ~final instance variables~.
+
+
+** _Exam Trick_
+
+By the time the =constructor= completes, all ~final instance variables~ *must be assigned* a value *exactly once*.
+
+#+BEGIN_SRC java
+public class MouseHouse {
+    private final int volume;
+    private final String name;
+    public MouseHouse() {
+        this.name = "Empty House"; // Constructor assignment
+    }
+    {
+        volume = 10; // Instance initializer assignment
+    }
+}
+#+END_SRC
+
+- ~local final variables~ which are *not* required to have a value unless they are actually used.
+- ~final instance variables~ *must* be assigned a value.
+
+If ~final instance variables~ are not assigned a value when they are declared or in an [[id:4e6f72b6-5e66-4d26-b9b5-8689fdd01c21][instance initializer]], then they *must* be assigned a value in
+the *constructor declaration.*
+Failure to do so will result in a *compiler error* on the line that declares the constructor.
+
+
+#+BEGIN_SRC java
+public class MouseHouse {
+    private final int volume;
+    private final String type;
+
+    {
+        this.volume = 10;
+    }
+
+    public MouseHouse(String type) {
+        this.type = type;
+    }
+
+    public MouseHouse() { // DOES NOT COMPILE
+        this.volume = 2; // DOES NOT COMPILE
+    }
+}
+#+END_SRC
+
+*** _Exam Trick_
+On the exam, be wary of any instance variables marked ~final~.
+
+Make sure they are assigned a value:
+1. In the line where they are declared
+2. In an [[id:4e6f72b6-5e66-4d26-b9b5-8689fdd01c21][instance initializer]]
+3. In a =constructor=.
+
+They should be assigned a value *only once*, and failure to assign a value is considered a *compiler error* in the =constructor=.

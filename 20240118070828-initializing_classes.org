@@ -2,6 +2,7 @@
 :ID:       d5513711-4159-4a2f-9739-6ef53d019946
 :END:
 #+title: Initializing Classes
+#+property: header-args :tangle code/ocp/6/initializing_classes.java
 
 * Initializing Classes
 
@@ -10,14 +11,15 @@ This is sometimes referred to as *loading the class*.
 
 ~JVM~ controls when the ~class~ is *initialized*, although you can assume the class is loaded before it is used.
 The class may be initialized when:
-- The program first starts.
-- A ~static~ member of the class is *referenced*.
-- Shortly before an *instance* of the ~class~ is *created*.
+1. The program first starts.
+2. A ~static~ member of the class is *referenced*.
+4. Shortly before an *instance* of the ~class~ is *created*.
 
 One of the most important rules with class *initialization* is that it happens at *most once* for each class.
 The class may also *never* be loaded if it is *not used* in the program.
 
 ** Example
+
 Initialize ~Class X~
 1. If there is a superclass ~Y~ of ~X~, then initialize class ~Y~ first.
 2. Process all ~static~ variable declarations in the order in which they appear in the class.
