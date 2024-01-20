@@ -4,3 +4,25 @@
 #+title: Redeclaring private Methods
 
 * Redeclaring private Methods
+
+In Java, you *can’t override* ~private~ methods since they are *not* inherited.
+
+Java allows you to *redeclare* a new method in the ~child~ class with the same or modified signature as the method in the parent ~class~.
+
+This method in the ~child~ class is a separate and independent method, unrelated to the ~parent~ version’s method, so none of the rules for [[id:c67b24a4-82f7-4423-83a9-75fc1c566166][overriding methods]] is invoked.
+
+** Example
+These two declarations *compile*:
+
+#+BEGIN_SRC java
+public class Beetle {
+    private String getSize() {
+        return "Undefined";
+    }
+}
+public class RhinocerosBeetle extends Beetle {
+    private int getSize() {
+        return 5;
+    }
+}
+#+END_SRC
