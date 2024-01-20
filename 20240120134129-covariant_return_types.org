@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       6da516df-94e4-4b63-a787-0bddd7e6c6ca
+:END:
+#+title: Covariant Return Types
+
+* Covariant Return Types
+
+The ability of a ~subclass~ method to *override* a ~superclass~ method and return a *more specific* ~type~ than the return ~type~ of the *overridden* method.
+
+A simple test for *covariance* is the following:
+Given an inherited return ~type A~ and an *overriding* return ~type B~, can you assign an instance of ~B~ to a reference variable for ~A~ without a cast?
+
+If so, then they are *covariant*.
+
+This rule applies to [[id:46582863-7f97-448d-bbc7-f7da4c1e7574][primitive types]] and [[id:ef3f4798-9f1d-462f-8eea-df2b75e512f6][reference types]] alike.
+
+If one of the return types is ~void~, then they both must be ~void~, as nothing is *covariant* with ~void~ except itself.
