@@ -4,3 +4,49 @@
 #+title: Initializing Classes
 
 * Initializing Classes
+
+First, we *initialize* the class, which involves *invoking* all [[id:fc670fe7-04be-4783-92b9-d97c7ee72bd7][static members]] in the class hierarchy, starting with the highest ~superclass~ and working downward.
+This is sometimes referred to as *loading the class*.
+
+~JVM~ controls when the ~class~ is *initialized*, although you can assume the class is loaded before it is used.
+The class may be initialized when:
+- The program first starts.
+- A ~static~ member of the class is *referenced*.
+- Shortly before an *instance* of the ~class~ is *created*.
+
+One of the most important rules with class *initialization* is that it happens at *most once* for each class.
+The class may also *never* be loaded if it is *not used* in the program.
+
+** Example
+Initialize ~Class X~
+1. If there is a superclass ~Y~ of ~X~, then initialize class ~Y~ first.
+2. Process all ~static~ variable declarations in the order in which they appear in the class.
+3. Process all ~static~ initializers in the order in which they appear in the class.
+
+*** Code Example
+
+#+BEGIN_SRC java
+public class Animal {
+    static { System.out.print("A"); }
+}
+
+public class Hippo extends Animal {
+    public static void main(String[] grass) {
+        System.out.print("C");
+        new Hippo();
+        new Hippo();
+        new Hippo();
+    }
+    static { System.out.print("B"); }
+}
+#+END_SRC
+
+It prints =ABC= exactly *once*.
+
+Since the ~main()~ method is inside the ~Hippo~ class, the class will be initialized first, starting with the ~superclass~ and printing =AB=. Afterward, the ~main()~ method is executed, printing =C=.
+Even though the ~main()~ method creates three instances, the class is loaded *only once*.
+
+**** _Exam Trick_
+
+For the exam, you just need to know that a class *must be initialized* before it is ~referenced~ or ~used~.
+Also, the class containing the program entry point, aka the ~main()~ method, is loaded before the ~main()~ method is executed.
