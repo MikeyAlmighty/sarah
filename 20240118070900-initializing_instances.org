@@ -1,6 +1,73 @@
 :PROPERTIES:
 :ID:       4e6f72b6-5e66-4d26-b9b5-8689fdd01c21
 :END:
-#+title: Initializing instances
+#+title: Initializing Instances
+#+property: header-args :tangle code/ocp/6/initializing_instances.java
 
-* Initializing instances
+* Initializing Instances
+
+First, start at the *lowest-level* =constructor= where the ~new~ keyword is used.
+
+Remember, the first line of every =constructor= is a call to ~this()~ or ~super()~, and if omitted, the compiler will automatically insert a call to the parent =no­argument constructor= ~super()~.
+
+Then, progress *upward* and note the order of =constructors=.
+
+Finally, initialize each ~class~ starting with the ~superclass~, processing each ~instance initializer~ and =constructor= in the reverse order in which it was called.
+
+** We summarize the order of initialization for an instance as follows:
+
+*** Initialize Instance of ~X~
+
+1. Initialize class ~X~ if it has not been previously initialized.
+
+2. If there is a superclass Y of X, then initialize the instance of Y first.
+
+3. Process all ~instance variable~ declarations in the order in which they appear in the class.
+
+4. Process all ~instance initializers~ in the order in which they appear in the class.
+
+5. Initialize the =constructor=, including any [[id:6d0ddb05-83c3-4a23-bf52-9fab2633bd99][overloaded Constructors]] referenced with ~this()~.
+
+#+BEGIN_SRC java
+public class ZooTickets {
+    private String name = "BestZoo"; // Line: 2
+    { System.out.print(name + "-"); } // Line: 3
+
+    private static int COUNT = 0; // Line: 4
+    static { System.out.print(COUNT + "-"); } // Line: 5
+    static { COUNT += 10; System.out.print(COUNT + "-"); } // Line: 6
+
+    public ZooTickets() { // Line: 8
+        System.out.print("z-"); // Line: 9
+    } // Line: 10
+
+    public static void main(String... patrons) {
+        new ZooTickets(); // Line: 13
+    }
+}
+//Output: ~0-10­BestZoo­z-~
+#+END_SRC
+
+First, we have to *initialize* the ~class~.
+
+Since there is no ~superclass~ declared, which means the ~superclass~ is *Object*, we can start with the ~static~ *components* of ~ZooTickets~.
+In this case, =lines 4, 5, and 6= are executed, printing =0­= and =10­=.
+
+Next, we initialize the ~instance~ created on =line 13=.
+
+Again, since no ~superclass~ is declared, we start with the ~instance~ components.
+=Lines 2 and 3= are executed, which prints =BestZoo-=
+
+Finally, we run the constructor on =lines 8–10=, which outputs =z-=
+
+**** _Exam Trick_
+
+- A ~class~ is initialized at most once by the JVM before it is referenced or used.
+
+- All ~static final variables~ must be assigned a value exactly *once*, either when they are declared or in a ~static initializer~.
+
+- All ~final~ fields must be assigned a value exactly once, either when they are declared, in an [[id:4e6f72b6-5e66-4d26-b9b5-8689fdd01c21][instance initializer]], or in a =constructor=.
+
+- ~Non-final static~ and ~instance variables~ defined without a value are assigned a *default* value based on their ~type~.
+
+- Order of initialization is as follows: 1. *variable declarations*, 2. then *initializers*, and 3. finally =constructors=.
