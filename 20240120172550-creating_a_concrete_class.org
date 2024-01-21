@@ -5,3 +5,73 @@
 #+property: header-args :tangle code/ocp/6/creating_a_concrete_class.java
 
 * Creating a Concrete Class
+
+An [[id:a1091361-fe51-4d9a-97dc-1178bc14226e][abstract classe]] becomes usable when it is extended by a *concrete* ~subclass~.
+A *concrete* class is a *non­abstract* ~class~.
+
+The first *concrete* ~subclass~ that extends an ~abstract class~ is required to *implement all inherited* [[id:3e6ed9f7-a719-4f68-94f0-29cb4914ebf2][abstract methods]].
+
+
+An ~abstract class~ can extend a ~non-abstract class~ and vice versa.
+
+Anytime a *concrete* ~class~ is extending an ~abstract class~, it must =implement= *all* of the methods that are *inherited* as ~abstract~.
+
+** Example
+
+Let’s illustrate this with a set of inherited classes:
+
+#+BEGIN_SRC java
+public abstract class Mammal {
+    abstract void showHorn();
+    abstract void eatLeaf();
+}
+
+public abstract class Rhino extends Mammal {
+    void showHorn() {} // Inherited from Mammal
+}
+
+public class BlackRhino extends Rhino {
+    void eatLeaf() {} // Inherited from Mammal
+}
+#+END_SRC
+
+In the above example, the ~BlackRhino~ class is the first *concrete* ~subclass~, while the ~Mammal~ and ~Rhino~ classes are *abstract*.
+
+The ~BlackRhino~ class inherits the ~eatLeaf()~ method as ~abstract~ and is therefore required to provide an implementation, which it does.
+
+What about the ~showHorn()~ method?
+
+Since the ~parent~ class, ~Rhino~, provides an implementation of ~showHorn()~, the method is inherited in the ~BlackRhino~ as a ~non-abstract~ method.
+
+For this reason, the ~BlackRhino~ class is *permitted but not required* to override the ~showHorn()~ method.
+
+The three classes in this example are *correctly defined and compile*.
+
+** Example
+
+The following *concrete* class ~Lion~ *inherits* two abstract methods, ~getName()~ and ~roar()~:
+
+#+BEGIN_SRC java
+public abstract class Animal {
+    abstract String getName();
+}
+
+public abstract class BigCat extends Animal {
+    protected abstract void roar();
+}
+
+public class Lion extends BigCat {
+    public String getName() {
+        return "Lion";
+    }
+    public void roar() {
+        System.out.println("The Lion lets out a loud ROAR!");
+    }
+}
+#+END_SRC
+
+In the above sample code, ~BigCat~ *extends* ~Animal~ but is marked as ~abstract~; therefore, it is *not required* to provide an =implementation= for the ~getName()~ method.
+
+The class ~Lion~ is *not* marked as ~abstract~, and as the first *concrete* ~subclass~, it must implement *all* of the =inherited= ~abstract methods~ not defined in a ~parent class~.
+
+All three of these classes *compile successfully*.
