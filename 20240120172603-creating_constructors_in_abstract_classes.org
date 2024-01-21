@@ -5,3 +5,41 @@
 #+property: header-args :tangle code/ocp/6/creating_constructors_in_abstract_classes.java
 
 * Creating Constructors in Abstract Classes
+
+** Example
+
+Using the [[id:f3a17739-2afe-4abe-84c3-778419d52cb8][constructors]] rules, [[id:d5b4004d-b5db-48a2-8e85-09359ca61a42][javac]] inserts a =default no­argument constructor= into the ~Platypus~ class, which first calls ~super()~ in the
+~Mammal~ class.
+
+The ~Mammal~ =constructor= is only called when the abstract class is being initialized through a ~subclass~; therefore, there is an implementation of chew() at the time the constructor is called.
+
+This code *compiles* and prints =yummy!= at *runtime*.
+
+#+BEGIN_SRC java
+abstract class Mammal {
+    abstract CharSequence chew();
+
+    public Mammal() {
+        System.out.println(chew());
+    }
+}
+
+public class Platypus extends Mammal {
+    String chew() {
+        return "yummy!";
+    }
+
+    public static void main(String[] args) {
+        new Platypus();
+    }
+}
+#+END_SRC
+
+*** _Exam Trick_
+
+For the exam, remember that ~abstract classes~ are initialized with =constructors= in the same way as ~non­abstract classes~.
+For example, if an ~abstract class~ does *not* provide a =constructor=, the compiler will automatically insert a =default no-argument constructor=.
+
+The *primary difference* between a =constructor= in an ~abstract class~ and a ~non­abstract class~ is that a =constructor= in an ~abstract class~ can be called *only* when it is being *initialized* by a ~non-abstract subclass~.
+
+This makes sense, as abstract classes cannot be instantiated.
