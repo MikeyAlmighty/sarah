@@ -1,14 +1,3 @@
-:PROPERTIES:
-:ID:       1c229372-aba4-4b68-983a-df4467e6eab8
-:END:
-#+title: Spotting Invalid Declarations
-#+property: header-args :tangle code/ocp/6/spotting_invalid_declarations.java
-
-* Spotting Invalid Declarations
-
-** _Exam Trick_
-
-#+BEGIN_SRC java
 public abstract class Turtle {
     public abstract long eat() // DOES NOT COMPILE
     public abstract void swim() {}; // DOES NOT COMPILE
@@ -18,4 +7,3 @@ public abstract class Turtle {
     public abstract void sleep; // DOES NOT COMPILE
     public void goInShell(); // DOES NOT COMPILE
 }
-#+END_SRC

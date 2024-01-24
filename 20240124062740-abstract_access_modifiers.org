@@ -1,0 +1,99 @@
+:PROPERTIES:
+:ID:       c679a6bf-de27-403a-95ab-503e0d276c30
+:END:
+#+title: Abstract Access Modifiers
+#+property: header-args :tangle code/ocp/6/abstract_access_modifiers.java
+
+* Abstract Access Modifiers
+
+** Abstract and final
+
+What would happen if you marked a class or method both ~abstract~ and ~final~?
+If you mark something abstract, you intend for someone else to extend or implement it.
+But if you mark something final, you are preventing anyone from extending or implementing it.
+
+These concepts are in *direct conflict* with each other.
+
+Due to this incompatibility, Java does not permit a class or method to be *marked* both ~abstract~ and ~final~.
+
+*** Example
+
+For example, the following code snippet will not compile:
+
+#+BEGIN_SRC java
+public abstract final class Tortoise {// DOES NOT COMPILE
+    public abstract final void walk(); // DOES NOT COMPILE
+}
+#+END_SRC
+
+**** _Exam Trick_
+
+In this example, *neither* the ~class~ nor the ~method declarations~ will compile because they are marked both ~abstract~ and ~final~.
+
+The exam doesn’t tend to use ~final~ modifiers on ~classes~ or ~methods~ often, so if you see them, make sure they *aren’t* used with the ~abstract~ modifier.
+
+** Abstract and private
+A =method= *cannot* be marked as both ~abstract~ and ~private~.
+
+This rule makes sense if you think about it.
+
+
+How would you define a subclass that implements a required method if the method is not inherited by the subclass?
+
+*** Example
+
+The answer is that you *can’t*, which is why the compiler will complain if you try to do the following:
+
+#+BEGIN_SRC java
+public abstract class Whale {
+    private abstract void sing(); // DOES NOT COMPILE
+}
+
+public class HumpbackWhale extends Whale {
+    private void sing() {
+        System.out.println("Humpback whale is singing");
+    }
+}
+#+END_SRC
+
+In the above example, the abstract method ~sing()~ defined in the ~parent~ class ~Whale~ is not visible to the subclass ~HumpbackWhale~.
+Even though ~HumpbackWhale~ does provide an implementation, it is not considered an *override* of the =abstract= method since the =abstract
+method= is not inherited.
+
+The compiler recognizes this in the ~parent~ class and reports an *error* as soon as ~private~ and ~abstract~ are applied to the same method.
+
+** Abstract and protected
+
+In this modified example, the code will still *not* compile, but for a completely different reason.
+If you remember the rules for [[id:c67b24a4-82f7-4423-83a9-75fc1c566166][Overriding a Method]], the ~subclass~ cannot reduce the visibility of the ~parent~ method, ~sing()~.
+
+Because the method is declared *protected* in the ~parent~ class, it *must* be marked as ~protected~ or ~public~ in the ~child~ class.
+Even with ~abstract~ methods, the rules for *overriding methods* must be followed.
+
+#+BEGIN_SRC java
+public abstract class Whale {
+    protected abstract void sing();
+}
+
+public class HumpbackWhale extends Whale {
+    private void sing() { // DOES NOT COMPILE
+        System.out.println("Humpback whale is singing");
+    }
+}
+#+END_SRC
+
+** Abstract and static
+
+A ~static~ method can only be *hidden*, *not overridden*.
+
+It is defined as belonging to the ~class~, *not* an ~instance~ of the class.
+
+If a ~static~ method *cannot* be *overridden*, then it follows that it also *cannot* be marked ~abstract~ since it can *never be implemented*.
+
+For example, the following class does not compile:
+
+#+BEGIN_SRC java
+abstract class Hippopotamus {
+    abstract static void swim(); // DOES NOT COMPILE
+}
+#+END_SRC
