@@ -2,3 +2,118 @@
 :ID:       e8eac75b-e98b-4e15-b3b0-58a56e6b1d85
 :END:
 #+title: Creating Immutable Objects
+#+property: header-args :tangle code/ocp/6/creating_immutable_objects.java
+
+* Creating Immutable Objects
+
+The ~immutable~ objects pattern is an object­oriented design pattern in which an object *cannot be modified* after it is created.
+
+- Helpful when writing *secure code* because you don’t have to worry about the values changing.
+- Simplify code when dealing with *concurrency* since ~immutable~ objects can be easily shared between multiple threads.
+
+
+** 1. Declaring an Immutable Class
+
+1. Mark the class as ~final~ or make all of the =constructors= ~private~.
+2. Mark all the =instance variables= ~private~ and ~final~.
+3. *Don’t* define any setter methods.
+4. *Don’t* allow ~referenced~ mutable objects to be *modified*.
+   (It means you *shouldn’t* expose an accessor method for ~mutable instance~ fields.)
+5. Use a =constructor= to set all properties of the object, making a ~copy~ if needed.
+
+
+*** Mutable Object Example
+
+#+BEGIN_SRC java
+import java.util.*;
+
+public final class Animal { // Not an immutable object declaration
+    private final ArrayList<String> favoriteFoods;
+
+    public Animal() {
+        this.favoriteFoods = new ArrayList<String>();
+        this.favoriteFoods.add("Apples");
+    }
+
+    public List<String> getFavoriteFoods() {
+        return favoriteFoods;
+    }
+}
+#+END_SRC
+We carefully followed the first three rules, but unfortunately, a malicious caller could still
+modify our data:
+
+#+BEGIN_SRC java
+var zebra = new Animal();
+
+System.out.println(zebra.getFavoriteFoods()); // [Apples]
+
+zebra.getFavoriteFoods().clear();
+zebra.getFavoriteFoods().add("Chocolate Chip Cookies");
+
+System.out.println(zebra.getFavoriteFoods()); // [Chocolate Chip Cookies]
+#+END_SRC
+
+It’s not an immutable object if we can change its contents!
+
+If we don’t have a getter for the favoriteFoods object, how do callers access it?
+Simple: by using delegate or wrapper methods to read the data (See below example)
+
+*** Immutable Object Example
+
+#+BEGIN_SRC java
+import java.util.*;
+
+public final class Animal { // An immutable object declaration
+    private final List<String> favoriteFoods;
+
+    public Animal() {
+        this.favoriteFoods = new ArrayList<String>();
+        this.favoriteFoods.add("Apples");
+    }
+
+    public int getFavoriteFoodsCount() {
+        return favoriteFoods.size();
+    }
+
+    public String getFavoriteFoodsItem(int index) {
+        return favoriteFoods.get(index);
+    }
+}
+#+END_SRC
+
+** 2. Performing a Defensive Copy
+
+So, what’s this about the =fifth= and final rule for creating *immutable* objects?
+
+In designing our class, let’s say we want a rule that the data for ~favoriteFoods~ is provided by the caller and that it always contains at least one element.
+
+This rule is often called an [[id:f86f8b26-77b9-412d-9d9a-0001bbf9dba0][Invariant]]; it is true any time we have an ~instance~ of the object.
+
+*** Example
+
+The ~copy~ operation is called a ~defensive copy~ because the copy is being made in case other code does something unexpected.
+
+With this approach, our ~Animal~ class is once again immutable.
+
+#+BEGIN_SRC java
+import java.util.*;
+
+public final class Animal { // Not an immutable object declaration
+    private final ArrayList<String> favoriteFoods;
+
+    public Animal(ArrayList<String> favoriteFoods) {
+        if (favoriteFoods == null || favoriteFoods.size() == 0)
+        throw new RuntimeException("favoriteFoods is required");
+        this.favoriteFoods = new ArrayList<String>(favoriteFoods);
+    }
+
+    public int getFavoriteFoodsCount() {
+        return favoriteFoods.size();
+    }
+
+    public String getFavoriteFoodsItem(int index) {
+        return favoriteFoods.get(index);
+    }
+}
+#+END_SRC
