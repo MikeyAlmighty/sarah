@@ -1,0 +1,37 @@
+:PROPERTIES:
+:ID:       8676fdb7-70f1-4677-b28f-d8bf036bacb2
+:END:
+#+title: Extending an Interface
+
+* Extending an Interface
+
+Like a ~class~, an ~interface~ *can* =extend= *another* ~interface~ using the ~extends~ [[id:5f2b572a-ec31-49de-ba13-95b0c5edb4c0][keyword]].
+
+** Example
+
+#+BEGIN_SRC java
+public interface Nocturnal {}
+
+public interface HasBigEyes extends Nocturnal {}
+#+END_SRC
+
+** Extending Multiple Interfaces
+
+*** Example
+
+#+BEGIN_SRC java
+public interface Nocturnal {
+    public int hunt();
+}
+
+public interface CanFly {
+    public void flap();
+}
+
+public interface HasBigEyes extends Nocturnal, CanFly {}
+
+public class Owl implements HasBigEyes {
+    public int hunt() { return 5; }
+    public void flap() { System.out.println("Flap!"); }
+}
+#+END_SRC

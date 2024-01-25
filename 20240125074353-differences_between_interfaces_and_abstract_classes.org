@@ -1,0 +1,26 @@
+:PROPERTIES:
+:ID:       aa705489-c98c-452d-be15-1fda42ae591c
+:END:
+#+title: Differences between Interfaces and Abstract Classes
+
+* Differences between Interfaces and Abstract Classes
+
+Even though [[id:3893ce2e-cd85-4914-ba26-d7c7c732eb02][abstract classes]]  and [[id:e1fb40df-c0b5-4c10-9704-39bac087c227][interfaces]] are both considered ~abstract types~, only ~interfaces~ make use of [[id:11cb5831-7123-44df-a020-cfd8f6646645][implicit modifiers]].
+
+** Example
+
+Both of these method definitions are considered ~abstract~.
+
+That said, the Husky class will *not* compile if the ~play()~ method is not *marked* ~abstract~.
+
+Whereas the method in the ~Poodle~ interface will compile *with or without* the ~abstract modifier~.
+
+#+BEGIN_SRC java
+abstract class Husky { // abstract required in class declaration
+    abstract void play(); // abstract required in method declaration
+}
+
+interface Poodle { // abstract optional in interface declaration
+    void play(); // abstract optional in method declaration
+}
+#+END_SRC

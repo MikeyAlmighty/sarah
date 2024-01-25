@@ -1,0 +1,105 @@
+:PROPERTIES:
+:ID:       aafc61bd-fc20-4fad-9489-83cdf133c2b5
+:END:
+#+title: Inheriting an Interface
+#+property: header-args :tangle code/ocp/7/inheriting_an_interface.java
+
+* Inheriting an Interface
+
+Like an [[id:3893ce2e-cd85-4914-ba26-d7c7c732eb02][abstract class]], when a ~concrete~ class *inherits* an ~interface~, all of the *inherited abstract methods* *must* be implemented.
+
+#+ATTR_ORG: :width 600
+[[./assets/interface_inheritance.png]]
+
+The concrete ~Swan~ class inherits *four* abstract methods that it must implement:
+1. ~getType()~
+2. ~canSwoop()~
+3. ~fly()~
+4. ~swim()~
+
+
+** Example
+
+#+BEGIN_SRC java
+public interface HasTail {
+    public int getTailLength();
+}
+
+public interface HasWhiskers {
+    public int getNumberOfWhiskers();
+}
+
+public abstract class HarborSeal implements HasTail, HasWhiskers {}
+
+public class CommonSeal extends HarborSeal {} // DOES NOT COMPILE
+#+END_SRC
+
+The ~HarborSeal~ class compiles because it is *abstract* and not required to implement any of the abstract methods it inherits.
+The concrete ~CommonSeal~ class, though, *must override all inherited abstract methods*.
+
+** Mixing Class and Interface Keywords
+
+The exam creators are fond of questions that mix class and interface terminology.
+Although a ~class~ can implement an ~interface~, a ~class~ *cannot* ~extend~ an ~interface~.
+Likewise, while an ~interface~ *can* extend another ~interface~, an ~interface~ *cannot* *implement* another ~interface~.
+
+The following examples illustrate these principles:
+
+*** _Exam Trick_
+
+The =first= example shows a class trying to extend an interface and doesn’t compile.
+
+The =second= example shows an interface trying to extend a class, which also doesn’t compile.
+Be wary of examples on the exam that mix class and interface declarations.
+
+#+BEGIN_SRC java
+public interface CanRun {}
+public class Cheetah extends CanRun {} // DOES NOT COMPILE
+
+public class Hyena {}
+public interface HasFur extends Hyena {} // DOES NOT COMPILE
+#+END_SRC
+
+** Inheriting Duplicate Abstract Methods
+
+
+*** Example
+
+Java supports inheriting two ~abstract methods~ that have =compatible= method declarations.
+
+#+BEGIN_SRC java
+public abstract interface Herbivore {
+    public void eatPlants();
+}
+
+public abstract interface Omnivore {
+    public void eatPlants();
+}
+
+public class Bear implements Herbivore, Omnivore {
+    public void eatPlants() {
+        System.out.println("Eating plants");
+    }
+}
+#+END_SRC
+
+*** Example
+
+By =compatible=, we mean a method can be written that properly *overrides* both inherited methods:
+For example, by using [[id:6da516df-94e4-4b63-a787-0bddd7e6c6ca][Covariant Return Types]] that you learned about in [[id:3b599fc1-41c5-4aeb-93eb-2a4657545202][6. Class Design]].
+
+#+BEGIN_SRC java
+public abstract interface Herbivore {
+    public void eatPlants();
+}
+
+public abstract interface Omnivore {
+    public int eatPlants();
+}
+
+public class Tiger implements Herbivore, Omnivore { // DOES NOT COMPILE
+...
+}
+#+END_SRC
+
+It’s impossible to write a version of Tiger that satisfies both inherited abstract methods. The code does not compile, regardless of what is declared inside the Tiger class.

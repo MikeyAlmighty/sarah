@@ -1,0 +1,60 @@
+:PROPERTIES:
+:ID:       11cb5831-7123-44df-a020-cfd8f6646645
+:END:
+#+title: Inserting Implicit modifiers
+#+filetags: :OCP:Interfaces:
+#+property: header-args :tangle code/ocp/7/interface_implicit_modifiers.java
+
+* Inserting Implicit modifiers
+
+An ~implicit modifier~ is a *modifier* that the compiler *automatically* inserts into the code.
+
+For example, an ~interface~ is *always considered to* be ~abstract~, even if it is not marked so.
+
+The following list includes the *implicit modifiers* for ~interfaces~ that you need to know for the exam:
+
+- ~Interfaces~ are implicitly ~abstract~.
+- ~Interface variables~ are implicitly ~public~, ~static~, and ~final~.
+- ~Interface methods~ without a body are implicitly ~abstract~.
+- ~Interface methods~ without the ~private~ modifier are implicitly ~public~.
+
+** Example
+
+The following two ~interface~ definitions are *equivalent*, as the compiler will convert them both to the second declaration:
+
+
+#+BEGIN_SRC java
+public interface Soar {
+    int MAX_HEIGHT = 10;
+    final static boolean UNDERWATER = true;
+    void fly(int speed);
+    abstract void takeoff();
+    public abstract double dive();
+}
+
+public abstract interface Soar {
+    public static final int MAX_HEIGHT = 10;
+    public final static boolean UNDERWATER = true;
+    public abstract void fly(int speed);
+    public abstract void takeoff();
+    public abstract double dive();
+}
+#+END_SRC
+
+** Conflicting Modifiers
+
+What happens if a developer marks a method or variable with a *modifier* that conflicts with an implicit modifier?
+For example, if an ~abstract method~ is implicitly ~public~, can it be explicitly marked ~protected~ or ~private~?
+
+*** Example
+
+#+BEGIN_SRC java
+public interface Dance {
+    private int count = 4; // DOES NOT COMPILE
+    protected void step(); // DOES NOT COMPILE
+}
+#+END_SRC
+
+Neither of these interface member declarations compiles, as the compiler will apply the public modifier to both, resulting in a *conflict*.
+
+** [[id:aa705489-c98c-452d-be15-1fda42ae591c][Differences between Interfaces and Abstract Classes]]

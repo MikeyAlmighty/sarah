@@ -1,0 +1,63 @@
+:PROPERTIES:
+:ID:       aa794172-0ba9-4817-928e-e296f2b05ec1
+:END:
+#+title: Declaring an Interface
+#+property: header-args :tangle code/ocp/7/declaring_an_interface.java
+
+* Declaring an Interface
+
+Defined with the ~interface~ [[id:5f2b572a-ec31-49de-ba13-95b0c5edb4c0][keyword]]
+
+*** Example
+
+In =Figure 7.1=, our ~interface~ declaration includes an *abstract method* and a *constant variable*.
+
+*Interface variables* are referred to as *constants* because they are assumed to be ~public~, ~static~, and ~final~.
+
+#+ATTR_ORG: :width 600
+[[./assets/defining_an_interface.png]]
+
+#+BEGIN_SRC java
+public abstract interface CanBurrow {
+  public abstract Float getSpeed(int age); // Abstract Interface Method
+  public static final int MINIMUM_DEPTH = 2; // Constant
+}
+#+END_SRC
+
+*** Example
+
+This example doesn’t compile, as ~WalksOnTwoLegs~ is an interface and cannot be instantiated.
+
+#+BEGIN_SRC java
+public abstract interface WalksOnTwoLegs {}
+
+public class Biped {
+    public static void main(String[] args) {
+        var e = new WalksOnTwoLegs(); // DOES NOT COMPILE
+    }
+}
+
+
+#+END_SRC
+
+*** Example
+
+This example, ~WalksOnEightLegs~, doesn’t compile because ~interfaces~ *cannot* be marked as ~final~ for the same reason that *abstract classes* cannot be marked as ~final~.
+#+BEGIN_SRC java
+public final interface WalksOnEightLegs {} // DOES NOT COMPILE
+#+END_SRC
+
+
+** Implementing an Interface
+
+#+BEGIN_SRC java
+public class FieldMouse implements Climb, CanBurrow {
+    public Float getSpeed(int age) {
+        return 11f;
+    }
+}
+#+END_SRC
+
+** _Exam Trick_
+
+One aspect of an ~interface~ declaration that differs from an [[id:3893ce2e-cd85-4914-ba26-d7c7c732eb02][abstract class]] is that it contains [[id:11cb5831-7123-44df-a020-cfd8f6646645][implicit modifiers]].
