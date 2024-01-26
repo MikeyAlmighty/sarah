@@ -1,0 +1,22 @@
+:PROPERTIES:
+:ID:       35919b4b-73fe-4e3b-a7a0-e4141830bd33
+:END:
+#+title: Private Interface Method
+
+* Private Interface Method
+
+~private interface method~ and ~private static interface method~
+
+Because both types of methods are ~private~, they can *only* be used in the ~interface~ declaration in *which they are declared*.
+For this reason, they were added primarily to reduce code duplication.
+
+** Private Interface Method Definition Rules
+1. A ~private interface method~ must be marked with the ~private~ modifier and include a =method body=.
+2. A ~private static interface method~ may be called by any method within the /interface definition/.
+3. A ~private interface method~ may only be called by ~default~ and other ~private non­static methods~ within the /interface definition/.
+
+- Another way to think of it is that a ~private interface method~ is only accessible to ~non-static methods~ defined *within* the ~interface~.
+
+- A ~private static interface method~, on the other hand, can be accessed by any method in the interface.
+
+For both types of ~private methods~, a ~class~ inheriting the interface *cannot* directly invoke them.

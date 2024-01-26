@@ -1,0 +1,35 @@
+:PROPERTIES:
+:ID:       3dd62f14-1ce2-4216-856f-99d390fff681
+:END:
+#+title: Static Interface Method
+
+* Static Interface Method
+
+** Static Interface Method Definition Rules
+1. A ~static method~ must be marked with the ~static~ keyword *and* include a =method body=.
+2. A ~static method~ without an access modifier is *implicitly* ~public~.
+3. A ~static method~ *cannot* be marked ~abstract~ or ~final~.
+4. A ~static method~ is not inherited and cannot be accessed in a ~class~ implementing the ~interface~ without a *reference* to the ~interface~ name.
+
+*** Example
+
+#+BEGIN_SRC java
+public interface Hop {
+    static int getJumpHeight() {
+        return 8;
+    }
+}
+#+END_SRC
+
+Since the method is defined *without* an *access modifier*, the compiler will *automatically* insert the ~public~ access modifier.
+The method ~getJumpHeight()~ works just like a ~static~ method as defined in a class.
+
+In other words, it can be accessed *without* an instance of a ~class~:
+
+#+BEGIN_SRC java
+public class Skip {
+    public int skip() {
+        return Hop.getJumpHeight();
+    }
+}
+#+END_SRC
