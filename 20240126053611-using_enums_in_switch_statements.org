@@ -1,0 +1,47 @@
+:PROPERTIES:
+:ID:       3fdd92c8-3886-4601-932e-1f7c284ec025
+:END:
+#+title: Using Enums in Switch Statements
+#+property: header-args :tangle code/ocp/7/enums_in_switch_statements.java
+
+* Using Enums in Switch Statements
+
+** Example
+
+The code prints ="Time for the pool!"= since it matches ~SUMMER~.
+
+#+BEGIN_SRC java
+Season summer = Season.SUMMER;
+switch(summer) {
+    case WINTER:
+        System.out.print("Get out the sled!");
+        break;
+    case SUMMER:
+        System.out.print("Time for the pool!");
+        break;
+    default:
+        System.out.print("Is it summer yet?");
+}
+#+END_SRC
+
+In each ~case~ statement, we just typed the value of the enum rather than writing ~Season.WINTER~.
+After all, the compiler already knows that the only possible matches can be *enum values*.
+
+*** _Exam Trick_
+
+You *can’t* compare ~enums~ with ~int~ values, you cannot use them in a switch statement with ~int~ values.
+On the exam, pay special attention when working with enums that they are used only as enums.
+
+**** Example
+
+#+BEGIN_SRC java
+Season summer = Season.SUMMER;
+
+var message = switch(summer) {
+    case Season.WINTER -> "Get out the sled!"; // DOES NOT COMPILE
+    case 0 -> "Time for the pool!";  // DOES NOT COMPILE
+    default -> "Is it summer yet?";
+};
+
+System.out.print(message);
+#+END_SRC
