@@ -2,5 +2,115 @@
 :ID:       1e5f4a8c-29ff-45e2-acee-755e13c2a00f
 :END:
 #+title: Adding Constructors, fields and methods to Enums
+#+property: header-args :tangle code/ocp/7/adding_constructors_and_members_to_enums.java
 
 * Adding Constructors, fields and methods to Enums
+
+While a [[id:44a16f84-0d2c-4f42-8f51-d24f8985e648][simple enum]] is composed of just a list of values, we can define a *complex* enum with additional elements.
+
+** Example
+
+Let’s say our zoo wants to keep track of traffic patterns to determine which seasons get the most visitors.
+
+#+BEGIN_SRC java
+public enum Season{
+    WINTER("Low"), SPRING("High"), SUMMER("Medium"), Fall("Low");
+
+    private final String humidity;
+
+    private Season(String humidity) {
+        this.humidity = humidity;
+    }
+
+    public void printHumidity() {
+        System.out.println("Humidity " + humidity);
+    }
+}
+
+#+END_SRC
+
+On =line 2=, the list of ~enum~ values ends with a *semicolon (;)*.
+
+While this is *optional* when our enum is composed solely of a list of values (simple enum), it is *required* if there is anything in the enum besides the values.
+
+=Lines 3–9= are regular Java code.
+We have an ~instance variable~, a ~constructor~, and a ~method~.
+
+We mark the instance variable ~private~ and ~final~ on =line 3= so that our enum properties *cannot* be modified.
+
+All ~enum~ =constructors= are *implicitly* ~private~, with the modifier being *optional*.
+
+This is reasonable since you *can’t* extend an enum and the =constructors= can be called only within the enum itself.
+
+In fact, an ~enum~ =constructor= will not compile if it contains a ~public~ or ~protected~ modifier.
+
+The parentheses on =line 2= are are constructor calls, but *without* the ~new~ keyword normally used for objects.
+
+** Example
+
+The first time we ask for any of the enum values, Java constructs *all* of the enum values.
+After that, Java just returns the *already* constructed ~enum values~.
+
+Given that explanation, you can see why this calls the constructor *only once*:
+
+#+BEGIN_SRC java
+public enum OnlyOne {
+    ONCE(true);
+    private OnlyOne(boolean b) {
+        System.out.print("constructing,");
+    }
+}
+public class PrintTheOne {
+    public static void main(String[] args) {
+        System.out.print("begin,");
+        OnlyOne firstCall = OnlyOne.ONCE; // Prints constructing,
+        OnlyOne secondCall = OnlyOne.ONCE; // Doesn't print anything
+        System.out.print("end");
+    }
+}
+#+END_SRC
+
+
+This class prints the following: =begin,constructing,end=
+
+** Defining different methods for each Enum
+
+#+BEGIN_SRC java
+public enum Season {
+    WINTER {
+        public String getHours() { return "10am-3pm"; }
+    },
+    SPRING {
+        public String getHours() { return "9am-5pm"; }
+    },
+    SUMMER {
+        public String getHours() { return "9am-7pm"; }
+    },
+    FALL {
+        public String getHours() { return "9am-5pm"; }
+    };
+    public abstract String getHours();
+#+END_SRC
+
+*** _Exam Trick_
+
+An enum can even implement an ~interface~, as this just requires *overriding* the abstract methods:
+
+#+BEGIN_SRC java
+public interface Weather { int getAverageTemperature(); }
+
+public enum Season implements Weather {
+    WINTER,
+    SPRING,
+    SUMMER {
+        @Override
+        public int getAverageTemperature() {
+            return 50;
+        }
+    },
+    Fall;
+    public int getAverageTemperature(){
+        return 30;
+    }
+}
+#+END_SRC
