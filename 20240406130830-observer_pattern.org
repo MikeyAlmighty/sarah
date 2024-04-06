@@ -1,0 +1,32 @@
+:PROPERTIES:
+:ID:       bf3ba1a8-92f6-436a-b0b6-57c17505c59e
+:END:
+#+title: Observer Pattern
+
+* Observer Pattern
+
+[[https://github.com/MikeyAlmighty/design-patterns/tree/main/DesignPatterns/src/main/java/org/designpatterns/structural/observer][Observer Pattern Implementation]]
+
+The *Observer Pattern* defines a *one-to-many* dependency between objects so that when one object *changes state*, all of its *dependents* are *notified* and *updated automatically*.
+(Can be either *Push* or *Pull*)
+
+- There is a *Subject* and *Subscribers/Observers* for said *Subject*.
+- When data in the *Subject* changes, the *Subscribers* are *notified*.
+- The *Observers* are dependant on the *Subject*.
+
+
+** Loose Coupling
+
+- The only thing the *subject* knows about an *observer* is that it implements a certain interface (the *Observer interface*)
+- We can add new *observers* at any time.
+- We *never* need to modify the *subject* to add new types of *observers*.
+- We can reuse *subjects* or *observers* *independently* of each other.
+- *Changes* to either the *subject* or an *observer* will *not* affect the other.
+
+** When to use
+
+- When you need many other objects to receive an update when another object changes
+
+** Negative
+
+- *Subject* may send updates that don't matter to *Observers*.
