@@ -5,21 +5,37 @@
 
 * Linear Search
 
+** Time Complexity:
+O(n)
+** Description
 *Linear search*, aka *sequential search*, is a straightforward [[id:db3f2baf-c51b-46bb-83d7-d6c6ee76709e][Algorithms]] used to find a specific value within a ~list~ or [[id:3135ba46-5312-4651-9e80-fecad77c479b][Array]].
 Here's a brief overview of how it works:
 
-** *Start at the Beginning*:
+
+*** Start at the Beginning:
 Begin at the *first* element of the ~list~ or ~array~.
 
-** *Compare Elements*:
+*** Compare Elements:
 Compare the =target value= (the value you're searching for) with the =current element=.
 
-** *Check for Match*:
+*** Check for Match:
 If the =current element= matches the =target value=, the search is successful, and you can return the *index* of the ~element~.
 If the =current element= does not match the =target value=, move to the *next* ~element~.
 
-** *Continue Until Found or End*:
+*** Continue Until Found or End:
 Repeat until: The =target value= is found, or You reach the *end* of the ~list~ or ~array~.
 
-** *Handle Absence*:
+*** Handle Absence:
 If you reach the *end* of the ~array~ without finding the =target value=, the search concludes that the value is *not* present.
+
+** Example
+#+BEGIN_SRC typescript
+const linearSearch = (haystack: number[], needle: number): boolean => {
+    for (let index = 0; index < haystack.length; index++) {
+        if (haystack[index] === needle) {
+            return true
+        }
+    }
+    return false
+}
+#+END_SRC

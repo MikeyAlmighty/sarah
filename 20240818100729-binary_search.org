@@ -1,0 +1,46 @@
+:PROPERTIES:
+:ID:       56a130ac-4450-463f-80bd-f8361498e863
+:END:
+#+title: Binary Search
+
+* Binary Search
+
+** Time Complexity:
+O(log n)
+
+** Description
+=Binary search= is an efficient algorithm for finding an ~item~ from a *sorted* list of items.
+
+It works by repeatedly *dividing* the search interval in *half*.
+
+If the value of the search key is *less* than the ~item~ in the *middle* of the ~interval~, the algorithm narrows the ~interval~ to the *lower half*. (Otherwise, it narrows it to the *upper half*.)
+
+This process continues until the ~value~ is *found* or the ~interval~ is *empty*.
+
+** Example
+
+#+BEGIN_SRC typescript
+/**
+ * Performs binary search on a sorted array.
+ * @param haystack - The sorted array to search through.
+ * @param needle - The value to search for.
+ * @returns The index of the target value if found, otherwise false.
+ */
+const binarySearch = (haystack: number[], needle: number): boolean => {
+    let left = 0;
+    let right = haystack.length;
+
+    do {
+       const middle = Math.floor(left + (right - left)/2)
+       const value = haystack[middle];
+        if (value === needle) {
+            return true
+        } else if (value > needle) { // Value is higher than the midway point
+            right = middle; // Reduce the right side up until this middle
+        } else { // Our needle is greater than our value so we need to search on the higher side
+           left = middle +1;
+        }
+    } while (left < right);
+    return false;
+}
+#+END_SRC
