@@ -6,23 +6,42 @@
 #+filetags: :DataStructure:
 
 * Linked List
-** Complexity
-| Operation | Average Case | Worst Case |
-|-----------+--------------+------------|
-| Search    | O(n)         | O(n)       |
-| Insert    | O(1)         | O(1)       |
-| Delete    | O(1)         | O(1)       |
 
+** Singly Linked List - Big O Complexity
 
-|           | Array                           | Linked List                                                                 |
-|-----------+---------------------------------+-----------------------------------------------------------------------------|
-| Strengths | Random Access (Fast Search).    | Fast Insertion/Deletion time.                                               |
-|           | Less memory needed per element. | Dynamic Size.                                                               |
-|           | Better cache locality           | Efficient memory allocation/utilization                                     |
-|-----------+---------------------------------+-----------------------------------------------------------------------------|
-| Weakness  | Slow Insertion/Deletion time    | Slow Search Time                                                            |
-|           | Fixed size                      | More memory needed per node as additional storage is required for pointers. |
-|           |                                 |                                                                             |
+| Operation             | Time Complexity | Notes                                     |
+|-----------------------+-----------------+-------------------------------------------|
+| Access (by index)     | O(n)            | Must traverse from head                   |
+| Search (by value)     | O(n)            | Linear search from head                   |
+| Insert at head        | O(1)            | Directly update head pointer              |
+| Insert at tail        | O(n)            | Traverse to end (unless tail pointer)     |
+| Insert in middle      | O(n)            | Must find previous node to insert after   |
+| Delete at head        | O(1)            | Move head pointer to next node            |
+| Delete at tail        | O(n)            | Need to find second-to-last node          |
+| Delete in middle      | O(n)            | Must find previous node to update pointer |
+
+** [[id:3135ba46-5312-4651-9e80-fecad77c479b][Arrays]] vs [[id:f186ce91-693f-4f94-a382-f89915b76fd4][Linked List]]
+
+| Operation             | Linked List                     | Array                                                                       |
+|-----------------------+---------------------------------+-----------------------------------------------------------------------------|
+| Push (Add to End)     | O(1)                            | O(1)                                                                        |
+| Pop (Remove from End) | O(n)                            | O(1)                                                                        |
+| Shift (Remove Start)  | O(1)                            | O(n)                                                                        |
+| Unshift (Add Start)   | O(1)                            | O(n)                                                                        |
+| Insert (at Index)     | O(n)                            | O(n)                                                                        |
+| Delete (at Index)     | O(n)                            | O(n)                                                                        |
+| Lookup by Index       | O(n)                            | O(1)                                                                        |
+| Lookup by Value       | O(n)                            | O(n)                                                                        |
+
+|                       | Array                           | Linked List                                                                 |
+|-----------------------+---------------------------------+-----------------------------------------------------------------------------|
+| Strengths             | Random Access (Fast Search).    | Fast Insertion/Deletion time.                                               |
+|                       | Less memory needed per element. | Dynamic Size.                                                               |
+|                       | Better cache locality           | Efficient memory allocation/utilization                                     |
+|-----------------------+---------------------------------+-----------------------------------------------------------------------------|
+| Weakness              | Slow Insertion/Deletion time    | Slow Search Time                                                            |
+|                       | Fixed size                      | More memory needed per node as additional storage is required for pointers. |
+|                       |                                 |                                                                             |
 
 
 Made up of many nodes.
@@ -32,10 +51,9 @@ A => B => C => D => Null
 - D = Tail
 
 =Node= - Contains some data, and an index.
-- Insertion is in Constant O(1) time [Faster than an [Array](./Arrays.md)]
 
 If you want to pass a =linkedList= to a function, you can just pass the Head node.
-It contains a `current.next` method for the next node in the list, continuing all the way to the tail (When current = null is hit).
+It contains a =current.next= method for the next node in the list, continuing all the way to the tail (When current = null is hit).
 
 
 When writing logic (i.e traversal) for a linkedList, try and work with `current`
