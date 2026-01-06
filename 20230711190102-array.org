@@ -2,3 +2,379 @@
 :ID:       3135ba46-5312-4651-9e80-fecad77c479b
 :END:
 #+title: Array
+
+* Element Insertion
+** Overview
+- Ordered collections of values
+- Zero-indexed
+- *Mutable* (can be modified in place)
+
+** Insert at End of Array
+*** push()
+- Adds one or more elements to the end
+- Mutates the original array
+- Returns the new length
+
+#+begin_src js
+let arr = [1, 2, 3]
+arr.push(4)
+// [1, 2, 3, 4]
+#+end_src
+
+*** Spread (Immutable)
+- Creates a new array
+
+#+begin_src js
+let arr = [1, 2, 3]
+let newArr = [...arr, 4]
+// [1, 2, 3, 4]
+#+end_src
+
+** Insert at Beginning of Array
+*** unshift()
+- Adds one or more elements to the start
+- Mutates the original array
+- Returns the new length
+
+#+begin_src js
+let arr = [1, 2, 3]
+arr.unshift(0)
+// [0, 1, 2, 3]
+#+end_src
+
+*** Spread (Immutable)
+- Creates a new array
+
+#+begin_src js
+let arr = [1, 2, 3]
+let newArr = [0, ...arr]
+// [0, 1, 2, 3]
+#+end_src
+
+** Performance Notes
+- push() :: O(1)
+- unshift() :: O(n)
+
+** Notes
+- Prefer push() for performance-sensitive code
+- Use spread syntax for *immutable* *updates* (e.g., React state)
+
+* Element Removal
+** Overview
+- Arrays are mutable by default
+- Elements can be removed from the *end*, *beginning*, or *middle*
+- Removal can be *mutable* or *immutable* depending on method
+
+** Remove from End of Array
+*** pop()
+- Removes the last element
+- Mutates the original array
+- Returns the removed element
+
+#+begin_src js
+let arr = [1, 2, 3]
+let removed = arr.pop()
+// removed = 3
+// arr = [1, 2]
+#+end_src
+
+*** Immutable (slice)
+- Creates a new array without the last element
+
+#+begin_src js
+let arr = [1, 2, 3]
+let newArr = arr.slice(0, -1)
+// [1, 2]
+#+end_src
+
+** Remove from Beginning of Array
+*** shift()
+- Removes the first element
+- Mutates the original array
+- Returns the removed element
+
+#+begin_src js
+let arr = [1, 2, 3]
+let removed = arr.shift()
+// removed = 1
+// arr = [2, 3]
+#+end_src
+
+*** Immutable (slice)
+- Creates a new array without the first element
+
+#+begin_src js
+let arr = [1, 2, 3]
+let newArr = arr.slice(1)
+// [2, 3]
+#+end_src
+
+** Remove from Middle of Array
+*** splice()
+- Removes elements at a specific index
+- Mutates the original array
+- Syntax: splice(startIndex, deleteCount)
+  - startIndex (Inclusive)
+
+#+begin_src js
+let arr = [1, 2, 3, 4]
+arr.splice(1, 2)
+// arr = [1, 4]
+
+//           0  1  2  3  4
+const arr = [4,23,14,55,23]
+
+console.log(arr.splice(2, 2)) // 14, 55
+#+end_src
+
+*** Immutable (filter)
+- Removes elements by condition
+
+#+begin_src js
+let arr = [1, 2, 3, 4]
+let newArr = arr.filter(x => x !== 3)
+// [1, 2, 4]
+#+end_src
+
+*** Immutable (slice + spread)
+- Removes element at a specific index
+
+#+begin_src js
+let arr = [1, 2, 3, 4]
+let index = 2
+let newArr = [
+  ...arr.slice(0, index),
+  ...arr.slice(index + 1)
+]
+// [1, 2, 4]
+#+end_src
+
+** Performance Notes
+- ~pop()~ → O(1)
+- ~shift()~ → O(n)
+- ~splice()~ → O(n)
+
+** Notes
+- Prefer ~pop()~ when possible for performance
+- Use *immutable* patterns for predictable state management
+- Avoid ~shift()~ in performance-critical paths
+
+* Sorting
+** Overview
+- Arrays can be reordered in place
+- Default sorting behavior is lexicographic (string-based)
+- Sorting methods are mutable unless copied first
+
+** reverse()
+- Reverses the order of elements
+- Mutates the original array
+- Returns the same array reference
+
+#+begin_src js
+let arr = [1, 2, 3]
+arr.reverse()
+// [3, 2, 1]
+#+end_src
+
+*** Immutable (copy + reverse)
+#+begin_src js
+let arr = [1, 2, 3]
+let newArr = [...arr].reverse()
+// [3, 2, 1]
+#+end_src
+
+** sort()
+- Sorts elements in place
+- Mutates the original array
+- Returns the same array reference
+- Default behavior converts elements to strings
+
+#+begin_src js
+let arr = [10, 2, 1]
+arr.sort()
+// ["1", "10", "2"]
+#+end_src
+
+*** Numeric sort (ascending)
+#+begin_src js
+let arr = [10, 2, 1]
+arr.sort((a, b) => a - b)
+// [1, 2, 10]
+#+end_src
+
+*** Numeric sort (descending)
+#+begin_src js
+let arr = [10, 2, 1]
+arr.sort((a, b) => b - a)
+// [10, 2, 1]
+#+end_src
+
+*** String sort
+#+begin_src js
+let arr = ["banana", "apple", "cherry"]
+arr.sort()
+// ["apple", "banana", "cherry"]
+#+end_src
+
+*** Immutable (copy + sort)
+#+begin_src js
+let arr = [3, 1, 2]
+let newArr = [...arr].sort((a, b) => a - b)
+// [1, 2, 3]
+#+end_src
+
+** Performance Notes
+- reverse() → O(n)
+- sort() → O(n log n)
+
+** Notes
+- Always provide a compare function for numeric sorting
+- Use copies (`[...arr]`) to avoid mutating original data
+- Common in UI ordering and data normalization
+
+* Iterators
+** Overview
+- Iterator methods process array elements sequentially
+- Does not change array length
+- Often used for transformation and selection
+- ~map()~ and ~filter()~ return new arrays (immutable)
+- ~forEach()~ is used for side effects
+
+** forEach()
+- Executes a function for each element
+- Does not return a value (returns undefined)
+- Cannot be chained for transformations
+- Used for side effects (logging, mutations, I/O)
+#+begin_src js
+let arr = [1, 2, 3]
+arr.forEach(x => {
+  console.log(x)
+})
+#+end_src
+
+- Example: mutating external state
+#+begin_src js
+let sum = 0
+arr.forEach(x => {
+  sum += x
+})
+// sum = 6
+#+end_src
+
+** map()
+- Transforms each element
+- Returns a *new* array of the same length
+- Does *not* mutate the original array
+- Chainable
+
+#+begin_src js
+let arr = [1, 2, 3]
+let doubled = arr.map(x => x * 2)
+// [2, 4, 6]
+#+end_src
+
+- Mapping to objects
+#+begin_src js
+let users = ["alice", "bob"]
+let result = users.map(name => ({ name }))
+#+end_src
+
+** filter()
+- Selects elements based on a condition
+- Returns a new array (length ≤ original)
+- Does *not* mutate the original array
+- Chainable
+
+#+begin_src js
+let arr = [1, 2, 3, 4]
+let evens = arr.filter(x => x % 2 === 0)
+// [2, 4]
+#+end_src
+
+** Chaining Example
+#+begin_src js
+let arr = [1, 2, 3, 4, 5]
+let result = arr
+  .filter(x => x % 2 !== 0)
+  .map(x => x * 10)
+// [10, 30, 50]
+#+end_src
+
+** Performance Notes
+- forEach() → O(n)
+- map() → O(n)
+- filter() → O(n)
+
+** Notes
+- Use ~forEach()~ for side effects only
+- Prefer ~map()~ for transformation
+- Prefer ~filter()~ for selection
+- Avoid using ~forEach()~ when a return value is required
+
+* Two-Dimensional Array Iteration
+** Overview
+- A *two-dimensional* array is an array of arrays
+- Often represents grids, matrices, or tables
+- Can be iterated *row-wise* or *column-wise*
+- Typically accessed as ~matrix[row][col]~
+
+** Row-wise Iteration
+- Traverse rows first, then columns
+- Most common iteration pattern
+- Preserves natural array order
+
+#+begin_src js
+let matrix = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+]
+
+for (let row = 0; row < matrix.length; row++) {
+  for (let col = 0; col < matrix[row].length; col++) {
+    console.log(matrix[row][col])
+  }
+}
+#+end_src
+
+- Using forEach
+#+begin_src js
+matrix.forEach(row => {
+  row.forEach(value => {
+    console.log(value)
+  })
+})
+#+end_src
+
+** Column-wise Iteration
+- Traverse columns first, then rows
+- Useful for column-based processing
+- Assumes rectangular matrix
+
+#+begin_src js
+let rows = matrix.length
+let cols = matrix[0].length
+
+for (let col = 0; col < cols; col++) {
+  for (let row = 0; row < rows; row++) {
+    console.log(matrix[row][col])
+  }
+}
+#+end_src
+
+** Column-wise with forEach
+#+begin_src js
+let cols = matrix[0].length
+
+for (let col = 0; col < cols; col++) {
+  matrix.forEach(row => {
+    console.log(row[col])
+  })
+})
+#+end_src
+
+** Notes
+- Row-wise is cache-friendly and most common
+- Column-wise requires consistent row lengths
+- Always check matrix dimensions before column-wise access
+- Useful in algorithms, grids, and game boards
