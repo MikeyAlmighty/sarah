@@ -2,25 +2,26 @@
 :ID:       9ccc2e2b-e387-499a-aaef-790bb6c1caa3
 :END:
 #+title: Garbage Collection
-#+filetags: :OCP:
 
 * Garbage collection
-Refers to the process of automatically freeing memory on the [[id:dbcc90ea-bf9d-4bf5-9872-36b5794b88f0][heap]] by deleting objects that are no longer reachable in your program.
+Refers to the process of automatically freeing memory on the [[id:dbcc90ea-bf9d-4bf5-9872-36b5794b88f0][heap]] by deleting *objects* that are no longer reachable in your program.
 
-Eligible for ~garbage collection~ refers to an object’s state of no longer being accessible in a program and therefore able to be garbage collected
+Eligible for ~garbage collection~ refers to an *object’s* state of no longer being accessible in a program and therefore able to be garbage collected.
 
 All ~Java~ *objects* are stored in your program memory’s [[id:dbcc90ea-bf9d-4bf5-9872-36b5794b88f0][heap]].
 The [[id:dbcc90ea-bf9d-4bf5-9872-36b5794b88f0][heap]] represents a ~large pool of unused memory~ allocated to your Java application.
 
 If your program *keeps instantiating* objects and leaving them on the [[id:dbcc90ea-bf9d-4bf5-9872-36b5794b88f0][heap]], eventually it will *run out of memory and crash*.
 
-Java includes a built-in method to help support garbage collection where you can suggest that garbage collection run:
+Java includes a *built-in* method to help support =garbage collection= where you can suggest that =garbage collection= run:
+
 #+BEGIN_SRC java
 System.gc();
 #+END_SRC
 
 
 ** Collection Eligibility
+
 The ~JVM~ waits patiently and monitors each object until it determines that the code no longer needs that memory.
 An ~object~ will remain on the [[id:dbcc90ea-bf9d-4bf5-9872-36b5794b88f0][heap]] until it is no longer reachable:
 - The ~object~ *no longer* has any ~references~ pointing to it.
