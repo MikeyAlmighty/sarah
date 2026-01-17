@@ -1,0 +1,57 @@
+:PROPERTIES:
+:ID:       0d7a7a6b-f88b-4aa7-8104-5ec9952442d2
+:END:
+#+title: Creating, Compiling and Exectuing Java Programs
+
+* Creating, Compiling and Exectuing Java Programs
+
+** File Creation
+You save a Java program in a =.java= file and *compile* it into a =.class= file.
+
+The =.class= file is executed by the [[id:04940e87-2f3a-4932-8467-375199bcac29][Java Virtual Machine (JVM)]].
+
+** Compilation
+A =Java= [[id:44534722-acbc-4a80-8c65-3f76edefd7b5][compiler]]  translates a =Java= *source* file into a Java ~bytecode~ file.
+The following command compiles Welcome.java:
+~javac Welcome.java~
+
+The compiler generates a ~bytecode~ file with a =.class= extension.
+
+Thus, the preceding command generates a file named =Welcome.class=.
+
+=Java= is a [[id:40667b65-be81-4969-9b8d-5a15e15c2fdc][High-level Language]], but Java ~bytecode~ is a [[id:b6446056-6b86-4e7e-8d68-1caa905473f5][low-level language]].
+
+The ~bytecode~ is similar to *machine instructions* but is *architecture neutral* (Runs in [[id:04940e87-2f3a-4932-8467-375199bcac29][JVM]]).
+
+Rather than a physical machine, the  [[id:04940e87-2f3a-4932-8467-375199bcac29][JVM]] is a program that *interprets* Java ~bytecode~.
+
+=Java= ~source code~ is compiled into =Java= ~bytecode~, and =Java= ~bytecode~ is interpreted by the [[id:04940e87-2f3a-4932-8467-375199bcac29][JVM]].
+
+Your Java code may use the code in the =Java= library.
+
+The [[id:04940e87-2f3a-4932-8467-375199bcac29][JVM]] *executes* your code along with the code in the *library*.
+
+** Execution
+
+To *execute* a Java program is to run the program’s ~bytecode~.
+[[id:04940e87-2f3a-4932-8467-375199bcac29][JVM]] translates the individual instructions in the ~bytecode~ into the target [[id:89afff2d-63e0-4cc8-87fb-b30d65018241][machine language]] code one at a time, rather than the whole program as a single unit.
+
+Each step is *executed* immediately after it is *translated*.
+The following command runs the bytecode for Listing 1.1:
+~java Welcome~
+
+*** Single File Execution
+In JDK 11, you can use ~java ClassName.java~ to compile and run a single-file source code program.
+
+This command combines compiling and running in one command.
+
+A single-file source code program contains only *one* =class= in the file.
+
+
+
+** Assets
+#+ATTR_ORG: :width 700
+[[./assets/creating-compiling-java-programs.png]]
+
+#+ATTR_ORG: :width 700
+[[./assets/java-source-transpilation.png]]

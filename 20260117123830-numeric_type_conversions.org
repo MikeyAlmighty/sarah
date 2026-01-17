@@ -1,0 +1,40 @@
+:PROPERTIES:
+:ID:       4a7d211a-3ff4-4cfe-bb88-ca9838e7a3a2
+:END:
+#+title: Numeric Type Conversions
+
+* Numeric Type Conversions
+
+=Floating-point= numbers can be converted into =integers= using [[id:05d4557c-1aca-4936-8c98-0a285d5eb61d][Explicit Casting]].
+
+Can you perform binary operations with *two* *operands* of *different* *types*?
+Yes.
+
+If an =integer= and a =floating-point= number are involved in a binary operation, Java *automatically* converts the =integer= to a =floating-poin= value.
+
+Therefore, ~3 * 4.5~ is the same as ~3.0 * 4.5~.
+
+You can always assign a value to a numeric variable whose type supports a *larger* range of values; thus, for instance, you can assign a =long= value to a =float= variable.
+
+You cannot, however, assign a value to a variable of a type with a smaller range unless you use type casting.
+
+[[id:3ef23225-ae37-428e-8ad3-5d7728f59478][Casting]] is an *operation* that converts a value of ~one data type~ into a value of ~another data type~.
+
+*small* range to larger range = *widening a type*.
+
+*large* range to smaller range = *narrowing* *a* *type*.
+
+Java will *automatically* =widen= a type, but you must =narrow= a type *explicitly*.
+
+The syntax for casting a type is to specify the target type in parentheses, followed by the variable’s name or the value to be cast.
+~System.out.println((int)1.7);~
+
+When a =double= value is *cast* into an =int= value, the fractional part is *truncated*.
+The following statement ~System.out.println((double)1 / 2);~ displays =0.5=, because =1= is *cast* to =1.0= first, then =1.0= is divided by =2=.
+
+However, the statement ~System.out.println(1 / 2);~ displays =0=, because =1= and =2= are both *integers* and the resulting value should also be an *integer*.
+
+
+** See also:
+- [[id:05d4557c-1aca-4936-8c98-0a285d5eb61d][Explicit Casting]]
+- [[id:7a913830-843c-4872-9365-e5f2f59808a9][Implicit Casting]]
