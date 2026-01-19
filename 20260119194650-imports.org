@@ -1,0 +1,48 @@
+:PROPERTIES:
+:ID:       f0c2e07e-8ce1-47df-a9a8-a9ebc38363ce
+:END:
+#+title: Imports
+
+* Imports
+
+=Java= allows importing classes either *explicitly (specific imports)* or using a *wildcard (*)*.
+
+Both affect *readability*, *maintainability*, and *clarity*.
+
+** Specific Imports
+
+Import *only* the required class.
+
+#+begin_src java
+import java.util.List;
+import java.util.ArrayList;
+#+end_src
+
+| Aspect        | Details                      |
+|---------------+------------------------------|
+| Readability   | Clear which classes are used |
+| Maintainable  | Safe against package changes |
+| Ambiguity     | No naming conflicts          |
+| Best Practice | Recommended                  |
+
+** Wildcard Imports
+
+Import *all* public classes from a package.
+
+#+begin_src java
+import java.util.*;
+#+end_src
+
+| Aspect       | Details                  |
+|--------------+--------------------------|
+| Readability  | Less explicit            |
+| Maintainable | Risky if package changes |
+| Ambiguity    | Can cause name conflicts |
+| Performance  | No runtime impact        |
+
+** Note
+The information for the =classes= in an *imported* package is not read in at ~compile time~ or ~runtime~ unless the class is *used* in the program.
+
+The ~import~ statement simply tells the *compiler* where to locate the =classes=.
+
+There is *no* performance difference between a *specific import* and a *wildcard import* declaration.
