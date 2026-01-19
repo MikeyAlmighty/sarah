@@ -46,3 +46,9 @@ The information for the =classes= in an *imported* package is not read in at ~co
 The ~import~ statement simply tells the *compiler* where to locate the =classes=.
 
 There is *no* performance difference between a *specific import* and a *wildcard import* declaration.
+
+*** Why There Is No Runtime Performance Impact
+
+- The [[id:601d1a17-6f03-4138-9fef-1553f38794b8][Java Compiler]] replaces *imported* =class= names with *fully qualified names*.
+- The generated =.class= bytecode does *not* contain import statements.
+- JVM class loading and execution are unaffected by how imports were written.
