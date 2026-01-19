@@ -4,3 +4,40 @@
 #+title: Java Virtual Machine (JVM)
 
 * Java Virtual Machine (JVM)
+
+The JVM is a crucial component of the Java Runtime Environment that enables Java programs to be executed on any platform.
+
+It acts as an abstract computing machine, translating Java bytecode into machine code that a computer's processor can understand.
+
+This process is commonly referred to as "write once, run anywhere" (WORA) because the same Java program can run on any device with a compatible JVM, regardless of the underlying hardware and operating system.
+
+** Key features:
+
+- *Platform independence*: *JVM* =abstracts= the underlying *hardware* and *OS*, allowing Java applications to run on any system with a compatible JVM.
+- *Bytecode execution*: Java programs are *compiled* into ~bytecode~ by the ~Java Compiler (javac)~. The *JVM* interprets this bytecode at =runtime= and *executes* it.
+- [[id:f2a08167-8ddf-4ce1-a02d-bcb9b75f3f2f][Just-in-time (JIT) compilation]]: Modern *JVMs* use a =JIT= compiler to convert *bytecode* into *native* *machine* *code* at =runtime=, optimising performance.
+- *Memory management*: Includes *automatic* *memory* *management* through [[id:9ccc2e2b-e387-499a-aaef-790bb6c1caa3][garbage collection]], which *reclaims* *memory* used by objects that are *no* *longer* in use.
+- *Security*: The JVM enforces security through features like the =ClassLoader= and the =bytecode= verifier, which ensure that only safe code is executed.
+- *Multithreading* *support*: The *JVM* provides built-in support for *multithreaded* *programming*.
+
+One of the most important components of the JVM is the [[id:f0752306-225a-4205-9ce8-5a27655db305][ClassLoader Subsystem]].
+
+*** JVM Workflow
+1. A Java source file (.java) is compiled into bytecode (.class) by the [[id:601d1a17-6f03-4138-9fef-1553f38794b8][Java Compiler]]:
+
+   a. Navigate to the folder where Welcome.java is saved.
+   b. Compile using:   ~javac Welcome.java~
+   c. This generates a ~Welcome.class~ file (~bytecode~).
+
+2. The JVM loads the bytecode via its ClassLoader.
+
+3. The Execution Engine interprets or compiles the bytecode into machine instructions.
+
+4. The program is *executed* on the =host= =machine=, with *memory* and *resources* managed by the [[id:04940e87-2f3a-4932-8467-375199bcac29][JVM]].
+
+   a. type java Welcome on the terminal
+
+The *JVM* plays a pivotal role in Java's portability and popularity since it offers the so-called decoupling of Java applications from specific hardware and operating systems.
+
+#+ATTR_ORG: :width 700
+[[./assets/jvm-workflow.png]]
