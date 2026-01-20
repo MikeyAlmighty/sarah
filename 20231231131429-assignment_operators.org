@@ -5,9 +5,59 @@
 * Assignment Operators
 #+property: header-args :tangle code/ocp/2/assignment_operators.java
 
-[[id:9bcf2aef-060a-4011-98b5-cb949a9f7d1a][Binary Operator]] that *modifies*, or *assigns*, the variable on the LHS of the operator with the result of the value on the RHS.
-Unlike most other Java operators, the assignment operator is evaluated from ~right to left~.
+[[id:9bcf2aef-060a-4011-98b5-cb949a9f7d1a][Binary Operator]] that *modifies*, or *assigns*, the variable on the =LHS= of the operator with the result of the value on the =RHS=.
+
+~variable = expression;~
+
+An *expression* represents a computation involving =values=, =variables=, and =operators= that, taking them together, evaluates to a *value*.
+
+#+BEGIN_SRC java
+int y = 1; // Assign 1 to variable Y
+double radius = 1.0; // Assign 1.0 to variable radius
+int x = 5 * (3 / 2); // Assign the value of the expression to X
+x = y + 1; // Assign the addition of y and 1 to x
+double area = radius * radius * 3.14159; // Compute area
+#+END_SRC
+
+Unlike most other Java operators, the assignment operator is *evaluated* from ~right to left~.
 
 #+BEGIN_SRC java
 int herd = 1;
 #+END_SRC
+
+You can use a variable in an expression. A variable can also be used in both sides of the === *operator*.
+For example: ~x = x + 1;~
+
+In this *assignment* statement, the result of ~x + 1~ is *assigned* to =x=.
+
+If =x= is =1= before the statement is *executed*, then it becomes =2= after the statement is *executed*.
+
+To *assign* a =value= to a =variable=, you must place the =variable= name to the left of the assignment operator.
+Thus, the following statement is wrong: ~1 = x; // Wrong~
+
+An *assignment* *statement* is essentially an *expression* that evaluates to the value to be assigned to the variable on the =LHS= of the *assignment* *operator*.
+For this reason, an *assignment* *statement* is also known as an *assignment* *expression*.
+
+For example, the following statement is correct:
+~System.out.println(x = 1);~
+
+Which is equivalent to:
+#+BEGIN_SRC java
+x = 1;
+System.out.println(x);
+#+END_SRC
+
+If a =value= is *assigned* to multiple =variables=, you can use chained assignments like this:
+~i = j = k = 1;~
+which is equivalent to:
+#+BEGIN_SRC java
+k = 1;
+j = k;
+i = j;
+#+END_SRC
+
+** Note
+In an *assignment* *statement*, the *data* *type* of the =variable= on the *left* must be compatible with the data type of the *value* on the right.
+For example, ~int x = 1.0~ would be illegal, because the data type of =x= is ~int~.
+
+You cannot assign a ~double~ value (=1.0=) to an ~int~ variable without using [[id:3ef23225-ae37-428e-8ad3-5d7728f59478][Type Casting]].

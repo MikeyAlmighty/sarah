@@ -6,6 +6,14 @@
 #+property: header-args :tangle code/ocp/1/declaring_variables.java
 
 * Declaring Variables
+To use a variable, you declare it by telling the [[id:601d1a17-6f03-4138-9fef-1553f38794b8][Java Compiler]] its *name* as well as what *type* *of* *data* it can store.
+
+The variable declaration tells the compiler to allocate appropriate *memory* *space* for the variable based on its *data* *type*.
+
+The syntax for declaring a variable is:
+
+~datatype variableName;~
+
 ** Legal Identifiers
 
 - Identifiers *must* begin with a ~letter~, a ~currency symbol($, ¥, € etc.)~, or a ~_~ symbol.
@@ -16,6 +24,9 @@
 
 #+BEGIN_SRC java
 // OK
+int count;
+double radius;
+double interestRate;
 long okidentifier;
 float $OK2Identifier;
 boolean _alsoOK1d3ntifi3r;
@@ -34,7 +45,15 @@ short _; // a single underscore is not allowed
 #+END_SRC
 
 ** Multiple Variable Declaration
+If variables are of the *same* *type*, they can be declared together, as follows:
+~datatype variable1, variable2, ..., variablen;~
+
+The variables are separated by commas.
+For example,
+~int i, j, k; // Declare i, j, and k as int variables~
+
 You can declare many variables in the same declaration as long as *they are all of the same type.*
+
 You can also initialize *any* or *all* of those values inline.
 
 #+BEGIN_SRC java

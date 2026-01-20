@@ -1,0 +1,45 @@
+:PROPERTIES:
+:ID:       471c84bb-2961-4ce0-a20d-6bd1709deb37
+:END:
+#+title: Named Constants
+
+* Named Constants
+
+An [[id:6530b478-d4a9-46e6-bcf3-5a98fef431c4][identifier]] that represents a *permanent* value.
+
+The *value* of a =variable= may change during the execution of a program, but a named constant, or simply constant, represents *permanent* data that never changes.
+
+A ~constant~ is also known as a =final= *variable* in Java.
+
+In our ~ComputeArea~ program, ~p~ is a constant.
+
+If you use it frequently, you don’t want to keep typing =3.14159;= instead, you can declare a *constant* for ~p~.
+
+** Syntax
+~final datatype CONSTANTNAME = value;~
+
+A constant must be *declared* and *initialized* in the *same* *statement*.
+
+The word =final= is a Java keyword for *declaring* a *constant*.
+
+By convention, all letters in a constant are in *uppercase*.
+
+For example, you can declare ~p~ as a *constant*:
+#+BEGIN_SRC java
+import java.util.Scanner;
+
+public class ComputeArea {
+    public static void main(String[] args) {
+        final double PI = 3.14159;
+        // Create a Scanner Object
+        Scanner input = new Scanner(System.in);
+        // Prompt the user to enter a radius
+        System.out.print("Enter a number for radius: ");
+        double radius = input.nextDouble();
+        // Step 2: Compute Area
+        double area = radius * radius * PI;
+        // Step 3: Display the area
+        System.out.println("The area for the circle of radius " + radius + " is " + area);
+    }
+}
+#+END_SRC
