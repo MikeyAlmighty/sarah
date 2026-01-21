@@ -1,0 +1,25 @@
+:PROPERTIES:
+:ID:       a9c3e4d6-4602-4e4c-9c1f-09c6a931ebe6
+:END:
+#+title: DisplayTime
+
+* DisplayTime
+
+#+BEGIN_SRC java
+public class DisplayTime {
+    public static void main(String[] args) {
+        long totalMilliseconds = System.currentTimeMillis();
+
+        long totalSeconds = totalMilliseconds / 1000;
+        long currentSecond = totalSeconds % 60;
+
+        long totalMinutes = totalSeconds / 60;
+        long currentMinute  = totalMinutes % 60;
+
+        long totalHours = totalMinutes / 60;
+        long currentHour = totalHours % 24;
+
+        System.out.println("Current Time is " + currentHour + ":" + currentMinute + ":" + currentSecond + " GMT"); // Current Time is 17:38:20 GMT
+    }
+}
+#+END_SRC
