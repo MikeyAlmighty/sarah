@@ -1,0 +1,79 @@
+:PROPERTIES:
+:ID:       7109b6cd-31d2-4102-b674-e435312b938c
+:END:
+#+title: Bitwise Operators
+
+* Bitwise Operators
+
+- [[id:91190f03-3e70-4844-9a23-c50ca48da6b6][Bitwise Complement]] ~~~ (*Only* applied to [[id:2483364b-73d3-4169-92b9-1fea473a9b01][Integer Data Types]])
+
+Bitwise operators work directly on the *binary* representation of integer types ~(byte, short, int, long, char)~.
+They are commonly used for:
+- low-level programming
+- Performance Optimization
+- Bit manipulation.
+
+** AND (&)
+- Performs a bit-by-bit =AND= operation.
+- Result bit is 1 only if both corresponding bits are 1.
+
+#+begin_src java
+int a = 5;   // 0101
+int b = 3;   // 0011
+int c = a & b; // 0001 (1)
+#+end_src
+
+** OR (|)
+- Performs a bit-by-bit =OR= operation.
+- Result bit is 1 if at least one corresponding bit is 1.
+
+#+begin_src java
+int c = a | b; // 0111 (7)
+#+end_src
+
+** XOR (^)
+- Performs a bit-by-bit exclusive OR.
+- Result bit is 1 if the bits are different.
+
+#+begin_src java
+int c = a ^ b; // 0110 (6)
+#+end_src
+
+** NOT (~)
+- Unary operator that inverts every bit.
+- Converts ~1 → 0~ and ~0 → 1~.
+- Uses two's complement representation for signed integers.
+
+#+begin_src java
+int a = 5;     // 00000000 00000000 00000000 00000101
+int b = ~a;    // 11111111 11111111 11111111 11111010 (-6)
+#+end_src
+
+** Left Shift (<<)
+- Shifts bits to the left.
+- Zeros are added on the right.
+- Effectively multiplies by 2 for each shift (when no overflow).
+
+#+begin_src java
+int a = 3;      // 0011
+int b = a << 2; // 1100 (12)
+#+end_src
+
+** Signed Right Shift (>>)
+- Shifts bits to the right.
+- Preserves the sign bit (arithmetic shift).
+- Fills with 0 for positive numbers, 1 for negative numbers.
+
+#+begin_src java
+int a = -8;      // 11111000
+int b = a >> 1;  // 11111100 (-4)
+#+end_src
+
+** Common Uses
+- Bit masks and flags
+- Efficient arithmetic operations
+- Low-level data encoding/decoding
+- Permissions and feature toggles
+
+** Notes
+- Shift distance is masked (only lower 5 bits used for int, 6 for long).

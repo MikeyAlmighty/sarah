@@ -4,34 +4,35 @@
 #+title: Creating Classes
 #+property: header-args :tangle code/ocp/6/creating_classes.java
 
+A =class= is a blueprint for creating *objects*, and *objects* are ~instances~ of =classes=.
+
+This is a fundamental concept of [[id:f169a862-02f6-4ca9-a8b1-3de711c8ed10][Object Oriented Programming]].
+
 * Creating Classes
 
 #+BEGIN_SRC java
-// Animal.java
-public class Animal {
-    private int age;
-    protected String name;
-    public int getAge() {
-        return age;
+class Movie {
+    // Fields
+    String name;
+    int releaseDate;
+
+    // Constructor
+    Movie(String name, int releaseDate){
+        this.name = name;
+        this.releaseDate = releaseDate;
     }
-    public void setAge(int newAge) {
-        age = newAge;
+
+    // method
+    void displayInfo(){
+        System.out.println("Name: " + name + " , Release Date: " + releaseDate);
     }
 }
 
-// Lion.java
-public class Lion extends Animal {
-    protected void setProperties(int age, String n) {
-        setAge(age);
-        name = n;
-    }
-    public void roar() {
-        System.out.print(name + ", age " + getAge() + ", says: Roar!");
-    }
+public class ClassExample {
     public static void main(String[] args) {
-        var lion = new Lion();
-        lion.setProperties(3, "kion");
-        lion.roar();
+        // Create an Object of the Class
+        Movie movie = new Movie("Deadpool", 2016);
+        movie.displayInfo();
     }
 }
 #+END_SRC

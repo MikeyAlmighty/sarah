@@ -4,3 +4,23 @@
 #+title: Explicit Casting
 
 * Explicit Casting
+
+*Required* when converting to a =narrower= type.
+Also known as ~type casting~, =narrowing= happens when a *larger* data type is *explicitly* converted into a *smaller* data type.
+
+Since there is a risk of data loss, we must manually specify the conversion.
+
+Without casting, the compiler will generate an *error* when trying to put a =wider= data type inside a =narrower= one.
+
+~dataType variableName = (dataType) value;~
+
+#+BEGIN_SRC java
+public class NarrowingExample {
+          public static void main(String[] args) {
+                double doubleValue = 9.78;
+                int intValue = (int) doubleValue; // Manual casting from double to int
+                System.out.println("Double value: " + doubleValue); // Double value: 9.78
+               System.out.println("Converted to int: " + intValue); // Converted to int: 9
+        }
+}
+#+END_SRC
