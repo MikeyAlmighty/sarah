@@ -3,10 +3,75 @@
 :CUSTOM_ID: scanner
 :ID:       90adfe1d-ebd3-402b-a0fa-006a2b62cfbd
 :END:
-#+begin_src java
-Scanner scanner = new Scanner(System.in);
-System.out.print("Name?: ");
-String name = scanner.nextLine().trim();
-scanner.close();
-System.out.println("Your name is" + name + "!");
-#+end_src
+
+Java provides various ways to handle =input/output (I/O)=.
+- ~Scanner~ class for *input*
+- ~System.out~ for *output*
+
+** Output
+The ~System.out.println~ method is used to print *text* to the *console*.
+
+Example:
+
+~System.out.println("Hello, World!");~
+
+Now, how can we capture input from the user?
+
+** Input
+The ~Scanner~ class is used to *read* *input*.
+
+*** Steps to use Scanner
+- Import the ~Scanner~ class. ~import java.util.Scanner;~
+- Create a ~Scanner~ object. ~Scanner scanner = new Scanner(System.in);~
+
+#+BEGIN_SRC java
+import java.util.Locale;
+import java.util.Scanner;
+
+public class ScannerExample {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        sc.useLocale(Locale.US);
+
+        // Reading different types of inputs
+        System.out.println("Enter a string:");
+        String str = sc.nextLine(); // Reads a whole line
+
+        System.out.println("Enter an integer:");
+        int number = sc.nextInt(); // Reads an integer
+        sc.nextLine();
+
+        System.out.println("Enter a float:");
+        float decimal = sc.nextFloat(); // Reads a float
+
+        System.out.println("Enter a boolean (true/false):");
+        boolean flag = sc.nextBoolean(); // Reads a boolean
+
+        // Output
+        System.out.println("String: " + str);
+        System.out.println("Integer: " + number);
+        System.out.println("Float: " + decimal);
+        System.out.println("Boolean: " + flag);
+
+        sc.close(); // Close the scanner to free resources
+    }
+}
+#+END_SRC
+
+| Method                 | Description                                          | Example Usage                                             |
+|------------------------+------------------------------------------------------+-----------------------------------------------------------|
+| next()                 | Reads the next token (word) separated by whitespace. | String word = sc.next();                                  |
+| nextLine()             | Reads the entire line of input (including spaces).   | String line = sc.nextLine();                              |
+| nextInt()              | Reads the next integer value.                        | int num = sc.nextInt();                                   |
+| nextFloat()            | Reads the next float value.                          | float num = sc.nextFloat();                               |
+| nextDouble()           | Reads the next double value.                         | double num = sc.nextDouble();                             |
+| nextBoolean()          | Reads the next boolean value (true or false).        | boolean flag = sc.nextBoolean();                          |
+| nextByte()             | Reads the next byte value.                           | byte b = sc.nextByte();                                   |
+| nextShort()            | Reads the next short value.                          | short s = sc.nextShort();                                 |
+| nextLong()             | Reads the next long value.                           | long l = sc.nextLong();                                   |
+| hasNext()              | Checks if there’s another token available.           | if (sc.hasNext()) { String input = sc.next(); }           |
+| hasNextInt()           | Checks if the next token is an integer.              | if (sc.hasNextInt()) { int num = sc.nextInt(); }          |
+| hasNextFloat()         | Checks if the next token is a float.                 | if (sc.hasNextFloat()) { float f = sc.nextFloat();}       |
+| hasNextDouble()        | Checks if the next token is a double.                | if (sc.hasNextDouble()) { double d = sc.nextDouble();}    |
+| hasNextBoolean()       | Checks if the next token is a boolean.               | if (sc.hasNextBoolean()) { boolean b = sc.nextBoolean();} |
+| useDelimiter(String p) | Sets a custom delimiter (default is whitespace).     | sc.useDelimiter(",");                                     |
