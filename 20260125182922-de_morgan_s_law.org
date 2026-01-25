@@ -1,0 +1,26 @@
+:PROPERTIES:
+:ID:       65d619d2-322a-4f51-8ac0-7098ea98a81c
+:END:
+#+title: De Morgan's Law
+
+* De Morgan's Law
+** De Morgan’s Law (Java – comparison operators)
+De Morgan’s Law explains how negation distributes over logical operators:
+- ~!(A && B)  ≡  (!A || !B)~
+- ~!(A || B)  ≡  (!A && !B)~
+
+In Java, this is often used to simplify or refactor conditions with comparisons.
+
+*** Examples
+
+#+BEGIN_SRC java
+// Original
+if (!(x > 10 && y < 5)) { }
+// Using De Morgan
+if (x <= 10 || y >= 5) { }
+
+// Original
+if (!(a == b || c != d)) { }
+// Using De Morgan
+if (a != b && c == d) { }
+#+END_SRC

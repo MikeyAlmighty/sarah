@@ -11,14 +11,131 @@
 #+BEGIN_SRC java
 if(hourOfDay < 11) {
     System.out.println("Good Morning");
-} else if(hourOfDay < 15) {
+} else if (hourOfDay < 15) {
     System.out.println("Good Afternoon");
 } else {
     System.out.println("Good Evening");
 }
 #+END_SRC
 
-** _Exam Trick_
+** Common Pitfalls
+
+*** 1. Forgetting Necessary Braces
+
+One area where the exam writers will try to trip you up is *If* *statements* without braces ({}):
+
+#+BEGIN_SRC java
+if(hourOfDay < 11)
+    System.out.println("Good Morning");
+    morningGreetingCount++;
+#+END_SRC
+
+*** 2. Wrong Semicolon at the *If* line
+
+This mistake is hard to find, because it is neither a *compile* error nor a *runtime* error; it is a *logic* error.
+
+#+BEGIN_SRC java
+if (radius >= 0); // Note semicolon
+{
+    area = radius * radius * PI;
+    System.out.println("The area " + " is " + area);
+}
+
+// Or
+
+if (radius >= 0) { }; // Note semicolon
+{
+    area = radius * radius * PI;
+    System.out.println("The area " + " is " + area);
+}
+#+END_SRC
+
+*** 3. Redundant Testing of Boolean Values
+
+To test whether a ~boolean~ variable is *true* or *false* in a test condition, it is redundant to use the [[id:700147ef-38e8-47dc-bdda-f675917ae802][equality]] testing operator like the code in =(a)=:
+Instead, it is better to test the ~boolean~ variable *directly*, as shown in =(b)=.
+
+#+BEGIN_SRC java
+// (a)
+if (even == true)
+System.out.println("It is even.");
+
+// (b)
+if (even)
+System.out.println("It is even.");
+#+END_SRC
+(Another good reason for doing this is to avoid errors that are difficult to detect. Using the === operator instead of the ==== operator to compare the equality of two items in a test condition is a common error)
+It could lead to the following erroneous statement:
+#+BEGIN_SRC java
+if (even = true)
+System.out.println("It is even.");
+#+END_SRC
+
+This statement does *not* have *compile* errors. It assigns *true* to *even*, so *even* is always *true*.
+
+*** 4. Dangling Else ambiguity
+The dangling *else* ambiguity happens when *nested* If statements don’t use braces, making it unclear which *if* an *else* belongs to.
+In Java, the *else* is always matched with the nearest unmatched *if*.
+
+#+BEGIN_SRC java
+int x = 5;
+
+if (x > 0)
+    if (x > 10)
+        System.out.println("Greater than 10");
+    else
+        System.out.println("Positive but not greater than 10");
+#+END_SRC
+
+The *else* pairs with ~if (x > 10)~, *not* ~if (x > 0)~.
+
+Use braces to resolve ambiguity:
+
+#+BEGIN_SRC java
+if (x > 0) {
+    if (x > 10) {
+        System.out.println("Greater than 10");
+    } else {
+        System.out.println("Positive but not greater than 10");
+    }
+}
+#+END_SRC
+*** 5. Equality Test of Two Floating-Point Values
+Testing two *floating-point* values (~float~ or ~double~) for equality using ==== is *unreliable* because of *rounding* and *precision* errors in binary representation.
+
+Values that *should* be equal mathematically *may* *differ* *slightly* in *memory*.
+
+#+BEGIN_SRC java
+double a = 0.1 + 0.2;
+double b = 0.3;
+
+System.out.println(a == b); // false
+#+END_SRC
+
+Numbers like =0.1= and =0.2= *cannot* be represented exactly in binary *floating-point*, so the result contains errors.
+**** Solution
+You can compare whether they are close enough by testing whether the *difference* of the two numbers is less than some *threshold*.
+That is, two numbers =x= and =y= are very close if ∣x−y∣ < e, for a very small value e. ([[id:39a343ca-b4ef-40f2-8751-fc1458db3596][Epsilon]])
+
+***** Double
+e: ~10^-14~
+
+***** Float
+e: ~10^-7~
+
+***** Example
+#+BEGIN_SRC java
+final double EPSILON = 1E−14;
+
+double x = 1.0 − 0.1 − 0.1 − 0.1 − 0.1 − 0.1;
+
+if (Math.abs(x − 0.5) < EPSILON)
+    System.out.println(x + " is approximately 0.5");
+#+END_SRC
+
+Will display =0.5000000000000001= is approximately =0.5=.
+
+*** _Exam Trick_
 
 Common way the exam may try to lead you astray is by providing code where the ~boolean~ expression inside the ~if~ statement is not actually a ~boolean~ expression:
 
@@ -31,13 +148,3 @@ if(hourOfDay) { // DOES NOT COMPILE
 
 (This statement *may* be valid in some other ~programming~ and ~scripting~ languages, but *not* in Java, where =0= and =1= are *not* considered ~boolean~ values.)
 
-** _Exam Trick_
-
-One area where the exam writers will try to trip you up is if statements without braces
-({}):
-
-#+BEGIN_SRC java
-if(hourOfDay < 11)
-    System.out.println("Good Morning");
-    morningGreetingCount++;
-#+END_SRC
