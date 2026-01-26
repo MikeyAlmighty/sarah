@@ -6,6 +6,9 @@
 #+property: header-args :tangle code/ocp/3/switch_statements.java
 
 * Switch statements
+
+** [[id:dff95a75-a51e-4286-bcd2-d35a04e45a2a][Switch Case]]
+
 The following is a list of all ~data types~ supported by ~switch~ statements:
 - ~int~ and ~Integer~
 - ~byte~ and ~Byte~
@@ -48,21 +51,27 @@ public void printDayOfWeek(int day) {
 
 A ~break~ statement *terminates* the switch statement and returns flow control to the enclosing process.
 
+** Rules
+- The ~value1~, ~...~, and ~valueN~ must have the *same*** data type as the value of the =switch-expression=. Note that ~value1~, ~...~, and ~valueN~ are *constant* *expressions*, they cannot contain variables like ~1 + x~.
+- When the value in a *case* statement matches the value of the =switch-expression=, the statements starting from this case are executed until either a *break* *statement* or the *end* of the *switch* statement is reached.
+- The *default* *case* (optional) can be used to perform actions when *none* of the specified cases matches the =switch-expression=.
+- The keyword *break* is *optional*. The *break* *statement* immediately *ends* the *switch* *statement*.
+
 ** _Exam trick_
 
-The exam creators are fond of ~switch~ examples that are *missing* ~break~ statements!
-When evaluating ~switch~ statements on the exam, *always* consider that multiple branches may be visited in a single execution.
+*** [[id:da520312-7c4b-4921-a7e2-ac5d4ea280c8][Fall Through behaviour]]
 
 Notice that ~boolean~, ~long~, ~float~, and ~double~ are excluded from switch statements, as are their associated Wrapper Classes.
 
-The reasons are varied, such as ~boolean~ having *too small a range* of values and floating­point numbers having quite a *wide range of values*.
+The reasons are varied, such as ~boolean~ having *too small a range* of values and *floating­point* numbers having quite a *wide range of values*.
 
 For the exam, though, you just need to know that they are *not* permitted in switch statements.
 
 ** Acceptable Case Values
+
 Not just any variable or value can be used in a ~case~ statement.
 
-You can use *only* ~literals~, ~enum~ constants, or ~final constant variables~ of the same data type.
+You can use *only* ~literals~, ~enum~ ~constants~, or ~final constant variables~ of the *same* data type.
 
 For example, you *can’t* have a ~case~ statement value that requires executing a method at runtime, even if that method always returns the same value.
 
@@ -89,8 +98,7 @@ void feedAnimals() {
 
 - The ~bananas~ variable is marked =final=, and its *value is known at compile­time*, so it is valid.
 
-- The ~apples~ variable is *not* marked =final=, even though its value *is known*, so it is
-not permitted.
+- The ~apples~ variable is *not* marked =final=, even though its value *is known*, so it is not permitted.
 
 - The next two case statements, with values ~getCookies()~ and ~cookies~, do *not* compile because methods are not evaluated *until runtime*, so they cannot be used as the
   value of a case statement, *even if* one of the values is stored in a =final= variable.

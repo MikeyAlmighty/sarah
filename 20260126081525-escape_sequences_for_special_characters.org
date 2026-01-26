@@ -1,0 +1,31 @@
+:PROPERTIES:
+:ID:       e4c82f9d-3cc7-4bbc-8653-b7ff71f9a37b
+:END:
+#+title: Escape Sequences for Special Characters
+
+* Escape Sequences for Special Characters
+This special notation, called an *escape* *sequence*, consists of a ~backslash (\)~ followed by a =character= or a *combination* of =digits=.
+
+For example, ~\t~ is an *escape* *sequence* for the *Tab* =character=, and an escape sequence such as ~\u03b1~ is used to represent a [[id:25824dca-cd38-447d-84fd-8c69f246709f][Unicode]].
+
+The symbols in an escape sequence are interpreted as a whole rather than individually.
+
+An escape sequence is considered as a *single* =character=.
+
+| Escape Sequence | Name            | Unicode Code | Decimal Value |
+|-----------------+-----------------+--------------+---------------|
+| \b              | Backspace       | \u0008       |             8 |
+| \t              | Tab             | \u0009       |             9 |
+| \n              | Linefeed        | \u000A       |            10 |
+| \f              | Formfeed        | \u000C       |            12 |
+| \r              | Carriage Return | \u000D       |            13 |
+| \\              | Backslash       | \u005C       |            92 |
+| \"              | Double Quote    | \u0022       |            34 |
+
+** Examples
+~System.out.println("He said \"Java is fun\"");~
+The output is =He said "Java is fun"=
+
+Note the symbols ~\~ and ~"~ together represent *one* =character=.
+
+The backslash ~\~ is called an [[id:48e303b0-6764-4008-9c56-694ea8e0f0cd][Escape Character]].

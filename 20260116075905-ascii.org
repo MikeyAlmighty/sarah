@@ -4,3 +4,39 @@
 #+title: ASCII
 
 Popular [[id:ef328551-cd74-449c-95c5-fef9ae9b7579][Encoding Scheme]]
+
+Most computers use =ASCII= (~American Standard Code for Information Interchange~), an =8-bit= encoding scheme, for representing all:
+- Uppercase letters
+- Lowercase letters
+- Digits
+- punctuation marks
+- Control Characters
+
+[[id:25824dca-cd38-447d-84fd-8c69f246709f][Unicode]] includes =ASCII= code, with ~\u0000~ to ~\u007F~ corresponding to the *128* =ASCII= characters.
+
+| Characters | Decimal Range | Unicode Range | Examples                        |
+|------------+---------------+---------------+---------------------------------|
+| '0'–'9'    | 48–57         | \u0030–\u0039 | (char)48 → '0', (char)57 → '9'  |
+| 'A'–'Z'    | 65–90         | \u0041–\u005A | (char)65 → 'A', (char)90 → 'Z'  |
+| 'a'–'z'    | 97–122        | \u0061–\u007A | (char)97 → 'a', (char)122 → 'z' |
+
+You can use =ASCII= characters such as ~'X'~, ~'1'~, and ~'$'~ in a Java program as well as [[id:25824dca-cd38-447d-84fd-8c69f246709f][Unicodes]].
+
+* Thus, for example, the following statements are equivalent:
+#+BEGIN_SRC java
+char letter = 'A';
+char letter = '\u0041'; // Character A’s Unicode is 0041
+#+END_SRC
+
+Both statements assign character A to the char variable letter.
+
+* Increment / Decrement
+The =increment/decrement= operators can also be used on =char= variables to get the next (previous) [[id:25824dca-cd38-447d-84fd-8c69f246709f][Unicode]] character.
+
+** Example
+The following statements display character b:
+
+#+BEGIN_SRC java
+char ch = 'a';
+System.out.println(++ch);
+#+END_SRC
