@@ -1,0 +1,158 @@
+:PROPERTIES:
+:ID:       2178acc3-3f0d-4841-9f71-6039bd505aea
+:END:
+#+title: Casting Between char and Numeric Types
+
+* Casting Between char and Numeric Types
+A =char= can be [[id:3ef23225-ae37-428e-8ad3-5d7728f59478][cast]] into any [[id:4b7774f6-ef98-4e86-ae2c-49961d934c6f][numeric types]], (*vice* *versa*).
+
+When an =integer= is *cast* into a =char=, only its lower (right-most) ~16 bits~ of data are used; the other part is ignored.
+For example:
+
+#+BEGIN_SRC java
+// Note a hex integer is written using prefix 0X
+char ch = (char)0XAB0041; // The lower 16 bits hex code 0041 is
+                          // assigned to ch
+System.out.println(ch);   // ch is character A
+#+END_SRC
+
+** Explanation
+*** Step 1: Write the number in binary/hex
+
+~0xAB0041~ is a =32-bit= *int*:
+
+0xAB0041
+= 0x00AB0041 (=32 bits=)
+
+
+Split it into *upper* =16 bits= and *lower* =16 bits=:
+
+Upper 16 bits: 0xAB00   ← ignored
+Lower 16 bits: 0x0041   ← kept
+
+*** Step 2: Keep only the lower 16 bits
+~(char) 0xAB0041~  →  ~(char) 0x0041~
+
+*** Step 3: Interpret 0x0041 as a Unicode character
+~0x0041~ = *65* decimal = ~'A'~
+
+~System.out.println(ch);  // prints A~
+
+** Floating-Point
+
+When a [[id:8487dd79-f6a8-49d9-ba32-9b97c5056ef2][floating-point]] value is *cast* into a =char=, the floating-point value is first *cast* into an =int=, which is then *cast* into a =char=.
+
+*** Example
+#+BEGIN_SRC java
+char ch = (char)65.25; // Decimal 65 is assigned to ch
+System.out.println(ch); // ch is character A
+#+END_SRC
+
+** Char to Numeric
+
+When a =char= is *cast* into a =numeric type=, the *character’s* [[id:25824dca-cd38-447d-84fd-8c69f246709f][Unicode]] is *cast* into the specified =numeric= =type=.
+
+#+BEGIN_SRC java
+int i = (int)'A'; // The Unicode of character A is assigned to i
+System.out.println(i); // i is 65
+#+END_SRC
+
+** Implicit Casting
+
+*Implicit* *casting* can be used if the result of a *casting* fits into the ~target~ ~variable~.
+Otherwise, *explicit* *casting* must be *used*.
+
+For example, since the Unicode of ~'a'~ is =97=, which is *within* the *range* of a =byte=, these implicit castings are fine:
+#+BEGIN_SRC java
+byte b = 'a';
+int i = 'a';
+#+END_SRC
+
+But the following statement is *incorrect*, because the Unicode ~\uFFF4~ cannot fit into a =byte=:
+
+#+BEGIN_SRC java
+byte b = '\uFFF4';
+#+END_SRC
+
+Any *positive* *integer* between =0= and =FFFF= in [[id:b89f38cd-57be-4e04-a7b5-e29a011aa637][hexadecimal ]]can be *cast* into a =character= *implicitly*.
+
+Any number *not* in this *range* *must* be *cast* into a =char= *explicitly*.
+
+** Explicit Casting
+
+To force this assignment, use *explicit* *casting*, as follows:
+
+#+BEGIN_SRC java
+byte b = (byte)'\uFFF4';
+#+END_SRC
+
+** Operators
+All [[id:f6e458df-99cf-45d6-b224-16f325cc1d2b][numeric operators]] can be applied to =char= operands.
+A =char= *operand* is *automatically* *cast* into a =number= if the other operand is a =number= or a =character=.
+
+If a =string= is *concatenated* with a =character=, the =character= is *converted* into a =string=.
+
+*** Examples
+
+#+BEGIN_SRC java
+int i = '2' + '3'; // (int)'2' is 50 and (int)'3' is 51
+System.out.println("i is " + i); // i is 101
+int j = 2 + 'a'; // (int)'a' is 97
+System.out.println("j is " + j); // j is 99
+System.out.println(j + " is the Unicode for character ") + (char)j); // 99 is the Unicode for character c
+System.out.println("Chapter " + '2');
+#+END_SRC
+
+Displays:
+#+BEGIN_SRC shell
+i is 101
+j is 99
+99 is the Unicode for character c
+Chapter 2
+#+END_SRC
+
+** Comparing and Testing Characters
+
+Two =characters= can be *compared* using the [[id:bf93d4e3-f501-4e73-ac07-e1c6653831ba][relational operators]] just like comparing two *numbers*.
+
+This is done by comparing the [[id:25824dca-cd38-447d-84fd-8c69f246709f][Unicodes]] of the *two* =characters=.
+
+*** Examples
+
+#+BEGIN_SRC java
+'a' < 'b' is true because the Unicode for 'a' (97) is less than the Unicode for 'b' (98).
+'a' < 'A' is false because the Unicodefor 'a'(97) is greater than the Unicodefor 'A' (65).
+'1' < '8' is true because the Unicode for '1' (49) is less than the Unicode for '8'
+#+END_SRC
+
+#+BEGIN_SRC java
+if (ch >= 'A' && ch <= 'Z')
+    System.out.println(ch + " is an uppercase letter");
+else if (ch >= 'a' && ch <= 'z')
+    System.out.println(ch + " is a lowercase letter");
+else if (ch >= '0' && ch <= '9')
+    System.out.println(ch + " is a numeric character");
+#+END_SRC
+
+*** Helper Methods
+
+| Method                   | Description                                               |
+|--------------------------+-----------------------------------------------------------|
+| isDigit(ch)              | Returns true if the specified character is a digit        |
+| isLetter(ch)             | Returns true if the specified character is a letter       |
+| isLetterOrDigit(ch)      | Returns true if the character is a letter or a digit      |
+| isLowerCase(ch)          | Returns true if the character is a lowercase letter       |
+| isUpperCase(ch)          | Returns true if the character is an uppercase letter      |
+| toLowerCase(ch)          | Returns the lowercase of the specified character          |
+| toUpperCase(ch)          | Returns the uppercase of the specified character          |
+
+**** Examples
+
+| Statement                  | Output |
+|----------------------------+--------|
+| Character.isDigit('a')     | false  |
+| Character.isLetter('a')    | true   |
+| Character.isLowerCase('a') | true   |
+| Character.isUpperCase('a') | false  |
+| Character.toLowerCase('T') | t      |
+| Character.toUpperCase('q') | Q      |

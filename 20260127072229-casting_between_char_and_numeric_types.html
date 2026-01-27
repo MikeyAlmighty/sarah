@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-01-27 Tue 08:01 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Casting Between char and Numeric Types</title>
+<meta name="author" content="Michael Leibbrandt" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Casting Between char and Numeric Types</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org5d9ebea">1. Casting Between char and Numeric Types</a>
+<ul>
+<li><a href="#orgc9893ea">1.1. Explanation</a>
+<ul>
+<li><a href="#org0cd85f7">1.1.1. Step 1: Write the number in binary/hex</a></li>
+<li><a href="#org09acbfc">1.1.2. Step 2: Keep only the lower 16 bits</a></li>
+<li><a href="#orgb008642">1.1.3. Step 3: Interpret 0x0041 as a Unicode character</a></li>
+</ul>
+</li>
+<li><a href="#org27c81e4">1.2. Floating-Point</a>
+<ul>
+<li><a href="#orgbf088eb">1.2.1. Example</a></li>
+</ul>
+</li>
+<li><a href="#org587a3ed">1.3. Char to Numeric</a></li>
+<li><a href="#org502ce95">1.4. Implicit Casting</a></li>
+<li><a href="#org44bb7e5">1.5. Explicit Casting</a></li>
+<li><a href="#org8bd5352">1.6. Operators</a>
+<ul>
+<li><a href="#org66205a1">1.6.1. Examples</a></li>
+</ul>
+</li>
+<li><a href="#org8ebb5b0">1.7. Comparing and Testing Characters</a>
+<ul>
+<li><a href="#org8762a38">1.7.1. Examples</a></li>
+<li><a href="#org10f1155">1.7.2. Helper Methods</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5d9ebea" class="outline-2">
+<h2 id="org5d9ebea"><span class="section-number-2">1.</span> Casting Between char and Numeric Types</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+A <code>char</code> can be <a href="20231224190739-widening_primitive_conversion.html#ID-3ef23225-ae37-428e-8ad3-5d7728f59478">cast</a> into any <a href="20260121194236-numeric_data_types.html#ID-4b7774f6-ef98-4e86-ae2c-49961d934c6f">numeric types</a>, (<b>vice</b> <b>versa</b>).
+</p>
+
+<p>
+When an <code>integer</code> is <b>cast</b> into a <code>char</code>, only its lower (right-most) <code>16 bits</code> of data are used; the other part is ignored.
+For example:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">Note a hex integer is written using prefix 0X</span>
+<span class="org-type">char</span> <span class="org-variable-name">ch</span> = <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-type">char</span><span class="org-rainbow-delimiters-depth-1">)</span>0XAB0041; <span class="org-comment-delimiter">// </span><span class="org-comment">The lower 16 bits hex code 0041 is</span>
+                          <span class="org-comment-delimiter">// </span><span class="org-comment">assigned to ch</span>
+System.out.println<span class="org-rainbow-delimiters-depth-1">(</span>ch<span class="org-rainbow-delimiters-depth-1">)</span>;   <span class="org-comment-delimiter">// </span><span class="org-comment">ch is character A</span>
+</pre>
+</div>
+</div>
+<div id="outline-container-orgc9893ea" class="outline-3">
+<h3 id="orgc9893ea"><span class="section-number-3">1.1.</span> Explanation</h3>
+<div class="outline-text-3" id="text-1-1">
+</div>
+<div id="outline-container-org0cd85f7" class="outline-4">
+<h4 id="org0cd85f7"><span class="section-number-4">1.1.1.</span> Step 1: Write the number in binary/hex</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<p>
+<code>0xAB0041</code> is a <code>32-bit</code> <b>int</b>:
+</p>
+
+<p>
+0xAB0041
+= 0x00AB0041 (<code>32 bits</code>)
+</p>
+
+
+<p>
+Split it into <b>upper</b> <code>16 bits</code> and <b>lower</b> <code>16 bits</code>:
+</p>
+
+<p>
+Upper 16 bits: 0xAB00   ← ignored
+Lower 16 bits: 0x0041   ← kept
+</p>
+</div>
+</div>
+<div id="outline-container-org09acbfc" class="outline-4">
+<h4 id="org09acbfc"><span class="section-number-4">1.1.2.</span> Step 2: Keep only the lower 16 bits</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<p>
+<code>(char) 0xAB0041</code>  →  <code>(char) 0x0041</code>
+</p>
+</div>
+</div>
+<div id="outline-container-orgb008642" class="outline-4">
+<h4 id="orgb008642"><span class="section-number-4">1.1.3.</span> Step 3: Interpret 0x0041 as a Unicode character</h4>
+<div class="outline-text-4" id="text-1-1-3">
+<p>
+<code>0x0041</code> = <b>65</b> decimal = <code>'A'</code>
+</p>
+
+<p>
+<code>System.out.println(ch);  // prints A</code>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org27c81e4" class="outline-3">
+<h3 id="org27c81e4"><span class="section-number-3">1.2.</span> Floating-Point</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+When a <a href="20260121194347-floating_point_types.html#ID-8487dd79-f6a8-49d9-ba32-9b97c5056ef2">floating-point</a> value is <b>cast</b> into a <code>char</code>, the floating-point value is first <b>cast</b> into an <code>int</code>, which is then <b>cast</b> into a <code>char</code>.
+</p>
+</div>
+<div id="outline-container-orgbf088eb" class="outline-4">
+<h4 id="orgbf088eb"><span class="section-number-4">1.2.1.</span> Example</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<div class="org-src-container">
+<pre class="src src-java"><span class="org-type">char</span> <span class="org-variable-name">ch</span> = <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-type">char</span><span class="org-rainbow-delimiters-depth-1">)</span><span class="org-highlight-numbers-number">65.25</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">Decimal 65 is assigned to ch</span>
+System.out.println<span class="org-rainbow-delimiters-depth-1">(</span>ch<span class="org-rainbow-delimiters-depth-1">)</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">ch is character A</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org587a3ed" class="outline-3">
+<h3 id="org587a3ed"><span class="section-number-3">1.3.</span> Char to Numeric</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+When a <code>char</code> is <b>cast</b> into a <code>numeric type</code>, the <b>character’s</b> <a href="20260126075828-unicode.html#ID-25824dca-cd38-447d-84fd-8c69f246709f">Unicode</a> is <b>cast</b> into the specified <code>numeric</code> <code>type</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span class="org-type">int</span> <span class="org-variable-name">i</span> = <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-type">int</span><span class="org-rainbow-delimiters-depth-1">)</span><span class="org-string">'A'</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">The Unicode of character A is assigned to i</span>
+System.out.println<span class="org-rainbow-delimiters-depth-1">(</span>i<span class="org-rainbow-delimiters-depth-1">)</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">i is 65</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org502ce95" class="outline-3">
+<h3 id="org502ce95"><span class="section-number-3">1.4.</span> Implicit Casting</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+<b>Implicit</b> <b>casting</b> can be used if the result of a <b>casting</b> fits into the <code>target</code> <code>variable</code>.
+Otherwise, <b>explicit</b> <b>casting</b> must be <b>used</b>.
+</p>
+
+<p>
+For example, since the Unicode of <code>'a'</code> is <code>97</code>, which is <b>within</b> the <b>range</b> of a <code>byte</code>, these implicit castings are fine:
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span class="org-type">byte</span> <span class="org-variable-name">b</span> = <span class="org-string">'a'</span>;
+<span class="org-type">int</span> <span class="org-variable-name">i</span> = <span class="org-string">'a'</span>;
+</pre>
+</div>
+
+<p>
+But the following statement is <b>incorrect</b>, because the Unicode <code>\uFFF4</code> cannot fit into a <code>byte</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span class="org-type">byte</span> <span class="org-variable-name">b</span> = <span class="org-string">'\uFFF4'</span>;
+</pre>
+</div>
+
+<p>
+Any <b>positive</b> <b>integer</b> between <code>0</code> and <code>FFFF</code> in <a href="20240115075853-hexadecimal_system.html#ID-b89f38cd-57be-4e04-a7b5-e29a011aa637">hexadecimal </a>can be <b>cast</b> into a <code>character</code> <b>implicitly</b>.
+</p>
+
+<p>
+Any number <b>not</b> in this <b>range</b> <b>must</b> be <b>cast</b> into a <code>char</code> <b>explicitly</b>.
+</p>
+</div>
+</div>
+<div id="outline-container-org44bb7e5" class="outline-3">
+<h3 id="org44bb7e5"><span class="section-number-3">1.5.</span> Explicit Casting</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+To force this assignment, use <b>explicit</b> <b>casting</b>, as follows:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span class="org-type">byte</span> <span class="org-variable-name">b</span> = <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-type">byte</span><span class="org-rainbow-delimiters-depth-1">)</span><span class="org-string">'\uFFF4'</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org8bd5352" class="outline-3">
+<h3 id="org8bd5352"><span class="section-number-3">1.6.</span> Operators</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+All <a href="20231231061730-arithmetic_operators.html#ID-f6e458df-99cf-45d6-b224-16f325cc1d2b">numeric operators</a> can be applied to <code>char</code> operands.
+A <code>char</code> <b>operand</b> is <b>automatically</b> <b>cast</b> into a <code>number</code> if the other operand is a <code>number</code> or a <code>character</code>.
+</p>
+
+<p>
+If a <code>string</code> is <b>concatenated</b> with a <code>character</code>, the <code>character</code> is <b>converted</b> into a <code>string</code>.
+</p>
+</div>
+<div id="outline-container-org66205a1" class="outline-4">
+<h4 id="org66205a1"><span class="section-number-4">1.6.1.</span> Examples</h4>
+<div class="outline-text-4" id="text-1-6-1">
+<div class="org-src-container">
+<pre class="src src-java"><span class="org-type">int</span> <span class="org-variable-name">i</span> = <span class="org-string">'2'</span> + <span class="org-string">'3'</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">(int)'2' is 50 and (int)'3' is 51</span>
+System.out.println<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">"i is "</span> + i<span class="org-rainbow-delimiters-depth-1">)</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">i is 101</span>
+<span class="org-type">int</span> <span class="org-variable-name">j</span> = <span class="org-highlight-numbers-number">2</span> + <span class="org-string">'a'</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">(int)'a' is 97</span>
+System.out.println<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">"j is "</span> + j<span class="org-rainbow-delimiters-depth-1">)</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">j is 99</span>
+System.out.println<span class="org-rainbow-delimiters-depth-1">(</span>j + <span class="org-string">" is the Unicode for character "</span><span class="org-rainbow-delimiters-depth-1">)</span> + <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-type">char</span><span class="org-rainbow-delimiters-depth-1">)</span>j<span class="org-rainbow-delimiters-unmatched">)</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">99 is the Unicode for character c</span>
+System.out.println<span class="org-rainbow-delimiters-unmatched">(</span><span class="org-string">"Chapter "</span> + <span class="org-string">'2'</span><span class="org-rainbow-delimiters-unmatched">)</span>;
+</pre>
+</div>
+
+<p>
+Displays:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">i is <span class="org-highlight-numbers-number">101</span>
+j is <span class="org-highlight-numbers-number">99</span>
+<span class="org-highlight-numbers-number">99</span> is the Unicode for character c
+Chapter <span class="org-highlight-numbers-number">2</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org8ebb5b0" class="outline-3">
+<h3 id="org8ebb5b0"><span class="section-number-3">1.7.</span> Comparing and Testing Characters</h3>
+<div class="outline-text-3" id="text-1-7">
+<p>
+Two <code>characters</code> can be <b>compared</b> using the <a href="20231231063707-relational_operators.html#ID-bf93d4e3-f501-4e73-ac07-e1c6653831ba">relational operators</a> just like comparing two <b>numbers</b>.
+</p>
+
+<p>
+This is done by comparing the <a href="20260126075828-unicode.html#ID-25824dca-cd38-447d-84fd-8c69f246709f">Unicodes</a> of the <b>two</b> <code>characters</code>.
+</p>
+</div>
+<div id="outline-container-org8762a38" class="outline-4">
+<h4 id="org8762a38"><span class="section-number-4">1.7.1.</span> Examples</h4>
+<div class="outline-text-4" id="text-1-7-1">
+<div class="org-src-container">
+<pre class="src src-java"><span class="org-string">'a'</span> &lt; <span class="org-string">'b'</span> is <span class="org-constant">true</span> because the Unicode <span class="org-keyword">for</span> <span class="org-string">'a'</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-highlight-numbers-number">97</span><span class="org-rainbow-delimiters-depth-1">)</span> is less than the Unicode <span class="org-keyword">for</span> <span class="org-string">'b'</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-highlight-numbers-number">98</span><span class="org-rainbow-delimiters-depth-1">)</span>.
+<span class="org-string">'a'</span> &lt; <span class="org-string">'A'</span> is <span class="org-constant">false</span> because the Unicodefor <span class="org-string">'a'</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-highlight-numbers-number">97</span><span class="org-rainbow-delimiters-depth-1">)</span> is greater than the Unicodefor <span class="org-string">'A'</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-highlight-numbers-number">65</span><span class="org-rainbow-delimiters-depth-1">)</span>.
+<span class="org-string">'1'</span> &lt; <span class="org-string">'8'</span> is <span class="org-constant">true</span> because the Unicode <span class="org-keyword">for</span> <span class="org-string">'1'</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-highlight-numbers-number">49</span><span class="org-rainbow-delimiters-depth-1">)</span> is less than the Unicode <span class="org-keyword">for</span> <span class="org-string">'8'</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-java"><span class="org-keyword">if</span> <span class="org-rainbow-delimiters-depth-1">(</span>ch &gt;= <span class="org-string">'A'</span> &amp;&amp; ch &lt;= <span class="org-string">'Z'</span><span class="org-rainbow-delimiters-depth-1">)</span>
+    System.out.println<span class="org-rainbow-delimiters-depth-1">(</span>ch + <span class="org-string">" is an uppercase letter"</span><span class="org-rainbow-delimiters-depth-1">)</span>;
+<span class="org-keyword">else</span> <span class="org-keyword">if</span> <span class="org-rainbow-delimiters-depth-1">(</span>ch &gt;= <span class="org-string">'a'</span> &amp;&amp; ch &lt;= <span class="org-string">'z'</span><span class="org-rainbow-delimiters-depth-1">)</span>
+    System.out.println<span class="org-rainbow-delimiters-depth-1">(</span>ch + <span class="org-string">" is a lowercase letter"</span><span class="org-rainbow-delimiters-depth-1">)</span>;
+<span class="org-keyword">else</span> <span class="org-keyword">if</span> <span class="org-rainbow-delimiters-depth-1">(</span>ch &gt;= <span class="org-string">'0'</span> &amp;&amp; ch &lt;= <span class="org-string">'9'</span><span class="org-rainbow-delimiters-depth-1">)</span>
+    System.out.println<span class="org-rainbow-delimiters-depth-1">(</span>ch + <span class="org-string">" is a numeric character"</span><span class="org-rainbow-delimiters-depth-1">)</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org10f1155" class="outline-4">
+<h4 id="org10f1155"><span class="section-number-4">1.7.2.</span> Helper Methods</h4>
+<div class="outline-text-4" id="text-1-7-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Method</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">isDigit(ch)</td>
+<td class="org-left">Returns true if the specified character is a digit</td>
+</tr>
+
+<tr>
+<td class="org-left">isLetter(ch)</td>
+<td class="org-left">Returns true if the specified character is a letter</td>
+</tr>
+
+<tr>
+<td class="org-left">isLetterOrDigit(ch)</td>
+<td class="org-left">Returns true if the character is a letter or a digit</td>
+</tr>
+
+<tr>
+<td class="org-left">isLowerCase(ch)</td>
+<td class="org-left">Returns true if the character is a lowercase letter</td>
+</tr>
+
+<tr>
+<td class="org-left">isUpperCase(ch)</td>
+<td class="org-left">Returns true if the character is an uppercase letter</td>
+</tr>
+
+<tr>
+<td class="org-left">toLowerCase(ch)</td>
+<td class="org-left">Returns the lowercase of the specified character</td>
+</tr>
+
+<tr>
+<td class="org-left">toUpperCase(ch)</td>
+<td class="org-left">Returns the uppercase of the specified character</td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Statement</th>
+<th scope="col" class="org-left">Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Character.isDigit(&rsquo;a&rsquo;)</td>
+<td class="org-left">false</td>
+</tr>
+
+<tr>
+<td class="org-left">Character.isLetter(&rsquo;a&rsquo;)</td>
+<td class="org-left">true</td>
+</tr>
+
+<tr>
+<td class="org-left">Character.isLowerCase(&rsquo;a&rsquo;)</td>
+<td class="org-left">true</td>
+</tr>
+
+<tr>
+<td class="org-left">Character.isUpperCase(&rsquo;a&rsquo;)</td>
+<td class="org-left">false</td>
+</tr>
+
+<tr>
+<td class="org-left">Character.toLowerCase(&rsquo;T&rsquo;)</td>
+<td class="org-left">t</td>
+</tr>
+
+<tr>
+<td class="org-left">Character.toUpperCase(&rsquo;q&rsquo;)</td>
+<td class="org-left">Q</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Michael Leibbrandt</p>
+<p class="date">Created: 2026-01-27 Tue 08:01</p>
+</div>
+</body>
+</html>
