@@ -1,5 +1,8 @@
 ;;; ~/Dev/sarah/scripts/export.el --- Robust Org-roam HTML batch export
 
+;; TO USE:
+;; /opt/homebrew/bin/emacs -Q --batch -l ~/Dev/sarah/scripts/export.el
+
 ;; --------------------------
 ;; 1. Bootstrap package system
 ;; --------------------------
