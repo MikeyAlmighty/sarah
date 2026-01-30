@@ -36,13 +36,6 @@
 (org-roam-db-sync)
 
 ;; --------------------------
-;; 4. Output directory
-;; --------------------------
-(setq org-export-dir (expand-file-name "exported" org-roam-directory))
-(unless (file-directory-p org-export-dir)
-  (make-directory org-export-dir t))
-
-;; --------------------------
 ;; 5. Patch HTML variables and suppress warnings
 ;; --------------------------
 (setq org-html-head "")
@@ -79,19 +72,47 @@
 
 (advice-add 'org-link-expand :around #'org-roam-html-link-advice)
 
+(defun my-org-roam-backlinks ()
+  "Return a list of (TITLE . HTML-FILE) backlinks for the current buffer."
+  (when-let* ((id (org-id-get)))
+    (mapcar
+     (lambda (row)
+       (let* ((source-id (car row))
+              (source-file (cadr row))
+              (title (or (caddr row)
+                         (file-name-base source-file)))
+              (html (gethash source-id id-html-map)))
+         (when html
+           (cons title html))))
+     (org-roam-db-query
+      [:select
+       [links:source nodes:file nodes:title]
+       :from links
+       :left-join nodes
+       :on (= links:source nodes:id)
+       :where (= links:dest $s1)]
+      id))))
+
+(defun my-org-html-backlinks-section (_backend)
+  "Append a backlinks section to the current export."
+  (when-let ((backlinks (my-org-roam-backlinks)))
+    (insert "\n* Backlinks\n")
+    (dolist (link backlinks)
+      (when link
+        (insert (format "- [[file:%s][%s]]\n"
+                        (cdr link)
+                        (car link)))))))
+(add-hook 'org-export-before-processing-functions
+          #'my-org-html-backlinks-section)
 ;; --------------------------
 ;; Safe HTML export with links
 ;; --------------------------
 (defun my-org-html-export (file)
-  "Export a single org file to HTML safely with relative id: links."
+  "Export a single org file to HTML in the same directory."
   (condition-case err
       (with-current-buffer (find-file-noselect file)
-        ;; Export to org-export-dir
-        (let ((org-export-publishing-directory org-export-dir)
-              (default-directory org-export-dir))
-          (org-html-export-to-html)))
+        (org-html-export-to-html))
     (error (message "Skipping %s due to error: %s" file err))))
-
 
 ;; --------------------------
 ;; 7. Publish all org-roam files

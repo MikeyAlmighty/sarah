@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-26 Mon 08:11 -->
+<!-- 2026-01-30 Fri 08:09 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ASCII</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style type="text/css">
+<style>
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -229,6 +229,30 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">ASCII</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org60eeeda">1. Backlinks</a></li>
+<li><a href="#orgf751d31">2. Thus, for example, the following statements are equivalent:</a></li>
+<li><a href="#org45faf34">3. Increment / Decrement</a>
+<ul>
+<li><a href="#orga5a5807">3.1. Example</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org60eeeda" class="outline-2">
+<h2 id="org60eeeda"><span class="section-number-2">1.</span> Backlinks</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li><a href="20260116075246-bits_and_bytes.html">Bits and Bytes</a></li>
+<li><a href="20260126075959-unicode_and_ascii.html">Unicode and ASCII</a></li>
+</ul>
+<p>
+:ID:       84487ca4-e3fd-4ed6-b0b2-b51836993077
+</p>
 <p>
 Popular <a href="20260116075812-encoding_scheme.html#ID-ef328551-cd74-449c-95c5-fef9ae9b7579">Encoding Scheme</a>
 </p>
@@ -270,31 +294,72 @@ Most computers use <code>ASCII</code> (<code>American Standard Code for Informat
 </thead>
 <tbody>
 <tr>
-<td class="org-left">&rsquo;0&rsquo;–&rsquo;9&rsquo;</td>
+<td class="org-left">'0'–'9'</td>
 <td class="org-left">48–57</td>
 <td class="org-left">\u0030–\u0039</td>
-<td class="org-left">(char)48 → &rsquo;0&rsquo;, (char)57 → &rsquo;9&rsquo;</td>
+<td class="org-left">(char)48 → '0', (char)57 → '9'</td>
 </tr>
 
 <tr>
-<td class="org-left">&rsquo;A&rsquo;–&rsquo;Z&rsquo;</td>
+<td class="org-left">'A'–'Z'</td>
 <td class="org-left">65–90</td>
 <td class="org-left">\u0041–\u005A</td>
-<td class="org-left">(char)65 → &rsquo;A&rsquo;, (char)90 → &rsquo;Z&rsquo;</td>
+<td class="org-left">(char)65 → 'A', (char)90 → 'Z'</td>
 </tr>
 
 <tr>
-<td class="org-left">&rsquo;a&rsquo;–&rsquo;z&rsquo;</td>
+<td class="org-left">'a'–'z'</td>
 <td class="org-left">97–122</td>
 <td class="org-left">\u0061–\u007A</td>
-<td class="org-left">(char)97 → &rsquo;a&rsquo;, (char)122 → &rsquo;z&rsquo;</td>
+<td class="org-left">(char)97 → 'a', (char)122 → 'z'</td>
 </tr>
 </tbody>
 </table>
+
+<p>
+You can use <code>ASCII</code> characters such as <code>'X'</code>, <code>'1'</code>, and <code>'$'</code> in a Java program as well as <a href="20260126075828-unicode.html#ID-25824dca-cd38-447d-84fd-8c69f246709f">Unicodes</a>.
+</p>
 </div>
-<div id="postamble" class="status">
-<p class="author">Author: Michael Leibbrandt</p>
-<p class="date">Created: 2026-01-26 Mon 08:11</p>
+</div>
+
+<div id="outline-container-orgf751d31" class="outline-2">
+<h2 id="orgf751d31"><span class="section-number-2">2.</span> Thus, for example, the following statements are equivalent:</h2>
+<div class="outline-text-2" id="text-2">
+<div class="org-src-container">
+<pre class="src src-java">char letter = 'A';
+char letter = '\u0041'; // Character A’s Unicode is 0041
+</pre>
+</div>
+
+<p>
+Both statements assign character A to the char variable letter.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org45faf34" class="outline-2">
+<h2 id="org45faf34"><span class="section-number-2">3.</span> Increment / Decrement</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+The <code>increment/decrement</code> operators can also be used on <code>char</code> variables to get the next (previous) <a href="20260126075828-unicode.html#ID-25824dca-cd38-447d-84fd-8c69f246709f">Unicode</a> character.
+</p>
+</div>
+
+<div id="outline-container-orga5a5807" class="outline-3">
+<h3 id="orga5a5807"><span class="section-number-3">3.1.</span> Example</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+The following statements display character b:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java">char ch = 'a';
+System.out.println(++ch);
+</pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </body>
 </html>
