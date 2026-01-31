@@ -1,0 +1,65 @@
+:PROPERTIES:
+:ID:       ef54a591-60a4-4294-a158-e730b61db220
+:END:
+#+title: Obtaining Substrings
+
+* Obtaining Substrings
+
+You can obtain a single character from a ~string~ using the =charAt= method.
+You can also obtain a *substring* from a ~string~ using the =substring= method.
+
+** Example,
+#+BEGIN_SRC java
+String message = "Welcome to Java";
+message = message.substring(0,11) + "HTML";
+#+END_SRC
+
+The string message now becomes ~Welcome to HTML~.
+
+| Method                          | Description                                                                                                | Example                                 |
+|---------------------------------+------------------------------------------------------------------------------------------------------------+-----------------------------------------|
+| substring(beginIndex)           | Returns this string’s substring starting at beginIndex and extending to the end of the string.             | "programming".substring(3) → "gramming" |
+| substring(beginIndex, endIndex) | Returns this string’s substring starting at beginIndex and ending at endIndex − 1 (endIndex not included). | "programming".substring(3, 7) → "gram"  |
+
+
+*** Note
+If =beginIndex= is =endIndex=, ~substring(beginIndex, endIndex)~ returns an =empty= *string* with length =0=.
+If =beginIndex= =>= =endIndex=, it would be a *runtime* *error*.
+
+*** Finding a Character or a Substring in a String
+| Method                     | Description                                                                | Example                           |
+|----------------------------+----------------------------------------------------------------------------+-----------------------------------|
+| indexOf(ch)                | Returns the index of the first occurrence of ch; −1 if not found.          | "banana".indexOf('a') → 1         |
+| indexOf(ch, fromIndex)     | Returns the first occurrence of ch after fromIndex; −1 if not found.       | "banana".indexOf('a', 2) → 3      |
+| indexOf(s)                 | Returns the index of the first occurrence of string s; −1 if not found.    | "banana".indexOf("na") → 2        |
+| indexOf(s, fromIndex)      | Returns the first occurrence of string s after fromIndex; −1 if not found. | "banana".indexOf("na", 3) → 4     |
+| lastIndexOf(ch)            | Returns the index of the last occurrence of ch; −1 if not found.           | "banana".lastIndexOf('a') → 5     |
+| lastIndexOf(ch, fromIndex) | Returns the last occurrence of ch before fromIndex; −1 if not found.       | "banana".lastIndexOf('a', 4) → 3  |
+| lastIndexOf(s)             | Returns the index of the last occurrence of string s; −1 if not found.     | "banana".lastIndexOf("na") → 4    |
+| lastIndexOf(s, fromIndex)  | Returns the last occurrence of string s before fromIndex; −1 if not found. | "banana".lastIndexOf("na", 3) → 2 |
+
+**** Examples
+
+#+BEGIN_SRC java
+"Welcome to Java".indexOf('W') returns 0.
+"Welcome to Java".indexOf('o') returns 4.
+"Welcome to Java".indexOf('o', 5) returns 9.
+"Welcome to Java".indexOf("come") returns 3.
+"Welcome to Java".indexOf("Java", 5) returns 11.
+"Welcome to Java".indexOf("java", 5) returns −1.
+"Welcome to Java".lastIndexOf('W') returns 0.
+"Welcome to Java".lastIndexOf('o') returns 9.
+"Welcome to Java".lastIndexOf('o', 5) returns 4.
+"Welcome to Java".lastIndexOf("come") returns 3.
+"Welcome to Java".lastIndexOf("Java", 5) returns −1.
+"Welcome to Java".lastIndexOf("Java") returns 11.
+#+END_SRC
+
+Suppose that a ~string s~ contains the first and last name separated by a *space*.
+You can use the following code to extract the first and last name from the string:
+
+#+BEGIN_SRC java
+int k = s.indexOf(' ');
+String firstName = s.substring(0, k);
+String lastName = s.substring(k + 1);
+#+END_SRC

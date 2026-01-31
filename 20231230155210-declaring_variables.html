@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 09:19 -->
+<!-- 2026-01-31 Sat 10:07 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Declaring Variables</title>
@@ -201,31 +201,31 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org88aeeac">1. Declaring Variables</a>
+<li><a href="#orgcb6a1a8">1. Declaring Variables</a>
 <ul>
-<li><a href="#org6bcbe96">1.1. Legal Identifiers</a></li>
-<li><a href="#org0f8e957">1.2. Illegal identifiers</a></li>
-<li><a href="#orgccef42c">1.3. Multiple Variable Declaration</a></li>
-<li><a href="#orgab86ced">1.4. Named Constants</a></li>
-<li><a href="#orgc5ddf19">1.5. Expressions</a></li>
+<li><a href="#orgf888707">1.1. Legal Identifiers</a></li>
+<li><a href="#orgccb4217">1.2. Illegal identifiers</a></li>
+<li><a href="#orgd7940ff">1.3. Multiple Variable Declaration</a></li>
+<li><a href="#orga639ac3">1.4. Named Constants</a></li>
+<li><a href="#org4ee5440">1.5. Expressions</a></li>
 </ul>
 </li>
-<li><a href="#org46f950b">2. Default Values</a>
+<li><a href="#org6a71d1c">2. Default Values</a>
 <ul>
-<li><a href="#org07ab8c7">2.1. Local Variable Type Inference</a></li>
+<li><a href="#org971825c">2.1. Local Variable Type Inference</a></li>
 </ul>
 </li>
-<li><a href="#org6f73151">3. Flagging Uninitialized Variables</a></li>
-<li><a href="#orga4cf97d">4. Variable Lifetimes</a></li>
-<li><a href="#org2b76103">5. .this reference</a></li>
-<li><a href="#orgb261489">6. Method Overloading</a></li>
-<li><a href="#orga3e2679">7. Constructors</a></li>
+<li><a href="#org10ba151">3. Flagging Uninitialized Variables</a></li>
+<li><a href="#orgbff79ca">4. Variable Lifetimes</a></li>
+<li><a href="#org113bf4f">5. .this reference</a></li>
+<li><a href="#orgd088fc3">6. Method Overloading</a></li>
+<li><a href="#org36b62fa">7. Constructors</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org88aeeac" class="outline-2">
-<h2 id="org88aeeac"><span class="section-number-2">1.</span> Declaring Variables</h2>
+<div id="outline-container-orgcb6a1a8" class="outline-2">
+<h2 id="orgcb6a1a8"><span class="section-number-2">1.</span> Declaring Variables</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 To use a variable, you declare it by telling the <a href="20260119071529-java_compiler.html#ID-601d1a17-6f03-4138-9fef-1553f38794b8">Java Compiler</a> its <b>name</b> as well as what <b>type</b> <b>of</b> <b>data</b> it can store.
@@ -244,8 +244,8 @@ The syntax for declaring a variable is:
 </p>
 </div>
 
-<div id="outline-container-org6bcbe96" class="outline-3">
-<h3 id="org6bcbe96"><span class="section-number-3">1.1.</span> Legal Identifiers</h3>
+<div id="outline-container-orgf888707" class="outline-3">
+<h3 id="orgf888707"><span class="section-number-3">1.1.</span> Legal Identifiers</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>Identifiers <b>must</b> begin with a <code>letter</code>, a <code>currency symbol($, ¥, € etc.)</code>, or a <code>_</code> symbol.</li>
@@ -270,8 +270,8 @@ char __SStillOkbutKnotsonice$;
 </div>
 </div>
 
-<div id="outline-container-org0f8e957" class="outline-3">
-<h3 id="org0f8e957"><span class="section-number-3">1.2.</span> Illegal identifiers</h3>
+<div id="outline-container-orgccb4217" class="outline-3">
+<h3 id="orgccb4217"><span class="section-number-3">1.2.</span> Illegal identifiers</h3>
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
 <pre class="src src-java">// NOT OK
@@ -285,8 +285,8 @@ short _; // a single underscore is not allowed
 </div>
 </div>
 
-<div id="outline-container-orgccef42c" class="outline-3">
-<h3 id="orgccef42c"><span class="section-number-3">1.3.</span> Multiple Variable Declaration</h3>
+<div id="outline-container-orgd7940ff" class="outline-3">
+<h3 id="orgd7940ff"><span class="section-number-3">1.3.</span> Multiple Variable Declaration</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 If variables are of the <b>same</b> <b>type</b>, they can be declared together, as follows:
@@ -318,43 +318,43 @@ void sandFence() {
 </div>
 </div>
 
-<div id="outline-container-orgab86ced" class="outline-3">
-<h3 id="orgab86ced"><span class="section-number-3">1.4.</span> <a href="20260120073939-named_constants.html#ID-471c84bb-2961-4ce0-a20d-6bd1709deb37">Named Constants</a></h3>
+<div id="outline-container-orga639ac3" class="outline-3">
+<h3 id="orga639ac3"><span class="section-number-3">1.4.</span> <a href="20260120073939-named_constants.html#ID-471c84bb-2961-4ce0-a20d-6bd1709deb37">Named Constants</a></h3>
 </div>
-<div id="outline-container-orgc5ddf19" class="outline-3">
-<h3 id="orgc5ddf19"><span class="section-number-3">1.5.</span> <a href="20260121200012-expressions.html#ID-4e53badb-68c3-433f-b3ef-b3546c24b263">Expressions</a></h3>
+<div id="outline-container-org4ee5440" class="outline-3">
+<h3 id="org4ee5440"><span class="section-number-3">1.5.</span> <a href="20260121200012-expressions.html#ID-4e53badb-68c3-433f-b3ef-b3546c24b263">Expressions</a></h3>
 </div>
 </div>
 
-<div id="outline-container-org46f950b" class="outline-2">
-<h2 id="org46f950b"><span class="section-number-2">2.</span> Default Values</h2>
+<div id="outline-container-org6a71d1c" class="outline-2">
+<h2 id="org6a71d1c"><span class="section-number-2">2.</span> Default Values</h2>
 <div class="outline-text-2" id="text-2">
 
-<div id="org5540008" class="figure">
+<div id="org1283fe7" class="figure">
 <p><img src="./assets/default_values.png" alt="default_values.png" />
 </p>
 </div>
 </div>
 
-<div id="outline-container-org07ab8c7" class="outline-3">
-<h3 id="org07ab8c7"><span class="section-number-3">2.1.</span> <a href="20231230160710-local_variable_type_inference.html#ID-10016631-2c29-434f-b5c5-2e2cba7d7c76">Local Variable Type Inference</a></h3>
+<div id="outline-container-org971825c" class="outline-3">
+<h3 id="org971825c"><span class="section-number-3">2.1.</span> <a href="20231230160710-local_variable_type_inference.html#ID-10016631-2c29-434f-b5c5-2e2cba7d7c76">Local Variable Type Inference</a></h3>
 </div>
 </div>
 
-<div id="outline-container-org6f73151" class="outline-2">
-<h2 id="org6f73151"><span class="section-number-2">3.</span> <a href="20231225185442-flagging_uninitialized_variables.html#ID-e1c39b97-642d-4d2e-8fba-19dd150e0c67">Flagging Uninitialized Variables</a></h2>
+<div id="outline-container-org10ba151" class="outline-2">
+<h2 id="org10ba151"><span class="section-number-2">3.</span> <a href="20231225185442-flagging_uninitialized_variables.html#ID-e1c39b97-642d-4d2e-8fba-19dd150e0c67">Flagging Uninitialized Variables</a></h2>
 </div>
-<div id="outline-container-orga4cf97d" class="outline-2">
-<h2 id="orga4cf97d"><span class="section-number-2">4.</span> <a href="20231225185849-variable_lifetimes.html#ID-77742466-5106-4aba-9a33-343d5e732a44">Variable Lifetimes</a></h2>
+<div id="outline-container-orgbff79ca" class="outline-2">
+<h2 id="orgbff79ca"><span class="section-number-2">4.</span> <a href="20231225185849-variable_lifetimes.html#ID-77742466-5106-4aba-9a33-343d5e732a44">Variable Lifetimes</a></h2>
 </div>
-<div id="outline-container-org2b76103" class="outline-2">
-<h2 id="org2b76103"><span class="section-number-2">5.</span> <a href="20231226051231-this_reference.html#ID-b691522c-6f33-4e1d-96e2-88233ea5dcb4">.this reference</a></h2>
+<div id="outline-container-org113bf4f" class="outline-2">
+<h2 id="org113bf4f"><span class="section-number-2">5.</span> <a href="20231226051231-this_reference.html#ID-b691522c-6f33-4e1d-96e2-88233ea5dcb4">.this reference</a></h2>
 </div>
-<div id="outline-container-orgb261489" class="outline-2">
-<h2 id="orgb261489"><span class="section-number-2">6.</span> <a href="20231226052415-method_overloading.html#ID-28b95eeb-be70-4b92-b599-aa95d6d9b5d7">Method Overloading</a></h2>
+<div id="outline-container-orgd088fc3" class="outline-2">
+<h2 id="orgd088fc3"><span class="section-number-2">6.</span> <a href="20231226052415-method_overloading.html#ID-28b95eeb-be70-4b92-b599-aa95d6d9b5d7">Method Overloading</a></h2>
 </div>
-<div id="outline-container-orga3e2679" class="outline-2">
-<h2 id="orga3e2679"><span class="section-number-2">7.</span> <a href="Constructors.md.html#ID-73a0f36b-e440-486a-bd88-6ca577be3351">Constructors</a></h2>
+<div id="outline-container-org36b62fa" class="outline-2">
+<h2 id="org36b62fa"><span class="section-number-2">7.</span> <a href="Constructors.md.html#ID-73a0f36b-e440-486a-bd88-6ca577be3351">Constructors</a></h2>
 </div>
 </div>
 </body>

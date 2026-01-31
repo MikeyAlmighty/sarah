@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 09:19 -->
+<!-- 2026-01-31 Sat 10:07 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Calling overloaded Constructors with this()</title>
@@ -201,14 +201,14 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org1e9c5f1">1. Calling overloaded Constructors with this()</a>
+<li><a href="#org9c32e12">1. Calling overloaded Constructors with this()</a>
 <ul>
-<li><a href="#org8a6863b">1.1. Example</a>
+<li><a href="#org8c634cd">1.1. Example</a>
 <ul>
-<li><a href="#org55670c2">1.1.1. Solution</a></li>
-<li><a href="#org05040d4">1.1.2. <span class="underline">Exam Trick</span></a></li>
-<li><a href="#org4fb11cb">1.1.3. Infinite Cycle (Cyclic)</a></li>
-<li><a href="#org28073a9">1.1.4. Rules</a></li>
+<li><a href="#org14c4211">1.1.1. Solution</a></li>
+<li><a href="#orgdd04710">1.1.2. <span class="underline">Exam Trick</span></a></li>
+<li><a href="#orgf720e7c">1.1.3. Infinite Cycle (Cyclic)</a></li>
+<li><a href="#org39eb783">1.1.4. Rules</a></li>
 </ul>
 </li>
 </ul>
@@ -217,16 +217,16 @@
 </div>
 </div>
 
-<div id="outline-container-org1e9c5f1" class="outline-2">
-<h2 id="org1e9c5f1"><span class="section-number-2">1.</span> Calling overloaded Constructors with this()</h2>
+<div id="outline-container-org9c32e12" class="outline-2">
+<h2 id="org9c32e12"><span class="section-number-2">1.</span> Calling overloaded Constructors with this()</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Since a <code>class</code> can contain <b>multiple overloaded</b> <code>constructors</code>, these <code>constructors</code> can actually call one another!
 </p>
 </div>
 
-<div id="outline-container-org8a6863b" class="outline-3">
-<h3 id="org8a6863b"><span class="section-number-3">1.1.</span> Example</h3>
+<div id="outline-container-org8c634cd" class="outline-3">
+<h3 id="org8c634cd"><span class="section-number-3">1.1.</span> Example</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 One of the constructors takes a single <code>int</code> parameter.
@@ -268,8 +268,8 @@ For example, imagine that we have five variables being set like <code>this.weigh
 </div>
 </div>
 
-<div id="outline-container-org55670c2" class="outline-4">
-<h4 id="org55670c2"><span class="section-number-4">1.1.1.</span> Solution</h4>
+<div id="outline-container-org14c4211" class="outline-4">
+<h4 id="org14c4211"><span class="section-number-4">1.1.1.</span> Solution</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 What we really want is for the <b>first</b> <code>constructor</code> to <b>call</b> the <b>second</b> <code>constructor</code> with two parameters.
@@ -298,8 +298,8 @@ When <code>this()</code> is used <b>with parentheses</b>, Java calls <b>another 
 </div>
 </div>
 
-<div id="outline-container-org05040d4" class="outline-4">
-<h4 id="org05040d4"><span class="section-number-4">1.1.2.</span> <span class="underline">Exam Trick</span></h4>
+<div id="outline-container-orgdd04710" class="outline-4">
+<h4 id="orgdd04710"><span class="section-number-4">1.1.2.</span> <span class="underline">Exam Trick</span></h4>
 <div class="outline-text-4" id="text-1-1-2">
 <p>
 Calling <code>this()</code> has one special rule you need to know.
@@ -321,8 +321,8 @@ The side effect of this is that there can be <b>only one</b> call to <code>this(
 </div>
 </div>
 
-<div id="outline-container-org4fb11cb" class="outline-4">
-<h4 id="org4fb11cb"><span class="section-number-4">1.1.3.</span> Infinite Cycle (Cyclic)</h4>
+<div id="outline-container-orgf720e7c" class="outline-4">
+<h4 id="orgf720e7c"><span class="section-number-4">1.1.3.</span> Infinite Cycle (Cyclic)</h4>
 <div class="outline-text-4" id="text-1-1-3">
 <div class="org-src-container">
 <pre class="src src-java">public class Gopher {
@@ -335,8 +335,8 @@ The side effect of this is that there can be <b>only one</b> call to <code>this(
 </div>
 </div>
 
-<div id="outline-container-org28073a9" class="outline-4">
-<h4 id="org28073a9"><span class="section-number-4">1.1.4.</span> Rules</h4>
+<div id="outline-container-org39eb783" class="outline-4">
+<h4 id="org39eb783"><span class="section-number-4">1.1.4.</span> Rules</h4>
 <div class="outline-text-4" id="text-1-1-4">
 <ul class="org-ul">
 <li>A <code>class</code> can contain <b>many</b> overloaded constructors, provided the signature for each is <b>distinct</b>.</li>

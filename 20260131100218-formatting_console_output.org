@@ -1,0 +1,51 @@
+:PROPERTIES:
+:ID:       833fcdd6-d8a3-4f2f-8dba-4889c429df67
+:END:
+#+title: Formatting Console Output
+
+* Formatting Console Output
+
+~System.out.printf~ 
+
+#+BEGIN_SRC java
+double amount = 12618.98;
+double interestRate = 0.0013;
+double interest = amount * interestRate;
+System.out.printf("Interest is $%4.2f", interest);
+#+END_SRC
+
+| Specifier | Description (Java)    | Example Output | Java printf Example                      |
+|-----------+-----------------------+----------------+------------------------------------------|
+| %b        | Boolean value         | true           | System.out.printf("%b", true);           |
+| %c        | Character             | a              | System.out.printf("%c", 'a');            |
+| %d        | Decimal integer       | 200            | System.out.printf("%d", 200);            |
+| %f        | Floating-point number | 45.460000      | System.out.printf("%f", 45.46);          |
+| %e        | Scientific notation   | 4.556000e+01   | System.out.printf("%e", 45.56);          |
+| %s        | String                | Java is cool   | System.out.printf("%s", "Java is cool"); |
+
+** Precision / Width
+
+| Format | Description                                                                  |
+|--------+------------------------------------------------------------------------------|
+| %5c    | Output a character with width 5. Adds spaces before the character if needed. |
+| %6b    | Output a Boolean with width 6. Adds spaces before true/false as needed.      |
+| %5d    | Output an integer with width 5. If digits < 5, pad with spaces on the left.  |
+|        | If digits > 5, width is automatically increased.                             |
+| %10.2f | Output a floating-point number with width 10 and 2 digits after the decimal. |
+|        | Pads with spaces on the left if needed; width auto-expands if necessary.     |
+| %10.2e | Output a floating-point number in scientific notation with width 10 and      |
+|        | 2 digits after the decimal point. Pads with spaces if needed.                |
+| %12s   | Output a string with width 12. Pads with spaces on the left if shorter;      |
+|        | width auto-expands if longer.                                                |
+
+*** Note
+
+The =%= sign denotes a *format* *specifier*.
+
+To output a literal =%= in the ~format~ ~string~, use =%%=.
+
+#+BEGIN_SRC java
+System.out.printf("%.2f%%\n", 75.234);
+#+END_SRC
+
+Output: 75.23%
