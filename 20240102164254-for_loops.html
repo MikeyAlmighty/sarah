@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-01-31 Sat 09:19 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>For Loops</title>
+<meta name="author" content="Michael Leibbrandt" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">For Loops</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org6ee844f">1. For Loop (Basic)</a>
+<ul>
+<li><a href="#org1b1da5a">1.1. Reverse</a></li>
+<li><a href="#org783a2de">1.2. 1. Creating an infinite loop</a></li>
+<li><a href="#org19efdc8">1.3. 2. Multiple Terms</a></li>
+<li><a href="#orge8a63b7">1.4. 3. Redeclaring a variable in the Initialization Block</a>
+<ul>
+<li><a href="#orgb8d1afb">1.4.1. Does not compile</a></li>
+<li><a href="#orgc9bcd7c">1.4.2. Does compile</a></li>
+</ul>
+</li>
+<li><a href="#org79ddd8e">1.5. 4. Using incompatible Data Types in the Initialization Block</a></li>
+<li><a href="#org1092ab9">1.6. 5. Using Loop variables outside the loop</a></li>
+</ul>
+</li>
+<li><a href="#org14e9285">2. For Each Loop</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6ee844f" class="outline-2">
+<h2 id="org6ee844f"><span class="section-number-2">1.</span> For Loop (Basic)</h2>
+<div class="outline-text-2" id="text-1">
+<div class="org-src-container">
+<pre class="src src-java">/*
+    for (initialization; booleanExpression; updateStatement) {
+        // Body
+    }
+*/
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-java">for (int i = 0; i &lt; 5; i ++) {
+    System.out.println(i);
+}
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org1b1da5a" class="outline-3">
+<h3 id="org1b1da5a"><span class="section-number-3">1.1.</span> Reverse</h3>
+<div class="outline-text-3" id="text-1-1">
+<div class="org-src-container">
+<pre class="src src-java">for (var counter = 4; counter &gt;= 0; counter-­) {
+    System.out.print(counter + " ");
+} // 4 3 2 1 0
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org783a2de" class="outline-3">
+<h3 id="org783a2de"><span class="section-number-3">1.2.</span> 1. Creating an infinite loop</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Although this for loop may look like it does not compile, it will in fact <b>compile</b> and <b>run</b> without issue.
+Note that the <code>semicolons</code> separating the three sections <b>are</b> required, as <code>for( )</code> <b>without</b> any semicolons will <b>not</b> compile.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java">for( ; ; )
+    System.out.println("Hello World");
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org19efdc8" class="outline-3">
+<h3 id="org19efdc8"><span class="section-number-3">1.3.</span> 2. Multiple Terms</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+<code>initialization block</code> <b>requires</b> values to be of the same type. (In below code block: <code>y</code> and <code>z</code> are both <b>only</b> allowed to be <code>long</code>.)
+</p>
+
+<p>
+This code demonstrates three variations of the <code>for loop</code> you may not have seen.
+</p>
+<ul class="org-ul">
+<li>First, you can <b>declare</b> a variable, such as <code>x</code> in this example, before the loop begins and use it after it completes.</li>
+<li>Second, your <code>initialization block</code>, <code>boolean expression</code>, and <code>update statements</code> can include extra variables that <b>may</b> or <b>may not</b> reference each other. For example, <code>z</code> is defined in the initialization block and is never used.</li>
+<li>Finally, the <code>update statement</code> can <b>modify</b> multiple variables.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-java">int x = 0;
+for(long y = 0, z = 4; x &lt; 5 &amp;&amp; y &lt; 10; x++, y++) {
+    System.out.print(y + " "); }
+System.out.print(x + " ");
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge8a63b7" class="outline-3">
+<h3 id="orge8a63b7"><span class="section-number-3">1.4.</span> 3. Redeclaring a variable in the Initialization Block</h3>
+<div class="outline-text-3" id="text-1-4">
+</div>
+<div id="outline-container-orgb8d1afb" class="outline-4">
+<h4 id="orgb8d1afb"><span class="section-number-4">1.4.1.</span> Does not compile</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<div class="org-src-container">
+<pre class="src src-java">int x = 0;
+for(int x = 4; x &lt; 5; x++) // DOES NOT COMPILE
+    System.out.print(x + " ");
+</pre>
+</div>
+
+<p>
+We can fix this loop by removing the <code>declaration</code> of <code>x</code> from the <b>for loop</b> as follows:
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc9bcd7c" class="outline-4">
+<h4 id="orgc9bcd7c"><span class="section-number-4">1.4.2.</span> Does compile</h4>
+<div class="outline-text-4" id="text-1-4-2">
+<div class="org-src-container">
+<pre class="src src-java">int x = 0;
+for(x = 0; x &lt; 5; x++)
+    System.out.print(x + " ");
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org79ddd8e" class="outline-3">
+<h3 id="org79ddd8e"><span class="section-number-3">1.5.</span> 4. Using incompatible Data Types in the Initialization Block</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+The variables in the <code>initialization block</code> <b>must</b> all be of the same type.
+In this example, they <code>y</code> and <code>z</code> have different <b>types</b>, so the code will <b>not compile</b>.
+</p>
+<div class="org-src-container">
+<pre class="src src-java">int x = 0;
+for(long y = 0, int z = 4; x &lt; 5; x++) // DOES NOT COMPILE
+    System.out.print(y + " ");
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1092ab9" class="outline-3">
+<h3 id="org1092ab9"><span class="section-number-3">1.6.</span> 5. Using Loop variables outside the loop</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+If you notice, <code>x</code> is defined in the <code>initialization block</code> of the loop and then used after the loop terminates.
+Since <code>x</code> was <b>only</b> scoped for the loop, using it <b>outside</b> the loop will cause a <b>compiler error</b>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java">for(long y = 0, x = 4; x &lt; 5 &amp;&amp; y &lt; 10; x++, y++)
+    System.out.print(y + " ");
+System.out.print(x); // DOES NOT COMPILE
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org14e9285" class="outline-2">
+<h2 id="org14e9285"><span class="section-number-2">2.</span> <a href="20240102170154-for_each_loop.html#ID-3f396004-6fa8-4352-ab88-12f7edb8bc88">For Each Loop</a></h2>
+</div>
+</div>
+</body>
+</html>

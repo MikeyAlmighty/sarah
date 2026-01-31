@@ -1,0 +1,1130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-01-31 Sat 09:19 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TypeScript</title>
+<meta name="author" content="Michael Leibbrandt" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">TypeScript</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orga392c5a">1. TypeScript</a>
+<ul>
+<li><a href="#org06cde32">1.1. Benefits</a></li>
+<li><a href="#orgb15f7c0">1.2. JavaScript vs TypeScript</a></li>
+<li><a href="#org39f9abc">1.3. Types</a></li>
+<li><a href="#orgf2f1ba5">1.4. Tuple</a></li>
+<li><a href="#orgc330c68">1.5. Enum</a>
+<ul>
+<li><a href="#org685354c">1.5.1. Union types</a></li>
+<li><a href="#org5038491">1.5.2. Literal Types</a></li>
+<li><a href="#orgbcc5dad">1.5.3. Type alias (Custom Type)</a></li>
+</ul>
+</li>
+<li><a href="#org7e9aad5">1.6. Function Types and callbacks</a></li>
+<li><a href="#org410ebb8">1.7. The "unknown" Type</a></li>
+<li><a href="#org2a044cc">1.8. The "never" Type</a></li>
+<li><a href="#org073c8ba">1.9. readonly</a></li>
+<li><a href="#org0556ab8">1.10. Interfaces</a></li>
+<li><a href="#orgc95d021">1.11. Exporting interfaces:</a></li>
+<li><a href="#orge83222c">1.12. Advanced Types</a>
+<ul>
+<li><a href="#org4adfa7d">1.12.1. Intersection Types</a></li>
+<li><a href="#orga1cb792">1.12.2. Union Types</a></li>
+</ul>
+</li>
+<li><a href="#org0283797">1.13. TypeGuarding</a></li>
+<li><a href="#org4d11647">1.14. Discriminated Unions</a></li>
+<li><a href="#orgde8c17d">1.15. Type Casting</a></li>
+<li><a href="#org9f6737b">1.16. TypeScript Declaration Files</a></li>
+<li><a href="#org8bf7a80">1.17. Index Types</a></li>
+<li><a href="#org2d51754">1.18. Function Overloads</a></li>
+<li><a href="#org7d5c7a6">1.19. Generics</a>
+<ul>
+<li><a href="#org47d1b46">1.19.1. Generic constraints</a></li>
+<li><a href="#org61d82d9">1.19.2. Generic Utility Types</a></li>
+</ul>
+</li>
+<li><a href="#org3407482">1.20. Decorators</a>
+<ul>
+<li><a href="#org16123bd">1.20.1. Decorator Factories</a></li>
+</ul>
+</li>
+<li><a href="#org8ca9069">1.21. Using Axios with TypeScript</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga392c5a" class="outline-2">
+<h2 id="orga392c5a"><span class="section-number-2">1.</span> TypeScript</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Uses `.tsx`extension
+`.tsconfig` - Configuration File [Example tsconfig](../tsconfig.example.md)
+</p>
+</div>
+
+<div id="outline-container-org06cde32" class="outline-3">
+<h3 id="org06cde32"><span class="section-number-3">1.1.</span> Benefits</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>Strong typing</li>
+<li>OOP Features</li>
+<li>Compile-time errors</li>
+<li>Great tooling</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb15f7c0" class="outline-3">
+<h3 id="orgb15f7c0"><span class="section-number-3">1.2.</span> JavaScript vs TypeScript</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+JavaScript dynamically typed (Resolved at runtime)
+TypeScript statically typed (Set during Development)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org39f9abc" class="outline-3">
+<h3 id="org39f9abc"><span class="section-number-3">1.3.</span> Types</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+``` typescript
+number:  1, 5.3, -10
+string:  'deadPool', "deadPool", `deadPool`
+boolean: true, false
+object: const person = { name: "Mikey", age: 25 }
+string[]: String array
+number[]: Number array
+```
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf2f1ba5" class="outline-3">
+<h3 id="orgf2f1ba5"><span class="section-number-3">1.4.</span> Tuple</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+When you need exactly "x" amount of values and know type of each value before hand then a Tuple can be used:
+</p>
+
+<p>
+``` typescript
+const person = {
+  name: "Mikey",
+  age: 25,
+  role: [number, string] // Tuple first type number, second type string
+}
+```
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc330c68" class="outline-3">
+<h3 id="orgc330c68"><span class="section-number-3">1.5.</span> Enum</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+Assigns Labels to numbers
+</p>
+
+<p>
+``` typescript
+enum Role { READ, WRITE, DELETE };
+Role.READ
+```
+</p>
+</div>
+
+<div id="outline-container-org685354c" class="outline-4">
+<h4 id="org685354c"><span class="section-number-4">1.5.1.</span> Union types</h4>
+<div class="outline-text-4" id="text-1-5-1">
+<p>
+``` typescript
+const combine = (input1: number | string, input2: number | string) {
+  let result;
+  if (typeof input1 <code>=</code> 'number' &amp;&amp; typeof input2 <code>=</code> 'number'){
+    &#x2026;
+  } else {
+    &#x2026;
+  }
+}
+```
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5038491" class="outline-4">
+<h4 id="org5038491"><span class="section-number-4">1.5.2.</span> Literal Types</h4>
+<div class="outline-text-4" id="text-1-5-2">
+<p>
+Only 'Admin' or 'Write' is allowed
+</p>
+
+<p>
+``` typescript
+const deadPool = (role: 'Admin' | 'Write') =&gt; {
+ &#x2026;
+}
+```
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbcc5dad" class="outline-4">
+<h4 id="orgbcc5dad"><span class="section-number-4">1.5.3.</span> Type alias (Custom Type)</h4>
+<div class="outline-text-4" id="text-1-5-3">
+<p>
+``` typescript
+type Combinable = string | number;
+```
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7e9aad5" class="outline-3">
+<h3 id="org7e9aad5"><span class="section-number-3">1.6.</span> Function Types and callbacks</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+``` typescript
+const add = (n1: number, n2: number) =&gt; {
+</p>
+
+<p>
+}
+```
+</p>
+
+<p>
+``` typescript
+const addAndHandle = (n1: number, n2: number, cb: (num: number) =&gt; void) =&gt; {
+  const result = n1 + n2
+  cb(result)
+}
+</p>
+
+<p>
+addAndHandle(10, 10, (result) =&gt; console.log(result))
+```
+</p>
+</div>
+</div>
+
+<div id="outline-container-org410ebb8" class="outline-3">
+<h3 id="org410ebb8"><span class="section-number-3">1.7.</span> The "unknown" Type</h3>
+<div class="outline-text-3" id="text-1-7">
+<p>
+Rather use `unknown` than `any` where applicable.
+</p>
+
+<p>
+(By letting the type be `unknown` we can just add a `typeof` string check to score extra type safety).
+</p>
+
+<p>
+``` typescript
+  let userInput: unknown;
+  let userName: string;
+</p>
+
+<p>
+  if (typeof userInput <code>=</code> 'string') {
+    userName = userInput;
+  }
+```
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2a044cc" class="outline-3">
+<h3 id="org2a044cc"><span class="section-number-3">1.8.</span> The "never" Type</h3>
+<div class="outline-text-3" id="text-1-8">
+<p>
+Useful for functions that "never" return anything, i.e: functions that could `throw` an error:
+</p>
+
+<p>
+``` typescript
+function generateError(message: string, code: number): never {
+  throw { message: message, errorCode: code }
+</p>
+
+<p>
+}
+```
+</p>
+</div>
+</div>
+
+<div id="outline-container-org073c8ba" class="outline-3">
+<h3 id="org073c8ba"><span class="section-number-3">1.9.</span> readonly</h3>
+<div class="outline-text-3" id="text-1-9">
+<p>
+Set once during (and kept throughout) initialization.
+``` typescript
+constructor(private readonly id: string, public name: string)
+```
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0556ab8" class="outline-3">
+<h3 id="org0556ab8"><span class="section-number-3">1.10.</span> Interfaces</h3>
+<div class="outline-text-3" id="text-1-10">
+<p>
+``` typescript
+interface Person {
+  name: string;
+  age: number;
+</p>
+
+<p>
+  greet(phrase: string): void;
+}
+</p>
+
+<p>
+let user1: Person
+</p>
+
+<p>
+user1 = {
+  name = "Mikey";
+  age = 25;
+}
+```
+</p>
+
+<p>
+Interfaces describe the structure of an object.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc95d021" class="outline-3">
+<h3 id="orgc95d021"><span class="section-number-3">1.11.</span> Exporting interfaces:</h3>
+<div class="outline-text-3" id="text-1-11">
+<p>
+`StringValidator.ts`
+``` typescript
+export interface StringValidator {
+  isAcceptable(s: string): boolean;
+}
+```
+`ZipCodeValidator.ts`
+</p>
+
+<p>
+``` typescript
+import { StringValidator } from "./StringValidator";
+</p>
+
+<p>
+export const numberRegexp = <i>^[0-9]+$</i>;
+export class ZipCodeValidator implements StringValidator {
+  isAcceptable(s: string) {
+    return s.length <code>=</code> 5 &amp;&amp; numberRegexp.test(s);
+  }
+}
+```
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge83222c" class="outline-3">
+<h3 id="orge83222c"><span class="section-number-3">1.12.</span> Advanced Types</h3>
+<div class="outline-text-3" id="text-1-12">
+<p>
+An `intersection type` combines <b><b>multiple types into one</b></b>.
+A `union type` describes a value that can be <b><b>one of several</b></b> types.
+Usage and notation are quite simple, the `&amp;` symbol is used to build an <b><b>intersection</b></b> while the `|` symbol is for <b><b>union</b></b>.
+</p>
+</div>
+
+<div id="outline-container-org4adfa7d" class="outline-4">
+<h4 id="org4adfa7d"><span class="section-number-4">1.12.1.</span> Intersection Types</h4>
+<div class="outline-text-4" id="text-1-12-1">
+<p>
+Allows us to combine two types (And merge it into one).
+</p>
+
+<p>
+``` typescript
+type Admin = {
+  name: string;
+  privelages: string[];
+}
+</p>
+
+<p>
+type Employee = {
+  name: string;
+  startDate: Date;
+}
+</p>
+
+<p>
+type ElevatedEmployee = Admin &amp; Employee
+</p>
+
+<p>
+// Must require both Admin and Employee fields (Merges into one)
+const e1: ElevatedEmployee = {
+  name: 'Mikey',
+  privelages: ['create-server'],
+  startDate: new Date()
+}
+```
+</p>
+
+<p>
+Can be used with types other than objects as well:
+</p>
+
+<p>
+``` typescript
+type Combinable = string | number;
+type Numeric = number | boolean;
+</p>
+
+<p>
+type Universal = Combinable &amp; Numeric
+```
+</p>
+
+<p>
+Intersection Types: Closely relate to interfaces using inheritance
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga1cb792" class="outline-4">
+<h4 id="orga1cb792"><span class="section-number-4">1.12.2.</span> Union Types</h4>
+<div class="outline-text-4" id="text-1-12-2">
+<p>
+Either one or the other, not both (Union)
+</p>
+
+<p>
+``` typescript
+type Admin = {
+  name: string;
+  privelages: string[];
+}
+</p>
+
+<p>
+type Employee = {
+  name: string;
+  startDate: Date;
+}
+</p>
+
+<p>
+type UnknownEmployee = Admin | Employee
+```
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0283797" class="outline-3">
+<h3 id="org0283797"><span class="section-number-3">1.13.</span> TypeGuarding</h3>
+<div class="outline-text-3" id="text-1-13">
+<p>
+``` typescript
+`typeof` is used only in JS land (Not TS).
+</p>
+
+<p>
+Using `in`:
+``` typescript
+// emp: UnknownEmployee
+  if("privelages" in emp) {
+    &#x2026;
+  }
+```
+</p>
+
+<p>
+Using `instanceof` if it's referring to Classes:
+(Javascript understands `classes` but <b><b>not</b></b> `interfaces`, hence why we can't use `instanceof` when working with interfaces).
+</p>
+
+<p>
+``` typescript
+class Admin {
+  name: string;
+  privelages: string[];
+}
+</p>
+
+<p>
+class Employee {
+  name: string;
+  startDate: Date;
+}
+</p>
+
+<p>
+type UnkownEmployee = Admin | Employee
+</p>
+
+
+<p>
+const e1: UnkownEmployee = {
+  name: 'Mikey',
+  privelages: ['admin'],
+}
+</p>
+
+<p>
+if (e1 instanceof Employee) {
+  console.log(e1.startDate) //VALID
+}
+</p>
+
+<p>
+<i>/ console.log(e1.startDate); /</i> INVALID
+```
+</p>
+
+<p>
+— Union types can hold any instance of its components but can’t use functions of one. It can only use properties defined in all its components.
+— Intersection types can hold a subset of its components instances but can use functions of any of them.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4d11647" class="outline-3">
+<h3 id="org4d11647"><span class="section-number-3">1.14.</span> Discriminated Unions</h3>
+<div class="outline-text-3" id="text-1-14">
+<p>
+Common property in each object that makes up our Union.
+i.e. 'type':
+Works with interfaces and classes.
+</p>
+
+<p>
+We use the property that we know exists, to check which type of object we're working with.
+</p>
+
+<p>
+``` typescript
+interface Bird {
+  type: 'Bird'; // Literal
+  flyingSpeed: number;
+}
+</p>
+
+<p>
+interface Horse {
+  type: 'Horse'; // Literal
+  runningSpeed: number;
+}
+</p>
+
+<p>
+type Animal = Bird | Horse;
+</p>
+
+<p>
+const moveAnimal = (animal: Animal) =&gt; {
+  <i>/ NOT ALLOWED because not a class
+  /</i> if (animal instanceof Animal){
+</p>
+
+<p>
+// }
+</p>
+
+<p>
+  switch(animal.type) {
+      case 'Bird':
+        console.log('Fyling Speed: ', animal.flyingSpeed)
+        break;
+      case 'Horse':
+        console.log('Running Speed: ', animal.runningSpeed)
+        break;
+  }
+}
+```
+</p>
+
+<p>
+Typescript supports us with nice intelli-sense based on which interface we're referring to.
+</p>
+
+<p>
+(Useful Pattern when working with objects and Union Types!)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgde8c17d" class="outline-3">
+<h3 id="orgde8c17d"><span class="section-number-3">1.15.</span> Type Casting</h3>
+<div class="outline-text-3" id="text-1-15">
+<p>
+Lets you explicitly tell typescript the type.
+Typescript doesn't dive into HTML. (Hence why `x | null`)
+</p>
+
+<p>
+``` typescript
+const paragraph = document.querySelector('p'); <i>/ Type: HTMLParagraphElement | null
+/</i> const userInputElement = document.getElementById('user-input'); // Type: HTMLElement | null
+</p>
+
+<p>
+<i>/ userInputElement.value = 'deadpool'; /</i> INVALID because userInputElement could be of type null
+<i>/
+/</i>
+const userInputElement = &lt;HTMLInputElement&gt;document.getElementById('user-input'); // Type: HTMLElement | null
+</p>
+
+<p>
+userInputElement.value = 'deadpool'; // VALID
+</p>
+
+<p>
+In React:
+const userInputElement = document.getElementById('user-input')! as HTMLInputElement; // Type: HTMLElement | null
+</p>
+
+<p>
+userInputElement.value = 'deadpool'; // VALID
+```
+</p>
+
+<p>
+`document.getElementById('user-input')!` The exclamation says we never expect the LHS to be null
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9f6737b" class="outline-3">
+<h3 id="org9f6737b"><span class="section-number-3">1.16.</span> TypeScript Declaration Files</h3>
+<div class="outline-text-3" id="text-1-16">
+<p>
+Special module that tells TypeScript we're only defining types:
+(Does not get compiled to JS/ only used for development, provide more information about functions)
+</p>
+
+<p>
+i.e. `typings.d.ts`
+</p>
+
+<p>
+This process is error-prone/duplicative, enter: [DefinitelyTyped](<a href="https://github.com/DefinitelyTyped/DefinitelyTyped">https://github.com/DefinitelyTyped/DefinitelyTyped</a>).
+`DefinitelyTyped` is a community maintained repository for high quality TypeScript type definitions.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8bf7a80" class="outline-3">
+<h3 id="org8bf7a80"><span class="section-number-3">1.17.</span> Index Types</h3>
+<div class="outline-text-3" id="text-1-17">
+<p>
+If you don't know exact property name, or property count, just that every property that which is added to this object - which is based on error container - MUST have a property name which must be interpreted to a String, as well as a value of type String.
+</p>
+
+<p>
+``` typescript
+</p>
+
+<p>
+// const data = { email: 'xxx', surname: 'xxx'  }
+</p>
+
+<p>
+interface ErrorContainer {
+ [key: string] : string; // We're saying here all properties will be a string, i.e. "email" or "surname"
+}
+```
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2d51754" class="outline-3">
+<h3 id="org2d51754"><span class="section-number-3">1.18.</span> Function Overloads</h3>
+<div class="outline-text-3" id="text-1-18">
+<p>
+Overloads to help with type checking/intelli-sense
+``` typescript
+type Combinable = string | number;
+type Numeric =  number | boolean;
+</p>
+
+<p>
+type Universal = Combinable &amp; Numeric;
+</p>
+
+
+
+
+<p>
+<i>/ Without:
+/</i> result.split('') // ERROR Property 'split' does not exist on type 'string | number'.
+</p>
+
+<p>
+function add(a: number, b: number): number
+function add(a: string, b: string): string
+function add(a: string, b: number): string
+function add(a: Combinable, b: Combinable) {
+  if (typeof a <code>=</code> 'string' || typeof b <code>=</code> 'string') {
+      return a.toString() + b.toString()
+  }
+    return a + b
+}
+</p>
+
+
+<p>
+const result = add('Mikey', 'Leibbrandt')
+result.split('')
+```
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7d5c7a6" class="outline-3">
+<h3 id="org7d5c7a6"><span class="section-number-3">1.19.</span> Generics</h3>
+<div class="outline-text-3" id="text-1-19">
+<p>
+Generics: flexibility combined with type safety!
+</p>
+
+<p>
+``` typescript
+const names: Array&lt;string&gt; = []
+// names[].split() Now typescript knows we're working with strings.
+const promise: Promise&lt;string&gt; = new Promise()
+</p>
+
+
+<p>
+function merge&lt;T, U&gt;(objA: T, objB: U) {
+    return Object.assign(objA, objB)
+}
+```
+</p>
+</div>
+
+<div id="outline-container-org47d1b46" class="outline-4">
+<h4 id="org47d1b46"><span class="section-number-4">1.19.1.</span> Generic constraints</h4>
+<div class="outline-text-4" id="text-1-19-1">
+<p>
+<b>Constraints</b> allow you to narrow down the `concrete types` that may be used in a <b><b>Generic function</b></b>.
+</p>
+
+<p>
+``` typescript
+function merge&lt;T extends object, U extends object&gt;(objA: T, objB: U) {
+    return Object.assign(objA, objB)
+}
+</p>
+
+<p>
+// merge({ name: 'Mikey', surname: 'Leibbrandt' }, 30) 30 is not an object, hence why we need to specify extends object in function signature
+</p>
+
+<p>
+interface Lengthy {
+  length: number;
+}
+</p>
+
+<p>
+function countAndDescribe&lt;T extends Lengthy&gt;(element: T): [T, string]{
+    let descriptionText =  'Got no value';
+    if (element.length <code>=</code> 1){
+      descriptionText = 'Got 1 element'
+    } else if (element.length &gt; 1){
+      descriptionText = 'Got' + element.length + 'elements.';
+    }
+    return [element, descriptionText];
+}
+```
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="org0a0d0f5"></a>`keyof` contstraint<br />
+<div class="outline-text-5" id="text-1-19-1-1">
+<p>
+Here we are telling Typescript that we pass in an `object T`, and `U` is a <b><b>key of</b></b> `object T`.
+``` typescript
+</p>
+
+<p>
+const extractAndConvert = &lt;T extends object, U extends keyof T&gt;(obj: T , key: U) =&gt; {
+    return obj[key]
+}
+</p>
+
+<p>
+<i>/ extractAndConvert({}, 'name') /</i> ERROR
+<i>/ extractAndConvert({ name: 'Mikey' }, 'name') /</i> VALID
+```
+</p>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-org61d82d9" class="outline-4">
+<h4 id="org61d82d9"><span class="section-number-4">1.19.2.</span> Generic Utility Types</h4>
+<div class="outline-text-4" id="text-1-19-2">
+</div>
+<ol class="org-ol">
+<li><a id="org488a49c"></a>`Partial` All properties are optional<br />
+<div class="outline-text-5" id="text-1-19-2-1">
+<p>
+``` typescript
+</p>
+
+<p>
+const createCourseGoal = (title, description, completeDate): CourseGoal =&gt; {
+    let courseGoal: Partial&lt;CourseGoal&gt; = {}
+</p>
+
+<p>
+courseGoal.title = title
+courseGoal.description = description
+courseGoal.completeDate = completeDate
+</p>
+
+<p>
+    return courseGoal as CourseGoal
+}
+</p>
+
+<p>
+```
+</p>
+</div>
+</li>
+
+<li><a id="orge9f353b"></a>`Readonly`<br />
+<div class="outline-text-5" id="text-1-19-2-2">
+<p>
+``` typescript
+const names: Readonly&lt;Array&lt;string&gt;&gt; = ['Mikey', 'Neo']
+</p>
+
+<p>
+<i>/ names.push('Anderson') /</i> ERROR
+<i>/ names.pop() /</i> ERROR
+```
+</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org3407482" class="outline-3">
+<h3 id="org3407482"><span class="section-number-3">1.20.</span> Decorators</h3>
+<div class="outline-text-3" id="text-1-20">
+<p>
+Meta-programming
+</p>
+
+<p>
+Only used for Class Definitions.
+</p>
+
+<p>
+Decorators executed when classes are defined! (Not when they are instantiated).
+</p>
+
+<p>
+Classes are syntactical sugar over Constructor Functions
+</p>
+
+<p>
+*
+</p>
+
+<p>
+``` typescript
+const Logger = (constructor: Function) =&gt; {
+    console.log('Logging&#x2026;', constructor);
+}
+</p>
+
+<p>
+@Logger
+class Person {
+  name = 'Mikey';
+</p>
+
+<p>
+  constructor(){
+    console.log('Creating Person!');
+  }
+}
+</p>
+
+<p>
+const person = new Person()
+```
+</p>
+</div>
+
+<div id="outline-container-org16123bd" class="outline-4">
+<h4 id="org16123bd"><span class="section-number-4">1.20.1.</span> Decorator Factories</h4>
+<div class="outline-text-4" id="text-1-20-1">
+<p>
+``` typescript
+const Logger = (logString: string) =&gt; {
+  return function(constructor: Function){
+    console.log(logString);
+    console.log(constructor);
+  }
+}
+</p>
+
+<p>
+@Logger('LOGGING - Person')
+class Person {
+  name = 'Mikey';
+</p>
+
+<p>
+  constructor(){
+    console.log('Creating Person!');
+  }
+}
+</p>
+
+<p>
+const person = new Person()
+```
+</p>
+
+<p>
+Execution of decorator functions fire off <b><b>bottom-up</b></b>. (Not the factory function, the actual decorator function)
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8ca9069" class="outline-3">
+<h3 id="org8ca9069"><span class="section-number-3">1.21.</span> Using Axios with TypeScript</h3>
+<div class="outline-text-3" id="text-1-21">
+<p>
+``` typescript
+type GoogleGeocodingResponse {
+  results: { geometry: { location: { lat: number }, { lng: number } } }[],
+  status: 'Ok' | 'ZERO<sub>RESULTS</sub>' // Google defined in this example
+}
+</p>
+
+
+<p>
+axios.get&lt;GoogleGeocodingResponse&gt;('https://maps.googleapis.com/&#x2026;..')
+```
+</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

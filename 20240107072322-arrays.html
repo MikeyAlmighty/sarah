@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-01-31 Sat 09:19 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Arrays</title>
+<meta name="author" content="Michael Leibbrandt" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Arrays</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgc48c7ad">1. Arrays</a>
+<ul>
+<li><a href="#org77eed9c">1.1. Creating an Array of Primitives</a></li>
+<li><a href="#orgacde9da">1.2. Creating an Array of Reference Variables</a>
+<ul>
+<li><a href="#org2c13125">1.2.1. .toString()</a></li>
+</ul>
+</li>
+<li><a href="#orgd0e89e6">1.3. Using an array</a></li>
+<li><a href="#orge813972">1.4. Array.sort()</a></li>
+<li><a href="#org718ce35">1.5. Array Searching</a></li>
+<li><a href="#org22149ad">1.6. Array.compare()</a></li>
+<li><a href="#org214ff64">1.7. Array.mismatch()</a></li>
+<li><a href="#orgce1cdd3">1.8. Variable Arguments</a></li>
+<li><a href="#orgb66e423">1.9. Multidimensional Arrays</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc48c7ad" class="outline-2">
+<h2 id="orgc48c7ad"><span class="section-number-2">1.</span> Arrays</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+An <code>array</code> is an <b>area of memory</b> on the <a href="20231230181446-heap.html#ID-dbcc90ea-bf9d-4bf5-9872-36b5794b88f0">Heap</a> with space for a designated number of elements.
+</p>
+
+<p>
+<code>Arrays</code> in Java are <b>objects</b>, and you can use them to store <b>multiple</b> <b>values</b>.
+</p>
+
+<p>
+A <a href="20240103124304-creating_and_manipulating_strings.html#ID-afe76105-5f94-4dac-a929-e7a7dcdb5983">String</a> is <b>implemented</b> as an <code>array</code> with some methods that you might want to use when dealing with characters specifically.
+</p>
+
+<p>
+A <a href="20240103153258-stringbuilder.html#ID-ffe9bdf4-50cb-432a-85bc-5a32200380a4">StringBuilder</a> is implemented as an <code>array</code> where the array object is <b>replaced with a new, bigger array object</b> when it runs out of space to store all the characters.
+</p>
+
+<p>
+If we didn’t want to use a <a href="20240103124304-creating_and_manipulating_strings.html#ID-afe76105-5f94-4dac-a929-e7a7dcdb5983">string</a> for some reason, we could use an array of char <a href="20231230083124-primitive_types.html#ID-46582863-7f97-448d-bbc7-f7da4c1e7574">primitives</a> directly:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java">char[] letters;
+</pre>
+</div>
+
+<p>
+(This wouldn’t be very convenient because we’d lose all the <code>special</code> properties String gives us)
+</p>
+</div>
+
+<div id="outline-container-org77eed9c" class="outline-3">
+<h3 id="org77eed9c"><span class="section-number-3">1.1.</span> <a href="20240107074430-creating_an_array_of_primitives.html#ID-2224ce47-ddac-4f11-965b-9dc6c649ca5a">Creating an Array of Primitives</a></h3>
+</div>
+<div id="outline-container-orgacde9da" class="outline-3">
+<h3 id="orgacde9da"><span class="section-number-3">1.2.</span> <a href="20240107074502-creating_an_array_of_reference_variables.html#ID-939b7ef7-fdb3-4e99-b858-4ede1a064ade">Creating an Array of Reference Variables</a></h3>
+<div class="outline-text-3" id="text-1-2">
+</div>
+<div id="outline-container-org2c13125" class="outline-4">
+<h4 id="org2c13125"><span class="section-number-4">1.2.1.</span> .toString()</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+Java provides a method that prints an array nicely - <code>Arrays.toString(X)</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java">String[] names = { "DeadPool", "BatMan", "AquaMan" };
+System.out.println(names.toString()); // [Ljava.lang.String;@3fee733d
+System.out.println(Arrays.toString(names)); // [DeadPool, BatMan, AquaMan]
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd0e89e6" class="outline-3">
+<h3 id="orgd0e89e6"><span class="section-number-3">1.3.</span> <a href="20240107081539-using_an_array.html#ID-550094a3-6212-4f32-a473-9e331afbbb53">Using an array</a></h3>
+</div>
+<div id="outline-container-orge813972" class="outline-3">
+<h3 id="orge813972"><span class="section-number-3">1.4.</span> <a href="20240107082011-array_sorting.html#ID-1a328fa4-9b9f-4856-88f3-fd490bce565b">Array.sort()</a></h3>
+</div>
+<div id="outline-container-org718ce35" class="outline-3">
+<h3 id="org718ce35"><span class="section-number-3">1.5.</span> <a href="20240107100900-array_searching.html#ID-77196205-79e1-4284-bdec-cc31786e5729">Array Searching</a></h3>
+</div>
+<div id="outline-container-org22149ad" class="outline-3">
+<h3 id="org22149ad"><span class="section-number-3">1.6.</span> <a href="20240107103646-array_comparison.html#ID-d06d8e67-0233-4275-8eaa-f0660d5b6cf1">Array.compare()</a></h3>
+</div>
+<div id="outline-container-org214ff64" class="outline-3">
+<h3 id="org214ff64"><span class="section-number-3">1.7.</span> <a href="20240107131824-array_mismatch.html#ID-0392c33c-6152-4f81-afd8-a5455810b205">Array.mismatch()</a></h3>
+</div>
+<div id="outline-container-orgce1cdd3" class="outline-3">
+<h3 id="orgce1cdd3"><span class="section-number-3">1.8.</span> <a href="20240107132638-variable_arguments.html#ID-9bb3ac0e-af2c-4243-9ae2-f2bfbee868c3">Variable Arguments</a></h3>
+</div>
+<div id="outline-container-orgb66e423" class="outline-3">
+<h3 id="orgb66e423"><span class="section-number-3">1.9.</span> <a href="20240107163028-multidimensional_arrays.html#ID-b9c11422-0e4c-468e-8fae-e13791b864f3">Multidimensional Arrays</a></h3>
+</div>
+</div>
+</div>
+</body>
+</html>

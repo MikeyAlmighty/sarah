@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-01-31 Sat 09:19 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Declaring Variables</title>
+<meta name="author" content="Michael Leibbrandt" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Declaring Variables</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org88aeeac">1. Declaring Variables</a>
+<ul>
+<li><a href="#org6bcbe96">1.1. Legal Identifiers</a></li>
+<li><a href="#org0f8e957">1.2. Illegal identifiers</a></li>
+<li><a href="#orgccef42c">1.3. Multiple Variable Declaration</a></li>
+<li><a href="#orgab86ced">1.4. Named Constants</a></li>
+<li><a href="#orgc5ddf19">1.5. Expressions</a></li>
+</ul>
+</li>
+<li><a href="#org46f950b">2. Default Values</a>
+<ul>
+<li><a href="#org07ab8c7">2.1. Local Variable Type Inference</a></li>
+</ul>
+</li>
+<li><a href="#org6f73151">3. Flagging Uninitialized Variables</a></li>
+<li><a href="#orga4cf97d">4. Variable Lifetimes</a></li>
+<li><a href="#org2b76103">5. .this reference</a></li>
+<li><a href="#orgb261489">6. Method Overloading</a></li>
+<li><a href="#orga3e2679">7. Constructors</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org88aeeac" class="outline-2">
+<h2 id="org88aeeac"><span class="section-number-2">1.</span> Declaring Variables</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+To use a variable, you declare it by telling the <a href="20260119071529-java_compiler.html#ID-601d1a17-6f03-4138-9fef-1553f38794b8">Java Compiler</a> its <b>name</b> as well as what <b>type</b> <b>of</b> <b>data</b> it can store.
+</p>
+
+<p>
+The variable declaration tells the compiler to allocate appropriate <b>memory</b> <b>space</b> for the variable based on its <b>data</b> <b>type</b>.
+</p>
+
+<p>
+The syntax for declaring a variable is:
+</p>
+
+<p>
+<code>datatype variableName = value;</code>
+</p>
+</div>
+
+<div id="outline-container-org6bcbe96" class="outline-3">
+<h3 id="org6bcbe96"><span class="section-number-3">1.1.</span> Legal Identifiers</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>Identifiers <b>must</b> begin with a <code>letter</code>, a <code>currency symbol($, ¥, € etc.)</code>, or a <code>_</code> symbol.</li>
+<li>Identifiers <b>can</b> include numbers but <b>not</b> start with them.</li>
+<li>A single underscore <code>_</code> is not allowed as an identifier.</li>
+
+<li>You cannot use the same name as a <a href="20231224102648-java_keywords.html#ID-5f2b572a-ec31-49de-ba13-95b0c5edb4c0">Java Reserved Keyword</a>.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-java">// OK
+int count;
+double radius;
+double interestRate;
+long okidentifier;
+float $OK2Identifier;
+boolean _alsoOK1d3ntifi3r;
+char __SStillOkbutKnotsonice$;
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0f8e957" class="outline-3">
+<h3 id="org0f8e957"><span class="section-number-3">1.2.</span> Illegal identifiers</h3>
+<div class="outline-text-3" id="text-1-2">
+<div class="org-src-container">
+<pre class="src src-java">// NOT OK
+int 3DPointClass; // identifiers cannot begin with a number
+byte hollywood@vine; // @ is not a letter, digit, $ or _
+String *$coffee; // * is not a letter, digit, $ or _
+double public; // public is a reserved word
+short _; // a single underscore is not allowed
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgccef42c" class="outline-3">
+<h3 id="orgccef42c"><span class="section-number-3">1.3.</span> Multiple Variable Declaration</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+If variables are of the <b>same</b> <b>type</b>, they can be declared together, as follows:
+<code>datatype variable1, variable2, ..., variablen;</code>
+</p>
+
+<p>
+The variables are separated by commas.
+For example,
+<code>int i, j, k; // Declare i, j, and k as int variables</code>
+</p>
+
+<p>
+You can declare many variables in the same declaration as long as <b>they are all of the same type.</b>
+</p>
+
+<p>
+You can also initialize <b>any</b> or <b>all</b> of those values inline.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java">// Multiple Variable Declaration and Initialization
+void sandFence() {
+    String s1, s2;
+    String s3 = "yes", s4 = "no";
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgab86ced" class="outline-3">
+<h3 id="orgab86ced"><span class="section-number-3">1.4.</span> <a href="20260120073939-named_constants.html#ID-471c84bb-2961-4ce0-a20d-6bd1709deb37">Named Constants</a></h3>
+</div>
+<div id="outline-container-orgc5ddf19" class="outline-3">
+<h3 id="orgc5ddf19"><span class="section-number-3">1.5.</span> <a href="20260121200012-expressions.html#ID-4e53badb-68c3-433f-b3ef-b3546c24b263">Expressions</a></h3>
+</div>
+</div>
+
+<div id="outline-container-org46f950b" class="outline-2">
+<h2 id="org46f950b"><span class="section-number-2">2.</span> Default Values</h2>
+<div class="outline-text-2" id="text-2">
+
+<div id="org5540008" class="figure">
+<p><img src="./assets/default_values.png" alt="default_values.png" />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org07ab8c7" class="outline-3">
+<h3 id="org07ab8c7"><span class="section-number-3">2.1.</span> <a href="20231230160710-local_variable_type_inference.html#ID-10016631-2c29-434f-b5c5-2e2cba7d7c76">Local Variable Type Inference</a></h3>
+</div>
+</div>
+
+<div id="outline-container-org6f73151" class="outline-2">
+<h2 id="org6f73151"><span class="section-number-2">3.</span> <a href="20231225185442-flagging_uninitialized_variables.html#ID-e1c39b97-642d-4d2e-8fba-19dd150e0c67">Flagging Uninitialized Variables</a></h2>
+</div>
+<div id="outline-container-orga4cf97d" class="outline-2">
+<h2 id="orga4cf97d"><span class="section-number-2">4.</span> <a href="20231225185849-variable_lifetimes.html#ID-77742466-5106-4aba-9a33-343d5e732a44">Variable Lifetimes</a></h2>
+</div>
+<div id="outline-container-org2b76103" class="outline-2">
+<h2 id="org2b76103"><span class="section-number-2">5.</span> <a href="20231226051231-this_reference.html#ID-b691522c-6f33-4e1d-96e2-88233ea5dcb4">.this reference</a></h2>
+</div>
+<div id="outline-container-orgb261489" class="outline-2">
+<h2 id="orgb261489"><span class="section-number-2">6.</span> <a href="20231226052415-method_overloading.html#ID-28b95eeb-be70-4b92-b599-aa95d6d9b5d7">Method Overloading</a></h2>
+</div>
+<div id="outline-container-orga3e2679" class="outline-2">
+<h2 id="orga3e2679"><span class="section-number-2">7.</span> <a href="Constructors.md.html#ID-73a0f36b-e440-486a-bd88-6ca577be3351">Constructors</a></h2>
+</div>
+</div>
+</body>
+</html>

@@ -72,7 +72,7 @@
   (condition-case err
       (with-current-buffer (find-file-noselect file)
         (let ((org-export-output-directory-alist
-               `(("html" . ,org-export-dir))))
+               `((html . ,org-export-dir))))
           (org-html-export-to-html)))
     (error
      (message "Skipping %s: %s" file err))))

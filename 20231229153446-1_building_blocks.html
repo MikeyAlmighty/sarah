@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-01-31 Sat 09:19 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>1. Building blocks</title>
+<meta name="author" content="Michael Leibbrandt" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">1. Building blocks</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org0b6ec98">1. Chapter 1. Building Blocks</a>
+<ul>
+<li><a href="#org571fbb5">1.1. Exam Objectives</a>
+<ul>
+<li><a href="#org951a1b0">1.1.1. Handling date, time, text, numeric and boolean values</a></li>
+<li><a href="#org5ad9d4f">1.1.2. Utilizing Java Object­Oriented Approach</a></li>
+</ul>
+</li>
+<li><a href="#orgf7a4fc4">1.2. Compiling</a></li>
+<li><a href="#org897f5cb">1.3. Running</a></li>
+<li><a href="#org6e71fe5">1.4. Packages</a>
+<ul>
+<li><a href="#orgf9ad133">1.4.1. WildCards</a></li>
+<li><a href="#orgd372237">1.4.2. Redundant imports</a></li>
+<li><a href="#orge0f15f7">1.4.3. Invalid imports</a></li>
+<li><a href="#orgf69d42e">1.4.4. Naming Conflicts</a></li>
+<li><a href="#orgb23da70">1.4.5. Creating a new package</a></li>
+<li><a href="#org3f3e74d">1.4.6. Creating a JAR file</a></li>
+</ul>
+</li>
+<li><a href="#orged0e0f6">1.5. Constructors</a></li>
+<li><a href="#org9b8ce05">1.6. Order of Initialization</a></li>
+<li><a href="#org5a418e1">1.7. Types</a>
+<ul>
+<li><a href="#org06bdd9f">1.7.1. Primitive Types</a></li>
+<li><a href="#org021528b">1.7.2. Reference Types</a></li>
+<li><a href="#orgd5ae59d">1.7.3. Type Conversions</a></li>
+</ul>
+</li>
+<li><a href="#orgb4ab1de">1.8. Declaring Variables</a></li>
+<li><a href="#org914d447">1.9. Garbage Collection</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0b6ec98" class="outline-2">
+<h2 id="org0b6ec98"><span class="section-number-2">1.</span> Chapter 1. Building Blocks</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org571fbb5" class="outline-3">
+<h3 id="org571fbb5"><span class="section-number-3">1.1.</span> Exam Objectives</h3>
+<div class="outline-text-3" id="text-1-1">
+</div>
+<div id="outline-container-org951a1b0" class="outline-4">
+<h4 id="org951a1b0"><span class="section-number-4">1.1.1.</span> Handling date, time, text, numeric and boolean values</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<ul class="org-ul">
+<li>Use primitives and <code>wrapper</code> classes including <code>Math</code> API, parentheses, <b>type promotion</b>, and <b>casting</b> to evaluate <b>arithmetic</b> and <b>boolean</b> expressions.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5ad9d4f" class="outline-4">
+<h4 id="org5ad9d4f"><span class="section-number-4">1.1.2.</span> Utilizing Java Object­Oriented Approach</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<ul class="org-ul">
+<li>Declare and instantiate Java objects including <code>nested class</code> objects, and explain the object life­cycle including <code>creation</code>, <code>reassigning references</code>, and <code>garbage collection</code></li>
+<li>Understand <b>variable scopes</b>, use local variable type inference, apply <a href="Encapsulation.md.html#ID-89e69431-4199-42ee-8633-4c2cc5da4d8a">encapsulation</a>, and make objects <b>immutable</b></li>
+</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Name</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Instance Members</td>
+<td class="org-left">The instance <code>variables</code> and instance <code>methods</code> of an object. They can be accessed or invoked only through an object reference.</td>
+</tr>
+
+<tr>
+<td class="org-left">Instance Variable</td>
+<td class="org-left">A <code>field</code> that is allocated when the class is instantiated (i.e.,when an object of the class is created). Also called a non-static field or just a field when the context is obvious.</td>
+</tr>
+
+<tr>
+<td class="org-left">Instance method</td>
+<td class="org-left">A <code>method</code> that belongs to an instance of the class. Objects of the same class share its implementation.</td>
+</tr>
+
+<tr>
+<td class="org-left">Static Members</td>
+<td class="org-left">The static <code>variables</code> and static <code>methods</code> of a class. They can be accessed or invoked either by using the class name or through an object reference.</td>
+</tr>
+
+<tr>
+<td class="org-left">Static Variable</td>
+<td class="org-left">A <code>field</code> that is allocated when the class is loaded. It belongs to the class, and not to any specific object of the class. Also called a static field or a class variable.</td>
+</tr>
+
+<tr>
+<td class="org-left">Static Method</td>
+<td class="org-left">A <code>method</code> that belongs to the class, and not to any object of the class. Also called a class method.</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf7a4fc4" class="outline-3">
+<h3 id="orgf7a4fc4"><span class="section-number-3">1.2.</span> Compiling</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+(See also: <a href="20231105195519-single_file_source_code.html#ID-17935397-ee6a-41e5-b492-4e3cc99c4c4a">Single File Source Code</a>)
+Compiled using the <a href="20231224095703-javac.html#ID-d5b4004d-b5db-48a2-8e85-09359ca61a42">javac</a>
+</p>
+
+<ul class="org-ul">
+<li>Each <code>class</code> declaration in a source file is compiled into a separate <code>class file</code>, containing its Java bytecode.</li>
+<li>The name of this file comprises the name of the class with <code>.class</code> as its extension.</li>
+<li>Although a Java source file can contain more than one class declaration, <a href="20231224095703-javac.html#ID-d5b4004d-b5db-48a2-8e85-09359ca61a42">javac</a> enforces the rule that there can <b>only be at the most</b> one class in the source file that has <code>public access</code> (<a href="20231229184943-top_level_type.html#ID-f7f87f85-1d9b-468a-8947-cd839883c9fa">Top-Level Type</a>).</li>
+<li>If there is a <code>public class</code> in the source file, the name of the source file must be the name of the public class with <code>.java</code> as its extension.</li>
+<li>In the <b>absence</b> of a public class in the source file, the name of the file can be arbitrary, but still with the <code>.java</code> extension.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org897f5cb" class="outline-3">
+<h3 id="org897f5cb"><span class="section-number-3">1.3.</span> Running</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+It is the <code>bytecode</code> in the class files that is executed when a Java program is run—the source code is irrelevant in this regard.
+A Java program is run by the Java Application Launcher, <code>java</code>, which is also part of the <b>JDK</b>.
+The <code>java</code> command creates an instance of the <b>JVM</b> that executes the bytecode.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6e71fe5" class="outline-3">
+<h3 id="org6e71fe5"><span class="section-number-3">1.4.</span> Packages</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+Java <code>classes</code> are grouped into <b>packages</b>
+</p>
+</div>
+
+<div id="outline-container-orgf9ad133" class="outline-4">
+<h4 id="orgf9ad133"><span class="section-number-4">1.4.1.</span> WildCards</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<p>
+A shortcut to import <b>all</b> the classes in a package is using a wildcard (<code>*</code>)
+</p>
+<div class="org-src-container">
+<pre class="src src-java">// WildCards
+import java.util.*; // imports java.util.Random among other things
+public class NumberPicker {
+    public static void main(String[] args) {
+        Random r = new Random();
+        System.out.println(r.nextInt(10));
+    }
+}
+</pre>
+</div>
+
+<p>
+Every class in the <code>java.util</code> package is available to this program when Java compiles it.
+</p>
+
+<p>
+The import statement does <b>not</b> bring in <code>child packages, fields, or methods</code>.
+It imports only <code>classes</code> <b>directly under the package</b>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd372237" class="outline-4">
+<h4 id="orgd372237"><span class="section-number-4">1.4.2.</span> Redundant imports</h4>
+<div class="outline-text-4" id="text-1-4-2">
+<p>
+Already imported automatically: <code>import java.lang.*</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge0f15f7" class="outline-4">
+<h4 id="orge0f15f7"><span class="section-number-4">1.4.3.</span> Invalid imports</h4>
+<div class="outline-text-4" id="text-1-4-3">
+<p>
+Which import statements do you think would not work to get this code to compile?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java">public class InputImports {
+    public void read(Files files) {
+        Paths.get("name");
+    }
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-java">// Invalid Imports
+import java.nio.*;// NO GOOD -­a wildcard only matches // class names, not "file.Files"
+import java.nio.*.*;// NO GOOD -­you can only have one wildcard // and it must be at the end
+import java.nio.file.Paths.*; // NO GOOD -­you cannot import methods // only class names
+</pre>
+</div>
+
+
+<div class="org-src-container">
+<pre class="src src-java">// Valid Imports
+import java.nio.file.*;
+// OR
+import java.nio.file.Files;
+import java.nio.file.Paths;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf69d42e" class="outline-4">
+<h4 id="orgf69d42e"><span class="section-number-4">1.4.4.</span> Naming Conflicts</h4>
+<div class="outline-text-4" id="text-1-4-4">
+<p>
+Example: Java provides 2 implementations of the Date class: <code>java.util.Date</code> and <code>java.sql.Date</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java">// Collision
+import java.util.*;
+import java.sql.*; // causes Date declaration to not compile
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-java">// Correct imports
+import java.util.Date;
+import java.sql.*;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-java">// Using Fully-Qualified Domain Names
+public class Conflicts {
+    java.util.Date date;
+    java.sql.Date sqlDate;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb23da70" class="outline-4">
+<h4 id="orgb23da70"><span class="section-number-4">1.4.5.</span> <a href="20231230051200-creating_a_new_package.html#ID-c13f080f-e542-44d0-8311-5e4cdb388991">Creating a new package</a></h4>
+</div>
+<div id="outline-container-org3f3e74d" class="outline-4">
+<h4 id="org3f3e74d"><span class="section-number-4">1.4.6.</span> <a href="20231230053451-creating_a_jar_file.html#ID-e40da6d4-9a59-46c8-9a2f-c375c0d7dda8">Creating a JAR file</a></h4>
+</div>
+</div>
+<div id="outline-container-orged0e0f6" class="outline-3">
+<h3 id="orged0e0f6"><span class="section-number-3">1.5.</span> <a href="Constructors.md.html#ID-73a0f36b-e440-486a-bd88-6ca577be3351">Constructors</a></h3>
+</div>
+<div id="outline-container-org9b8ce05" class="outline-3">
+<h3 id="org9b8ce05"><span class="section-number-3">1.6.</span> <a href="20231230055218-order_of_initialization.html#ID-f041c4e7-7bfa-4554-9b25-6e6b8e086aec">Order of Initialization</a></h3>
+</div>
+
+<div id="outline-container-org5a418e1" class="outline-3">
+<h3 id="org5a418e1"><span class="section-number-3">1.7.</span> Types</h3>
+<div class="outline-text-3" id="text-1-7">
+</div>
+<div id="outline-container-org06bdd9f" class="outline-4">
+<h4 id="org06bdd9f"><span class="section-number-4">1.7.1.</span> <a href="20231230083124-primitive_types.html#ID-46582863-7f97-448d-bbc7-f7da4c1e7574">Primitive Types</a></h4>
+</div>
+<div id="outline-container-org021528b" class="outline-4">
+<h4 id="org021528b"><span class="section-number-4">1.7.2.</span> <a href="20231230083220-reference_types.html#ID-ef3f4798-9f1d-462f-8eea-df2b75e512f6">Reference Types</a></h4>
+</div>
+<div id="outline-container-orgd5ae59d" class="outline-4">
+<h4 id="orgd5ae59d"><span class="section-number-4">1.7.3.</span> <a href="20231224190412-type_conversions.html#ID-a290d25a-c231-441d-85d4-1d7be3f3cb3f">Type Conversions</a></h4>
+</div>
+</div>
+<div id="outline-container-orgb4ab1de" class="outline-3">
+<h3 id="orgb4ab1de"><span class="section-number-3">1.8.</span> <a href="20231230155210-declaring_variables.html#ID-c09c67cd-b686-417d-8b4b-bb26331a6997">Declaring Variables</a></h3>
+</div>
+<div id="outline-container-org914d447" class="outline-3">
+<h3 id="org914d447"><span class="section-number-3">1.9.</span> <a href="20231230181407-garbage_collection.html#ID-9ccc2e2b-e387-499a-aaef-790bb6c1caa3">Garbage Collection</a></h3>
+</div>
+</div>
+</div>
+</body>
+</html>

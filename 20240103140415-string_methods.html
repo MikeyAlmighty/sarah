@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-01-31 Sat 09:19 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>String Methods</title>
+<meta name="author" content="Michael Leibbrandt" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">String Methods</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgf997545">1. String Methods</a>
+<ul>
+<li><a href="#orgaee1fe3">1.1. 1. String.length()</a></li>
+<li><a href="#org311b5de">1.2. 2. String.charAt()</a></li>
+<li><a href="#org9326ebc">1.3. 3. String.indexOf()</a></li>
+<li><a href="#orgcb316ca">1.4. 4. String.substring()</a></li>
+<li><a href="#orgd442dde">1.5. 5. String.toUpperCase()/String.toLowerCase()</a></li>
+<li><a href="#orgfe72535">1.6. 6. String.equals()</a></li>
+<li><a href="#orgd9e3de3">1.7. 7. String.equalsIgnoreCase()</a></li>
+<li><a href="#org50d9f9b">1.8. 8. String.startsWith() / String.endsWith() / String.contains()</a></li>
+<li><a href="#org3086540">1.9. 9. String.replace()</a></li>
+<li><a href="#orgfb6441b">1.10. 10. Removing Whitespace</a></li>
+<li><a href="#orgdf5dfa8">1.11. 11. String.indent()</a></li>
+<li><a href="#orgcbd7430">1.12. 12. String.stripIndent()</a></li>
+<li><a href="#org6597dac">1.13. 13. String.translateEscapes()</a></li>
+<li><a href="#org2c6dc6b">1.14. 14. String.isEmpty()</a></li>
+<li><a href="#orgde4345b">1.15. 15. String.isBlank()</a></li>
+<li><a href="#orgca98ab1">1.16. 16. String.format()</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf997545" class="outline-2">
+<h2 id="orgf997545"><span class="section-number-2">1.</span> String Methods</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+The <code>String</code> class has <b>dozens of methods</b>.
+</p>
+
+
+<div id="org30d9a6b" class="figure">
+<p><img src="./assets/string_indexing.png" alt="string_indexing.png" />
+</p>
+</div>
+
+<p>
+<code>String result = stringObject.methodName(arguments);</code>
+</p>
+</div>
+
+<div id="outline-container-orgaee1fe3" class="outline-3">
+<h3 id="orgaee1fe3"><span class="section-number-3">1.1.</span> 1. <a href="20240103154359-string_length.html#ID-cb7f93e2-d511-409b-ae69-f8e74cca18ac">String.length()</a></h3>
+</div>
+
+<div id="outline-container-org311b5de" class="outline-3">
+<h3 id="org311b5de"><span class="section-number-3">1.2.</span> 2. <a href="20240103154438-string_charat.html#ID-d7c00ac3-5490-4e3d-8924-c82f007a5c47">String.charAt()</a></h3>
+</div>
+
+<div id="outline-container-org9326ebc" class="outline-3">
+<h3 id="org9326ebc"><span class="section-number-3">1.3.</span> 3. <a href="20240103154522-string_indexof.html#ID-474b7252-5d9d-4060-bed5-3511cee5b037">String.indexOf()</a></h3>
+</div>
+
+<div id="outline-container-orgcb316ca" class="outline-3">
+<h3 id="orgcb316ca"><span class="section-number-3">1.4.</span> 4. <a href="20240103154649-string_substring.html#ID-63641bbf-cae5-46ca-9fab-dbb0079638ce">String.substring()</a></h3>
+</div>
+
+<div id="outline-container-orgd442dde" class="outline-3">
+<h3 id="orgd442dde"><span class="section-number-3">1.5.</span> 5. <a href="20240103154845-string_touppercase_string_tolowercase.html#ID-8a2f6d49-e489-4b32-a566-a901559c85a9">String.toUpperCase()/String.toLowerCase()</a></h3>
+</div>
+
+<div id="outline-container-orgfe72535" class="outline-3">
+<h3 id="orgfe72535"><span class="section-number-3">1.6.</span> 6. <a href="20240103155012-string_equals.html#ID-03ad6a6e-d3c6-46f6-b764-63c379c5d0b9">String.equals()</a></h3>
+</div>
+
+<div id="outline-container-orgd9e3de3" class="outline-3">
+<h3 id="orgd9e3de3"><span class="section-number-3">1.7.</span> 7. <a href="20240103155522-string_equalsignorecase.html#ID-5bc0ea8d-90ec-4cc1-ba0f-b36b6f94391c">String.equalsIgnoreCase()</a></h3>
+</div>
+
+<div id="outline-container-org50d9f9b" class="outline-3">
+<h3 id="org50d9f9b"><span class="section-number-3">1.8.</span> 8. <a href="20240103155852-searching_for_substrings.html#ID-7d3666e9-3557-4a4e-9f3e-46f9df927645">String.startsWith() / String.endsWith() / String.contains()</a></h3>
+</div>
+
+<div id="outline-container-org3086540" class="outline-3">
+<h3 id="org3086540"><span class="section-number-3">1.9.</span> 9. <a href="20240103183139-string_replace.html#ID-df5c0964-844d-42fe-b33b-2c30ba7f3b4f">String.replace()</a></h3>
+</div>
+
+<div id="outline-container-orgfb6441b" class="outline-3">
+<h3 id="orgfb6441b"><span class="section-number-3">1.10.</span> 10. <a href="20240104143319-removing_whitespace.html#ID-cee48131-9914-4e7d-bd0f-0ccdfbfe3c0c">Removing Whitespace</a></h3>
+</div>
+
+<div id="outline-container-orgdf5dfa8" class="outline-3">
+<h3 id="orgdf5dfa8"><span class="section-number-3">1.11.</span> 11. <a href="20240105104708-string_indent.html#ID-d3643990-b8a2-417b-93e3-b5fcf5d6c20f">String.indent()</a></h3>
+</div>
+
+<div id="outline-container-orgcbd7430" class="outline-3">
+<h3 id="orgcbd7430"><span class="section-number-3">1.12.</span> 12. <a href="20240105104719-string_stripindent.html#ID-7a07ddf1-5020-438d-955f-d468ff411ebf">String.stripIndent()</a></h3>
+</div>
+
+<div id="outline-container-org6597dac" class="outline-3">
+<h3 id="org6597dac"><span class="section-number-3">1.13.</span> 13. <a href="20240105110047-string_translateescapes.html#ID-496a8303-fa30-41b3-96fb-4e7c1b677982">String.translateEscapes()</a></h3>
+</div>
+
+<div id="outline-container-org2c6dc6b" class="outline-3">
+<h3 id="org2c6dc6b"><span class="section-number-3">1.14.</span> 14. <a href="20240105114042-string_isempty.html#ID-d4387f1d-fc9a-4dd9-a054-5fed54e97180">String.isEmpty()</a></h3>
+</div>
+
+<div id="outline-container-orgde4345b" class="outline-3">
+<h3 id="orgde4345b"><span class="section-number-3">1.15.</span> 15. <a href="20240105114109-string_isblank.html#ID-8434676f-dae0-4e24-b687-db37fdfad6e9">String.isBlank()</a></h3>
+</div>
+
+<div id="outline-container-orgca98ab1" class="outline-3">
+<h3 id="orgca98ab1"><span class="section-number-3">1.16.</span> 16. <a href="20240105185916-string_format.html#ID-d62b5c34-07cf-4235-898e-15ae36ff244e">String.format()</a></h3>
+</div>
+</div>
+</div>
+</body>
+</html>

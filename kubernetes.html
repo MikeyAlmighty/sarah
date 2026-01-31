@@ -1,0 +1,803 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-01-31 Sat 09:19 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Michael Leibbrandt" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#kubernetes">1. Kubernetes</a>
+<ul>
+<li><a href="#master-node">1.1. 1. Master node</a>
+<ul>
+<li><a href="#api-server">1.1.1. API Server</a></li>
+<li><a href="#scheduler">1.1.2. Scheduler</a></li>
+<li><a href="#controller-manager">1.1.3. Controller Manager</a></li>
+<li><a href="#data-store-etcd">1.1.4. Data Store (etcd)</a></li>
+</ul>
+</li>
+<li><a href="#worker-node">1.2. 2. Worker node</a>
+<ul>
+<li><a href="#container-runtime">1.2.1. Container Runtime</a></li>
+<li><a href="#node-agent---kubelet">1.2.2. Node Agent - kubelet</a></li>
+<li><a href="#proxy---kube-proxy">1.2.3. Proxy - kube-proxy</a></li>
+<li><a href="#addons">1.2.4. Addons</a></li>
+<li><a href="#networking-issues">1.2.5. Networking issues</a></li>
+<li><a href="#container-to-container-communication-inside-pods">1.2.6. Container-to-Container Communication inside pods</a></li>
+<li><a href="#pod-to-pod-communication-across-nodes">1.2.7. Pod-to-Pod Communication Across Nodes</a></li>
+<li><a href="#pod-to-external-world-communication">1.2.8. Pod-to-External World communication</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-kubernetes" class="outline-2">
+<h2 id="kubernetes"><span class="section-number-2">1.</span> Kubernetes</h2>
+<div class="outline-text-2" id="text-kubernetes">
+<p>
+Kubernetes is an open-source system for automating deployment, scaling,
+and management of containerized applications.
+</p>
+
+<p>
+Kubernetes is highly inspired by the <b>Google Borg</b> system. Written in
+<b>Go</b> v1.0 released in July 2015
+</p>
+
+<p>
+Some of the features/objects of Kubernetes that can be traced back to
+<b>Borg</b>, or to lessons learned from it, are:
+</p>
+
+<ul class="org-ul">
+<li>API servers</li>
+<li>Pods</li>
+<li>IP-per-Pod</li>
+<li>Services</li>
+<li>Labels.</li>
+</ul>
+
+<p>
+Features kubernetes provide:
+</p>
+
+<ul class="org-ul">
+<li>Automatic bin packing
+<ul class="org-ul">
+<li>Kubernetes automatically schedules containers based on resource
+needs and constraints, to maximize utilization without sacrificing
+availability.</li>
+</ul></li>
+<li>Self-healing
+<ul class="org-ul">
+<li>Kubernetes automatically replaces and reschedules containers from
+failed nodes. It kills and restarts containers unresponsive to
+health checks, based on existing rules/policy. It also prevents
+traffic from being routed to unresponsive containers.</li>
+</ul></li>
+<li>Horizontal scaling
+<ul class="org-ul">
+<li>With Kubernetes applications are scaled manually or automatically
+based on CPU or custom metrics utilization.</li>
+</ul></li>
+<li>Service discovery and Load balancing
+<ul class="org-ul">
+<li>Containers receive their own IP addresses from Kubernetes, while it
+assigns a single Domain Name System (DNS) name to a set of
+containers to aid in load-balancing requests across the containers
+of the set.</li>
+</ul></li>
+<li>Automated rollouts and rollbacks
+<ul class="org-ul">
+<li>Kubernetes seamlessly rolls out and rolls back application updates
+and configuration changes, constantly monitoring the application's
+health to prevent any downtime.</li>
+</ul></li>
+<li>Secret and configuration management
+<ul class="org-ul">
+<li>Kubernetes manages sensitive data and configuration details for an
+application separately from the container image, in order to avoid a
+re-build of the respective image. Secrets consist of
+sensitive/confidential information passed to the application without
+revealing the sensitive content to the stack configuration, like on
+GitHub.</li>
+</ul></li>
+<li>Storage orchestration
+<ul class="org-ul">
+<li>Kubernetes automatically mounts software-defined storage (SDS)
+solutions to containers from local storage, external cloud
+providers, distributed storage, or network storage systems.</li>
+</ul></li>
+<li>Batch execution
+<ul class="org-ul">
+<li>Kubernetes supports batch execution, long-running jobs, and replaces
+failed containers.</li>
+</ul></li>
+</ul>
+</div>
+
+<div id="outline-container-master-node" class="outline-3">
+<h3 id="master-node"><span class="section-number-3">1.1.</span> 1. Master node</h3>
+<div class="outline-text-3" id="text-master-node">
+<p>
+The <b>master node</b> provides a running environment for the <b>control plane</b>
+responsible for managing the state of a Kubernetes cluster, and it is
+the brain behind all operations inside the cluster.
+</p>
+
+<p>
+The control plane components are agents with very distinct roles in the
+cluster's management. In order to communicate with the Kubernetes
+cluster, users send requests to the control plane via a Command Line
+Interface (CLI) tool (Or Web UI Dashboard/API)
+</p>
+
+<p>
+It is important to keep the <b>control plane</b> running at all costs.
+</p>
+
+<p>
+To ensure the control plane's fault tolerance, master node <b>replicas</b>
+can be added to the cluster, configured in <b>High-Availability (HA)</b>
+mode. While <b>only one</b> of the master nodes is dedicated to <b>actively
+manage the cluster</b>, the control plane components stay in <b>sync across</b>
+the master node <b><i>replicas</i></b>. This type of configuration adds resiliency
+to the cluster's control plane, should the active master node fail.
+</p>
+
+<p>
+<b>etcd</b>: a distributed key-value store which only holds cluster state
+related data, no client workload data. All cluster configuration data is
+saved to <b>etcd</b>.
+</p>
+
+<ul class="org-ul">
+<li>With <b>stacked</b> control plane nodes, where etcd nodes are colocated
+with control plane nodes</li>
+<li>With <b>external</b> etcd nodes, where etcd runs on separate nodes from the
+control plane</li>
+</ul>
+
+<p>
+With <b>stacked etcd</b> topology, HA master node replicas ensure the etcd
+data store's resiliency as well. However, that is not the case with
+<b>external etcd topology</b>, where the etcd hosts have to be <b>separately
+replicated for HA</b>, a configuration that introduces the need for
+additional hardware.
+</p>
+
+<p>
+<a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/ha-topology/#stacked-etcd-topology">etcd
+topologies</a>
+</p>
+
+<p>
+<b>Master Node</b> Runs: - API Server - Scheduler - Controller Managers -
+Data Store
+</p>
+
+<p>
+In addition also runs: - Container runtime - Node Agent - Proxy
+</p>
+</div>
+
+<div id="outline-container-api-server" class="outline-4">
+<h4 id="api-server"><span class="section-number-4">1.1.1.</span> API Server</h4>
+<div class="outline-text-4" id="text-api-server">
+<p>
+All the <b>administrative tasks</b> are coordinated by the <code>kube-apiserver</code>,
+a central control plane component running on the master node. During
+processing the API Server reads the Kubernetes cluster's current state
+from the etcd data store, and after a call's execution, the resulting
+state of the Kubernetes cluster is saved in the distributed key-value
+data store for persistence. The API Server is the only master plane
+component to talk to the etcd data store, both to read from and to save
+Kubernetes cluster state information - acting as a middle interface for
+any other control plane agent inquiring about the cluster's state.
+</p>
+</div>
+</div>
+
+<div id="outline-container-scheduler" class="outline-4">
+<h4 id="scheduler"><span class="section-number-4">1.1.2.</span> Scheduler</h4>
+<div class="outline-text-4" id="text-scheduler">
+<p>
+<b>kube-scheduler</b> is to assign new workload objects, such as pods, to
+nodes. During the scheduling process, decisions are made based on
+current Kubernetes cluster state and new object's requirements. The
+scheduler obtains data from the etcd data store - via the API Server-
+resource usage data for each worker node in the cluster. The scheduler
+also receives from the API Server the new object's requirements which
+are part of its configuration data.
+</p>
+
+<p>
+Constraints: 1. Predicates = Hard requirements, like 4Gb of memory. 2.
+Priorities = Soft requirements, like prefer spreading.
+</p>
+
+<p>
+When a new pod is not yet assigned a node: The scheduler takes into
+account Quality of Service (QoS) requirements, data locality, affinity,
+anti-affinity, taints, toleration, cluster topology, etc. Once all the
+cluster data is available, the scheduling algorithm <b>filters the nodes
+with predicates</b> to isolate the possible node candidates which <b>then are
+scored with priorities</b> in order to select the one node that satisfies
+all the requirements for hosting the new workload. The outcome of the
+decision process is communicated back to the API Server, which then
+delegates the workload deployment with other control plane agents.
+</p>
+
+<p>
+Scoring: Filter by predicate then scored by priority.
+</p>
+</div>
+</div>
+
+<div id="outline-container-controller-manager" class="outline-4">
+<h4 id="controller-manager"><span class="section-number-4">1.1.3.</span> Controller Manager</h4>
+<div class="outline-text-4" id="text-controller-manager">
+<p>
+Regulates the state of the Kubernetes cluster. Controllers are
+watch-loops continuously running and comparing the cluster's <b>desired
+state</b> (provided by objects' configuration data) with its <b>current
+state</b> (obtained from etcd data store via the API server). In case of a
+mismatch corrective action is taken in the cluster <b>until its current
+state matches the desired state.</b>
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="controllers"></a>Controllers:<br />
+<div class="outline-text-5" id="text-controllers">
+<ul class="org-ul">
+<li><b>kube-controller-manager</b>: Runs controllers responsible to act when
+nodes become unavailable, to ensure pod counts are as expected, to
+create endpoints, service accounts, and API access tokens.</li>
+<li><b>cloud-controller-manager</b>: Runs controllers responsible to interact
+with the underlying infrastructure of a cloud provider when nodes
+become unavailable, to manage storage volumes when provided by a cloud
+service, and to manage load balancing and routing.</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-data-store-etcd" class="outline-4">
+<h4 id="data-store-etcd"><span class="section-number-4">1.1.4.</span> Data Store (etcd)</h4>
+<div class="outline-text-4" id="text-data-store-etcd">
+<p>
+<code>etcd</code> is a <b>strongly consistent</b>, <b>distributed</b> key-value data store
+used to persist a Kubernetes cluster's state. New data is written to the
+data store only by appending to it, data is never replaced in the data
+store. Obsolete data is compacted periodically to minimize the size of
+the data store.
+</p>
+
+<p>
+Out of all the control plane components, <b>only the API Server is able to
+communicate with the etcd data store</b>.
+</p>
+
+<p>
+etcd's CLI management tool - <code>etcdctl</code>, provides <code>backup</code>, <code>snapshot</code>,
+and <code>restore capabilities</code> which come in handy especially for a single
+etcd instance Kubernetes cluster - common in Development and learning
+environments. However, in Stage and Production environments, it is
+extremely important to replicate the data stores in HA mode, for cluster
+configuration data resiliency.
+</p>
+
+<p>
+Some Kubernetes cluster bootstrapping tools, such as <b>kubeadm</b>, by
+default, provision <code>stacked</code> etcd master nodes, where the <b>data store
+runs alongside and shares resources with the other control plane
+components on the same master node</b>.
+</p>
+
+<p>
+For data store isolation from the control plane components, the
+bootstrapping process can be configured for an <code>external</code> etcd topology,
+where the data store is <b>provisioned on a dedicated separate host</b>, thus
+<b>reducing</b> the chances of an etcd failure.
+</p>
+
+<ul class="org-ul">
+<li>Both stacked and external etcd configurations support HA
+configurations!</li>
+</ul>
+
+<p>
+etcd is based on the <b>Raft Consensus Algorithm</b> which allows a
+collection of machines to work as a coherent group that can survive the
+failures of some of its members.
+</p>
+
+<p>
+In Kubernetes, besides storing the cluster state, etcd is also used to
+store configuration details such as subnets, ConfigMaps, Secrets, etc.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-worker-node" class="outline-3">
+<h3 id="worker-node"><span class="section-number-3">1.2.</span> 2. Worker node</h3>
+<div class="outline-text-3" id="text-worker-node">
+<p>
+A worker node provides a <b>running environment for client applications</b>.
+Though containerized microservices, these applications are encapsulated
+in Pods, <b>controlled</b> by the <b>cluster control plane agents running on
+the master node</b>.
+</p>
+
+<p>
+Pods are <b>scheduled</b> on worker nodes, where they find required compute,
+<code>memory and storage resources</code> to run and <code>networking</code> to talk to each
+other and the outside world. A <b>Pod</b> is the <code>smallest scheduling unit</code>
+in Kubernetes. It is a logical collection of
+<code>one or more containers scheduled together</code>, and the <b>collection</b> can be
+<code>started, stopped, or rescheduled</code> as a <b>single unit</b> of work.
+</p>
+
+<p>
+<b>worker node</b> components:
+</p>
+
+<ul class="org-ul">
+<li>Container Runtime</li>
+<li>Node Agent - kubelet</li>
+<li>Proxy - kube-proxy</li>
+<li>Addons for DNS, Dashboard user interface, cluster-level monitoring and
+logging.</li>
+</ul>
+</div>
+
+<div id="outline-container-container-runtime" class="outline-4">
+<h4 id="container-runtime"><span class="section-number-4">1.2.1.</span> Container Runtime</h4>
+<div class="outline-text-4" id="text-container-runtime">
+<p>
+In order to manage a container's lifecycle, Kubernetes requires a
+<b>container runtime</b> on the
+<code>node where a Pod and its containers are to be scheduled</code>.
+</p>
+
+<p>
+Example container Runtimes: - Docker - although a container platform
+which uses <b>containerd</b> as a container runtime, it is the most popular
+container runtime used with Kubernetes - CRI-O - a lightweight container
+runtime for Kubernetes, it also supports Docker image registries -
+containerd - a simple and portable container runtime providing
+robustness - frakti - a hypervisor-based container runtime for
+Kubernetes
+</p>
+</div>
+</div>
+
+<div id="outline-container-node-agent---kubelet" class="outline-4">
+<h4 id="node-agent---kubelet"><span class="section-number-4">1.2.2.</span> Node Agent - kubelet</h4>
+<div class="outline-text-4" id="text-node-agent---kubelet">
+<p>
+The kubelet is an agent running on <b>each</b> node and <b>communicates with
+the control plane components from the master node.</b> It receives Pod
+<b>definitions</b>, <code>primarily from the API Server</code>, and interacts with the
+<b>container runtime</b> on the node to <b>run containers associated with the
+Pod</b>. It also <b>monitors</b> the <b>health and resources</b> of Pods running
+containers.
+</p>
+
+<p>
+The kubelet <b>connects to container runtimes</b> though a plugin based
+interface - the <b>Container Runtime Interface (CRI)</b>. The CRI consists of
+protocol buffers, gRPC API, libraries, and additional specifications and
+tools that are currently under development. In order to connect to
+interchangeable container runtimes, kubelet uses a shim application
+which provides a clear abstraction layer between kubelet and the
+container runtime.
+</p>
+
+<p>
+kubelet uses a <b>shim</b> application which provides a clear <b>abstraction
+layer</b> between <b>kubelet</b> and the <b>container runtime</b>.
+</p>
+
+<p>
+The CRI implements two services:
+</p>
+
+<ul class="org-ul">
+<li><b>ImageService</b> Responsible for all the image-related operations.</li>
+<li><b>RuntimeService</b> Responsible for all the Pod and container-related
+operations.</li>
+</ul>
+
+<p>
+Container runtimes used to be hard-coded into kubelet, but since the CRI
+was introduced, Kubernetes has become more flexible to use different
+container runtimes without the need to recompile. Any container runtime
+that implements the <code>CRI</code> can be used by Kubernetes to manage <b>Pods</b>,
+<b>containers</b>, and <b>container images</b>.
+</p>
+
+<p>
+<b>Shims</b> are CRI implementations, or interfaces, specific to each
+container runtime supported by Kubernetes. Examples:
+</p>
+
+<ul class="org-ul">
+<li>DockerShim: Containers are created using <code>Docker</code> installed on the
+worker nodes. Internally, Docker uses containerd to create and manage
+containers:</li>
+<li>cri-containerd: With <code>cri-containerd</code>, we can <b>directly</b> use
+containerd to create and manage containers:</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-proxy---kube-proxy" class="outline-4">
+<h4 id="proxy---kube-proxy"><span class="section-number-4">1.2.3.</span> Proxy - kube-proxy</h4>
+<div class="outline-text-4" id="text-proxy---kube-proxy">
+<p>
+The <code>kube-proxy</code> is the network agent which runs on each node
+responsible for <code>dynamic updates</code> and
+<code>maintenance of all networking rules on the node</code>. It <b>abstracts the
+details of Pods networking</b> and <b>forwards connection requests to Pods</b>.
+</p>
+
+<p>
+Responsible for <b>TCP</b>, <b>UDP</b>, and <b>SCTP stream</b> <code>forwarding</code> or
+<code>round-robin forwarding</code> across a set of Pod backends, and it implements
+<b>forwarding rules</b> <code>defined by users through Service API objects</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-addons" class="outline-4">
+<h4 id="addons"><span class="section-number-4">1.2.4.</span> Addons</h4>
+<div class="outline-text-4" id="text-addons">
+<p>
+Addons are cluster features and functionality <i>not yet available in
+Kubernetes</i>, therefore implemented through <b>3rd-party pods and
+services</b>.
+</p>
+
+<ul class="org-ul">
+<li><b>DNS</b> - cluster DNS is a DNS server required to assign DNS records to
+Kubernetes objects and resources</li>
+<li><b>Dashboard</b> - a general purposed web-based user interface for cluster
+management</li>
+<li><b>Monitoring</b> - collects cluster-level container metrics and saves them
+to a central data store</li>
+<li><b>Logging</b> - collects cluster-level container logs and saves them to a
+central log store for analysis.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-networking-issues" class="outline-4">
+<h4 id="networking-issues"><span class="section-number-4">1.2.5.</span> Networking issues</h4>
+<div class="outline-text-4" id="text-networking-issues">
+<p>
+Decoupled microservices based applications rely heavily on <b>networking</b>
+in order to mimic
+<code>the tight-coupling once available in the monolithic era</code>. As a
+containerized microservices orchestrator it needs to address a few
+distinct networking challenges:
+</p>
+
+<ul class="org-ul">
+<li>Container-to-container communication inside Pods.</li>
+<li>Pod-to-Pod communication on the same node and across cluster nodes.</li>
+<li>Pod-to-Service communication within the same namespace and across
+cluster namespaces.</li>
+<li>External-to-Service communication for clients to access applications
+in a cluster.</li>
+</ul>
+
+<p>
+All these networking challenges must be addressed before deploying a
+Kubernetes cluster.
+</p>
+</div>
+</div>
+
+<div id="outline-container-container-to-container-communication-inside-pods" class="outline-4">
+<h4 id="container-to-container-communication-inside-pods"><span class="section-number-4">1.2.6.</span> Container-to-Container Communication inside pods</h4>
+<div class="outline-text-4" id="text-container-to-container-communication-inside-pods">
+<p>
+Making use of the
+<code>underlying host operating system's kernel virtualization</code> features, a
+<b>container runtime</b> creates an
+<code>isolated network space for each container</code> it starts. On Linux, this
+isolated network space is referred to as a <b>network namespace.</b> A
+network namespace can be shared across containers, or with the host
+operating system.
+</p>
+
+<p>
+When a <code>Pod is started</code>, a special <b>Pause</b> container is initialized by
+the <b>Container Runtime</b> for the sole purpose to create a <b>network
+namespace</b> for the Pod. i.e:
+</p>
+
+<ul class="org-ul">
+<li><b>Pause container</b> =&gt; create network namespace for the pod.</li>
+</ul>
+
+<p>
+All additional containers - created through user requests - running
+inside the Pod will <code>share the Pause container's network namespace</code> so
+that they can all talk to each other via localhost.
+</p>
+</div>
+</div>
+
+<div id="outline-container-pod-to-pod-communication-across-nodes" class="outline-4">
+<h4 id="pod-to-pod-communication-across-nodes"><span class="section-number-4">1.2.7.</span> Pod-to-Pod Communication Across Nodes</h4>
+<div class="outline-text-4" id="text-pod-to-pod-communication-across-nodes">
+<p>
+The Kubernetes network model aims to reduce complexity, and it treats
+Pods as <b>VMs</b> on a network, where each VM is equipped with a <b>network
+interface</b> - thus <b>each Pod receiving a unique IP address</b>. This model
+is called <b>"IP-per-Pod" and ensures Pod-to-Pod communication</b>, just as
+VMs are able to communicate with each other on the same network.
+</p>
+
+<p>
+<b>Containers</b> share the <b>Pod's network namespace</b> and must coordinate
+ports assignment inside the Pod just as applications would on a VM, all
+while being able to <b>communicate with each other on localhost - inside
+the Pod</b>.
+</p>
+
+<p>
+<b>Containers</b> are
+<code>integrated with the overall Kubernetes networking model</code> through the
+use of the <b>Container Network Interface (CNI)</b> supported by <b>CNI
+plugins</b>.
+</p>
+
+<blockquote>
+<p>
+CNI is a set of a specification and libraries which allow plugins to
+configure the networking for containers.
+</p>
+</blockquote>
+
+<p>
+While there are a few core plugins, most <b>CNI plugins</b> are
+<code>3rd-party Software Defined Networking (SDN)</code> solutions implementing the
+<b>Kubernetes networking model</b>.
+</p>
+
+<p>
+The <b>container runtime</b> offloads the <code>IP assignment</code> to <b>CNI</b>, which
+connects to the underlying <b>configured plugin</b>, such as <code>Bridge</code> or
+<code>MACvlan</code> to get the IP address.
+</p>
+
+<p>
+Once the IP address is given by the respective plugin, CNI forwards it
+back to the requested <b>container runtime</b>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-pod-to-external-world-communication" class="outline-4">
+<h4 id="pod-to-external-world-communication"><span class="section-number-4">1.2.8.</span> Pod-to-External World communication</h4>
+<div class="outline-text-4" id="text-pod-to-external-world-communication">
+<p>
+Kubernetes enables external accessibility through <b>Services</b>,
+<code>complex encapsulations of network routing rule definitions</code> <b>stored in
+iptables</b> on <b>cluster nodes</b> and implemented by <b>kube-proxy agents</b>.
+</p>
+
+<p>
+By exposing services to the external world with the aid of kube-proxy,
+applications become accessible from outside the cluster over a virtual
+IP address.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

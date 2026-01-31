@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-01-31 Sat 09:19 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Protected Access Modifier</title>
+<meta name="author" content="Michael Leibbrandt" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Protected Access Modifier</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org94365b4">1. Protected Access Modifier</a>
+<ul>
+<li><a href="#org48e17f8">1.1. Simple Example</a></li>
+<li><a href="#org1d9ba9e">1.2. Example</a></li>
+<li><a href="#org3767ca5">1.3. Negative Example</a>
+<ul>
+<li><a href="#org9cb4d0e">1.3.1. <span class="underline">Exam Trick</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org94365b4" class="outline-2">
+<h2 id="org94365b4"><span class="section-number-2">1.</span> Protected Access Modifier</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+The <code>protected</code> modifier means the method can be called only from a class in the <b>same</b> <code>package</code> or a <code>subclass</code>.
+</p>
+
+<p>
+<code>Protected access</code> allows everything that package access does, and more.
+The <code>protected access</code> modifier adds the ability to access members of a parent class.
+</p>
+
+<p>
+For now, we cover the simplest possible use of a <code>subclass</code>.
+</p>
+</div>
+
+
+<div id="outline-container-org48e17f8" class="outline-3">
+<h3 id="org48e17f8"><span class="section-number-3">1.1.</span> Simple Example</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+In the following example, the  <code>ClownFish (subClass)</code> of the <code>Fish (parentClass)</code>, using the <code>extends</code> keyword to connect them:
+</p>
+
+<p>
+By <code>extending</code> a <code>class</code>, the <code>subclass</code> gains access to all <b>protected and public</b> members of the <code>parent class</code>, as if they were declared in the <code>subclass</code>.
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-java">public class Fish {}
+public class ClownFish extends Fish {}
+</pre>
+</div>
+
+
+<p>
+If the two classes are in the same package, then the subclass also gains access to all <code>package members</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1d9ba9e" class="outline-3">
+<h3 id="org1d9ba9e"><span class="section-number-3">1.2.</span> Example</h3>
+<div class="outline-text-3" id="text-1-2">
+<div class="org-src-container">
+<pre class="src src-java">
+// Parent Class
+package pond.shore;
+
+public class Bird {
+    protected String text = "floating";
+    protected void floatInWater() {
+        System.out.print(text); // protected access is ok
+    }
+}
+
+// subclass (Different package than Bird):
+package pond.goose;
+
+import pond.shore.Bird;
+
+public class Gosling extends Bird {
+    public void swim() {
+        floatInWater(); // protected access is ok
+        System.out.print(text); // protected access is ok
+    }
+    public static void main(String[] args) {
+        new Gosling().swim();
+    }
+}
+</pre>
+</div>
+
+<p>
+(Above) <b>Extending</b> means creating a <code>subclass</code> that has access to any <code>protected</code> or <code>public members</code> of the <code>parentClass</code>.
+Running this program prints floating twice: once from calling <code>floatInWater()</code>, and once from the print statement in <code>swim()</code>.
+Since <code>Gosling</code> is a <code>subclass</code> of <code>Bird</code>, it can access these members even though it is in a different package.
+</p>
+
+<p>
+Remember that <code>protected</code> also gives us access to everything that <a href="20240112062023-package_access_modifier.html#ID-0d8e8caf-96d3-4fd2-b0ae-460b7b93d6ae">package access</a> does.
+This means a <code>class</code> in the <b>same package</b> as <code>Bird</code> can access its <b>protected</b> members.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java">package pond.shore; // Same package as Bird
+
+public class BirdWatcher {
+    public void watchBird() {
+        Bird bird = new Bird();
+        bird.floatInWater(); // protected access is ok
+        System.out.print(bird.text); // protected access is ok
+    }
+}
+</pre>
+</div>
+
+<p>
+Since <code>Bird</code> and <code>BirdWatcher</code> are in the <b>same package</b>, <code>BirdWatcher</code> can access its protected members
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3767ca5" class="outline-3">
+<h3 id="org3767ca5"><span class="section-number-3">1.3.</span> Negative Example</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+<code>BirdWatcherFromAfar</code> is <b>not in the same package</b> as <code>Bird</code>, and it <b>doesn’t</b> inherit from <code>Bird</code> therefore it <b>cannot</b> access the members from <code>Bird</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java">package pond.inland; // Different package than Bird
+
+import pond.shore.Bird;
+
+public class BirdWatcherFromAfar { // Not a subclass of Bird
+    public void watchBird() {
+        Bird bird = new Bird();
+        bird.floatInWater(); // DOES NOT COMPILE
+        System.out.print(bird.text); // DOES NOT COMPILE
+    }
+}
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org9cb4d0e" class="outline-4">
+<h4 id="org9cb4d0e"><span class="section-number-4">1.3.1.</span> <span class="underline">Exam Trick</span></h4>
+<div class="outline-text-4" id="text-1-3-1">
+<div class="org-src-container">
+<pre class="src src-java">package pond.swan; // Different package than Bird
+
+import pond.shore.Bird;
+
+public class Swan extends Bird { // Swan is a subclass of Bird
+    public void swim() {
+        floatInWater(); // LINE 5: protected access is ok
+        System.out.print(text); // LINE 6: protected access is ok
+    }
+    public void helpOtherSwanSwim() {
+        Swan other = new Swan(); // LINE 9
+
+        other.floatInWater(); // LINE 10: subclass access to superclass
+        System.out.print(other.text); // LINE 11: subclass access to superclass
+    }
+
+    public void helpOtherBirdSwim() {
+        Bird other = new Bird(); // LINE: 14
+
+        other.floatInWater(); // LINE 15: DOES NOT COMPILE
+        System.out.print(other.text); // LINE 16: DOES NOT COMPILE
+    }
+}
+</pre>
+</div>
+
+<p>
+<code>Swan</code> is not in the same package as <code>Bird</code> but does <code>extend</code> it, which implies it has <b>access</b> to the <code>protected</code> members of <code>Bird</code> since it is a <code>subclass</code>.
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="org2aa87ca"></a>Inheritance<br />
+<div class="outline-text-6" id="text-1-3-1-0-1">
+<ul class="org-ul">
+<li><code>Lines 5 and 6</code> refer to <b>protected</b> members via <i>inheriting</i> them.</li>
+</ul>
+</div>
+</li>
+
+<li><a id="orgd77fbf7"></a>Instantiation<br />
+<div class="outline-text-6" id="text-1-3-1-0-2">
+<p>
+<code>Lines 10 and 11</code> also successfully use <b>protected</b> members of <code>Bird</code>.
+</p>
+
+<p>
+This is allowed because these lines refer to a <code>Swan</code> object. <code>Swan</code> inherits from <code>Bird</code>, so this is okay.
+(It is sort of a two-phase check.)
+</p>
+
+<p>
+The <code>Swan</code> class is allowed to use <b>protected</b> members of <code>Bird</code>, and we are <b>referring</b> to a <code>Swan</code> object.
+</p>
+
+<p>
+(Granted, it is a Swan object created on <code>line 9</code> rather than an inherited one, but it is still a Swan object.)
+</p>
+</div>
+</li>
+
+<li><a id="orgfef95d9"></a>Failed Compilation<br />
+<div class="outline-text-6" id="text-1-3-1-0-3">
+<p>
+<code>Lines 15 and 16</code> do <b>not</b> compile.
+</p>
+
+<p>
+Wait a minute. They are almost exactly the same as <code>lines 10 and 11</code>!
+</p>
+
+<p>
+There’s one key difference.
+</p>
+
+<p>
+This time a <code>Bird</code> <b>reference</b> is used rather than <b>inheritance</b>.
+</p>
+
+<p>
+It is created on <code>Line 14</code>.
+</p>
+
+<p>
+<code>Bird</code> is in a <b>different</b> package, and this code isn’t <b>inheriting</b> from <code>Bird</code>, so it doesn’t get to use <b>protected members</b>.
+</p>
+
+
+<p>
+Say what, now? We just got through saying repeatedly that <code>Swan</code> inherits from <code>Bird</code>. And it does.
+</p>
+
+<p>
+However, the <b>variable reference isn’t</b> <code>Swan</code>.
+</p>
+
+<p>
+The code just happens to be in the <code>Swan</code> class.
+</p>
+</div>
+</li>
+</ol>
+
+<li><a id="org368088f"></a>Rules<br />
+<div class="outline-text-5" id="text-1-3-1-1">
+<p>
+The <b>protected</b> rules apply under two scenarios:
+</p>
+
+<ul class="org-ul">
+<li>A <code>member</code> is used without <i>referring</i> to a <b>variable</b>.
+(This is the case on <code>lines 5 and 6</code>. In this case, we are taking advantage of <b>inheritance</b>, and <b>protected access is allowed</b>.)</li>
+
+<li>A <code>member</code> is used <i>through</i> a <b>variable</b>.
+(This is the case on <code>lines 10, 11, 15, and 16</code>. In this case, the rules for the <code>reference</code> type of the variable are what matter. If it is a <code>subclass</code>, <b>protected access is allowed</b>.
+If it is the <code>parentClass</code> it does <b>not</b> allow access.)</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

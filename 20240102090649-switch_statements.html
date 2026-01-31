@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-01-31 Sat 09:19 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Switch statements</title>
+<meta name="author" content="Michael Leibbrandt" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Switch statements</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgf02ed29">1. Switch statements</a>
+<ul>
+<li><a href="#orga4b7fc3">1.1. Switch Case</a></li>
+<li><a href="#orgac9b999">1.2. Rules</a></li>
+<li><a href="#orgaa86eab">1.3. <span class="underline">Exam trick</span></a>
+<ul>
+<li><a href="#orgd96f110">1.3.1. Fall Through behaviour</a></li>
+</ul>
+</li>
+<li><a href="#org3c320f6">1.4. Acceptable Case Values</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf02ed29" class="outline-2">
+<h2 id="orgf02ed29"><span class="section-number-2">1.</span> Switch statements</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-orga4b7fc3" class="outline-3">
+<h3 id="orga4b7fc3"><span class="section-number-3">1.1.</span> <a href="Switch.md.html#ID-dff95a75-a51e-4286-bcd2-d35a04e45a2a">Switch Case</a></h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+The following is a list of all <code>data types</code> supported by <code>switch</code> statements:
+</p>
+<ul class="org-ul">
+<li><code>int</code> and <code>Integer</code></li>
+<li><code>byte</code> and <code>Byte</code></li>
+<li><code>short</code> and <code>Short</code></li>
+<li><code>char</code> and <code>Character</code></li>
+<li><code>String</code></li>
+<li><code>enum</code> values</li>
+<li><code>var</code> (if the type resolves to one of the preceding types)</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-java">public void printDayOfWeek(int day) {
+    switch(day) {
+        case 0:
+            System.out.print("Sunday");
+            break;
+        case 1:
+            System.out.print("Monday");
+            break;
+        case 2:
+            System.out.print("Tuesday");
+            break;
+        case 3:
+            System.out.print("Wednesday");
+            break;
+        case 4:
+            System.out.print("Thursday");
+            break;
+        case 5:
+            System.out.print("Friday");
+            break;
+        case 6:
+            System.out.print("Saturday");
+            break;
+        default:
+            System.out.print("Invalid value");
+            break;
+    }
+}
+</pre>
+</div>
+
+<p>
+A <code>break</code> statement <b>terminates</b> the switch statement and returns flow control to the enclosing process.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgac9b999" class="outline-3">
+<h3 id="orgac9b999"><span class="section-number-3">1.2.</span> Rules</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li>The <code>value1</code>, <code>...</code>, and <code>valueN</code> must have the <b>same**</b> data type as the value of the <code>switch-expression</code>. Note that <code>value1</code>, <code>...</code>, and <code>valueN</code> are <b>constant</b> <b>expressions</b>, they cannot contain variables like <code>1 + x</code>.</li>
+<li>When the value in a <b>case</b> statement matches the value of the <code>switch-expression</code>, the statements starting from this case are executed until either a <b>break</b> <b>statement</b> or the <b>end</b> of the <b>switch</b> statement is reached.</li>
+<li>The <b>default</b> <b>case</b> (optional) can be used to perform actions when <b>none</b> of the specified cases matches the <code>switch-expression</code>.</li>
+<li>The keyword <b>break</b> is <b>optional</b>. The <b>break</b> <b>statement</b> immediately <b>ends</b> the <b>switch</b> <b>statement</b>.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgaa86eab" class="outline-3">
+<h3 id="orgaa86eab"><span class="section-number-3">1.3.</span> <span class="underline">Exam trick</span></h3>
+<div class="outline-text-3" id="text-1-3">
+</div>
+<div id="outline-container-orgd96f110" class="outline-4">
+<h4 id="orgd96f110"><span class="section-number-4">1.3.1.</span> <a href="20260126073453-fall_through_behaviour.html#ID-da520312-7c4b-4921-a7e2-ac5d4ea280c8">Fall Through behaviour</a></h4>
+<div class="outline-text-4" id="text-1-3-1">
+<p>
+Notice that <code>boolean</code>, <code>long</code>, <code>float</code>, and <code>double</code> are excluded from switch statements, as are their associated Wrapper Classes.
+</p>
+
+<p>
+The reasons are varied, such as <code>boolean</code> having <b>too small a range</b> of values and <b>floating­point</b> numbers having quite a <b>wide range of values</b>.
+</p>
+
+<p>
+For the exam, though, you just need to know that they are <b>not</b> permitted in switch statements.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3c320f6" class="outline-3">
+<h3 id="org3c320f6"><span class="section-number-3">1.4.</span> Acceptable Case Values</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+Not just any variable or value can be used in a <code>case</code> statement.
+</p>
+
+<p>
+You can use <b>only</b> <code>literals</code>, <code>enum</code> <code>constants</code>, or <code>final constant variables</code> of the <b>same</b> data type.
+</p>
+
+<p>
+For example, you <b>can’t</b> have a <code>case</code> statement value that requires executing a method at runtime, even if that method always returns the same value.
+</p>
+
+<p>
+For these reasons, only the <b>first</b> and <b>last</b> <code>case</code> statements in the following example compile:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java">final int getCookies() { return 4; }
+
+void feedAnimals() {
+    final int bananas = 1;
+    int apples = 2;
+    int numberOfAnimals = 3;
+    final int cookies = getCookies();
+
+    switch(numberOfAnimals) {
+    case bananas:
+    case apples: // DOES NOT COMPILE
+    case getCookies(): // DOES NOT COMPILE
+    case cookies: // DOES NOT COMPILE
+    case 3 * 5 :
+    }
+}
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>The <code>bananas</code> variable is marked <code>final</code>, and its <b>value is known at compile­time</b>, so it is valid.</li>
+
+<li>The <code>apples</code> variable is <b>not</b> marked <code>final</code>, even though its value <b>is known</b>, so it is not permitted.</li>
+
+<li>The next two case statements, with values <code>getCookies()</code> and <code>cookies</code>, do <b>not</b> compile because methods are not evaluated <b>until runtime</b>, so they cannot be used as the
+value of a case statement, <b>even if</b> one of the values is stored in a <code>final</code> variable.</li>
+
+<li>Next, the <code>data type</code> for case statements must match the <code>data type</code> of the <code>switch</code> variable.</li>
+</ul>
+<p>
+For example, you can’t have a case statement of type <code>String</code> if the switch statement variable is of type <code>int</code>, since the types are incomparable.
+</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

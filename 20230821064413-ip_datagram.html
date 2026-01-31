@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-01-31 Sat 09:19 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>IP Datagram</title>
+<meta name="author" content="Michael Leibbrandt" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">IP Datagram</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org8447702">1. Header</a>
+<ul>
+<li><a href="#orgf08ad04">1.1. 1. Version</a></li>
+<li><a href="#orgf053c18">1.2. 2. Header Length</a></li>
+<li><a href="#orga87cd9b">1.3. 3. Service Type</a></li>
+<li><a href="#org6553f6e">1.4. 4. Total Length</a></li>
+<li><a href="#org6c1b65d">1.5. 5. Identification Field</a></li>
+<li><a href="#org970ee17">1.6. 6. Flag Field</a></li>
+<li><a href="#orge7269f0">1.7. 7. Time To Live (TTL) Field</a></li>
+<li><a href="#org38e0631">1.8. 8. Protocol Field</a></li>
+<li><a href="#org4506843">1.9. 9. Header Checksum Field</a></li>
+<li><a href="#org6700005">1.10. 10. Source IP Address</a></li>
+<li><a href="#orgf01aadd">1.11. 11. Destination IP Address</a></li>
+<li><a href="#org16df6ce">1.12. 12. IP Options</a></li>
+<li><a href="#orgcc05ba4">1.13. 12. Padding</a></li>
+</ul>
+</li>
+<li><a href="#org4fef172">2. Payload</a></li>
+</ul>
+</div>
+</div>
+<p>
+IP datagram is a highly structured series of fields that are strictly defined.
+</p>
+
+
+<div id="org5173227" class="figure">
+<p><img src="./assets/IPDatagram.png" alt="IPDatagram.png" />
+</p>
+</div>
+
+<p>
+The two primary sections of an IP datagram are the header and the payload:
+</p>
+
+<p>
+The maximum size of a single datagram is the largest number you can represent with *16 bits: <code>65,535</code>.
+</p>
+
+<div id="outline-container-org8447702" class="outline-2">
+<h2 id="org8447702"><span class="section-number-2">1.</span> Header</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-orgf08ad04" class="outline-3">
+<h3 id="orgf08ad04"><span class="section-number-3">1.1.</span> 1. Version</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+<b>4 bits</b>
+Indicates what version of <a href="20230819075045-internet_protocol_ip.html#ID-9bf3b633-f396-4e1b-9b55-6c6b06d60bec">IP</a> is being used.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf053c18" class="outline-3">
+<h3 id="orgf053c18"><span class="section-number-3">1.2.</span> 2. Header Length</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+<b>4 bits</b>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga87cd9b" class="outline-3">
+<h3 id="orga87cd9b"><span class="section-number-3">1.3.</span> 3. Service Type</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+<b>8 bits</b>
+Can be used to specify details about quality of service or QoS.
+</p>
+
+<p>
+The important takeaway about QoS is that there are services that allow routers to make decisions about which IP datagram maybe more important than others.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6553f6e" class="outline-3">
+<h3 id="org6553f6e"><span class="section-number-3">1.4.</span> 4. Total Length</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+<b>16 bits</b>
+Indicates total length of IP Datagram
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6c1b65d" class="outline-3">
+<h3 id="org6c1b65d"><span class="section-number-3">1.5.</span> 5. Identification Field</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+<b>16 bits</b>
+Used to group messages together
+</p>
+</div>
+</div>
+
+<div id="outline-container-org970ee17" class="outline-3">
+<h3 id="org970ee17"><span class="section-number-3">1.6.</span> 6. Flag Field</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+Used to indicate if a datagram is allowed to be <a href="20230821065322-fragmented.html#ID-d7051400-f5c9-4cd7-888c-479c6fcd0a04">fragmented</a> or to indicate that the datagram has already been fragmented.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge7269f0" class="outline-3">
+<h3 id="orge7269f0"><span class="section-number-3">1.7.</span> 7. Time To Live (TTL) Field</h3>
+<div class="outline-text-3" id="text-1-7">
+<p>
+This field is an <b>8 bit</b> field that indicates how many router hops a datagram can traverse before it's thrown away.
+<a href="20230821065714-time_to_live_ttl.html#ID-4bf28699-146b-4eba-8d34-b3f58a20b68d">Time To Live (TTL)</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org38e0631" class="outline-3">
+<h3 id="org38e0631"><span class="section-number-3">1.8.</span> 8. Protocol Field</h3>
+<div class="outline-text-3" id="text-1-8">
+<p>
+<b>8 bit</b>
+Contains data about what transport layer protocol is being used.
+</p>
+
+<p>
+The most common transport layer protocols are <a href="20230819080017-transmission_control_protocol_tcp.html#ID-690db04e-097b-4e6c-8e78-92e353fc49da">TCP</a> and <a href="20230821065830-user_datagram_protocol_udp.html#ID-e71c58f9-1229-4c46-abe6-a963ff4652f7">UDP</a>.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org4506843" class="outline-3">
+<h3 id="org4506843"><span class="section-number-3">1.9.</span> 9. Header Checksum Field</h3>
+<div class="outline-text-3" id="text-1-9">
+<p>
+This field is a checksum of the <b>contents</b> of the entire IP datagram header.
+</p>
+
+<p>
+It functions very much like the <code>ethernet checksum</code>.
+</p>
+
+<p>
+Since the <a href="20230821065714-time_to_live_ttl.html#ID-4bf28699-146b-4eba-8d34-b3f58a20b68d">TTL</a> field has to be re-computed at every router that a datagram touches, the checksum field necessarily changes too.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6700005" class="outline-3">
+<h3 id="org6700005"><span class="section-number-3">1.10.</span> 10. Source IP Address</h3>
+<div class="outline-text-3" id="text-1-10">
+<p>
+<b>32 bit</b>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf01aadd" class="outline-3">
+<h3 id="orgf01aadd"><span class="section-number-3">1.11.</span> 11. Destination IP Address</h3>
+<div class="outline-text-3" id="text-1-11">
+<p>
+<b>32 bit</b>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org16df6ce" class="outline-3">
+<h3 id="org16df6ce"><span class="section-number-3">1.12.</span> 12. IP Options</h3>
+<div class="outline-text-3" id="text-1-12">
+<p>
+Optional Field.
+</p>
+
+<p>
+Used to set special characteristics for datagrams primarily used for testing purposes.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgcc05ba4" class="outline-3">
+<h3 id="orgcc05ba4"><span class="section-number-3">1.13.</span> 12. Padding</h3>
+<div class="outline-text-3" id="text-1-13">
+<p>
+Series of <code>0</code>'s to the ensure header is correct <b>total</b> size.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4fef172" class="outline-2">
+<h2 id="org4fef172"><span class="section-number-2">2.</span> Payload</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Contains the <a href="20230822073125-tcp_segment.html#ID-7b8d5356-7e98-4785-a78f-1cf30c9c2152">TCP Segment</a> within the payload.
+</p>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-01-31 Sat 09:19 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Periods</title>
+<meta name="author" content="Michael Leibbrandt" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Periods</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgdaa221d">1. Periods</a>
+<ul>
+<li><a href="#org2a3f818">1.1. Using Periods</a>
+<ul>
+<li><a href="#orgeb51ca5">1.1.1. <span class="underline">Exam Trick</span></a></li>
+<li><a href="#org299184e">1.1.2. Format</a></li>
+<li><a href="#orgceaa7d2">1.1.3. Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgdaa221d" class="outline-2">
+<h2 id="orgdaa221d"><span class="section-number-2">1.</span> Periods</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+A ZooKeeper has decided to switch out the animal's toys every three months
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java">public static void main(String[] args) {
+    var start = LocalDate.of(2022, Month.JANUARY, 1);
+    var end = LocalDate.of(2022, Month.MARCH, 30);
+    performAnimalEnrichment(start, end);
+}
+private static void performAnimalEnrichment(LocalDate start, LocalDate end) {
+    var upTo = start;
+    while (upTo.isBefore(end)) { // check if still before end
+        System.out.println("give new toy: " + upTo);
+        upTo = upTo.plusMonths(1); // add a month
+    }
+}
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org2a3f818" class="outline-3">
+<h3 id="org2a3f818"><span class="section-number-3">1.1.</span> Using Periods</h3>
+<div class="outline-text-3" id="text-1-1">
+<div class="org-src-container">
+<pre class="src src-java">public static void main(String[] args) {
+    var start = LocalDate.of(2022, Month.JANUARY, 1);
+    var end = LocalDate.of(2022, Month.MARCH, 30);
+    var monthly = Period.ofMonths(1); // create a period
+    performAnimalEnrichment(start, end, monthly);
+}
+
+private static void performAnimalEnrichment(LocalDate start, LocalDate end, Period period) { // uses the generic period
+    var upTo = start;
+    while (upTo.isBefore(end)) {
+        System.out.println("give new toy: " + upTo);
+        upTo = upTo.plus(period); // adds the period
+    }
+}
+</pre>
+</div>
+
+<p>
+The <code>method</code> can add an arbitrary period of <code>time</code> that is passed in.
+</p>
+
+<p>
+This allows us to <b>reuse</b> the same method for <b>different periods</b> of time as our zookeeper changes their mind.
+</p>
+
+<p>
+There are <code>five</code> ways to create a <code>Period</code> class:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java">var annually = Period.ofYears(1);  // every 1 year
+var quarterly = Period.ofMonths(3); // every 3 months
+var everyThreeWeeks = Period.ofWeeks(3); // every 3 weeks
+var everyOtherDay = Period.ofDays(2); // every 2 days
+var everyYearAndAWeek = Period.of(1, 0, 7); // every year and 7 days
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgeb51ca5" class="outline-4">
+<h4 id="orgeb51ca5"><span class="section-number-4">1.1.1.</span> <span class="underline">Exam Trick</span></h4>
+<div class="outline-text-4" id="text-1-1-1">
+<p>
+There’s one catch.
+You <b>cannot</b> chain methods when creating a Period.
+Only the <b>last method</b> is used because the <code>Period.of</code> methods are <code>static</code> methods:
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="org09cf04d"></a>Example<br />
+<div class="outline-text-5" id="text-1-1-1-1">
+<div class="org-src-container">
+<pre class="src src-java">var wrong = Period.ofYears(1).ofWeeks(1); // every week (Instead of everyYearAndWeek)
+</pre>
+</div>
+
+<p>
+This tricky code is really like writing the following:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java">var wrong = Period.ofYears(1);
+wrong = Period.ofWeeks(1);
+</pre>
+</div>
+
+<p>
+That’s why the <code>of()</code> method allows you to pass in the number of <code>years</code>, <code>months</code>, and <code>days</code>.
+They are all included in the <b>same period</b>. (You will get a compiler warning about this.)
+</p>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-org299184e" class="outline-4">
+<h4 id="org299184e"><span class="section-number-4">1.1.2.</span> Format</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<div class="org-src-container">
+<pre class="src src-java">System.out.println(Period.of(1,2,3)); // P1Y2M3D
+System.out.println(Period.ofMonths(3)); // P3M
+</pre>
+</div>
+
+<p>
+As you can see, the <code>P</code> always starts out the <code>String</code> to show it is a <b>period measure</b>.
+Then come the <b>number</b> of <code>years</code>, <b>number</b> of <code>months</code>, and <b>number</b> of <code>days</code>.
+</p>
+
+<p>
+If any of these are zero, they are omitted.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgceaa7d2" class="outline-4">
+<h4 id="orgceaa7d2"><span class="section-number-4">1.1.3.</span> Example</h4>
+<div class="outline-text-4" id="text-1-1-3">
+<div class="org-src-container">
+<pre class="src src-java">var date = LocalDate.of(2022, 1, 20);
+var dateTime = LocalDateTime.of(date, time);
+var period = Period.ofMonths(1);
+
+System.out.println(date.plus(period)); // 2022–02–20
+System.out.println(dateTime.plus(period)); // 2022–02–20T06:15
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-java">var time = LocalTime.of(6, 15);
+var period = Period.ofMonths(1);
+
+System.out.println(time.plus(period)); // Exception
+</pre>
+</div>
+
+<p>
+This won’t work. Java throws an <code>UnsupportedTemporalTypeException</code> and complains that we attempted to use an Unsupported unit: <code>Months</code>.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
