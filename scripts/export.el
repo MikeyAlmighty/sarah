@@ -1,10 +1,10 @@
-;;; ~/Dev/sarah/scripts/export.el --- Robust Org-roam HTML batch export
+;;; export.el --- Org-roam HTML export to /docs with index
 
-;; TO USE:
-;; /opt/homebrew/bin/emacs -Q --batch -l ~/Dev/sarah/scripts/export.el
+;; Run with:
+;; /opt/homebrew/bin/emacs -Q --batch -l export.el
 
 ;; --------------------------
-;; 1. Bootstrap package system
+;; 1. Package bootstrap
 ;; --------------------------
 (require 'package)
 (setq package-archives
@@ -13,44 +13,41 @@
         ("gnu"   . "https://elpa.gnu.org/packages/")))
 (package-initialize)
 
-(unless (package-installed-p 'org-roam)
-  (package-refresh-contents)
-  (package-install 'org-roam))
-
-(unless (package-installed-p 'htmlize)
-  (package-refresh-contents)
-  (package-install 'htmlize))
+(dolist (pkg '(org-roam htmlize))
+  (unless (package-installed-p pkg)
+    (package-refresh-contents)
+    (package-install pkg)))
 
 ;; --------------------------
-;; 2. Load required packages
+;; 2. Load packages
 ;; --------------------------
 (require 'org)
+(require 'org-id)
 (require 'org-roam)
 (require 'ox-html)
 
 ;; --------------------------
-;; 3. Set org-roam directory
+;; 3. Paths
 ;; --------------------------
 (setq org-roam-directory (file-truename "~/Dev/sarah"))
-(setq org-roam-work-directory nil)
+(setq org-export-dir (expand-file-name "docs" org-roam-directory))
+
+(unless (file-directory-p org-export-dir)
+  (make-directory org-export-dir t))
+
+(setq org-html-validation-link nil
+      org-html-postamble nil
+      org-html-head ""
+      org-html-htmlize-output-type nil
+      inhibit-message t)
+
 (org-roam-db-sync)
 
 ;; --------------------------
-;; 5. Patch HTML variables and suppress warnings
-;; --------------------------
-(setq org-html-head "")
-(setq org-html-validation-link nil)
-(setq org-html-postamble nil)
-(setq org-html-htmlize-output-type nil) ;; disable code block syntax highlighting
-(setq inhibit-message t)                ;; suppress batch messages
-
-;; --------------------------
-;; 6. Safe HTML export function
-;; --------------------------
-;; --------------------------
-;; Build ID → HTML map
+;; 4. ID → HTML map
 ;; --------------------------
 (defvar id-html-map (make-hash-table :test 'equal))
+
 (dolist (file (org-roam-list-files))
   (with-current-buffer (find-file-noselect file)
     (let ((id (org-id-get-create)))
@@ -59,88 +56,52 @@
                id-html-map))))
 
 ;; --------------------------
-;; Advice org-link-expand for id: links
+;; 5. Fix id: links in HTML
 ;; --------------------------
-(defun org-roam-html-link-advice (orig-fun link)
-  "Convert org-roam id: links to relative HTML links."
+(defun my-org-roam-html-link-advice (orig-fun link)
   (if (string-match "^id:\\([a-f0-9-]+\\)$" link)
-      (let ((target (gethash (match-string 1 link) id-html-map)))
-        (if target
-            target
-          "#")) ;; fallback if ID not found
+      (or (gethash (match-string 1 link) id-html-map) "#")
     (funcall orig-fun link)))
 
-(advice-add 'org-link-expand :around #'org-roam-html-link-advice)
+(advice-add 'org-link-expand :around #'my-org-roam-html-link-advice)
 
-(defun my-org-roam-backlinks ()
-  "Return a list of (TITLE . HTML-FILE) backlinks for the current buffer."
-  (when-let* ((id (org-id-get)))
-    (mapcar
-     (lambda (row)
-       (let* ((source-id (car row))
-              (source-file (cadr row))
-              (title (or (caddr row)
-                         (file-name-base source-file)))
-              (html (gethash source-id id-html-map)))
-         (when html
-           (cons title html))))
-     (org-roam-db-query
-      [:select
-       [links:source nodes:file nodes:title]
-       :from links
-       :left-join nodes
-       :on (= links:source nodes:id)
-       :where (= links:dest $s1)]
-      id))))
-
-(defun my-org-html-backlinks-section (_backend)
-  "Append a backlinks section to the current export."
-  (when-let ((backlinks (my-org-roam-backlinks)))
-    (insert "\n* Backlinks\n")
-    (dolist (link backlinks)
-      (when link
-        (insert (format "- [[file:%s][%s]]\n"
-                        (cdr link)
-                        (car link)))))))
-(add-hook 'org-export-before-processing-functions
-          #'my-org-html-backlinks-section)
 ;; --------------------------
-;; Safe HTML export with links
+;; 6. Export one file → /docs
 ;; --------------------------
 (defun my-org-html-export (file)
-  "Export a single org file to HTML in the same directory."
   (condition-case err
       (with-current-buffer (find-file-noselect file)
-        (org-html-export-to-html))
-    (error (message "Skipping %s due to error: %s" file err))))
+        (let ((org-export-output-directory-alist
+               `(("html" . ,org-export-dir))))
+          (org-html-export-to-html)))
+    (error
+     (message "Skipping %s: %s" file err))))
 
-;; --------------------------
-;; 7. Publish all org-roam files
-;; --------------------------
 (dolist (file (org-roam-list-files))
   (my-org-html-export file))
 
 ;; --------------------------
-;; 8. Generate index.html
+;; 7. Generate docs/index.html
 ;; --------------------------
 (let ((index-file (expand-file-name "index.html" org-export-dir)))
   (with-temp-file index-file
-    (insert "<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"UTF-8\">\n")
-    (insert "<title>My Org-roam Notes</title>\n</head>\n<body>\n")
+    (insert "<!DOCTYPE html>\n<html>\n<head>\n")
+    (insert "<meta charset=\"UTF-8\">\n")
+    (insert "<title>Org-roam Notes</title>\n")
+    (insert "</head>\n<body>\n")
     (insert "<h1>Org-roam Notes</h1>\n<ul>\n")
+
     (dolist (file (org-roam-list-files))
-      (with-current-buffer (find-file-noselect file)
-        (goto-char (point-min))  ;; reset point to start
-        (let* ((title (or (when (re-search-forward "^#\\+title: *\\(.*\\)$" nil t)
-                            (match-string 1))
-                          (file-name-base file)))
-               (html-file (concat (file-name-base file) ".html")))
-          (insert (format "<li><a href=\"%s\">%s</a></li>\n"
-                          html-file title)))))
+      (let* ((title
+              (with-current-buffer (find-file-noselect file)
+                (goto-char (point-min))
+                (or (when (re-search-forward "^#\\+title: *\\(.*\\)$" nil t)
+                      (match-string 1))
+                    (file-name-base file))))
+             (html (concat (file-name-base file) ".html")))
+        (insert (format "<li><a href=\"%s\">%s</a></li>\n"
+                        html title))))
+
     (insert "</ul>\n</body>\n</html>\n")))
 
-(message "Index generated at %s/index.html" org-export-dir)
-
-
-(message "Index generated at %s/index.html" org-export-dir)
-(message "Org-roam export finished! HTML files in %s" org-export-dir)
+(message "Org-roam export finished → %s" org-export-dir)
