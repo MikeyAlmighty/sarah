@@ -1,0 +1,74 @@
+:PROPERTIES:
+:ID:       29e84bbe-e632-45ff-89d4-32c0c43478d6
+:END:
+#+title: Sentinel-Controlled While Loop
+
+* Sentinel-Controlled While Loop
+
+A *sentinel-controlled while loop* repeatedly reads input and processes it until a special value (~sentinel~) is encountered.
+
+It signals *termination*.
+
+** *Key idea*
+- The =loop= continues *while* the input is not equal to the ~sentinel~.
+- When the ~sentinel~ is read, the loop *stops*.
+
+** *When to use*
+- You don’t know in advance how many data items will be processed.
+- You read input until a special termination value (*sentinel*) is reached.
+
+*** *Typical structure*
+
+#+BEGIN_SRC java
+Scanner in = new Scanner(System.in);
+int value = in.nextInt();        // read initial input
+while (value != SENTINEL) {      // check sentinel
+    // process value
+    value = in.nextInt();        // read next
+}
+#+END_SRC
+
+**** *Example: Sum positive integers until '–1' is entered*
+
+In this example, the sentinel value is =–1=.
+
+Valid input values are *non*-*negative* ~integers~.
+
+#+BEGIN_SRC java
+import java.util.Scanner;
+
+public class SentinelExample {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int sum = 0;
+        System.out.print("Enter a positive integer (or -1 to quit): ");
+        int number = scanner.nextInt(); // read first value
+
+        // loop until sentinel (-1) is entered
+        while (number != -1) {
+            sum += number;  // add to sum
+
+            System.out.print("Enter a positive integer (or -1 to quit): ");
+            number = scanner.nextInt(); // read next value
+        }
+
+        System.out.println("Total sum: " + sum);
+        scanner.close();
+    }
+}
+#+END_SRC
+
+*How it works*
+- The first value is *read* before the loop.
+- The =loop= condition checks if it’s not the *sentinel*.
+- Inside the loop we process the value (add to sum).
+- Then we read the next value to update the loop condition.
+
+*Benefits*
+- Simple pattern for unknown number of inputs.
+- Easy to understand and maintain.
+
+*Caveats*
+- Must read initial value before the loop.
+- Must update value within the loop, otherwise infinite loop.

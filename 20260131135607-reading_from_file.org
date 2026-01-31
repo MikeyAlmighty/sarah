@@ -1,0 +1,71 @@
+:PROPERTIES:
+:ID:       ba4935c1-905d-4132-aa61-62a8c1b54065
+:END:
+#+title: Reading From File
+
+* Reading From File
+
+** *Example: Reading all lines from a text file*
+
+Assume the file `data.txt` contains:
+#+BEGIN_SRC shell
+1
+2
+3
+4
+5
+#+END_SRC
+
+#+BEGIN_SRC java
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class ReadFileExample {
+    public static void main(String[] args) {
+        try {
+            File file = new File("data.txt");
+            Scanner scanner = new Scanner(file);
+
+            // read file line by line
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                System.out.println(line);
+            }
+
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found.");
+        }
+    }
+}
+#+END_SRC
+
+** *Example: Reading integers from a file and summing them*
+
+#+BEGIN_SRC java
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class SumFromFile {
+    public static void main(String[] args) {
+        try {
+            Scanner scanner = new Scanner(new File("numbers.txt"));
+            int sum = 0;
+
+            // read integers until end of file
+            while (scanner.hasNextInt()) {
+                int number = scanner.nextInt();
+                sum += number;
+            }
+
+            System.out.println("Sum: " + sum);
+            scanner.close();
+
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found.");
+        }
+    }
+}
+#+END_SRC
