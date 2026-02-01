@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Continue Statement</title>
@@ -201,12 +201,12 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgac2d7b5">1. Continue Statement</a>
+<li><a href="#orgd82cb7f">1. Continue Statement</a>
 <ul>
-<li><a href="#org05e61c5">1.1. Continue vs Break</a>
+<li><a href="#orgfb46993">1.1. Continue vs Break</a>
 <ul>
-<li><a href="#orgfa4e020">1.1.1. Continue</a></li>
-<li><a href="#orgca36958">1.1.2. Break</a></li>
+<li><a href="#org21cd939">1.1.1. Continue</a></li>
+<li><a href="#org4ddf7ed">1.1.2. Break</a></li>
 </ul>
 </li>
 </ul>
@@ -215,19 +215,19 @@
 </div>
 </div>
 
-<div id="outline-container-orgac2d7b5" class="outline-2">
-<h2 id="orgac2d7b5"><span class="section-number-2">1.</span> Continue Statement</h2>
+<div id="outline-container-orgd82cb7f" class="outline-2">
+<h2 id="orgd82cb7f"><span class="section-number-2">1.</span> Continue Statement</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Statement that causes flow to <b>finish the execution</b> of the current loop iteration.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">optionalLabel: while(booleanExpression) {
-    // Body
-    // Somewhere in the loop
-    continue optionalLabel; // semicolon required
-}
+<pre class="src src-java"><span class="org-constant">optionalLabel</span>: <span class="org-keyword">while</span>(booleanExpression) {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Body
+</span>    <span class="org-comment-delimiter">// </span><span class="org-comment">Somewhere in the loop
+</span>    <span class="org-keyword">continue</span> <span class="org-constant">optionalLabel</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">semicolon required
+</span>}
 </pre>
 </div>
 
@@ -249,27 +249,26 @@ In fact, the statements are <b>identical</b> in how they are used, but with <b>d
 </p>
 
 <p>
-Also, like the <a href="20240103081856-break_statement.html#ID-012deee9-64a6-4aa4-b6e7-8a651d3c96c9">Break statement</a>, the <code>continue</code> statement is applied to the nearest inner loop under execution, using optional label statements to override this behavior.
+Also, like the <a href="20240103081856-break_statement.html#ID-012deee9-64a6-4aa4-b6e7-8a651d3c96c9">Break statement</a>, the <code>continue</code> statement is applied to the nearest <b>inner</b> <b>loop</b> under execution, using optional label statements to override this behavior.
 </p>
 </div>
 
-
-<div id="outline-container-org05e61c5" class="outline-3">
-<h3 id="org05e61c5"><span class="section-number-3">1.1.</span> Continue vs Break</h3>
+<div id="outline-container-orgfb46993" class="outline-3">
+<h3 id="orgfb46993"><span class="section-number-3">1.1.</span> Continue vs Break</h3>
 <div class="outline-text-3" id="text-1-1">
 </div>
-<div id="outline-container-orgfa4e020" class="outline-4">
-<h4 id="orgfa4e020"><span class="section-number-4">1.1.1.</span> Continue</h4>
+<div id="outline-container-org21cd939" class="outline-4">
+<h4 id="org21cd939"><span class="section-number-4">1.1.1.</span> Continue</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <div class="org-src-container">
-<pre class="src src-java">for (int i = 1; i &lt; 11; i++){
-    if (i == 5) {
-        continue; // Just continue
-    }
-    System.out.println("The value is: " + i);
+<pre class="src src-java"><span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 1; i &lt; 11; i++){
+    <span class="org-keyword">if</span> (i == 5) {
+        <span class="org-keyword">continue</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">Just continue
+</span>    }
+    System.out.println(<span class="org-string">"The value is: "</span> + i);
 }
 
-/*
+<span class="org-comment-delimiter">/*</span><span class="org-comment">
     The value is: 1
     The value is: 2
     The value is: 3
@@ -279,29 +278,29 @@ Also, like the <a href="20240103081856-break_statement.html#ID-012deee9-64a6-4aa
     The value is: 8
     The value is: 9
     The value is: 10
-*/
+</span><span class="org-comment-delimiter">*/</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgca36958" class="outline-4">
-<h4 id="orgca36958"><span class="section-number-4">1.1.2.</span> Break</h4>
+<div id="outline-container-org4ddf7ed" class="outline-4">
+<h4 id="org4ddf7ed"><span class="section-number-4">1.1.2.</span> Break</h4>
 <div class="outline-text-4" id="text-1-1-2">
 <div class="org-src-container">
-<pre class="src src-java">for (int i = 1; i &lt; 11; i++){
-    if (i == 5) {
-        break; // Break out
-    }
-    System.out.println("The value is: " + i);
+<pre class="src src-java"><span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 1; i &lt; 11; i++){
+    <span class="org-keyword">if</span> (i == 5) {
+        <span class="org-keyword">break</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">Break out
+</span>    }
+    System.out.println(<span class="org-string">"The value is: "</span> + i);
 }
 
-/*
+<span class="org-comment-delimiter">/*</span><span class="org-comment">
     The value is: 1
     The value is: 2
     The value is: 3
     The value is: 4
-*/
+</span><span class="org-comment-delimiter">*/</span>
 </pre>
 </div>
 </div>

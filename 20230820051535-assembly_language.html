@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Assembly Language</title>
@@ -243,22 +243,22 @@ Assembly language is a <a href="20260117100136-low_level_language.html#ID-b64460
 </p>
 
 <div class="org-src-container">
-<pre class="src src-asm">section	.text
-   global _start     ;must be declared for linker (ld)
-
-_start:	            ;tells linker entry point
-   mov	edx,len     ;message length
-   mov	ecx,msg     ;message to write
-   mov	ebx,1       ;file descriptor (stdout)
-   mov	eax,4       ;system call number (sys_write)
-   int	0x80        ;call kernel
-
-   mov	eax,1       ;system call number (sys_exit)
-   int	0x80        ;call kernel
-
-section	.data
-msg db 'Hello, world!', 0xa  ;string to be printed
-len equ $ - msg     ;length of the string
+<pre class="src src-asm"><span class="org-function-name">section</span> .text
+   <span class="org-keyword">global</span> _start     <span class="org-comment-delimiter">;</span><span class="org-comment">must be declared for linker (ld)
+</span>
+<span class="org-function-name">_start</span>:             <span class="org-comment-delimiter">;</span><span class="org-comment">tells linker entry point
+</span>   <span class="org-keyword">mov</span>  edx,len     <span class="org-comment-delimiter">;</span><span class="org-comment">message length
+</span>   <span class="org-keyword">mov</span>  ecx,msg     <span class="org-comment-delimiter">;</span><span class="org-comment">message to write
+</span>   <span class="org-keyword">mov</span>  ebx,1       <span class="org-comment-delimiter">;</span><span class="org-comment">file descriptor (stdout)
+</span>   <span class="org-keyword">mov</span>  eax,4       <span class="org-comment-delimiter">;</span><span class="org-comment">system call number (sys_write)
+</span>   <span class="org-keyword">int</span>  0x80        <span class="org-comment-delimiter">;</span><span class="org-comment">call kernel
+</span>
+   <span class="org-keyword">mov</span>  eax,1       <span class="org-comment-delimiter">;</span><span class="org-comment">system call number (sys_exit)
+</span>   <span class="org-keyword">int</span>  0x80        <span class="org-comment-delimiter">;</span><span class="org-comment">call kernel
+</span>
+<span class="org-function-name">section</span> .data
+<span class="org-function-name">msg</span> <span class="org-keyword">db</span> 'Hello, world!', 0xa  <span class="org-comment-delimiter">;</span><span class="org-comment">string to be printed
+</span><span class="org-function-name">len</span> <span class="org-keyword">equ</span> $ - msg     <span class="org-comment-delimiter">;</span><span class="org-comment">length of the string</span>
 </pre>
 </div>
 </div>

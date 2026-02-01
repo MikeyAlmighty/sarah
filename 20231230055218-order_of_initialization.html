@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Order of Initialization</title>
@@ -203,33 +203,33 @@
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-java">package main;
+<pre class="src src-java"><span class="org-keyword">package</span> <span class="org-constant">main</span>;
 
-public class Main {
-    public static void main(String[] args){
-        System.out.println("Hello, World!");
-        Person p = new Person("Shrek");
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Main</span> {
+    <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>){
+        System.out.println(<span class="org-string">"Hello, World!"</span>);
+        <span class="org-type">Person</span> <span class="org-variable-name">p</span> = <span class="org-keyword">new</span> <span class="org-type">Person</span>(<span class="org-string">"Shrek"</span>);
     }
 }
 
-class Person {
+<span class="org-keyword">class</span> <span class="org-type">Person</span> {
 
-    String name = "Deadpool";
-    { // Instance Initializer block
-        System.out.println("My name is : " + name);
+    <span class="org-type">String</span> <span class="org-variable-name">name</span> = <span class="org-string">"Deadpool"</span>;
+    { <span class="org-comment-delimiter">// </span><span class="org-comment">Instance Initializer block
+</span>        System.out.println(<span class="org-string">"My name is : "</span> + name);
     }
-    public Person(String name){
-        this.name = name;
-        System.out.println("Creating new Person: " + this.name);
+    <span class="org-keyword">public</span> Person(String name){
+        <span class="org-keyword">this</span>.name = name;
+        System.out.println(<span class="org-string">"Creating new Person: "</span> + <span class="org-keyword">this</span>.name);
     }
 }
 
-/* OUTPUT
+<span class="org-comment-delimiter">/* </span><span class="org-comment">OUTPUT
 
 Hello, World!
 My name is : Deadpool
 Creating new Person Shrek
- */
+</span><span class="org-comment-delimiter"> */</span>
 </pre>
 </div>
 </div>

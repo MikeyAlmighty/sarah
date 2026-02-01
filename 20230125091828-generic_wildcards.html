@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Generic Wildcards</title>
@@ -201,8 +201,8 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9cb3f20">1. <code>extends</code></a></li>
-<li><a href="#org99be08b">2. <code>Super</code></a></li>
+<li><a href="#org68d5d85">1. <code>extends</code></a></li>
+<li><a href="#org453a9fd">2. <code>Super</code></a></li>
 </ul>
 </div>
 </div>
@@ -214,18 +214,18 @@
 Note: <code>Accountant extends Employee</code>
 </p>
 
-<div id="outline-container-org9cb3f20" class="outline-2">
-<h2 id="org9cb3f20"><span class="section-number-2">1.</span> <code>extends</code></h2>
+<div id="outline-container-org68d5d85" class="outline-2">
+<h2 id="org68d5d85"><span class="section-number-2">1.</span> <code>extends</code></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Upper Bound
 </p>
 <div class="org-src-container">
-<pre class="src src-java">public static void main(String[] args) {
-    ArrayList&lt;Employee&gt; employees = new ArrayList&lt;&gt;();
-    ArrayList&lt;Accountant&gt; accountants = new ArrayList&lt;&gt;();
-    employees = accountants; // Compilation Error (Type Mismatch)
-}
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
+    <span class="org-type">ArrayList</span>&lt;<span class="org-type">Employee</span>&gt; <span class="org-variable-name">employees</span> = <span class="org-keyword">new</span> <span class="org-type">ArrayList</span>&lt;&gt;();
+    <span class="org-type">ArrayList</span>&lt;<span class="org-type">Accountant</span>&gt; <span class="org-variable-name">accountants</span> = <span class="org-keyword">new</span> <span class="org-type">ArrayList</span>&lt;&gt;();
+    employees = accountants; <span class="org-comment-delimiter">// </span><span class="org-comment">Compilation Error (Type Mismatch)
+</span>}
 </pre>
 </div>
 
@@ -235,30 +235,30 @@ Below we are saying that <code>ArrayList&lt;? extends Employee&gt;</code> Accept
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">public static void main(String[] args) {
-    ArrayList&lt;? extends Employee&gt; employees = new ArrayList&lt;&gt;();
-    ArrayList&lt;Accountant&gt; accountants = new ArrayList&lt;&gt;();
-    employees = accountants; // Okay!
-}
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
+    <span class="org-type">ArrayList</span>&lt;? <span class="org-keyword">extends</span> <span class="org-type">Employee</span>&gt; <span class="org-variable-name">employees</span> = <span class="org-keyword">new</span> <span class="org-type">ArrayList</span>&lt;&gt;();
+    <span class="org-type">ArrayList</span>&lt;<span class="org-type">Accountant</span>&gt; <span class="org-variable-name">accountants</span> = <span class="org-keyword">new</span> <span class="org-type">ArrayList</span>&lt;&gt;();
+    employees = accountants; <span class="org-comment-delimiter">// </span><span class="org-comment">Okay!
+</span>}
 </pre>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-org99be08b" class="outline-2">
-<h2 id="org99be08b"><span class="section-number-2">2.</span> <code>Super</code></h2>
+<div id="outline-container-org453a9fd" class="outline-2">
+<h2 id="org453a9fd"><span class="section-number-2">2.</span> <code>Super</code></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Lower Bound
 (Prevents subclasses)
 </p>
 <div class="org-src-container">
-<pre class="src src-java">public static void main(String[] args) {
-    ArrayList&lt;? super Employee&gt; employees = new ArrayList&lt;&gt;();
-    ArrayList&lt;Accountant&gt; accountants = new ArrayList&lt;&gt;();
-    employees = accountants; // Compilation Error (Type Mismatch)
-}
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
+    <span class="org-type">ArrayList</span>&lt;? <span class="org-keyword">super</span> <span class="org-type">Employee</span>&gt; <span class="org-variable-name">employees</span> = <span class="org-keyword">new</span> <span class="org-type">ArrayList</span>&lt;&gt;();
+    <span class="org-type">ArrayList</span>&lt;<span class="org-type">Accountant</span>&gt; <span class="org-variable-name">accountants</span> = <span class="org-keyword">new</span> <span class="org-type">ArrayList</span>&lt;&gt;();
+    employees = accountants; <span class="org-comment-delimiter">// </span><span class="org-comment">Compilation Error (Type Mismatch)
+</span>}
 </pre>
 </div>
 
@@ -268,11 +268,11 @@ Below we are saying that <code>ArrayList&lt;? super Employee&gt;</code> Accepts 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">public static void main(String[] args) {
-    ArrayList&lt;? super Employee&gt; employees = new ArrayList&lt;&gt;();
-    ArrayList&lt;Object&gt; accountants = new ArrayList&lt;&gt;();
-    employees = accountants; // Okay!
-}
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
+    <span class="org-type">ArrayList</span>&lt;? <span class="org-keyword">super</span> <span class="org-type">Employee</span>&gt; <span class="org-variable-name">employees</span> = <span class="org-keyword">new</span> <span class="org-type">ArrayList</span>&lt;&gt;();
+    <span class="org-type">ArrayList</span>&lt;<span class="org-type">Object</span>&gt; <span class="org-variable-name">accountants</span> = <span class="org-keyword">new</span> <span class="org-type">ArrayList</span>&lt;&gt;();
+    employees = accountants; <span class="org-comment-delimiter">// </span><span class="org-comment">Okay!
+</span>}
 </pre>
 </div>
 </div>

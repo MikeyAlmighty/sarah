@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CASCADE (SQL)</title>
@@ -198,14 +198,14 @@
 <div id="content" class="content">
 <h1 class="title">CASCADE (SQL)</h1>
 <div class="org-src-container">
-<pre class="src src-sql">CREATE TABLE Customers(CustomerID INT NOT NULL PRIMARY KEY, FullName VARCHAR(100) NOT NULL, PhoneNumber INT NOT NULL UNIQUE);
-CREATE TABLE Bookings(
-    BookingID INT NOT NULL PRIMARY KEY,
-    BookingDate DATE NOT NULL,
-    TableNumber INT NOT NULL,
-    NumberOfGuests INT NOT NULL CHECK(NumberOfGuests &lt;=8),
-    CustomerID INT NOT NULL,
-    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID) ON DELETE CASCADE ON UPDATE CASCADE);
+<pre class="src src-sql"><span class="org-keyword">CREATE</span> <span class="org-keyword">TABLE</span> <span class="org-function-name">Customers</span>(CustomerID <span class="org-type">INT</span> <span class="org-keyword">NOT</span> <span class="org-keyword">NULL</span> <span class="org-keyword">PRIMARY</span> <span class="org-keyword">KEY</span>, FullName <span class="org-type">VARCHAR</span>(100) <span class="org-keyword">NOT</span> <span class="org-keyword">NULL</span>, PhoneNumber <span class="org-type">INT</span> <span class="org-keyword">NOT</span> <span class="org-keyword">NULL</span> <span class="org-keyword">UNIQUE</span>);
+<span class="org-keyword">CREATE</span> <span class="org-keyword">TABLE</span> <span class="org-function-name">Bookings</span>(
+    BookingID <span class="org-type">INT</span> <span class="org-keyword">NOT</span> <span class="org-keyword">NULL</span> <span class="org-keyword">PRIMARY</span> <span class="org-keyword">KEY</span>,
+    BookingDate <span class="org-type">DATE</span> <span class="org-keyword">NOT</span> <span class="org-keyword">NULL</span>,
+    TableNumber <span class="org-type">INT</span> <span class="org-keyword">NOT</span> <span class="org-keyword">NULL</span>,
+    NumberOfGuests <span class="org-type">INT</span> <span class="org-keyword">NOT</span> <span class="org-keyword">NULL</span> <span class="org-keyword">CHECK</span>(NumberOfGuests &lt;=8),
+    CustomerID <span class="org-type">INT</span> <span class="org-keyword">NOT</span> <span class="org-keyword">NULL</span>,
+    <span class="org-keyword">FOREIGN</span> <span class="org-keyword">KEY</span> (CustomerID) <span class="org-keyword">REFERENCES</span> Customers(CustomerID) <span class="org-keyword">ON</span> <span class="org-keyword">DELETE</span> <span class="org-keyword">CASCADE</span> <span class="org-keyword">ON</span> <span class="org-keyword">UPDATE</span> <span class="org-keyword">CASCADE</span>);
 </pre>
 </div>
 </div>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Synchronized Collections</title>
@@ -198,22 +198,22 @@
 <div id="content" class="content">
 <h1 class="title">Synchronized Collections</h1>
 <div class="org-src-container">
-<pre class="src src-java">public static void show() {
-    Collection&lt;Integer&gt; collection = Collections.synchronizedCollection(new ArrayList&lt;&gt;());
-    var thread1 = new Thread(() -&gt; {
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+    <span class="org-type">Collection</span>&lt;<span class="org-type">Integer</span>&gt; <span class="org-variable-name">collection</span> = Collections.synchronizedCollection(<span class="org-keyword">new</span> <span class="org-type">ArrayList</span>&lt;&gt;());
+    <span class="org-type">var</span> <span class="org-variable-name">thread1</span> = <span class="org-keyword">new</span> <span class="org-type">Thread</span>(() -&gt; {
         collection.addAll(Arrays.asList(1, 2, 3));
     });
 
-    var thread2 = new Thread(() -&gt; {
+    <span class="org-type">var</span> <span class="org-variable-name">thread2</span> = <span class="org-keyword">new</span> <span class="org-type">Thread</span>(() -&gt; {
         collection.addAll(Arrays.asList(4, 5, 6));
     });
     thread1.start();
     thread2.start();
 
-    try {
+    <span class="org-keyword">try</span> {
         thread1.join();
         thread2.join();
-    } catch (InterruptedException e) {
+    } <span class="org-keyword">catch</span> (InterruptedException e) {
         e.printStackTrace();
     }
     System.out.println(collection);

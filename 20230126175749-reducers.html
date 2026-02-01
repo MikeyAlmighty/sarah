@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Reducers</title>
@@ -201,61 +201,61 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2abd711">1. Matchers</a>
+<li><a href="#orga34aa04">1. Matchers</a>
 <ul>
-<li><a href="#org6c46f90">1.1. <code>anyMacth</code></a></li>
-<li><a href="#org11cc40b">1.2. <code>allMatch</code></a></li>
+<li><a href="#orge8e0e9b">1.1. <code>anyMacth</code></a></li>
+<li><a href="#org37b1f56">1.2. <code>allMatch</code></a></li>
 </ul>
 </li>
-<li><a href="#org355bcb5">2. <code>.findFirst</code></a></li>
-<li><a href="#orgd93fc6c">3. General Purpose reduction</a></li>
+<li><a href="#org75b951e">2. <code>.findFirst</code></a></li>
+<li><a href="#orgff43518">3. General Purpose reduction</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org2abd711" class="outline-2">
-<h2 id="org2abd711"><span class="section-number-2">1.</span> Matchers</h2>
+<div id="outline-container-orga34aa04" class="outline-2">
+<h2 id="orga34aa04"><span class="section-number-2">1.</span> Matchers</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org6c46f90" class="outline-3">
-<h3 id="org6c46f90"><span class="section-number-3">1.1.</span> <code>anyMacth</code></h3>
+<div id="outline-container-orge8e0e9b" class="outline-3">
+<h3 id="orge8e0e9b"><span class="section-number-3">1.1.</span> <code>anyMacth</code></h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
-<pre class="src src-java">public static void show() {
-        Predicate&lt;Movie&gt; greaterThan15 = movie -&gt; movie.getLikes() &gt; 20;
-        var movieStream = Stream.of(
-                new Movie("b", 15),
-                new Movie("a", 5),
-                new Movie("d", 15),
-                new Movie("e", 35),
-                new Movie("c", 5)
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+        <span class="org-type">Predicate</span>&lt;<span class="org-type">Movie</span>&gt; <span class="org-variable-name">greaterThan15</span> = movie -&gt; movie.getLikes() &gt; 20;
+        <span class="org-type">var</span> <span class="org-variable-name">movieStream</span> = Stream.of(
+                <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"b"</span>, 15),
+                <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"a"</span>, 5),
+                <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"d"</span>, 15),
+                <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"e"</span>, 35),
+                <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"c"</span>, 5)
             );
-            var great = movieStream
+            <span class="org-type">var</span> <span class="org-variable-name">great</span> = movieStream
               .anyMatch(greaterThan15);
-            System.out.println(great); // true
-}
+            System.out.println(great); <span class="org-comment-delimiter">// </span><span class="org-comment">true
+</span>}
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org11cc40b" class="outline-3">
-<h3 id="org11cc40b"><span class="section-number-3">1.2.</span> <code>allMatch</code></h3>
+<div id="outline-container-org37b1f56" class="outline-3">
+<h3 id="org37b1f56"><span class="section-number-3">1.2.</span> <code>allMatch</code></h3>
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
-<pre class="src src-java">public static void show() {
-    Predicate&lt;Movie&gt; greaterThan15 = movie -&gt; movie.getLikes() &gt; 20;
-    var movieStream = Stream.of(
-            new Movie("b", 15),
-            new Movie("a", 5),
-            new Movie("d", 15),
-            new Movie("e", 35),
-            new Movie("c", 5)
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+    <span class="org-type">Predicate</span>&lt;<span class="org-type">Movie</span>&gt; <span class="org-variable-name">greaterThan15</span> = movie -&gt; movie.getLikes() &gt; 20;
+    <span class="org-type">var</span> <span class="org-variable-name">movieStream</span> = Stream.of(
+            <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"b"</span>, 15),
+            <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"a"</span>, 5),
+            <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"d"</span>, 15),
+            <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"e"</span>, 35),
+            <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"c"</span>, 5)
         );
-        var great = movieStream
+        <span class="org-type">var</span> <span class="org-variable-name">great</span> = movieStream
           .allMatch(greaterThan15);
-        System.out.println(great); // false
-}
+        System.out.println(great); <span class="org-comment-delimiter">// </span><span class="org-comment">false
+</span>}
 </pre>
 </div>
 </div>
@@ -264,19 +264,19 @@
 
 
 
-<div id="outline-container-org355bcb5" class="outline-2">
-<h2 id="org355bcb5"><span class="section-number-2">2.</span> <code>.findFirst</code></h2>
+<div id="outline-container-org75b951e" class="outline-2">
+<h2 id="org75b951e"><span class="section-number-2">2.</span> <code>.findFirst</code></h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
-<pre class="src src-java">public static void show() {
-    var movieStream = Stream.of(
-        new Movie("b", 15),
-        new Movie("a", 5),
-        new Movie("d", 15),
-        new Movie("e", 35),
-        new Movie("c", 5)
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+    <span class="org-type">var</span> <span class="org-variable-name">movieStream</span> = Stream.of(
+        <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"b"</span>, 15),
+        <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"a"</span>, 5),
+        <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"d"</span>, 15),
+        <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"e"</span>, 35),
+        <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"c"</span>, 5)
     );
-    var great = movieStream
+    <span class="org-type">var</span> <span class="org-variable-name">great</span> = movieStream
         .findFirst()
         .get();
     System.out.println(great.getTitle());
@@ -291,19 +291,19 @@
 max
 </p>
 <div class="org-src-container">
-<pre class="src src-java">public static void show() {
-    var movieStream = Stream.of(
-            new Movie("b", 15),
-            new Movie("a", 5),
-            new Movie("d", 15),
-            new Movie("e", 35),
-            new Movie("c", 5)
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+    <span class="org-type">var</span> <span class="org-variable-name">movieStream</span> = Stream.of(
+            <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"b"</span>, 15),
+            <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"a"</span>, 5),
+            <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"d"</span>, 15),
+            <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"e"</span>, 35),
+            <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"c"</span>, 5)
         );
-        var great = movieStream
+        <span class="org-type">var</span> <span class="org-variable-name">great</span> = movieStream
             .max(Comparator.comparing(Movie::getLikes))
             .get();
-        System.out.println(great.getTitle()); // e
-}
+        System.out.println(great.getTitle()); <span class="org-comment-delimiter">// </span><span class="org-comment">e
+</span>}
 </pre>
 </div></li>
 </ul>
@@ -311,37 +311,37 @@ max
 </div>
 
 
-<div id="outline-container-orgd93fc6c" class="outline-2">
-<h2 id="orgd93fc6c"><span class="section-number-2">3.</span> General Purpose reduction</h2>
+<div id="outline-container-orgff43518" class="outline-2">
+<h2 id="orgff43518"><span class="section-number-2">3.</span> General Purpose reduction</h2>
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
-<pre class="src src-java">public static void show() {
-  var movieStream = Stream.of(
-        new Movie("b", 15),
-        new Movie("a", 5),
-        new Movie("d", 15),
-        new Movie("e", 35),
-        new Movie("c", 5)
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+  <span class="org-type">var</span> <span class="org-variable-name">movieStream</span> = Stream.of(
+        <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"b"</span>, 15),
+        <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"a"</span>, 5),
+        <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"d"</span>, 15),
+        <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"e"</span>, 35),
+        <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"c"</span>, 5)
     );
-    Optional&lt;Integer&gt; totalLikes = movieStream
+    <span class="org-type">Optional</span>&lt;<span class="org-type">Integer</span>&gt; <span class="org-variable-name">totalLikes</span> = movieStream
         .map(Movie::getLikes)
         .reduce(Integer::sum);
-    System.out.println(totalLikes.orElse(0)); // 75
-}
-// OR
-public static void show() {
-    var movieStream = Stream.of(
-            new Movie("b", 15),
-            new Movie("a", 5),
-            new Movie("d", 15),
-            new Movie("e", 35),
-            new Movie("c", 5)
+    System.out.println(totalLikes.orElse(0)); <span class="org-comment-delimiter">// </span><span class="org-comment">75
+</span>}
+<span class="org-comment-delimiter">// </span><span class="org-comment">OR
+</span><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+    <span class="org-type">var</span> <span class="org-variable-name">movieStream</span> = Stream.of(
+            <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"b"</span>, 15),
+            <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"a"</span>, 5),
+            <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"d"</span>, 15),
+            <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"e"</span>, 35),
+            <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"c"</span>, 5)
         );
-        Integer totalLikes = movieStream
+        <span class="org-type">Integer</span> <span class="org-variable-name">totalLikes</span> = movieStream
             .map(Movie::getLikes)
             .reduce(0, Integer::sum);
-        System.out.println(totalLikes); // 75
-}
+        System.out.println(totalLikes); <span class="org-comment-delimiter">// </span><span class="org-comment">75
+</span>}
 </pre>
 </div>
 

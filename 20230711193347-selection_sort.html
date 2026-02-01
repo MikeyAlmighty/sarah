@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Selection Sort</title>
@@ -201,13 +201,13 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgb245c68">1. Selection Sort</a></li>
+<li><a href="#orge4055b4">1. Selection Sort</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgb245c68" class="outline-2">
-<h2 id="orgb245c68"><span class="section-number-2">1.</span> Selection Sort</h2>
+<div id="outline-container-orge4055b4" class="outline-2">
+<h2 id="orge4055b4"><span class="section-number-2">1.</span> Selection Sort</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 In place comparison sorting algorithm that keeps track of minimum value during each iteration, at the end of each iteration swap variables.
@@ -218,23 +218,23 @@ In place comparison sorting algorithm that keeps track of minimum value during e
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js">const selectionSort = (array) =&gt; {
-  const arr = array.slice()
-  for (let i = 0; i &lt; arr.length - 1; i++) {
-    let min = i
-    for (let j = i + 1; j &lt; arr.length; j++) {
-      if (arr[min] &gt; arr[j]) {
+<pre class="src src-js"><span class="org-keyword">const</span> <span class="org-variable-name">selectionSort</span> = (array) =&gt; {
+  <span class="org-keyword">const</span> <span class="org-variable-name">arr</span> = array.slice()
+  <span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">i</span> = 0; i &lt; arr.length - 1; i++) {
+    <span class="org-keyword">let</span> <span class="org-variable-name">min</span> = i
+    <span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">j</span> = i + 1; j &lt; arr.length; j++) {
+      <span class="org-keyword">if</span> (arr[min] &gt; arr[j]) {
         min = j
       }
     }
-    let temp = arr[i]
+    <span class="org-keyword">let</span> <span class="org-variable-name">temp</span> = arr[i]
     arr[i] = arr[min]
     arr[min] = temp
   }
-  return arr
+  <span class="org-keyword">return</span> arr
 }
 
-const array = [2, 19, 4, 25, 6, 520]
+<span class="org-keyword">const</span> <span class="org-variable-name">array</span> = [2, 19, 4, 25, 6, 520]
 
 console.log(selectionSort(array))
 </pre>

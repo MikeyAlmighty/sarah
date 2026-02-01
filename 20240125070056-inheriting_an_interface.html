@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Inheriting an Interface</title>
@@ -201,18 +201,18 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgdc2c4d1">1. Inheriting an Interface</a>
+<li><a href="#org36152c6">1. Inheriting an Interface</a>
 <ul>
-<li><a href="#org645a8bd">1.1. Example</a></li>
-<li><a href="#org42f85de">1.2. Mixing Class and Interface Keywords</a>
+<li><a href="#org540a202">1.1. Example</a></li>
+<li><a href="#orgfa1d4a5">1.2. Mixing Class and Interface Keywords</a>
 <ul>
-<li><a href="#org7890e7b">1.2.1. <span class="underline">Exam Trick</span></a></li>
+<li><a href="#org8819bbd">1.2.1. <span class="underline">Exam Trick</span></a></li>
 </ul>
 </li>
-<li><a href="#org2ff1ff9">1.3. Inheriting Duplicate Abstract Methods</a>
+<li><a href="#org4cf2fc6">1.3. Inheriting Duplicate Abstract Methods</a>
 <ul>
-<li><a href="#org70a41f6">1.3.1. Example</a></li>
-<li><a href="#orgaa04d7a">1.3.2. Example</a></li>
+<li><a href="#org61c031b">1.3.1. Example</a></li>
+<li><a href="#orgff1d042">1.3.2. Example</a></li>
 </ul>
 </li>
 </ul>
@@ -221,15 +221,15 @@
 </div>
 </div>
 
-<div id="outline-container-orgdc2c4d1" class="outline-2">
-<h2 id="orgdc2c4d1"><span class="section-number-2">1.</span> Inheriting an Interface</h2>
+<div id="outline-container-org36152c6" class="outline-2">
+<h2 id="org36152c6"><span class="section-number-2">1.</span> Inheriting an Interface</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Like an <a href="20240114162721-abstract_classes.html#ID-3893ce2e-cd85-4914-ba26-d7c7c732eb02">abstract class</a>, when a <code>concrete</code> class <b>inherits</b> an <code>interface</code>, all of the <b>inherited abstract methods</b> <b>must</b> be implemented.
 </p>
 
 
-<div id="orgf3c6127" class="figure">
+<div id="org79e96e8" class="figure">
 <p><img src="./assets/interface_inheritance.png" alt="interface_inheritance.png" />
 </p>
 </div>
@@ -246,21 +246,21 @@ The concrete <code>Swan</code> class inherits <b>four</b> abstract methods that 
 </div>
 
 
-<div id="outline-container-org645a8bd" class="outline-3">
-<h3 id="org645a8bd"><span class="section-number-3">1.1.</span> Example</h3>
+<div id="outline-container-org540a202" class="outline-3">
+<h3 id="org540a202"><span class="section-number-3">1.1.</span> Example</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
-<pre class="src src-java">public interface HasTail {
-    public int getTailLength();
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">interface</span> <span class="org-type">HasTail</span> {
+    <span class="org-keyword">public</span> <span class="org-type">int</span> <span class="org-function-name">getTailLength</span>();
 }
 
-public interface HasWhiskers {
-    public int getNumberOfWhiskers();
+<span class="org-keyword">public</span> <span class="org-keyword">interface</span> <span class="org-type">HasWhiskers</span> {
+    <span class="org-keyword">public</span> <span class="org-type">int</span> <span class="org-function-name">getNumberOfWhiskers</span>();
 }
 
-public abstract class HarborSeal implements HasTail, HasWhiskers {}
+<span class="org-keyword">public</span> <span class="org-keyword">abstract</span> <span class="org-keyword">class</span> <span class="org-type">HarborSeal</span> <span class="org-keyword">implements</span> <span class="org-type">HasTail</span>, <span class="org-type">HasWhiskers</span> {}
 
-public class CommonSeal extends HarborSeal {} // DOES NOT COMPILE
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">CommonSeal</span> <span class="org-keyword">extends</span> <span class="org-type">HarborSeal</span> {} <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE</span>
 </pre>
 </div>
 
@@ -271,8 +271,8 @@ The concrete <code>CommonSeal</code> class, though, <b>must override all inherit
 </div>
 </div>
 
-<div id="outline-container-org42f85de" class="outline-3">
-<h3 id="org42f85de"><span class="section-number-3">1.2.</span> Mixing Class and Interface Keywords</h3>
+<div id="outline-container-orgfa1d4a5" class="outline-3">
+<h3 id="orgfa1d4a5"><span class="section-number-3">1.2.</span> Mixing Class and Interface Keywords</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 The exam creators are fond of questions that mix <code>class</code> and <code>interface</code> terminology.
@@ -285,8 +285,8 @@ The following examples illustrate these principles:
 </p>
 </div>
 
-<div id="outline-container-org7890e7b" class="outline-4">
-<h4 id="org7890e7b"><span class="section-number-4">1.2.1.</span> <span class="underline">Exam Trick</span></h4>
+<div id="outline-container-org8819bbd" class="outline-4">
+<h4 id="org8819bbd"><span class="section-number-4">1.2.1.</span> <span class="underline">Exam Trick</span></h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 The <code>first</code> example shows a class trying to extend an interface and doesn’t compile.
@@ -298,40 +298,40 @@ Be wary of examples on the exam that mix class and interface declarations.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">public interface CanRun {}
-public class Cheetah extends CanRun {} // DOES NOT COMPILE
-
-public class Hyena {}
-public interface HasFur extends Hyena {} // DOES NOT COMPILE
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">interface</span> <span class="org-type">CanRun</span> {}
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Cheetah</span> <span class="org-keyword">extends</span> <span class="org-type">CanRun</span> {} <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
+</span>
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Hyena</span> {}
+<span class="org-keyword">public</span> <span class="org-keyword">interface</span> <span class="org-type">HasFur</span> <span class="org-keyword">extends</span> <span class="org-type">Hyena</span> {} <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org2ff1ff9" class="outline-3">
-<h3 id="org2ff1ff9"><span class="section-number-3">1.3.</span> Inheriting Duplicate Abstract Methods</h3>
+<div id="outline-container-org4cf2fc6" class="outline-3">
+<h3 id="org4cf2fc6"><span class="section-number-3">1.3.</span> Inheriting Duplicate Abstract Methods</h3>
 <div class="outline-text-3" id="text-1-3">
 </div>
-<div id="outline-container-org70a41f6" class="outline-4">
-<h4 id="org70a41f6"><span class="section-number-4">1.3.1.</span> Example</h4>
+<div id="outline-container-org61c031b" class="outline-4">
+<h4 id="org61c031b"><span class="section-number-4">1.3.1.</span> Example</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <p>
 Java supports inheriting two <code>abstract methods</code> that have <code>compatible</code> method declarations.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">public abstract interface Herbivore {
-    public void eatPlants();
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">abstract</span> <span class="org-keyword">interface</span> <span class="org-type">Herbivore</span> {
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">eatPlants</span>();
 }
 
-public abstract interface Omnivore {
-    public void eatPlants();
+<span class="org-keyword">public</span> <span class="org-keyword">abstract</span> <span class="org-keyword">interface</span> <span class="org-type">Omnivore</span> {
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">eatPlants</span>();
 }
 
-public class Bear implements Herbivore, Omnivore {
-    public void eatPlants() {
-        System.out.println("Eating plants");
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Bear</span> <span class="org-keyword">implements</span> <span class="org-type">Herbivore</span>, <span class="org-type">Omnivore</span> {
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">eatPlants</span>() {
+        System.out.println(<span class="org-string">"Eating plants"</span>);
     }
 }
 </pre>
@@ -339,8 +339,8 @@ public class Bear implements Herbivore, Omnivore {
 </div>
 </div>
 
-<div id="outline-container-orgaa04d7a" class="outline-4">
-<h4 id="orgaa04d7a"><span class="section-number-4">1.3.2.</span> Example</h4>
+<div id="outline-container-orgff1d042" class="outline-4">
+<h4 id="orgff1d042"><span class="section-number-4">1.3.2.</span> Example</h4>
 <div class="outline-text-4" id="text-1-3-2">
 <p>
 By <code>compatible</code>, we mean a method can be written that properly <b>overrides</b> both inherited methods:
@@ -348,16 +348,16 @@ For example, by using <a href="20240120134129-covariant_return_types.html#ID-6da
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">public abstract interface Herbivore {
-    public void eatPlants();
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">abstract</span> <span class="org-keyword">interface</span> <span class="org-type">Herbivore</span> {
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">eatPlants</span>();
 }
 
-public abstract interface Omnivore {
-    public int eatPlants();
+<span class="org-keyword">public</span> <span class="org-keyword">abstract</span> <span class="org-keyword">interface</span> <span class="org-type">Omnivore</span> {
+    <span class="org-keyword">public</span> <span class="org-type">int</span> <span class="org-function-name">eatPlants</span>();
 }
 
-public class Tiger implements Herbivore, Omnivore { // DOES NOT COMPILE
-...
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Tiger</span> <span class="org-keyword">implements</span> <span class="org-type">Herbivore</span>, <span class="org-type">Omnivore</span> { <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
+</span>...
 }
 </pre>
 </div>

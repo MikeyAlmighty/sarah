@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Linked List</title>
@@ -201,22 +201,22 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org19fffba">1. Linked List</a>
+<li><a href="#orgf349912">1. Linked List</a>
 <ul>
-<li><a href="#orgbc56184">1.1. Singly Linked List - Big O Complexity</a></li>
-<li><a href="#org6c6c754">1.2. Arrays vs Linked List</a></li>
+<li><a href="#orgd777d2d">1.1. Singly Linked List - Big O Complexity</a></li>
+<li><a href="#org586cbda">1.2. Arrays vs Linked List</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org19fffba" class="outline-2">
-<h2 id="org19fffba"><span class="section-number-2">1.</span> Linked List</h2>
+<div id="outline-container-orgf349912" class="outline-2">
+<h2 id="orgf349912"><span class="section-number-2">1.</span> Linked List</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgbc56184" class="outline-3">
-<h3 id="orgbc56184"><span class="section-number-3">1.1.</span> Singly Linked List - Big O Complexity</h3>
+<div id="outline-container-orgd777d2d" class="outline-3">
+<h3 id="orgd777d2d"><span class="section-number-3">1.1.</span> Singly Linked List - Big O Complexity</h3>
 <div class="outline-text-3" id="text-1-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -288,8 +288,8 @@
 </div>
 </div>
 
-<div id="outline-container-org6c6c754" class="outline-3">
-<h3 id="org6c6c754"><span class="section-number-3">1.2.</span> <a href="20230711190102-array.html#ID-3135ba46-5312-4651-9e80-fecad77c479b">Arrays</a> vs <a href="20230711184230-linked_list.html#ID-f186ce91-693f-4f94-a382-f89915b76fd4">Linked List</a></h3>
+<div id="outline-container-org586cbda" class="outline-3">
+<h3 id="org586cbda"><span class="section-number-3">1.2.</span> <a href="20230711190102-array.html#ID-3135ba46-5312-4651-9e80-fecad77c479b">Arrays</a> vs <a href="20230711184230-linked_list.html#ID-f186ce91-693f-4f94-a382-f89915b76fd4">Linked List</a></h3>
 <div class="outline-text-3" id="text-1-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -448,157 +448,157 @@ When writing logic (i.e traversal) for a linkedList, try and work with `current`
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js">class Node {
+<pre class="src src-js"><span class="org-keyword">class</span> Node {
   constructor(val){
-    this.val = val
-    this.next = null
+    <span class="org-constant">this</span>.val = val
+    <span class="org-constant">this</span>.next = <span class="org-constant">null</span>
   }
 }
 
-// Simply prints the linkedList values
-const iterativePrintLinkedList = (headNode) =&gt; {
-  let current = headNode
-// When writing logic (I.e traversal) for a linkedList, try and work with `current`, NOT current.next === null as it will exclude the tail
-  while (current !== null){
+<span class="org-comment-delimiter">// </span><span class="org-comment">Simply prints the linkedList values
+</span><span class="org-keyword">const</span> <span class="org-variable-name">iterativePrintLinkedList</span> = (headNode) =&gt; {
+  <span class="org-keyword">let</span> <span class="org-variable-name">current</span> = headNode
+<span class="org-comment-delimiter">// </span><span class="org-comment">When writing logic (I.e traversal) for a linkedList, try and work with `current`, NOT current.next === null as it will exclude the tail
+</span>  <span class="org-keyword">while</span> (current !== <span class="org-constant">null</span>){
     console.log(current.val)
     current = current.next
   }
 }
 
-// Simply prints the linkedList values
-const recursivePrintLinkedList = (headNode) =&gt; {
-  if (headNode === null) return
+<span class="org-comment-delimiter">// </span><span class="org-comment">Simply prints the linkedList values
+</span><span class="org-keyword">const</span> <span class="org-variable-name">recursivePrintLinkedList</span> = (headNode) =&gt; {
+  <span class="org-keyword">if</span> (headNode === <span class="org-constant">null</span>) <span class="org-keyword">return</span>
   console.log(headNode.val)
   recursivePrintLinkedList(headNode.next)
 }
 
-// Retrieves the linkedList values inside an array
-const iterativetGetLinkedListValues = (headNode) =&gt; {
-  const result = []
-  let current = headNode
-  while (current !== null) {
+<span class="org-comment-delimiter">// </span><span class="org-comment">Retrieves the linkedList values inside an array
+</span><span class="org-keyword">const</span> <span class="org-variable-name">iterativetGetLinkedListValues</span> = (headNode) =&gt; {
+  <span class="org-keyword">const</span> <span class="org-variable-name">result</span> = []
+  <span class="org-keyword">let</span> <span class="org-variable-name">current</span> = headNode
+  <span class="org-keyword">while</span> (current !== <span class="org-constant">null</span>) {
     result.push(current.val)
     current = current.next
   }
-  return result
+  <span class="org-keyword">return</span> result
 }
 
-// Retrieves the linkedList values inside an array
-const recursiveGetLinkedListValues = (headNode) =&gt; {
-  const result = []
+<span class="org-comment-delimiter">// </span><span class="org-comment">Retrieves the linkedList values inside an array
+</span><span class="org-keyword">const</span> <span class="org-variable-name">recursiveGetLinkedListValues</span> = (headNode) =&gt; {
+  <span class="org-keyword">const</span> <span class="org-variable-name">result</span> = []
   fillValues(headNode, result)
-  return result
+  <span class="org-keyword">return</span> result
 }
-const fillValues = (head, values) =&gt; {
-  if (head === null) return
+<span class="org-keyword">const</span> <span class="org-variable-name">fillValues</span> = (head, values) =&gt; {
+  <span class="org-keyword">if</span> (head === <span class="org-constant">null</span>) <span class="org-keyword">return</span>
   values.push(head.val)
   fillValues(head.next, values)
 }
 
-// Returns the Sum of each node's value.
-const sumLinkedList = (headNode) =&gt; {
-  let sumResult = 0
-  let current = headNode
-  while (current !== null) {
+<span class="org-comment-delimiter">// </span><span class="org-comment">Returns the Sum of each node's value.
+</span><span class="org-keyword">const</span> <span class="org-variable-name">sumLinkedList</span> = (headNode) =&gt; {
+  <span class="org-keyword">let</span> <span class="org-variable-name">sumResult</span> = 0
+  <span class="org-keyword">let</span> <span class="org-variable-name">current</span> = headNode
+  <span class="org-keyword">while</span> (current !== <span class="org-constant">null</span>) {
     sumResult += current.val
    current = current.next
   }
-  return sumResult
+  <span class="org-keyword">return</span> sumResult
 }
 
-// Returns boolean if List contains target value
-const linkedListContains = (headNode, target) =&gt; {
-  let current = headNode
-  while (current !== null) {
-    if (current.val === target) return true
+<span class="org-comment-delimiter">// </span><span class="org-comment">Returns boolean if List contains target value
+</span><span class="org-keyword">const</span> <span class="org-variable-name">linkedListContains</span> = (headNode, target) =&gt; {
+  <span class="org-keyword">let</span> <span class="org-variable-name">current</span> = headNode
+  <span class="org-keyword">while</span> (current !== <span class="org-constant">null</span>) {
+    <span class="org-keyword">if</span> (current.val === target) <span class="org-keyword">return</span> <span class="org-constant">true</span>
     current = current.next
   }
-  return false
+  <span class="org-keyword">return</span> <span class="org-constant">false</span>
 }
 
-// Retrieves the value at the given targetIndex
-const valueAtIndex = (headNode, targetIndex) =&gt; {
-  let currentIndex = 0
-  let current = headNode
-  while (current !== null) {
-    if (currentIndex === targetIndex) return current.val
+<span class="org-comment-delimiter">// </span><span class="org-comment">Retrieves the value at the given targetIndex
+</span><span class="org-keyword">const</span> <span class="org-variable-name">valueAtIndex</span> = (headNode, targetIndex) =&gt; {
+  <span class="org-keyword">let</span> <span class="org-variable-name">currentIndex</span> = 0
+  <span class="org-keyword">let</span> <span class="org-variable-name">current</span> = headNode
+  <span class="org-keyword">while</span> (current !== <span class="org-constant">null</span>) {
+    <span class="org-keyword">if</span> (currentIndex === targetIndex) <span class="org-keyword">return</span> current.val
     currentIndex += 1
     current = current.next
   }
 }
 
-// A -&gt; B -&gt; C
-// 1st prev = null, next = B,
-
-// Reverse linkedList - has O(1) space complexity as it only requires variable assignments
-const iterativeReverseLinkedList = (headNode) =&gt; {
-  let prev = null
-  let current = headNode
-  while (current !== null) {
-    const next = current.next // Store next node
-    current.next = prev  // Set next node to previous node
-    prev = current // set Previous node to current node
-    current = next // Set current Node to next node for following iteration
-  }
-  return prev
+<span class="org-comment-delimiter">// </span><span class="org-comment">A -&gt; B -&gt; C
+</span><span class="org-comment-delimiter">// </span><span class="org-comment">1st prev = null, next = B,
+</span>
+<span class="org-comment-delimiter">// </span><span class="org-comment">Reverse linkedList - has O(1) space complexity as it only requires variable assignments
+</span><span class="org-keyword">const</span> <span class="org-variable-name">iterativeReverseLinkedList</span> = (headNode) =&gt; {
+  <span class="org-keyword">let</span> <span class="org-variable-name">prev</span> = <span class="org-constant">null</span>
+  <span class="org-keyword">let</span> <span class="org-variable-name">current</span> = headNode
+  <span class="org-keyword">while</span> (current !== <span class="org-constant">null</span>) {
+    <span class="org-keyword">const</span> <span class="org-variable-name">next</span> = current.next <span class="org-comment-delimiter">// </span><span class="org-comment">Store next node
+</span>    current.next = prev  <span class="org-comment-delimiter">// </span><span class="org-comment">Set next node to previous node
+</span>    prev = current <span class="org-comment-delimiter">// </span><span class="org-comment">set Previous node to current node
+</span>    current = next <span class="org-comment-delimiter">// </span><span class="org-comment">Set current Node to next node for following iteration
+</span>  }
+  <span class="org-keyword">return</span> prev
 }
 
-// Reverse linkedList - Higher O(n) space complexity
-const recursiveReverseLinkedList = (headNode, prev = null) =&gt; {
-  if (headNode === null) return prev
-  const next = headNode.next
+<span class="org-comment-delimiter">// </span><span class="org-comment">Reverse linkedList - Higher O(n) space complexity
+</span><span class="org-keyword">const</span> <span class="org-variable-name">recursiveReverseLinkedList</span> = (headNode, prev = <span class="org-constant">null</span>) =&gt; {
+  <span class="org-keyword">if</span> (headNode === <span class="org-constant">null</span>) <span class="org-keyword">return</span> prev
+  <span class="org-keyword">const</span> <span class="org-variable-name">next</span> = headNode.next
   recursiveReverseLinkedList(next, headNode)
 }
 
-const iterativeZipperList = (head1, head2) =&gt; {
-  let tail = head1;
-  let current1 = head1;
-  let current2 = head2;
-  let count = 0;
+<span class="org-keyword">const</span> <span class="org-variable-name">iterativeZipperList</span> = (head1, head2) =&gt; {
+  <span class="org-keyword">let</span> <span class="org-variable-name">tail</span> = head1;
+  <span class="org-keyword">let</span> <span class="org-variable-name">current1</span> = head1;
+  <span class="org-keyword">let</span> <span class="org-variable-name">current2</span> = head2;
+  <span class="org-keyword">let</span> <span class="org-variable-name">count</span> = 0;
 
-  while (current1 !== null &amp;&amp; current2 !== null) {
-    if (count % 2 === 0) {
+  <span class="org-keyword">while</span> (current1 !== <span class="org-constant">null</span> &amp;&amp; current2 !== <span class="org-constant">null</span>) {
+    <span class="org-keyword">if</span> (count % 2 === 0) {
       tail.next = current2;
       current2 = current2.next;
-    } else {
+    } <span class="org-keyword">else</span> {
       tail.next = current1;
       current1 = current1.next;
     }
     tail = tail.next;
     count += 1;
   }
-  if (current1 !== null) tail.next = current1;
-  if (current2 !== null) tail.next = current2;
-  return tail;
+  <span class="org-keyword">if</span> (current1 !== <span class="org-constant">null</span>) tail.next = current1;
+  <span class="org-keyword">if</span> (current2 !== <span class="org-constant">null</span>) tail.next = current2;
+  <span class="org-keyword">return</span> tail;
 }
 
-const recursiveZipperList = (head1, head2) =&gt; {
-  if (head1 === null &amp;&amp; head2 === null) return null // Base case
-  if (head1 === null) return head2
-  if (head2 === null) return head1
+<span class="org-keyword">const</span> <span class="org-variable-name">recursiveZipperList</span> = (head1, head2) =&gt; {
+  <span class="org-keyword">if</span> (head1 === <span class="org-constant">null</span> &amp;&amp; head2 === <span class="org-constant">null</span>) <span class="org-keyword">return</span> <span class="org-constant">null</span> <span class="org-comment-delimiter">// </span><span class="org-comment">Base case
+</span>  <span class="org-keyword">if</span> (head1 === <span class="org-constant">null</span>) <span class="org-keyword">return</span> head2
+  <span class="org-keyword">if</span> (head2 === <span class="org-constant">null</span>) <span class="org-keyword">return</span> head1
 
-  const next1 = head1.next
-  const next2 = head2.next
+  <span class="org-keyword">const</span> <span class="org-variable-name">next1</span> = head1.next
+  <span class="org-keyword">const</span> <span class="org-variable-name">next2</span> = head2.next
 
   head1.next = head2
   head2.next = recursiveZipperList(next1, next2)
-  return head1
+  <span class="org-keyword">return</span> head1
 }
 
 
-const a = new Node('A')
-const b = new Node('B')
-const c = new Node('C')
-const d = new Node('D')
+<span class="org-keyword">const</span> <span class="org-variable-name">a</span> = <span class="org-keyword">new</span> <span class="org-type">Node</span>(<span class="org-string">'A'</span>)
+<span class="org-keyword">const</span> <span class="org-variable-name">b</span> = <span class="org-keyword">new</span> <span class="org-type">Node</span>(<span class="org-string">'B'</span>)
+<span class="org-keyword">const</span> <span class="org-variable-name">c</span> = <span class="org-keyword">new</span> <span class="org-type">Node</span>(<span class="org-string">'C'</span>)
+<span class="org-keyword">const</span> <span class="org-variable-name">d</span> = <span class="org-keyword">new</span> <span class="org-type">Node</span>(<span class="org-string">'D'</span>)
 
 a.next = b
 b.next = c
 c.next = d
 
-const num1 = new Node(27)
-const num2 = new Node(69)
-const num3 = new Node(420)
-const num4 = new Node(4)
+<span class="org-keyword">const</span> <span class="org-variable-name">num1</span> = <span class="org-keyword">new</span> <span class="org-type">Node</span>(27)
+<span class="org-keyword">const</span> <span class="org-variable-name">num2</span> = <span class="org-keyword">new</span> <span class="org-type">Node</span>(69)
+<span class="org-keyword">const</span> <span class="org-variable-name">num3</span> = <span class="org-keyword">new</span> <span class="org-type">Node</span>(420)
+<span class="org-keyword">const</span> <span class="org-variable-name">num4</span> = <span class="org-keyword">new</span> <span class="org-type">Node</span>(4)
 
 num1.next = num2
 num2.next = num3
@@ -610,14 +610,14 @@ recursivePrintLinkedList(a)
 console.log(iterativetGetLinkedListValues(a))
 console.log(recursiveGetLinkedListValues(a))
 console.log(sumLinkedList(num1))
-console.log(linkedListContains(num1, 420)) // Should return true
-console.log(linkedListContains(a, 'G')) // Should return false
-console.log(valueAtIndex(a, 2)) // Should return C
-console.log(valueAtIndex(num1, 3)) // Should return 4
-console.log(iterativeReverseLinkedList(num1))
+console.log(linkedListContains(num1, 420)) <span class="org-comment-delimiter">// </span><span class="org-comment">Should return true
+</span>console.log(linkedListContains(a, <span class="org-string">'G'</span>)) <span class="org-comment-delimiter">// </span><span class="org-comment">Should return false
+</span>console.log(valueAtIndex(a, 2)) <span class="org-comment-delimiter">// </span><span class="org-comment">Should return C
+</span>console.log(valueAtIndex(num1, 3)) <span class="org-comment-delimiter">// </span><span class="org-comment">Should return 4
+</span>console.log(iterativeReverseLinkedList(num1))
 console.log(recursiveReverseLinkedList(num1))
 console.log(iterativeZipperList(a, num1))
-// console.log(recursiveZipperList(a, num1))
+<span class="org-comment-delimiter">// </span><span class="org-comment">console.log(recursiveZipperList(a, num1))</span>
 </pre>
 </div>
 </div>

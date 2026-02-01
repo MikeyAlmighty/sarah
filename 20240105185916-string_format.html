@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>String.format</title>
@@ -201,11 +201,11 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9856f1b">1. .format()</a>
+<li><a href="#org908649b">1. .format()</a>
 <ul>
-<li><a href="#org8390a18">1.1. Signature</a>
+<li><a href="#orga3029a3">1.1. Signature</a>
 <ul>
-<li><a href="#org1ba399f">1.1.1. <span class="underline">Exam Trick</span></a></li>
+<li><a href="#orgb4634b9">1.1.1. <span class="underline">Exam Trick</span></a></li>
 </ul>
 </li>
 </ul>
@@ -214,8 +214,8 @@
 </div>
 </div>
 
-<div id="outline-container-org9856f1b" class="outline-2">
-<h2 id="org9856f1b"><span class="section-number-2">1.</span> .format()</h2>
+<div id="outline-container-org908649b" class="outline-2">
+<h2 id="org908649b"><span class="section-number-2">1.</span> .format()</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Formats <code>String</code> values using formatting flags.
@@ -238,44 +238,44 @@ They return a <code>reference</code> to the <code>instance</code> they are calle
 </p>
 
 
-<div id="org56e05c3" class="figure">
+<div id="org99dd4f9" class="figure">
 <p><img src="./assets/string_formatting_symbols.png" alt="string_formatting_symbols.png" />
 </p>
 </div>
 </div>
 
-<div id="outline-container-org8390a18" class="outline-3">
-<h3 id="org8390a18"><span class="section-number-3">1.1.</span> Signature</h3>
+<div id="outline-container-orga3029a3" class="outline-3">
+<h3 id="orga3029a3"><span class="section-number-3">1.1.</span> Signature</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
-<pre class="src src-java">public static String format(String format, Object args...)
-public static String format(Locale loc, String format, Object args...)
-public String formatted(Object args...)
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">String</span> <span class="org-function-name">format</span>(<span class="org-type">String</span> <span class="org-variable-name">format</span>, <span class="org-type">Object</span> <span class="org-variable-name">args</span>...)
+<span class="org-keyword">public</span> <span class="org-keyword">static</span> String format(<span class="org-type">Locale</span> <span class="org-variable-name">loc</span>, <span class="org-type">String</span> <span class="org-variable-name">format</span>, Object args...)
+<span class="org-keyword">public</span> String formatted(Object args...)
 </pre>
 </div>
 
 
 <div class="org-src-container">
-<pre class="src src-java">var name = "Kate";
-var orderId = 5;
-// All print: Hello Kate, order 5 is ready
-System.out.println("Hello " + name + ", order " + orderId + " is ready");
-System.out.println(String.format("Hello %s, order %d is ready", name, orderId));
-System.out.println("Hello %s, order %d is ready".formatted(name, orderId));
+<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">name</span> = <span class="org-string">"Kate"</span>;
+<span class="org-type">var</span> <span class="org-variable-name">orderId</span> = 5;
+<span class="org-comment-delimiter">// </span><span class="org-comment">All print: Hello Kate, order 5 is ready
+</span>System.out.println(<span class="org-string">"Hello "</span> + name + <span class="org-string">", order "</span> + orderId + <span class="org-string">" is ready"</span>);
+System.out.println(String.format(<span class="org-string">"Hello %s, order %d is ready"</span>, name, orderId));
+System.out.println(<span class="org-string">"Hello %s, order %d is ready"</span>.formatted(name, orderId));
 
-var name = "James";
-var score = 90.25;
-var total = 100;
-System.out.println("%s:%n   Score: %f out of %d".formatted(name, score, total));
-/* OUTPUT: */
-// James:
-//   Score: 90.250000 out of 100
+<span class="org-type">var</span> <span class="org-variable-name">name</span> = <span class="org-string">"James"</span>;
+<span class="org-type">var</span> <span class="org-variable-name">score</span> = 90.25;
+<span class="org-type">var</span> <span class="org-variable-name">total</span> = 100;
+System.out.println(<span class="org-string">"%s:%n   Score: %f out of %d"</span>.formatted(name, score, total));
+<span class="org-comment-delimiter">/* </span><span class="org-comment">OUTPUT:</span><span class="org-comment-delimiter"> */</span>
+<span class="org-comment-delimiter">// </span><span class="org-comment">James:
+</span><span class="org-comment-delimiter">//   </span><span class="org-comment">Score: 90.250000 out of 100</span>
 </pre>
 </div>
 </div>
 
-<div id="outline-container-org1ba399f" class="outline-4">
-<h4 id="org1ba399f"><span class="section-number-4">1.1.1.</span> <span class="underline">Exam Trick</span></h4>
+<div id="outline-container-orgb4634b9" class="outline-4">
+<h4 id="orgb4634b9"><span class="section-number-4">1.1.1.</span> <span class="underline">Exam Trick</span></h4>
 <div class="outline-text-4" id="text-1-1-1">
 <ul class="org-ul">
 <li>Mixing <code>data</code> types may cause exceptions at runtime.</li>
@@ -285,7 +285,7 @@ For example, the following throws an <b>exception</b> because a <code>floating­
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">var str = "Food: %d tons".formatted(2.0); // IllegalFormatConversionException
+<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">str</span> = <span class="org-string">"Food: %d tons"</span>.formatted(2.0); <span class="org-comment-delimiter">// </span><span class="org-comment">IllegalFormatConversionException</span>
 </pre>
 </div>
 
@@ -303,13 +303,13 @@ For example, <code>90.250000</code> will be displayed as <code>90.3</code> (not 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">var pi = 3.14159265359;
+<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">pi</span> = 3.14159265359;
 
-System.out.format("[%f]",pi);// [3.141593]
-System.out.format("[%12.8f]",pi);// [  3.14159265]
-System.out.format("[%012f]",pi);// [00003.141593]
-System.out.format("[%12.2f]",pi);// [        3.14]
-System.out.format("[%.3f]",pi);// [3.142]
+System.out.format(<span class="org-string">"[%f]"</span>,pi);<span class="org-comment-delimiter">// </span><span class="org-comment">[3.141593]
+</span>System.out.format(<span class="org-string">"[%12.8f]"</span>,pi);<span class="org-comment-delimiter">// </span><span class="org-comment">[  3.14159265]
+</span>System.out.format(<span class="org-string">"[%012f]"</span>,pi);<span class="org-comment-delimiter">// </span><span class="org-comment">[00003.141593]
+</span>System.out.format(<span class="org-string">"[%12.2f]"</span>,pi);<span class="org-comment-delimiter">// </span><span class="org-comment">[        3.14]
+</span>System.out.format(<span class="org-string">"[%.3f]"</span>,pi);<span class="org-comment-delimiter">// </span><span class="org-comment">[3.142]</span>
 </pre>
 </div>
 </div>

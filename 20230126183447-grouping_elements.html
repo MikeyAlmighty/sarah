@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Grouping Elements</title>
@@ -202,53 +202,53 @@ See: <a href="20230126181734-capturing_to_collections.html#ID-8558d6b4-889c-4502
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">public static void show() {
-    var movieStream = Stream.of(
-            new Movie("b", 15, Genre.ACTION),
-            new Movie("a", 5, Genre.THRILLER),
-            new Movie("d", 15, Genre.ACTION)
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+    <span class="org-type">var</span> <span class="org-variable-name">movieStream</span> = Stream.of(
+            <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"b"</span>, 15, <span class="org-constant">Genre</span>.ACTION),
+            <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"a"</span>, 5, <span class="org-constant">Genre</span>.THRILLER),
+            <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"d"</span>, 15, <span class="org-constant">Genre</span>.ACTION)
         );
 
-            var result = movieStream
+            <span class="org-type">var</span> <span class="org-variable-name">result</span> = movieStream
             .collect(Collectors.groupingBy(Movie::getGenre));
 
-        System.out.println(result.toString()); // {ACTION=[com.demo.Movie@7852e922, com.demo.Movie@4e25154f], THRILLER=[com.demo.Movie@70dea4e]}
-}
+        System.out.println(result.toString()); <span class="org-comment-delimiter">// </span><span class="org-comment">{ACTION=[com.demo.Movie@7852e922, com.demo.Movie@4e25154f], THRILLER=[com.demo.Movie@70dea4e]}
+</span>}
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-java">public static void show() {
-    var movieStream = Stream.of(
-            new Movie("b", 15, Genre.ACTION),
-            new Movie("a", 5, Genre.THRILLER),
-            new Movie("d", 15, Genre.ACTION)
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+    <span class="org-type">var</span> <span class="org-variable-name">movieStream</span> = Stream.of(
+            <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"b"</span>, 15, <span class="org-constant">Genre</span>.ACTION),
+            <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"a"</span>, 5, <span class="org-constant">Genre</span>.THRILLER),
+            <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"d"</span>, 15, <span class="org-constant">Genre</span>.ACTION)
         );
 
-            var result = movieStream
+            <span class="org-type">var</span> <span class="org-variable-name">result</span> = movieStream
             .collect(Collectors.groupingBy(Movie::getGenre, Collectors.counting()));
 
-        System.out.println(result.toString()); // {ACTION=2, THRILLER=1}
-}
+        System.out.println(result.toString()); <span class="org-comment-delimiter">// </span><span class="org-comment">{ACTION=2, THRILLER=1}
+</span>}
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-java">public static void show() {
-    var movieStream = Stream.of(
-            new Movie("b", 15, Genre.ACTION),
-            new Movie("a", 5, Genre.THRILLER),
-            new Movie("d", 15, Genre.ACTION)
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+    <span class="org-type">var</span> <span class="org-variable-name">movieStream</span> = Stream.of(
+            <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"b"</span>, 15, <span class="org-constant">Genre</span>.ACTION),
+            <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"a"</span>, 5, <span class="org-constant">Genre</span>.THRILLER),
+            <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"d"</span>, 15, <span class="org-constant">Genre</span>.ACTION)
         );
 
-            var result = movieStream
+            <span class="org-type">var</span> <span class="org-variable-name">result</span> = movieStream
             .collect(Collectors.groupingBy(
                 Movie::getGenre,
-                    Collectors.mapping(Movie::getTitle, Collectors.joining("$"))
+                    Collectors.mapping(Movie::getTitle, Collectors.joining(<span class="org-string">"$"</span>))
                     ));
 
-        System.out.println(result.toString()); // {ACTION=b$d, THRILLER=a}
-}
+        System.out.println(result.toString()); <span class="org-comment-delimiter">// </span><span class="org-comment">{ACTION=b$d, THRILLER=a}
+</span>}
 </pre>
 </div>
 </div>

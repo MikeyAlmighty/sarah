@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Graphs</title>
@@ -201,22 +201,22 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9952332">1. Graphs</a>
+<li><a href="#orge79c96a">1. Graphs</a>
 <ul>
-<li><a href="#orgb437af3">1.1. Directed Graphs</a></li>
-<li><a href="#org9ac5c93">1.2. Undirected</a></li>
-<li><a href="#org13fc319">1.3. Adjacency list</a></li>
-<li><a href="#org3446858">1.4. Acyclic</a></li>
-<li><a href="#org7d9af91">1.5. Cyclic</a></li>
-<li><a href="#orga0a1406">1.6. Complexity</a></li>
+<li><a href="#org2117f06">1.1. Directed Graphs</a></li>
+<li><a href="#orgfba3b5e">1.2. Undirected</a></li>
+<li><a href="#org1297077">1.3. Adjacency list</a></li>
+<li><a href="#org9a87107">1.4. Acyclic</a></li>
+<li><a href="#orge66f70f">1.5. Cyclic</a></li>
+<li><a href="#orgf6c01d1">1.6. Complexity</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org9952332" class="outline-2">
-<h2 id="org9952332"><span class="section-number-2">1.</span> Graphs</h2>
+<div id="outline-container-orge79c96a" class="outline-2">
+<h2 id="orge79c96a"><span class="section-number-2">1.</span> Graphs</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <a href="https://www.youtube.com/watch?v=tWVWeAqZ0WU">Graph Algorithms for Technical Interviews - Full Course</a>
@@ -231,8 +231,8 @@ Neighbor node = Node accessible through an edge
 </p>
 </div>
 
-<div id="outline-container-orgb437af3" class="outline-3">
-<h3 id="orgb437af3"><span class="section-number-3">1.1.</span> Directed Graphs</h3>
+<div id="outline-container-org2117f06" class="outline-3">
+<h3 id="org2117f06"><span class="section-number-3">1.1.</span> Directed Graphs</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Flows in one direction
@@ -240,8 +240,8 @@ Flows in one direction
 </div>
 </div>
 
-<div id="outline-container-org9ac5c93" class="outline-3">
-<h3 id="org9ac5c93"><span class="section-number-3">1.2.</span> Undirected</h3>
+<div id="outline-container-orgfba3b5e" class="outline-3">
+<h3 id="orgfba3b5e"><span class="section-number-3">1.2.</span> Undirected</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Flow goes both ways (bidirectional)
@@ -249,15 +249,15 @@ Flow goes both ways (bidirectional)
 </div>
 </div>
 
-<div id="outline-container-org13fc319" class="outline-3">
-<h3 id="org13fc319"><span class="section-number-3">1.3.</span> Adjacency list</h3>
+<div id="outline-container-org1297077" class="outline-3">
+<h3 id="org1297077"><span class="section-number-3">1.3.</span> Adjacency list</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 Used to represent a graph in a programmatical way:
 </p>
 
 
-<div id="org038bb2d" class="figure">
+<div id="orgdaf251f" class="figure">
 <p><img src="./assets/graphAdjacencyList.png" alt="graphAdjacencyList.png" />
 </p>
 </div>
@@ -269,7 +269,7 @@ Key = Node, values = Neighbor nodes
 </p>
 
 
-<div id="org992465e" class="figure">
+<div id="org6741bad" class="figure">
 <p><img src="./assets/Graph_BFS_vs_DFS.png" alt="Graph_BFS_vs_DFS.png" />
 </p>
 </div>
@@ -281,159 +281,159 @@ Key = Node, values = Neighbor nodes
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js">const graph = {
-  a: ['c', 'b'],
-  b: ['d'],
-  c: ['e'],
-  d: ['f'],
+<pre class="src src-js"><span class="org-keyword">const</span> <span class="org-variable-name">graph</span> = {
+  a: [<span class="org-string">'c'</span>, <span class="org-string">'b'</span>],
+  b: [<span class="org-string">'d'</span>],
+  c: [<span class="org-string">'e'</span>],
+  d: [<span class="org-string">'f'</span>],
   e: [],
   f: [],
 }
 
-const iterativeDepthFirstPrint = (graph, source) =&gt; {
-  const stack = [source]
+<span class="org-keyword">const</span> <span class="org-variable-name">iterativeDepthFirstPrint</span> = (graph, source) =&gt; {
+  <span class="org-keyword">const</span> <span class="org-variable-name">stack</span> = [source]
 
-  while (stack.length &gt; 0) {
-    const current = stack.pop()
-    for (let neighbor of graph[current]) {
+  <span class="org-keyword">while</span> (stack.length &gt; 0) {
+    <span class="org-keyword">const</span> <span class="org-variable-name">current</span> = stack.pop()
+    <span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">neighbor</span> <span class="org-keyword">of</span> graph[current]) {
       stack.push(neighbor)
     }
     console.log(current)
   }
 }
 
-// No need for base case, as in the case of no neighbor, [] empty array, no recursive call is made.
-const recursiveDepthFirstPrint = (graph, source) =&gt; {
+<span class="org-comment-delimiter">// </span><span class="org-comment">No need for base case, as in the case of no neighbor, [] empty array, no recursive call is made.
+</span><span class="org-keyword">const</span> <span class="org-variable-name">recursiveDepthFirstPrint</span> = (graph, source) =&gt; {
   console.log(source)
-  for(let neighbor of graph[source]) {
+  <span class="org-keyword">for</span>(<span class="org-keyword">let</span> <span class="org-variable-name">neighbor</span> <span class="org-keyword">of</span> graph[source]) {
     recursiveDepthFirstPrint(graph, neighbor)
   }
 }
 
-// Can only be applied iteratively as it needs to make use of a queue.
-const breadthFirstPrint = (graph, source) =&gt; {
-  console.log('breadthFirstPrint: ')
-  const queue = [source]
+<span class="org-comment-delimiter">// </span><span class="org-comment">Can only be applied iteratively as it needs to make use of a queue.
+</span><span class="org-keyword">const</span> <span class="org-variable-name">breadthFirstPrint</span> = (graph, source) =&gt; {
+  console.log(<span class="org-string">'breadthFirstPrint: '</span>)
+  <span class="org-keyword">const</span> <span class="org-variable-name">queue</span> = [source]
 
-  while (queue.length &gt; 0) {
-    const current = queue.shift()
+  <span class="org-keyword">while</span> (queue.length &gt; 0) {
+    <span class="org-keyword">const</span> <span class="org-variable-name">current</span> = queue.shift()
     console.log(current)
-    for (let neighbor of graph[current]) {
+    <span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">neighbor</span> <span class="org-keyword">of</span> graph[current]) {
       queue.push(neighbor)
     }
   }
 }
 
-iterativeDepthFirstPrint(graph, 'a') // Should be abdfce
-recursiveDepthFirstPrint(graph, 'a') // Should be acebdf
-breadthFirstPrint(graph, 'a') // Should be acbedf
-
-// Checks if destination node is found
-// DFS
-const iterativeHasPath = (graph, source, destination) =&gt; {
-  const stack = [source]
-  while (stack.length &gt; 0) {
-    const current = stack.pop()
-    if (current === destination) return true
-    for (let neighbor of graph[current]) {
+iterativeDepthFirstPrint(graph, <span class="org-string">'a'</span>) <span class="org-comment-delimiter">// </span><span class="org-comment">Should be abdfce
+</span>recursiveDepthFirstPrint(graph, <span class="org-string">'a'</span>) <span class="org-comment-delimiter">// </span><span class="org-comment">Should be acebdf
+</span>breadthFirstPrint(graph, <span class="org-string">'a'</span>) <span class="org-comment-delimiter">// </span><span class="org-comment">Should be acbedf
+</span>
+<span class="org-comment-delimiter">// </span><span class="org-comment">Checks if destination node is found
+</span><span class="org-comment-delimiter">// </span><span class="org-comment">DFS
+</span><span class="org-keyword">const</span> <span class="org-variable-name">iterativeHasPath</span> = (graph, source, destination) =&gt; {
+  <span class="org-keyword">const</span> <span class="org-variable-name">stack</span> = [source]
+  <span class="org-keyword">while</span> (stack.length &gt; 0) {
+    <span class="org-keyword">const</span> <span class="org-variable-name">current</span> = stack.pop()
+    <span class="org-keyword">if</span> (current === destination) <span class="org-keyword">return</span> <span class="org-constant">true</span>
+    <span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">neighbor</span> <span class="org-keyword">of</span> graph[current]) {
       stack.push(neighbor)
     }
   }
-  return false
+  <span class="org-keyword">return</span> <span class="org-constant">false</span>
 }
 
-const recursiveHasPath = (graph, source, destination) =&gt; {
-  if (source === destination) return true
-  for (let neighbor of graph[source]) {
-    if (recursiveHasPath(graph, neighbor, destination) === true) return true
+<span class="org-keyword">const</span> <span class="org-variable-name">recursiveHasPath</span> = (graph, source, destination) =&gt; {
+  <span class="org-keyword">if</span> (source === destination) <span class="org-keyword">return</span> <span class="org-constant">true</span>
+  <span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">neighbor</span> <span class="org-keyword">of</span> graph[source]) {
+    <span class="org-keyword">if</span> (recursiveHasPath(graph, neighbor, destination) === <span class="org-constant">true</span>) <span class="org-keyword">return</span> <span class="org-constant">true</span>
   }
-  return false
+  <span class="org-keyword">return</span> <span class="org-constant">false</span>
 }
 
-const breadthFirstHasPath = (graph, source, destination) =&gt; {
-  const queue = [source]
-  while (queue.length &gt; 0) {
-    const current = queue.shift()
-    if (current === destination) return true
-    for (let neighbor of graph[current]) {
+<span class="org-keyword">const</span> <span class="org-variable-name">breadthFirstHasPath</span> = (graph, source, destination) =&gt; {
+  <span class="org-keyword">const</span> <span class="org-variable-name">queue</span> = [source]
+  <span class="org-keyword">while</span> (queue.length &gt; 0) {
+    <span class="org-keyword">const</span> <span class="org-variable-name">current</span> = queue.shift()
+    <span class="org-keyword">if</span> (current === destination) <span class="org-keyword">return</span> <span class="org-constant">true</span>
+    <span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">neighbor</span> <span class="org-keyword">of</span> graph[current]) {
       queue.push(neighbor)
     }
   }
-  return false
+  <span class="org-keyword">return</span> <span class="org-constant">false</span>
 }
 
-console.log(iterativeHasPath(graph, 'a', 'f')) // should return true
-console.log(recursiveHasPath(graph, 'a', 'e')) // should return true
-console.log(breadthFirstHasPath(graph, 'a', 'e')) // should return true
+console.log(iterativeHasPath(graph, <span class="org-string">'a'</span>, <span class="org-string">'f'</span>)) <span class="org-comment-delimiter">// </span><span class="org-comment">should return true
+</span>console.log(recursiveHasPath(graph, <span class="org-string">'a'</span>, <span class="org-string">'e'</span>)) <span class="org-comment-delimiter">// </span><span class="org-comment">should return true
+</span>console.log(breadthFirstHasPath(graph, <span class="org-string">'a'</span>, <span class="org-string">'e'</span>)) <span class="org-comment-delimiter">// </span><span class="org-comment">should return true
+</span>
+<span class="org-comment-delimiter">// </span><span class="org-comment">Undirected Graph
+</span>
+<span class="org-comment-delimiter">// </span><span class="org-comment">Convert Edge List to Adjacency List (Easier to work with)
+</span><span class="org-comment-delimiter">// </span><span class="org-comment">Generates Graph nodes as keys, with values being neighbors
+</span><span class="org-keyword">const</span> <span class="org-variable-name">buildGraph</span> = (edges) =&gt; {
+  <span class="org-keyword">const</span> <span class="org-variable-name">graph</span> = {}
 
-// Undirected Graph
-
-// Convert Edge List to Adjacency List (Easier to work with)
-// Generates Graph nodes as keys, with values being neighbors
-const buildGraph = (edges) =&gt; {
-  const graph = {}
-
-  for (let edge of edges) {
-    const [a, b] = edge // Pair of nodes, edge = ['i', 'j']
-    if (!(a in graph)) graph[a] = []
-    if (!(b in graph)) graph[b] = []
+  <span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">edge</span> <span class="org-keyword">of</span> edges) {
+    <span class="org-keyword">const</span> [<span class="org-variable-name">a</span>, <span class="org-variable-name">b</span>] = edge <span class="org-comment-delimiter">// </span><span class="org-comment">Pair of nodes, edge = ['i', 'j']
+</span>    <span class="org-keyword">if</span> (!(a <span class="org-keyword">in</span> graph)) graph[a] = []
+    <span class="org-keyword">if</span> (!(b <span class="org-keyword">in</span> graph)) graph[b] = []
     graph[a].push(b)
     graph[b].push(a)
   }
-  return graph
+  <span class="org-keyword">return</span> graph
 }
 
-// Every pair represents a bi-directional connection/edge between two nodes
-const edges = [
-  ["i", "j"],
-  ["k", "i"],
-  ["m", "k"],
-  ["k", "l"],
-  ["o", "n"],
+<span class="org-comment-delimiter">// </span><span class="org-comment">Every pair represents a bi-directional connection/edge between two nodes
+</span><span class="org-keyword">const</span> <span class="org-variable-name">edges</span> = [
+  [<span class="org-string">"i"</span>, <span class="org-string">"j"</span>],
+  [<span class="org-string">"k"</span>, <span class="org-string">"i"</span>],
+  [<span class="org-string">"m"</span>, <span class="org-string">"k"</span>],
+  [<span class="org-string">"k"</span>, <span class="org-string">"l"</span>],
+  [<span class="org-string">"o"</span>, <span class="org-string">"n"</span>],
  ]
 
-const undirectedPath = (edges, nodeA, nodeB) =&gt; {
-  const graph = buildGraph(edges)
-  return hasPath(graph, nodeA, nodeB, new Set()) // We use Set here as its lookup is O(1) compared to an array which is O(n)
-}
+<span class="org-keyword">const</span> <span class="org-variable-name">undirectedPath</span> = (edges, nodeA, nodeB) =&gt; {
+  <span class="org-keyword">const</span> <span class="org-variable-name">graph</span> = buildGraph(edges)
+  <span class="org-keyword">return</span> hasPath(graph, nodeA, nodeB, <span class="org-keyword">new</span> <span class="org-type">Set</span>()) <span class="org-comment-delimiter">// </span><span class="org-comment">We use Set here as its lookup is O(1) compared to an array which is O(n)
+</span>}
 
-const hasPath = (graph, src, destination, visited) =&gt; {
-  if (src === destination) return true
-  if (visited.has(src)) return false
+<span class="org-keyword">const</span> <span class="org-variable-name">hasPath</span> = (graph, src, destination, visited) =&gt; {
+  <span class="org-keyword">if</span> (src === destination) <span class="org-keyword">return</span> <span class="org-constant">true</span>
+  <span class="org-keyword">if</span> (visited.has(src)) <span class="org-keyword">return</span> <span class="org-constant">false</span>
 
   visited.add(src)
 
-  for (let neighbor of graph[src]) {
-    if(hasPath(graph, neighbor, destination, visited)) return true
+  <span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">neighbor</span> <span class="org-keyword">of</span> graph[src]) {
+    <span class="org-keyword">if</span>(hasPath(graph, neighbor, destination, visited)) <span class="org-keyword">return</span> <span class="org-constant">true</span>
   }
-  return false
+  <span class="org-keyword">return</span> <span class="org-constant">false</span>
 }
 
-console.log(undirectedPath(edges, 'j', 'm')) // Should return true
-console.log(undirectedPath(edges, 'j', 's')) // Should return false
+console.log(undirectedPath(edges, <span class="org-string">'j'</span>, <span class="org-string">'m'</span>)) <span class="org-comment-delimiter">// </span><span class="org-comment">Should return true
+</span>console.log(undirectedPath(edges, <span class="org-string">'j'</span>, <span class="org-string">'s'</span>)) <span class="org-comment-delimiter">// </span><span class="org-comment">Should return false
+</span>
+<span class="org-comment-delimiter">// </span><span class="org-comment">Count the amount of "full" node connections (Components)
+</span><span class="org-keyword">const</span> <span class="org-variable-name">connectedComponentCount</span> = (graph) =&gt; {
+  <span class="org-keyword">const</span> <span class="org-variable-name">visited</span> = <span class="org-keyword">new</span> <span class="org-type">Set</span>()
+  <span class="org-keyword">let</span> <span class="org-variable-name">count</span> = 0
 
-// Count the amount of "full" node connections (Components)
-const connectedComponentCount = (graph) =&gt; {
-  const visited = new Set()
-  let count = 0
-
-  for (let node in graph) {
-    if (explore(graph, node, visited)) count +=1
+  <span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">node</span> <span class="org-keyword">in</span> graph) {
+    <span class="org-keyword">if</span> (explore(graph, node, visited)) count +=1
   }
-  return count
+  <span class="org-keyword">return</span> count
 }
 
-const explore = (graph, currNode, visited) =&gt; {
-  if (visited.has(String(currNode))) return false
+<span class="org-keyword">const</span> <span class="org-variable-name">explore</span> = (graph, currNode, visited) =&gt; {
+  <span class="org-keyword">if</span> (visited.has(String(currNode))) <span class="org-keyword">return</span> <span class="org-constant">false</span>
   visited.add(String(currNode))
 
-  for (let neighbor of graph[currNode]) {
+  <span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">neighbor</span> <span class="org-keyword">of</span> graph[currNode]) {
     explore(graph, neighbor, visited)
   }
-  return true
+  <span class="org-keyword">return</span> <span class="org-constant">true</span>
 }
 
-const undirectedGraph = {
+<span class="org-keyword">const</span> <span class="org-variable-name">undirectedGraph</span> = {
   0: [8, 1, 5],
   1: [0],
   5: [0, 8],
@@ -445,141 +445,141 @@ const undirectedGraph = {
 
 console.log(connectedComponentCount(undirectedGraph))
 
-const largestComponent = (graph) =&gt; {
-  const visited = new Set()
-  let largest = 0
-  for (let node in graph) {
-    const size = exploreSize(graph, node, visited)
-    if(size &gt; largest) return largest = size
+<span class="org-keyword">const</span> <span class="org-variable-name">largestComponent</span> = (graph) =&gt; {
+  <span class="org-keyword">const</span> <span class="org-variable-name">visited</span> = <span class="org-keyword">new</span> <span class="org-type">Set</span>()
+  <span class="org-keyword">let</span> <span class="org-variable-name">largest</span> = 0
+  <span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">node</span> <span class="org-keyword">in</span> graph) {
+    <span class="org-keyword">const</span> <span class="org-variable-name">size</span> = exploreSize(graph, node, visited)
+    <span class="org-keyword">if</span>(size &gt; largest) <span class="org-keyword">return</span> largest = size
   }
-  return largest
+  <span class="org-keyword">return</span> largest
 }
 
-const exploreSize = (graph, currNode, visited) =&gt; {
-  if (visited.has(String(currNode))) return 0
+<span class="org-keyword">const</span> <span class="org-variable-name">exploreSize</span> = (graph, currNode, visited) =&gt; {
+  <span class="org-keyword">if</span> (visited.has(String(currNode))) <span class="org-keyword">return</span> 0
   visited.add(String(currNode))
-  let size = 1
-  for (let neighbor of graph[currNode]) {
+  <span class="org-keyword">let</span> <span class="org-variable-name">size</span> = 1
+  <span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">neighbor</span> <span class="org-keyword">of</span> graph[currNode]) {
     size += exploreSize(graph, neighbor, visited)
   }
-  return size
+  <span class="org-keyword">return</span> size
 }
 
 console.log(largestComponent(undirectedGraph))
 
-const edges_1 = [
-  ['w', 'x'],
-  ['x', 'y'],
-  ['z', 'y'],
-  ['z', 'v'],
-  ['w', 'v'],
+<span class="org-keyword">const</span> <span class="org-variable-name">edges_1</span> = [
+  [<span class="org-string">'w'</span>, <span class="org-string">'x'</span>],
+  [<span class="org-string">'x'</span>, <span class="org-string">'y'</span>],
+  [<span class="org-string">'z'</span>, <span class="org-string">'y'</span>],
+  [<span class="org-string">'z'</span>, <span class="org-string">'v'</span>],
+  [<span class="org-string">'w'</span>, <span class="org-string">'v'</span>],
 ]
 
-const shortestPath = (edges, source, destination) =&gt; {
-  const graph = buildGraph(edges)
-  const visited = new Set([source])
-  const queue = [ [source, 0] ]
-  while (queue.length &gt; 0) {
-    const [node, distance] = queue.shift()
+<span class="org-keyword">const</span> <span class="org-variable-name">shortestPath</span> = (edges, source, destination) =&gt; {
+  <span class="org-keyword">const</span> <span class="org-variable-name">graph</span> = buildGraph(edges)
+  <span class="org-keyword">const</span> <span class="org-variable-name">visited</span> = <span class="org-keyword">new</span> <span class="org-type">Set</span>([source])
+  <span class="org-keyword">const</span> <span class="org-variable-name">queue</span> = [ [source, 0] ]
+  <span class="org-keyword">while</span> (queue.length &gt; 0) {
+    <span class="org-keyword">const</span> [<span class="org-variable-name">node</span>, <span class="org-variable-name">distance</span>] = queue.shift()
 
-    if (node === destination) return distance
+    <span class="org-keyword">if</span> (node === destination) <span class="org-keyword">return</span> distance
 
-    for (let neighbor of graph[node]) {
-      if (!visited.has(neighbor)) {
+    <span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">neighbor</span> <span class="org-keyword">of</span> graph[node]) {
+      <span class="org-keyword">if</span> (!visited.has(neighbor)) {
         visited.add(neighbor)
         queue.push([neighbor, distance + 1])
       }
     }
   }
-  return -1
+  <span class="org-keyword">return</span> -1
 }
 
-console.log(shortestPath(edges_1, 'v', 'x'))
+console.log(shortestPath(edges_1, <span class="org-string">'v'</span>, <span class="org-string">'x'</span>))
 
-// Takes in a grid containing Water ("W") and Land ("L") nodes.
-// Function returns the number of islands on the grid.
-// An island is a vertically or horizontally connected region of land.
-const islandCount = (grid) =&gt; {
-  const visited = new Set()
-  let count = 0
-  for (let row = 0; row &lt; grid.length; row++) {
-    for (let column = 0; column &lt; grid[0].length; column++) {
-      if (exploreEarthGraph(grid, row, column, visited) === true) count ++
+<span class="org-comment-delimiter">// </span><span class="org-comment">Takes in a grid containing Water ("W") and Land ("L") nodes.
+</span><span class="org-comment-delimiter">// </span><span class="org-comment">Function returns the number of islands on the grid.
+</span><span class="org-comment-delimiter">// </span><span class="org-comment">An island is a vertically or horizontally connected region of land.
+</span><span class="org-keyword">const</span> <span class="org-variable-name">islandCount</span> = (grid) =&gt; {
+  <span class="org-keyword">const</span> <span class="org-variable-name">visited</span> = <span class="org-keyword">new</span> <span class="org-type">Set</span>()
+  <span class="org-keyword">let</span> <span class="org-variable-name">count</span> = 0
+  <span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">row</span> = 0; row &lt; grid.length; row++) {
+    <span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">column</span> = 0; column &lt; grid[0].length; column++) {
+      <span class="org-keyword">if</span> (exploreEarthGraph(grid, row, column, visited) === <span class="org-constant">true</span>) count ++
     }
   }
-  return count
+  <span class="org-keyword">return</span> count
 }
 
-const exploreEarthGraph = (grid, row, column, visited) =&gt; {
-  const rowInBounds = 0 &lt;= row &amp;&amp; row &lt; grid.length
-  const columnInBounds = 0 &lt;= column &amp;&amp; column &lt; grid[0].length
-  if (!rowInBounds || !columnInBounds) return false
+<span class="org-keyword">const</span> <span class="org-variable-name">exploreEarthGraph</span> = (grid, row, column, visited) =&gt; {
+  <span class="org-keyword">const</span> <span class="org-variable-name">rowInBounds</span> = 0 &lt;= row &amp;&amp; row &lt; grid.length
+  <span class="org-keyword">const</span> <span class="org-variable-name">columnInBounds</span> = 0 &lt;= column &amp;&amp; column &lt; grid[0].length
+  <span class="org-keyword">if</span> (!rowInBounds || !columnInBounds) <span class="org-keyword">return</span> <span class="org-constant">false</span>
 
-  if (grid[row][column] === 'W') return false // Exclude Water blocks
-  const position = `${row},${column}`
-  if (visited.has(position)) return false // Cycle prevention
-
-  // If we reach this point (Passes guards), it's a land block so we need to do a DFS traversal
-  visited.add(position)
+  <span class="org-keyword">if</span> (grid[row][column] === <span class="org-string">'W'</span>) <span class="org-keyword">return</span> <span class="org-constant">false</span> <span class="org-comment-delimiter">// </span><span class="org-comment">Exclude Water blocks
+</span>  <span class="org-keyword">const</span> <span class="org-variable-name">position</span> = <span class="org-string">`${row},${column}`</span>
+  <span class="org-keyword">if</span> (visited.has(position)) <span class="org-keyword">return</span> <span class="org-constant">false</span> <span class="org-comment-delimiter">// </span><span class="org-comment">Cycle prevention
+</span>
+  <span class="org-comment-delimiter">// </span><span class="org-comment">If we reach this point (Passes guards), it's a land block so we need to do a DFS traversal
+</span>  visited.add(position)
   exploreEarthGraph(grid, row - 1, column, visited)
   exploreEarthGraph(grid, row + 1, column, visited)
   exploreEarthGraph(grid, row, column - 1, visited)
   exploreEarthGraph(grid, row, column + 1, visited)
-  return true
+  <span class="org-keyword">return</span> <span class="org-constant">true</span>
 }
 
-const earthGraph = [
-  ['W', 'L', 'W', 'W', 'W', 'W'],
-  ['W', 'L', 'W', 'W', 'W', 'W'],
-  ['W', 'W', 'W', 'W', 'L', 'W'],
-  ['W', 'W', 'W', 'L', 'L', 'W'],
-  ['L', 'W', 'W', 'W', 'L', 'L'],
-  ['L', 'L', 'W', 'W', 'W', 'W']
+<span class="org-keyword">const</span> <span class="org-variable-name">earthGraph</span> = [
+  [<span class="org-string">'W'</span>, <span class="org-string">'L'</span>, <span class="org-string">'W'</span>, <span class="org-string">'W'</span>, <span class="org-string">'W'</span>, <span class="org-string">'W'</span>],
+  [<span class="org-string">'W'</span>, <span class="org-string">'L'</span>, <span class="org-string">'W'</span>, <span class="org-string">'W'</span>, <span class="org-string">'W'</span>, <span class="org-string">'W'</span>],
+  [<span class="org-string">'W'</span>, <span class="org-string">'W'</span>, <span class="org-string">'W'</span>, <span class="org-string">'W'</span>, <span class="org-string">'L'</span>, <span class="org-string">'W'</span>],
+  [<span class="org-string">'W'</span>, <span class="org-string">'W'</span>, <span class="org-string">'W'</span>, <span class="org-string">'L'</span>, <span class="org-string">'L'</span>, <span class="org-string">'W'</span>],
+  [<span class="org-string">'L'</span>, <span class="org-string">'W'</span>, <span class="org-string">'W'</span>, <span class="org-string">'W'</span>, <span class="org-string">'L'</span>, <span class="org-string">'L'</span>],
+  [<span class="org-string">'L'</span>, <span class="org-string">'L'</span>, <span class="org-string">'W'</span>, <span class="org-string">'W'</span>, <span class="org-string">'W'</span>, <span class="org-string">'W'</span>]
 ]
 
-console.log(islandCount(earthGraph)) // Should return 3
+console.log(islandCount(earthGraph)) <span class="org-comment-delimiter">// </span><span class="org-comment">Should return 3
+</span>
+<span class="org-comment-delimiter">// </span><span class="org-comment">Returns the smallest island count
+</span><span class="org-keyword">const</span> <span class="org-variable-name">minIsland</span> = (grid) =&gt; {
+  <span class="org-keyword">const</span> <span class="org-variable-name">visited</span> = <span class="org-keyword">new</span> <span class="org-type">Set</span>()
+  <span class="org-keyword">let</span> <span class="org-variable-name">min</span> = <span class="org-constant">Infinity</span>
 
-// Returns the smallest island count
-const minIsland = (grid) =&gt; {
-  const visited = new Set()
-  let min = Infinity
-
-  for (let row = 0; row &lt; grid.length; row++) {
-    for (let column = 0; column &lt; grid[0].length; column++) {
-      const size = exploreEarthGraphForMin(grid, row, column, visited)
-      if (size &gt; 0 &amp;&amp; size &lt; min) min = size
+  <span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">row</span> = 0; row &lt; grid.length; row++) {
+    <span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">column</span> = 0; column &lt; grid[0].length; column++) {
+      <span class="org-keyword">const</span> <span class="org-variable-name">size</span> = exploreEarthGraphForMin(grid, row, column, visited)
+      <span class="org-keyword">if</span> (size &gt; 0 &amp;&amp; size &lt; min) min = size
     }
   }
 
-  return min
+  <span class="org-keyword">return</span> min
 }
 
-const exploreEarthGraphForMin = (grid, row, column, visited) =&gt; {
-  const rowInBounds = 0 &lt;= row &amp;&amp; row &lt; grid.length
-  const columnInBounds = 0 &lt;= column &amp;&amp; column &lt; grid[0].length
-  if (!rowInBounds || !columnInBounds) return 0
+<span class="org-keyword">const</span> <span class="org-variable-name">exploreEarthGraphForMin</span> = (grid, row, column, visited) =&gt; {
+  <span class="org-keyword">const</span> <span class="org-variable-name">rowInBounds</span> = 0 &lt;= row &amp;&amp; row &lt; grid.length
+  <span class="org-keyword">const</span> <span class="org-variable-name">columnInBounds</span> = 0 &lt;= column &amp;&amp; column &lt; grid[0].length
+  <span class="org-keyword">if</span> (!rowInBounds || !columnInBounds) <span class="org-keyword">return</span> 0
 
-  if (grid[row][column] === 'W') return 0 // Exclude Water blocks
-  const position = `${row},${column}`
-  if (visited.has(position)) return 0 // Cycle prevention
-  visited.add(position)
+  <span class="org-keyword">if</span> (grid[row][column] === <span class="org-string">'W'</span>) <span class="org-keyword">return</span> 0 <span class="org-comment-delimiter">// </span><span class="org-comment">Exclude Water blocks
+</span>  <span class="org-keyword">const</span> <span class="org-variable-name">position</span> = <span class="org-string">`${row},${column}`</span>
+  <span class="org-keyword">if</span> (visited.has(position)) <span class="org-keyword">return</span> 0 <span class="org-comment-delimiter">// </span><span class="org-comment">Cycle prevention
+</span>  visited.add(position)
 
-  let size = 1 // 1 because we include current block (Part of island)
-  size += exploreEarthGraph(grid, row - 1, column, visited)
+  <span class="org-keyword">let</span> <span class="org-variable-name">size</span> = 1 <span class="org-comment-delimiter">// </span><span class="org-comment">1 because we include current block (Part of island)
+</span>  size += exploreEarthGraph(grid, row - 1, column, visited)
   size += exploreEarthGraph(grid, row + 1, column, visited)
   size += exploreEarthGraph(grid, row, column - 1, visited)
   size += exploreEarthGraph(grid, row, column + 1, visited)
-  return size
+  <span class="org-keyword">return</span> size
 }
 
-console.log(minIsland(earthGraph)) // Should return 2
+console.log(minIsland(earthGraph)) <span class="org-comment-delimiter">// </span><span class="org-comment">Should return 2</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org3446858" class="outline-3">
-<h3 id="org3446858"><span class="section-number-3">1.4.</span> Acyclic</h3>
+<div id="outline-container-org9a87107" class="outline-3">
+<h3 id="org9a87107"><span class="section-number-3">1.4.</span> Acyclic</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 No cycles
@@ -587,8 +587,8 @@ No cycles
 </div>
 </div>
 
-<div id="outline-container-org7d9af91" class="outline-3">
-<h3 id="org7d9af91"><span class="section-number-3">1.5.</span> Cyclic</h3>
+<div id="outline-container-orge66f70f" class="outline-3">
+<h3 id="orge66f70f"><span class="section-number-3">1.5.</span> Cyclic</h3>
 <div class="outline-text-3" id="text-1-5">
 <p>
 Can travel back to a previous node
@@ -596,8 +596,8 @@ Can travel back to a previous node
 </div>
 </div>
 
-<div id="outline-container-orga0a1406" class="outline-3">
-<h3 id="orga0a1406"><span class="section-number-3">1.6.</span> Complexity</h3>
+<div id="outline-container-orgf6c01d1" class="outline-3">
+<h3 id="orgf6c01d1"><span class="section-number-3">1.6.</span> Complexity</h3>
 <div class="outline-text-3" id="text-1-6">
 <p>
 Traversal:

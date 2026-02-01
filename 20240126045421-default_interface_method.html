@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Default Interface method</title>
@@ -201,18 +201,18 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org72f9aec">1. Default Interface method</a>
+<li><a href="#org7dcddeb">1. Default Interface method</a>
 <ul>
-<li><a href="#org49c863a">1.1. Example</a></li>
-<li><a href="#org32e4624">1.2. Rules</a></li>
+<li><a href="#org49d65ef">1.1. Example</a></li>
+<li><a href="#orgb658ecf">1.2. Rules</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org72f9aec" class="outline-2">
-<h2 id="org72f9aec"><span class="section-number-2">1.</span> Default Interface method</h2>
+<div id="outline-container-org7dcddeb" class="outline-2">
+<h2 id="org7dcddeb"><span class="section-number-2">1.</span> Default Interface method</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 A <code>default method</code> is a method defined in an interface with the <code>default</code> keyword and <b>includes</b> a <code>method body</code>.
@@ -239,19 +239,19 @@ This is where the name default method comes from!
 </p>
 </div>
 
-<div id="outline-container-org49c863a" class="outline-3">
-<h3 id="org49c863a"><span class="section-number-3">1.1.</span> Example</h3>
+<div id="outline-container-org49d65ef" class="outline-3">
+<h3 id="org49d65ef"><span class="section-number-3">1.1.</span> Example</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 The following is an example of a <code>default method</code> defined in an <code>interface</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">public interface IsColdBlooded {
-    boolean hasScales();
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">interface</span> <span class="org-type">IsColdBlooded</span> {
+    <span class="org-type">boolean</span> <span class="org-function-name">hasScales</span>();
 
-    default double getTemperature() {
-        return 10.0;
+    <span class="org-keyword">default</span> <span class="org-type">double</span> <span class="org-function-name">getTemperature</span>() {
+        <span class="org-keyword">return</span> 10.0;
     }
 }
 </pre>
@@ -268,13 +268,13 @@ It may rely on the <code>default</code> implementation of <code>getTemperature()
 
 
 <div class="org-src-container">
-<pre class="src src-java">public class Snake implements IsColdBlooded {
-    public boolean hasScales() { // Required override
-        return true;
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Snake</span> <span class="org-keyword">implements</span> <span class="org-type">IsColdBlooded</span> {
+    <span class="org-keyword">public</span> <span class="org-type">boolean</span> <span class="org-function-name">hasScales</span>() { <span class="org-comment-delimiter">// </span><span class="org-comment">Required override
+</span>        <span class="org-keyword">return</span> <span class="org-constant">true</span>;
     }
 
-    public double getTemperature() { // Optional override
-        return 12;
+    <span class="org-keyword">public</span> <span class="org-type">double</span> <span class="org-function-name">getTemperature</span>() { <span class="org-comment-delimiter">// </span><span class="org-comment">Optional override
+</span>        <span class="org-keyword">return</span> 12;
     }
 }
 </pre>
@@ -282,8 +282,8 @@ It may rely on the <code>default</code> implementation of <code>getTemperature()
 </div>
 </div>
 
-<div id="outline-container-org32e4624" class="outline-3">
-<h3 id="org32e4624"><span class="section-number-3">1.2.</span> Rules</h3>
+<div id="outline-container-orgb658ecf" class="outline-3">
+<h3 id="orgb658ecf"><span class="section-number-3">1.2.</span> Rules</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 For the exam, you should be familiar with various rules for declaring default methods.

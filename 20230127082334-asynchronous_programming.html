@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Asynchronous Programming</title>
@@ -201,72 +201,72 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgaa657e6">1. <code>CompletableFuture</code></a>
+<li><a href="#orgbbe7e12">1. <code>CompletableFuture</code></a>
 <ul>
-<li><a href="#orgbe2f334">1.1. Blocking Example</a></li>
-<li><a href="#org9c1c542">1.2. Non-blocking Example</a></li>
+<li><a href="#orgeee4079">1.1. Blocking Example</a></li>
+<li><a href="#orgae6bb4a">1.2. Non-blocking Example</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgaa657e6" class="outline-2">
-<h2 id="orgaa657e6"><span class="section-number-2">1.</span> <code>CompletableFuture</code></h2>
+<div id="outline-container-orgbbe7e12" class="outline-2">
+<h2 id="orgbbe7e12"><span class="section-number-2">1.</span> <code>CompletableFuture</code></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Perform possible asynchronous (non-blocking) computation and trigger dependant computations which could also be asynchronous.
 </p>
 </div>
 
-<div id="outline-container-orgbe2f334" class="outline-3">
-<h3 id="orgbe2f334"><span class="section-number-3">1.1.</span> Blocking Example</h3>
+<div id="outline-container-orgeee4079" class="outline-3">
+<h3 id="orgeee4079"><span class="section-number-3">1.1.</span> Blocking Example</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
-<pre class="src src-java">public class MailService {
-    public void send() {
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">MailService</span> {
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">send</span>() {
        LongTask.simulate();
-       System.out.println("Mail was sent");
+       System.out.println(<span class="org-string">"Mail was sent"</span>);
     }
 
 }
 
-public static void main(String[] args) {
-        // CompletableFuturesDemo.show();
-        var service = new MailService();
-        // Blocking
-        service.send(); // Takes up Main thread
-}
+<span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
+        <span class="org-comment-delimiter">// </span><span class="org-comment">CompletableFuturesDemo.show();
+</span>        <span class="org-type">var</span> <span class="org-variable-name">service</span> = <span class="org-keyword">new</span> <span class="org-type">MailService</span>();
+        <span class="org-comment-delimiter">// </span><span class="org-comment">Blocking
+</span>        service.send(); <span class="org-comment-delimiter">// </span><span class="org-comment">Takes up Main thread
+</span>}
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org9c1c542" class="outline-3">
-<h3 id="org9c1c542"><span class="section-number-3">1.2.</span> Non-blocking Example</h3>
+<div id="outline-container-orgae6bb4a" class="outline-3">
+<h3 id="orgae6bb4a"><span class="section-number-3">1.2.</span> Non-blocking Example</h3>
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
-<pre class="src src-java">public class MailService {
-    public void send() {
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">MailService</span> {
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">send</span>() {
        LongTask.simulate();
-       System.out.println("Mail was sent");
+       System.out.println(<span class="org-string">"Mail was sent"</span>);
     }
 
-    // Makes it asynchronous
-    public CompletableFuture&lt;Void&gt; sendAsync(){
-       return CompletableFuture.runAsync(() -&gt; send());
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Makes it asynchronous
+</span>    <span class="org-keyword">public</span> <span class="org-type">CompletableFuture</span>&lt;<span class="org-type">Void</span>&gt; <span class="org-function-name">sendAsync</span>(){
+       <span class="org-keyword">return</span> CompletableFuture.runAsync(() -&gt; send());
     }
 }
 
-public static void main(String[] args) {
-    // CompletableFuturesDemo.show();
-    var service = new MailService();
-    // Ran in separate thread
-    service.sendAsync();
-    System.out.println("Now!");
-    try {
+<span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">CompletableFuturesDemo.show();
+</span>    <span class="org-type">var</span> <span class="org-variable-name">service</span> = <span class="org-keyword">new</span> <span class="org-type">MailService</span>();
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Ran in separate thread
+</span>    service.sendAsync();
+    System.out.println(<span class="org-string">"Now!"</span>);
+    <span class="org-keyword">try</span> {
         Thread.sleep(5000);
-    } catch (InterruptedException e) {
+    } <span class="org-keyword">catch</span> (InterruptedException e) {
         e.printStackTrace();
     }
 }

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Flagging Uninitialized Variables</title>
@@ -202,22 +202,22 @@ The compiler will report an <b>error</b> only if an attempt is made to use an <c
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">public class TooSmartClass {
-  public static void main(String[] args) {
-    double weight = 10.0, thePrice;                    // (1) Local variables
-
-    if (weight &lt;  10.0) thePrice = 20.50;
-    if (weight &gt;  50.0) thePrice = 399.00;
-    if (weight &gt;= 10.0) thePrice = weight * 10.0;      // (2) Always executed
-    System.out.println("The price is: " + thePrice);   // (3) Compile-time error!
-  }
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">TooSmartClass</span> {
+  <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
+    <span class="org-type">double</span> <span class="org-variable-name">weight</span> = 10.0, <span class="org-variable-name">thePrice</span>;                    <span class="org-comment-delimiter">// </span><span class="org-comment">(1) Local variables
+</span>
+    <span class="org-keyword">if</span> (weight &lt;  10.0) thePrice = 20.50;
+    <span class="org-keyword">if</span> (weight &gt;  50.0) thePrice = 399.00;
+    <span class="org-keyword">if</span> (weight &gt;= 10.0) thePrice = weight * 10.0;      <span class="org-comment-delimiter">// </span><span class="org-comment">(2) Always executed
+</span>    System.out.println(<span class="org-string">"The price is: "</span> + thePrice);   <span class="org-comment-delimiter">// </span><span class="org-comment">(3) Compile-time error!
+</span>  }
 }
 
-public class VerySmartClass {
-    public static void main(String[] args) {
-        String importantMessage; // Local reference variable
-        System.out.println("The message length is: " + importantMessage.length()); // Compile-time error!
-    }
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">VerySmartClass</span> {
+    <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
+        <span class="org-type">String</span> <span class="org-variable-name">importantMessage</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">Local reference variable
+</span>        System.out.println(<span class="org-string">"The message length is: "</span> + importantMessage.length()); <span class="org-comment-delimiter">// </span><span class="org-comment">Compile-time error!
+</span>    }
 }
 </pre>
 </div>

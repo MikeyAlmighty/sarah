@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Predicate</title>
@@ -212,14 +212,14 @@ Primitives:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">public static void show() {
-    Predicate&lt;String&gt; isLongerThan5 = str -&gt; str.length() &gt; 5;
-    var result = isLongerThan5.test("Sky");
-    System.out.println(result); // false
-
-    var result1 = isLongerThan5.test("DeadPool");
-    System.out.println(result1); // true
-}
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+    <span class="org-type">Predicate</span>&lt;<span class="org-type">String</span>&gt; <span class="org-variable-name">isLongerThan5</span> = str -&gt; str.length() &gt; 5;
+    <span class="org-type">var</span> <span class="org-variable-name">result</span> = isLongerThan5.test(<span class="org-string">"Sky"</span>);
+    System.out.println(result); <span class="org-comment-delimiter">// </span><span class="org-comment">false
+</span>
+    <span class="org-type">var</span> <span class="org-variable-name">result1</span> = isLongerThan5.test(<span class="org-string">"DeadPool"</span>);
+    System.out.println(result1); <span class="org-comment-delimiter">// </span><span class="org-comment">true
+</span>}
 </pre>
 </div>
 
@@ -229,15 +229,15 @@ Combining Predicates:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">public static void show() {
-    Predicate&lt;String&gt; hasLeftBrace = str -&gt; str.startsWith("{");
-    Predicate&lt;String&gt; hasRightBrace = str -&gt; str.endsWith("}");
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+    <span class="org-type">Predicate</span>&lt;<span class="org-type">String</span>&gt; <span class="org-variable-name">hasLeftBrace</span> = str -&gt; str.startsWith(<span class="org-string">"{"</span>);
+    <span class="org-type">Predicate</span>&lt;<span class="org-type">String</span>&gt; <span class="org-variable-name">hasRightBrace</span> = str -&gt; str.endsWith(<span class="org-string">"}"</span>);
 
-    Predicate&lt;String&gt; hasLeftAndRightBrace = hasLeftBrace.and(hasRightBrace);
+    <span class="org-type">Predicate</span>&lt;<span class="org-type">String</span>&gt; <span class="org-variable-name">hasLeftAndRightBrace</span> = hasLeftBrace.and(hasRightBrace);
 
-    var result = hasLeftAndRightBrace.test("{DeadPool}");
-    System.out.println(result); // true
-}
+    <span class="org-type">var</span> <span class="org-variable-name">result</span> = hasLeftAndRightBrace.test(<span class="org-string">"{DeadPool}"</span>);
+    System.out.println(result); <span class="org-comment-delimiter">// </span><span class="org-comment">true
+</span>}
 </pre>
 </div>
 

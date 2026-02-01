@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -228,12 +228,12 @@ referencing the same address in memory.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">// Where TextBox is some arbitrary Class
-var box1 = new TextBox();
-var box2 = box1;
-System.out.println(box1.hashCode()); // 112810359
-System.out.println(box2.hashCode()); // 112810359
-System.out.println(box1.equals(box2)); // true
+<pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">Where TextBox is some arbitrary Class
+</span><span class="org-type">var</span> <span class="org-variable-name">box1</span> = <span class="org-keyword">new</span> <span class="org-type">TextBox</span>();
+<span class="org-type">var</span> <span class="org-variable-name">box2</span> = box1;
+System.out.println(box1.hashCode()); <span class="org-comment-delimiter">// </span><span class="org-comment">112810359
+</span>System.out.println(box2.hashCode()); <span class="org-comment-delimiter">// </span><span class="org-comment">112810359
+</span>System.out.println(box1.equals(box2)); <span class="org-comment-delimiter">// </span><span class="org-comment">true</span>
 </pre>
 </div>
 
@@ -243,12 +243,12 @@ addresses.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">// Where TextBox is some arbitrary Class
-var box1 = new TextBox();
-var box2 = new TextBox();
-System.out.println(box1.hashCode()); // 112810359
-System.out.println(box2.hashCode()); // 243083622
-System.out.println(box1.equals(box2)); // false
+<pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">Where TextBox is some arbitrary Class
+</span><span class="org-type">var</span> <span class="org-variable-name">box1</span> = <span class="org-keyword">new</span> <span class="org-type">TextBox</span>();
+<span class="org-type">var</span> <span class="org-variable-name">box2</span> = <span class="org-keyword">new</span> <span class="org-type">TextBox</span>();
+System.out.println(box1.hashCode()); <span class="org-comment-delimiter">// </span><span class="org-comment">112810359
+</span>System.out.println(box2.hashCode()); <span class="org-comment-delimiter">// </span><span class="org-comment">243083622
+</span>System.out.println(box1.equals(box2)); <span class="org-comment-delimiter">// </span><span class="org-comment">false</span>
 </pre>
 </div>
 
@@ -262,10 +262,10 @@ i.e. <code>com.demo.TextBox@6b95977</code>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">System.out.println(box1.hashCode()); // 112810359
-System.out.println(box1.toString()); // com.demo.TextBox@6b95977
-int parsedHash = Integer.parseInt("6b95977", 16);
-System.out.println(parsedHash); // 112810359
+<pre class="src src-java">System.out.println(box1.hashCode()); <span class="org-comment-delimiter">// </span><span class="org-comment">112810359
+</span>System.out.println(box1.toString()); <span class="org-comment-delimiter">// </span><span class="org-comment">com.demo.TextBox@6b95977
+</span><span class="org-type">int</span> <span class="org-variable-name">parsedHash</span> = Integer.parseInt(<span class="org-string">"6b95977"</span>, 16);
+System.out.println(parsedHash); <span class="org-comment-delimiter">// </span><span class="org-comment">112810359</span>
 </pre>
 </div>
 </div>
@@ -278,42 +278,42 @@ System.out.println(parsedHash); // 112810359
 <h4 id="point.java"><span class="section-number-4">1.1.1.</span> Point.java</h4>
 <div class="outline-text-4" id="text-point.java">
 <div class="org-src-container">
-<pre class="src src-java">package com.demo;
+<pre class="src src-java"><span class="org-keyword">package</span> com.<span class="org-constant">demo</span>;
 
-public class Point {
-    private int X;
-    private int Y;
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Point</span> {
+    <span class="org-keyword">private</span> <span class="org-type">int</span> <span class="org-variable-name">X</span>;
+    <span class="org-keyword">private</span> <span class="org-type">int</span> <span class="org-variable-name">Y</span>;
 
-    public Point(int x, int y) {
+    <span class="org-keyword">public</span> Point(<span class="org-type">int</span> <span class="org-variable-name">x</span>, <span class="org-type">int</span> <span class="org-variable-name">y</span>) {
         X = x;
         Y = y;
     }
 
-    public int getX() {
-        return X;
+    <span class="org-keyword">public</span> <span class="org-type">int</span> <span class="org-function-name">getX</span>() {
+        <span class="org-keyword">return</span> X;
     }
-    public void setX(int x) {
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">setX</span>(<span class="org-type">int</span> <span class="org-variable-name">x</span>) {
         X = x;
     }
-    public int getY() {
-        return Y;
+    <span class="org-keyword">public</span> <span class="org-type">int</span> <span class="org-function-name">getY</span>() {
+        <span class="org-keyword">return</span> Y;
     }
-    public void setY(int y) {
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">setY</span>(<span class="org-type">int</span> <span class="org-variable-name">y</span>) {
         Y = y;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if(this == obj) return true; // Check reference equality
-        if (!(obj instanceof Point))
-          return false;
-        var other = (Point)obj;
-        return other.X == X &amp;&amp; other.Y == Y;
+    <span class="org-c-annotation">@Override</span>
+    <span class="org-keyword">public</span> <span class="org-type">boolean</span> <span class="org-function-name">equals</span>(<span class="org-type">Object</span> <span class="org-variable-name">obj</span>) {
+        <span class="org-keyword">if</span>(<span class="org-keyword">this</span> == obj) <span class="org-keyword">return</span> <span class="org-constant">true</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">Check reference equality
+</span>        <span class="org-keyword">if</span> (<span class="org-negation-char">!</span>(obj <span class="org-keyword">instanceof</span> Point))
+          <span class="org-keyword">return</span> <span class="org-constant">false</span>;
+        <span class="org-type">var</span> <span class="org-variable-name">other</span> = (<span class="org-type">Point</span>)obj;
+        <span class="org-keyword">return</span> <span class="org-constant">other</span>.X == X &amp;&amp; <span class="org-constant">other</span>.Y == Y;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(X, Y);
+    <span class="org-c-annotation">@Override</span>
+    <span class="org-keyword">public</span> <span class="org-type">int</span> <span class="org-function-name">hashCode</span>() {
+        <span class="org-keyword">return</span> Objects.hash(X, Y);
     }
 }
 </pre>
@@ -326,12 +326,12 @@ public class Point {
 <h3 id="main.java"><span class="section-number-3">1.2.</span> Main.java</h3>
 <div class="outline-text-3" id="text-main.java">
 <div class="org-src-container">
-<pre class="src src-java">package com.demo;
+<pre class="src src-java"><span class="org-keyword">package</span> com.<span class="org-constant">demo</span>;
 
-public class Main {
-    public static void main(String[] args) {
-        var point1 = new Point(1, 2);
-        var point2 = new Point(1, 2);
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Main</span> {
+    <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
+        <span class="org-type">var</span> <span class="org-variable-name">point1</span> = <span class="org-keyword">new</span> <span class="org-type">Point</span>(1, 2);
+        <span class="org-type">var</span> <span class="org-variable-name">point2</span> = <span class="org-keyword">new</span> <span class="org-type">Point</span>(1, 2);
         System.out.println(point1.equals(point2));
     }
 }

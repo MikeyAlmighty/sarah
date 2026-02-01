@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>String.substring</title>
@@ -201,12 +201,12 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orga9ab67e">1. .substring()</a>
+<li><a href="#org89cd730">1. .substring()</a>
 <ul>
 <li>
 <ul>
-<li><a href="#orgffead2f">1.0.1. <span class="underline">Exam Trick</span></a></li>
-<li><a href="#org05ba9fa">1.0.2. Signature</a></li>
+<li><a href="#org621f256">1.0.1. <span class="underline">Exam Trick</span></a></li>
+<li><a href="#org4a32020">1.0.2. Signature</a></li>
 </ul>
 </li>
 </ul>
@@ -215,8 +215,8 @@
 </div>
 </div>
 
-<div id="outline-container-orga9ab67e" class="outline-2">
-<h2 id="orga9ab67e"><span class="section-number-2">1.</span> .substring()</h2>
+<div id="outline-container-org89cd730" class="outline-2">
+<h2 id="org89cd730"><span class="section-number-2">1.</span> .substring()</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 The method <code>substring()</code> also looks for <code>characters in a string</code>.
@@ -227,8 +227,8 @@ It <b>returns</b> parts of the <b>string</b>.
 </p>
 </div>
 
-<div id="outline-container-orgffead2f" class="outline-4">
-<h4 id="orgffead2f"><span class="section-number-4">1.0.1.</span> <span class="underline">Exam Trick</span></h4>
+<div id="outline-container-org621f256" class="outline-4">
+<h4 id="org621f256"><span class="section-number-4">1.0.1.</span> <span class="underline">Exam Trick</span></h4>
 <div class="outline-text-4" id="text-1-0-1">
 <p>
 It helps to think of indexes a bit differently for the <code>substring</code> methods.
@@ -236,7 +236,7 @@ Pretend the indexes are right <b>before</b> the character they would point to:
 </p>
 
 
-<div id="org88e9032" class="figure">
+<div id="org7956c83" class="figure">
 <p><img src="./assets/substring_indexing.png" alt="substring_indexing.png" />
 </p>
 </div>
@@ -261,12 +261,12 @@ This will help you remember that <code>endIndex</code> doesnâ€™t give an <b>outÂ
 </div>
 </div>
 
-<div id="outline-container-org05ba9fa" class="outline-4">
-<h4 id="org05ba9fa"><span class="section-number-4">1.0.2.</span> Signature</h4>
+<div id="outline-container-org4a32020" class="outline-4">
+<h4 id="org4a32020"><span class="section-number-4">1.0.2.</span> Signature</h4>
 <div class="outline-text-4" id="text-1-0-2">
 <div class="org-src-container">
-<pre class="src src-java">public String substring(int beginIndex)
-public String substring(int beginIndex, int endIndex)
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-type">String</span> <span class="org-function-name">substring</span>(<span class="org-type">int</span> <span class="org-variable-name">beginIndex</span>)
+<span class="org-keyword">public</span> String substring(<span class="org-type">int</span> <span class="org-variable-name">beginIndex</span>, <span class="org-type">int</span> <span class="org-variable-name">endIndex</span>)
 </pre>
 </div>
 
@@ -276,7 +276,7 @@ There is an <code>optional</code> second parameter, which is the <b>end index</b
 </div>
 
 <ol class="org-ol">
-<li><a id="orgc61e5ef"></a><span class="underline">Exam Trick</span><br />
+<li><a id="orgd6aa44a"></a><span class="underline">Exam Trick</span><br />
 <div class="outline-text-6" id="text-1-0-2-0-1">
 <p>
 Notice we said <b>stop at</b> rather than <b>include</b>.
@@ -289,18 +289,18 @@ This means the <code>endIndex</code> parameter is allowed to be <b>one past the 
 </li>
 </ol>
 
-<li><a id="org6dd754b"></a>Example<br />
+<li><a id="org3c12b0b"></a>Example<br />
 <div class="outline-text-5" id="text-1-0-2-1">
 <div class="org-src-container">
-<pre class="src src-java">var name = "animals";
+<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">name</span> = <span class="org-string">"animals"</span>;
 
-System.out.println(name.substring(3)); // mals
-System.out.println(name.substring(name.indexOf('m'))); // mals
-System.out.println(name.substring(3, 4)); // m
-System.out.println(name.substring(3, 7)); // mals
-System.out.println(name.substring(3, 3)); // empty string
-System.out.println(name.substring(3, 2)); // exception
-System.out.println(name.substring(3, 8)); // exception
+System.out.println(name.substring(3)); <span class="org-comment-delimiter">// </span><span class="org-comment">mals
+</span>System.out.println(name.substring(name.indexOf(<span class="org-string">'m'</span>))); <span class="org-comment-delimiter">// </span><span class="org-comment">mals
+</span>System.out.println(name.substring(3, 4)); <span class="org-comment-delimiter">// </span><span class="org-comment">m
+</span>System.out.println(name.substring(3, 7)); <span class="org-comment-delimiter">// </span><span class="org-comment">mals
+</span>System.out.println(name.substring(3, 3)); <span class="org-comment-delimiter">// </span><span class="org-comment">empty string
+</span>System.out.println(name.substring(3, 2)); <span class="org-comment-delimiter">// </span><span class="org-comment">exception
+</span>System.out.println(name.substring(3, 8)); <span class="org-comment-delimiter">// </span><span class="org-comment">exception</span>
 </pre>
 </div>
 </div>

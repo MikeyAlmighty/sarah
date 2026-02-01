@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Queues</title>
@@ -201,25 +201,25 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org27c6496">1. Queues</a>
+<li><a href="#org9699468">1. Queues</a>
 <ul>
-<li><a href="#org627f86e">1.1. Operations</a></li>
+<li><a href="#org90794d7">1.1. Operations</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org27c6496" class="outline-2">
-<h2 id="org27c6496"><span class="section-number-2">1.</span> Queues</h2>
+<div id="outline-container-org9699468" class="outline-2">
+<h2 id="org9699468"><span class="section-number-2">1.</span> Queues</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Similar to <a href="20230711185529-stacks.html#ID-ffab4755-0278-47ae-b374-ceb49868e350">Stacks</a> except that a <b>Queue</b> uses a <b>FIFO (First-in First-out)</b> ordering.
 </p>
 </div>
 
-<div id="outline-container-org627f86e" class="outline-3">
-<h3 id="org627f86e"><span class="section-number-3">1.1.</span> Operations</h3>
+<div id="outline-container-org90794d7" class="outline-3">
+<h3 id="org90794d7"><span class="section-number-3">1.1.</span> Operations</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Following operations are available on a queue:
@@ -233,57 +233,57 @@ Following operations are available on a queue:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js">class Queue {
+<pre class="src src-js"><span class="org-keyword">class</span> Queue {
   constructor(){
-    this.storage = []
+    <span class="org-constant">this</span>.storage = []
   }
 
-  enqueue = (element) =&gt; this.storage.push(element)
+  enqueue = (element) =&gt; <span class="org-constant">this</span>.storage.push(element)
 
-  dequeue = () =&gt; this.storage.shift() // this is an O(n) time complexity, use a linkedList to get O(1)
+  dequeue = () =&gt; <span class="org-constant">this</span>.storage.shift() <span class="org-comment-delimiter">// </span><span class="org-comment">this is an O(n) time complexity, use a linkedList to get O(1)
+</span>
+  peek = () =&gt; <span class="org-constant">this</span>.storage.length &gt; 0 ? <span class="org-constant">this</span>.storage[0] : <span class="org-constant">null</span>
 
-  peek = () =&gt; this.storage.length &gt; 0 ? this.storage[0] : null
+  size = () =&gt; <span class="org-constant">this</span>.storage.length
 
-  size = () =&gt; this.storage.length
-
-  isEmpty = () =&gt; this.storage.length === 0 ? true : false
+  isEmpty = () =&gt; <span class="org-constant">this</span>.storage.length === 0 ? <span class="org-constant">true</span> : <span class="org-constant">false</span>
 }
 
-const videoGameQueue = new Queue()
+<span class="org-keyword">const</span> <span class="org-variable-name">videoGameQueue</span> = <span class="org-keyword">new</span> <span class="org-type">Queue</span>()
 
-videoGameQueue.enqueue('DeadPool')
-videoGameQueue.enqueue('The Witcher 3')
-videoGameQueue.enqueue('Doom')
+videoGameQueue.enqueue(<span class="org-string">'DeadPool'</span>)
+videoGameQueue.enqueue(<span class="org-string">'The Witcher 3'</span>)
+videoGameQueue.enqueue(<span class="org-string">'Doom'</span>)
 console.log(videoGameQueue.storage)
 
-console.log(videoGameQueue.size()) // Should return 3
-videoGameQueue.dequeue() // Should remove DeadPool
-console.log(videoGameQueue.size()) // Should return 2
-
-class AlternativeQueue {
+console.log(videoGameQueue.size()) <span class="org-comment-delimiter">// </span><span class="org-comment">Should return 3
+</span>videoGameQueue.dequeue() <span class="org-comment-delimiter">// </span><span class="org-comment">Should remove DeadPool
+</span>console.log(videoGameQueue.size()) <span class="org-comment-delimiter">// </span><span class="org-comment">Should return 2
+</span>
+<span class="org-keyword">class</span> AlternativeQueue {
   constructor(){
-    this.storage = {}
-    this.head = 0
-    this.tail = 0
+    <span class="org-constant">this</span>.storage = {}
+    <span class="org-constant">this</span>.head = 0
+    <span class="org-constant">this</span>.tail = 0
   }
 
   enqueue = (element) =&gt; {
-    this.storage[this.tail] = element
-    this.tail ++
+    <span class="org-constant">this</span>.storage[<span class="org-constant">this</span>.tail] = element
+    <span class="org-constant">this</span>.tail ++
   }
 
   dequeue = () =&gt; {
-    let removed = this.storage[this.head]
-    delete this.storage[this.head]
-    this.head ++
-    return removed
+    <span class="org-keyword">let</span> <span class="org-variable-name">removed</span> = <span class="org-constant">this</span>.storage[<span class="org-constant">this</span>.head]
+    <span class="org-keyword">delete</span> <span class="org-constant">this</span>.storage[<span class="org-constant">this</span>.head]
+    <span class="org-constant">this</span>.head ++
+    <span class="org-keyword">return</span> removed
   }
 }
 
-const movieQueue = new AlternativeQueue()
-movieQueue.enqueue('DeadPool')
-movieQueue.enqueue('The Witcher')
-movieQueue.enqueue('Doom')
+<span class="org-keyword">const</span> <span class="org-variable-name">movieQueue</span> = <span class="org-keyword">new</span> <span class="org-type">AlternativeQueue</span>()
+movieQueue.enqueue(<span class="org-string">'DeadPool'</span>)
+movieQueue.enqueue(<span class="org-string">'The Witcher'</span>)
+movieQueue.enqueue(<span class="org-string">'Doom'</span>)
 
 console.log(movieQueue.storage)
 

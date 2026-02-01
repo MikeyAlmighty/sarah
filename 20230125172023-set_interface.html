@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Set Interface</title>
@@ -210,29 +210,29 @@ We can easily get rid of duplicates by passing in our <code>Collection</code> in
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">public static void show() {
-  Collection&lt;String&gt; collection = new ArrayList&lt;&gt;();
-  Collections.addAll(collection, "Sky", "Is", "Blue", "Blue");
-  Set&lt;String&gt; set = new HashSet&lt;&gt;(collection);
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+  <span class="org-type">Collection</span>&lt;<span class="org-type">String</span>&gt; <span class="org-variable-name">collection</span> = <span class="org-keyword">new</span> <span class="org-type">ArrayList</span>&lt;&gt;();
+  Collections.addAll(collection, <span class="org-string">"Sky"</span>, <span class="org-string">"Is"</span>, <span class="org-string">"Blue"</span>, <span class="org-string">"Blue"</span>);
+  <span class="org-type">Set</span>&lt;<span class="org-type">String</span>&gt; <span class="org-variable-name">set</span> = <span class="org-keyword">new</span> <span class="org-type">HashSet</span>&lt;&gt;(collection);
 }
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-java">public class SetDemo {
-   public static void show() {
-    Set&lt;String&gt; set1 = new HashSet&lt;&gt;(Arrays.asList("A", "B", "C"));
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">SetDemo</span> {
+   <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+    <span class="org-type">Set</span>&lt;<span class="org-type">String</span>&gt; <span class="org-variable-name">set1</span> = <span class="org-keyword">new</span> <span class="org-type">HashSet</span>&lt;&gt;(Arrays.asList(<span class="org-string">"A"</span>, <span class="org-string">"B"</span>, <span class="org-string">"C"</span>));
 
-    Set&lt;String&gt; set2 = new HashSet&lt;&gt;(Arrays.asList("B", "C", "D"));
+    <span class="org-type">Set</span>&lt;<span class="org-type">String</span>&gt; <span class="org-variable-name">set2</span> = <span class="org-keyword">new</span> <span class="org-type">HashSet</span>&lt;&gt;(Arrays.asList(<span class="org-string">"B"</span>, <span class="org-string">"C"</span>, <span class="org-string">"D"</span>));
 
-    // Combine (Union) two sets
-    set1.addAll(set2);  // A, B, C, D
-
-    // Intersection between two sets
-    set1.retainAll(set2); // B, C
-
-    set1.removeAll(set2); // A
-   }
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Combine (Union) two sets
+</span>    set1.addAll(set2);  <span class="org-comment-delimiter">// </span><span class="org-comment">A, B, C, D
+</span>
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Intersection between two sets
+</span>    set1.retainAll(set2); <span class="org-comment-delimiter">// </span><span class="org-comment">B, C
+</span>
+    set1.removeAll(set2); <span class="org-comment-delimiter">// </span><span class="org-comment">A
+</span>   }
 }
 </pre>
 </div>

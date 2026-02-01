@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -202,11 +202,11 @@
 <ul>
 <li><a href="#constructors">1. Constructors</a>
 <ul>
-<li><a href="#orge806872">1.1. Example</a></li>
+<li><a href="#org082aac2">1.1. Example</a></li>
 </ul>
 </li>
-<li><a href="#org19fb884">2. Namespaces</a></li>
-<li><a href="#org2e61f45">3. Default Constructor</a></li>
+<li><a href="#org41ea862">2. Namespaces</a></li>
+<li><a href="#orgb3942af">3. Default Constructor</a></li>
 <li><a href="#constructor-overloading">4. Constructor Overloading</a></li>
 </ul>
 </div>
@@ -219,31 +219,31 @@ The main purpose of constructors is to <b>set the initial state</b> of an object
 </p>
 </div>
 
-<div id="outline-container-orge806872" class="outline-3">
-<h3 id="orge806872"><span class="section-number-3">1.1.</span> Example</h3>
+<div id="outline-container-org082aac2" class="outline-3">
+<h3 id="org082aac2"><span class="section-number-3">1.1.</span> Example</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
-<pre class="src src-java">// ...
-var employee = new Employee(50_000, 20);
-// ...
+<pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">...
+</span><span class="org-type">var</span> <span class="org-variable-name">employee</span> = <span class="org-keyword">new</span> <span class="org-type">Employee</span>(50_000, 20);
+<span class="org-comment-delimiter">// </span><span class="org-comment">...
+</span>
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Employee</span> {
+    <span class="org-keyword">private</span> <span class="org-type">int</span> <span class="org-variable-name">baseSalary</span>;
+    <span class="org-keyword">private</span> <span class="org-type">int</span> <span class="org-variable-name">hourlyRate</span>;
 
-public class Employee {
-    private int baseSalary;
-    private int hourlyRate;
-
-    public Employee(int baseSalary, int hourlyRate) {
+    <span class="org-keyword">public</span> Employee(<span class="org-type">int</span> <span class="org-variable-name">baseSalary</span>, <span class="org-type">int</span> <span class="org-variable-name">hourlyRate</span>) {
         setBaseSalary(baseSalary);
         setHourlyRate(hourlyRate);
     }
 
-    public void setBaseSalary(int baseSalary) {
-        if (baseSalary &lt;= 0) throw new IllegalArgumentException("Salary can not be 0 or less.");
-        this.baseSalary = baseSalary;
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">setBaseSalary</span>(<span class="org-type">int</span> <span class="org-variable-name">baseSalary</span>) {
+        <span class="org-keyword">if</span> (baseSalary &lt;= 0) <span class="org-keyword">throw</span> <span class="org-keyword">new</span> <span class="org-type">IllegalArgumentException</span>(<span class="org-string">"Salary can not be 0 or less."</span>);
+        <span class="org-keyword">this</span>.baseSalary = baseSalary;
     }
 
-    public void setHourlyRate(int hourlyRate) {
-        if (hourlyRate &lt;= 0) throw new IllegalArgumentException("Hourly rate can not be 0 or less.");
-        this.hourlyRate = baseSalary;
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">setHourlyRate</span>(<span class="org-type">int</span> <span class="org-variable-name">hourlyRate</span>) {
+        <span class="org-keyword">if</span> (hourlyRate &lt;= 0) <span class="org-keyword">throw</span> <span class="org-keyword">new</span> <span class="org-type">IllegalArgumentException</span>(<span class="org-string">"Hourly rate can not be 0 or less."</span>);
+        <span class="org-keyword">this</span>.hourlyRate = baseSalary;
     }
 }
 </pre>
@@ -253,8 +253,8 @@ public class Employee {
 </div>
 
 
-<div id="outline-container-org19fb884" class="outline-2">
-<h2 id="org19fb884"><span class="section-number-2">2.</span> Namespaces</h2>
+<div id="outline-container-org41ea862" class="outline-2">
+<h2 id="org41ea862"><span class="section-number-2">2.</span> Namespaces</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Class names and method names exist in different namespaces.
@@ -280,8 +280,8 @@ public class Name {
 </div>
 </div>
 
-<div id="outline-container-org2e61f45" class="outline-2">
-<h2 id="org2e61f45"><span class="section-number-2">3.</span> Default Constructor</h2>
+<div id="outline-container-orgb3942af" class="outline-2">
+<h2 id="orgb3942af"><span class="section-number-2">3.</span> Default Constructor</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 A default constructor is a <b>no-argument</b> <code>constructor</code>.
@@ -301,7 +301,7 @@ If such a class requires a <b>no-argument constructor</b>, it must provide its o
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">class_name() { super(); }
+<pre class="src src-java">class_name() { <span class="org-keyword">super</span>(); }
 </pre>
 </div>
 </div>
@@ -311,34 +311,34 @@ If such a class requires a <b>no-argument constructor</b>, it must provide its o
 <h2 id="constructor-overloading"><span class="section-number-2">4.</span> Constructor Overloading</h2>
 <div class="outline-text-2" id="text-constructor-overloading">
 <div class="org-src-container">
-<pre class="src src-java">// ...
-var employee = new Employee(50_000); // Constructor 1
-var employee = new Employee(50_000, 20); // Constructor 2
-// ...
-public class Employee {
-    private int baseSalary;
-    private int hourlyRate;
+<pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">...
+</span><span class="org-type">var</span> <span class="org-variable-name">employee</span> = <span class="org-keyword">new</span> <span class="org-type">Employee</span>(50_000); <span class="org-comment-delimiter">// </span><span class="org-comment">Constructor 1
+</span><span class="org-type">var</span> <span class="org-variable-name">employee</span> = <span class="org-keyword">new</span> <span class="org-type">Employee</span>(50_000, 20); <span class="org-comment-delimiter">// </span><span class="org-comment">Constructor 2
+</span><span class="org-comment-delimiter">// </span><span class="org-comment">...
+</span><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Employee</span> {
+    <span class="org-keyword">private</span> <span class="org-type">int</span> <span class="org-variable-name">baseSalary</span>;
+    <span class="org-keyword">private</span> <span class="org-type">int</span> <span class="org-variable-name">hourlyRate</span>;
 
-    // Constructor 1
-    public Employee(int baseSalary) {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Constructor 1
+</span>    <span class="org-keyword">public</span> Employee(<span class="org-type">int</span> <span class="org-variable-name">baseSalary</span>) {
         setBaseSalary(baseSalary);
         setHourlyRate(0);
     }
 
-    // Constructor 2
-    public Employee(int baseSalary, int hourlyRate) {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Constructor 2
+</span>    <span class="org-keyword">public</span> Employee(<span class="org-type">int</span> <span class="org-variable-name">baseSalary</span>, <span class="org-type">int</span> <span class="org-variable-name">hourlyRate</span>) {
         setBaseSalary(baseSalary);
         setHourlyRate(hourlyRate);
     }
 
-    public void setBaseSalary(int baseSalary) {
-        if (baseSalary &lt;= 0) throw new IllegalArgumentException("Salary can not be 0 or less.");
-        this.baseSalary = baseSalary;
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">setBaseSalary</span>(<span class="org-type">int</span> <span class="org-variable-name">baseSalary</span>) {
+        <span class="org-keyword">if</span> (baseSalary &lt;= 0) <span class="org-keyword">throw</span> <span class="org-keyword">new</span> <span class="org-type">IllegalArgumentException</span>(<span class="org-string">"Salary can not be 0 or less."</span>);
+        <span class="org-keyword">this</span>.baseSalary = baseSalary;
     }
 
-    public void setHourlyRate(int hourlyRate) {
-        if (hourlyRate &lt;= 0) throw new IllegalArgumentException("Hourly rate can not be 0 or less.");
-        this.hourlyRate = baseSalary;
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">setHourlyRate</span>(<span class="org-type">int</span> <span class="org-variable-name">hourlyRate</span>) {
+        <span class="org-keyword">if</span> (hourlyRate &lt;= 0) <span class="org-keyword">throw</span> <span class="org-keyword">new</span> <span class="org-type">IllegalArgumentException</span>(<span class="org-string">"Hourly rate can not be 0 or less."</span>);
+        <span class="org-keyword">this</span>.hourlyRate = baseSalary;
     }
 }
 </pre>

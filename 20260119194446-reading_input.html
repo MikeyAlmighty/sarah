@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Reading Input</title>
@@ -201,37 +201,37 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org605b95d">1. Reading Input</a>
+<li><a href="#org5d10a1d">1. Reading Input</a>
 <ul>
-<li><a href="#org2fb0ccf">1.1. Scanner Example</a></li>
-<li><a href="#org0f8d762">1.2. Multiple inputs</a></li>
-<li><a href="#org66df7c1">1.3. Reading Numbers</a></li>
+<li><a href="#org94d7af2">1.1. Scanner Example</a></li>
+<li><a href="#orgf86828c">1.2. Multiple inputs</a></li>
+<li><a href="#orgcfc8a88">1.3. Reading Numbers</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org605b95d" class="outline-2">
-<h2 id="org605b95d"><span class="section-number-2">1.</span> Reading Input</h2>
+<div id="outline-container-org5d10a1d" class="outline-2">
+<h2 id="org5d10a1d"><span class="section-number-2">1.</span> Reading Input</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org2fb0ccf" class="outline-3">
-<h3 id="org2fb0ccf"><span class="section-number-3">1.1.</span> Scanner Example</h3>
+<div id="outline-container-org94d7af2" class="outline-3">
+<h3 id="org94d7af2"><span class="section-number-3">1.1.</span> Scanner Example</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
-<pre class="src src-java">import java.util.Scanner;
-public class ComputeArea {
-    public static void main(String[] args) {
-        // Create a Scanner Object
-        Scanner input = new Scanner(System.in);
-        // Prompt the user to enter a radius
-        System.out.print("Enter a number for radius: ");
-        double radius = input.nextDouble();
-        // Step 2: Compute Area
-        double area = radius * radius * 3.14159;
-        // Step 3: Display the area
-        System.out.println("The area for the circle of radius " + radius + " is " + area);
+<pre class="src src-java"><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Scanner</span>;
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">ComputeArea</span> {
+    <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
+        <span class="org-comment-delimiter">// </span><span class="org-comment">Create a Scanner Object
+</span>        <span class="org-type">Scanner</span> <span class="org-variable-name">input</span> = <span class="org-keyword">new</span> <span class="org-type">Scanner</span>(System.in);
+        <span class="org-comment-delimiter">// </span><span class="org-comment">Prompt the user to enter a radius
+</span>        System.out.print(<span class="org-string">"Enter a number for radius: "</span>);
+        <span class="org-type">double</span> <span class="org-variable-name">radius</span> = input.nextDouble();
+        <span class="org-comment-delimiter">// </span><span class="org-comment">Step 2: Compute Area
+</span>        <span class="org-type">double</span> <span class="org-variable-name">area</span> = radius * radius * 3.14159;
+        <span class="org-comment-delimiter">// </span><span class="org-comment">Step 3: Display the area
+</span>        System.out.println(<span class="org-string">"The area for the circle of radius "</span> + radius + <span class="org-string">" is "</span> + area);
     }
 }
 </pre>
@@ -239,27 +239,27 @@ public class ComputeArea {
 </div>
 </div>
 
-<div id="outline-container-org0f8d762" class="outline-3">
-<h3 id="org0f8d762"><span class="section-number-3">1.2.</span> Multiple inputs</h3>
+<div id="outline-container-orgf86828c" class="outline-3">
+<h3 id="orgf86828c"><span class="section-number-3">1.2.</span> Multiple inputs</h3>
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
-<pre class="src src-java">import java.util.Scanner;
-public class ComputeAverage {
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
+<pre class="src src-java"><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Scanner</span>;
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">ComputeAverage</span> {
+    <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
+        <span class="org-type">Scanner</span> <span class="org-variable-name">input</span> = <span class="org-keyword">new</span> <span class="org-type">Scanner</span>(System.in);
 
-        // Prompt the user to enter three numbers
-        System.out.print("Enter three numbers: ");
+        <span class="org-comment-delimiter">// </span><span class="org-comment">Prompt the user to enter three numbers
+</span>        System.out.print(<span class="org-string">"Enter three numbers: "</span>);
 
-        double num1 = input.nextInt();
-        double num2 = input.nextInt();
-        double num3 = input.nextInt();
+        <span class="org-type">double</span> <span class="org-variable-name">num1</span> = input.nextInt();
+        <span class="org-type">double</span> <span class="org-variable-name">num2</span> = input.nextInt();
+        <span class="org-type">double</span> <span class="org-variable-name">num3</span> = input.nextInt();
 
-        // Compute average
-        double average = (num1 + num2 + num3) / 3;
+        <span class="org-comment-delimiter">// </span><span class="org-comment">Compute average
+</span>        <span class="org-type">double</span> <span class="org-variable-name">average</span> = (num1 + num2 + num3) / 3;
 
 
-        System.out.println("The average of " + num1 + " " + num2 + " " + num3 + " is " + average);
+        System.out.println(<span class="org-string">"The average of "</span> + num1 + <span class="org-string">" "</span> + num2 + <span class="org-string">" "</span> + num3 + <span class="org-string">" is "</span> + average);
     }
 }
 </pre>
@@ -267,8 +267,8 @@ public class ComputeAverage {
 </div>
 </div>
 
-<div id="outline-container-org66df7c1" class="outline-3">
-<h3 id="org66df7c1"><span class="section-number-3">1.3.</span> Reading Numbers</h3>
+<div id="outline-container-orgcfc8a88" class="outline-3">
+<h3 id="orgcfc8a88"><span class="section-number-3">1.3.</span> Reading Numbers</h3>
 <div class="outline-text-3" id="text-1-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -331,7 +331,7 @@ If you enter a value with an <b>incorrect</b> <b>range</b> or <b>format</b>, a r
 </p>
 <div class="org-src-container">
 <pre class="src src-shell">Enter a number for radius: a
-Exception in thread "main" java.util.InputMismatchException
+Exception<span class="org-keyword"> in</span> thread <span class="org-string">"main"</span> java.util.InputMismatchException
         at java.base/java.util.Scanner.throwFor(Scanner.java:939)
         at java.base/java.util.Scanner.next(Scanner.java:1594)
         at java.base/java.util.Scanner.nextDouble(Scanner.java:2564)

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Sentinel-Controlled While Loop</title>
@@ -201,12 +201,12 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5f6114a">1. Sentinel-Controlled While Loop</a>
+<li><a href="#org94ec36c">1. Sentinel-Controlled While Loop</a>
 <ul>
-<li><a href="#orgf2597c9">1.1. <b>Key idea</b></a></li>
-<li><a href="#org4cb61da">1.2. <b>When to use</b></a>
+<li><a href="#org6a88af2">1.1. <b>Key idea</b></a></li>
+<li><a href="#org6f6494e">1.2. <b>When to use</b></a>
 <ul>
-<li><a href="#orge3d011f">1.2.1. <b>Typical structure</b></a></li>
+<li><a href="#orgfa2cd96">1.2.1. <b>Typical structure</b></a></li>
 </ul>
 </li>
 </ul>
@@ -215,8 +215,8 @@
 </div>
 </div>
 
-<div id="outline-container-org5f6114a" class="outline-2">
-<h2 id="org5f6114a"><span class="section-number-2">1.</span> Sentinel-Controlled While Loop</h2>
+<div id="outline-container-org94ec36c" class="outline-2">
+<h2 id="org94ec36c"><span class="section-number-2">1.</span> Sentinel-Controlled While Loop</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 A <b>sentinel-controlled while loop</b> repeatedly reads input and processes it until a special value (<code>sentinel</code>) is encountered.
@@ -227,8 +227,8 @@ It signals <b>termination</b>.
 </p>
 </div>
 
-<div id="outline-container-orgf2597c9" class="outline-3">
-<h3 id="orgf2597c9"><span class="section-number-3">1.1.</span> <b>Key idea</b></h3>
+<div id="outline-container-org6a88af2" class="outline-3">
+<h3 id="org6a88af2"><span class="section-number-3">1.1.</span> <b>Key idea</b></h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>The <code>loop</code> continues <b>while</b> the input is not equal to the <code>sentinel</code>.</li>
@@ -237,8 +237,8 @@ It signals <b>termination</b>.
 </div>
 </div>
 
-<div id="outline-container-org4cb61da" class="outline-3">
-<h3 id="org4cb61da"><span class="section-number-3">1.2.</span> <b>When to use</b></h3>
+<div id="outline-container-org6f6494e" class="outline-3">
+<h3 id="org6f6494e"><span class="section-number-3">1.2.</span> <b>When to use</b></h3>
 <div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
 <li>You don’t know in advance how many data items will be processed.</li>
@@ -246,22 +246,22 @@ It signals <b>termination</b>.
 </ul>
 </div>
 
-<div id="outline-container-orge3d011f" class="outline-4">
-<h4 id="orge3d011f"><span class="section-number-4">1.2.1.</span> <b>Typical structure</b></h4>
+<div id="outline-container-orgfa2cd96" class="outline-4">
+<h4 id="orgfa2cd96"><span class="section-number-4">1.2.1.</span> <b>Typical structure</b></h4>
 <div class="outline-text-4" id="text-1-2-1">
 <div class="org-src-container">
-<pre class="src src-java">Scanner in = new Scanner(System.in);
-int value = in.nextInt();        // read initial input
-while (value != SENTINEL) {      // check sentinel
-    // process value
-    value = in.nextInt();        // read next
-}
+<pre class="src src-java"><span class="org-type">Scanner</span> <span class="org-variable-name">in</span> = <span class="org-keyword">new</span> <span class="org-type">Scanner</span>(System.in);
+<span class="org-type">int</span> <span class="org-variable-name">value</span> = in.nextInt();        <span class="org-comment-delimiter">// </span><span class="org-comment">read initial input
+</span><span class="org-keyword">while</span> (value != SENTINEL) {      <span class="org-comment-delimiter">// </span><span class="org-comment">check sentinel
+</span>    <span class="org-comment-delimiter">// </span><span class="org-comment">process value
+</span>    value = in.nextInt();        <span class="org-comment-delimiter">// </span><span class="org-comment">read next
+</span>}
 </pre>
 </div>
 </div>
 
 <ol class="org-ol">
-<li><a id="org6aa134e"></a><b>Example: Sum positive integers until '–1' is entered</b><br />
+<li><a id="orga1a7704"></a><b>Example: Sum positive integers until '–1' is entered</b><br />
 <div class="outline-text-5" id="text-1-2-1-1">
 <p>
 In this example, the sentinel value is <code>–1</code>.
@@ -272,25 +272,25 @@ Valid input values are <b>non</b>-<b>negative</b> <code>integers</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">import java.util.Scanner;
+<pre class="src src-java"><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Scanner</span>;
 
-public class SentinelExample {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">SentinelExample</span> {
+    <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
+        <span class="org-type">Scanner</span> <span class="org-variable-name">scanner</span> = <span class="org-keyword">new</span> <span class="org-type">Scanner</span>(System.in);
 
-        int sum = 0;
-        System.out.print("Enter a positive integer (or -1 to quit): ");
-        int number = scanner.nextInt(); // read first value
+        <span class="org-type">int</span> <span class="org-variable-name">sum</span> = 0;
+        System.out.print(<span class="org-string">"Enter a positive integer (or -1 to quit): "</span>);
+        <span class="org-type">int</span> <span class="org-variable-name">number</span> = scanner.nextInt(); <span class="org-comment-delimiter">// </span><span class="org-comment">read first value
+</span>
+        <span class="org-comment-delimiter">// </span><span class="org-comment">loop until sentinel (-1) is entered
+</span>        <span class="org-keyword">while</span> (number != -1) {
+            sum += number;  <span class="org-comment-delimiter">// </span><span class="org-comment">add to sum
+</span>
+            System.out.print(<span class="org-string">"Enter a positive integer (or -1 to quit): "</span>);
+            number = scanner.nextInt(); <span class="org-comment-delimiter">// </span><span class="org-comment">read next value
+</span>        }
 
-        // loop until sentinel (-1) is entered
-        while (number != -1) {
-            sum += number;  // add to sum
-
-            System.out.print("Enter a positive integer (or -1 to quit): ");
-            number = scanner.nextInt(); // read next value
-        }
-
-        System.out.println("Total sum: " + sum);
+        System.out.println(<span class="org-string">"Total sum: "</span> + sum);
         scanner.close();
     }
 }

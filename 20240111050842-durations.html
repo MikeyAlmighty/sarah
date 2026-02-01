@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Durations</title>
@@ -201,18 +201,18 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgb2d400a">1. Durations</a>
+<li><a href="#orgb65f0b6">1. Durations</a>
 <ul>
-<li><a href="#orgbe29913">1.1. <span class="underline">Exam Trick</span></a></li>
-<li><a href="#orgaa537bb">1.2. Example</a></li>
+<li><a href="#org36e561d">1.1. <span class="underline">Exam Trick</span></a></li>
+<li><a href="#org2d6c2b7">1.2. Example</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgb2d400a" class="outline-2">
-<h2 id="orgb2d400a"><span class="section-number-2">1.</span> Durations</h2>
+<div id="outline-container-orgb65f0b6" class="outline-2">
+<h2 id="orgb65f0b6"><span class="section-number-2">1.</span> Durations</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 You’ve probably noticed by now that a <a href="20240110080116-periods.html#ID-ac780a7c-43ae-4d1c-99b9-e14006e79591">Period</a> is a <code>day</code> or more of <code>time</code>.
@@ -241,12 +241,12 @@ A Duration is stored in hours, minutes, and seconds. The number of seconds inclu
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">var daily = Duration.ofDays(1); // PT24H
-var hourly = Duration.ofHours(1); // PT1H
-var everyMinute = Duration.ofMinutes(1); // PT1M
-var everyTenSeconds = Duration.ofSeconds(10); // PT10S
-var everyMilli = Duration.ofMillis(1); // PT0.001S
-var everyNano = Duration.ofNanos(1); // PT0.000000001S
+<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">daily</span> = Duration.ofDays(1); <span class="org-comment-delimiter">// </span><span class="org-comment">PT24H
+</span><span class="org-type">var</span> <span class="org-variable-name">hourly</span> = Duration.ofHours(1); <span class="org-comment-delimiter">// </span><span class="org-comment">PT1H
+</span><span class="org-type">var</span> <span class="org-variable-name">everyMinute</span> = Duration.ofMinutes(1); <span class="org-comment-delimiter">// </span><span class="org-comment">PT1M
+</span><span class="org-type">var</span> <span class="org-variable-name">everyTenSeconds</span> = Duration.ofSeconds(10); <span class="org-comment-delimiter">// </span><span class="org-comment">PT10S
+</span><span class="org-type">var</span> <span class="org-variable-name">everyMilli</span> = Duration.ofMillis(1); <span class="org-comment-delimiter">// </span><span class="org-comment">PT0.001S
+</span><span class="org-type">var</span> <span class="org-variable-name">everyNano</span> = Duration.ofNanos(1); <span class="org-comment-delimiter">// </span><span class="org-comment">PT0.000000001S</span>
 </pre>
 </div>
 
@@ -255,18 +255,18 @@ Duration includes another more <b>generic factory method</b> where you pass a <c
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">var daily = Duration.of(1, ChronoUnit.DAYS);
-var hourly = Duration.of(1, ChronoUnit.HOURS);
-var everyMinute = Duration.of(1, ChronoUnit.MINUTES);
-var everyTenSeconds = Duration.of(10, ChronoUnit.SECONDS);
-var everyMilli = Duration.of(1, ChronoUnit.MILLIS);
-var everyNano = Duration.of(1, ChronoUnit.NANOS);
+<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">daily</span> = Duration.of(1, <span class="org-constant">ChronoUnit</span>.DAYS);
+<span class="org-type">var</span> <span class="org-variable-name">hourly</span> = Duration.of(1, <span class="org-constant">ChronoUnit</span>.HOURS);
+<span class="org-type">var</span> <span class="org-variable-name">everyMinute</span> = Duration.of(1, <span class="org-constant">ChronoUnit</span>.MINUTES);
+<span class="org-type">var</span> <span class="org-variable-name">everyTenSeconds</span> = Duration.of(10, <span class="org-constant">ChronoUnit</span>.SECONDS);
+<span class="org-type">var</span> <span class="org-variable-name">everyMilli</span> = Duration.of(1, <span class="org-constant">ChronoUnit</span>.MILLIS);
+<span class="org-type">var</span> <span class="org-variable-name">everyNano</span> = Duration.of(1, <span class="org-constant">ChronoUnit</span>.NANOS);
 </pre>
 </div>
 </div>
 
-<div id="outline-container-orgbe29913" class="outline-3">
-<h3 id="orgbe29913"><span class="section-number-3">1.1.</span> <span class="underline">Exam Trick</span></h3>
+<div id="outline-container-org36e561d" class="outline-3">
+<h3 id="org36e561d"><span class="section-number-3">1.1.</span> <span class="underline">Exam Trick</span></h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 <code>ChronoUnit</code> also includes some convenient units such as <code>ChronoUnit.HALF_DAYS</code> to represent <code>12 hours</code>.
@@ -274,32 +274,32 @@ var everyNano = Duration.of(1, ChronoUnit.NANOS);
 </div>
 </div>
 
-<div id="outline-container-orgaa537bb" class="outline-3">
-<h3 id="orgaa537bb"><span class="section-number-3">1.2.</span> Example</h3>
+<div id="outline-container-org2d6c2b7" class="outline-3">
+<h3 id="org2d6c2b7"><span class="section-number-3">1.2.</span> Example</h3>
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
-<pre class="src src-java">var date = LocalDate.of(2022, 1, 20);
-var time = LocalTime.of(6, 15);
-var dateTime = LocalDateTime.of(date, time);
+<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">date</span> = LocalDate.of(2022, 1, 20);
+<span class="org-type">var</span> <span class="org-variable-name">time</span> = LocalTime.of(6, 15);
+<span class="org-type">var</span> <span class="org-variable-name">dateTime</span> = LocalDateTime.of(date, time);
 
-var duration = Duration.ofHours(6);
+<span class="org-type">var</span> <span class="org-variable-name">duration</span> = Duration.ofHours(6);
 
-System.out.println(dateTime.plus(duration)); // 2022–01–20T12:15
-System.out.println(time.plus(duration)); // 12:15
-System.out.println(date.plus(duration)); // UnsupportedTemporalTypeException
-
+System.out.println(dateTime.plus(duration)); <span class="org-comment-delimiter">// </span><span class="org-comment">2022&#8211;01&#8211;20T12:15
+</span>System.out.println(time.plus(duration)); <span class="org-comment-delimiter">// </span><span class="org-comment">12:15
+</span>System.out.println(date.plus(duration)); <span class="org-comment-delimiter">// </span><span class="org-comment">UnsupportedTemporalTypeException
+</span>
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-java">var date = LocalDate.of(2022, 1, 20);
-var time = LocalTime.of(6, 15);
-var dateTime = LocalDateTime.of(date, time);
+<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">date</span> = LocalDate.of(2022, 1, 20);
+<span class="org-type">var</span> <span class="org-variable-name">time</span> = LocalTime.of(6, 15);
+<span class="org-type">var</span> <span class="org-variable-name">dateTime</span> = LocalDateTime.of(date, time);
 
-var duration = Duration.ofHours(23);
-System.out.println(dateTime.plus(duration)); // 2022–01–21T05:15
-System.out.println(time.plus(duration)); // 05:15
-System.out.println(date.plus(duration)); // UnsupportedTemporalTypeException
+<span class="org-type">var</span> <span class="org-variable-name">duration</span> = Duration.ofHours(23);
+System.out.println(dateTime.plus(duration)); <span class="org-comment-delimiter">// </span><span class="org-comment">2022&#8211;01&#8211;21T05:15
+</span>System.out.println(time.plus(duration)); <span class="org-comment-delimiter">// </span><span class="org-comment">05:15
+</span>System.out.println(date.plus(duration)); <span class="org-comment-delimiter">// </span><span class="org-comment">UnsupportedTemporalTypeException</span>
 </pre>
 </div>
 </div>

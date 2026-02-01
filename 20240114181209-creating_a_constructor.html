@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Creating a Constructor</title>
@@ -201,45 +201,45 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org3ec2072">1. Creating a Constructor</a>
+<li><a href="#org4366d4b">1. Creating a Constructor</a>
 <ul>
-<li><a href="#org8ba5e42">1.1. Example</a>
+<li><a href="#org7b3c8e3">1.1. Example</a>
 <ul>
-<li><a href="#orgc9dbf68">1.1.1. <span class="underline">Exam Trick</span></a></li>
+<li><a href="#orgb061d66">1.1.1. <span class="underline">Exam Trick</span></a></li>
 </ul>
 </li>
-<li><a href="#org83bfb4b">1.2. Multiple Constructors (Constructor Overloading)</a></li>
+<li><a href="#org751f941">1.2. Multiple Constructors (Constructor Overloading)</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org3ec2072" class="outline-2">
-<h2 id="org3ec2072"><span class="section-number-2">1.</span> Creating a Constructor</h2>
+<div id="outline-container-org4366d4b" class="outline-2">
+<h2 id="org4366d4b"><span class="section-number-2">1.</span> Creating a Constructor</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 The name of the <b>constructor</b>, <code>Bunny</code>, matches the name of the class, <code>Bunny</code>, and there is <b>no return type</b>, <b>not even void</b>.
 </p>
 </div>
 
-<div id="outline-container-org8ba5e42" class="outline-3">
-<h3 id="org8ba5e42"><span class="section-number-3">1.1.</span> Example</h3>
+<div id="outline-container-org7b3c8e3" class="outline-3">
+<h3 id="org7b3c8e3"><span class="section-number-3">1.1.</span> Example</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
-<pre class="src src-java">public class Bunny {
-    public Bunny() {
-        System.out.println("Hop");
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Bunny</span> {
+    <span class="org-keyword">public</span> Bunny() {
+        System.out.println(<span class="org-string">"Hop"</span>);
     }
-    public bunny() {} // DOES NOT COMPILE
-    public void Bunny() {} // DOES NOT COMPILE
-}
+    <span class="org-keyword">public</span> bunny() {} <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
+</span>    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">Bunny</span>() {} <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
+</span>}
 </pre>
 </div>
 </div>
 
-<div id="outline-container-orgc9dbf68" class="outline-4">
-<h4 id="orgc9dbf68"><span class="section-number-4">1.1.1.</span> <span class="underline">Exam Trick</span></h4>
+<div id="outline-container-orgb061d66" class="outline-4">
+<h4 id="orgb061d66"><span class="section-number-4">1.1.1.</span> <span class="underline">Exam Trick</span></h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 Like <code>method parameters</code>, <code>constructor parameters</code> can be any valid class, array, or <a href="20231230083124-primitive_types.html#ID-46582863-7f97-448d-bbc7-f7da4c1e7574">primitive Type</a>, including <code>generics</code>, but may <b>not</b> include <code>var</code>.
@@ -247,12 +247,12 @@ Like <code>method parameters</code>, <code>constructor parameters</code> can be 
 </div>
 
 <ol class="org-ol">
-<li><a id="org898e498"></a>Example<br />
+<li><a id="org2e0a5d4"></a>Example<br />
 <div class="outline-text-5" id="text-1-1-1-1">
 <div class="org-src-container">
-<pre class="src src-java">public class Bonobo {
-    public Bonobo(var food) { // DOES NOT COMPILE
-
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Bonobo</span> {
+    <span class="org-keyword">public</span> Bonobo(var food) { <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
+</span>
     }
 }
 </pre>
@@ -263,8 +263,8 @@ Like <code>method parameters</code>, <code>constructor parameters</code> can be 
 </div>
 </div>
 
-<div id="outline-container-org83bfb4b" class="outline-3">
-<h3 id="org83bfb4b"><span class="section-number-3">1.2.</span> Multiple Constructors (Constructor Overloading)</h3>
+<div id="outline-container-org751f941" class="outline-3">
+<h3 id="org751f941"><span class="section-number-3">1.2.</span> Multiple Constructors (Constructor Overloading)</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 A <code>class</code> <b>can</b> have multiple <code>constructors</code>, as long as each <code>constructor</code> has a unique <code>constructor</code> signature.
@@ -276,14 +276,14 @@ Like methods with the same name but different signatures, declaring multiple con
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">public class Turtle {
-    private String name;
-    public Turtle() {
-        name = "John Doe";
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Turtle</span> {
+    <span class="org-keyword">private</span> <span class="org-type">String</span> <span class="org-variable-name">name</span>;
+    <span class="org-keyword">public</span> Turtle() {
+        name = <span class="org-string">"John Doe"</span>;
     }
-    public Turtle(int age) {}
-    public Turtle(long age) {}
-    public Turtle(String newName, String... favoriteFoods) {
+    <span class="org-keyword">public</span> Turtle(<span class="org-type">int</span> <span class="org-variable-name">age</span>) {}
+    <span class="org-keyword">public</span> Turtle(<span class="org-type">long</span> <span class="org-variable-name">age</span>) {}
+    <span class="org-keyword">public</span> Turtle(<span class="org-type">String</span> <span class="org-variable-name">newName</span>, String... favoriteFoods) {
     name = newName;
     }
 }

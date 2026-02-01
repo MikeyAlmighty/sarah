@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Synchronization</title>
@@ -201,32 +201,32 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgdb685d0">0.1. Using <code>Locks</code></a></li>
+<li><a href="#org68b5fe0">0.1. Using <code>Locks</code></a></li>
 </ul>
 </li>
-<li><a href="#org435dbd5">1. We can mark fields as <code>volatile</code></a></div>
+<li><a href="#org2ea6720">1. We can mark fields as <code>volatile</code></a></div>
 </div>
 
-<div id="outline-container-orgdb685d0" class="outline-3">
-<h3 id="orgdb685d0"><span class="section-number-3">0.1.</span> Using <code>Locks</code></h3>
+<div id="outline-container-org68b5fe0" class="outline-3">
+<h3 id="org68b5fe0"><span class="section-number-3">0.1.</span> Using <code>Locks</code></h3>
 <div class="outline-text-3" id="text-0-1">
 <div class="org-src-container">
-<pre class="src src-java">import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+<pre class="src src-java"><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-constant">concurrent</span>.<span class="org-constant">locks</span>.<span class="org-type">Lock</span>;
+<span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-constant">concurrent</span>.<span class="org-constant">locks</span>.<span class="org-type">ReentrantLock</span>;
 
-public class DownloadStatus {
-   private int totalBytes;
-   private Lock lock = new ReentrantLock();
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">DownloadStatus</span> {
+   <span class="org-keyword">private</span> <span class="org-type">int</span> <span class="org-variable-name">totalBytes</span>;
+   <span class="org-keyword">private</span> <span class="org-type">Lock</span> <span class="org-variable-name">lock</span> = <span class="org-keyword">new</span> <span class="org-type">ReentrantLock</span>();
 
-    public int getTotalBytes() {
-        return totalBytes;
+    <span class="org-keyword">public</span> <span class="org-type">int</span> <span class="org-function-name">getTotalBytes</span>() {
+        <span class="org-keyword">return</span> totalBytes;
     }
 
-    public void incrementTotalBytes(){
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">incrementTotalBytes</span>(){
         lock.lock();
-        try {
+        <span class="org-keyword">try</span> {
             totalBytes++;
-        }  finally {
+        }  <span class="org-keyword">finally</span> {
           lock.unlock();
         }
     }
@@ -239,58 +239,58 @@ or
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">public class DownloadStatus {
-   private int totalBytes;
-   private int totalFiles;
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">DownloadStatus</span> {
+   <span class="org-keyword">private</span> <span class="org-type">int</span> <span class="org-variable-name">totalBytes</span>;
+   <span class="org-keyword">private</span> <span class="org-type">int</span> <span class="org-variable-name">totalFiles</span>;
 
-    public int getTotalFiles() {
-        return totalFiles;
+    <span class="org-keyword">public</span> <span class="org-type">int</span> <span class="org-function-name">getTotalFiles</span>() {
+        <span class="org-keyword">return</span> totalFiles;
     }
 
-    public int getTotalBytes() {
-        return totalBytes;
+    <span class="org-keyword">public</span> <span class="org-type">int</span> <span class="org-function-name">getTotalBytes</span>() {
+        <span class="org-keyword">return</span> totalBytes;
     }
 
-    public void incrementTotalBytes(){
-    // Note: "this" here is a MonitorObject,
-    // generally we don't want it to be "this" as it will then lock up this entire object
-    // (NOT allowing the other methods i.e. incrementTotalFiles, to be called thus deminishing throughput) [See below example for proper monitorObject]
-        synchronized (this) {
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">incrementTotalBytes</span>(){
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Note: "this" here is a MonitorObject,
+</span>    <span class="org-comment-delimiter">// </span><span class="org-comment">generally we don't want it to be "this" as it will then lock up this entire object
+</span>    <span class="org-comment-delimiter">// </span><span class="org-comment">(NOT allowing the other methods i.e. incrementTotalFiles, to be called thus deminishing throughput) [See below example for proper monitorObject]
+</span>        <span class="org-keyword">synchronized</span> (<span class="org-keyword">this</span>) {
             totalBytes++;
         }
     }
 
-    public void incrementTotalFiles(){
-        synchronized (this) {
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">incrementTotalFiles</span>(){
+        <span class="org-keyword">synchronized</span> (<span class="org-keyword">this</span>) {
             totalBytes++;
         }
     }
 }
 
-public class DownloadStatus {
-   private int totalBytes;
-   private int totalFiles;
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">DownloadStatus</span> {
+   <span class="org-keyword">private</span> <span class="org-type">int</span> <span class="org-variable-name">totalBytes</span>;
+   <span class="org-keyword">private</span> <span class="org-type">int</span> <span class="org-variable-name">totalFiles</span>;
 
-   private Object BytesLock = new Object();
-   private Object FilesLock = new Object();
+   <span class="org-keyword">private</span> <span class="org-type">Object</span> <span class="org-variable-name">BytesLock</span> = <span class="org-keyword">new</span> <span class="org-type">Object</span>();
+   <span class="org-keyword">private</span> <span class="org-type">Object</span> <span class="org-variable-name">FilesLock</span> = <span class="org-keyword">new</span> <span class="org-type">Object</span>();
 
-    public int getTotalFiles() {
-        return totalFiles;
+    <span class="org-keyword">public</span> <span class="org-type">int</span> <span class="org-function-name">getTotalFiles</span>() {
+        <span class="org-keyword">return</span> totalFiles;
     }
 
-    public int getTotalBytes() {
-        return totalBytes;
+    <span class="org-keyword">public</span> <span class="org-type">int</span> <span class="org-function-name">getTotalBytes</span>() {
+        <span class="org-keyword">return</span> totalBytes;
     }
 
-    public void incrementTotalBytes(){
-        // Now Allows access to incrementTotalFiles
-        synchronized (BytesLock) {
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">incrementTotalBytes</span>(){
+        <span class="org-comment-delimiter">// </span><span class="org-comment">Now Allows access to incrementTotalFiles
+</span>        <span class="org-keyword">synchronized</span> (BytesLock) {
             totalBytes++;
         }
     }
 
-    public void incrementTotalFiles(){
-        synchronized (FilesLock) {
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">incrementTotalFiles</span>(){
+        <span class="org-keyword">synchronized</span> (FilesLock) {
             totalBytes++;
         }
     }
@@ -309,8 +309,8 @@ But be aware as this can cause:
 </div>
 </div>
 
-<div id="outline-container-org435dbd5" class="outline-2">
-<h2 id="org435dbd5"><span class="section-number-2">1.</span> We can mark fields as <code>volatile</code></h2>
+<div id="outline-container-org2ea6720" class="outline-2">
+<h2 id="org2ea6720"><span class="section-number-2">1.</span> We can mark fields as <code>volatile</code></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Ensures changes to an object are visible across threads
@@ -318,7 +318,7 @@ This notifies the JVM to not rely on storing value in CPU cache Write directly t
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">private volatile boolean isDone;
+<pre class="src src-java"><span class="org-keyword">private</span> <span class="org-keyword">volatile</span> <span class="org-type">boolean</span> <span class="org-variable-name">isDone</span>;
 </pre>
 </div>
 

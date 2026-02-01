@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Working with Varargs</title>
@@ -201,24 +201,24 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgaee444f">1. Working with Varargs</a>
+<li><a href="#org55be6eb">1. Working with Varargs</a>
 <ul>
-<li><a href="#org1874e50">1.1. Creating Methods with Varargs</a></li>
-<li><a href="#orge9152ef">1.2. Calling Methods with Varargs</a></li>
-<li><a href="#orgfeefce5">1.3. Accessing Elements of Varargs</a></li>
-<li><a href="#org5ee3786">1.4. Using Varargs with Other Method Paramters</a></li>
+<li><a href="#orgaf1020e">1.1. Creating Methods with Varargs</a></li>
+<li><a href="#org44d6d1a">1.2. Calling Methods with Varargs</a></li>
+<li><a href="#org8fc9e2e">1.3. Accessing Elements of Varargs</a></li>
+<li><a href="#org621af60">1.4. Using Varargs with Other Method Paramters</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgaee444f" class="outline-2">
-<h2 id="orgaee444f"><span class="section-number-2">1.</span> Working with Varargs</h2>
+<div id="outline-container-org55be6eb" class="outline-2">
+<h2 id="org55be6eb"><span class="section-number-2">1.</span> Working with Varargs</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org1874e50" class="outline-3">
-<h3 id="org1874e50"><span class="section-number-3">1.1.</span> Creating Methods with <a href="20240107132638-variable_arguments.html#ID-9bb3ac0e-af2c-4243-9ae2-f2bfbee868c3">Varargs</a></h3>
+<div id="outline-container-orgaf1020e" class="outline-3">
+<h3 id="orgaf1020e"><span class="section-number-3">1.1.</span> Creating Methods with <a href="20240107132638-variable_arguments.html#ID-9bb3ac0e-af2c-4243-9ae2-f2bfbee868c3">Varargs</a></h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Rules for Creating a Method with a Varargs Parameter
@@ -230,39 +230,39 @@ Rules for Creating a Method with a Varargs Parameter
 </ol>
 
 <div class="org-src-container">
-<pre class="src src-java">public class VisitAttractions {
-    public void walk1(int... steps) {}
-    public void walk2(int start, int... steps) {}
-    public void walk3(int... steps, int start) {} // DOES NOT COMPILE
-    public void walk4(int... start, int... steps) {} // DOES NOT COMPILE
-}
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">VisitAttractions</span> {
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">walk1</span>(<span class="org-type">int</span>... <span class="org-variable-name">steps</span>) {}
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">walk2</span>(<span class="org-type">int</span> <span class="org-variable-name">start</span>, <span class="org-type">int</span>... <span class="org-variable-name">steps</span>) {}
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">walk3</span>(<span class="org-type">int</span>... <span class="org-variable-name">steps</span>, <span class="org-type">int</span> <span class="org-variable-name">start</span>) {} <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
+</span>    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">walk4</span>(<span class="org-type">int</span>... <span class="org-variable-name">start</span>, <span class="org-type">int</span>... <span class="org-variable-name">steps</span>) {} <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
+</span>}
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orge9152ef" class="outline-3">
-<h3 id="orge9152ef"><span class="section-number-3">1.2.</span> Calling Methods with <a href="20240107132638-variable_arguments.html#ID-9bb3ac0e-af2c-4243-9ae2-f2bfbee868c3">Varargs</a></h3>
+<div id="outline-container-org44d6d1a" class="outline-3">
+<h3 id="org44d6d1a"><span class="section-number-3">1.2.</span> Calling Methods with <a href="20240107132638-variable_arguments.html#ID-9bb3ac0e-af2c-4243-9ae2-f2bfbee868c3">Varargs</a></h3>
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
-<pre class="src src-java">// Pass an array
-int[] data = new int[] {1, 2, 3};
+<pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">Pass an array
+</span><span class="org-type">int</span>[] <span class="org-variable-name">data</span> = <span class="org-keyword">new</span> <span class="org-type">int</span>[] {1, 2, 3};
 walk1(data);
 
-// Pass a list of values
-walk1(1,2,3);
+<span class="org-comment-delimiter">// </span><span class="org-comment">Pass a list of values
+</span>walk1(1,2,3);
 
-public void walk1(int... steps) {
-    int[] step2 = steps; // Not necessary, but shows steps is of type int[]
-    System.out.print(step2.length);
+<span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">walk1</span>(<span class="org-type">int</span>... <span class="org-variable-name">steps</span>) {
+    <span class="org-type">int</span>[] <span class="org-variable-name">step2</span> = steps; <span class="org-comment-delimiter">// </span><span class="org-comment">Not necessary, but shows steps is of type int[]
+</span>    System.out.print(step2.length);
 }
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgfeefce5" class="outline-3">
-<h3 id="orgfeefce5"><span class="section-number-3">1.3.</span> Accessing Elements of <a href="20240107132638-variable_arguments.html#ID-9bb3ac0e-af2c-4243-9ae2-f2bfbee868c3">Varargs</a></h3>
+<div id="outline-container-org8fc9e2e" class="outline-3">
+<h3 id="org8fc9e2e"><span class="section-number-3">1.3.</span> Accessing Elements of <a href="20240107132638-variable_arguments.html#ID-9bb3ac0e-af2c-4243-9ae2-f2bfbee868c3">Varargs</a></h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 Accessing a <a href="20240107132638-variable_arguments.html#ID-9bb3ac0e-af2c-4243-9ae2-f2bfbee868c3">varargs</a> parameter is just like accessing an <code>array</code>.
@@ -270,33 +270,33 @@ It uses <b>array indexing</b>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">public static void run(int... steps) {
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">run</span>(<span class="org-type">int</span>... <span class="org-variable-name">steps</span>) {
     System.out.print(steps[1]);
 }
-public static void main(String[] args) {
-    run(11, 77);// 77
-}
+<span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
+    run(11, 77);<span class="org-comment-delimiter">// </span><span class="org-comment">77
+</span>}
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org5ee3786" class="outline-3">
-<h3 id="org5ee3786"><span class="section-number-3">1.4.</span> Using <a href="20240107132638-variable_arguments.html#ID-9bb3ac0e-af2c-4243-9ae2-f2bfbee868c3">Varargs</a> with Other Method Paramters</h3>
+<div id="outline-container-org621af60" class="outline-3">
+<h3 id="org621af60"><span class="section-number-3">1.4.</span> Using <a href="20240107132638-variable_arguments.html#ID-9bb3ac0e-af2c-4243-9ae2-f2bfbee868c3">Varargs</a> with Other Method Paramters</h3>
 <div class="outline-text-3" id="text-1-4">
 <div class="org-src-container">
-<pre class="src src-java">public class DogWalker {
-    public static void walkDog(int start, int... steps) {
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">DogWalker</span> {
+    <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">walkDog</span>(<span class="org-type">int</span> <span class="org-variable-name">start</span>, <span class="org-type">int</span>... <span class="org-variable-name">steps</span>) {
         System.out.println(steps.length);
     }
 
-    public static void main(String[] args) {
-        walkDog(1); // 0
-        walkDog(1, 2); // 1
-        walkDog(1, 2, 3); // 2
-        walkDog(1, new int[] {4, 5}); // 2
-        walkDog(1, null); // Triggers NullPointerException
-    }
+    <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
+        walkDog(1); <span class="org-comment-delimiter">// </span><span class="org-comment">0
+</span>        walkDog(1, 2); <span class="org-comment-delimiter">// </span><span class="org-comment">1
+</span>        walkDog(1, 2, 3); <span class="org-comment-delimiter">// </span><span class="org-comment">2
+</span>        walkDog(1, <span class="org-keyword">new</span> <span class="org-type">int</span>[] {4, 5}); <span class="org-comment-delimiter">// </span><span class="org-comment">2
+</span>        walkDog(1, <span class="org-constant">null</span>); <span class="org-comment-delimiter">// </span><span class="org-comment">Triggers NullPointerException
+</span>    }
 }
 </pre>
 </div>

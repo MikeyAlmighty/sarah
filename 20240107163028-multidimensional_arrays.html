@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Multidimensional Arrays</title>
@@ -201,27 +201,27 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2ceae1a">1. Multidimensional Arrays</a>
+<li><a href="#orgfc4464b">1. Multidimensional Arrays</a>
 <ul>
-<li><a href="#org765234f">1.1. Looping</a></li>
+<li><a href="#orgdfdc39f">1.1. Looping</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org2ceae1a" class="outline-2">
-<h2 id="org2ceae1a"><span class="section-number-2">1.</span> Multidimensional Arrays</h2>
+<div id="outline-container-orgfc4464b" class="outline-2">
+<h2 id="orgfc4464b"><span class="section-number-2">1.</span> Multidimensional Arrays</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 You can locate them with the <code>type</code> or <code>variable</code> name in the declaration, just as before:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">int[][] vars1; // 2D array
-int vars2 [][]; // 2D array
-int[] vars3[]; // 2D array
-int[] vars4 [], space [][]; // a 2D AND a 3D array
+<pre class="src src-java"><span class="org-type">int</span>[][] <span class="org-variable-name">vars1</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">2D array
+</span><span class="org-type">int</span> <span class="org-variable-name">vars2</span> [][]; <span class="org-comment-delimiter">// </span><span class="org-comment">2D array
+</span><span class="org-type">int</span>[] <span class="org-variable-name">vars3</span>[]; <span class="org-comment-delimiter">// </span><span class="org-comment">2D array
+</span><span class="org-type">int</span>[] <span class="org-variable-name">vars4</span> [], <span class="org-variable-name">space</span> [][]; <span class="org-comment-delimiter">// </span><span class="org-comment">a 2D AND a 3D array</span>
 </pre>
 </div>
 
@@ -230,7 +230,7 @@ You can specify the <b>size</b> of your multidimensional <a href="20240107072322
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">String [][] rectangle = new String[3][2];
+<pre class="src src-java"><span class="org-type">String</span> [][] <span class="org-variable-name">rectangle</span> = <span class="org-keyword">new</span> <span class="org-type">String</span>[3][2];
 </pre>
 </div>
 
@@ -239,30 +239,30 @@ The result of this statement is an <a href="20240107072322-arrays.html#ID-ad9ac5
 </p>
 
 
-<div id="orgcf0fac7" class="figure">
+<div id="org1a9f818" class="figure">
 <p><img src="./assets/multidimensional_array_rectangle.png" alt="multidimensional_array_rectangle.png" />
 </p>
 </div>
 </div>
 
-<div id="outline-container-org765234f" class="outline-3">
-<h3 id="org765234f"><span class="section-number-3">1.1.</span> Looping</h3>
+<div id="outline-container-orgdfdc39f" class="outline-3">
+<h3 id="orgdfdc39f"><span class="section-number-3">1.1.</span> Looping</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
-<pre class="src src-java">var twoD = new int[3][2];
+<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">twoD</span> = <span class="org-keyword">new</span> <span class="org-type">int</span>[3][2];
 
-for(int i = 0; i &lt; twoD.length; i++) {
-    for(int j = 0; j &lt; twoD[i].length; j++)
-        System.out.print(twoD[i][j] + " "); // print element
-    System.out.println(); // time for a new row
-}
+<span class="org-keyword">for</span>(<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; twoD.<span class="org-type">length</span>; i++) {
+    <span class="org-keyword">for</span>(<span class="org-type">int</span> <span class="org-variable-name">j</span> = 0; j &lt; <span class="org-type">twoD</span>[i].length; j++)
+        System.out.print(twoD[i][j] + <span class="org-string">" "</span>); <span class="org-comment-delimiter">// </span><span class="org-comment">print element
+</span>    System.out.println(); <span class="org-comment-delimiter">// </span><span class="org-comment">time for a new row
+</span>}
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-java">for(int[] inner : twoD) {
-    for(int num : inner)
-        System.out.print(num + " ");
+<pre class="src src-java"><span class="org-keyword">for</span>(<span class="org-type">int</span>[] <span class="org-variable-name">inner</span> : twoD) {
+    <span class="org-keyword">for</span>(<span class="org-type">int</span> <span class="org-variable-name">num</span> : inner)
+        System.out.print(num + <span class="org-string">" "</span>);
     System.out.println();
 }
 </pre>

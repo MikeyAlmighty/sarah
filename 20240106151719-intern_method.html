@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Intern Method</title>
@@ -201,11 +201,11 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orge9975d9">1. Intern Method</a>
+<li><a href="#org6d5e4b5">1. Intern Method</a>
 <ul>
-<li><a href="#orgdf7e578">1.1. Signature</a>
+<li><a href="#orga8dc862">1.1. Signature</a>
 <ul>
-<li><a href="#org9b05cf6">1.1.1. Example</a></li>
+<li><a href="#org10d5d15">1.1.1. Example</a></li>
 </ul>
 </li>
 </ul>
@@ -214,25 +214,25 @@
 </div>
 </div>
 
-<div id="outline-container-orge9975d9" class="outline-2">
-<h2 id="orge9975d9"><span class="section-number-2">1.</span> Intern Method</h2>
+<div id="outline-container-org6d5e4b5" class="outline-2">
+<h2 id="org6d5e4b5"><span class="section-number-2">1.</span> Intern Method</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 The <code>intern()</code> method will use an object in the <a href="20240106150932-string_pool.html#ID-850caa0e-d255-4199-a78a-90a02a8621ca">String Pool</a> if one is present.
 </p>
 </div>
 
-<div id="outline-container-orgdf7e578" class="outline-3">
-<h3 id="orgdf7e578"><span class="section-number-3">1.1.</span> Signature</h3>
+<div id="outline-container-orga8dc862" class="outline-3">
+<h3 id="orga8dc862"><span class="section-number-3">1.1.</span> Signature</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
-<pre class="src src-java">public String intern();
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-type">String</span> <span class="org-function-name">intern</span>();
 </pre>
 </div>
 </div>
 
-<div id="outline-container-org9b05cf6" class="outline-4">
-<h4 id="org9b05cf6"><span class="section-number-4">1.1.1.</span> Example</h4>
+<div id="outline-container-org10d5d15" class="outline-4">
+<h4 id="org10d5d15"><span class="section-number-4">1.1.1.</span> Example</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 First we tell Java to use the <a href="20240106150932-string_pool.html#ID-850caa0e-d255-4199-a78a-90a02a8621ca">String Pool</a> normally for <code>name</code>.
@@ -244,15 +244,15 @@ Since both variables point to the <b>same reference</b> in the <a href="20240106
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">var name = "Hello World";
-var name2 = new String("Hello World").intern();
-System.out.println(name == name2); // true
+<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">name</span> = <span class="org-string">"Hello World"</span>;
+<span class="org-type">var</span> <span class="org-variable-name">name2</span> = <span class="org-keyword">new</span> <span class="org-type">String</span>(<span class="org-string">"Hello World"</span>).intern();
+System.out.println(name == name2); <span class="org-comment-delimiter">// </span><span class="org-comment">true</span>
 </pre>
 </div>
 </div>
 
 <ol class="org-ol">
-<li><a id="org407ed60"></a><span class="underline">Exam Trick</span><br />
+<li><a id="org718b579"></a><span class="underline">Exam Trick</span><br />
 <div class="outline-text-5" id="text-1-1-1-1">
 <p>
 Remember to never use <code>intern()</code> or <code>==</code> to compare <b>String objects</b> in your code.

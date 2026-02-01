@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Package Access Modifier</title>
@@ -201,18 +201,18 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5b63cf1">1. Package Access Modifier</a>
+<li><a href="#org8238aa4">1. Package Access Modifier</a>
 <ul>
-<li><a href="#orgd6ab890">1.1. Example</a></li>
-<li><a href="#org581802e">1.2. Negative Example</a></li>
+<li><a href="#orgfb4cf09">1.1. Example</a></li>
+<li><a href="#org7f33121">1.2. Negative Example</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org5b63cf1" class="outline-2">
-<h2 id="org5b63cf1"><span class="section-number-2">1.</span> Package Access Modifier</h2>
+<div id="outline-container-org8238aa4" class="outline-2">
+<h2 id="org8238aa4"><span class="section-number-2">1.</span> Package Access Modifier</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 With <code>package access</code>, the method can be called only from a <code>class</code> in the <b>same package</b>.
@@ -232,27 +232,27 @@ When there is no access modifier, Java <b>assumes package access</b>.
 </p>
 </div>
 
-<div id="outline-container-orgd6ab890" class="outline-3">
-<h3 id="orgd6ab890"><span class="section-number-3">1.1.</span> Example</h3>
+<div id="outline-container-orgfb4cf09" class="outline-3">
+<h3 id="orgfb4cf09"><span class="section-number-3">1.1.</span> Example</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
-<pre class="src src-java">package pond.duck;
+<pre class="src src-java"><span class="org-keyword">package</span> pond.<span class="org-constant">duck</span>;
 
-public class MotherDuck {
-    String noise = "quack";
-    void quack() {
-    System.out.print(noise); // package access is ok
-    }
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">MotherDuck</span> {
+    <span class="org-type">String</span> <span class="org-variable-name">noise</span> = <span class="org-string">"quack"</span>;
+    <span class="org-type">void</span> <span class="org-function-name">quack</span>() {
+    System.out.print(noise); <span class="org-comment-delimiter">// </span><span class="org-comment">package access is ok
+</span>    }
 }
 
-package pond.duck;
+<span class="org-keyword">package</span> pond.<span class="org-constant">duck</span>;
 
-public class GoodDuckling {
-    public void makeNoise() {
-        var duck = new MotherDuck();
-        duck.quack(); // package access is ok
-        System.out.print(duck.noise); // package access is ok
-    }
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">GoodDuckling</span> {
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">makeNoise</span>() {
+        <span class="org-type">var</span> <span class="org-variable-name">duck</span> = <span class="org-keyword">new</span> <span class="org-type">MotherDuck</span>();
+        duck.quack(); <span class="org-comment-delimiter">// </span><span class="org-comment">package access is ok
+</span>        System.out.print(duck.noise); <span class="org-comment-delimiter">// </span><span class="org-comment">package access is ok
+</span>    }
 }
 </pre>
 </div>
@@ -264,21 +264,21 @@ This allows <code>package access</code> to work.
 </div>
 </div>
 
-<div id="outline-container-org581802e" class="outline-3">
-<h3 id="org581802e"><span class="section-number-3">1.2.</span> Negative Example</h3>
+<div id="outline-container-org7f33121" class="outline-3">
+<h3 id="org7f33121"><span class="section-number-3">1.2.</span> Negative Example</h3>
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
-<pre class="src src-java">package pond.swan;
+<pre class="src src-java"><span class="org-keyword">package</span> pond.<span class="org-constant">swan</span>;
 
-// import another package
-import pond.duck.MotherDuck;
+<span class="org-comment-delimiter">// </span><span class="org-comment">import another package
+</span><span class="org-keyword">import</span> <span class="org-constant">pond</span>.<span class="org-constant">duck</span>.<span class="org-type">MotherDuck</span>;
 
-public class BadCygnet {
-    public void makeNoise() {
-        var duck = new MotherDuck();
-        duck.quack(); // DOES NOT COMPILE
-        System.out.print(duck.noise); // DOES NOT COMPILE
-    }
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">BadCygnet</span> {
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">makeNoise</span>() {
+        <span class="org-type">var</span> <span class="org-variable-name">duck</span> = <span class="org-keyword">new</span> <span class="org-type">MotherDuck</span>();
+        duck.quack(); <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
+</span>        System.out.print(duck.noise); <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
+</span>    }
 }
 </pre>
 </div>

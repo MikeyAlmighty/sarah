@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Consumers</title>
@@ -201,9 +201,9 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgbdaa319">1. Consumer Interface</a>
+<li><a href="#orgad3ba2d">1. Consumer Interface</a>
 <ul>
-<li><a href="#org3c00920">1.1. Chaining consumers using `andThen`:</a></li>
+<li><a href="#orgca2e141">1.1. Chaining consumers using `andThen`:</a></li>
 </ul>
 </li>
 </ul>
@@ -213,8 +213,8 @@
 Represents operation which takes single argument and returns <b>no value</b>.
 </p>
 
-<div id="outline-container-orgbdaa319" class="outline-2">
-<h2 id="orgbdaa319"><span class="section-number-2">1.</span> Consumer Interface</h2>
+<div id="outline-container-orgad3ba2d" class="outline-2">
+<h2 id="orgad3ba2d"><span class="section-number-2">1.</span> Consumer Interface</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Consumer takes one argument
@@ -223,9 +223,9 @@ Primitive Consumers like <code>IntConsumer</code>, <code>LongConsumer</code>, <c
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">public class LambdasDemo {
-  public static void show() {
-    List&lt;Integer&gt; list = List.of(1, 2, 3, 4);
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">LambdasDemo</span> {
+  <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+    <span class="org-type">List</span>&lt;<span class="org-type">Integer</span>&gt; <span class="org-variable-name">list</span> = List.of(1, 2, 3, 4);
     list.forEach((item) -&gt; System.out.println(item));
   }
 }
@@ -233,14 +233,14 @@ Primitive Consumers like <code>IntConsumer</code>, <code>LongConsumer</code>, <c
 </div>
 </div>
 
-<div id="outline-container-org3c00920" class="outline-3">
-<h3 id="org3c00920"><span class="section-number-3">1.1.</span> Chaining consumers using `andThen`:</h3>
+<div id="outline-container-orgca2e141" class="outline-3">
+<h3 id="orgca2e141"><span class="section-number-3">1.1.</span> Chaining consumers using `andThen`:</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
-<pre class="src src-java">public static void show() {
-  List&lt;String&gt; list = List.of("a", "b", "c");
-  Consumer&lt;String&gt; print = item -&gt; System.out.println(item);
-  Consumer&lt;String&gt; printToUppercase = item -&gt; System.out.println(item.toUpperCase());
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+  <span class="org-type">List</span>&lt;<span class="org-type">String</span>&gt; <span class="org-variable-name">list</span> = List.of(<span class="org-string">"a"</span>, <span class="org-string">"b"</span>, <span class="org-string">"c"</span>);
+  <span class="org-type">Consumer</span>&lt;<span class="org-type">String</span>&gt; <span class="org-variable-name">print</span> = item -&gt; System.out.println(item);
+  <span class="org-type">Consumer</span>&lt;<span class="org-type">String</span>&gt; <span class="org-variable-name">printToUppercase</span> = item -&gt; System.out.println(item.toUpperCase());
 
   list.forEach(print.andThen(printToUppercase));
 }

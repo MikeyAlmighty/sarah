@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Local Variable Type Inference</title>
@@ -201,17 +201,17 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org8b7edd2">1. Local Variable Type Inference</a>
+<li><a href="#org79d8785">1. Local Variable Type Inference</a>
 <ul>
-<li><a href="#orgb4b6b6d">1.1. <span class="underline">Exam Trick</span></a></li>
+<li><a href="#org3836d95">1.1. <span class="underline">Exam Trick</span></a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org8b7edd2" class="outline-2">
-<h2 id="org8b7edd2"><span class="section-number-2">1.</span> Local Variable Type Inference</h2>
+<div id="outline-container-org79d8785" class="outline-2">
+<h2 id="org79d8785"><span class="section-number-2">1.</span> Local Variable Type Inference</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 You have the option of using the <a href="20231224102648-java_keywords.html#ID-5f2b572a-ec31-49de-ba13-95b0c5edb4c0">keyword</a> <code>var</code> instead of the type when declaring local variables under certain conditions.
@@ -219,10 +219,10 @@ You have the option of using the <a href="20231224102648-java_keywords.html#ID-5
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">public class Zoo {
-    public void whatTypeAmI() {
-        var name = "Hello";
-        var size = 7;
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Zoo</span> {
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">whatTypeAmI</span>() {
+        <span class="org-type">var</span> <span class="org-variable-name">name</span> = <span class="org-string">"Hello"</span>;
+        <span class="org-type">var</span> <span class="org-variable-name">size</span> = 7;
     }
 }
 </pre>
@@ -232,17 +232,17 @@ You have the option of using the <a href="20231224102648-java_keywords.html#ID-5
 The compiler looks at the code on the line of the declaration and uses it to <code>infer</code> the type.
 </p>
 <div class="org-src-container">
-<pre class="src src-java">// Invalid assignment using var type inference
-public void reassignment() {
-    var number = 7;
+<pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">Invalid assignment using var type inference
+</span><span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">reassignment</span>() {
+    <span class="org-type">var</span> <span class="org-variable-name">number</span> = 7;
     number = 4;
-    number = "five"; // DOES NOT COMPILE
-}
+    number = <span class="org-string">"five"</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
+</span>}
 
-public void twoTypes() {
-    int a, var b = 3; // DOES NOT COMPILE
-    var n = null;// DOES NOT COMPILE
-}
+<span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">twoTypes</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">a</span>, <span class="org-variable-name">var</span> b = 3; <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
+</span>    <span class="org-type">var</span> <span class="org-variable-name">n</span> = <span class="org-constant">null</span>;<span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
+</span>}
 </pre>
 </div>
 
@@ -254,15 +254,15 @@ public void twoTypes() {
 This code does <b>not</b> compile. Remember that for <code>local variable type inference</code>, the compiler looks <b>only</b> at the line with the declaration.
 </p>
 <div class="org-src-container">
-<pre class="src src-java">/*
-*/
-public void doesNotCompile(boolean check) {
-    var question;
+<pre class="src src-java"><span class="org-comment-delimiter">/*</span><span class="org-comment">
+</span><span class="org-comment-delimiter">*/</span>
+<span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">doesNotCompile</span>(<span class="org-type">boolean</span> <span class="org-variable-name">check</span>) {
+    <span class="org-type">var</span> <span class="org-variable-name">question</span>;
     question = 1;
-    var answer;
-    if (check) {
+    <span class="org-type">var</span> <span class="org-variable-name">answer</span>;
+    <span class="org-keyword">if</span> (check) {
         answer = 2;
-    } else {
+    } <span class="org-keyword">else</span> {
         answer = 3;
     }
     System.out.println(answer);
@@ -271,8 +271,8 @@ public void doesNotCompile(boolean check) {
 </div>
 </div>
 
-<div id="outline-container-orgb4b6b6d" class="outline-3">
-<h3 id="orgb4b6b6d"><span class="section-number-3">1.1.</span> <span class="underline">Exam Trick</span></h3>
+<div id="outline-container-org3836d95" class="outline-3">
+<h3 id="org3836d95"><span class="section-number-3">1.1.</span> <span class="underline">Exam Trick</span></h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 In this example, <code>a</code> and <code>b</code> are method parameters.
@@ -281,8 +281,8 @@ Using <code>var</code> in one of these places is a good exam trick to see if you
 Remember that var is <b>only</b> used for <code>local variable type inference</code>!
 </p>
 <div class="org-src-container">
-<pre class="src src-java">public int addition(var a, var b) { // DOES NOT COMPILE
-    return a + b;
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-type">int</span> <span class="org-function-name">addition</span>(<span class="org-type">var</span> <span class="org-variable-name">a</span>, <span class="org-type">var</span> <span class="org-variable-name">b</span>) { <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
+</span>    <span class="org-keyword">return</span> a + b;
 }
 </pre>
 </div>

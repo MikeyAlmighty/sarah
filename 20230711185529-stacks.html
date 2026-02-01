@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Stacks</title>
@@ -201,17 +201,17 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgac5e56a">1. Stacks</a>
+<li><a href="#org8cc01a4">1. Stacks</a>
 <ul>
-<li><a href="#org303a100">1.1. Operations</a></li>
+<li><a href="#orgadeb516">1.1. Operations</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgac5e56a" class="outline-2">
-<h2 id="orgac5e56a"><span class="section-number-2">1.</span> Stacks</h2>
+<div id="outline-container-org8cc01a4" class="outline-2">
+<h2 id="org8cc01a4"><span class="section-number-2">1.</span> Stacks</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Linear Data Structure
@@ -222,8 +222,8 @@ Linear Data Structure
 </ul>
 </div>
 
-<div id="outline-container-org303a100" class="outline-3">
-<h3 id="org303a100"><span class="section-number-3">1.1.</span> Operations</h3>
+<div id="outline-container-orgadeb516" class="outline-3">
+<h3 id="orgadeb516"><span class="section-number-3">1.1.</span> Operations</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Following operations are available on a stack:
@@ -245,51 +245,51 @@ Or create it via a class implementation:
 
 
 <div class="org-src-container">
-<pre class="src src-js">class Stack {
+<pre class="src src-js"><span class="org-keyword">class</span> Stack {
   constructor(){
-    this.storage = {}
-    this.count = 0
+    <span class="org-constant">this</span>.storage = {}
+    <span class="org-constant">this</span>.count = 0
   }
 
   push = (element) =&gt; {
-    this.count++
-    this.storage[this.count] = element
+    <span class="org-constant">this</span>.count++
+    <span class="org-constant">this</span>.storage[<span class="org-constant">this</span>.count] = element
   }
 
   peek = () =&gt; {
-    return this.storage[this.count]
+    <span class="org-keyword">return</span> <span class="org-constant">this</span>.storage[<span class="org-constant">this</span>.count]
   }
 
   pop = () =&gt; {
-    let removed = this.storage[this.count]
-    delete this.storage[this.count]
-    this.count--
-    return removed
+    <span class="org-keyword">let</span> <span class="org-variable-name">removed</span> = <span class="org-constant">this</span>.storage[<span class="org-constant">this</span>.count]
+    <span class="org-keyword">delete</span> <span class="org-constant">this</span>.storage[<span class="org-constant">this</span>.count]
+    <span class="org-constant">this</span>.count--
+    <span class="org-keyword">return</span> removed
   }
 
   size = () =&gt; {
-    return this.count
+    <span class="org-keyword">return</span> <span class="org-constant">this</span>.count
   }
 
   isEmpty = () =&gt; {
-    return this.count === 0 ? true : false
+    <span class="org-keyword">return</span> <span class="org-constant">this</span>.count === 0 ? <span class="org-constant">true</span> : <span class="org-constant">false</span>
   }
 }
 
-const videoGameStack = new Stack()
-console.log(videoGameStack.isEmpty()) // Should be true
-videoGameStack.push('Deadpool')
-console.log(videoGameStack.isEmpty()) // Should be false
+<span class="org-keyword">const</span> <span class="org-variable-name">videoGameStack</span> = <span class="org-keyword">new</span> <span class="org-type">Stack</span>()
+console.log(videoGameStack.isEmpty()) <span class="org-comment-delimiter">// </span><span class="org-comment">Should be true
+</span>videoGameStack.push(<span class="org-string">'Deadpool'</span>)
+console.log(videoGameStack.isEmpty()) <span class="org-comment-delimiter">// </span><span class="org-comment">Should be false
+</span>
+videoGameStack.push(<span class="org-string">'The Witcher 3'</span>)
+videoGameStack.push(<span class="org-string">'Doom'</span>)
 
-videoGameStack.push('The Witcher 3')
-videoGameStack.push('Doom')
-
-console.log(videoGameStack.size()) // Should be 3
-videoGameStack.pop() // Pops off Doom
-
-console.log(videoGameStack.peek()) // Should be The Witcher 3
-
-console.log(videoGameStack.size()) // Should be 2
+console.log(videoGameStack.size()) <span class="org-comment-delimiter">// </span><span class="org-comment">Should be 3
+</span>videoGameStack.pop() <span class="org-comment-delimiter">// </span><span class="org-comment">Pops off Doom
+</span>
+console.log(videoGameStack.peek()) <span class="org-comment-delimiter">// </span><span class="org-comment">Should be The Witcher 3
+</span>
+console.log(videoGameStack.size()) <span class="org-comment-delimiter">// </span><span class="org-comment">Should be 2</span>
 </pre>
 </div>
 </div>

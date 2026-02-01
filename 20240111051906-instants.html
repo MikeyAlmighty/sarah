@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Instants</title>
@@ -201,42 +201,42 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgf6f9e8a">1. Instants</a>
+<li><a href="#org25ba8d7">1. Instants</a>
 <ul>
-<li><a href="#orga3e7958">1.1. <span class="underline">Exam Trick</span></a></li>
+<li><a href="#org006c8f2">1.1. <span class="underline">Exam Trick</span></a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgf6f9e8a" class="outline-2">
-<h2 id="orgf6f9e8a"><span class="section-number-2">1.</span> Instants</h2>
+<div id="outline-container-org25ba8d7" class="outline-2">
+<h2 id="org25ba8d7"><span class="section-number-2">1.</span> Instants</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 The <code>Instant</code> class represents a <b>specific moment in time in the GMT time zone</b>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">var now = Instant.now();
-// do something time consuming
-var later = Instant.now();
-var duration = Duration.between(now, later);
-System.out.println(duration.toMillis()); // Returns number milliseconds
+<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">now</span> = Instant.now();
+<span class="org-comment-delimiter">// </span><span class="org-comment">do something time consuming
+</span><span class="org-type">var</span> <span class="org-variable-name">later</span> = Instant.now();
+<span class="org-type">var</span> <span class="org-variable-name">duration</span> = Duration.between(now, later);
+System.out.println(duration.toMillis()); <span class="org-comment-delimiter">// </span><span class="org-comment">Returns number milliseconds</span>
 </pre>
 </div>
 
 
 <div class="org-src-container">
-<pre class="src src-java">var date = LocalDate.of(2022, 5, 25);
-var time = LocalTime.of(11, 55, 00);
-var zone = ZoneId.of("US/Eastern");
-var zonedDateTime = ZonedDateTime.of(date, time, zone);
+<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">date</span> = LocalDate.of(2022, 5, 25);
+<span class="org-type">var</span> <span class="org-variable-name">time</span> = LocalTime.of(11, 55, 00);
+<span class="org-type">var</span> <span class="org-variable-name">zone</span> = ZoneId.of(<span class="org-string">"US/Eastern"</span>);
+<span class="org-type">var</span> <span class="org-variable-name">zonedDateTime</span> = ZonedDateTime.of(date, time, zone);
 
-var instant = zonedDateTime.toInstant(); // 2022–05–25T15:55:00Z
-
-System.out.println(zonedDateTime); // 2022–05–25T11:55–04:00[US/Eastern]
-System.out.println(instant); // 202–05–25T15:55:00Z
+<span class="org-type">var</span> <span class="org-variable-name">instant</span> = zonedDateTime.toInstant(); <span class="org-comment-delimiter">// </span><span class="org-comment">2022&#8211;05&#8211;25T15:55:00Z
+</span>
+System.out.println(zonedDateTime); <span class="org-comment-delimiter">// </span><span class="org-comment">2022&#8211;05&#8211;25T11:55&#8211;04:00[US/Eastern]
+</span>System.out.println(instant); <span class="org-comment-delimiter">// </span><span class="org-comment">202&#8211;05&#8211;25T15:55:00Z</span>
 </pre>
 </div>
 
@@ -250,8 +250,8 @@ The <code>Instant</code> gets rid of the time zone and turns it into an Instant 
 </p>
 </div>
 
-<div id="outline-container-orga3e7958" class="outline-3">
-<h3 id="orga3e7958"><span class="section-number-3">1.1.</span> <span class="underline">Exam Trick</span></h3>
+<div id="outline-container-org006c8f2" class="outline-3">
+<h3 id="org006c8f2"><span class="section-number-3">1.1.</span> <span class="underline">Exam Trick</span></h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 You <b>cannot</b> convert a <a href="20240109075711-localdatetime.html#ID-538ad23c-716d-409d-9846-88be3830d32a">LocalDateTime</a> to an <code>Instant</code>.

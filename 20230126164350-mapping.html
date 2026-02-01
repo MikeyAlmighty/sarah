@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mapping</title>
@@ -201,21 +201,21 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgfd86a32">1. map</a></li>
-<li><a href="#org65b165c">2. flatMap</a></li>
+<li><a href="#orga5c16b8">1. map</a></li>
+<li><a href="#org6411218">2. flatMap</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgfd86a32" class="outline-2">
-<h2 id="orgfd86a32"><span class="section-number-2">1.</span> map</h2>
+<div id="outline-container-orga5c16b8" class="outline-2">
+<h2 id="orga5c16b8"><span class="section-number-2">1.</span> map</h2>
 <div class="outline-text-2" id="text-1">
 <div class="org-src-container">
-<pre class="src src-java">public static void show() {
-    List&lt;Movie&gt; movies = List.of(
-        new Movie("Deadpool", 20),
-        new Movie("Deadpool 2", 15),
-        new Movie("Deadpool 3", 10)
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+    <span class="org-type">List</span>&lt;<span class="org-type">Movie</span>&gt; <span class="org-variable-name">movies</span> = List.of(
+        <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"Deadpool"</span>, 20),
+        <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"Deadpool 2"</span>, 15),
+        <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"Deadpool 3"</span>, 10)
     );
     movies.stream()
             .map(movie -&gt; movie.getTitle())
@@ -226,11 +226,11 @@
 </div>
 </div>
 
-<div id="outline-container-org65b165c" class="outline-2">
-<h2 id="org65b165c"><span class="section-number-2">2.</span> flatMap</h2>
+<div id="outline-container-org6411218" class="outline-2">
+<h2 id="org6411218"><span class="section-number-2">2.</span> flatMap</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
-<pre class="src src-java">public static void show() {
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
     Stream.of(List.of(1, 2, 3), List.of(4, 5, 6))
             .flatMap(list -&gt; list.stream())
             .forEach(list -&gt; System.out.println(list));

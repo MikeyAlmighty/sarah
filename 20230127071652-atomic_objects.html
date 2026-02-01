@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Atomic Objects</title>
@@ -198,17 +198,17 @@
 <div id="content" class="content">
 <h1 class="title">Atomic Objects</h1>
 <div class="org-src-container">
-<pre class="src src-java">public class DownloadStatus {
-    private AtomicInteger totalBytes = new AtomicInteger();
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">DownloadStatus</span> {
+    <span class="org-keyword">private</span> <span class="org-type">AtomicInteger</span> <span class="org-variable-name">totalBytes</span> = <span class="org-keyword">new</span> <span class="org-type">AtomicInteger</span>();
 
-    public int getTotalBytes() {
-        return totalBytes.get(); // Get
-    }
+    <span class="org-keyword">public</span> <span class="org-type">int</span> <span class="org-function-name">getTotalBytes</span>() {
+        <span class="org-keyword">return</span> totalBytes.get(); <span class="org-comment-delimiter">// </span><span class="org-comment">Get
+</span>    }
 
-    public void incrementTotalBytes(){
-        totalBytes.incrementAndGet(); // Set ++a
-        // totalBytes.getAndIncrement(); // Set a++
-    }
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">incrementTotalBytes</span>(){
+        totalBytes.incrementAndGet(); <span class="org-comment-delimiter">// </span><span class="org-comment">Set ++a
+</span>        <span class="org-comment-delimiter">// </span><span class="org-comment">totalBytes.getAndIncrement(); // Set a++
+</span>    }
 }
 </pre>
 </div>
@@ -217,16 +217,16 @@
 When you need multiple threads to update a value <b>frequently</b> use a <code>Adder</code>
 </p>
 <div class="org-src-container">
-<pre class="src src-java">import java.util.concurrent.atomic.LongAdder;
+<pre class="src src-java"><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-constant">concurrent</span>.<span class="org-constant">atomic</span>.<span class="org-type">LongAdder</span>;
 
-public class DownloadStatus {
-    private LongAdder totalBytes = new LongAdder();
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">DownloadStatus</span> {
+    <span class="org-keyword">private</span> <span class="org-type">LongAdder</span> <span class="org-variable-name">totalBytes</span> = <span class="org-keyword">new</span> <span class="org-type">LongAdder</span>();
 
-    public int getTotalBytes() {
-        return totalBytes.intValue();
+    <span class="org-keyword">public</span> <span class="org-type">int</span> <span class="org-function-name">getTotalBytes</span>() {
+        <span class="org-keyword">return</span> totalBytes.intValue();
     }
 
-    public void incrementTotalBytes(){
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">incrementTotalBytes</span>(){
         totalBytes.increment();
     }
 }

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Creating Constructors in Abstract Classes</title>
@@ -201,11 +201,11 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org8df1c82">1. Creating Constructors in Abstract Classes</a>
+<li><a href="#org6122c21">1. Creating Constructors in Abstract Classes</a>
 <ul>
-<li><a href="#org5388e93">1.1. Example</a>
+<li><a href="#org86ee9ef">1.1. Example</a>
 <ul>
-<li><a href="#org2ff5c73">1.1.1. <span class="underline">Exam Trick</span></a></li>
+<li><a href="#org2a88389">1.1.1. <span class="underline">Exam Trick</span></a></li>
 </ul>
 </li>
 </ul>
@@ -214,12 +214,12 @@
 </div>
 </div>
 
-<div id="outline-container-org8df1c82" class="outline-2">
-<h2 id="org8df1c82"><span class="section-number-2">1.</span> Creating Constructors in Abstract Classes</h2>
+<div id="outline-container-org6122c21" class="outline-2">
+<h2 id="org6122c21"><span class="section-number-2">1.</span> Creating Constructors in Abstract Classes</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org5388e93" class="outline-3">
-<h3 id="org5388e93"><span class="section-number-3">1.1.</span> Example</h3>
+<div id="outline-container-org86ee9ef" class="outline-3">
+<h3 id="org86ee9ef"><span class="section-number-3">1.1.</span> Example</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Using the <a href="20240114161002-declaring_constructors.html#ID-f3a17739-2afe-4abe-84c3-778419d52cb8">constructors</a> rules, <a href="20231224095703-javac.html#ID-d5b4004d-b5db-48a2-8e85-09359ca61a42">javac</a> inserts a <code>default no­argument constructor</code> into the <code>Platypus</code> class, which first calls <code>super()</code> in the
@@ -235,29 +235,29 @@ This code <b>compiles</b> and prints <code>yummy!</code> at <b>runtime</b>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">abstract class Mammal {
-    abstract CharSequence chew();
+<pre class="src src-java"><span class="org-keyword">abstract</span> <span class="org-keyword">class</span> <span class="org-type">Mammal</span> {
+    <span class="org-keyword">abstract</span> <span class="org-type">CharSequence</span> <span class="org-function-name">chew</span>();
 
-    public Mammal() {
+    <span class="org-keyword">public</span> Mammal() {
         System.out.println(chew());
     }
 }
 
-public class Platypus extends Mammal {
-    String chew() {
-        return "yummy!";
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Platypus</span> <span class="org-keyword">extends</span> <span class="org-type">Mammal</span> {
+    <span class="org-type">String</span> <span class="org-function-name">chew</span>() {
+        <span class="org-keyword">return</span> <span class="org-string">"yummy!"</span>;
     }
 
-    public static void main(String[] args) {
-        new Platypus();
+    <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
+        <span class="org-keyword">new</span> <span class="org-type">Platypus</span>();
     }
 }
 </pre>
 </div>
 </div>
 
-<div id="outline-container-org2ff5c73" class="outline-4">
-<h4 id="org2ff5c73"><span class="section-number-4">1.1.1.</span> <span class="underline">Exam Trick</span></h4>
+<div id="outline-container-org2a88389" class="outline-4">
+<h4 id="org2a88389"><span class="section-number-4">1.1.1.</span> <span class="underline">Exam Trick</span></h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 For the exam, remember that <code>abstract classes</code> are initialized with <code>constructors</code> in the same way as <code>non­abstract classes</code>.

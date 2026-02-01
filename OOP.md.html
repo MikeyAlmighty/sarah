@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -206,11 +206,11 @@
 </ul>
 </li>
 <li><a href="#inheritance">2. Inheritance</a></li>
-<li><a href="#orgdfa8601">3. Encapsulation</a></li>
-<li><a href="#org5cc1e7c">4. Abstraction</a></li>
-<li><a href="#org47f175c">5. Polymorphism</a>
+<li><a href="#org0b389a5">3. Encapsulation</a></li>
+<li><a href="#org7aab745">4. Abstraction</a></li>
+<li><a href="#orgf192f17">5. Polymorphism</a>
 <ul>
-<li><a href="#orgf190ba5">5.1. Problems</a></li>
+<li><a href="#org2db4195">5.1. Problems</a></li>
 </ul>
 </li>
 </ul>
@@ -231,20 +231,20 @@
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-java">public class Pen {
-    // Attributes
-    String type = "Gel";
-    String color = "Blue";
-    byte point = 10;
-    static boolean clicked = false;
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Pen</span> {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Attributes
+</span>    <span class="org-type">String</span> <span class="org-variable-name">type</span> = <span class="org-string">"Gel"</span>;
+    <span class="org-type">String</span> <span class="org-variable-name">color</span> = <span class="org-string">"Blue"</span>;
+    <span class="org-type">byte</span> <span class="org-variable-name">point</span> = 10;
+    <span class="org-keyword">static</span> <span class="org-type">boolean</span> <span class="org-variable-name">clicked</span> = <span class="org-constant">false</span>;
 
-    // Actions
-    public static void click() {
-        clicked = true;
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Actions
+</span>    <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">click</span>() {
+        clicked = <span class="org-constant">true</span>;
     }
 
-    public static void unclick() {
-        clicked = false;
+    <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">unclick</span>() {
+        clicked = <span class="org-constant">false</span>;
     }
 }
 </pre>
@@ -261,33 +261,33 @@ See <a href="Inheritance.md.html#ID-dc175738-5133-433e-9867-ed8f858afbd7">Inheri
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">// Hero
-public class Hero {
-  public static void kick() {
-      System.out.println("Kick");
+<pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">Hero
+</span><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Hero</span> {
+  <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">kick</span>() {
+      System.out.println(<span class="org-string">"Kick"</span>);
   }
 
-  public static void punch() {
-      System.out.println("Punch");
+  <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">punch</span>() {
+      System.out.println(<span class="org-string">"Punch"</span>);
   }
 
-  public static void powerUp() {
-    System.out.println("Power Up!");
+  <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">powerUp</span>() {
+    System.out.println(<span class="org-string">"Power Up!"</span>);
   }
 
-  public static void powerDown() {
-    System.out.println("Power Down!");
+  <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">powerDown</span>() {
+    System.out.println(<span class="org-string">"Power Down!"</span>);
   }
 }
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-java">// Hero1
-public class Hero1 extends Hero {
-    String suitColor = "Red";
+<pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">Hero1
+</span><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Hero1</span> <span class="org-keyword">extends</span> <span class="org-type">Hero</span> {
+    <span class="org-type">String</span> <span class="org-variable-name">suitColor</span> = <span class="org-string">"Red"</span>;
 
-    public static void setPower(int power) {
+    <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">setPower</span>(<span class="org-type">int</span> <span class="org-variable-name">power</span>) {
         System.out.println(power);
     }
 }
@@ -295,10 +295,10 @@ public class Hero1 extends Hero {
 </div>
 
 <div class="org-src-container">
-<pre class="src src-java">// Hero2
-public class Hero2 extends Hero {
+<pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">Hero2
+</span><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Hero2</span> <span class="org-keyword">extends</span> <span class="org-type">Hero</span> {
 
-    public static void setAgility(int agility) {
+    <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">setAgility</span>(<span class="org-type">int</span> <span class="org-variable-name">agility</span>) {
         System.out.println(agility);
     }
 }
@@ -306,16 +306,16 @@ public class Hero2 extends Hero {
 </div>
 
 <div class="org-src-container">
-<pre class="src src-java">// Main
-public class Main {
+<pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">Main
+</span><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Main</span> {
 
-    public static void main(String[] args) {
-       Hero1 hero1 = new Hero1();
-       Hero2 hero2 = new Hero2();
+    <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
+       <span class="org-type">Hero1</span> <span class="org-variable-name">hero1</span> = <span class="org-keyword">new</span> <span class="org-type">Hero1</span>();
+       <span class="org-type">Hero2</span> <span class="org-variable-name">hero2</span> = <span class="org-keyword">new</span> <span class="org-type">Hero2</span>();
        hero2.setAgility(20);
-    //    hero1.setAgility(20); // Not allowed as setAgility does not exist on Hero1
-    //    hero2.setPower(20); // Not allowed as setPower does not exist on Hero2
-       hero1.setPower(15);
+    <span class="org-comment-delimiter">//    </span><span class="org-comment">hero1.setAgility(20); // Not allowed as setAgility does not exist on Hero1
+</span>    <span class="org-comment-delimiter">//    </span><span class="org-comment">hero2.setPower(20); // Not allowed as setPower does not exist on Hero2
+</span>       hero1.setPower(15);
        hero1.punch();
        hero1.kick();
        hero1.powerDown();
@@ -328,8 +328,8 @@ public class Main {
 </div>
 
 
-<div id="outline-container-orgdfa8601" class="outline-2">
-<h2 id="orgdfa8601"><span class="section-number-2">3.</span> Encapsulation</h2>
+<div id="outline-container-org0b389a5" class="outline-2">
+<h2 id="org0b389a5"><span class="section-number-2">3.</span> Encapsulation</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 See <a href="Encapsulation.md.html#ID-89e69431-4199-42ee-8633-4c2cc5da4d8a">Encapsulation</a>
@@ -337,8 +337,8 @@ See <a href="Encapsulation.md.html#ID-89e69431-4199-42ee-8633-4c2cc5da4d8a">Enca
 </div>
 </div>
 
-<div id="outline-container-org5cc1e7c" class="outline-2">
-<h2 id="org5cc1e7c"><span class="section-number-2">4.</span> Abstraction</h2>
+<div id="outline-container-org7aab745" class="outline-2">
+<h2 id="org7aab745"><span class="section-number-2">4.</span> Abstraction</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 See <a href="Abstraction.md.html#ID-7b335bd0-f94e-4664-bcd1-880b87d72629">Abstraction</a>
@@ -346,8 +346,8 @@ See <a href="Abstraction.md.html#ID-7b335bd0-f94e-4664-bcd1-880b87d72629">Abstra
 </div>
 </div>
 
-<div id="outline-container-org47f175c" class="outline-2">
-<h2 id="org47f175c"><span class="section-number-2">5.</span> Polymorphism</h2>
+<div id="outline-container-orgf192f17" class="outline-2">
+<h2 id="orgf192f17"><span class="section-number-2">5.</span> Polymorphism</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 See <a href="Polymorphism.md.html#ID-e6c64b31-4ae6-4965-bf0c-de3df68799a3">Polymorphism</a>
@@ -355,8 +355,8 @@ See <a href="Polymorphism.md.html#ID-e6c64b31-4ae6-4965-bf0c-de3df68799a3">Polym
 </div>
 
 
-<div id="outline-container-orgf190ba5" class="outline-3">
-<h3 id="orgf190ba5"><span class="section-number-3">5.1.</span> Problems</h3>
+<div id="outline-container-org2db4195" class="outline-3">
+<h3 id="org2db4195"><span class="section-number-3">5.1.</span> Problems</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
 <a href="20230723131600-fragile_base_class.html#ID-aa12b693-897b-480e-90ad-b0ff968ac909">Fragile Base Class</a>

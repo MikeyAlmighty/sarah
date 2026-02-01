@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Collection Interface</title>
@@ -211,27 +211,27 @@ Because Collections extend the <a href="20230125172358-iterable_interface.html#I
 <code>CollectionsDemo.java</code>
 </p>
 <div class="org-src-container">
-<pre class="src src-java">public class CollectionsDemo {
-    public static void show() {
-        Collection&lt;String&gt; collection = new ArrayList&lt;&gt;();
-        collection.add("A");
-        collection.add("B");
-        collection.add("C");
-        Collections.addAll(collection, "D", "E", "F" );
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">CollectionsDemo</span> {
+    <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+        <span class="org-type">Collection</span>&lt;<span class="org-type">String</span>&gt; <span class="org-variable-name">collection</span> = <span class="org-keyword">new</span> <span class="org-type">ArrayList</span>&lt;&gt;();
+        collection.add(<span class="org-string">"A"</span>);
+        collection.add(<span class="org-string">"B"</span>);
+        collection.add(<span class="org-string">"C"</span>);
+        Collections.addAll(collection, <span class="org-string">"D"</span>, <span class="org-string">"E"</span>, <span class="org-string">"F"</span> );
         System.out.println(collection);
         System.out.println(collection.size());
 
-        collection.remove("A");
+        collection.remove(<span class="org-string">"A"</span>);
 
         System.out.println(collection);
-        System.out.println(collection.contains("B"));
+        System.out.println(collection.contains(<span class="org-string">"B"</span>));
         collection.clear();
         System.out.println(collection.isEmpty());
 
-        var objectArray = collection.toArray();
-        var stringArray = collection.toArray(new String[0]);
+        <span class="org-type">var</span> <span class="org-variable-name">objectArray</span> = collection.toArray();
+        <span class="org-type">var</span> <span class="org-variable-name">stringArray</span> = collection.toArray(<span class="org-keyword">new</span> <span class="org-type">String</span>[0]);
 
-        Collection&lt;String&gt; other = new ArrayList&lt;&gt;();
+        <span class="org-type">Collection</span>&lt;<span class="org-type">String</span>&gt; <span class="org-variable-name">other</span> = <span class="org-keyword">new</span> <span class="org-type">ArrayList</span>&lt;&gt;();
         other.addAll(collection);
         System.out.println(collection.equals(other));
     }

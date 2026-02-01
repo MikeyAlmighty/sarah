@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Using Enums in Switch Statements</title>
@@ -201,11 +201,11 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org1f81d65">1. Using Enums in Switch Statements</a>
+<li><a href="#orgb1a9ca1">1. Using Enums in Switch Statements</a>
 <ul>
-<li><a href="#orgba784c4">1.1. Example</a>
+<li><a href="#orgedf5b91">1.1. Example</a>
 <ul>
-<li><a href="#org95ba0b4">1.1.1. <span class="underline">Exam Trick</span></a></li>
+<li><a href="#orgf6efc76">1.1.1. <span class="underline">Exam Trick</span></a></li>
 </ul>
 </li>
 </ul>
@@ -214,28 +214,28 @@
 </div>
 </div>
 
-<div id="outline-container-org1f81d65" class="outline-2">
-<h2 id="org1f81d65"><span class="section-number-2">1.</span> Using Enums in Switch Statements</h2>
+<div id="outline-container-orgb1a9ca1" class="outline-2">
+<h2 id="orgb1a9ca1"><span class="section-number-2">1.</span> Using Enums in Switch Statements</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgba784c4" class="outline-3">
-<h3 id="orgba784c4"><span class="section-number-3">1.1.</span> Example</h3>
+<div id="outline-container-orgedf5b91" class="outline-3">
+<h3 id="orgedf5b91"><span class="section-number-3">1.1.</span> Example</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 The code prints <code>"Time for the pool!"</code> since it matches <code>SUMMER</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">Season summer = Season.SUMMER;
-switch(summer) {
-    case WINTER:
-        System.out.print("Get out the sled!");
-        break;
-    case SUMMER:
-        System.out.print("Time for the pool!");
-        break;
-    default:
-        System.out.print("Is it summer yet?");
+<pre class="src src-java"><span class="org-type">Season</span> <span class="org-variable-name">summer</span> = <span class="org-constant">Season</span>.SUMMER;
+<span class="org-keyword">switch</span>(summer) {
+    <span class="org-keyword">case</span> WINTER:
+        System.out.print(<span class="org-string">"Get out the sled!"</span>);
+        <span class="org-keyword">break</span>;
+    <span class="org-keyword">case</span> SUMMER:
+        System.out.print(<span class="org-string">"Time for the pool!"</span>);
+        <span class="org-keyword">break</span>;
+    <span class="org-keyword">default</span>:
+        System.out.print(<span class="org-string">"Is it summer yet?"</span>);
 }
 </pre>
 </div>
@@ -246,8 +246,8 @@ After all, the compiler already knows that the only possible matches can be <b>e
 </p>
 </div>
 
-<div id="outline-container-org95ba0b4" class="outline-4">
-<h4 id="org95ba0b4"><span class="section-number-4">1.1.1.</span> <span class="underline">Exam Trick</span></h4>
+<div id="outline-container-orgf6efc76" class="outline-4">
+<h4 id="orgf6efc76"><span class="section-number-4">1.1.1.</span> <span class="underline">Exam Trick</span></h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 You <b>can’t</b> compare <code>enums</code> with <code>int</code> values, you cannot use them in a switch statement with <code>int</code> values.
@@ -256,15 +256,15 @@ On the exam, pay special attention when working with enums that they are used on
 </div>
 
 <ol class="org-ol">
-<li><a id="org3567c23"></a>Example<br />
+<li><a id="org1aae766"></a>Example<br />
 <div class="outline-text-5" id="text-1-1-1-1">
 <div class="org-src-container">
-<pre class="src src-java">Season summer = Season.SUMMER;
+<pre class="src src-java"><span class="org-type">Season</span> <span class="org-variable-name">summer</span> = <span class="org-constant">Season</span>.SUMMER;
 
-var message = switch(summer) {
-    case Season.WINTER -&gt; "Get out the sled!"; // DOES NOT COMPILE
-    case 0 -&gt; "Time for the pool!";  // DOES NOT COMPILE
-    default -&gt; "Is it summer yet?";
+<span class="org-type">var</span> <span class="org-variable-name">message</span> = <span class="org-keyword">switch</span>(summer) {
+    <span class="org-keyword">case</span> <span class="org-constant">Season</span>.WINTER -&gt; <span class="org-string">"Get out the sled!"</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
+</span>    <span class="org-keyword">case</span> 0 -&gt; <span class="org-string">"Time for the pool!"</span>;  <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
+</span>    <span class="org-keyword">default</span> -&gt; <span class="org-string">"Is it summer yet?"</span>;
 };
 
 System.out.print(message);

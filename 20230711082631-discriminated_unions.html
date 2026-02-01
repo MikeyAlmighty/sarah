@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Discriminated Unions</title>
@@ -201,13 +201,13 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org1e3503a">1. Discriminated Unions</a></li>
+<li><a href="#orgdd5eb39">1. Discriminated Unions</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org1e3503a" class="outline-2">
-<h2 id="org1e3503a"><span class="section-number-2">1.</span> Discriminated Unions</h2>
+<div id="outline-container-orgdd5eb39" class="outline-2">
+<h2 id="orgdd5eb39"><span class="section-number-2">1.</span> Discriminated Unions</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <a href="https://css-tricks.com/typescript-discriminated-unions/">TS Discriminated Unions</a>
@@ -217,17 +217,17 @@
 Given the following interfaces:
 </p>
 <div class="org-src-container">
-<pre class="src src-js">interface Cat {
+<pre class="src src-js"><span class="org-keyword">interface</span> Cat {
   weight: number;
   whiskers: number;
 }
 
-interface Dog {
+<span class="org-keyword">interface</span> Dog {
   weight: number;
-  friendly: boolean;
+  friendly: <span class="org-type">boolean</span>;
 }
 
-let animal: Dog | Cat;
+<span class="org-keyword">let</span> <span class="org-variable-name">animal</span>: Dog | Cat;
 </pre>
 </div>
 
@@ -241,16 +241,16 @@ See [Nominal vs Structural Typing](./Nominal%20vs%20Structural%20Typing.md)
 
 
 <div class="org-src-container">
-<pre class="src src-js">interface Cat_1 {
+<pre class="src src-js"><span class="org-keyword">interface</span> Cat_1 {
   weight: number;
   whiskers: number;
-  ANIMAL_TYPE: "CAT";
+  ANIMAL_TYPE: <span class="org-string">"CAT"</span>;
 }
 
-interface Dog_1 {
+<span class="org-keyword">interface</span> Dog_1 {
   weight: number;
-  friendly: boolean;
-  ANIMAL_TYPE: "DOG";
+  friendly: <span class="org-type">boolean</span>;
+  ANIMAL_TYPE: <span class="org-string">"DOG"</span>;
 }
 </pre>
 </div>
@@ -259,11 +259,11 @@ interface Dog_1 {
 And now our check becomes a bit more reliable:
 </p>
 <div class="org-src-container">
-<pre class="src src-js">let animal_1 : Dog_1 | Cat_1 = {} as any;
+<pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">animal_1</span> : Dog_1 | Cat_1 = {} as any;
 
-if (animal_1.ANIMAL_TYPE === "DOG") {
+<span class="org-keyword">if</span> (animal_1.ANIMAL_TYPE === <span class="org-string">"DOG"</span>) {
   console.log(animal_1.friendly);
-} else {
+} <span class="org-keyword">else</span> {
   console.log(animal_1.whiskers);
 }
 </pre>

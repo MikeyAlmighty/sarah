@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Hash Table or HashMap</title>
@@ -216,42 +216,42 @@ Not a <a href="20230125171846-collection_interface.html#ID-3ac6b5d7-7c52-4d9c-b3
 
 
 <div class="org-src-container">
-<pre class="src src-java">public class MapDemo {
-   public static void show(){
-    var customer1 = new Customer("Todd", "e1");
-    var customer2 = new Customer("Ben", "e2");
-     Map&lt;String, Customer&gt; map = new HashMap&lt;&gt;();
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">MapDemo</span> {
+   <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>(){
+    <span class="org-type">var</span> <span class="org-variable-name">customer1</span> = <span class="org-keyword">new</span> <span class="org-type">Customer</span>(<span class="org-string">"Todd"</span>, <span class="org-string">"e1"</span>);
+    <span class="org-type">var</span> <span class="org-variable-name">customer2</span> = <span class="org-keyword">new</span> <span class="org-type">Customer</span>(<span class="org-string">"Ben"</span>, <span class="org-string">"e2"</span>);
+     <span class="org-type">Map</span>&lt;<span class="org-type">String</span>, <span class="org-type">Customer</span>&gt; <span class="org-variable-name">map</span> = <span class="org-keyword">new</span> <span class="org-type">HashMap</span>&lt;&gt;();
      map.put(customer1.getEmail(), customer1);
      map.put(customer2.getEmail(), customer2);
 
-     var response = map.get("e2");
-     System.out.println(response); // Ben
+     <span class="org-type">var</span> <span class="org-variable-name">response</span> = map.get(<span class="org-string">"e2"</span>);
+     System.out.println(response); <span class="org-comment-delimiter">// </span><span class="org-comment">Ben
+</span>
 
+     System.out.println(map.get(<span class="org-string">"e3"</span>)); <span class="org-comment-delimiter">// </span><span class="org-comment">null
+</span>
+     <span class="org-comment-delimiter">// </span><span class="org-comment">Default
+</span>     <span class="org-type">var</span> <span class="org-variable-name">unknown</span> = <span class="org-keyword">new</span> <span class="org-type">Customer</span>(<span class="org-string">"Unknown"</span>, <span class="org-string">""</span>);
+     System.out.println(map.getOrDefault(<span class="org-string">"e3"</span>, unknown)); <span class="org-comment-delimiter">// </span><span class="org-comment">Unknown
+</span>
+     <span class="org-comment-delimiter">// </span><span class="org-comment">Contains
+</span>     <span class="org-type">var</span> <span class="org-variable-name">exists</span> = map.containsKey(<span class="org-string">"e2"</span>);
+     System.out.println(exists); <span class="org-comment-delimiter">// </span><span class="org-comment">true
+</span>
+     <span class="org-comment-delimiter">// </span><span class="org-comment">Replace
+</span>     System.out.println(map.replace(<span class="org-string">"e1"</span>, <span class="org-keyword">new</span> <span class="org-type">Customer</span>(<span class="org-string">"Tommy"</span>, <span class="org-constant">null</span>)));
 
-     System.out.println(map.get("e3")); // null
-
-     // Default
-     var unknown = new Customer("Unknown", "");
-     System.out.println(map.getOrDefault("e3", unknown)); // Unknown
-
-     // Contains
-     var exists = map.containsKey("e2");
-     System.out.println(exists); // true
-
-     // Replace
-     System.out.println(map.replace("e1", new Customer("Tommy", null)));
-
-     // Iteration over Keys
-     for (var key: map.keySet())
+     <span class="org-comment-delimiter">// </span><span class="org-comment">Iteration over Keys
+</span>     <span class="org-keyword">for</span> (<span class="org-type">var</span> <span class="org-variable-name">key</span>: map.keySet())
         System.out.println(key);
 
-     for (var entry: map.entrySet()) {
-        System.out.println(entry); // e1=Tommy
-        System.out.println(entry.getKey()); // e1
-        System.out.println(entry.getValue()); // Tommy
-     }
+     <span class="org-keyword">for</span> (<span class="org-type">var</span> <span class="org-variable-name">entry</span>: map.entrySet()) {
+        System.out.println(entry); <span class="org-comment-delimiter">// </span><span class="org-comment">e1=Tommy
+</span>        System.out.println(entry.getKey()); <span class="org-comment-delimiter">// </span><span class="org-comment">e1
+</span>        System.out.println(entry.getValue()); <span class="org-comment-delimiter">// </span><span class="org-comment">Tommy
+</span>     }
 
-     for (var customer: map.values())
+     <span class="org-keyword">for</span> (<span class="org-type">var</span> <span class="org-variable-name">customer</span>: map.values())
         System.out.println(customer);
 
    }

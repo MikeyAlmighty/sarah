@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Protected Access Modifier</title>
@@ -201,13 +201,13 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgea86763">1. Protected Access Modifier</a>
+<li><a href="#org1ea803f">1. Protected Access Modifier</a>
 <ul>
-<li><a href="#org3364470">1.1. Simple Example</a></li>
-<li><a href="#orgf10c090">1.2. Example</a></li>
-<li><a href="#org6724c8f">1.3. Negative Example</a>
+<li><a href="#orgc91ed16">1.1. Simple Example</a></li>
+<li><a href="#org8c1da67">1.2. Example</a></li>
+<li><a href="#org05069cf">1.3. Negative Example</a>
 <ul>
-<li><a href="#org28ae16a">1.3.1. <span class="underline">Exam Trick</span></a></li>
+<li><a href="#orgcfdd5a7">1.3.1. <span class="underline">Exam Trick</span></a></li>
 </ul>
 </li>
 </ul>
@@ -216,8 +216,8 @@
 </div>
 </div>
 
-<div id="outline-container-orgea86763" class="outline-2">
-<h2 id="orgea86763"><span class="section-number-2">1.</span> Protected Access Modifier</h2>
+<div id="outline-container-org1ea803f" class="outline-2">
+<h2 id="org1ea803f"><span class="section-number-2">1.</span> Protected Access Modifier</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 The <code>protected</code> modifier means the method can be called only from a class in the <b>same</b> <code>package</code> or a <code>subclass</code>.
@@ -234,8 +234,8 @@ For now, we cover the simplest possible use of a <code>subclass</code>.
 </div>
 
 
-<div id="outline-container-org3364470" class="outline-3">
-<h3 id="org3364470"><span class="section-number-3">1.1.</span> Simple Example</h3>
+<div id="outline-container-orgc91ed16" class="outline-3">
+<h3 id="orgc91ed16"><span class="section-number-3">1.1.</span> Simple Example</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 In the following example, the  <code>ClownFish (subClass)</code> of the <code>Fish (parentClass)</code>, using the <code>extends</code> keyword to connect them:
@@ -247,8 +247,8 @@ By <code>extending</code> a <code>class</code>, the <code>subclass</code> gains 
 
 
 <div class="org-src-container">
-<pre class="src src-java">public class Fish {}
-public class ClownFish extends Fish {}
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Fish</span> {}
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">ClownFish</span> <span class="org-keyword">extends</span> <span class="org-type">Fish</span> {}
 </pre>
 </div>
 
@@ -259,33 +259,33 @@ If the two classes are in the same package, then the subclass also gains access 
 </div>
 </div>
 
-<div id="outline-container-orgf10c090" class="outline-3">
-<h3 id="orgf10c090"><span class="section-number-3">1.2.</span> Example</h3>
+<div id="outline-container-org8c1da67" class="outline-3">
+<h3 id="org8c1da67"><span class="section-number-3">1.2.</span> Example</h3>
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
 <pre class="src src-java">
-// Parent Class
-package pond.shore;
+<span class="org-comment-delimiter">// </span><span class="org-comment">Parent Class
+</span><span class="org-keyword">package</span> pond.<span class="org-constant">shore</span>;
 
-public class Bird {
-    protected String text = "floating";
-    protected void floatInWater() {
-        System.out.print(text); // protected access is ok
-    }
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Bird</span> {
+    <span class="org-keyword">protected</span> <span class="org-type">String</span> <span class="org-variable-name">text</span> = <span class="org-string">"floating"</span>;
+    <span class="org-keyword">protected</span> <span class="org-type">void</span> <span class="org-function-name">floatInWater</span>() {
+        System.out.print(text); <span class="org-comment-delimiter">// </span><span class="org-comment">protected access is ok
+</span>    }
 }
 
-// subclass (Different package than Bird):
-package pond.goose;
+<span class="org-comment-delimiter">// </span><span class="org-comment">subclass (Different package than Bird):
+</span><span class="org-keyword">package</span> pond.<span class="org-constant">goose</span>;
 
-import pond.shore.Bird;
+<span class="org-keyword">import</span> <span class="org-constant">pond</span>.<span class="org-constant">shore</span>.<span class="org-type">Bird</span>;
 
-public class Gosling extends Bird {
-    public void swim() {
-        floatInWater(); // protected access is ok
-        System.out.print(text); // protected access is ok
-    }
-    public static void main(String[] args) {
-        new Gosling().swim();
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Gosling</span> <span class="org-keyword">extends</span> <span class="org-type">Bird</span> {
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">swim</span>() {
+        floatInWater(); <span class="org-comment-delimiter">// </span><span class="org-comment">protected access is ok
+</span>        System.out.print(text); <span class="org-comment-delimiter">// </span><span class="org-comment">protected access is ok
+</span>    }
+    <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
+        <span class="org-keyword">new</span> <span class="org-type">Gosling</span>().swim();
     }
 }
 </pre>
@@ -303,14 +303,14 @@ This means a <code>class</code> in the <b>same package</b> as <code>Bird</code> 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">package pond.shore; // Same package as Bird
-
-public class BirdWatcher {
-    public void watchBird() {
-        Bird bird = new Bird();
-        bird.floatInWater(); // protected access is ok
-        System.out.print(bird.text); // protected access is ok
-    }
+<pre class="src src-java"><span class="org-keyword">package</span> pond.<span class="org-constant">shore</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">Same package as Bird
+</span>
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">BirdWatcher</span> {
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">watchBird</span>() {
+        <span class="org-type">Bird</span> <span class="org-variable-name">bird</span> = <span class="org-keyword">new</span> <span class="org-type">Bird</span>();
+        bird.floatInWater(); <span class="org-comment-delimiter">// </span><span class="org-comment">protected access is ok
+</span>        System.out.print(bird.text); <span class="org-comment-delimiter">// </span><span class="org-comment">protected access is ok
+</span>    }
 }
 </pre>
 </div>
@@ -321,56 +321,56 @@ Since <code>Bird</code> and <code>BirdWatcher</code> are in the <b>same package<
 </div>
 </div>
 
-<div id="outline-container-org6724c8f" class="outline-3">
-<h3 id="org6724c8f"><span class="section-number-3">1.3.</span> Negative Example</h3>
+<div id="outline-container-org05069cf" class="outline-3">
+<h3 id="org05069cf"><span class="section-number-3">1.3.</span> Negative Example</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 <code>BirdWatcherFromAfar</code> is <b>not in the same package</b> as <code>Bird</code>, and it <b>doesn’t</b> inherit from <code>Bird</code> therefore it <b>cannot</b> access the members from <code>Bird</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">package pond.inland; // Different package than Bird
+<pre class="src src-java"><span class="org-keyword">package</span> pond.<span class="org-constant">inland</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">Different package than Bird
+</span>
+<span class="org-keyword">import</span> <span class="org-constant">pond</span>.<span class="org-constant">shore</span>.<span class="org-type">Bird</span>;
 
-import pond.shore.Bird;
-
-public class BirdWatcherFromAfar { // Not a subclass of Bird
-    public void watchBird() {
-        Bird bird = new Bird();
-        bird.floatInWater(); // DOES NOT COMPILE
-        System.out.print(bird.text); // DOES NOT COMPILE
-    }
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">BirdWatcherFromAfar</span> { <span class="org-comment-delimiter">// </span><span class="org-comment">Not a subclass of Bird
+</span>    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">watchBird</span>() {
+        <span class="org-type">Bird</span> <span class="org-variable-name">bird</span> = <span class="org-keyword">new</span> <span class="org-type">Bird</span>();
+        bird.floatInWater(); <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
+</span>        System.out.print(bird.text); <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
+</span>    }
 }
 </pre>
 </div>
 </div>
 
 
-<div id="outline-container-org28ae16a" class="outline-4">
-<h4 id="org28ae16a"><span class="section-number-4">1.3.1.</span> <span class="underline">Exam Trick</span></h4>
+<div id="outline-container-orgcfdd5a7" class="outline-4">
+<h4 id="orgcfdd5a7"><span class="section-number-4">1.3.1.</span> <span class="underline">Exam Trick</span></h4>
 <div class="outline-text-4" id="text-1-3-1">
 <div class="org-src-container">
-<pre class="src src-java">package pond.swan; // Different package than Bird
+<pre class="src src-java"><span class="org-keyword">package</span> pond.<span class="org-constant">swan</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">Different package than Bird
+</span>
+<span class="org-keyword">import</span> <span class="org-constant">pond</span>.<span class="org-constant">shore</span>.<span class="org-type">Bird</span>;
 
-import pond.shore.Bird;
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Swan</span> <span class="org-keyword">extends</span> <span class="org-type">Bird</span> { <span class="org-comment-delimiter">// </span><span class="org-comment">Swan is a subclass of Bird
+</span>    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">swim</span>() {
+        floatInWater(); <span class="org-comment-delimiter">// </span><span class="org-comment">LINE 5: protected access is ok
+</span>        System.out.print(text); <span class="org-comment-delimiter">// </span><span class="org-comment">LINE 6: protected access is ok
+</span>    }
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">helpOtherSwanSwim</span>() {
+        <span class="org-type">Swan</span> <span class="org-variable-name">other</span> = <span class="org-keyword">new</span> <span class="org-type">Swan</span>(); <span class="org-comment-delimiter">// </span><span class="org-comment">LINE 9
+</span>
+        other.floatInWater(); <span class="org-comment-delimiter">// </span><span class="org-comment">LINE 10: subclass access to superclass
+</span>        System.out.print(other.text); <span class="org-comment-delimiter">// </span><span class="org-comment">LINE 11: subclass access to superclass
+</span>    }
 
-public class Swan extends Bird { // Swan is a subclass of Bird
-    public void swim() {
-        floatInWater(); // LINE 5: protected access is ok
-        System.out.print(text); // LINE 6: protected access is ok
-    }
-    public void helpOtherSwanSwim() {
-        Swan other = new Swan(); // LINE 9
-
-        other.floatInWater(); // LINE 10: subclass access to superclass
-        System.out.print(other.text); // LINE 11: subclass access to superclass
-    }
-
-    public void helpOtherBirdSwim() {
-        Bird other = new Bird(); // LINE: 14
-
-        other.floatInWater(); // LINE 15: DOES NOT COMPILE
-        System.out.print(other.text); // LINE 16: DOES NOT COMPILE
-    }
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">helpOtherBirdSwim</span>() {
+        <span class="org-type">Bird</span> <span class="org-variable-name">other</span> = <span class="org-keyword">new</span> <span class="org-type">Bird</span>(); <span class="org-comment-delimiter">// </span><span class="org-comment">LINE: 14
+</span>
+        other.floatInWater(); <span class="org-comment-delimiter">// </span><span class="org-comment">LINE 15: DOES NOT COMPILE
+</span>        System.out.print(other.text); <span class="org-comment-delimiter">// </span><span class="org-comment">LINE 16: DOES NOT COMPILE
+</span>    }
 }
 </pre>
 </div>
@@ -381,7 +381,7 @@ public class Swan extends Bird { // Swan is a subclass of Bird
 </div>
 
 <ol class="org-ol">
-<li><a id="orgfa246c3"></a>Inheritance<br />
+<li><a id="org3bd96c7"></a>Inheritance<br />
 <div class="outline-text-6" id="text-1-3-1-0-1">
 <ul class="org-ul">
 <li><code>Lines 5 and 6</code> refer to <b>protected</b> members via <i>inheriting</i> them.</li>
@@ -389,7 +389,7 @@ public class Swan extends Bird { // Swan is a subclass of Bird
 </div>
 </li>
 
-<li><a id="org306011a"></a>Instantiation<br />
+<li><a id="orgaac4406"></a>Instantiation<br />
 <div class="outline-text-6" id="text-1-3-1-0-2">
 <p>
 <code>Lines 10 and 11</code> also successfully use <b>protected</b> members of <code>Bird</code>.
@@ -410,7 +410,7 @@ The <code>Swan</code> class is allowed to use <b>protected</b> members of <code>
 </div>
 </li>
 
-<li><a id="orgb583680"></a>Failed Compilation<br />
+<li><a id="org00ee62f"></a>Failed Compilation<br />
 <div class="outline-text-6" id="text-1-3-1-0-3">
 <p>
 <code>Lines 15 and 16</code> do <b>not</b> compile.
@@ -452,7 +452,7 @@ The code just happens to be in the <code>Swan</code> class.
 </li>
 </ol>
 
-<li><a id="org1fb4233"></a>Rules<br />
+<li><a id="org1b39835"></a>Rules<br />
 <div class="outline-text-5" id="text-1-3-1-1">
 <p>
 The <b>protected</b> rules apply under two scenarios:

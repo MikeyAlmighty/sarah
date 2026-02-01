@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Executor Framework</title>
@@ -210,16 +210,16 @@
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">public static void show () {
-    var executor = Executors.newFixedThreadPool(2); // Pool with 2 workers
-    try {
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span> () {
+    <span class="org-type">var</span> <span class="org-variable-name">executor</span> = Executors.newFixedThreadPool(2); <span class="org-comment-delimiter">// </span><span class="org-comment">Pool with 2 workers
+</span>    <span class="org-keyword">try</span> {
         executor.submit(() -&gt; {
             System.out.println(Thread.currentThread().getName());
         });
-    } finally {
-        executor.shutdown(); // Terminate Stops new tasks
-        // executor.shutdownNow(); // Stops current Task and new tasks
-    }
+    } <span class="org-keyword">finally</span> {
+        executor.shutdown(); <span class="org-comment-delimiter">// </span><span class="org-comment">Terminate Stops new tasks
+</span>        <span class="org-comment-delimiter">// </span><span class="org-comment">executor.shutdownNow(); // Stops current Task and new tasks
+</span>    }
 }
 </pre>
 </div>

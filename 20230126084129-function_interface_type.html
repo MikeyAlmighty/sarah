@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Function Interface Type</title>
@@ -201,10 +201,10 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org802a200">1. Primitives:</a></li>
-<li><a href="#orgb363cfb">2. Function Compostion</a></li>
-<li><a href="#org54c2164">3. BinaryOperator</a></li>
-<li><a href="#org5889b77">4. UnaryOperator</a></li>
+<li><a href="#orgb9b85a4">1. Primitives:</a></li>
+<li><a href="#org83ce7ec">2. Function Compostion</a></li>
+<li><a href="#orgaac0520">3. BinaryOperator</a></li>
+<li><a href="#org8f84d12">4. UnaryOperator</a></li>
 </ul>
 </div>
 </div>
@@ -225,8 +225,8 @@ R = Type of Result
 There are special flavors:
 <code>BiFunction</code> (Takes in two arguments and returns a result) <code>Interface BiFunction&lt;T, U, R&gt;</code>
 </p>
-<div id="outline-container-org802a200" class="outline-2">
-<h2 id="org802a200"><span class="section-number-2">1.</span> Primitives:</h2>
+<div id="outline-container-orgb9b85a4" class="outline-2">
+<h2 id="orgb9b85a4"><span class="section-number-2">1.</span> Primitives:</h2>
 <div class="outline-text-2" id="text-1">
 <ol class="org-ol">
 <li><b>Return Type</b> is paramterized</li>
@@ -251,11 +251,11 @@ Also have <code>LongFunction</code>, <code>DoubleFunction</code> etc.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">public static void show() {
-    // Takes a String and returns int
-    Function&lt;String, Integer&gt; map = str -&gt; str.length();
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Takes a String and returns int
+</span>    <span class="org-type">Function</span>&lt;<span class="org-type">String</span>, <span class="org-type">Integer</span>&gt; <span class="org-variable-name">map</span> = str -&gt; str.length();
 
-    var stringLength = map.apply("Sky");
+    <span class="org-type">var</span> <span class="org-variable-name">stringLength</span> = map.apply(<span class="org-string">"Sky"</span>);
     System.out.println(stringLength);
 }
 </pre>
@@ -263,67 +263,67 @@ Also have <code>LongFunction</code>, <code>DoubleFunction</code> etc.
 </div>
 </div>
 
-<div id="outline-container-orgb363cfb" class="outline-2">
-<h2 id="orgb363cfb"><span class="section-number-2">2.</span> Function Compostion</h2>
+<div id="outline-container-org83ce7ec" class="outline-2">
+<h2 id="org83ce7ec"><span class="section-number-2">2.</span> Function Compostion</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
-<pre class="src src-java">public static void show() {
-    // Have "key:value"
-    // first: "key=value"
-    // second: "{key=value}"
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Have "key:value"
+</span>    <span class="org-comment-delimiter">// </span><span class="org-comment">first: "key=value"
+</span>    <span class="org-comment-delimiter">// </span><span class="org-comment">second: "{key=value}"
+</span>
+    <span class="org-comment-delimiter">// </span><span class="org-comment">First
+</span>    <span class="org-type">Function</span>&lt;<span class="org-type">String</span>, <span class="org-type">String</span>&gt; <span class="org-variable-name">replaceColon</span> = str -&gt; str.replace(<span class="org-string">":"</span>, <span class="org-string">"="</span>);
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Second
+</span>    <span class="org-type">Function</span>&lt;<span class="org-type">String</span>, <span class="org-type">String</span>&gt; <span class="org-variable-name">addBraces</span> = str -&gt; <span class="org-string">"{"</span> + str + <span class="org-string">"}"</span>;
 
-    // First
-    Function&lt;String, String&gt; replaceColon = str -&gt; str.replace(":", "=");
-    // Second
-    Function&lt;String, String&gt; addBraces = str -&gt; "{" + str + "}";
-
-    var result = replaceColon
+    <span class="org-type">var</span> <span class="org-variable-name">result</span> = replaceColon
                     .andThen(addBraces)
-                    .apply("key:value");
+                    .apply(<span class="org-string">"key:value"</span>);
 
-    System.out.println(result); // "{key=value}"
-
-    // Alternatively using `compose`:
-    var result1 = addBraces
+    System.out.println(result); <span class="org-comment-delimiter">// </span><span class="org-comment">"{key=value}"
+</span>
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Alternatively using `compose`:
+</span>    <span class="org-type">var</span> <span class="org-variable-name">result1</span> = addBraces
                     .compose(replaceColon)
-                    .apply("key:value");
+                    .apply(<span class="org-string">"key:value"</span>);
 
 
-    System.out.println(result1); // "{key=value}"
-}
+    System.out.println(result1); <span class="org-comment-delimiter">// </span><span class="org-comment">"{key=value}"
+</span>}
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org54c2164" class="outline-2">
-<h2 id="org54c2164"><span class="section-number-2">3.</span> BinaryOperator</h2>
+<div id="outline-container-orgaac0520" class="outline-2">
+<h2 id="orgaac0520"><span class="section-number-2">3.</span> BinaryOperator</h2>
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
-<pre class="src src-java">public static void show() {
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
 
-    BinaryOperator&lt;Integer&gt; add = (num1, num2) -&gt; num1 + num2;
-    Function&lt;Integer, Integer&gt; square = num1 -&gt; num1 * num1;
+    <span class="org-type">BinaryOperator</span>&lt;<span class="org-type">Integer</span>&gt; <span class="org-variable-name">add</span> = (num1, num2) -&gt; num1 + num2;
+    <span class="org-type">Function</span>&lt;<span class="org-type">Integer</span>, <span class="org-type">Integer</span>&gt; <span class="org-variable-name">square</span> = num1 -&gt; num1 * num1;
 
-    var result = add
+    <span class="org-type">var</span> <span class="org-variable-name">result</span> = add
                     .andThen(square)
                     .apply(1, 2);
-    System.out.println(result); // 9
-}
+    System.out.println(result); <span class="org-comment-delimiter">// </span><span class="org-comment">9
+</span>}
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org5889b77" class="outline-2">
-<h2 id="org5889b77"><span class="section-number-2">4.</span> UnaryOperator</h2>
+<div id="outline-container-org8f84d12" class="outline-2">
+<h2 id="org8f84d12"><span class="section-number-2">4.</span> UnaryOperator</h2>
 <div class="outline-text-2" id="text-4">
 <div class="org-src-container">
-<pre class="src src-java">public static void show() {
-    UnaryOperator&lt;Integer&gt; square = n -&gt; n * n;
-    UnaryOperator&lt;Integer&gt; increment = n -&gt; n + 1;
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+    <span class="org-type">UnaryOperator</span>&lt;<span class="org-type">Integer</span>&gt; <span class="org-variable-name">square</span> = n -&gt; n * n;
+    <span class="org-type">UnaryOperator</span>&lt;<span class="org-type">Integer</span>&gt; <span class="org-variable-name">increment</span> = n -&gt; n + 1;
 
-    var result = increment.andThen(square).apply(1);
+    <span class="org-type">var</span> <span class="org-variable-name">result</span> = increment.andThen(square).apply(1);
     System.out.println(result);
 }
 </pre>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Creating a Concrete Class</title>
@@ -201,18 +201,18 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5bd526c">1. Creating a Concrete Class</a>
+<li><a href="#org466c453">1. Creating a Concrete Class</a>
 <ul>
-<li><a href="#org290972c">1.1. Example</a></li>
-<li><a href="#org5e9470c">1.2. Example</a></li>
+<li><a href="#orgb977959">1.1. Example</a></li>
+<li><a href="#org1dab439">1.2. Example</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org5bd526c" class="outline-2">
-<h2 id="org5bd526c"><span class="section-number-2">1.</span> Creating a Concrete Class</h2>
+<div id="outline-container-org466c453" class="outline-2">
+<h2 id="org466c453"><span class="section-number-2">1.</span> Creating a Concrete Class</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 An <a href="20240120172514-introducing_abstract_classes.html#ID-a1091361-fe51-4d9a-97dc-1178bc14226e">abstract classe</a> becomes usable when it is extended by a <b>concrete</b> <code>subclass</code>.
@@ -233,26 +233,26 @@ Anytime a <b>concrete</b> <code>class</code> is extending an <code>abstract clas
 </p>
 </div>
 
-<div id="outline-container-org290972c" class="outline-3">
-<h3 id="org290972c"><span class="section-number-3">1.1.</span> Example</h3>
+<div id="outline-container-orgb977959" class="outline-3">
+<h3 id="orgb977959"><span class="section-number-3">1.1.</span> Example</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Let’s illustrate this with a set of inherited classes:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">public abstract class Mammal {
-    abstract void showHorn();
-    abstract void eatLeaf();
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">abstract</span> <span class="org-keyword">class</span> <span class="org-type">Mammal</span> {
+    <span class="org-keyword">abstract</span> <span class="org-type">void</span> <span class="org-function-name">showHorn</span>();
+    <span class="org-keyword">abstract</span> <span class="org-type">void</span> <span class="org-function-name">eatLeaf</span>();
 }
 
-public abstract class Rhino extends Mammal {
-    void showHorn() {} // Inherited from Mammal
-}
+<span class="org-keyword">public</span> <span class="org-keyword">abstract</span> <span class="org-keyword">class</span> <span class="org-type">Rhino</span> <span class="org-keyword">extends</span> <span class="org-type">Mammal</span> {
+    <span class="org-type">void</span> <span class="org-function-name">showHorn</span>() {} <span class="org-comment-delimiter">// </span><span class="org-comment">Inherited from Mammal
+</span>}
 
-public class BlackRhino extends Rhino {
-    void eatLeaf() {} // Inherited from Mammal
-}
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">BlackRhino</span> <span class="org-keyword">extends</span> <span class="org-type">Rhino</span> {
+    <span class="org-type">void</span> <span class="org-function-name">eatLeaf</span>() {} <span class="org-comment-delimiter">// </span><span class="org-comment">Inherited from Mammal
+</span>}
 </pre>
 </div>
 
@@ -282,28 +282,28 @@ The three classes in this example are <b>correctly defined and compile</b>.
 </div>
 </div>
 
-<div id="outline-container-org5e9470c" class="outline-3">
-<h3 id="org5e9470c"><span class="section-number-3">1.2.</span> Example</h3>
+<div id="outline-container-org1dab439" class="outline-3">
+<h3 id="org1dab439"><span class="section-number-3">1.2.</span> Example</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 The following <b>concrete</b> class <code>Lion</code> <b>inherits</b> two abstract methods, <code>getName()</code> and <code>roar()</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">public abstract class Animal {
-    abstract String getName();
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">abstract</span> <span class="org-keyword">class</span> <span class="org-type">Animal</span> {
+    <span class="org-keyword">abstract</span> <span class="org-type">String</span> <span class="org-function-name">getName</span>();
 }
 
-public abstract class BigCat extends Animal {
-    protected abstract void roar();
+<span class="org-keyword">public</span> <span class="org-keyword">abstract</span> <span class="org-keyword">class</span> <span class="org-type">BigCat</span> <span class="org-keyword">extends</span> <span class="org-type">Animal</span> {
+    <span class="org-keyword">protected</span> <span class="org-keyword">abstract</span> <span class="org-type">void</span> <span class="org-function-name">roar</span>();
 }
 
-public class Lion extends BigCat {
-    public String getName() {
-        return "Lion";
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Lion</span> <span class="org-keyword">extends</span> <span class="org-type">BigCat</span> {
+    <span class="org-keyword">public</span> <span class="org-type">String</span> <span class="org-function-name">getName</span>() {
+        <span class="org-keyword">return</span> <span class="org-string">"Lion"</span>;
     }
-    public void roar() {
-        System.out.println("The Lion lets out a loud ROAR!");
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">roar</span>() {
+        System.out.println(<span class="org-string">"The Lion lets out a loud ROAR!"</span>);
     }
 }
 </pre>

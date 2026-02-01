@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Nominal vs Structural Typing</title>
@@ -201,25 +201,25 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9b66ee3">1. Nominal Typing</a></li>
-<li><a href="#orgb1d6cad">2. Structural Typing</a></li>
+<li><a href="#org3c6bc0e">1. Nominal Typing</a></li>
+<li><a href="#orgc1ab23e">2. Structural Typing</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org9b66ee3" class="outline-2">
-<h2 id="org9b66ee3"><span class="section-number-2">1.</span> Nominal Typing</h2>
+<div id="outline-container-org3c6bc0e" class="outline-2">
+<h2 id="org3c6bc0e"><span class="section-number-2">1.</span> Nominal Typing</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 (Java, C++ etc.)
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">class Foo {
-  public int x;
+<pre class="src src-java"><span class="org-keyword">class</span> <span class="org-type">Foo</span> {
+  <span class="org-keyword">public</span> <span class="org-type">int</span> <span class="org-variable-name">x</span>;
 }
-class Blah {
-  public int x;
+<span class="org-keyword">class</span> <span class="org-type">Blah</span> {
+  <span class="org-keyword">public</span> <span class="org-type">int</span> <span class="org-variable-name">x</span>;
 }
 
 </pre>
@@ -246,22 +246,22 @@ TypeScript considers types to be compatible if they have the same structure—he
 </div>
 </div>
 
-<div id="outline-container-orgb1d6cad" class="outline-2">
-<h2 id="orgb1d6cad"><span class="section-number-2">2.</span> Structural Typing</h2>
+<div id="outline-container-orgc1ab23e" class="outline-2">
+<h2 id="orgc1ab23e"><span class="section-number-2">2.</span> Structural Typing</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 So, the following runs without error (In TS):
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js">class Foo {
+<pre class="src src-js"><span class="org-keyword">class</span> Foo {
   x: number = 0;
 }
-class Blah {
+<span class="org-keyword">class</span> Blah {
   x: number = 0;
 }
-let f: Foo = new Blah();
-let b: Blah = new Foo();
+<span class="org-keyword">let</span> <span class="org-variable-name">f</span>: Foo = <span class="org-keyword">new</span> <span class="org-type">Blah</span>();
+<span class="org-keyword">let</span> <span class="org-variable-name">b</span>: Blah = <span class="org-keyword">new</span> <span class="org-type">Foo</span>();
 </pre>
 </div>
 </div>

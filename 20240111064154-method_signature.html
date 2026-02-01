@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Method Signature</title>
@@ -201,17 +201,17 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org52044cb">1. Method Signature</a>
+<li><a href="#org1a657f2">1. Method Signature</a>
 <ul>
-<li><a href="#org17aa172">1.1. Example</a></li>
+<li><a href="#org1a5a6b2">1.1. Example</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org52044cb" class="outline-2">
-<h2 id="org52044cb"><span class="section-number-2">1.</span> Method Signature</h2>
+<div id="outline-container-org1a657f2" class="outline-2">
+<h2 id="org1a657f2"><span class="section-number-2">1.</span> Method Signature</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 A method signature, composed of the <a href="20240111061536-method_name.html#ID-0b8acbe2-0b2b-4829-8aab-804dde49cabf">Method Name</a> and <a href="20240111063906-parameter_list.html#ID-94f7186e-22e8-4636-bc8c-a4cc040d9073">Parameter List</a>, is what Java uses to uniquely determine exactly which method you are attempting to call.
@@ -226,19 +226,19 @@ It’s important to note that the <b>names</b> of the <code>parameters</code> in
 </p>
 </div>
 
-<div id="outline-container-org17aa172" class="outline-3">
-<h3 id="org17aa172"><span class="section-number-3">1.1.</span> Example</h3>
+<div id="outline-container-org1a5a6b2" class="outline-3">
+<h3 id="org1a5a6b2"><span class="section-number-3">1.1.</span> Example</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Despite having <b>different</b> <code>parameter</code> names, these two methods have the same <code>signature</code> and cannot be declared within the same class.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">// Not Okay
-public class Trip {
-    public void visitZoo(String name, int waitTime) {}
-    public void visitZoo(String attraction, int rainFall) {} // DOES NOT COMPILE
-}
+<pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">Not Okay
+</span><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Trip</span> {
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">visitZoo</span>(<span class="org-type">String</span> <span class="org-variable-name">name</span>, <span class="org-type">int</span> <span class="org-variable-name">waitTime</span>) {}
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">visitZoo</span>(<span class="org-type">String</span> <span class="org-variable-name">attraction</span>, <span class="org-type">int</span> <span class="org-variable-name">rainFall</span>) {} <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
+</span>}
 </pre>
 </div>
 
@@ -247,10 +247,10 @@ Changing the <b>order</b> of parameter types does allow the method to compile, t
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">// Okay
-public class Trip {
-    public void visitZoo(String name, int waitTime) {}
-    public void visitZoo(int rainFall, String attraction) {}
+<pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">Okay
+</span><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Trip</span> {
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">visitZoo</span>(<span class="org-type">String</span> <span class="org-variable-name">name</span>, <span class="org-type">int</span> <span class="org-variable-name">waitTime</span>) {}
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">visitZoo</span>(<span class="org-type">int</span> <span class="org-variable-name">rainFall</span>, <span class="org-type">String</span> <span class="org-variable-name">attraction</span>) {}
 }
 </pre>
 </div>

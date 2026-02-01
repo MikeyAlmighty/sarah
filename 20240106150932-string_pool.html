@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>String Pool</title>
@@ -201,18 +201,18 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org97fb148">1. String Pool (aka Intern Pool)</a>
+<li><a href="#org5150e7e">1. String Pool (aka Intern Pool)</a>
 <ul>
-<li><a href="#org54401d7">1.1. Intern Method</a></li>
-<li><a href="#org9fbc09c">1.2. <span class="underline">Exam Trick</span></a></li>
+<li><a href="#org2fda908">1.1. Intern Method</a></li>
+<li><a href="#org4767f63">1.2. <span class="underline">Exam Trick</span></a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org97fb148" class="outline-2">
-<h2 id="org97fb148"><span class="section-number-2">1.</span> String Pool (aka Intern Pool)</h2>
+<div id="outline-container-org5150e7e" class="outline-2">
+<h2 id="org5150e7e"><span class="section-number-2">1.</span> String Pool (aka Intern Pool)</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <a href="20240103124304-creating_and_manipulating_strings.html#ID-afe76105-5f94-4dac-a929-e7a7dcdb5983">Strings</a> use a lot of memory
@@ -240,9 +240,9 @@ The <code>myObject.toString()</code> method returns a string~ but <b>not</b> a <
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">var x = "Hello World";
-var y = "Hello World";
-System.out.println(x == y); // true
+<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">x</span> = <span class="org-string">"Hello World"</span>;
+<span class="org-type">var</span> <span class="org-variable-name">y</span> = <span class="org-string">"Hello World"</span>;
+System.out.println(x == y); <span class="org-comment-delimiter">// </span><span class="org-comment">true</span>
 </pre>
 </div>
 
@@ -259,17 +259,17 @@ The <code>x</code> and <code>y</code> variables <b>both</b> point to the <b>same
 </p>
 </div>
 
-<div id="outline-container-org54401d7" class="outline-3">
-<h3 id="org54401d7"><span class="section-number-3">1.1.</span> <a href="20240106151719-intern_method.html#ID-6d4a536d-4ef5-4e76-9556-e39ddc4543ca">Intern Method</a></h3>
+<div id="outline-container-org2fda908" class="outline-3">
+<h3 id="org2fda908"><span class="section-number-3">1.1.</span> <a href="20240106151719-intern_method.html#ID-6d4a536d-4ef5-4e76-9556-e39ddc4543ca">Intern Method</a></h3>
 </div>
 
-<div id="outline-container-org9fbc09c" class="outline-3">
-<h3 id="org9fbc09c"><span class="section-number-3">1.2.</span> <span class="underline">Exam Trick</span></h3>
+<div id="outline-container-org4767f63" class="outline-3">
+<h3 id="org4767f63"><span class="section-number-3">1.2.</span> <span class="underline">Exam Trick</span></h3>
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
-<pre class="src src-java">var x = "Hello World";
-var z = " Hello World".trim();
-System.out.println(x == z); // false
+<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">x</span> = <span class="org-string">"Hello World"</span>;
+<span class="org-type">var</span> <span class="org-variable-name">z</span> = <span class="org-string">" Hello World"</span>.trim();
+System.out.println(x == z); <span class="org-comment-delimiter">// </span><span class="org-comment">false</span>
 </pre>
 </div>
 
@@ -287,10 +287,10 @@ Since it <b>isn’t</b> the same at <code>compile­time</code>, a new <a href="2
 
 
 <div class="org-src-container">
-<pre class="src src-java">var singleString = "hello world";
-var concat = "hello ";
-concat += "world";
-System.out.println(singleString == concat); // false
+<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">singleString</span> = <span class="org-string">"hello world"</span>;
+<span class="org-type">var</span> <span class="org-variable-name">concat</span> = <span class="org-string">"hello "</span>;
+concat += <span class="org-string">"world"</span>;
+System.out.println(singleString == concat); <span class="org-comment-delimiter">// </span><span class="org-comment">false</span>
 </pre>
 </div>
 
@@ -300,9 +300,9 @@ The second says, “No, JVM, I really don’t want you to use the string pool. P
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">var x = "Hello World";
-var y = new String("Hello World"); // explicitly telling the JVM to create a new Object in memory
-System.out.println(x == y); // false
+<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">x</span> = <span class="org-string">"Hello World"</span>;
+<span class="org-type">var</span> <span class="org-variable-name">y</span> = <span class="org-keyword">new</span> <span class="org-type">String</span>(<span class="org-string">"Hello World"</span>); <span class="org-comment-delimiter">// </span><span class="org-comment">explicitly telling the JVM to create a new Object in memory
+</span>System.out.println(x == y); <span class="org-comment-delimiter">// </span><span class="org-comment">false</span>
 </pre>
 </div>
 

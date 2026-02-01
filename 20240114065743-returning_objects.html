@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Returning Objects</title>
@@ -201,18 +201,18 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9493d19">1. Returning Objects</a>
+<li><a href="#org4519711">1. Returning Objects</a>
 <ul>
-<li><a href="#org51e1fbb">1.1. Example</a></li>
+<li><a href="#orgbdbed14">1.1. Example</a></li>
 </ul>
 </li>
-<li><a href="#org0aec2c0">2. <span class="underline">Exam Trick</span></a></li>
+<li><a href="#orgca0abec">2. <span class="underline">Exam Trick</span></a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org9493d19" class="outline-2">
-<h2 id="org9493d19"><span class="section-number-2">1.</span> Returning Objects</h2>
+<div id="outline-container-org4519711" class="outline-2">
+<h2 id="org4519711"><span class="section-number-2">1.</span> Returning Objects</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 A <code>copy</code> is made of the <a href="20231230083124-primitive_types.html#ID-46582863-7f97-448d-bbc7-f7da4c1e7574">primitive</a> or <a href="20231230083220-reference_types.html#ID-ef3f4798-9f1d-462f-8eea-df2b75e512f6">reference</a>  and returned from the method.
@@ -224,27 +224,27 @@ For example, it might be stored in a variable.
 </p>
 </div>
 
-<div id="outline-container-org51e1fbb" class="outline-3">
-<h3 id="org51e1fbb"><span class="section-number-3">1.1.</span> Example</h3>
+<div id="outline-container-orgbdbed14" class="outline-3">
+<h3 id="orgbdbed14"><span class="section-number-3">1.1.</span> Example</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
-<pre class="src src-java">public class ZooTickets {
-    public static void main(String[] args) {
-        int tickets = 2; // tickets = 2
-        String guests = "abc"; // guests = abc
-        addTickets(tickets); // tickets = 2
-        guests = addGuests(guests); // guests = abcd
-        System.out.println(tickets + guests); // 2abcd
-    }
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">ZooTickets</span> {
+    <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
+        <span class="org-type">int</span> <span class="org-variable-name">tickets</span> = 2; <span class="org-comment-delimiter">// </span><span class="org-comment">tickets = 2
+</span>        <span class="org-type">String</span> <span class="org-variable-name">guests</span> = <span class="org-string">"abc"</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">guests = abc
+</span>        addTickets(tickets); <span class="org-comment-delimiter">// </span><span class="org-comment">tickets = 2
+</span>        guests = addGuests(guests); <span class="org-comment-delimiter">// </span><span class="org-comment">guests = abcd
+</span>        System.out.println(tickets + guests); <span class="org-comment-delimiter">// </span><span class="org-comment">2abcd
+</span>    }
 
-    public static int addTickets(int tickets) {
+    <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">int</span> <span class="org-function-name">addTickets</span>(<span class="org-type">int</span> <span class="org-variable-name">tickets</span>) {
         tickets++;
-        return tickets;
+        <span class="org-keyword">return</span> tickets;
     }
 
-    public static String addGuests(String guests) {
-        guests += "d";
-        return guests;
+    <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">String</span> <span class="org-function-name">addGuests</span>(<span class="org-type">String</span> <span class="org-variable-name">guests</span>) {
+        guests += <span class="org-string">"d"</span>;
+        <span class="org-keyword">return</span> guests;
     }
  }
 </pre>
@@ -253,8 +253,8 @@ For example, it might be stored in a variable.
 </div>
 </div>
 
-<div id="outline-container-org0aec2c0" class="outline-2">
-<h2 id="org0aec2c0"><span class="section-number-2">2.</span> <span class="underline">Exam Trick</span></h2>
+<div id="outline-container-orgca0abec" class="outline-2">
+<h2 id="orgca0abec"><span class="section-number-2">2.</span> <span class="underline">Exam Trick</span></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 If the returned value is not used, the result is ignored. Watch for this on the exam. Ignored returned values are tricky.

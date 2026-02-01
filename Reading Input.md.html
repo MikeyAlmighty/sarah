@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -202,10 +202,10 @@
 <ul>
 <li><a href="#scanner">1. Scanner</a>
 <ul>
-<li><a href="#org75970dd">1.1. Output</a></li>
-<li><a href="#org3344297">1.2. Input</a>
+<li><a href="#org9f65ed6">1.1. Output</a></li>
+<li><a href="#orgabde153">1.2. Input</a>
 <ul>
-<li><a href="#org3bf0a41">1.2.1. Steps to use Scanner</a></li>
+<li><a href="#org88f49ef">1.2.1. Steps to use Scanner</a></li>
 </ul>
 </li>
 </ul>
@@ -225,8 +225,8 @@ Java provides various ways to handle <code>input/output (I/O)</code>.
 </ul>
 </div>
 
-<div id="outline-container-org75970dd" class="outline-3">
-<h3 id="org75970dd"><span class="section-number-3">1.1.</span> Output</h3>
+<div id="outline-container-org9f65ed6" class="outline-3">
+<h3 id="org9f65ed6"><span class="section-number-3">1.1.</span> Output</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 The <code>System.out.println</code> method is used to print <b>text</b> to the <b>console</b>.
@@ -246,16 +246,16 @@ Now, how can we capture input from the user?
 </div>
 </div>
 
-<div id="outline-container-org3344297" class="outline-3">
-<h3 id="org3344297"><span class="section-number-3">1.2.</span> Input</h3>
+<div id="outline-container-orgabde153" class="outline-3">
+<h3 id="orgabde153"><span class="section-number-3">1.2.</span> Input</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 The <code>Scanner</code> class is used to <b>read</b> <b>input</b>.
 </p>
 </div>
 
-<div id="outline-container-org3bf0a41" class="outline-4">
-<h4 id="org3bf0a41"><span class="section-number-4">1.2.1.</span> Steps to use Scanner</h4>
+<div id="outline-container-org88f49ef" class="outline-4">
+<h4 id="org88f49ef"><span class="section-number-4">1.2.1.</span> Steps to use Scanner</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <ul class="org-ul">
 <li>Import the <code>Scanner</code> class. <code>import java.util.Scanner;</code></li>
@@ -263,36 +263,36 @@ The <code>Scanner</code> class is used to <b>read</b> <b>input</b>.
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-java">import java.util.Locale;
-import java.util.Scanner;
+<pre class="src src-java"><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Locale</span>;
+<span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Scanner</span>;
 
-public class ScannerExample {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        sc.useLocale(Locale.US);
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">ScannerExample</span> {
+    <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
+        <span class="org-type">Scanner</span> <span class="org-variable-name">sc</span> = <span class="org-keyword">new</span> <span class="org-type">Scanner</span>(System.in);
+        sc.useLocale(<span class="org-constant">Locale</span>.US);
 
-        // Reading different types of inputs
-        System.out.println("Enter a string:");
-        String str = sc.nextLine(); // Reads a whole line
+        <span class="org-comment-delimiter">// </span><span class="org-comment">Reading different types of inputs
+</span>        System.out.println(<span class="org-string">"Enter a string:"</span>);
+        <span class="org-type">String</span> <span class="org-variable-name">str</span> = sc.nextLine(); <span class="org-comment-delimiter">// </span><span class="org-comment">Reads a whole line
+</span>
+        System.out.println(<span class="org-string">"Enter an integer:"</span>);
+        <span class="org-type">int</span> <span class="org-variable-name">number</span> = sc.nextInt(); <span class="org-comment-delimiter">// </span><span class="org-comment">Reads an integer
+</span>        sc.nextLine();
 
-        System.out.println("Enter an integer:");
-        int number = sc.nextInt(); // Reads an integer
-        sc.nextLine();
+        System.out.println(<span class="org-string">"Enter a float:"</span>);
+        <span class="org-type">float</span> <span class="org-variable-name">decimal</span> = sc.nextFloat(); <span class="org-comment-delimiter">// </span><span class="org-comment">Reads a float
+</span>
+        System.out.println(<span class="org-string">"Enter a boolean (true/false):"</span>);
+        <span class="org-type">boolean</span> <span class="org-variable-name">flag</span> = sc.nextBoolean(); <span class="org-comment-delimiter">// </span><span class="org-comment">Reads a boolean
+</span>
+        <span class="org-comment-delimiter">// </span><span class="org-comment">Output
+</span>        System.out.println(<span class="org-string">"String: "</span> + str);
+        System.out.println(<span class="org-string">"Integer: "</span> + number);
+        System.out.println(<span class="org-string">"Float: "</span> + decimal);
+        System.out.println(<span class="org-string">"Boolean: "</span> + flag);
 
-        System.out.println("Enter a float:");
-        float decimal = sc.nextFloat(); // Reads a float
-
-        System.out.println("Enter a boolean (true/false):");
-        boolean flag = sc.nextBoolean(); // Reads a boolean
-
-        // Output
-        System.out.println("String: " + str);
-        System.out.println("Integer: " + number);
-        System.out.println("Float: " + decimal);
-        System.out.println("Boolean: " + flag);
-
-        sc.close(); // Close the scanner to free resources
-    }
+        sc.close(); <span class="org-comment-delimiter">// </span><span class="org-comment">Close the scanner to free resources
+</span>    }
 }
 </pre>
 </div>

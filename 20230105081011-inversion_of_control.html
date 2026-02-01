@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Inversion of Control</title>
@@ -198,44 +198,44 @@
 <div id="content" class="content">
 <h1 class="title">Inversion of Control</h1>
 <div class="org-src-container">
-<pre class="src src-js">// store-document.js
-function storeDocument(
-  { userDB, folderDB, userAccess, fileStorage }, // Dependency object
-  userID, folderLocation, fileStream
+<pre class="src src-js"><span class="org-comment-delimiter">// </span><span class="org-comment">store-document.js
+</span><span class="org-keyword">function</span> <span class="org-function-name">storeDocument</span>(
+  { userDB, folderDB, userAccess, fileStorage }, <span class="org-comment-delimiter">// </span><span class="org-comment">Dependency object
+</span>  <span class="org-variable-name">userID</span>, <span class="org-variable-name">folderLocation</span>, <span class="org-variable-name">fileStream</span>
 ) {
-  return Promise.all([
+  <span class="org-keyword">return</span> Promise.all([
     userDB.findOne(userID),
     folderDB.findOne(folderLocation)
   ])
   .then(([user, folder]) =&gt;
     userAccess.canWrite(user, folder)
       .then(allowed =&gt; {
-        if (!allowed) {
-          return Promise.reject(new Exception('it went wrong'));
+        <span class="org-keyword">if</span> (!allowed) {
+          <span class="org-keyword">return</span> Promise.reject(<span class="org-keyword">new</span> <span class="org-type">Exception</span>(<span class="org-string">'it went wrong'</span>));
         }
-        return fileStorage.save(fileStream, {user, folder});
+        <span class="org-keyword">return</span> fileStorage.save(fileStream, {user, folder});
       })
   )
 }
 
-export default function createStoreDocument(deps) {
-  return storeDocument.bind(null, deps)
+<span class="org-keyword">export</span> <span class="org-keyword">default</span> <span class="org-keyword">function</span> createStoreDocument(<span class="org-variable-name">deps</span>) {
+  <span class="org-keyword">return</span> storeDocument.bind(<span class="org-constant">null</span>, deps)
 }
 
-// view.js
-export default function view(storeDocument) {
-  // lots of view logic here
-  storeDocument(123, '/tmp7sddsas', myFileStream)
+<span class="org-comment-delimiter">// </span><span class="org-comment">view.js
+</span><span class="org-keyword">export</span> <span class="org-keyword">default</span> <span class="org-keyword">function</span> view(<span class="org-variable-name">storeDocument</span>) {
+  <span class="org-comment-delimiter">// </span><span class="org-comment">lots of view logic here
+</span>  storeDocument(123, <span class="org-string">'/tmp7sddsas'</span>, myFileStream)
 }
 
-// main.js
-import view from './view.js'
-import createStoreDocument from './store-document'
-// Import all dependencies
-import {userDB, folderDB} from './db';
-import {userAccess, fileStorage} from './somewhere';
-let storeDocument = createStoreDocument({ userDB, folderDB, userAccess, fileStorage }) // Builds up storeDocument using said dependencies
-view(storeDocument)
+<span class="org-comment-delimiter">// </span><span class="org-comment">main.js
+</span><span class="org-keyword">import</span> view from <span class="org-string">'./view.js'</span>
+<span class="org-keyword">import</span> createStoreDocument from <span class="org-string">'./store-document'</span>
+<span class="org-comment-delimiter">// </span><span class="org-comment">Import all dependencies
+</span><span class="org-keyword">import</span> {userDB, folderDB} from <span class="org-string">'./db'</span>;
+<span class="org-keyword">import</span> {userAccess, fileStorage} from <span class="org-string">'./somewhere'</span>;
+<span class="org-keyword">let</span> <span class="org-variable-name">storeDocument</span> = createStoreDocument({ userDB, folderDB, userAccess, fileStorage }) <span class="org-comment-delimiter">// </span><span class="org-comment">Builds up storeDocument using said dependencies
+</span>view(storeDocument)
 </pre>
 </div>
 </div>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Initializing final Fields</title>
@@ -201,11 +201,11 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org76733e1">1. Initializing final Fields</a>
+<li><a href="#org7174ba2">1. Initializing final Fields</a>
 <ul>
-<li><a href="#orga8d0ee3">1.1. <span class="underline">Exam Trick</span></a>
+<li><a href="#orga48a7b9">1.1. <span class="underline">Exam Trick</span></a>
 <ul>
-<li><a href="#orgc6f44a3">1.1.1. <span class="underline">Exam Trick</span></a></li>
+<li><a href="#org54da825">1.1.1. <span class="underline">Exam Trick</span></a></li>
 </ul>
 </li>
 </ul>
@@ -214,16 +214,16 @@
 </div>
 </div>
 
-<div id="outline-container-org76733e1" class="outline-2">
-<h2 id="org76733e1"><span class="section-number-2">1.</span> Initializing final Fields</h2>
+<div id="outline-container-org7174ba2" class="outline-2">
+<h2 id="org7174ba2"><span class="section-number-2">1.</span> Initializing final Fields</h2>
 <div class="outline-text-2" id="text-1">
 <div class="org-src-container">
-<pre class="src src-java">public class MouseHouse {
-    private final int volume;
-    private final String name = "The Mouse House"; // Declaration assignment
-    {
-        volume = 10; // Instance Initializer assignment
-    }
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">MouseHouse</span> {
+    <span class="org-keyword">private</span> <span class="org-keyword">final</span> <span class="org-type">int</span> <span class="org-variable-name">volume</span>;
+    <span class="org-keyword">private</span> <span class="org-keyword">final</span> <span class="org-type">String</span> <span class="org-variable-name">name</span> = <span class="org-string">"The Mouse House"</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">Declaration assignment
+</span>    {
+        volume = 10; <span class="org-comment-delimiter">// </span><span class="org-comment">Instance Initializer assignment
+</span>    }
 }
 </pre>
 </div>
@@ -235,23 +235,23 @@ The <code>constructor</code> is part of the <b>initialization</b> process, so it
 </div>
 
 
-<div id="outline-container-orga8d0ee3" class="outline-3">
-<h3 id="orga8d0ee3"><span class="section-number-3">1.1.</span> <span class="underline">Exam Trick</span></h3>
+<div id="outline-container-orga48a7b9" class="outline-3">
+<h3 id="orga48a7b9"><span class="section-number-3">1.1.</span> <span class="underline">Exam Trick</span></h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 By the time the <code>constructor</code> completes, all <code>final instance variables</code> <b>must be assigned</b> a value <b>exactly once</b>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">public class MouseHouse {
-    private final int volume;
-    private final String name;
-    public MouseHouse() {
-        this.name = "Empty House"; // Constructor assignment
-    }
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">MouseHouse</span> {
+    <span class="org-keyword">private</span> <span class="org-keyword">final</span> <span class="org-type">int</span> <span class="org-variable-name">volume</span>;
+    <span class="org-keyword">private</span> <span class="org-keyword">final</span> <span class="org-type">String</span> <span class="org-variable-name">name</span>;
+    <span class="org-keyword">public</span> MouseHouse() {
+        <span class="org-keyword">this</span>.name = <span class="org-string">"Empty House"</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">Constructor assignment
+</span>    }
     {
-        volume = 10; // Instance initializer assignment
-    }
+        volume = 10; <span class="org-comment-delimiter">// </span><span class="org-comment">Instance initializer assignment
+</span>    }
 }
 </pre>
 </div>
@@ -269,28 +269,28 @@ Failure to do so will result in a <b>compiler error</b> on the line that declare
 
 
 <div class="org-src-container">
-<pre class="src src-java">public class MouseHouse {
-    private final int volume;
-    private final String type;
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">MouseHouse</span> {
+    <span class="org-keyword">private</span> <span class="org-keyword">final</span> <span class="org-type">int</span> <span class="org-variable-name">volume</span>;
+    <span class="org-keyword">private</span> <span class="org-keyword">final</span> <span class="org-type">String</span> <span class="org-variable-name">type</span>;
 
     {
-        this.volume = 10;
+        <span class="org-keyword">this</span>.volume = 10;
     }
 
-    public MouseHouse(String type) {
-        this.type = type;
+    <span class="org-keyword">public</span> MouseHouse(String type) {
+        <span class="org-keyword">this</span>.type = type;
     }
 
-    public MouseHouse() { // DOES NOT COMPILE
-        this.volume = 2; // DOES NOT COMPILE
-    }
+    <span class="org-keyword">public</span> MouseHouse() { <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
+</span>        <span class="org-keyword">this</span>.volume = 2; <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
+</span>    }
 }
 </pre>
 </div>
 </div>
 
-<div id="outline-container-orgc6f44a3" class="outline-4">
-<h4 id="orgc6f44a3"><span class="section-number-4">1.1.1.</span> <span class="underline">Exam Trick</span></h4>
+<div id="outline-container-org54da825" class="outline-4">
+<h4 id="org54da825"><span class="section-number-4">1.1.1.</span> <span class="underline">Exam Trick</span></h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 On the exam, be wary of any instance variables marked <code>final</code>.

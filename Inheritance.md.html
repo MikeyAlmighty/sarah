@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -230,39 +230,39 @@ Note: All classes <code>extend/inherit</code> the <b>Object</b> Class
 <h3 id="example"><span class="section-number-3">1.1.</span> Example</h3>
 <div class="outline-text-3" id="text-example">
 <div class="org-src-container">
-<pre class="src src-java">// UIControl (Parent)
-package com.demo;
+<pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">UIControl (Parent)
+</span><span class="org-keyword">package</span> com.<span class="org-constant">demo</span>;
 
-public class UIControl {
-    private boolean isEnabled = true;
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">UIControl</span> {
+    <span class="org-keyword">private</span> <span class="org-type">boolean</span> <span class="org-variable-name">isEnabled</span> = <span class="org-constant">true</span>;
 
-    public void enable() {
-        isEnabled = true;
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">enable</span>() {
+        isEnabled = <span class="org-constant">true</span>;
     }
 
-    public void disable() {
-        isEnabled = false;
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">disable</span>() {
+        isEnabled = <span class="org-constant">false</span>;
     }
 
-    public boolean isEnabled() {
-        return isEnabled;
+    <span class="org-keyword">public</span> <span class="org-type">boolean</span> <span class="org-function-name">isEnabled</span>() {
+        <span class="org-keyword">return</span> isEnabled;
     }
 }
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-java">// TextBox (Child)
-package com.demo;
+<pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">TextBox (Child)
+</span><span class="org-keyword">package</span> com.<span class="org-constant">demo</span>;
 
-public class TextBox extends UIControl {
-   private String text = "";
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">TextBox</span> <span class="org-keyword">extends</span> <span class="org-type">UIControl</span> {
+   <span class="org-keyword">private</span> <span class="org-type">String</span> <span class="org-variable-name">text</span> = <span class="org-string">""</span>;
 
-   public void setText(String text) {
-    this.text = text;
+   <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">setText</span>(<span class="org-type">String</span> <span class="org-variable-name">text</span>) {
+    <span class="org-keyword">this</span>.text = text;
    }
-   public void clear() {
-    text = "";
+   <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">clear</span>() {
+    text = <span class="org-string">""</span>;
    }
 }
 </pre>
@@ -278,23 +278,23 @@ Use <code>super()</code> to call Base class constructor
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">// Child / Sub Class
-public class TextBox extends UIControl {
-   public TextBox() {
-      super(true); // Call to Base (Parent) constructor
-      System.out.println("TextBox");
+<pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">Child / Sub Class
+</span><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">TextBox</span> <span class="org-keyword">extends</span> <span class="org-type">UIControl</span> {
+   <span class="org-keyword">public</span> TextBox() {
+      <span class="org-keyword">super</span>(<span class="org-constant">true</span>); <span class="org-comment-delimiter">// </span><span class="org-comment">Call to Base (Parent) constructor
+</span>      System.out.println(<span class="org-string">"TextBox"</span>);
    }
 }
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-java">// Parent / Base Class
-public class UIControl {
-    private boolean isEnabled = true;
-    public UIControl(boolean isEnabled) {
-        this.isEnabled = isEnabled;
-       System.out.println("UIControl");
+<pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">Parent / Base Class
+</span><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">UIControl</span> {
+    <span class="org-keyword">private</span> <span class="org-type">boolean</span> <span class="org-variable-name">isEnabled</span> = <span class="org-constant">true</span>;
+    <span class="org-keyword">public</span> UIControl(<span class="org-type">boolean</span> <span class="org-variable-name">isEnabled</span>) {
+        <span class="org-keyword">this</span>.isEnabled = isEnabled;
+       System.out.println(<span class="org-string">"UIControl"</span>);
     }
 }
 </pre>

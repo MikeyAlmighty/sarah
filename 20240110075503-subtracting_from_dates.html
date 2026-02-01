@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Subtracting From Dates</title>
@@ -201,11 +201,11 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgfe35d0e">1. Subtracting From Dates</a>
+<li><a href="#org6ff3ff6">1. Subtracting From Dates</a>
 <ul>
-<li><a href="#org0461764">1.1. Method Chaining</a>
+<li><a href="#orgf2ba75f">1.1. Method Chaining</a>
 <ul>
-<li><a href="#org487df41">1.1.1. <span class="underline">Exam Trick</span></a></li>
+<li><a href="#orgfa631f8">1.1.1. <span class="underline">Exam Trick</span></a></li>
 </ul>
 </li>
 </ul>
@@ -214,8 +214,8 @@
 </div>
 </div>
 
-<div id="outline-container-orgfe35d0e" class="outline-2">
-<h2 id="orgfe35d0e"><span class="section-number-2">1.</span> Subtracting From Dates</h2>
+<div id="outline-container-org6ff3ff6" class="outline-2">
+<h2 id="org6ff3ff6"><span class="section-number-2">1.</span> Subtracting From Dates</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 The <code>Date</code> and <code>Time</code> classes are immutable.
@@ -226,43 +226,43 @@ Remember to assign the results of these methods to a <code>reference variable</c
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">var date = LocalDate.of(2024, Month.JANUARY, 20);
-var time = LocalTime.of(5, 15);
-var dateTime = LocalDateTime.of(date, time);
+<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">date</span> = LocalDate.of(2024, <span class="org-constant">Month</span>.JANUARY, 20);
+<span class="org-type">var</span> <span class="org-variable-name">time</span> = LocalTime.of(5, 15);
+<span class="org-type">var</span> <span class="org-variable-name">dateTime</span> = LocalDateTime.of(date, time);
 
-System.out.println(dateTime); // 2024–01–20T05:15
-
+System.out.println(dateTime); <span class="org-comment-delimiter">// </span><span class="org-comment">2024&#8211;01&#8211;20T05:15
+</span>
 dateTime = dateTime.minusDays(1);
-System.out.println(dateTime); // 2024–01–19T05:15
-
+System.out.println(dateTime); <span class="org-comment-delimiter">// </span><span class="org-comment">2024&#8211;01&#8211;19T05:15
+</span>
 dateTime = dateTime.minusHours(10);
-System.out.println(dateTime); // 2024–01–18T19:15
-
+System.out.println(dateTime); <span class="org-comment-delimiter">// </span><span class="org-comment">2024&#8211;01&#8211;18T19:15
+</span>
 dateTime = dateTime.minusSeconds(30);
-System.out.println(dateTime); // 2024–01–18T19:14:30
+System.out.println(dateTime); <span class="org-comment-delimiter">// </span><span class="org-comment">2024&#8211;01&#8211;18T19:14:30</span>
 </pre>
 </div>
 </div>
 
-<div id="outline-container-org0461764" class="outline-3">
-<h3 id="org0461764"><span class="section-number-3">1.1.</span> Method Chaining</h3>
+<div id="outline-container-orgf2ba75f" class="outline-3">
+<h3 id="orgf2ba75f"><span class="section-number-3">1.1.</span> Method Chaining</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
-<pre class="src src-java">var date = LocalDate.of(2024, Month.JANUARY, 20);
-var time = LocalTime.of(5, 15);
+<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">date</span> = LocalDate.of(2024, <span class="org-constant">Month</span>.JANUARY, 20);
+<span class="org-type">var</span> <span class="org-variable-name">time</span> = LocalTime.of(5, 15);
 
-var dateTime = LocalDateTime.of(date, time)
+<span class="org-type">var</span> <span class="org-variable-name">dateTime</span> = LocalDateTime.of(date, time)
                   .minusDays(1).minusHours(10).minusSeconds(30);
 </pre>
 </div>
 </div>
 
-<div id="outline-container-org487df41" class="outline-4">
-<h4 id="org487df41"><span class="section-number-4">1.1.1.</span> <span class="underline">Exam Trick</span></h4>
+<div id="outline-container-orgfa631f8" class="outline-4">
+<h4 id="orgfa631f8"><span class="section-number-4">1.1.1.</span> <span class="underline">Exam Trick</span></h4>
 <div class="outline-text-4" id="text-1-1-1">
 <div class="org-src-container">
-<pre class="src src-java">var date = LocalDate.of(2024, Month.JANUARY, 20);
-date = date.miusMinutes(1); // DOES NOT COMPILE
+<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">date</span> = LocalDate.of(2024, <span class="org-constant">Month</span>.JANUARY, 20);
+date = date.miusMinutes(1); <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE</span>
 </pre>
 </div>
 

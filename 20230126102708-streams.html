@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Streams</title>
@@ -201,7 +201,7 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5728ae9">1. Primitive Streams</a></li>
+<li><a href="#orgec892c8">1. Primitive Streams</a></li>
 </ul>
 </div>
 </div>
@@ -210,7 +210,7 @@ Process Collection of data
 </p>
 
 
-<div id="orge7a0f75" class="figure">
+<div id="org03c07d5" class="figure">
 <p><img src="./assets/Streams.png" alt="Streams.png" />
 </p>
 </div>
@@ -223,14 +223,14 @@ Creating a stream
 From a collection
 </p>
 <div class="org-src-container">
-<pre class="src src-java"> public static void show() {
-    List&lt;Movie&gt; movies = List.of(
-        new Movie("Deadpool", 20),
-        new Movie("Deadpool 2", 15),
-        new Movie("Deadpool 3", 10)
+<pre class="src src-java"> <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+    <span class="org-type">List</span>&lt;<span class="org-type">Movie</span>&gt; <span class="org-variable-name">movies</span> = List.of(
+        <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"Deadpool"</span>, 20),
+        <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"Deadpool 2"</span>, 15),
+        <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"Deadpool 3"</span>, 10)
     );
 
-    var count2 = movies.stream()
+    <span class="org-type">var</span> <span class="org-variable-name">count2</span> = movies.stream()
         .filter(movie -&gt; movie.getLikes() &gt; 10)
         .count();
 
@@ -242,8 +242,8 @@ From a collection
 <li>From an array</li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-java">public static void show() {
-    int[] numbers = { 3, 1, 6};
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+    <span class="org-type">int</span>[] <span class="org-variable-name">numbers</span> = { 3, 1, 6};
     Arrays.stream(numbers)
             .forEach(n -&gt; System.out.println(n));
 }
@@ -264,9 +264,9 @@ infinite/finite streams
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">var stream = Stream.generate(() -&gt; Math.random());
+<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">stream</span> = Stream.generate(() -&gt; Math.random());
 stream.forEach(n -&gt; System.out.println(n));
-// stream.limit(3).forEach(n -&gt; System.out.println(n)); // limit of 3
+<span class="org-comment-delimiter">// </span><span class="org-comment">stream.limit(3).forEach(n -&gt; System.out.println(n)); // limit of 3</span>
 </pre>
 </div></li>
 </ul>
@@ -276,8 +276,8 @@ OR
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">public static void show() {
-    var stream = Stream.iterate(1, n -&gt; n + 1);
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+    <span class="org-type">var</span> <span class="org-variable-name">stream</span> = Stream.iterate(1, n -&gt; n + 1);
     stream
     .limit(3)
     .forEach(item -&gt; System.out.println(item));
@@ -304,35 +304,35 @@ VS
 One can use <code>.peek</code> at any point to "peek" at the stream <b>without</b> termintating
 </p>
 <div class="org-src-container">
-<pre class="src src-java">public static void show() {
-        var movieStream = Stream.of(
-                new Movie("b", 15),
-                new Movie("a", 5),
-                new Movie("d", 15),
-                new Movie("e", 35),
-                new Movie("c", 5)
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+        <span class="org-type">var</span> <span class="org-variable-name">movieStream</span> = Stream.of(
+                <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"b"</span>, 15),
+                <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"a"</span>, 5),
+                <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"d"</span>, 15),
+                <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"e"</span>, 35),
+                <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"c"</span>, 5)
             );
             movieStream
-            .peek(movie -&gt; System.out.println("entry: " + movie.getTitle()))
+            .peek(movie -&gt; System.out.println(<span class="org-string">"entry: "</span> + movie.getTitle()))
             .filter(movie -&gt; movie.getLikes() &gt; 10)
-            .peek(movie -&gt; System.out.println("filter: " + movie.getTitle()))
+            .peek(movie -&gt; System.out.println(<span class="org-string">"filter: "</span> + movie.getTitle()))
             .map(Movie::getTitle)
-            .peek(movieTitle -&gt; System.out.println("map: " + movieTitle))
+            .peek(movieTitle -&gt; System.out.println(<span class="org-string">"map: "</span> + movieTitle))
             .forEach(System.out::println);
 }
 </pre>
 </div>
 
-<div id="outline-container-org5728ae9" class="outline-2">
-<h2 id="org5728ae9"><span class="section-number-2">1.</span> Primitive Streams</h2>
+<div id="outline-container-orgec892c8" class="outline-2">
+<h2 id="orgec892c8"><span class="section-number-2">1.</span> Primitive Streams</h2>
 <div class="outline-text-2" id="text-1">
 <div class="org-src-container">
-<pre class="src src-java">public static void show() {
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
     IntStream.range(0, 5)
-            .forEach(System.out::println); // 0 -&gt; 4
-    IntStream.rangeClosed(0, 5)
-                .forEach(System.out::println); // 0 -&gt; 5
-}
+            .forEach(System.out::println); <span class="org-comment-delimiter">// </span><span class="org-comment">0 -&gt; 4
+</span>    IntStream.rangeClosed(0, 5)
+                .forEach(System.out::println); <span class="org-comment-delimiter">// </span><span class="org-comment">0 -&gt; 5
+</span>}
 </pre>
 </div>
 </div>

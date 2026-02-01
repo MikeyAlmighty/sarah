@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Pattern Matching</title>
@@ -201,19 +201,19 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org756151f">1. Pattern Matching</a>
+<li><a href="#orgcf1e3b7">1. Pattern Matching</a>
 <ul>
-<li><a href="#orgc6be0cf">1.1. Legacy (pre 16)</a></li>
-<li><a href="#orgd7f8e3a">1.2. Patter Variables (Java 16)</a>
+<li><a href="#org88b9747">1.1. Legacy (pre 16)</a></li>
+<li><a href="#orgbcf2abe">1.2. Patter Variables (Java 16)</a>
 <ul>
-<li><a href="#org701cabf">1.2.1. Reassigning Pattern Variables</a></li>
+<li><a href="#org704fe30">1.2.1. Reassigning Pattern Variables</a></li>
 </ul>
 </li>
-<li><a href="#orgdfae5d5">1.3. Pattern Variables and Expressions</a></li>
-<li><a href="#org746620c">1.4. Subtypes</a></li>
-<li><a href="#orgf5cc472">1.5. Flow Scoping</a>
+<li><a href="#org5dd2dfa">1.3. Pattern Variables and Expressions</a></li>
+<li><a href="#org49896f1">1.4. Subtypes</a></li>
+<li><a href="#orga4750dc">1.5. Flow Scoping</a>
 <ul>
-<li><a href="#org7f7f80a">1.5.1. <span class="underline">Exam trick</span></a></li>
+<li><a href="#org7709333">1.5.1. <span class="underline">Exam trick</span></a></li>
 </ul>
 </li>
 </ul>
@@ -222,8 +222,8 @@
 </div>
 </div>
 
-<div id="outline-container-org756151f" class="outline-2">
-<h2 id="org756151f"><span class="section-number-2">1.</span> Pattern Matching</h2>
+<div id="outline-container-orgcf1e3b7" class="outline-2">
+<h2 id="orgcf1e3b7"><span class="section-number-2">1.</span> Pattern Matching</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>Introduced in <b>Java 16</b></li>
@@ -235,17 +235,17 @@ It is used in conjunction with <a href="20240101124425-if_else_statement.html#ID
 </p>
 </div>
 
-<div id="outline-container-orgc6be0cf" class="outline-3">
-<h3 id="orgc6be0cf"><span class="section-number-3">1.1.</span> Legacy (pre 16)</h3>
+<div id="outline-container-org88b9747" class="outline-3">
+<h3 id="org88b9747"><span class="section-number-3">1.1.</span> Legacy (pre 16)</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Consider the following code that takes a <code>Number</code> instance and compares it with the value <code>5</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">void compareIntegers(Number number) {
-    if(number instanceof Integer) {
-        Integer data = (Integer)number;
+<pre class="src src-java"><span class="org-type">void</span> <span class="org-function-name">compareIntegers</span>(<span class="org-type">Number</span> <span class="org-variable-name">number</span>) {
+    <span class="org-keyword">if</span>(number <span class="org-keyword">instanceof</span> Integer) {
+        <span class="org-type">Integer</span> <span class="org-variable-name">data</span> = (<span class="org-type">Integer</span>)number;
         System.out.print(data.compareTo(5));
     }
 }
@@ -263,12 +263,12 @@ Code that <b>first checks if a variable is of a particular type</b> and then <b>
 </div>
 </div>
 
-<div id="outline-container-orgd7f8e3a" class="outline-3">
-<h3 id="orgd7f8e3a"><span class="section-number-3">1.2.</span> Patter Variables (Java 16)</h3>
+<div id="outline-container-orgbcf2abe" class="outline-3">
+<h3 id="orgbcf2abe"><span class="section-number-3">1.2.</span> Patter Variables (Java 16)</h3>
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
-<pre class="src src-java">void compareIntegers(Number number) {
-    if(number instanceof Integer data) {
+<pre class="src src-java"><span class="org-type">void</span> <span class="org-function-name">compareIntegers</span>(<span class="org-type">Number</span> <span class="org-variable-name">number</span>) {
+    <span class="org-keyword">if</span>(number <span class="org-keyword">instanceof</span> Integer data) {
         System.out.print(data.compareTo(5));
     }
 }
@@ -281,15 +281,15 @@ Notice that this code also avoids any potential <code>ClassCastException</code> 
 </p>
 </div>
 
-<div id="outline-container-org701cabf" class="outline-4">
-<h4 id="org701cabf"><span class="section-number-4">1.2.1.</span> Reassigning Pattern Variables</h4>
+<div id="outline-container-org704fe30" class="outline-4">
+<h4 id="org704fe30"><span class="section-number-4">1.2.1.</span> Reassigning Pattern Variables</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 While possible, it is a bad practice to <b>reassign</b> a <code>pattern variable</code> since doing so can lead to ambiguity about what <b>is and is not in scope</b>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">if(number instanceof Integer data) {
+<pre class="src src-java"><span class="org-keyword">if</span>(number <span class="org-keyword">instanceof</span> Integer data) {
     data = 10;
 }
 </pre>
@@ -299,25 +299,25 @@ While possible, it is a bad practice to <b>reassign</b> a <code>pattern variable
 The reassignment can be <b>prevented</b> with a <code>final</code> modifier, but it is better not to reassign the variable at all.
 </p>
 <div class="org-src-container">
-<pre class="src src-java">if(number instanceof final Integer data) {
-    data = 10; // DOES NOT COMPILE
-}
+<pre class="src src-java"><span class="org-keyword">if</span>(number <span class="org-keyword">instanceof</span> <span class="org-keyword">final</span> Integer data) {
+    data = 10; <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
+</span>}
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgdfae5d5" class="outline-3">
-<h3 id="orgdfae5d5"><span class="section-number-3">1.3.</span> Pattern Variables and Expressions</h3>
+<div id="outline-container-org5dd2dfa" class="outline-3">
+<h3 id="org5dd2dfa"><span class="section-number-3">1.3.</span> Pattern Variables and Expressions</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 <code>Pattern matching</code> includes expressions that can be used to filter data out, such as in the following example:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">void printIntegersGreaterThan5(Number number) {
-    if(number instanceof Integer data &amp;&amp; data.compareTo(5) &gt; 0)
+<pre class="src src-java"><span class="org-type">void</span> <span class="org-function-name">printIntegersGreaterThan5</span>(<span class="org-type">Number</span> <span class="org-variable-name">number</span>) {
+    <span class="org-keyword">if</span>(number <span class="org-keyword">instanceof</span> Integer data &amp;&amp; data.compareTo(5) &gt; 0)
         System.out.print(data);
 }
 </pre>
@@ -330,17 +330,17 @@ Notice that we’re using the <code>pattern variable</code> in an expression in 
 </div>
 </div>
 
-<div id="outline-container-org746620c" class="outline-3">
-<h3 id="org746620c"><span class="section-number-3">1.4.</span> Subtypes</h3>
+<div id="outline-container-org49896f1" class="outline-3">
+<h3 id="org49896f1"><span class="section-number-3">1.4.</span> Subtypes</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 The <code>type</code> of the <b>pattern variable</b> must be a <b>subtype</b> of the variable on the <code>LHS</code> of the expression.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">Integer value = 123;
-if(value instanceof Integer) {}
-if(value instanceof Integer data) {} // DOES NOT COMPILE
+<pre class="src src-java"><span class="org-type">Integer</span> <span class="org-variable-name">value</span> = 123;
+<span class="org-keyword">if</span>(value <span class="org-keyword">instanceof</span> Integer) {}
+<span class="org-keyword">if</span>(value <span class="org-keyword">instanceof</span> Integer data) {} <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE</span>
 </pre>
 </div>
 
@@ -350,8 +350,8 @@ While the second line compiles, the last line does not compile because <code>pat
 </div>
 </div>
 
-<div id="outline-container-orgf5cc472" class="outline-3">
-<h3 id="orgf5cc472"><span class="section-number-3">1.5.</span> Flow Scoping</h3>
+<div id="outline-container-orga4750dc" class="outline-3">
+<h3 id="orga4750dc"><span class="section-number-3">1.5.</span> Flow Scoping</h3>
 <div class="outline-text-3" id="text-1-5">
 <p>
 The compiler applies <code>flow scoping</code> when working with <b>pattern matching</b>.
@@ -359,17 +359,17 @@ The compiler applies <code>flow scoping</code> when working with <b>pattern matc
 </p>
 </div>
 
-<div id="outline-container-org7f7f80a" class="outline-4">
-<h4 id="org7f7f80a"><span class="section-number-4">1.5.1.</span> <span class="underline">Exam trick</span></h4>
+<div id="outline-container-org7709333" class="outline-4">
+<h4 id="org7709333"><span class="section-number-4">1.5.1.</span> <span class="underline">Exam trick</span></h4>
 <div class="outline-text-4" id="text-1-5-1">
 <p>
 It might surprise you to learn this code does compile:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">void printOnlyIntegers(Number number) {
-    if (!(number instanceof Integer data))
-        return;
+<pre class="src src-java"><span class="org-type">void</span> <span class="org-function-name">printOnlyIntegers</span>(<span class="org-type">Number</span> <span class="org-variable-name">number</span>) {
+    <span class="org-keyword">if</span> (<span class="org-negation-char">!</span>(number <span class="org-keyword">instanceof</span> Integer data))
+        <span class="org-keyword">return</span>;
     System.out.print(data.intValue());
 }
 </pre>

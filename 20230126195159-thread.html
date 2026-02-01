@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-31 Sat 14:00 -->
+<!-- 2026-02-01 Sun 15:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Thread</title>
@@ -201,14 +201,14 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org700ca1d">1. Starting a thread</a></li>
-<li><a href="#org9b82fd0">2. <code>.join</code> Tell current thread to wait for completion of another thread.</a></li>
-<li><a href="#orgf9c6792">3. Interrupt a thread</a></li>
+<li><a href="#orge87dca7">1. Starting a thread</a></li>
+<li><a href="#org7183977">2. <code>.join</code> Tell current thread to wait for completion of another thread.</a></li>
+<li><a href="#orgeb81107">3. Interrupt a thread</a></li>
 </ul>
 </div>
 </div>
 
-<div id="orga7c517b" class="figure">
+<div id="orgd4ed1fd" class="figure">
 <p><img src="./assets/thread-life-cycle.png" alt="thread-life-cycle.png" />
 </p>
 </div>
@@ -217,28 +217,28 @@
 <code>DownloadFileTask</code>
 </p>
 <div class="org-src-container">
-<pre class="src src-java">public class DownloadFileTask implements Runnable {
-    @Override
-    public void run() {
-    System.out.println("Downloading a file: " + Thread.currentThread().getName());
-        // TODO Auto-generated method stub
-
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">DownloadFileTask</span> <span class="org-keyword">implements</span> <span class="org-type">Runnable</span> {
+    <span class="org-c-annotation">@Override</span>
+    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">run</span>() {
+    System.out.println(<span class="org-string">"Downloading a file: "</span> + Thread.currentThread().getName());
+        <span class="org-comment-delimiter">// </span><span class="org-comment">TODO Auto-generated method stub
+</span>
     }
 }
 </pre>
 </div>
 
-<div id="outline-container-org700ca1d" class="outline-2">
-<h2 id="org700ca1d"><span class="section-number-2">1.</span> Starting a thread</h2>
+<div id="outline-container-orge87dca7" class="outline-2">
+<h2 id="orge87dca7"><span class="section-number-2">1.</span> Starting a thread</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <code>ThreadDemo.java</code>
 </p>
 <div class="org-src-container">
-<pre class="src src-java">public static void show() {
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
         System.out.println(Thread.currentThread().getName());
-        for(var i = 0; i &lt; 10; i++){
-            Thread thread = new Thread(new DownloadFileTask());
+        <span class="org-keyword">for</span>(<span class="org-type">var</span> <span class="org-variable-name">i</span> = 0; i &lt; 10; i++){
+            <span class="org-type">Thread</span> <span class="org-variable-name">thread</span> = <span class="org-keyword">new</span> <span class="org-type">Thread</span>(<span class="org-keyword">new</span> <span class="org-type">DownloadFileTask</span>());
             thread.start();
         }
     }
@@ -247,8 +247,8 @@
 </div>
 </div>
 
-<div id="outline-container-org9b82fd0" class="outline-2">
-<h2 id="org9b82fd0"><span class="section-number-2">2.</span> <code>.join</code> Tell current thread to wait for completion of another thread.</h2>
+<div id="outline-container-org7183977" class="outline-2">
+<h2 id="org7183977"><span class="section-number-2">2.</span> <code>.join</code> Tell current thread to wait for completion of another thread.</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Allows one thread to wait until another thread completes its execution.
@@ -257,24 +257,24 @@ It has a <code>void</code> type and <code>throws InterruptedException</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">public static void show() {
-    Thread thread = new Thread(new DownloadFileTask());
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+    <span class="org-type">Thread</span> <span class="org-variable-name">thread</span> = <span class="org-keyword">new</span> <span class="org-type">Thread</span>(<span class="org-keyword">new</span> <span class="org-type">DownloadFileTask</span>());
     thread.start();
-    try {
-        thread.join(); // Holds up the thread until the download task is finished
-    } catch (InterruptedException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
+    <span class="org-keyword">try</span> {
+        thread.join(); <span class="org-comment-delimiter">// </span><span class="org-comment">Holds up the thread until the download task is finished
+</span>    } <span class="org-keyword">catch</span> (InterruptedException e) {
+        <span class="org-comment-delimiter">// </span><span class="org-comment">TODO Auto-generated catch block
+</span>        e.printStackTrace();
     }
-    System.out.println("File is ready to be scanned");
+    System.out.println(<span class="org-string">"File is ready to be scanned"</span>);
 }
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgf9c6792" class="outline-2">
-<h2 id="orgf9c6792"><span class="section-number-2">3.</span> Interrupt a thread</h2>
+<div id="outline-container-orgeb81107" class="outline-2">
+<h2 id="orgeb81107"><span class="section-number-2">3.</span> Interrupt a thread</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Simply calling <code>thread.interrupt</code> doesn't stop the thread, but sends a request.
@@ -287,7 +287,7 @@ We need to check if a specific thread is interrupted, then we can kill.
 
 <div class="org-src-container">
 <pre class="src src-java">thread.interrupt();
-if (Thread.currentThread().isInterrupted()) return;
+<span class="org-keyword">if</span> (Thread.currentThread().isInterrupted()) <span class="org-keyword">return</span>;
 </pre>
 </div>
 </div>
