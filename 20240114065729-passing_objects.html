@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-01 Sun 15:03 -->
+<!-- 2026-02-01 Sun 15:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Passing Objects</title>
@@ -193,6 +193,61 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
+<style>
+        body {
+          font-family: sans-serif;
+          line-height: 1.5;
+          margin: 2em;
+          background-color: #ffffff;
+          color: #111111;
+        }
+
+        a { color: #1a0dab; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Code block styling */
+        pre.src {
+          padding: 1em;
+          border-radius: 6px;
+          overflow-x: auto;
+          background-color: #f0f0f0;
+          color: #222222;
+          border: 1px solid #ddd;
+          font-family: monospace;
+        }
+
+        /* Syntax highlighting for Org-generated classes */
+        span.org-keyword { color: #005999; font-weight: bold; }
+        span.org-string  { color: #aa3333; }
+        span.org-comment { color: #666666; font-style: italic; }
+        span.org-type    { color: #007700; font-weight: bold; }
+        span.org-variable { color: #993399; }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+          body {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+          }
+
+          a { color: #8ab4f8; }
+
+          pre.src {
+            background-color: #2c2c2c;
+            color: #f0f0f0;
+            border: 1px solid #444;
+          }
+
+          /* Dark syntax */
+          span.org-keyword { color: #569cd6; font-weight: bold; }
+          span.org-string  { color: #d7a65a; }
+          span.org-comment { color: #999988; font-style: italic; }
+          span.org-type    { color: #6ab04c; font-weight: bold; }
+          span.org-variable { color: #c586c0; }
+        }
+
+        ul { list-style-type: disc; padding-left: 2em; }
+      </style>
 </head>
 <body>
 <div id="content" class="content">
@@ -201,26 +256,26 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgfe7e8a4">1. Passing Objects</a>
+<li><a href="#orgde3b424">1. Passing Objects</a>
 <ul>
-<li><a href="#orgbdc9750">1.1. Example</a></li>
-<li><a href="#org07de171">1.2. Example</a></li>
-<li><a href="#org6cebf48">1.3. <span class="underline">Exam Trick</span></a></li>
+<li><a href="#org942a32c">1.1. Example</a></li>
+<li><a href="#org91bcaff">1.2. Example</a></li>
+<li><a href="#org39c9f45">1.3. <span class="underline">Exam Trick</span></a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgfe7e8a4" class="outline-2">
-<h2 id="orgfe7e8a4"><span class="section-number-2">1.</span> Passing Objects</h2>
+<div id="outline-container-orgde3b424" class="outline-2">
+<h2 id="orgde3b424"><span class="section-number-2">1.</span> Passing Objects</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Assignments made in the method do <b>not</b> affect the caller. (In both <a href="20231230083124-primitive_types.html#ID-46582863-7f97-448d-bbc7-f7da4c1e7574">Primitive Types</a> and <a href="20231230083220-reference_types.html#ID-ef3f4798-9f1d-462f-8eea-df2b75e512f6">Reference Types</a>).
 </p>
 </div>
-<div id="outline-container-orgbdc9750" class="outline-3">
-<h3 id="orgbdc9750"><span class="section-number-3">1.1.</span> Example</h3>
+<div id="outline-container-org942a32c" class="outline-3">
+<h3 id="org942a32c"><span class="section-number-3">1.1.</span> Example</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Dog</span> {
@@ -239,8 +294,8 @@ Assignments made in the method do <b>not</b> affect the caller. (In both <a href
 </div>
 
 
-<div id="outline-container-org07de171" class="outline-3">
-<h3 id="org07de171"><span class="section-number-3">1.2.</span> Example</h3>
+<div id="outline-container-org91bcaff" class="outline-3">
+<h3 id="org91bcaff"><span class="section-number-3">1.2.</span> Example</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 The variable <code>sb</code> is a copy of the variable <code>name</code>.
@@ -261,15 +316,15 @@ Both <b>point to the same</b> <code>StringBuilder</code>, which means that chang
 </div>
 
 
-<div id="org5efe25f" class="figure">
+<div id="org55bf53f" class="figure">
 <p><img src="./assets/copying_reference_by_value.png" alt="copying_reference_by_value.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org6cebf48" class="outline-3">
-<h3 id="org6cebf48"><span class="section-number-3">1.3.</span> <span class="underline">Exam Trick</span></h3>
+<div id="outline-container-org39c9f45" class="outline-3">
+<h3 id="org39c9f45"><span class="section-number-3">1.3.</span> <span class="underline">Exam Trick</span></h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 To review, Java uses <b>pass­by­value</b> to get data into a method.

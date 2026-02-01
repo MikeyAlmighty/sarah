@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-01 Sun 15:03 -->
+<!-- 2026-02-01 Sun 15:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Imports</title>
@@ -193,6 +193,61 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
+<style>
+        body {
+          font-family: sans-serif;
+          line-height: 1.5;
+          margin: 2em;
+          background-color: #ffffff;
+          color: #111111;
+        }
+
+        a { color: #1a0dab; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Code block styling */
+        pre.src {
+          padding: 1em;
+          border-radius: 6px;
+          overflow-x: auto;
+          background-color: #f0f0f0;
+          color: #222222;
+          border: 1px solid #ddd;
+          font-family: monospace;
+        }
+
+        /* Syntax highlighting for Org-generated classes */
+        span.org-keyword { color: #005999; font-weight: bold; }
+        span.org-string  { color: #aa3333; }
+        span.org-comment { color: #666666; font-style: italic; }
+        span.org-type    { color: #007700; font-weight: bold; }
+        span.org-variable { color: #993399; }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+          body {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+          }
+
+          a { color: #8ab4f8; }
+
+          pre.src {
+            background-color: #2c2c2c;
+            color: #f0f0f0;
+            border: 1px solid #444;
+          }
+
+          /* Dark syntax */
+          span.org-keyword { color: #569cd6; font-weight: bold; }
+          span.org-string  { color: #d7a65a; }
+          span.org-comment { color: #999988; font-style: italic; }
+          span.org-type    { color: #6ab04c; font-weight: bold; }
+          span.org-variable { color: #c586c0; }
+        }
+
+        ul { list-style-type: disc; padding-left: 2em; }
+      </style>
 </head>
 <body>
 <div id="content" class="content">
@@ -201,13 +256,13 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9cff256">1. Imports</a>
+<li><a href="#org03507cc">1. Imports</a>
 <ul>
-<li><a href="#org29e3a29">1.1. Specific Imports</a></li>
-<li><a href="#org51209d0">1.2. Wildcard Imports</a></li>
-<li><a href="#org85b0ad6">1.3. Note</a>
+<li><a href="#org4b0ae23">1.1. Specific Imports</a></li>
+<li><a href="#orga2ebc76">1.2. Wildcard Imports</a></li>
+<li><a href="#org0d82ef3">1.3. Note</a>
 <ul>
-<li><a href="#org129f7b4">1.3.1. Why There Is No Runtime Performance Impact</a></li>
+<li><a href="#org6f4aa90">1.3.1. Why There Is No Runtime Performance Impact</a></li>
 </ul>
 </li>
 </ul>
@@ -216,8 +271,8 @@
 </div>
 </div>
 
-<div id="outline-container-org9cff256" class="outline-2">
-<h2 id="org9cff256"><span class="section-number-2">1.</span> Imports</h2>
+<div id="outline-container-org03507cc" class="outline-2">
+<h2 id="org03507cc"><span class="section-number-2">1.</span> Imports</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <code>Java</code> allows importing classes either <b>explicitly (specific imports)</b> or using a <b>wildcard (</b>)*.
@@ -228,8 +283,8 @@ Both affect <b>readability</b>, <b>maintainability</b>, and <b>clarity</b>.
 </p>
 </div>
 
-<div id="outline-container-org29e3a29" class="outline-3">
-<h3 id="org29e3a29"><span class="section-number-3">1.1.</span> Specific Imports</h3>
+<div id="outline-container-org4b0ae23" class="outline-3">
+<h3 id="org4b0ae23"><span class="section-number-3">1.1.</span> Specific Imports</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Import <b>only</b> the required class.
@@ -280,8 +335,8 @@ Import <b>only</b> the required class.
 </div>
 </div>
 
-<div id="outline-container-org51209d0" class="outline-3">
-<h3 id="org51209d0"><span class="section-number-3">1.2.</span> Wildcard Imports</h3>
+<div id="outline-container-orga2ebc76" class="outline-3">
+<h3 id="orga2ebc76"><span class="section-number-3">1.2.</span> Wildcard Imports</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Import <b>all</b> public classes from a package.
@@ -331,8 +386,8 @@ Import <b>all</b> public classes from a package.
 </div>
 </div>
 
-<div id="outline-container-org85b0ad6" class="outline-3">
-<h3 id="org85b0ad6"><span class="section-number-3">1.3.</span> Note</h3>
+<div id="outline-container-org0d82ef3" class="outline-3">
+<h3 id="org0d82ef3"><span class="section-number-3">1.3.</span> Note</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 The information for the <code>classes</code> in an <b>imported</b> package is not read in at <code>compile time</code> or <code>runtime</code> unless the class is <b>used</b> in the program.
@@ -347,8 +402,8 @@ There is <b>no</b> performance difference between a <b>specific import</b> and a
 </p>
 </div>
 
-<div id="outline-container-org129f7b4" class="outline-4">
-<h4 id="org129f7b4"><span class="section-number-4">1.3.1.</span> Why There Is No Runtime Performance Impact</h4>
+<div id="outline-container-org6f4aa90" class="outline-4">
+<h4 id="org6f4aa90"><span class="section-number-4">1.3.1.</span> Why There Is No Runtime Performance Impact</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <ul class="org-ul">
 <li>The <a href="20260119071529-java_compiler.html#ID-601d1a17-6f03-4138-9fef-1553f38794b8">Java Compiler</a> replaces <b>imported</b> <code>class</code> names with <b>fully qualified names</b>.</li>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-01 Sun 15:02 -->
+<!-- 2026-02-01 Sun 15:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>IPv6 address</title>
@@ -193,6 +193,61 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
+<style>
+        body {
+          font-family: sans-serif;
+          line-height: 1.5;
+          margin: 2em;
+          background-color: #ffffff;
+          color: #111111;
+        }
+
+        a { color: #1a0dab; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Code block styling */
+        pre.src {
+          padding: 1em;
+          border-radius: 6px;
+          overflow-x: auto;
+          background-color: #f0f0f0;
+          color: #222222;
+          border: 1px solid #ddd;
+          font-family: monospace;
+        }
+
+        /* Syntax highlighting for Org-generated classes */
+        span.org-keyword { color: #005999; font-weight: bold; }
+        span.org-string  { color: #aa3333; }
+        span.org-comment { color: #666666; font-style: italic; }
+        span.org-type    { color: #007700; font-weight: bold; }
+        span.org-variable { color: #993399; }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+          body {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+          }
+
+          a { color: #8ab4f8; }
+
+          pre.src {
+            background-color: #2c2c2c;
+            color: #f0f0f0;
+            border: 1px solid #444;
+          }
+
+          /* Dark syntax */
+          span.org-keyword { color: #569cd6; font-weight: bold; }
+          span.org-string  { color: #d7a65a; }
+          span.org-comment { color: #999988; font-style: italic; }
+          span.org-type    { color: #6ab04c; font-weight: bold; }
+          span.org-variable { color: #c586c0; }
+        }
+
+        ul { list-style-type: disc; padding-left: 2em; }
+      </style>
 </head>
 <body>
 <div id="content" class="content">
@@ -201,29 +256,29 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org814e305">1. Shortening an <code>IPv6 address</code>:</a></li>
-<li><a href="#org94f2c61">2. Anatomy</a></li>
-<li><a href="#orgc567503">3. Reserved Address Spaces</a></li>
-<li><a href="#org033484f">4. Header</a>
+<li><a href="#org56ab98e">1. Shortening an <code>IPv6 address</code>:</a></li>
+<li><a href="#orgeafc8e9">2. Anatomy</a></li>
+<li><a href="#org833edca">3. Reserved Address Spaces</a></li>
+<li><a href="#orgaa5bf59">4. Header</a>
 <ul>
-<li><a href="#org244a9bb">4.1. Version Field</a></li>
-<li><a href="#org74d4c6a">4.2. Traffic Class Field</a></li>
-<li><a href="#orgbce3647">4.3. Flow Label Field</a></li>
-<li><a href="#orgd86d72a">4.4. Payload Length Field</a></li>
-<li><a href="#org80249d5">4.5. Next Header Field</a></li>
-<li><a href="#org87c72de">4.6. Hop Limit Field</a></li>
-<li><a href="#org75bb853">4.7. Source Field</a></li>
-<li><a href="#org0646264">4.8. Destination Field</a></li>
+<li><a href="#org8a28266">4.1. Version Field</a></li>
+<li><a href="#org36173ca">4.2. Traffic Class Field</a></li>
+<li><a href="#orgcad4427">4.3. Flow Label Field</a></li>
+<li><a href="#orgf6d9a44">4.4. Payload Length Field</a></li>
+<li><a href="#org211fe5a">4.5. Next Header Field</a></li>
+<li><a href="#orgf0d5627">4.6. Hop Limit Field</a></li>
+<li><a href="#orgfccbc54">4.7. Source Field</a></li>
+<li><a href="#orgff1182f">4.8. Destination Field</a></li>
 </ul>
 </li>
-<li><a href="#orgae3ff93">5. Payload</a></li>
-<li><a href="#orgff77525">6. IPv6 Tunnels</a></li>
+<li><a href="#orge9f52ff">5. Payload</a></li>
+<li><a href="#org7193547">6. IPv6 Tunnels</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org814e305" class="outline-2">
-<h2 id="org814e305"><span class="section-number-2">1.</span> Shortening an <code>IPv6 address</code>:</h2>
+<div id="outline-container-org56ab98e" class="outline-2">
+<h2 id="org56ab98e"><span class="section-number-2">1.</span> Shortening an <code>IPv6 address</code>:</h2>
 <div class="outline-text-2" id="text-1">
 <ol class="org-ol">
 <li>Remove any leading zeros from a group.</li>
@@ -232,8 +287,8 @@
 </div>
 </div>
 
-<div id="outline-container-org94f2c61" class="outline-2">
-<h2 id="org94f2c61"><span class="section-number-2">2.</span> Anatomy</h2>
+<div id="outline-container-orgeafc8e9" class="outline-2">
+<h2 id="orgeafc8e9"><span class="section-number-2">2.</span> Anatomy</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 NetworkID: First <b>64 bits</b>
@@ -242,8 +297,8 @@ HostID: Second <b>64 bits</b>
 </div>
 </div>
 
-<div id="outline-container-orgc567503" class="outline-2">
-<h2 id="orgc567503"><span class="section-number-2">3.</span> Reserved Address Spaces</h2>
+<div id="outline-container-org833edca" class="outline-2">
+<h2 id="org833edca"><span class="section-number-2">3.</span> Reserved Address Spaces</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Documentation: Start with <code>2001:0db8</code>
@@ -253,12 +308,12 @@ If it starts with <code>FE80:xxx</code> <a href="20230823194006-link_local_unica
 </div>
 </div>
 
-<div id="outline-container-org033484f" class="outline-2">
-<h2 id="org033484f"><span class="section-number-2">4.</span> Header</h2>
+<div id="outline-container-orgaa5bf59" class="outline-2">
+<h2 id="orgaa5bf59"><span class="section-number-2">4.</span> Header</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org244a9bb" class="outline-3">
-<h3 id="org244a9bb"><span class="section-number-3">4.1.</span> Version Field</h3>
+<div id="outline-container-org8a28266" class="outline-3">
+<h3 id="org8a28266"><span class="section-number-3">4.1.</span> Version Field</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 <b>4 bit</b>
@@ -267,8 +322,8 @@ Defines what version of IP is in use
 </div>
 </div>
 
-<div id="outline-container-org74d4c6a" class="outline-3">
-<h3 id="org74d4c6a"><span class="section-number-3">4.2.</span> Traffic Class Field</h3>
+<div id="outline-container-org36173ca" class="outline-3">
+<h3 id="org36173ca"><span class="section-number-3">4.2.</span> Traffic Class Field</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 <b>8 bit</b>
@@ -277,8 +332,8 @@ Defines type of traffic contained within datagram
 </div>
 </div>
 
-<div id="outline-container-orgbce3647" class="outline-3">
-<h3 id="orgbce3647"><span class="section-number-3">4.3.</span> Flow Label Field</h3>
+<div id="outline-container-orgcad4427" class="outline-3">
+<h3 id="orgcad4427"><span class="section-number-3">4.3.</span> Flow Label Field</h3>
 <div class="outline-text-3" id="text-4-3">
 <p>
 <b>20 bit</b>
@@ -287,8 +342,8 @@ Used in conjunction with <code>Traffic Class field</code> for <a href="202308190
 </div>
 </div>
 
-<div id="outline-container-orgd86d72a" class="outline-3">
-<h3 id="orgd86d72a"><span class="section-number-3">4.4.</span> Payload Length Field</h3>
+<div id="outline-container-orgf6d9a44" class="outline-3">
+<h3 id="orgf6d9a44"><span class="section-number-3">4.4.</span> Payload Length Field</h3>
 <div class="outline-text-3" id="text-4-4">
 <p>
 <b>16 bit</b>
@@ -297,8 +352,8 @@ Defines how long data payload section of datagram is.
 </div>
 </div>
 
-<div id="outline-container-org80249d5" class="outline-3">
-<h3 id="org80249d5"><span class="section-number-3">4.5.</span> Next Header Field</h3>
+<div id="outline-container-org211fe5a" class="outline-3">
+<h3 id="org211fe5a"><span class="section-number-3">4.5.</span> Next Header Field</h3>
 <div class="outline-text-3" id="text-4-5">
 <p>
 <b>16 bit</b>
@@ -307,8 +362,8 @@ Optional
 </div>
 </div>
 
-<div id="outline-container-org87c72de" class="outline-3">
-<h3 id="org87c72de"><span class="section-number-3">4.6.</span> Hop Limit Field</h3>
+<div id="outline-container-orgf0d5627" class="outline-3">
+<h3 id="orgf0d5627"><span class="section-number-3">4.6.</span> Hop Limit Field</h3>
 <div class="outline-text-3" id="text-4-6">
 <p>
 <b>8 bit</b>
@@ -317,8 +372,8 @@ Identical to TTL Field in IPv4 Header
 </div>
 </div>
 
-<div id="outline-container-org75bb853" class="outline-3">
-<h3 id="org75bb853"><span class="section-number-3">4.7.</span> Source Field</h3>
+<div id="outline-container-orgfccbc54" class="outline-3">
+<h3 id="orgfccbc54"><span class="section-number-3">4.7.</span> Source Field</h3>
 <div class="outline-text-3" id="text-4-7">
 <p>
 <b>128 bit</b>
@@ -326,8 +381,8 @@ Identical to TTL Field in IPv4 Header
 </div>
 </div>
 
-<div id="outline-container-org0646264" class="outline-3">
-<h3 id="org0646264"><span class="section-number-3">4.8.</span> Destination Field</h3>
+<div id="outline-container-orgff1182f" class="outline-3">
+<h3 id="orgff1182f"><span class="section-number-3">4.8.</span> Destination Field</h3>
 <div class="outline-text-3" id="text-4-8">
 <p>
 <b>128 bit</b>
@@ -336,12 +391,12 @@ Identical to TTL Field in IPv4 Header
 </div>
 </div>
 
-<div id="outline-container-orgae3ff93" class="outline-2">
-<h2 id="orgae3ff93"><span class="section-number-2">5.</span> Payload</h2>
+<div id="outline-container-orge9f52ff" class="outline-2">
+<h2 id="orge9f52ff"><span class="section-number-2">5.</span> Payload</h2>
 </div>
 
-<div id="outline-container-orgff77525" class="outline-2">
-<h2 id="orgff77525"><span class="section-number-2">6.</span> <a href="20230823195003-ipv6_tunnels.html#ID-b08f93ee-0bc2-4f6b-badb-42eda2c958fd">IPv6 Tunnels</a></h2>
+<div id="outline-container-org7193547" class="outline-2">
+<h2 id="org7193547"><span class="section-number-2">6.</span> <a href="20230823195003-ipv6_tunnels.html#ID-b08f93ee-0bc2-4f6b-badb-42eda2c958fd">IPv6 Tunnels</a></h2>
 </div>
 </div>
 </body>

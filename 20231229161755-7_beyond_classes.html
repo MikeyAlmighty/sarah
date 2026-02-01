@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-01 Sun 15:03 -->
+<!-- 2026-02-01 Sun 15:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>7. Beyond Classes</title>
@@ -193,6 +193,61 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
+<style>
+        body {
+          font-family: sans-serif;
+          line-height: 1.5;
+          margin: 2em;
+          background-color: #ffffff;
+          color: #111111;
+        }
+
+        a { color: #1a0dab; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Code block styling */
+        pre.src {
+          padding: 1em;
+          border-radius: 6px;
+          overflow-x: auto;
+          background-color: #f0f0f0;
+          color: #222222;
+          border: 1px solid #ddd;
+          font-family: monospace;
+        }
+
+        /* Syntax highlighting for Org-generated classes */
+        span.org-keyword { color: #005999; font-weight: bold; }
+        span.org-string  { color: #aa3333; }
+        span.org-comment { color: #666666; font-style: italic; }
+        span.org-type    { color: #007700; font-weight: bold; }
+        span.org-variable { color: #993399; }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+          body {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+          }
+
+          a { color: #8ab4f8; }
+
+          pre.src {
+            background-color: #2c2c2c;
+            color: #f0f0f0;
+            border: 1px solid #444;
+          }
+
+          /* Dark syntax */
+          span.org-keyword { color: #569cd6; font-weight: bold; }
+          span.org-string  { color: #d7a65a; }
+          span.org-comment { color: #999988; font-style: italic; }
+          span.org-type    { color: #6ab04c; font-weight: bold; }
+          span.org-variable { color: #c586c0; }
+        }
+
+        ul { list-style-type: disc; padding-left: 2em; }
+      </style>
 </head>
 <body>
 <div id="content" class="content">
@@ -201,35 +256,35 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc1d8b96">1. Chapter 7. Beyond Classes</a>
+<li><a href="#orgc4a73bc">1. Chapter 7. Beyond Classes</a>
 <ul>
-<li><a href="#org1edcfd0">1.1. Exam Objectives</a>
+<li><a href="#orgd6fb6b6">1.1. Exam Objectives</a>
 <ul>
-<li><a href="#org497f95c">1.1.1. Utilizing Java Object­Oriented Approach</a></li>
+<li><a href="#org05c8151">1.1.1. Utilizing Java Object­Oriented Approach</a></li>
 </ul>
 </li>
-<li><a href="#org99f31c5">1.2. 1. Implementing Interfaces</a></li>
-<li><a href="#org604f994">1.3. 2. Working with Enums</a></li>
-<li><a href="#org7d5e341">1.4. 3. Sealing Classes</a></li>
-<li><a href="#org9f992ae">1.5. 4. Encapsulating Data with Records</a></li>
-<li><a href="#orgc0d1303">1.6. 5. Creating Nested Classes</a></li>
-<li><a href="#org2c65a5a">1.7. 6. Understanding Polymorphism</a></li>
+<li><a href="#orgc0f30f4">1.2. 1. Implementing Interfaces</a></li>
+<li><a href="#org5e4f430">1.3. 2. Working with Enums</a></li>
+<li><a href="#org65ad4d4">1.4. 3. Sealing Classes</a></li>
+<li><a href="#org1c949d6">1.5. 4. Encapsulating Data with Records</a></li>
+<li><a href="#orgfe91765">1.6. 5. Creating Nested Classes</a></li>
+<li><a href="#org8e0d166">1.7. 6. Understanding Polymorphism</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgc1d8b96" class="outline-2">
-<h2 id="orgc1d8b96"><span class="section-number-2">1.</span> Chapter 7. Beyond Classes</h2>
+<div id="outline-container-orgc4a73bc" class="outline-2">
+<h2 id="orgc4a73bc"><span class="section-number-2">1.</span> Chapter 7. Beyond Classes</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org1edcfd0" class="outline-3">
-<h3 id="org1edcfd0"><span class="section-number-3">1.1.</span> Exam Objectives</h3>
+<div id="outline-container-orgd6fb6b6" class="outline-3">
+<h3 id="orgd6fb6b6"><span class="section-number-3">1.1.</span> Exam Objectives</h3>
 <div class="outline-text-3" id="text-1-1">
 </div>
-<div id="outline-container-org497f95c" class="outline-4">
-<h4 id="org497f95c"><span class="section-number-4">1.1.1.</span> Utilizing Java Object­Oriented Approach</h4>
+<div id="outline-container-org05c8151" class="outline-4">
+<h4 id="org05c8151"><span class="section-number-4">1.1.1.</span> Utilizing Java Object­Oriented Approach</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <ul class="org-ul">
 <li>Declare and instantiate Java objects including <a href="35043135-26f7-4da8-a4db-d717956c19d9">nested class objects</a>, and explain the <code>object life-cycle</code> including <b>creation</b>, <b>reassigning references</b>, and <a href="20231230181407-garbage_collection.html#ID-9ccc2e2b-e387-499a-aaef-790bb6c1caa3">Garbage Collection</a>.</li>
@@ -248,23 +303,23 @@
 </div>
 </div>
 
-<div id="outline-container-org99f31c5" class="outline-3">
-<h3 id="org99f31c5"><span class="section-number-3">1.2.</span> 1. <a href="20240124071359-implementing_interfaces.html#ID-e1fb40df-c0b5-4c10-9704-39bac087c227">Implementing Interfaces</a></h3>
+<div id="outline-container-orgc0f30f4" class="outline-3">
+<h3 id="orgc0f30f4"><span class="section-number-3">1.2.</span> 1. <a href="20240124071359-implementing_interfaces.html#ID-e1fb40df-c0b5-4c10-9704-39bac087c227">Implementing Interfaces</a></h3>
 </div>
-<div id="outline-container-org604f994" class="outline-3">
-<h3 id="org604f994"><span class="section-number-3">1.3.</span> 2. <a href="20240124071414-working_with_enums.html#ID-8ad8f0cf-23e7-40ba-bf5a-2200a172f729">Working with Enums</a></h3>
+<div id="outline-container-org5e4f430" class="outline-3">
+<h3 id="org5e4f430"><span class="section-number-3">1.3.</span> 2. <a href="20240124071414-working_with_enums.html#ID-8ad8f0cf-23e7-40ba-bf5a-2200a172f729">Working with Enums</a></h3>
 </div>
-<div id="outline-container-org7d5e341" class="outline-3">
-<h3 id="org7d5e341"><span class="section-number-3">1.4.</span> 3. <a href="20240124071430-sealing_classes.html#ID-bfa3b933-a5ab-4bfa-9b32-689ab3d92410">Sealing Classes</a></h3>
+<div id="outline-container-org65ad4d4" class="outline-3">
+<h3 id="org65ad4d4"><span class="section-number-3">1.4.</span> 3. <a href="20240124071430-sealing_classes.html#ID-bfa3b933-a5ab-4bfa-9b32-689ab3d92410">Sealing Classes</a></h3>
 </div>
-<div id="outline-container-org9f992ae" class="outline-3">
-<h3 id="org9f992ae"><span class="section-number-3">1.5.</span> 4. <a href="20240124071446-encapsulating_data_with_records.html#ID-d0d2e115-43cb-43e6-9a6b-0238929b92ae">Encapsulating Data with Records</a></h3>
+<div id="outline-container-org1c949d6" class="outline-3">
+<h3 id="org1c949d6"><span class="section-number-3">1.5.</span> 4. <a href="20240124071446-encapsulating_data_with_records.html#ID-d0d2e115-43cb-43e6-9a6b-0238929b92ae">Encapsulating Data with Records</a></h3>
 </div>
-<div id="outline-container-orgc0d1303" class="outline-3">
-<h3 id="orgc0d1303"><span class="section-number-3">1.6.</span> 5. <a href="20240124071510-creating_nested_classes.html#ID-35043135-26f7-4da8-a4db-d717956c19d9">Creating Nested Classes</a></h3>
+<div id="outline-container-orgfe91765" class="outline-3">
+<h3 id="orgfe91765"><span class="section-number-3">1.6.</span> 5. <a href="20240124071510-creating_nested_classes.html#ID-35043135-26f7-4da8-a4db-d717956c19d9">Creating Nested Classes</a></h3>
 </div>
-<div id="outline-container-org2c65a5a" class="outline-3">
-<h3 id="org2c65a5a"><span class="section-number-3">1.7.</span> 6. <a href="20240124071557-understanding_polymorphism.html#ID-ecaa3f5f-3cd3-4ad3-93dc-1da93d3cf395">Understanding Polymorphism</a></h3>
+<div id="outline-container-org8e0d166" class="outline-3">
+<h3 id="org8e0d166"><span class="section-number-3">1.7.</span> 6. <a href="20240124071557-understanding_polymorphism.html#ID-ecaa3f5f-3cd3-4ad3-93dc-1da93d3cf395">Understanding Polymorphism</a></h3>
 </div>
 </div>
 </div>

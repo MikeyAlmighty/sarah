@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-01 Sun 15:03 -->
+<!-- 2026-02-01 Sun 15:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Java Boxing</title>
@@ -193,6 +193,61 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
+<style>
+        body {
+          font-family: sans-serif;
+          line-height: 1.5;
+          margin: 2em;
+          background-color: #ffffff;
+          color: #111111;
+        }
+
+        a { color: #1a0dab; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Code block styling */
+        pre.src {
+          padding: 1em;
+          border-radius: 6px;
+          overflow-x: auto;
+          background-color: #f0f0f0;
+          color: #222222;
+          border: 1px solid #ddd;
+          font-family: monospace;
+        }
+
+        /* Syntax highlighting for Org-generated classes */
+        span.org-keyword { color: #005999; font-weight: bold; }
+        span.org-string  { color: #aa3333; }
+        span.org-comment { color: #666666; font-style: italic; }
+        span.org-type    { color: #007700; font-weight: bold; }
+        span.org-variable { color: #993399; }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+          body {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+          }
+
+          a { color: #8ab4f8; }
+
+          pre.src {
+            background-color: #2c2c2c;
+            color: #f0f0f0;
+            border: 1px solid #444;
+          }
+
+          /* Dark syntax */
+          span.org-keyword { color: #569cd6; font-weight: bold; }
+          span.org-string  { color: #d7a65a; }
+          span.org-comment { color: #999988; font-style: italic; }
+          span.org-type    { color: #6ab04c; font-weight: bold; }
+          span.org-variable { color: #c586c0; }
+        }
+
+        ul { list-style-type: disc; padding-left: 2em; }
+      </style>
 </head>
 <body>
 <div id="content" class="content">
@@ -201,8 +256,8 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org34bccd2">1. Boxing</a></li>
-<li><a href="#org67df744">2. Unboxing</a></li>
+<li><a href="#org159baf8">1. Boxing</a></li>
+<li><a href="#orgc5d240c">2. Unboxing</a></li>
 </ul>
 </div>
 </div>
@@ -210,8 +265,8 @@
 <code>Boxing</code> and <code>unboxing</code> conversions allow interoperability between <a href="20231230083124-primitive_types.html#ID-46582863-7f97-448d-bbc7-f7da4c1e7574">Primitive Type</a> values and their representation as objects of the <code>wrapper types</code>
 </p>
 
-<div id="outline-container-org34bccd2" class="outline-2">
-<h2 id="org34bccd2"><span class="section-number-2">1.</span> Boxing</h2>
+<div id="outline-container-org159baf8" class="outline-2">
+<h2 id="org159baf8"><span class="section-number-2">1.</span> Boxing</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <b>Boxing (aka autoboxing)</b> conversion converts the value of a <code>primitive</code> type to a corresponding value of its <code>Wrapper type</code>.
@@ -219,8 +274,8 @@
 </div>
 </div>
 
-<div id="outline-container-org67df744" class="outline-2">
-<h2 id="org67df744"><span class="section-number-2">2.</span> Unboxing</h2>
+<div id="outline-container-orgc5d240c" class="outline-2">
+<h2 id="orgc5d240c"><span class="section-number-2">2.</span> Unboxing</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 <b>Unboxing</b> conversion converts the value of a <code>wrapper</code> type to a value of its corresponding <code>primitive</code> type.
@@ -231,7 +286,7 @@ Both <b>boxing</b> and <b>unboxing</b> conversion are applied <b>implicitly</b> 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java" id="org0a6074c"><span class="org-comment-delimiter">// </span><span class="org-comment">Boxing
+<pre class="src src-java" id="org8644358"><span class="org-comment-delimiter">// </span><span class="org-comment">Boxing
 </span><span class="org-type">Integer</span> <span class="org-variable-name">iRef</span> = 10;  <span class="org-comment-delimiter">// </span><span class="org-comment">(1) Implicit boxing: Integer &lt;----- int
 </span><span class="org-type">Double</span> <span class="org-variable-name">dRef</span> = Double.valueOf(3.14); <span class="org-comment-delimiter">// </span><span class="org-comment">(2) Explicit boxing: Double &lt;----- double
 </span>

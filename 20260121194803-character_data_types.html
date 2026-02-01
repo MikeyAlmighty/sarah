@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-01 Sun 15:02 -->
+<!-- 2026-02-01 Sun 15:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Character Data Types</title>
@@ -193,6 +193,61 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
+<style>
+        body {
+          font-family: sans-serif;
+          line-height: 1.5;
+          margin: 2em;
+          background-color: #ffffff;
+          color: #111111;
+        }
+
+        a { color: #1a0dab; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Code block styling */
+        pre.src {
+          padding: 1em;
+          border-radius: 6px;
+          overflow-x: auto;
+          background-color: #f0f0f0;
+          color: #222222;
+          border: 1px solid #ddd;
+          font-family: monospace;
+        }
+
+        /* Syntax highlighting for Org-generated classes */
+        span.org-keyword { color: #005999; font-weight: bold; }
+        span.org-string  { color: #aa3333; }
+        span.org-comment { color: #666666; font-style: italic; }
+        span.org-type    { color: #007700; font-weight: bold; }
+        span.org-variable { color: #993399; }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+          body {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+          }
+
+          a { color: #8ab4f8; }
+
+          pre.src {
+            background-color: #2c2c2c;
+            color: #f0f0f0;
+            border: 1px solid #444;
+          }
+
+          /* Dark syntax */
+          span.org-keyword { color: #569cd6; font-weight: bold; }
+          span.org-string  { color: #d7a65a; }
+          span.org-comment { color: #999988; font-style: italic; }
+          span.org-type    { color: #6ab04c; font-weight: bold; }
+          span.org-variable { color: #c586c0; }
+        }
+
+        ul { list-style-type: disc; padding-left: 2em; }
+      </style>
 </head>
 <body>
 <div id="content" class="content">
@@ -201,24 +256,24 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orge54b8f1">1. Character Data Types</a>
+<li><a href="#org213a015">1. Character Data Types</a>
 <ul>
-<li><a href="#org446434b">1.1. char</a>
+<li><a href="#org1940718">1.1. char</a>
 <ul>
-<li><a href="#org2cc74cf">1.1.1. Example</a></li>
+<li><a href="#org494c6fd">1.1.1. Example</a></li>
 </ul>
 </li>
-<li><a href="#org90b7592">1.2. Unicode and ASCII</a></li>
-<li><a href="#orgb044fd1">1.3. Escape Sequences for Special Characters</a></li>
-<li><a href="#org767778a">1.4. Casting Between char and Numeric Types</a></li>
+<li><a href="#org84b5bdb">1.2. Unicode and ASCII</a></li>
+<li><a href="#org36cdeb6">1.3. Escape Sequences for Special Characters</a></li>
+<li><a href="#org2241941">1.4. Casting Between char and Numeric Types</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orge54b8f1" class="outline-2">
-<h2 id="orge54b8f1"><span class="section-number-2">1.</span> Character Data Types</h2>
+<div id="outline-container-org213a015" class="outline-2">
+<h2 id="org213a015"><span class="section-number-2">1.</span> Character Data Types</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 A <code>character</code> <b>data</b> <b>type</b> represents a <code>single character</code>.
@@ -233,8 +288,8 @@ The <code>character</code> <b>data</b> <b>type</b>, <code>char</code>, is used t
 </p>
 </div>
 
-<div id="outline-container-org446434b" class="outline-3">
-<h3 id="org446434b"><span class="section-number-3">1.1.</span> char</h3>
+<div id="outline-container-org1940718" class="outline-3">
+<h3 id="org1940718"><span class="section-number-3">1.1.</span> char</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Size: <code>16</code> <code>bits</code>
@@ -243,8 +298,8 @@ Use case: Used for storing <b>characters</b>, such as <code>letters</code>, <cod
 </p>
 </div>
 
-<div id="outline-container-org2cc74cf" class="outline-4">
-<h4 id="org2cc74cf"><span class="section-number-4">1.1.1.</span> Example</h4>
+<div id="outline-container-org494c6fd" class="outline-4">
+<h4 id="org494c6fd"><span class="section-number-4">1.1.1.</span> Example</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-type">char</span> <span class="org-variable-name">letter</span> = <span class="org-string">'A'</span>;
@@ -255,14 +310,14 @@ Use case: Used for storing <b>characters</b>, such as <code>letters</code>, <cod
 </div>
 </div>
 
-<div id="outline-container-org90b7592" class="outline-3">
-<h3 id="org90b7592"><span class="section-number-3">1.2.</span> <a href="20260126075959-unicode_and_ascii.html#ID-d51aed65-3a3b-4be0-973f-a3fe21966d57">Unicode and ASCII</a></h3>
+<div id="outline-container-org84b5bdb" class="outline-3">
+<h3 id="org84b5bdb"><span class="section-number-3">1.2.</span> <a href="20260126075959-unicode_and_ascii.html#ID-d51aed65-3a3b-4be0-973f-a3fe21966d57">Unicode and ASCII</a></h3>
 </div>
-<div id="outline-container-orgb044fd1" class="outline-3">
-<h3 id="orgb044fd1"><span class="section-number-3">1.3.</span> <a href="20260126081525-escape_sequences_for_special_characters.html#ID-e4c82f9d-3cc7-4bbc-8653-b7ff71f9a37b">Escape Sequences for Special Characters</a></h3>
+<div id="outline-container-org36cdeb6" class="outline-3">
+<h3 id="org36cdeb6"><span class="section-number-3">1.3.</span> <a href="20260126081525-escape_sequences_for_special_characters.html#ID-e4c82f9d-3cc7-4bbc-8653-b7ff71f9a37b">Escape Sequences for Special Characters</a></h3>
 </div>
-<div id="outline-container-org767778a" class="outline-3">
-<h3 id="org767778a"><span class="section-number-3">1.4.</span> <a href="20260127072229-casting_between_char_and_numeric_types.html#ID-2178acc3-3f0d-4841-9f71-6039bd505aea">Casting Between char and Numeric Types</a></h3>
+<div id="outline-container-org2241941" class="outline-3">
+<h3 id="org2241941"><span class="section-number-3">1.4.</span> <a href="20260127072229-casting_between_char_and_numeric_types.html#ID-2178acc3-3f0d-4841-9f71-6039bd505aea">Casting Between char and Numeric Types</a></h3>
 </div>
 </div>
 </div>

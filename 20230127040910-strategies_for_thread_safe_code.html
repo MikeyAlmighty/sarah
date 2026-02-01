@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-01 Sun 15:03 -->
+<!-- 2026-02-01 Sun 15:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Strategies for Thread safe code</title>
@@ -193,6 +193,61 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
+<style>
+        body {
+          font-family: sans-serif;
+          line-height: 1.5;
+          margin: 2em;
+          background-color: #ffffff;
+          color: #111111;
+        }
+
+        a { color: #1a0dab; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Code block styling */
+        pre.src {
+          padding: 1em;
+          border-radius: 6px;
+          overflow-x: auto;
+          background-color: #f0f0f0;
+          color: #222222;
+          border: 1px solid #ddd;
+          font-family: monospace;
+        }
+
+        /* Syntax highlighting for Org-generated classes */
+        span.org-keyword { color: #005999; font-weight: bold; }
+        span.org-string  { color: #aa3333; }
+        span.org-comment { color: #666666; font-style: italic; }
+        span.org-type    { color: #007700; font-weight: bold; }
+        span.org-variable { color: #993399; }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+          body {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+          }
+
+          a { color: #8ab4f8; }
+
+          pre.src {
+            background-color: #2c2c2c;
+            color: #f0f0f0;
+            border: 1px solid #444;
+          }
+
+          /* Dark syntax */
+          span.org-keyword { color: #569cd6; font-weight: bold; }
+          span.org-string  { color: #d7a65a; }
+          span.org-comment { color: #999988; font-style: italic; }
+          span.org-type    { color: #6ab04c; font-weight: bold; }
+          span.org-variable { color: #c586c0; }
+        }
+
+        ul { list-style-type: disc; padding-left: 2em; }
+      </style>
 </head>
 <body>
 <div id="content" class="content">
@@ -201,21 +256,21 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org4ac5e94">1. Confinement</a></li>
-<li><a href="#org4d9d712">2. Immutable</a></li>
-<li><a href="#org3c33570">3. Synchronization</a></li>
-<li><a href="#orgf11bff2">4. Atomic Objects</a></li>
-<li><a href="#org4229ec8">5. Partitioning</a>
+<li><a href="#org4fbabd6">1. Confinement</a></li>
+<li><a href="#org5ce1352">2. Immutable</a></li>
+<li><a href="#orgcf17666">3. Synchronization</a></li>
+<li><a href="#org91e7bd6">4. Atomic Objects</a></li>
+<li><a href="#orgd94feb2">5. Partitioning</a>
 <ul>
-<li><a href="#org6c6413c">5.1. Concurrent Collections</a></li>
+<li><a href="#org9aaa4ce">5.1. Concurrent Collections</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org4ac5e94" class="outline-2">
-<h2 id="org4ac5e94"><span class="section-number-2">1.</span> <a href="20230127041730-confinement.html#ID-0a07a8a7-9849-46d6-8b8b-22e187f71080">Confinement</a></h2>
+<div id="outline-container-org4fbabd6" class="outline-2">
+<h2 id="org4fbabd6"><span class="section-number-2">1.</span> <a href="20230127041730-confinement.html#ID-0a07a8a7-9849-46d6-8b8b-22e187f71080">Confinement</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Don't share data across threads
@@ -223,8 +278,8 @@ Don't share data across threads
 </div>
 </div>
 
-<div id="outline-container-org4d9d712" class="outline-2">
-<h2 id="org4d9d712"><span class="section-number-2">2.</span> Immutable</h2>
+<div id="outline-container-org5ce1352" class="outline-2">
+<h2 id="org5ce1352"><span class="section-number-2">2.</span> Immutable</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Use immutable objects
@@ -232,8 +287,8 @@ Use immutable objects
 </div>
 </div>
 
-<div id="outline-container-org3c33570" class="outline-2">
-<h2 id="org3c33570"><span class="section-number-2">3.</span> <a href="20230127044214-synchronization.html#ID-e69555ef-ade4-4b3e-ae63-59d3d6182b33">Synchronization</a></h2>
+<div id="outline-container-orgcf17666" class="outline-2">
+<h2 id="orgcf17666"><span class="section-number-2">3.</span> <a href="20230127044214-synchronization.html#ID-e69555ef-ade4-4b3e-ae63-59d3d6182b33">Synchronization</a></h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Prevent multiple threads from accessing same object concurrently
@@ -241,8 +296,8 @@ Prevent multiple threads from accessing same object concurrently
 </div>
 </div>
 
-<div id="outline-container-orgf11bff2" class="outline-2">
-<h2 id="orgf11bff2"><span class="section-number-2">4.</span> <a href="20230127071652-atomic_objects.html#ID-4fbdf6dd-f4c9-4636-b7ff-d61bdd030ba5">Atomic Objects</a></h2>
+<div id="outline-container-org91e7bd6" class="outline-2">
+<h2 id="org91e7bd6"><span class="section-number-2">4.</span> <a href="20230127071652-atomic_objects.html#ID-4fbdf6dd-f4c9-4636-b7ff-d61bdd030ba5">Atomic Objects</a></h2>
 <div class="outline-text-2" id="text-4">
 <p>
 Increment atomicIntegers
@@ -251,16 +306,16 @@ Increment atomicIntegers
 </div>
 </div>
 
-<div id="outline-container-org4229ec8" class="outline-2">
-<h2 id="org4229ec8"><span class="section-number-2">5.</span> Partitioning</h2>
+<div id="outline-container-orgd94feb2" class="outline-2">
+<h2 id="orgd94feb2"><span class="section-number-2">5.</span> Partitioning</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 Partitioning data into segments that can be access concurrently.
 </p>
 </div>
 
-<div id="outline-container-org6c6413c" class="outline-3">
-<h3 id="org6c6413c"><span class="section-number-3">5.1.</span> <a href="20230127073739-concurrent_collections.html#ID-ef30166a-db53-4698-bdb9-d969680625d9">Concurrent Collections</a></h3>
+<div id="outline-container-org9aaa4ce" class="outline-3">
+<h3 id="org9aaa4ce"><span class="section-number-3">5.1.</span> <a href="20230127073739-concurrent_collections.html#ID-ef30166a-db53-4698-bdb9-d969680625d9">Concurrent Collections</a></h3>
 </div>
 </div>
 </div>

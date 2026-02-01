@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-01 Sun 15:03 -->
+<!-- 2026-02-01 Sun 15:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Declaring Concrete Interface methods</title>
@@ -193,6 +193,61 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
+<style>
+        body {
+          font-family: sans-serif;
+          line-height: 1.5;
+          margin: 2em;
+          background-color: #ffffff;
+          color: #111111;
+        }
+
+        a { color: #1a0dab; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Code block styling */
+        pre.src {
+          padding: 1em;
+          border-radius: 6px;
+          overflow-x: auto;
+          background-color: #f0f0f0;
+          color: #222222;
+          border: 1px solid #ddd;
+          font-family: monospace;
+        }
+
+        /* Syntax highlighting for Org-generated classes */
+        span.org-keyword { color: #005999; font-weight: bold; }
+        span.org-string  { color: #aa3333; }
+        span.org-comment { color: #666666; font-style: italic; }
+        span.org-type    { color: #007700; font-weight: bold; }
+        span.org-variable { color: #993399; }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+          body {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+          }
+
+          a { color: #8ab4f8; }
+
+          pre.src {
+            background-color: #2c2c2c;
+            color: #f0f0f0;
+            border: 1px solid #444;
+          }
+
+          /* Dark syntax */
+          span.org-keyword { color: #569cd6; font-weight: bold; }
+          span.org-string  { color: #d7a65a; }
+          span.org-comment { color: #999988; font-style: italic; }
+          span.org-type    { color: #6ab04c; font-weight: bold; }
+          span.org-variable { color: #c586c0; }
+        }
+
+        ul { list-style-type: disc; padding-left: 2em; }
+      </style>
 </head>
 <body>
 <div id="content" class="content">
@@ -201,13 +256,13 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org97f7644">1. Declaring Concrete Interface methods</a>
+<li><a href="#org5dd2f23">1. Declaring Concrete Interface methods</a>
 <ul>
-<li><a href="#org9620da7">1.1. Default Interface method</a></li>
-<li><a href="#orge00a80f">1.2. Static Interface Method</a></li>
-<li><a href="#orgece0c03">1.3. Private Interface Method</a>
+<li><a href="#org321874a">1.1. Default Interface method</a></li>
+<li><a href="#org8c74895">1.2. Static Interface Method</a></li>
+<li><a href="#orge93cfe4">1.3. Private Interface Method</a>
 <ul>
-<li><a href="#org7e4ff0c">1.3.1. <span class="underline">Exam Trick</span></a></li>
+<li><a href="#orgdcc1312">1.3.1. <span class="underline">Exam Trick</span></a></li>
 </ul>
 </li>
 </ul>
@@ -216,34 +271,34 @@
 </div>
 </div>
 
-<div id="outline-container-org97f7644" class="outline-2">
-<h2 id="org97f7644"><span class="section-number-2">1.</span> Declaring Concrete Interface methods</h2>
+<div id="outline-container-org5dd2f23" class="outline-2">
+<h2 id="org5dd2f23"><span class="section-number-2">1.</span> Declaring Concrete Interface methods</h2>
 <div class="outline-text-2" id="text-1">
 
-<div id="org4199654" class="figure">
+<div id="org5900fd8" class="figure">
 <p><img src="./assets/interface_member_types.png" alt="interface_member_types.png" />
 </p>
 </div>
 </div>
 
-<div id="outline-container-org9620da7" class="outline-3">
-<h3 id="org9620da7"><span class="section-number-3">1.1.</span> <a href="20240126045421-default_interface_method.html#ID-08418523-7960-4d14-acd5-8fbc9cb143e8">Default Interface method</a></h3>
+<div id="outline-container-org321874a" class="outline-3">
+<h3 id="org321874a"><span class="section-number-3">1.1.</span> <a href="20240126045421-default_interface_method.html#ID-08418523-7960-4d14-acd5-8fbc9cb143e8">Default Interface method</a></h3>
 </div>
-<div id="outline-container-orge00a80f" class="outline-3">
-<h3 id="orge00a80f"><span class="section-number-3">1.2.</span> <a href="20240126045442-static_interface_method.html#ID-3dd62f14-1ce2-4216-856f-99d390fff681">Static Interface Method</a></h3>
+<div id="outline-container-org8c74895" class="outline-3">
+<h3 id="org8c74895"><span class="section-number-3">1.2.</span> <a href="20240126045442-static_interface_method.html#ID-3dd62f14-1ce2-4216-856f-99d390fff681">Static Interface Method</a></h3>
 </div>
-<div id="outline-container-orgece0c03" class="outline-3">
-<h3 id="orgece0c03"><span class="section-number-3">1.3.</span> <a href="20240126045504-private_interface_method.html#ID-35919b4b-73fe-4e3b-a7a0-e4141830bd33">Private Interface Method</a></h3>
+<div id="outline-container-orge93cfe4" class="outline-3">
+<h3 id="orge93cfe4"><span class="section-number-3">1.3.</span> <a href="20240126045504-private_interface_method.html#ID-35919b4b-73fe-4e3b-a7a0-e4141830bd33">Private Interface Method</a></h3>
 <div class="outline-text-3" id="text-1-3">
 
-<div id="org6094dd4" class="figure">
+<div id="org2075a20" class="figure">
 <p><img src="./assets/interface_member_access.png" alt="interface_member_access.png" />
 </p>
 </div>
 </div>
 
-<div id="outline-container-org7e4ff0c" class="outline-4">
-<h4 id="org7e4ff0c"><span class="section-number-4">1.3.1.</span> <span class="underline">Exam Trick</span></h4>
+<div id="outline-container-orgdcc1312" class="outline-4">
+<h4 id="orgdcc1312"><span class="section-number-4">1.3.1.</span> <span class="underline">Exam Trick</span></h4>
 <div class="outline-text-4" id="text-1-3-1">
 <ul class="org-ul">
 <li>Treat <code>abstract</code>, <code>default</code>, and <code>non­static private methods</code> as belonging to an <b>instance</b> of the <code>interface</code>.</li>

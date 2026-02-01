@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-01 Sun 15:02 -->
+<!-- 2026-02-01 Sun 15:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Java Gotchas</title>
@@ -193,6 +193,61 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
+<style>
+        body {
+          font-family: sans-serif;
+          line-height: 1.5;
+          margin: 2em;
+          background-color: #ffffff;
+          color: #111111;
+        }
+
+        a { color: #1a0dab; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Code block styling */
+        pre.src {
+          padding: 1em;
+          border-radius: 6px;
+          overflow-x: auto;
+          background-color: #f0f0f0;
+          color: #222222;
+          border: 1px solid #ddd;
+          font-family: monospace;
+        }
+
+        /* Syntax highlighting for Org-generated classes */
+        span.org-keyword { color: #005999; font-weight: bold; }
+        span.org-string  { color: #aa3333; }
+        span.org-comment { color: #666666; font-style: italic; }
+        span.org-type    { color: #007700; font-weight: bold; }
+        span.org-variable { color: #993399; }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+          body {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+          }
+
+          a { color: #8ab4f8; }
+
+          pre.src {
+            background-color: #2c2c2c;
+            color: #f0f0f0;
+            border: 1px solid #444;
+          }
+
+          /* Dark syntax */
+          span.org-keyword { color: #569cd6; font-weight: bold; }
+          span.org-string  { color: #d7a65a; }
+          span.org-comment { color: #999988; font-style: italic; }
+          span.org-type    { color: #6ab04c; font-weight: bold; }
+          span.org-variable { color: #c586c0; }
+        }
+
+        ul { list-style-type: disc; padding-left: 2em; }
+      </style>
 </head>
 <body>
 <div id="content" class="content">
@@ -201,24 +256,24 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orge1f8948">1. Java Gotchas</a>
+<li><a href="#orge4e6d0b">1. Java Gotchas</a>
 <ul>
-<li><a href="#org92eaf4b">1.1. Main Method Not Public</a></li>
-<li><a href="#org9feb4fc">1.2. Missing Main Method</a></li>
-<li><a href="#orga98531c">1.3. How does the JVM handle exceptions during runtime?</a></li>
-<li><a href="#orgc418ff9">1.4. What type of error occurs when there is a mismatch between the expected and actual data types</a></li>
+<li><a href="#orge7ff744">1.1. Main Method Not Public</a></li>
+<li><a href="#org0d2a303">1.2. Missing Main Method</a></li>
+<li><a href="#orge4b003e">1.3. How does the JVM handle exceptions during runtime?</a></li>
+<li><a href="#orgd134b77">1.4. What type of error occurs when there is a mismatch between the expected and actual data types</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orge1f8948" class="outline-2">
-<h2 id="orge1f8948"><span class="section-number-2">1.</span> Java Gotchas</h2>
+<div id="outline-container-orge4e6d0b" class="outline-2">
+<h2 id="orge4e6d0b"><span class="section-number-2">1.</span> Java Gotchas</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org92eaf4b" class="outline-3">
-<h3 id="org92eaf4b"><span class="section-number-3">1.1.</span> Main Method Not Public</h3>
+<div id="outline-container-orge7ff744" class="outline-3">
+<h3 id="orge7ff744"><span class="section-number-3">1.1.</span> Main Method Not Public</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Q: "What will happen if the <code>main</code> method is <b>not</b> <code>public</code>?"
@@ -238,8 +293,8 @@ If <code>main</code> is <b>not</b> <code>public</code>, the <a href="20260117121
 </div>
 </div>
 
-<div id="outline-container-org9feb4fc" class="outline-3">
-<h3 id="org9feb4fc"><span class="section-number-3">1.2.</span> Missing Main Method</h3>
+<div id="outline-container-org0d2a303" class="outline-3">
+<h3 id="org0d2a303"><span class="section-number-3">1.2.</span> Missing Main Method</h3>
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-constant">Error</span>: Main <span class="org-type">method</span> not found <span class="org-type">in</span> <span class="org-keyword">class</span> MissingMain, please define the main <span class="org-type">method</span> <span class="org-variable-name">as</span>:
@@ -250,8 +305,8 @@ or a JavaFX application <span class="org-keyword">class</span> must extend <span
 </div>
 </div>
 
-<div id="outline-container-orga98531c" class="outline-3">
-<h3 id="orga98531c"><span class="section-number-3">1.3.</span> How does the JVM handle exceptions during runtime?</h3>
+<div id="outline-container-orge4b003e" class="outline-3">
+<h3 id="orge4b003e"><span class="section-number-3">1.3.</span> How does the JVM handle exceptions during runtime?</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 It uses the <code>exception</code> <code>handling</code> mechanism to <b>catch</b> or <b>propagate</b> exceptions (<code>try/catch</code>)
@@ -259,8 +314,8 @@ It uses the <code>exception</code> <code>handling</code> mechanism to <b>catch</
 </div>
 </div>
 
-<div id="outline-container-orgc418ff9" class="outline-3">
-<h3 id="orgc418ff9"><span class="section-number-3">1.4.</span> What type of error occurs when there is a mismatch between the expected and actual data types</h3>
+<div id="outline-container-orgd134b77" class="outline-3">
+<h3 id="orgd134b77"><span class="section-number-3">1.4.</span> What type of error occurs when there is a mismatch between the expected and actual data types</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 Compilation Error

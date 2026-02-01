@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-01 Sun 15:02 -->
+<!-- 2026-02-01 Sun 15:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>String Methods</title>
@@ -193,6 +193,61 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
+<style>
+        body {
+          font-family: sans-serif;
+          line-height: 1.5;
+          margin: 2em;
+          background-color: #ffffff;
+          color: #111111;
+        }
+
+        a { color: #1a0dab; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Code block styling */
+        pre.src {
+          padding: 1em;
+          border-radius: 6px;
+          overflow-x: auto;
+          background-color: #f0f0f0;
+          color: #222222;
+          border: 1px solid #ddd;
+          font-family: monospace;
+        }
+
+        /* Syntax highlighting for Org-generated classes */
+        span.org-keyword { color: #005999; font-weight: bold; }
+        span.org-string  { color: #aa3333; }
+        span.org-comment { color: #666666; font-style: italic; }
+        span.org-type    { color: #007700; font-weight: bold; }
+        span.org-variable { color: #993399; }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+          body {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+          }
+
+          a { color: #8ab4f8; }
+
+          pre.src {
+            background-color: #2c2c2c;
+            color: #f0f0f0;
+            border: 1px solid #444;
+          }
+
+          /* Dark syntax */
+          span.org-keyword { color: #569cd6; font-weight: bold; }
+          span.org-string  { color: #d7a65a; }
+          span.org-comment { color: #999988; font-style: italic; }
+          span.org-type    { color: #6ab04c; font-weight: bold; }
+          span.org-variable { color: #c586c0; }
+        }
+
+        ul { list-style-type: disc; padding-left: 2em; }
+      </style>
 </head>
 <body>
 <div id="content" class="content">
@@ -201,39 +256,39 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org74b54b9">1. String Methods</a>
+<li><a href="#org79a3e47">1. String Methods</a>
 <ul>
-<li><a href="#org5d3d72f">1.1. 1. String.length()</a></li>
-<li><a href="#orgd2e4fd6">1.2. 2. String.charAt()</a></li>
-<li><a href="#orgcf8d832">1.3. 3. String.indexOf()</a></li>
-<li><a href="#org189ca7a">1.4. 4. String.substring()</a></li>
-<li><a href="#org0b813f2">1.5. 5. String.toUpperCase()/String.toLowerCase()</a></li>
-<li><a href="#org29eeb5a">1.6. 6. String.equals()</a></li>
-<li><a href="#org500f78b">1.7. 7. String.equalsIgnoreCase()</a></li>
-<li><a href="#org1c35304">1.8. 8. String.startsWith() / String.endsWith() / String.contains()</a></li>
-<li><a href="#org35d8a6c">1.9. 9. String.replace()</a></li>
-<li><a href="#orgfcd4312">1.10. 10. Removing Whitespace</a></li>
-<li><a href="#org0963042">1.11. 11. String.indent()</a></li>
-<li><a href="#org619ca39">1.12. 12. String.stripIndent()</a></li>
-<li><a href="#org21169d3">1.13. 13. String.translateEscapes()</a></li>
-<li><a href="#org62c8278">1.14. 14. String.isEmpty()</a></li>
-<li><a href="#org536013c">1.15. 15. String.isBlank()</a></li>
-<li><a href="#org7aaa7d4">1.16. 16. String.format()</a></li>
+<li><a href="#org345a771">1.1. 1. String.length()</a></li>
+<li><a href="#orgdeebd72">1.2. 2. String.charAt()</a></li>
+<li><a href="#org4a3effa">1.3. 3. String.indexOf()</a></li>
+<li><a href="#orgca35b45">1.4. 4. String.substring()</a></li>
+<li><a href="#org345804d">1.5. 5. String.toUpperCase()/String.toLowerCase()</a></li>
+<li><a href="#orgba3313d">1.6. 6. String.equals()</a></li>
+<li><a href="#org0633c19">1.7. 7. String.equalsIgnoreCase()</a></li>
+<li><a href="#org2d99970">1.8. 8. String.startsWith() / String.endsWith() / String.contains()</a></li>
+<li><a href="#org11a49e1">1.9. 9. String.replace()</a></li>
+<li><a href="#org145a0eb">1.10. 10. Removing Whitespace</a></li>
+<li><a href="#orgdfbfe13">1.11. 11. String.indent()</a></li>
+<li><a href="#orgdfc068f">1.12. 12. String.stripIndent()</a></li>
+<li><a href="#org14bd76b">1.13. 13. String.translateEscapes()</a></li>
+<li><a href="#org137c343">1.14. 14. String.isEmpty()</a></li>
+<li><a href="#orgf46947d">1.15. 15. String.isBlank()</a></li>
+<li><a href="#org0d15c44">1.16. 16. String.format()</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org74b54b9" class="outline-2">
-<h2 id="org74b54b9"><span class="section-number-2">1.</span> String Methods</h2>
+<div id="outline-container-org79a3e47" class="outline-2">
+<h2 id="org79a3e47"><span class="section-number-2">1.</span> String Methods</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 The <code>String</code> class has <b>dozens of methods</b>.
 </p>
 
 
-<div id="org3f059d3" class="figure">
+<div id="orgf1d871c" class="figure">
 <p><img src="./assets/string_indexing.png" alt="string_indexing.png" />
 </p>
 </div>
@@ -243,68 +298,68 @@ The <code>String</code> class has <b>dozens of methods</b>.
 </p>
 </div>
 
-<div id="outline-container-org5d3d72f" class="outline-3">
-<h3 id="org5d3d72f"><span class="section-number-3">1.1.</span> 1. <a href="20240103154359-string_length.html#ID-cb7f93e2-d511-409b-ae69-f8e74cca18ac">String.length()</a></h3>
+<div id="outline-container-org345a771" class="outline-3">
+<h3 id="org345a771"><span class="section-number-3">1.1.</span> 1. <a href="20240103154359-string_length.html#ID-cb7f93e2-d511-409b-ae69-f8e74cca18ac">String.length()</a></h3>
 </div>
 
-<div id="outline-container-orgd2e4fd6" class="outline-3">
-<h3 id="orgd2e4fd6"><span class="section-number-3">1.2.</span> 2. <a href="20240103154438-string_charat.html#ID-d7c00ac3-5490-4e3d-8924-c82f007a5c47">String.charAt()</a></h3>
+<div id="outline-container-orgdeebd72" class="outline-3">
+<h3 id="orgdeebd72"><span class="section-number-3">1.2.</span> 2. <a href="20240103154438-string_charat.html#ID-d7c00ac3-5490-4e3d-8924-c82f007a5c47">String.charAt()</a></h3>
 </div>
 
-<div id="outline-container-orgcf8d832" class="outline-3">
-<h3 id="orgcf8d832"><span class="section-number-3">1.3.</span> 3. <a href="20240103154522-string_indexof.html#ID-474b7252-5d9d-4060-bed5-3511cee5b037">String.indexOf()</a></h3>
+<div id="outline-container-org4a3effa" class="outline-3">
+<h3 id="org4a3effa"><span class="section-number-3">1.3.</span> 3. <a href="20240103154522-string_indexof.html#ID-474b7252-5d9d-4060-bed5-3511cee5b037">String.indexOf()</a></h3>
 </div>
 
-<div id="outline-container-org189ca7a" class="outline-3">
-<h3 id="org189ca7a"><span class="section-number-3">1.4.</span> 4. <a href="20240103154649-string_substring.html#ID-63641bbf-cae5-46ca-9fab-dbb0079638ce">String.substring()</a></h3>
+<div id="outline-container-orgca35b45" class="outline-3">
+<h3 id="orgca35b45"><span class="section-number-3">1.4.</span> 4. <a href="20240103154649-string_substring.html#ID-63641bbf-cae5-46ca-9fab-dbb0079638ce">String.substring()</a></h3>
 </div>
 
-<div id="outline-container-org0b813f2" class="outline-3">
-<h3 id="org0b813f2"><span class="section-number-3">1.5.</span> 5. <a href="20240103154845-string_touppercase_string_tolowercase.html#ID-8a2f6d49-e489-4b32-a566-a901559c85a9">String.toUpperCase()/String.toLowerCase()</a></h3>
+<div id="outline-container-org345804d" class="outline-3">
+<h3 id="org345804d"><span class="section-number-3">1.5.</span> 5. <a href="20240103154845-string_touppercase_string_tolowercase.html#ID-8a2f6d49-e489-4b32-a566-a901559c85a9">String.toUpperCase()/String.toLowerCase()</a></h3>
 </div>
 
-<div id="outline-container-org29eeb5a" class="outline-3">
-<h3 id="org29eeb5a"><span class="section-number-3">1.6.</span> 6. <a href="20240103155012-string_equals.html#ID-03ad6a6e-d3c6-46f6-b764-63c379c5d0b9">String.equals()</a></h3>
+<div id="outline-container-orgba3313d" class="outline-3">
+<h3 id="orgba3313d"><span class="section-number-3">1.6.</span> 6. <a href="20240103155012-string_equals.html#ID-03ad6a6e-d3c6-46f6-b764-63c379c5d0b9">String.equals()</a></h3>
 </div>
 
-<div id="outline-container-org500f78b" class="outline-3">
-<h3 id="org500f78b"><span class="section-number-3">1.7.</span> 7. <a href="20240103155522-string_equalsignorecase.html#ID-5bc0ea8d-90ec-4cc1-ba0f-b36b6f94391c">String.equalsIgnoreCase()</a></h3>
+<div id="outline-container-org0633c19" class="outline-3">
+<h3 id="org0633c19"><span class="section-number-3">1.7.</span> 7. <a href="20240103155522-string_equalsignorecase.html#ID-5bc0ea8d-90ec-4cc1-ba0f-b36b6f94391c">String.equalsIgnoreCase()</a></h3>
 </div>
 
-<div id="outline-container-org1c35304" class="outline-3">
-<h3 id="org1c35304"><span class="section-number-3">1.8.</span> 8. <a href="20240103155852-searching_for_substrings.html#ID-7d3666e9-3557-4a4e-9f3e-46f9df927645">String.startsWith() / String.endsWith() / String.contains()</a></h3>
+<div id="outline-container-org2d99970" class="outline-3">
+<h3 id="org2d99970"><span class="section-number-3">1.8.</span> 8. <a href="20240103155852-searching_for_substrings.html#ID-7d3666e9-3557-4a4e-9f3e-46f9df927645">String.startsWith() / String.endsWith() / String.contains()</a></h3>
 </div>
 
-<div id="outline-container-org35d8a6c" class="outline-3">
-<h3 id="org35d8a6c"><span class="section-number-3">1.9.</span> 9. <a href="20240103183139-string_replace.html#ID-df5c0964-844d-42fe-b33b-2c30ba7f3b4f">String.replace()</a></h3>
+<div id="outline-container-org11a49e1" class="outline-3">
+<h3 id="org11a49e1"><span class="section-number-3">1.9.</span> 9. <a href="20240103183139-string_replace.html#ID-df5c0964-844d-42fe-b33b-2c30ba7f3b4f">String.replace()</a></h3>
 </div>
 
-<div id="outline-container-orgfcd4312" class="outline-3">
-<h3 id="orgfcd4312"><span class="section-number-3">1.10.</span> 10. <a href="20240104143319-removing_whitespace.html#ID-cee48131-9914-4e7d-bd0f-0ccdfbfe3c0c">Removing Whitespace</a></h3>
+<div id="outline-container-org145a0eb" class="outline-3">
+<h3 id="org145a0eb"><span class="section-number-3">1.10.</span> 10. <a href="20240104143319-removing_whitespace.html#ID-cee48131-9914-4e7d-bd0f-0ccdfbfe3c0c">Removing Whitespace</a></h3>
 </div>
 
-<div id="outline-container-org0963042" class="outline-3">
-<h3 id="org0963042"><span class="section-number-3">1.11.</span> 11. <a href="20240105104708-string_indent.html#ID-d3643990-b8a2-417b-93e3-b5fcf5d6c20f">String.indent()</a></h3>
+<div id="outline-container-orgdfbfe13" class="outline-3">
+<h3 id="orgdfbfe13"><span class="section-number-3">1.11.</span> 11. <a href="20240105104708-string_indent.html#ID-d3643990-b8a2-417b-93e3-b5fcf5d6c20f">String.indent()</a></h3>
 </div>
 
-<div id="outline-container-org619ca39" class="outline-3">
-<h3 id="org619ca39"><span class="section-number-3">1.12.</span> 12. <a href="20240105104719-string_stripindent.html#ID-7a07ddf1-5020-438d-955f-d468ff411ebf">String.stripIndent()</a></h3>
+<div id="outline-container-orgdfc068f" class="outline-3">
+<h3 id="orgdfc068f"><span class="section-number-3">1.12.</span> 12. <a href="20240105104719-string_stripindent.html#ID-7a07ddf1-5020-438d-955f-d468ff411ebf">String.stripIndent()</a></h3>
 </div>
 
-<div id="outline-container-org21169d3" class="outline-3">
-<h3 id="org21169d3"><span class="section-number-3">1.13.</span> 13. <a href="20240105110047-string_translateescapes.html#ID-496a8303-fa30-41b3-96fb-4e7c1b677982">String.translateEscapes()</a></h3>
+<div id="outline-container-org14bd76b" class="outline-3">
+<h3 id="org14bd76b"><span class="section-number-3">1.13.</span> 13. <a href="20240105110047-string_translateescapes.html#ID-496a8303-fa30-41b3-96fb-4e7c1b677982">String.translateEscapes()</a></h3>
 </div>
 
-<div id="outline-container-org62c8278" class="outline-3">
-<h3 id="org62c8278"><span class="section-number-3">1.14.</span> 14. <a href="20240105114042-string_isempty.html#ID-d4387f1d-fc9a-4dd9-a054-5fed54e97180">String.isEmpty()</a></h3>
+<div id="outline-container-org137c343" class="outline-3">
+<h3 id="org137c343"><span class="section-number-3">1.14.</span> 14. <a href="20240105114042-string_isempty.html#ID-d4387f1d-fc9a-4dd9-a054-5fed54e97180">String.isEmpty()</a></h3>
 </div>
 
-<div id="outline-container-org536013c" class="outline-3">
-<h3 id="org536013c"><span class="section-number-3">1.15.</span> 15. <a href="20240105114109-string_isblank.html#ID-8434676f-dae0-4e24-b687-db37fdfad6e9">String.isBlank()</a></h3>
+<div id="outline-container-orgf46947d" class="outline-3">
+<h3 id="orgf46947d"><span class="section-number-3">1.15.</span> 15. <a href="20240105114109-string_isblank.html#ID-8434676f-dae0-4e24-b687-db37fdfad6e9">String.isBlank()</a></h3>
 </div>
 
-<div id="outline-container-org7aaa7d4" class="outline-3">
-<h3 id="org7aaa7d4"><span class="section-number-3">1.16.</span> 16. <a href="20240105185916-string_format.html#ID-d62b5c34-07cf-4235-898e-15ae36ff244e">String.format()</a></h3>
+<div id="outline-container-org0d15c44" class="outline-3">
+<h3 id="org0d15c44"><span class="section-number-3">1.16.</span> 16. <a href="20240105185916-string_format.html#ID-d62b5c34-07cf-4235-898e-15ae36ff244e">String.format()</a></h3>
 </div>
 </div>
 </div>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-01 Sun 15:03 -->
+<!-- 2026-02-01 Sun 15:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Wireless Networking Technologies</title>
@@ -193,6 +193,61 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
+<style>
+        body {
+          font-family: sans-serif;
+          line-height: 1.5;
+          margin: 2em;
+          background-color: #ffffff;
+          color: #111111;
+        }
+
+        a { color: #1a0dab; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Code block styling */
+        pre.src {
+          padding: 1em;
+          border-radius: 6px;
+          overflow-x: auto;
+          background-color: #f0f0f0;
+          color: #222222;
+          border: 1px solid #ddd;
+          font-family: monospace;
+        }
+
+        /* Syntax highlighting for Org-generated classes */
+        span.org-keyword { color: #005999; font-weight: bold; }
+        span.org-string  { color: #aa3333; }
+        span.org-comment { color: #666666; font-style: italic; }
+        span.org-type    { color: #007700; font-weight: bold; }
+        span.org-variable { color: #993399; }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+          body {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+          }
+
+          a { color: #8ab4f8; }
+
+          pre.src {
+            background-color: #2c2c2c;
+            color: #f0f0f0;
+            border: 1px solid #444;
+          }
+
+          /* Dark syntax */
+          span.org-keyword { color: #569cd6; font-weight: bold; }
+          span.org-string  { color: #d7a65a; }
+          span.org-comment { color: #999988; font-style: italic; }
+          span.org-type    { color: #6ab04c; font-weight: bold; }
+          span.org-variable { color: #c586c0; }
+        }
+
+        ul { list-style-type: disc; padding-left: 2em; }
+      </style>
 </head>
 <body>
 <div id="content" class="content">
@@ -201,26 +256,26 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc1130f3">1. Specifications:</a></li>
-<li><a href="#org858c264">2. 802.11 Frame</a>
+<li><a href="#orga2170bc">1. Specifications:</a></li>
+<li><a href="#org7d9d03e">2. 802.11 Frame</a>
 <ul>
-<li><a href="#orge56fd45">2.1. Frame Control Field</a></li>
-<li><a href="#org8cbaefe">2.2. Duration Field</a></li>
-<li><a href="#org38b8b96">2.3. 4 Address Fields (Each 6 Bytes long)</a>
+<li><a href="#orgb569937">2.1. Frame Control Field</a></li>
+<li><a href="#org981206e">2.2. Duration Field</a></li>
+<li><a href="#org2147e06">2.3. 4 Address Fields (Each 6 Bytes long)</a>
 <ul>
-<li><a href="#orgc179edb">2.3.1. Source Address Field (MAC)</a></li>
-<li><a href="#org24f4830">2.3.2. Intended Destination</a></li>
-<li><a href="#org69fd323">2.3.3. Receiver Address</a></li>
-<li><a href="#orgf71731b">2.3.4. Transmitter Address</a></li>
+<li><a href="#org16c2350">2.3.1. Source Address Field (MAC)</a></li>
+<li><a href="#org46f88a4">2.3.2. Intended Destination</a></li>
+<li><a href="#org59d2b61">2.3.3. Receiver Address</a></li>
+<li><a href="#orgf7c9674">2.3.4. Transmitter Address</a></li>
 </ul>
 </li>
-<li><a href="#org529dcbd">2.4. Sequence Control Field</a></li>
-<li><a href="#orgfdee617">2.5. Data Payload</a></li>
-<li><a href="#orgf1b90eb">2.6. Frame Check Sequence</a></li>
+<li><a href="#org4585586">2.4. Sequence Control Field</a></li>
+<li><a href="#org1bb5dab">2.5. Data Payload</a></li>
+<li><a href="#orgade4a4c">2.6. Frame Check Sequence</a></li>
 </ul>
 </li>
-<li><a href="#org6e25f2b">3. Wireless Channels</a></li>
-<li><a href="#org2aea724">4. Wireless Security</a></li>
+<li><a href="#orga44b1bd">3. Wireless Channels</a></li>
+<li><a href="#org02016d6">4. Wireless Security</a></li>
 </ul>
 </div>
 </div>
@@ -232,8 +287,8 @@ Defined by <code>IEEE 802.11</code> standards.
 Most commonly the 2.4Ghz and 5Ghz <a href="20230823071657-frequency_band.html#ID-35766a1b-6bed-482a-b984-2493601f67da">Frequency Band</a>s.
 </p>
 
-<div id="outline-container-orgc1130f3" class="outline-2">
-<h2 id="orgc1130f3"><span class="section-number-2">1.</span> Specifications:</h2>
+<div id="outline-container-orga2170bc" class="outline-2">
+<h2 id="orga2170bc"><span class="section-number-2">1.</span> Specifications:</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>802.11b</li>
@@ -249,12 +304,12 @@ Most commonly the 2.4Ghz and 5Ghz <a href="20230823071657-frequency_band.html#ID
 </div>
 </div>
 
-<div id="outline-container-org858c264" class="outline-2">
-<h2 id="org858c264"><span class="section-number-2">2.</span> 802.11 Frame</h2>
+<div id="outline-container-org7d9d03e" class="outline-2">
+<h2 id="org7d9d03e"><span class="section-number-2">2.</span> 802.11 Frame</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orge56fd45" class="outline-3">
-<h3 id="orge56fd45"><span class="section-number-3">2.1.</span> Frame Control Field</h3>
+<div id="outline-container-orgb569937" class="outline-3">
+<h3 id="orgb569937"><span class="section-number-3">2.1.</span> Frame Control Field</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 <b>16 bits</b>
@@ -263,8 +318,8 @@ Contains a number of sub-fields that are used to describe how the frame itself s
 </div>
 </div>
 
-<div id="outline-container-org8cbaefe" class="outline-3">
-<h3 id="org8cbaefe"><span class="section-number-3">2.2.</span> Duration Field</h3>
+<div id="outline-container-org981206e" class="outline-3">
+<h3 id="org981206e"><span class="section-number-3">2.2.</span> Duration Field</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 Specifies how long the total frame is.
@@ -272,26 +327,26 @@ Specifies how long the total frame is.
 </div>
 </div>
 
-<div id="outline-container-org38b8b96" class="outline-3">
-<h3 id="org38b8b96"><span class="section-number-3">2.3.</span> 4 Address Fields (Each 6 Bytes long)</h3>
+<div id="outline-container-org2147e06" class="outline-3">
+<h3 id="org2147e06"><span class="section-number-3">2.3.</span> 4 Address Fields (Each 6 Bytes long)</h3>
 <div class="outline-text-3" id="text-2-3">
 </div>
-<div id="outline-container-orgc179edb" class="outline-4">
-<h4 id="orgc179edb"><span class="section-number-4">2.3.1.</span> Source Address Field (MAC)</h4>
+<div id="outline-container-org16c2350" class="outline-4">
+<h4 id="org16c2350"><span class="section-number-4">2.3.1.</span> Source Address Field (MAC)</h4>
 </div>
-<div id="outline-container-org24f4830" class="outline-4">
-<h4 id="org24f4830"><span class="section-number-4">2.3.2.</span> Intended Destination</h4>
+<div id="outline-container-org46f88a4" class="outline-4">
+<h4 id="org46f88a4"><span class="section-number-4">2.3.2.</span> Intended Destination</h4>
 </div>
-<div id="outline-container-org69fd323" class="outline-4">
-<h4 id="org69fd323"><span class="section-number-4">2.3.3.</span> <a href="20230823072413-receiver_address.html#ID-d2687c6f-4af2-41eb-8395-dc95295f9dcd">Receiver Address</a></h4>
+<div id="outline-container-org59d2b61" class="outline-4">
+<h4 id="org59d2b61"><span class="section-number-4">2.3.3.</span> <a href="20230823072413-receiver_address.html#ID-d2687c6f-4af2-41eb-8395-dc95295f9dcd">Receiver Address</a></h4>
 </div>
-<div id="outline-container-orgf71731b" class="outline-4">
-<h4 id="orgf71731b"><span class="section-number-4">2.3.4.</span> <a href="20230823072442-transmitter_address.html#ID-c0c78426-8f4b-4feb-9bfc-4d9dfb6c871e">Transmitter Address</a></h4>
+<div id="outline-container-orgf7c9674" class="outline-4">
+<h4 id="orgf7c9674"><span class="section-number-4">2.3.4.</span> <a href="20230823072442-transmitter_address.html#ID-c0c78426-8f4b-4feb-9bfc-4d9dfb6c871e">Transmitter Address</a></h4>
 </div>
 </div>
 
-<div id="outline-container-org529dcbd" class="outline-3">
-<h3 id="org529dcbd"><span class="section-number-3">2.4.</span> Sequence Control Field</h3>
+<div id="outline-container-org4585586" class="outline-3">
+<h3 id="org4585586"><span class="section-number-3">2.4.</span> Sequence Control Field</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
 <b>16 bits</b>
@@ -304,8 +359,8 @@ Contains a sequence number used to keep track of the ordering of frames after
 </div>
 </div>
 
-<div id="outline-container-orgfdee617" class="outline-3">
-<h3 id="orgfdee617"><span class="section-number-3">2.5.</span> Data Payload</h3>
+<div id="outline-container-org1bb5dab" class="outline-3">
+<h3 id="org1bb5dab"><span class="section-number-3">2.5.</span> Data Payload</h3>
 <div class="outline-text-3" id="text-2-5">
 <p>
 Has all of the data of the protocols further up the stack.
@@ -313,8 +368,8 @@ Has all of the data of the protocols further up the stack.
 </div>
 </div>
 
-<div id="outline-container-orgf1b90eb" class="outline-3">
-<h3 id="orgf1b90eb"><span class="section-number-3">2.6.</span> Frame Check Sequence</h3>
+<div id="outline-container-orgade4a4c" class="outline-3">
+<h3 id="orgade4a4c"><span class="section-number-3">2.6.</span> Frame Check Sequence</h3>
 <div class="outline-text-3" id="text-2-6">
 <p>
 Contains a checksum used for a cyclical redundancy check (just like how Ethernet does it)
@@ -323,11 +378,11 @@ Contains a checksum used for a cyclical redundancy check (just like how Ethernet
 </div>
 </div>
 
-<div id="outline-container-org6e25f2b" class="outline-2">
-<h2 id="org6e25f2b"><span class="section-number-2">3.</span> <a href="20230823073246-wireless_channels.html#ID-46cb7c35-247b-417d-ba51-4a02e222e2cc">Wireless Channels</a></h2>
+<div id="outline-container-orga44b1bd" class="outline-2">
+<h2 id="orga44b1bd"><span class="section-number-2">3.</span> <a href="20230823073246-wireless_channels.html#ID-46cb7c35-247b-417d-ba51-4a02e222e2cc">Wireless Channels</a></h2>
 </div>
-<div id="outline-container-org2aea724" class="outline-2">
-<h2 id="org2aea724"><span class="section-number-2">4.</span> <a href="20230823073550-wireless_security.html#ID-4cf68bc9-1c91-41c0-9264-b85b5ea42c45">Wireless Security</a></h2>
+<div id="outline-container-org02016d6" class="outline-2">
+<h2 id="org02016d6"><span class="section-number-2">4.</span> <a href="20230823073550-wireless_security.html#ID-4cf68bc9-1c91-41c0-9264-b85b5ea42c45">Wireless Security</a></h2>
 </div>
 </div>
 </body>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-01 Sun 15:02 -->
+<!-- 2026-02-01 Sun 15:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Conditional Operators</title>
@@ -193,6 +193,61 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
+<style>
+        body {
+          font-family: sans-serif;
+          line-height: 1.5;
+          margin: 2em;
+          background-color: #ffffff;
+          color: #111111;
+        }
+
+        a { color: #1a0dab; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Code block styling */
+        pre.src {
+          padding: 1em;
+          border-radius: 6px;
+          overflow-x: auto;
+          background-color: #f0f0f0;
+          color: #222222;
+          border: 1px solid #ddd;
+          font-family: monospace;
+        }
+
+        /* Syntax highlighting for Org-generated classes */
+        span.org-keyword { color: #005999; font-weight: bold; }
+        span.org-string  { color: #aa3333; }
+        span.org-comment { color: #666666; font-style: italic; }
+        span.org-type    { color: #007700; font-weight: bold; }
+        span.org-variable { color: #993399; }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+          body {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+          }
+
+          a { color: #8ab4f8; }
+
+          pre.src {
+            background-color: #2c2c2c;
+            color: #f0f0f0;
+            border: 1px solid #444;
+          }
+
+          /* Dark syntax */
+          span.org-keyword { color: #569cd6; font-weight: bold; }
+          span.org-string  { color: #d7a65a; }
+          span.org-comment { color: #999988; font-style: italic; }
+          span.org-type    { color: #6ab04c; font-weight: bold; }
+          span.org-variable { color: #c586c0; }
+        }
+
+        ul { list-style-type: disc; padding-left: 2em; }
+      </style>
 </head>
 <body>
 <div id="content" class="content">
@@ -201,12 +256,12 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgda6ac9a">1. Conditional Operators (aka short-circuit operators)</a>
+<li><a href="#orgdfe91f7">1. Conditional Operators (aka short-circuit operators)</a>
 <ul>
-<li><a href="#org1d6a534">1.1. Ternary Operators</a></li>
-<li><a href="#orgde4741c">1.2. Avoiding a <code>NullPointerException</code></a>
+<li><a href="#org0d81ad2">1.1. Ternary Operators</a></li>
+<li><a href="#orga9cd3d7">1.2. Avoiding a <code>NullPointerException</code></a>
 <ul>
-<li><a href="#org6fd55f1">1.2.1. <span class="underline">Exam Trick</span></a></li>
+<li><a href="#org76e0355">1.2.1. <span class="underline">Exam Trick</span></a></li>
 </ul>
 </li>
 </ul>
@@ -215,15 +270,15 @@
 </div>
 </div>
 
-<div id="outline-container-orgda6ac9a" class="outline-2">
-<h2 id="orgda6ac9a"><span class="section-number-2">1.</span> Conditional Operators (aka short-circuit operators)</h2>
+<div id="outline-container-orgdfe91f7" class="outline-2">
+<h2 id="orgdfe91f7"><span class="section-number-2">1.</span> Conditional Operators (aka short-circuit operators)</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 A <a href="20231231060610-binary_operators.html#ID-9bcf2aef-060a-4011-98b5-cb949a9f7d1a">Binary Operator</a>
 </p>
 
 
-<div id="org183197a" class="figure">
+<div id="orga659b7e" class="figure">
 <p><img src="./assets/conditional_operators.png" alt="conditional_operators.png" />
 </p>
 </div>
@@ -240,12 +295,12 @@ System.out.println(zooOpen); <span class="org-comment-delimiter">// </span><span
 </div>
 </div>
 
-<div id="outline-container-org1d6a534" class="outline-3">
-<h3 id="org1d6a534"><span class="section-number-3">1.1.</span> <a href="20240101085507-ternary_operators.html#ID-4fb44335-373d-438c-b873-d648a962c2f7">Ternary Operators</a></h3>
+<div id="outline-container-org0d81ad2" class="outline-3">
+<h3 id="org0d81ad2"><span class="section-number-3">1.1.</span> <a href="20240101085507-ternary_operators.html#ID-4fb44335-373d-438c-b873-d648a962c2f7">Ternary Operators</a></h3>
 </div>
 
-<div id="outline-container-orgde4741c" class="outline-3">
-<h3 id="orgde4741c"><span class="section-number-3">1.2.</span> Avoiding a <code>NullPointerException</code></h3>
+<div id="outline-container-orga9cd3d7" class="outline-3">
+<h3 id="orga9cd3d7"><span class="section-number-3">1.2.</span> Avoiding a <code>NullPointerException</code></h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 A more common example of where <code>conditional operators</code> are used is checking for <code>null</code>
@@ -281,8 +336,8 @@ from ever being thrown, since the evaluation of <code>duck.getAge() &lt; 5</code
 </p>
 </div>
 
-<div id="outline-container-org6fd55f1" class="outline-4">
-<h4 id="org6fd55f1"><span class="section-number-4">1.2.1.</span> <span class="underline">Exam Trick</span></h4>
+<div id="outline-container-org76e0355" class="outline-4">
+<h4 id="org76e0355"><span class="section-number-4">1.2.1.</span> <span class="underline">Exam Trick</span></h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 Be wary of <b>short-circuit</b> behavior on the exam, as questions are known to <b>alter</b> a variable on the <code>RHS</code> of the expression that may never be reached.

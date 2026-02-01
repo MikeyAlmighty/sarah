@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-01 Sun 15:03 -->
+<!-- 2026-02-01 Sun 15:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>TCP Segment</title>
@@ -193,6 +193,61 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
+<style>
+        body {
+          font-family: sans-serif;
+          line-height: 1.5;
+          margin: 2em;
+          background-color: #ffffff;
+          color: #111111;
+        }
+
+        a { color: #1a0dab; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Code block styling */
+        pre.src {
+          padding: 1em;
+          border-radius: 6px;
+          overflow-x: auto;
+          background-color: #f0f0f0;
+          color: #222222;
+          border: 1px solid #ddd;
+          font-family: monospace;
+        }
+
+        /* Syntax highlighting for Org-generated classes */
+        span.org-keyword { color: #005999; font-weight: bold; }
+        span.org-string  { color: #aa3333; }
+        span.org-comment { color: #666666; font-style: italic; }
+        span.org-type    { color: #007700; font-weight: bold; }
+        span.org-variable { color: #993399; }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+          body {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+          }
+
+          a { color: #8ab4f8; }
+
+          pre.src {
+            background-color: #2c2c2c;
+            color: #f0f0f0;
+            border: 1px solid #444;
+          }
+
+          /* Dark syntax */
+          span.org-keyword { color: #569cd6; font-weight: bold; }
+          span.org-string  { color: #d7a65a; }
+          span.org-comment { color: #999988; font-style: italic; }
+          span.org-type    { color: #6ab04c; font-weight: bold; }
+          span.org-variable { color: #c586c0; }
+        }
+
+        ul { list-style-type: disc; padding-left: 2em; }
+      </style>
 </head>
 <body>
 <div id="content" class="content">
@@ -201,34 +256,34 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org6f3d06f">1. Header</a>
+<li><a href="#org819ead5">1. Header</a>
 <ul>
-<li><a href="#org51ecb98">1.1. Source port</a></li>
-<li><a href="#org446573b">1.2. Destination port</a></li>
-<li><a href="#org3d4805b">1.3. Sequence number.</a></li>
-<li><a href="#orgbfe59c5">1.4. Acknowledgement number.</a></li>
-<li><a href="#orgc3244e1">1.5. Data offset Field</a></li>
-<li><a href="#org1366595">1.6. Control Flags</a></li>
-<li><a href="#orgeabaf5b">1.7. TCP Window</a></li>
-<li><a href="#org5fc8b75">1.8. Checksum</a></li>
-<li><a href="#org1a9e825">1.9. Urgent Pointer</a></li>
-<li><a href="#org93d0f1c">1.10. Options Pointer</a></li>
-<li><a href="#orgfbb998b">1.11. Padding</a></li>
+<li><a href="#orgf53faf5">1.1. Source port</a></li>
+<li><a href="#orgdb2e1af">1.2. Destination port</a></li>
+<li><a href="#org754f88b">1.3. Sequence number.</a></li>
+<li><a href="#org688a6d5">1.4. Acknowledgement number.</a></li>
+<li><a href="#orgacd4bca">1.5. Data offset Field</a></li>
+<li><a href="#org4efa938">1.6. Control Flags</a></li>
+<li><a href="#org7b050ac">1.7. TCP Window</a></li>
+<li><a href="#org5fd4324">1.8. Checksum</a></li>
+<li><a href="#orge71cf41">1.9. Urgent Pointer</a></li>
+<li><a href="#org28ccb3d">1.10. Options Pointer</a></li>
+<li><a href="#org0b6c0ea">1.11. Padding</a></li>
 </ul>
 </li>
-<li><a href="#orgc65f554">2. Payload</a></li>
+<li><a href="#orgbaa8ccd">2. Payload</a></li>
 </ul>
 </div>
 </div>
 <p>
 Made up of:
 </p>
-<div id="outline-container-org6f3d06f" class="outline-2">
-<h2 id="org6f3d06f"><span class="section-number-2">1.</span> Header</h2>
+<div id="outline-container-org819ead5" class="outline-2">
+<h2 id="org819ead5"><span class="section-number-2">1.</span> Header</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org51ecb98" class="outline-3">
-<h3 id="org51ecb98"><span class="section-number-3">1.1.</span> Source port</h3>
+<div id="outline-container-orgf53faf5" class="outline-3">
+<h3 id="orgf53faf5"><span class="section-number-3">1.1.</span> Source port</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 <b>16-bits</b>
@@ -241,8 +296,8 @@ Required to keep lots of outgoing connections separate.
 </div>
 </div>
 
-<div id="outline-container-org446573b" class="outline-3">
-<h3 id="org446573b"><span class="section-number-3">1.2.</span> Destination port</h3>
+<div id="outline-container-orgdb2e1af" class="outline-3">
+<h3 id="orgdb2e1af"><span class="section-number-3">1.2.</span> Destination port</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 <b>16-bits</b>
@@ -251,8 +306,8 @@ The port of the service the traffic is intended for.
 </div>
 </div>
 
-<div id="outline-container-org3d4805b" class="outline-3">
-<h3 id="org3d4805b"><span class="section-number-3">1.3.</span> Sequence number.</h3>
+<div id="outline-container-org754f88b" class="outline-3">
+<h3 id="org754f88b"><span class="section-number-3">1.3.</span> Sequence number.</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 <b>32-bits</b>
@@ -265,8 +320,8 @@ An <a href="20230821055442-ethernet_frame.html#ID-73b06fc5-e631-40ad-828f-741dd8
 </div>
 </div>
 
-<div id="outline-container-orgbfe59c5" class="outline-3">
-<h3 id="orgbfe59c5"><span class="section-number-3">1.4.</span> Acknowledgement number.</h3>
+<div id="outline-container-org688a6d5" class="outline-3">
+<h3 id="org688a6d5"><span class="section-number-3">1.4.</span> Acknowledgement number.</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 <b>32-bits</b>
@@ -275,8 +330,8 @@ Number of the next expected segment.
 </div>
 </div>
 
-<div id="outline-container-orgc3244e1" class="outline-3">
-<h3 id="orgc3244e1"><span class="section-number-3">1.5.</span> Data offset Field</h3>
+<div id="outline-container-orgacd4bca" class="outline-3">
+<h3 id="orgacd4bca"><span class="section-number-3">1.5.</span> Data offset Field</h3>
 <div class="outline-text-3" id="text-1-5">
 <p>
 <b>4-bit</b>
@@ -285,8 +340,8 @@ Communicates how long the <a href="20230819080017-transmission_control_protocol_
 </div>
 </div>
 
-<div id="outline-container-org1366595" class="outline-3">
-<h3 id="org1366595"><span class="section-number-3">1.6.</span> Control Flags</h3>
+<div id="outline-container-org4efa938" class="outline-3">
+<h3 id="org4efa938"><span class="section-number-3">1.6.</span> Control Flags</h3>
 <div class="outline-text-3" id="text-1-6">
 <p>
 <b>6-bits</b>
@@ -295,8 +350,8 @@ Reserved for the six <a href="20230822074622-tcp_control_flags.html#ID-b70de003-
 </div>
 </div>
 
-<div id="outline-container-orgeabaf5b" class="outline-3">
-<h3 id="orgeabaf5b"><span class="section-number-3">1.7.</span> TCP Window</h3>
+<div id="outline-container-org7b050ac" class="outline-3">
+<h3 id="org7b050ac"><span class="section-number-3">1.7.</span> TCP Window</h3>
 <div class="outline-text-3" id="text-1-7">
 <p>
 A TCP window specifies the range of sequence numbers that might be sent before an acknowledgment is required.
@@ -304,8 +359,8 @@ A TCP window specifies the range of sequence numbers that might be sent before a
 </div>
 </div>
 
-<div id="outline-container-org5fc8b75" class="outline-3">
-<h3 id="org5fc8b75"><span class="section-number-3">1.8.</span> Checksum</h3>
+<div id="outline-container-org5fd4324" class="outline-3">
+<h3 id="org5fd4324"><span class="section-number-3">1.8.</span> Checksum</h3>
 <div class="outline-text-3" id="text-1-8">
 <p>
 <b>16-bits</b>
@@ -314,8 +369,8 @@ Once all of this segment has been ingested by recipient, the checksum is calcula
 </div>
 </div>
 
-<div id="outline-container-org1a9e825" class="outline-3">
-<h3 id="org1a9e825"><span class="section-number-3">1.9.</span> Urgent Pointer</h3>
+<div id="outline-container-orge71cf41" class="outline-3">
+<h3 id="orge71cf41"><span class="section-number-3">1.9.</span> Urgent Pointer</h3>
 <div class="outline-text-3" id="text-1-9">
 <p>
 <b>16-bits</b>
@@ -324,8 +379,8 @@ Used in conjuction with one of the TCP control flags to point out particular seg
 </div>
 </div>
 
-<div id="outline-container-org93d0f1c" class="outline-3">
-<h3 id="org93d0f1c"><span class="section-number-3">1.10.</span> Options Pointer</h3>
+<div id="outline-container-org28ccb3d" class="outline-3">
+<h3 id="org28ccb3d"><span class="section-number-3">1.10.</span> Options Pointer</h3>
 <div class="outline-text-3" id="text-1-10">
 <p>
 Sometimes used for more complicated flow control protocols.
@@ -333,8 +388,8 @@ Sometimes used for more complicated flow control protocols.
 </div>
 </div>
 
-<div id="outline-container-orgfbb998b" class="outline-3">
-<h3 id="orgfbb998b"><span class="section-number-3">1.11.</span> Padding</h3>
+<div id="outline-container-org0b6c0ea" class="outline-3">
+<h3 id="org0b6c0ea"><span class="section-number-3">1.11.</span> Padding</h3>
 <div class="outline-text-3" id="text-1-11">
 <p>
 Sequence of zeros to ensure that the data payload section begins at the expected location.
@@ -343,8 +398,8 @@ Sequence of zeros to ensure that the data payload section begins at the expected
 </div>
 </div>
 
-<div id="outline-container-orgc65f554" class="outline-2">
-<h2 id="orgc65f554"><span class="section-number-2">2.</span> Payload</h2>
+<div id="outline-container-orgbaa8ccd" class="outline-2">
+<h2 id="orgbaa8ccd"><span class="section-number-2">2.</span> Payload</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Contents of data application wants to send to each other

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-01 Sun 15:03 -->
+<!-- 2026-02-01 Sun 15:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Pattern Matching</title>
@@ -193,6 +193,61 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
+<style>
+        body {
+          font-family: sans-serif;
+          line-height: 1.5;
+          margin: 2em;
+          background-color: #ffffff;
+          color: #111111;
+        }
+
+        a { color: #1a0dab; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Code block styling */
+        pre.src {
+          padding: 1em;
+          border-radius: 6px;
+          overflow-x: auto;
+          background-color: #f0f0f0;
+          color: #222222;
+          border: 1px solid #ddd;
+          font-family: monospace;
+        }
+
+        /* Syntax highlighting for Org-generated classes */
+        span.org-keyword { color: #005999; font-weight: bold; }
+        span.org-string  { color: #aa3333; }
+        span.org-comment { color: #666666; font-style: italic; }
+        span.org-type    { color: #007700; font-weight: bold; }
+        span.org-variable { color: #993399; }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+          body {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+          }
+
+          a { color: #8ab4f8; }
+
+          pre.src {
+            background-color: #2c2c2c;
+            color: #f0f0f0;
+            border: 1px solid #444;
+          }
+
+          /* Dark syntax */
+          span.org-keyword { color: #569cd6; font-weight: bold; }
+          span.org-string  { color: #d7a65a; }
+          span.org-comment { color: #999988; font-style: italic; }
+          span.org-type    { color: #6ab04c; font-weight: bold; }
+          span.org-variable { color: #c586c0; }
+        }
+
+        ul { list-style-type: disc; padding-left: 2em; }
+      </style>
 </head>
 <body>
 <div id="content" class="content">
@@ -201,19 +256,19 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgcf1e3b7">1. Pattern Matching</a>
+<li><a href="#org4697d14">1. Pattern Matching</a>
 <ul>
-<li><a href="#org88b9747">1.1. Legacy (pre 16)</a></li>
-<li><a href="#orgbcf2abe">1.2. Patter Variables (Java 16)</a>
+<li><a href="#org758ef44">1.1. Legacy (pre 16)</a></li>
+<li><a href="#orgfab8019">1.2. Patter Variables (Java 16)</a>
 <ul>
-<li><a href="#org704fe30">1.2.1. Reassigning Pattern Variables</a></li>
+<li><a href="#org2ff750b">1.2.1. Reassigning Pattern Variables</a></li>
 </ul>
 </li>
-<li><a href="#org5dd2dfa">1.3. Pattern Variables and Expressions</a></li>
-<li><a href="#org49896f1">1.4. Subtypes</a></li>
-<li><a href="#orga4750dc">1.5. Flow Scoping</a>
+<li><a href="#orgd84bb67">1.3. Pattern Variables and Expressions</a></li>
+<li><a href="#org7aa20f8">1.4. Subtypes</a></li>
+<li><a href="#org55351e7">1.5. Flow Scoping</a>
 <ul>
-<li><a href="#org7709333">1.5.1. <span class="underline">Exam trick</span></a></li>
+<li><a href="#org8a13556">1.5.1. <span class="underline">Exam trick</span></a></li>
 </ul>
 </li>
 </ul>
@@ -222,8 +277,8 @@
 </div>
 </div>
 
-<div id="outline-container-orgcf1e3b7" class="outline-2">
-<h2 id="orgcf1e3b7"><span class="section-number-2">1.</span> Pattern Matching</h2>
+<div id="outline-container-org4697d14" class="outline-2">
+<h2 id="org4697d14"><span class="section-number-2">1.</span> Pattern Matching</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>Introduced in <b>Java 16</b></li>
@@ -235,8 +290,8 @@ It is used in conjunction with <a href="20240101124425-if_else_statement.html#ID
 </p>
 </div>
 
-<div id="outline-container-org88b9747" class="outline-3">
-<h3 id="org88b9747"><span class="section-number-3">1.1.</span> Legacy (pre 16)</h3>
+<div id="outline-container-org758ef44" class="outline-3">
+<h3 id="org758ef44"><span class="section-number-3">1.1.</span> Legacy (pre 16)</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Consider the following code that takes a <code>Number</code> instance and compares it with the value <code>5</code>:
@@ -263,8 +318,8 @@ Code that <b>first checks if a variable is of a particular type</b> and then <b>
 </div>
 </div>
 
-<div id="outline-container-orgbcf2abe" class="outline-3">
-<h3 id="orgbcf2abe"><span class="section-number-3">1.2.</span> Patter Variables (Java 16)</h3>
+<div id="outline-container-orgfab8019" class="outline-3">
+<h3 id="orgfab8019"><span class="section-number-3">1.2.</span> Patter Variables (Java 16)</h3>
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-type">void</span> <span class="org-function-name">compareIntegers</span>(<span class="org-type">Number</span> <span class="org-variable-name">number</span>) {
@@ -281,8 +336,8 @@ Notice that this code also avoids any potential <code>ClassCastException</code> 
 </p>
 </div>
 
-<div id="outline-container-org704fe30" class="outline-4">
-<h4 id="org704fe30"><span class="section-number-4">1.2.1.</span> Reassigning Pattern Variables</h4>
+<div id="outline-container-org2ff750b" class="outline-4">
+<h4 id="org2ff750b"><span class="section-number-4">1.2.1.</span> Reassigning Pattern Variables</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 While possible, it is a bad practice to <b>reassign</b> a <code>pattern variable</code> since doing so can lead to ambiguity about what <b>is and is not in scope</b>:
@@ -308,8 +363,8 @@ The reassignment can be <b>prevented</b> with a <code>final</code> modifier, but
 </div>
 </div>
 
-<div id="outline-container-org5dd2dfa" class="outline-3">
-<h3 id="org5dd2dfa"><span class="section-number-3">1.3.</span> Pattern Variables and Expressions</h3>
+<div id="outline-container-orgd84bb67" class="outline-3">
+<h3 id="orgd84bb67"><span class="section-number-3">1.3.</span> Pattern Variables and Expressions</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 <code>Pattern matching</code> includes expressions that can be used to filter data out, such as in the following example:
@@ -330,8 +385,8 @@ Notice that we’re using the <code>pattern variable</code> in an expression in 
 </div>
 </div>
 
-<div id="outline-container-org49896f1" class="outline-3">
-<h3 id="org49896f1"><span class="section-number-3">1.4.</span> Subtypes</h3>
+<div id="outline-container-org7aa20f8" class="outline-3">
+<h3 id="org7aa20f8"><span class="section-number-3">1.4.</span> Subtypes</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 The <code>type</code> of the <b>pattern variable</b> must be a <b>subtype</b> of the variable on the <code>LHS</code> of the expression.
@@ -350,8 +405,8 @@ While the second line compiles, the last line does not compile because <code>pat
 </div>
 </div>
 
-<div id="outline-container-orga4750dc" class="outline-3">
-<h3 id="orga4750dc"><span class="section-number-3">1.5.</span> Flow Scoping</h3>
+<div id="outline-container-org55351e7" class="outline-3">
+<h3 id="org55351e7"><span class="section-number-3">1.5.</span> Flow Scoping</h3>
 <div class="outline-text-3" id="text-1-5">
 <p>
 The compiler applies <code>flow scoping</code> when working with <b>pattern matching</b>.
@@ -359,8 +414,8 @@ The compiler applies <code>flow scoping</code> when working with <b>pattern matc
 </p>
 </div>
 
-<div id="outline-container-org7709333" class="outline-4">
-<h4 id="org7709333"><span class="section-number-4">1.5.1.</span> <span class="underline">Exam trick</span></h4>
+<div id="outline-container-org8a13556" class="outline-4">
+<h4 id="org8a13556"><span class="section-number-4">1.5.1.</span> <span class="underline">Exam trick</span></h4>
 <div class="outline-text-4" id="text-1-5-1">
 <p>
 It might surprise you to learn this code does compile:

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-01 Sun 15:03 -->
+<!-- 2026-02-01 Sun 15:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Inheriting an Interface</title>
@@ -193,6 +193,61 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
+<style>
+        body {
+          font-family: sans-serif;
+          line-height: 1.5;
+          margin: 2em;
+          background-color: #ffffff;
+          color: #111111;
+        }
+
+        a { color: #1a0dab; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Code block styling */
+        pre.src {
+          padding: 1em;
+          border-radius: 6px;
+          overflow-x: auto;
+          background-color: #f0f0f0;
+          color: #222222;
+          border: 1px solid #ddd;
+          font-family: monospace;
+        }
+
+        /* Syntax highlighting for Org-generated classes */
+        span.org-keyword { color: #005999; font-weight: bold; }
+        span.org-string  { color: #aa3333; }
+        span.org-comment { color: #666666; font-style: italic; }
+        span.org-type    { color: #007700; font-weight: bold; }
+        span.org-variable { color: #993399; }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+          body {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+          }
+
+          a { color: #8ab4f8; }
+
+          pre.src {
+            background-color: #2c2c2c;
+            color: #f0f0f0;
+            border: 1px solid #444;
+          }
+
+          /* Dark syntax */
+          span.org-keyword { color: #569cd6; font-weight: bold; }
+          span.org-string  { color: #d7a65a; }
+          span.org-comment { color: #999988; font-style: italic; }
+          span.org-type    { color: #6ab04c; font-weight: bold; }
+          span.org-variable { color: #c586c0; }
+        }
+
+        ul { list-style-type: disc; padding-left: 2em; }
+      </style>
 </head>
 <body>
 <div id="content" class="content">
@@ -201,18 +256,18 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org36152c6">1. Inheriting an Interface</a>
+<li><a href="#org5497181">1. Inheriting an Interface</a>
 <ul>
-<li><a href="#org540a202">1.1. Example</a></li>
-<li><a href="#orgfa1d4a5">1.2. Mixing Class and Interface Keywords</a>
+<li><a href="#org031c389">1.1. Example</a></li>
+<li><a href="#org5b9661b">1.2. Mixing Class and Interface Keywords</a>
 <ul>
-<li><a href="#org8819bbd">1.2.1. <span class="underline">Exam Trick</span></a></li>
+<li><a href="#orgfb32363">1.2.1. <span class="underline">Exam Trick</span></a></li>
 </ul>
 </li>
-<li><a href="#org4cf2fc6">1.3. Inheriting Duplicate Abstract Methods</a>
+<li><a href="#org50fb0fe">1.3. Inheriting Duplicate Abstract Methods</a>
 <ul>
-<li><a href="#org61c031b">1.3.1. Example</a></li>
-<li><a href="#orgff1d042">1.3.2. Example</a></li>
+<li><a href="#orgc8d325f">1.3.1. Example</a></li>
+<li><a href="#orgaaead53">1.3.2. Example</a></li>
 </ul>
 </li>
 </ul>
@@ -221,15 +276,15 @@
 </div>
 </div>
 
-<div id="outline-container-org36152c6" class="outline-2">
-<h2 id="org36152c6"><span class="section-number-2">1.</span> Inheriting an Interface</h2>
+<div id="outline-container-org5497181" class="outline-2">
+<h2 id="org5497181"><span class="section-number-2">1.</span> Inheriting an Interface</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Like an <a href="20240114162721-abstract_classes.html#ID-3893ce2e-cd85-4914-ba26-d7c7c732eb02">abstract class</a>, when a <code>concrete</code> class <b>inherits</b> an <code>interface</code>, all of the <b>inherited abstract methods</b> <b>must</b> be implemented.
 </p>
 
 
-<div id="org79e96e8" class="figure">
+<div id="orgb4df6c2" class="figure">
 <p><img src="./assets/interface_inheritance.png" alt="interface_inheritance.png" />
 </p>
 </div>
@@ -246,8 +301,8 @@ The concrete <code>Swan</code> class inherits <b>four</b> abstract methods that 
 </div>
 
 
-<div id="outline-container-org540a202" class="outline-3">
-<h3 id="org540a202"><span class="section-number-3">1.1.</span> Example</h3>
+<div id="outline-container-org031c389" class="outline-3">
+<h3 id="org031c389"><span class="section-number-3">1.1.</span> Example</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">interface</span> <span class="org-type">HasTail</span> {
@@ -271,8 +326,8 @@ The concrete <code>CommonSeal</code> class, though, <b>must override all inherit
 </div>
 </div>
 
-<div id="outline-container-orgfa1d4a5" class="outline-3">
-<h3 id="orgfa1d4a5"><span class="section-number-3">1.2.</span> Mixing Class and Interface Keywords</h3>
+<div id="outline-container-org5b9661b" class="outline-3">
+<h3 id="org5b9661b"><span class="section-number-3">1.2.</span> Mixing Class and Interface Keywords</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 The exam creators are fond of questions that mix <code>class</code> and <code>interface</code> terminology.
@@ -285,8 +340,8 @@ The following examples illustrate these principles:
 </p>
 </div>
 
-<div id="outline-container-org8819bbd" class="outline-4">
-<h4 id="org8819bbd"><span class="section-number-4">1.2.1.</span> <span class="underline">Exam Trick</span></h4>
+<div id="outline-container-orgfb32363" class="outline-4">
+<h4 id="orgfb32363"><span class="section-number-4">1.2.1.</span> <span class="underline">Exam Trick</span></h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 The <code>first</code> example shows a class trying to extend an interface and doesn’t compile.
@@ -309,12 +364,12 @@ Be wary of examples on the exam that mix class and interface declarations.
 </div>
 </div>
 
-<div id="outline-container-org4cf2fc6" class="outline-3">
-<h3 id="org4cf2fc6"><span class="section-number-3">1.3.</span> Inheriting Duplicate Abstract Methods</h3>
+<div id="outline-container-org50fb0fe" class="outline-3">
+<h3 id="org50fb0fe"><span class="section-number-3">1.3.</span> Inheriting Duplicate Abstract Methods</h3>
 <div class="outline-text-3" id="text-1-3">
 </div>
-<div id="outline-container-org61c031b" class="outline-4">
-<h4 id="org61c031b"><span class="section-number-4">1.3.1.</span> Example</h4>
+<div id="outline-container-orgc8d325f" class="outline-4">
+<h4 id="orgc8d325f"><span class="section-number-4">1.3.1.</span> Example</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <p>
 Java supports inheriting two <code>abstract methods</code> that have <code>compatible</code> method declarations.
@@ -339,8 +394,8 @@ Java supports inheriting two <code>abstract methods</code> that have <code>compa
 </div>
 </div>
 
-<div id="outline-container-orgff1d042" class="outline-4">
-<h4 id="orgff1d042"><span class="section-number-4">1.3.2.</span> Example</h4>
+<div id="outline-container-orgaaead53" class="outline-4">
+<h4 id="orgaaead53"><span class="section-number-4">1.3.2.</span> Example</h4>
 <div class="outline-text-4" id="text-1-3-2">
 <p>
 By <code>compatible</code>, we mean a method can be written that properly <b>overrides</b> both inherited methods:

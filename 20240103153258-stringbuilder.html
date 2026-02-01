@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-01 Sun 15:03 -->
+<!-- 2026-02-01 Sun 15:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>StringBuilder</title>
@@ -193,6 +193,61 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
+<style>
+        body {
+          font-family: sans-serif;
+          line-height: 1.5;
+          margin: 2em;
+          background-color: #ffffff;
+          color: #111111;
+        }
+
+        a { color: #1a0dab; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Code block styling */
+        pre.src {
+          padding: 1em;
+          border-radius: 6px;
+          overflow-x: auto;
+          background-color: #f0f0f0;
+          color: #222222;
+          border: 1px solid #ddd;
+          font-family: monospace;
+        }
+
+        /* Syntax highlighting for Org-generated classes */
+        span.org-keyword { color: #005999; font-weight: bold; }
+        span.org-string  { color: #aa3333; }
+        span.org-comment { color: #666666; font-style: italic; }
+        span.org-type    { color: #007700; font-weight: bold; }
+        span.org-variable { color: #993399; }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+          body {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+          }
+
+          a { color: #8ab4f8; }
+
+          pre.src {
+            background-color: #2c2c2c;
+            color: #f0f0f0;
+            border: 1px solid #444;
+          }
+
+          /* Dark syntax */
+          span.org-keyword { color: #569cd6; font-weight: bold; }
+          span.org-string  { color: #d7a65a; }
+          span.org-comment { color: #999988; font-style: italic; }
+          span.org-type    { color: #6ab04c; font-weight: bold; }
+          span.org-variable { color: #c586c0; }
+        }
+
+        ul { list-style-type: disc; padding-left: 2em; }
+      </style>
 </head>
 <body>
 <div id="content" class="content">
@@ -201,14 +256,14 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org861c11e">1. <code>StringBuilder</code></a>
+<li><a href="#org1a0cd15">1. <code>StringBuilder</code></a>
 <ul>
-<li><a href="#orge374c91">1.1. Signature</a></li>
-<li><a href="#orgc035afd">1.2. Example</a></li>
-<li><a href="#orgfb14981">1.3. Mutability and Chaining</a>
+<li><a href="#org7afd467">1.1. Signature</a></li>
+<li><a href="#org31c4b74">1.2. Example</a></li>
+<li><a href="#org122a2a2">1.3. Mutability and Chaining</a>
 <ul>
-<li><a href="#orge944f39">1.3.1. <span class="underline">Exam Trick</span></a></li>
-<li><a href="#org9e00035">1.3.2. Methods</a></li>
+<li><a href="#orgbef4f40">1.3.1. <span class="underline">Exam Trick</span></a></li>
+<li><a href="#org8776ed8">1.3.2. Methods</a></li>
 </ul>
 </li>
 </ul>
@@ -217,8 +272,8 @@
 </div>
 </div>
 
-<div id="outline-container-org861c11e" class="outline-2">
-<h2 id="org861c11e"><span class="section-number-2">1.</span> <code>StringBuilder</code></h2>
+<div id="outline-container-org1a0cd15" class="outline-2">
+<h2 id="org1a0cd15"><span class="section-number-2">1.</span> <code>StringBuilder</code></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Unlike the <a href="20240103124304-creating_and_manipulating_strings.html#ID-afe76105-5f94-4dac-a929-e7a7dcdb5983">String class</a>, <code>StringBuilder</code> is <b>not</b> immutable.
@@ -226,8 +281,8 @@ For frequent or large-scale concatenation, <code>StringBuilder</code> (or <code>
 </p>
 </div>
 
-<div id="outline-container-orge374c91" class="outline-3">
-<h3 id="orge374c91"><span class="section-number-3">1.1.</span> Signature</h3>
+<div id="outline-container-org7afd467" class="outline-3">
+<h3 id="org7afd467"><span class="section-number-3">1.1.</span> Signature</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-type">StringBuilder</span> <span class="org-variable-name">sb1</span> = <span class="org-keyword">new</span> <span class="org-type">StringBuilder</span>(); <span class="org-comment-delimiter">// </span><span class="org-comment">empty sequence of characters
@@ -238,8 +293,8 @@ For frequent or large-scale concatenation, <code>StringBuilder</code> (or <code>
 </div>
 </div>
 
-<div id="outline-container-orgc035afd" class="outline-3">
-<h3 id="orgc035afd"><span class="section-number-3">1.2.</span> Example</h3>
+<div id="outline-container-org31c4b74" class="outline-3">
+<h3 id="org31c4b74"><span class="section-number-3">1.2.</span> Example</h3>
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-type">StringBuilder</span> <span class="org-variable-name">alpha</span> = <span class="org-keyword">new</span> <span class="org-type">StringBuilder</span>();
@@ -252,8 +307,8 @@ System.out.println(alpha); <span class="org-comment-delimiter">// </span><span c
 </div>
 </div>
 
-<div id="outline-container-orgfb14981" class="outline-3">
-<h3 id="orgfb14981"><span class="section-number-3">1.3.</span> Mutability and Chaining</h3>
+<div id="outline-container-org122a2a2" class="outline-3">
+<h3 id="org122a2a2"><span class="section-number-3">1.3.</span> Mutability and Chaining</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 When we chained <code>String</code> method calls, the result was a <b>new</b> <code>String</code> with the answer.
@@ -274,8 +329,8 @@ sb.append(<span class="org-string">"+middle"</span>); <span class="org-comment-d
 </div>
 </div>
 
-<div id="outline-container-orge944f39" class="outline-4">
-<h4 id="orge944f39"><span class="section-number-4">1.3.1.</span> <span class="underline">Exam Trick</span></h4>
+<div id="outline-container-orgbef4f40" class="outline-4">
+<h4 id="orgbef4f40"><span class="section-number-4">1.3.1.</span> <span class="underline">Exam Trick</span></h4>
 <div class="outline-text-4" id="text-1-3-1">
 <p>
 There’s only <b>one</b> <code>StringBuilder</code> object here.
@@ -300,17 +355,17 @@ On <code>line 6</code>, those <b>two</b> variables are still <b>referring to tha
 </div>
 </div>
 
-<div id="outline-container-org9e00035" class="outline-4">
-<h4 id="org9e00035"><span class="section-number-4">1.3.2.</span> Methods</h4>
+<div id="outline-container-org8776ed8" class="outline-4">
+<h4 id="org8776ed8"><span class="section-number-4">1.3.2.</span> Methods</h4>
 <div class="outline-text-4" id="text-1-3-2">
 </div>
 <ol class="org-ol">
-<li><a id="orgba62b51"></a><a href="20240106124543-stringbuilder_append.html#ID-6800ccf4-e0a1-41a9-8618-f952173bcb4d">StringBuilder.append</a><br /></li>
-<li><a id="org63d5bfc"></a><a href="20240106124625-stringbuilder_insert.html#ID-0fd3d1f3-3241-4fd0-bcc4-71f7fa03d8cd">StringBuilder.insert</a><br /></li>
-<li><a id="org80407d8"></a><a href="20240106124954-stringbuilder_delete.html#ID-9808d612-53f4-4b51-b926-1c065047711c">StringBuilder.delete</a><br /></li>
-<li><a id="orgb8b7f26"></a><a href="20240106125451-stringbuilder_replace.html#ID-5ec54700-2395-4cdc-9da2-ffbef6ec2c23">StringBuilder.replace</a><br /></li>
-<li><a id="orgb8cf2a2"></a><a href="20240106125913-stringbuilder_reverse.html#ID-02412a54-508e-4f57-85e8-6bdd48508a92">StringBuilder.reverse</a><br /></li>
-<li><a id="orgda68395"></a><a href="20240106130216-stringbuilder_tostring.html#ID-98a2b73f-e560-45c2-bcb1-40c6cd044777">StringBuilder.toString</a><br /></li>
+<li><a id="org16eb0c4"></a><a href="20240106124543-stringbuilder_append.html#ID-6800ccf4-e0a1-41a9-8618-f952173bcb4d">StringBuilder.append</a><br /></li>
+<li><a id="org2aa346f"></a><a href="20240106124625-stringbuilder_insert.html#ID-0fd3d1f3-3241-4fd0-bcc4-71f7fa03d8cd">StringBuilder.insert</a><br /></li>
+<li><a id="orga9a34e9"></a><a href="20240106124954-stringbuilder_delete.html#ID-9808d612-53f4-4b51-b926-1c065047711c">StringBuilder.delete</a><br /></li>
+<li><a id="org0eb60e0"></a><a href="20240106125451-stringbuilder_replace.html#ID-5ec54700-2395-4cdc-9da2-ffbef6ec2c23">StringBuilder.replace</a><br /></li>
+<li><a id="org0002128"></a><a href="20240106125913-stringbuilder_reverse.html#ID-02412a54-508e-4f57-85e8-6bdd48508a92">StringBuilder.reverse</a><br /></li>
+<li><a id="org0d64a4a"></a><a href="20240106130216-stringbuilder_tostring.html#ID-98a2b73f-e560-45c2-bcb1-40c6cd044777">StringBuilder.toString</a><br /></li>
 </ol>
 </div>
 </div>
