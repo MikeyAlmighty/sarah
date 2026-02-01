@@ -38,7 +38,7 @@
 (setq org-html-validation-link nil
       org-html-postamble nil
       org-html-head ""
-      org-html-htmlize-output-type nil
+      org-html-htmlize-output-type 'css
       inhibit-message t)
 
 (org-roam-db-sync)
