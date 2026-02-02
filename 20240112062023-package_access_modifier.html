@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-01 Sun 15:38 -->
+<!-- 2026-02-02 Mon 08:08 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Package Access Modifier</title>
@@ -256,18 +256,18 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org977a910">1. Package Access Modifier</a>
+<li><a href="#orge2f9695">1. Package Access Modifier</a>
 <ul>
-<li><a href="#org78a532d">1.1. Example</a></li>
-<li><a href="#org5d6152b">1.2. Negative Example</a></li>
+<li><a href="#org5fcb245">1.1. Example</a></li>
+<li><a href="#orgdaa21ef">1.2. Negative Example</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org977a910" class="outline-2">
-<h2 id="org977a910"><span class="section-number-2">1.</span> Package Access Modifier</h2>
+<div id="outline-container-orge2f9695" class="outline-2">
+<h2 id="orge2f9695"><span class="section-number-2">1.</span> Package Access Modifier</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 With <code>package access</code>, the method can be called only from a <code>class</code> in the <b>same package</b>.
@@ -287,16 +287,17 @@ When there is no access modifier, Java <b>assumes package access</b>.
 </p>
 </div>
 
-<div id="outline-container-org78a532d" class="outline-3">
-<h3 id="org78a532d"><span class="section-number-3">1.1.</span> Example</h3>
+<div id="outline-container-org5fcb245" class="outline-3">
+<h3 id="org5fcb245"><span class="section-number-3">1.1.</span> Example</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">package</span> pond.<span class="org-constant">duck</span>;
 
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">MotherDuck</span> {
     <span class="org-type">String</span> <span class="org-variable-name">noise</span> = <span class="org-string">"quack"</span>;
+
     <span class="org-type">void</span> <span class="org-function-name">quack</span>() {
-    System.out.print(noise); <span class="org-comment-delimiter">// </span><span class="org-comment">package access is ok
+        System.out.print(noise); <span class="org-comment-delimiter">// </span><span class="org-comment">package access is ok
 </span>    }
 }
 
@@ -305,6 +306,7 @@ When there is no access modifier, Java <b>assumes package access</b>.
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">GoodDuckling</span> {
     <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">makeNoise</span>() {
         <span class="org-type">var</span> <span class="org-variable-name">duck</span> = <span class="org-keyword">new</span> <span class="org-type">MotherDuck</span>();
+
         duck.quack(); <span class="org-comment-delimiter">// </span><span class="org-comment">package access is ok
 </span>        System.out.print(duck.noise); <span class="org-comment-delimiter">// </span><span class="org-comment">package access is ok
 </span>    }
@@ -314,13 +316,16 @@ When there is no access modifier, Java <b>assumes package access</b>.
 
 <p>
 Notice that all the <code>classes</code> covered so far are in the <b>same package</b>, <code>pond.duck</code>.
+</p>
+
+<p>
 This allows <code>package access</code> to work.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org5d6152b" class="outline-3">
-<h3 id="org5d6152b"><span class="section-number-3">1.2.</span> Negative Example</h3>
+<div id="outline-container-orgdaa21ef" class="outline-3">
+<h3 id="orgdaa21ef"><span class="section-number-3">1.2.</span> Negative Example</h3>
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">package</span> pond.<span class="org-constant">swan</span>;
@@ -337,6 +342,7 @@ This allows <code>package access</code> to work.
 }
 </pre>
 </div>
+
 <p>
 <code>BadCygnet</code> is in the <code>pond.swan</code> <code>package</code>, and the code <b>doesn’t compile</b>.
 </p>
