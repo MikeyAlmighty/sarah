@@ -22,8 +22,9 @@ package pond.duck;
 
 public class MotherDuck {
     String noise = "quack";
+
     void quack() {
-    System.out.print(noise); // package access is ok
+        System.out.print(noise); // package access is ok
     }
 }
 
@@ -32,6 +33,7 @@ package pond.duck;
 public class GoodDuckling {
     public void makeNoise() {
         var duck = new MotherDuck();
+
         duck.quack(); // package access is ok
         System.out.print(duck.noise); // package access is ok
     }
@@ -39,6 +41,7 @@ public class GoodDuckling {
 #+END_SRC
 
 Notice that all the =classes= covered so far are in the *same package*, ~pond.duck~.
+
 This allows ~package access~ to work.
 
 ** Negative Example
@@ -57,6 +60,7 @@ public class BadCygnet {
     }
 }
 #+END_SRC
+
 ~BadCygnet~ is in the ~pond.swan~ =package=, and the code *doesn’t compile*.
 
 Remember that when there is *no* access modifier on a member, only =classes= in the *same package* can *access* the member.

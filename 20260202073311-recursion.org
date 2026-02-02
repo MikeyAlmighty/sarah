@@ -1,0 +1,53 @@
+:PROPERTIES:
+:ID:       ecec7d0e-887f-4b9a-81e3-cfb1dfc96767
+:END:
+#+title: Recursion
+
+* Recursion
+
+*Recursion* is a technique where a =method= calls *itself* to solve a problem.
+
+A recursive method breaks a problem into *smaller* *subproblems*, each of which is solved by calling the same method again until a ~base~ ~condition~ is met.
+
+** Example
+
+#+BEGIN_SRC java
+public class Recursion {
+    // Recursive method to calculate factorial
+    int factorial(int n)    {
+        if (n == 1) { // Base case
+            return 1;
+        }
+
+        return n * factorial(n - 1); // Recursive call
+    }
+
+    public static void main(String[] args) {
+        Recursion obj = new Recursion(); 
+        System.out.println("Factorial of 5: " + obj.factorial(5));
+    }
+}
+#+END_SRC
+Execution flow  
+
+#+BEGIN_SRC java
+factorial(5) → 5 * factorial(4) 
+factorial(4) → 4 * factorial(3) 
+factorial(3) → 3 * factorial(2) 
+factorial(2) → 2 * factorial(1) 
+Base case: factorial(1) → 1 
+#+END_SRC
+
+Final result: ~5 * 4 * 3 * 2 * 1 = 120~
+
+** Advantages of recursion
+
+- Simplifies *complex* *problems* (e.g. trees, graphs, backtracking).
+- Reduces code length by removing loops.
+- Useful for problems like ~DFS~, ~Factorial~, ~Fibonacci~, etc.
+
+** Disadvantages of recursion
+
+- Consumes more memory (stores function calls in stack).
+- *Slower* than loops due to function call overhead.
+- Can lead to ~StackOverflowError~ if the base case is missing.
