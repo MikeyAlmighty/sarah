@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       63c9bcda-c55a-44be-b37c-3c150230a458
+:END:
+#+title: Reversing a Number
+
+* Reversing a Number
+
+#+BEGIN_SRC java
+package methods;
+
+import java.util.Scanner;
+
+public class Reverse {
+    public int reverseOrder(int num1) {
+        int reversed = 0;
+        while (num1 != 0){
+            int digit = num1 % 10;
+            reversed = reversed * 10 + digit;
+            num1 = num1 / 10;
+        }
+        return reversed;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Please enter a number to be revesed: ");
+
+        int num = scanner.nextInt();
+        scanner.close();
+
+        Reverse obj = new Reverse(); 
+
+        System.out.println("Input: " + num + " Reversed:" + obj.reverseOrder(num));
+    }
+}
+#+END_SRC
