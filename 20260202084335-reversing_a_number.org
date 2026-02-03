@@ -11,11 +11,28 @@ package methods;
 import java.util.Scanner;
 
 public class Reverse {
+    // num1: 321
+    // lastDigit: 1
+    // reversed: 0 * 10 + 1 = 1
+    // num1: 32
+
+    // num1: 32
+    // lastDigit: 2
+    // reversed: 1 * 10 + 2 = 12
+    // num1: 3
+
+    // num1: 3
+    // lastDigit: 3
+    // reversed: 12 * 10 + 3 == 123
+    // num1: 0
+
+    // reversed: 123
+
     public int reverseOrder(int num1) {
         int reversed = 0;
         while (num1 != 0){
-            int digit = num1 % 10;
-            reversed = reversed * 10 + digit;
+            int lastDigit = num1 % 10;
+            reversed = reversed * 10 + lastDigit;
             num1 = num1 / 10;
         }
         return reversed;
