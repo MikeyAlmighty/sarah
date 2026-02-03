@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-02 Mon 08:08 -->
+<!-- 2026-02-03 Tue 07:54 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Bubble Sort</title>
@@ -256,26 +256,35 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org0cb4301">1. Bubble Sort</a></li>
+<li><a href="#org3ac7523">1. Bubble Sort</a>
+<ul>
+<li><a href="#org69a21d1">1.1. JavaScript</a></li>
+<li><a href="#orgba3cd1c">1.2. Java</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org0cb4301" class="outline-2">
-<h2 id="org0cb4301"><span class="section-number-2">1.</span> Bubble Sort</h2>
+<div id="outline-container-org3ac7523" class="outline-2">
+<h2 id="org3ac7523"><span class="section-number-2">1.</span> Bubble Sort</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-Largest item "bubbles up" to correct position
+Largest item <b>"bubbles up"</b> to correct position
 </p>
 
 <p>
-`Time complexity`: O(n<sup>2</sup>)
+<b>Time complexity</b>: <code>O(n^2)</code>
 </p>
 
 <p>
-[Implementation](./bubble-sort.js)
+Each <b>outer</b> <b>loop</b> shrinks the unsorted window from the right.
 </p>
+</div>
 
+<div id="outline-container-org69a21d1" class="outline-3">
+<h3 id="org69a21d1"><span class="section-number-3">1.1.</span> JavaScript</h3>
+<div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
 <pre class="src src-js"><span class="org-keyword">const</span> <span class="org-variable-name">bubbleSort</span> = (array) =&gt; {
   <span class="org-keyword">const</span> <span class="org-variable-name">arr</span> = array.slice() <span class="org-comment-delimiter">// </span><span class="org-comment">Create shallow copy of array to avoid mutation (Pure Function)
@@ -294,6 +303,135 @@ Largest item "bubbles up" to correct position
 <span class="org-keyword">const</span> <span class="org-variable-name">array</span> = [2, 19, 4, 25, 6, 520]
 console.log(bubbleSort(array))
 </pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgba3cd1c" class="outline-3">
+<h3 id="orgba3cd1c"><span class="section-number-3">1.2.</span> Java</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li><code>j end</code> = <code>numbers.length - i - 1</code></li>
+<li><code>j max index</code> is the last j where <code>j + 1</code> is still valid</li>
+<li><b>Sorted</b> <b>at</b> <b>end</b> shows which elements are already guaranteed correct</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">sort</span>(<span class="org-type">double</span> <span class="org-variable-name">num1</span>, <span class="org-type">double</span> <span class="org-variable-name">num2</span>, <span class="org-type">double</span> <span class="org-variable-name">num3</span>, <span class="org-type">double</span> <span class="org-variable-name">num4</span>) {
+    <span class="org-type">double</span>[] <span class="org-variable-name">numbers</span> = {num1, num2, num3, num4};
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; numbers.<span class="org-type">length</span> - 1; i++) {
+        <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">j</span> = 0; j &lt; numbers.<span class="org-type">length</span> - i - 1; j++) {
+            <span class="org-keyword">if</span> (numbers[j] &gt; numbers[j + 1]) {
+                <span class="org-type">int</span> <span class="org-variable-name">temp</span> = (<span class="org-type">int</span>) numbers[j];
+                numbers[j] = numbers[j + 1];
+                numbers[j+1] = temp;
+            }
+        }
+    }
+    System.out.println(Arrays.toString(numbers));
+}
+
+<span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
+    sort(23.0, 69.0, 11, 2);
+}
+<span class="org-comment-delimiter">// </span><span class="org-comment">[11.0, 23.0, 69.0, 2.0]</span>
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">i</th>
+<th scope="col" class="org-right">j</th>
+<th scope="col" class="org-left">j &lt; length - i - 1</th>
+<th scope="col" class="org-left">Compared indexes</th>
+<th scope="col" class="org-left">Values compared</th>
+<th scope="col" class="org-left">Swap?</th>
+<th scope="col" class="org-left">Array after step</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-left">0 &lt; 3 (true)</td>
+<td class="org-left">0 ↔ 1</td>
+<td class="org-left">23.0 ↔ 69.0</td>
+<td class="org-left">No</td>
+<td class="org-left">[23.0, 69.0, 11.0, 2.0]</td>
+</tr>
+
+<tr>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+<td class="org-left">1 &lt; 3 (true)</td>
+<td class="org-left">1 ↔ 2</td>
+<td class="org-left">69.0 ↔ 11.0</td>
+<td class="org-left">Yes</td>
+<td class="org-left">[23.0, 11.0, 69.0, 2.0]</td>
+</tr>
+
+<tr>
+<td class="org-right">0</td>
+<td class="org-right">2</td>
+<td class="org-left">2 &lt; 3 (true)</td>
+<td class="org-left">2 ↔ 3</td>
+<td class="org-left">69.0 ↔ 2.0</td>
+<td class="org-left">Yes</td>
+<td class="org-left">[23.0, 11.0, 2.0, 69.0]</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+<td class="org-left">0 &lt; 2 (true)</td>
+<td class="org-left">0 ↔ 1</td>
+<td class="org-left">23.0 ↔ 11.0</td>
+<td class="org-left">Yes</td>
+<td class="org-left">[11.0, 23.0, 2.0, 69.0]</td>
+</tr>
+
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-left">1 &lt; 2 (true)</td>
+<td class="org-left">1 ↔ 2</td>
+<td class="org-left">23.0 ↔ 2.0</td>
+<td class="org-left">Yes</td>
+<td class="org-left">[11.0, 2.0, 23.0, 69.0]</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">2</td>
+<td class="org-right">0</td>
+<td class="org-left">0 &lt; 1 (true)</td>
+<td class="org-left">0 ↔ 1</td>
+<td class="org-left">11.0 ↔ 2.0</td>
+<td class="org-left">Yes</td>
+<td class="org-left">[2.0, 11.0, 23.0, 69.0]</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>

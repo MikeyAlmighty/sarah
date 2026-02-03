@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-02 Mon 08:08 -->
+<!-- 2026-02-03 Tue 07:54 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Pattern Matching</title>
@@ -256,19 +256,19 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org38cd0ee">1. Pattern Matching</a>
+<li><a href="#orga8b3509">1. Pattern Matching</a>
 <ul>
-<li><a href="#org7eb2091">1.1. Legacy (pre 16)</a></li>
-<li><a href="#org882a232">1.2. Patter Variables (Java 16)</a>
+<li><a href="#org8656a23">1.1. Legacy (pre 16)</a></li>
+<li><a href="#orgd57ae42">1.2. Patter Variables (Java 16)</a>
 <ul>
-<li><a href="#orgf5d2a74">1.2.1. Reassigning Pattern Variables</a></li>
+<li><a href="#org2e04f7e">1.2.1. Reassigning Pattern Variables</a></li>
 </ul>
 </li>
-<li><a href="#orgf3884e3">1.3. Pattern Variables and Expressions</a></li>
-<li><a href="#org8ea57a5">1.4. Subtypes</a></li>
-<li><a href="#org20de8ce">1.5. Flow Scoping</a>
+<li><a href="#org93f5823">1.3. Pattern Variables and Expressions</a></li>
+<li><a href="#orgbd4f334">1.4. Subtypes</a></li>
+<li><a href="#orgc5438a3">1.5. Flow Scoping</a>
 <ul>
-<li><a href="#org0067942">1.5.1. <span class="underline">Exam trick</span></a></li>
+<li><a href="#org8048278">1.5.1. <span class="underline">Exam trick</span></a></li>
 </ul>
 </li>
 </ul>
@@ -277,8 +277,8 @@
 </div>
 </div>
 
-<div id="outline-container-org38cd0ee" class="outline-2">
-<h2 id="org38cd0ee"><span class="section-number-2">1.</span> Pattern Matching</h2>
+<div id="outline-container-orga8b3509" class="outline-2">
+<h2 id="orga8b3509"><span class="section-number-2">1.</span> Pattern Matching</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>Introduced in <b>Java 16</b></li>
@@ -290,8 +290,8 @@ It is used in conjunction with <a href="20240101124425-if_else_statement.html#ID
 </p>
 </div>
 
-<div id="outline-container-org7eb2091" class="outline-3">
-<h3 id="org7eb2091"><span class="section-number-3">1.1.</span> Legacy (pre 16)</h3>
+<div id="outline-container-org8656a23" class="outline-3">
+<h3 id="org8656a23"><span class="section-number-3">1.1.</span> Legacy (pre 16)</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Consider the following code that takes a <code>Number</code> instance and compares it with the value <code>5</code>:
@@ -318,8 +318,8 @@ Code that <b>first checks if a variable is of a particular type</b> and then <b>
 </div>
 </div>
 
-<div id="outline-container-org882a232" class="outline-3">
-<h3 id="org882a232"><span class="section-number-3">1.2.</span> Patter Variables (Java 16)</h3>
+<div id="outline-container-orgd57ae42" class="outline-3">
+<h3 id="orgd57ae42"><span class="section-number-3">1.2.</span> Patter Variables (Java 16)</h3>
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-type">void</span> <span class="org-function-name">compareIntegers</span>(<span class="org-type">Number</span> <span class="org-variable-name">number</span>) {
@@ -336,8 +336,8 @@ Notice that this code also avoids any potential <code>ClassCastException</code> 
 </p>
 </div>
 
-<div id="outline-container-orgf5d2a74" class="outline-4">
-<h4 id="orgf5d2a74"><span class="section-number-4">1.2.1.</span> Reassigning Pattern Variables</h4>
+<div id="outline-container-org2e04f7e" class="outline-4">
+<h4 id="org2e04f7e"><span class="section-number-4">1.2.1.</span> Reassigning Pattern Variables</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 While possible, it is a bad practice to <b>reassign</b> a <code>pattern variable</code> since doing so can lead to ambiguity about what <b>is and is not in scope</b>:
@@ -363,8 +363,8 @@ The reassignment can be <b>prevented</b> with a <code>final</code> modifier, but
 </div>
 </div>
 
-<div id="outline-container-orgf3884e3" class="outline-3">
-<h3 id="orgf3884e3"><span class="section-number-3">1.3.</span> Pattern Variables and Expressions</h3>
+<div id="outline-container-org93f5823" class="outline-3">
+<h3 id="org93f5823"><span class="section-number-3">1.3.</span> Pattern Variables and Expressions</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 <code>Pattern matching</code> includes expressions that can be used to filter data out, such as in the following example:
@@ -385,8 +385,8 @@ Notice that we’re using the <code>pattern variable</code> in an expression in 
 </div>
 </div>
 
-<div id="outline-container-org8ea57a5" class="outline-3">
-<h3 id="org8ea57a5"><span class="section-number-3">1.4.</span> Subtypes</h3>
+<div id="outline-container-orgbd4f334" class="outline-3">
+<h3 id="orgbd4f334"><span class="section-number-3">1.4.</span> Subtypes</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 The <code>type</code> of the <b>pattern variable</b> must be a <b>subtype</b> of the variable on the <code>LHS</code> of the expression.
@@ -405,8 +405,8 @@ While the second line compiles, the last line does not compile because <code>pat
 </div>
 </div>
 
-<div id="outline-container-org20de8ce" class="outline-3">
-<h3 id="org20de8ce"><span class="section-number-3">1.5.</span> Flow Scoping</h3>
+<div id="outline-container-orgc5438a3" class="outline-3">
+<h3 id="orgc5438a3"><span class="section-number-3">1.5.</span> Flow Scoping</h3>
 <div class="outline-text-3" id="text-1-5">
 <p>
 The compiler applies <code>flow scoping</code> when working with <b>pattern matching</b>.
@@ -414,8 +414,8 @@ The compiler applies <code>flow scoping</code> when working with <b>pattern matc
 </p>
 </div>
 
-<div id="outline-container-org0067942" class="outline-4">
-<h4 id="org0067942"><span class="section-number-4">1.5.1.</span> <span class="underline">Exam trick</span></h4>
+<div id="outline-container-org8048278" class="outline-4">
+<h4 id="org8048278"><span class="section-number-4">1.5.1.</span> <span class="underline">Exam trick</span></h4>
 <div class="outline-text-4" id="text-1-5-1">
 <p>
 It might surprise you to learn this code does compile:
