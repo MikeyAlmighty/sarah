@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-03 Tue 07:54 -->
+<!-- 2026-02-07 Sat 17:54 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Creating an Array of Primitives</title>
@@ -256,12 +256,13 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9ebaf22">1. Creating an Array of Primitives</a>
+<li><a href="#org3185235">1. Creating an Array of Primitives</a>
 <ul>
-<li><a href="#org809e541">1.1. Anonymous Array</a></li>
-<li><a href="#orgf2226e5">1.2. Multiple Array Declaration</a>
+<li><a href="#orga2905ed">1.1. Default Types</a></li>
+<li><a href="#org5ab5314">1.2. Anonymous Array (Array Initializer)</a></li>
+<li><a href="#org214f1d0">1.3. Multiple Array Declaration</a>
 <ul>
-<li><a href="#orgf7da560">1.2.1. <span class="underline">Exam Trick</span></a></li>
+<li><a href="#orge71e7f4">1.3.1. <span class="underline">Exam Trick</span></a></li>
 </ul>
 </li>
 </ul>
@@ -270,8 +271,8 @@
 </div>
 </div>
 
-<div id="outline-container-org9ebaf22" class="outline-2">
-<h2 id="org9ebaf22"><span class="section-number-2">1.</span> Creating an Array of Primitives</h2>
+<div id="outline-container-org3185235" class="outline-2">
+<h2 id="org3185235"><span class="section-number-2">1.</span> Creating an Array of Primitives</h2>
 <div class="outline-text-2" id="text-1">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">int - Type of Array
@@ -283,22 +284,35 @@
 <p>
 When you use this form to instantiate an array, all elements are set to the <b>default value</b> for that <code>type</code>.
 </p>
+</div>
+
+<div id="outline-container-orga2905ed" class="outline-3">
+<h3 id="orga2905ed"><span class="section-number-3">1.1.</span> Default Types</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>Numeric = <code>0</code></li>
+<li>Char = <code>\u0000</code></li>
+<li>Boolean = <code>false</code></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5ab5314" class="outline-3">
+<h3 id="org5ab5314"><span class="section-number-3">1.2.</span> Anonymous Array (Array Initializer)</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Java recognizes that this expression is redundant.
+(Since you are specifying the type of the array on the <code>LHS</code>, Java already knows the <code>type</code>.
+And since you are specifying the initial values, it already knows the <code>size</code>.
+</p>
+
 
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-type">int</span>[] <span class="org-variable-name">moreNumbers</span> = <span class="org-keyword">new</span> <span class="org-type">int</span>[] {42, 55, 99};
 </pre>
 </div>
 
-<p>
-Java recognizes that this expression is redundant.
-(Since you are specifying the type of the array on the <code>LHS</code>, Java already knows the <code>type</code>.
-And since you are specifying the initial values, it already knows the <code>size</code>.
-</p>
-</div>
 
-<div id="outline-container-org809e541" class="outline-3">
-<h3 id="org809e541"><span class="section-number-3">1.1.</span> Anonymous Array</h3>
-<div class="outline-text-3" id="text-1-1">
 <p>
 As a shortcut, Java lets you write this:
 </p>
@@ -313,22 +327,16 @@ This approach is called an <code>anonymous array</code>, it is anonymous because
 </p>
 
 <p>
-All valid:
+The <code>new</code> operator is <b>not</b> used in the array-initializer syntax.
+You have to <b>declare</b>, <b>create</b>, and <b>initialize</b> the array all in <b>one</b> statement.
+(Splitting it would cause a syntax error.)
 </p>
-<div class="org-src-container">
-<pre class="src src-java"><span class="org-type">int</span>[] <span class="org-variable-name">numAnimals</span>;
-<span class="org-type">int</span> [] <span class="org-variable-name">numAnimals2</span>;
-<span class="org-type">int</span> []<span class="org-variable-name">numAnimals3</span>;
-<span class="org-type">int</span> <span class="org-variable-name">numAnimals4</span>[];
-<span class="org-type">int</span> <span class="org-variable-name">numAnimals5</span> [];
-</pre>
-</div>
 </div>
 </div>
 
-<div id="outline-container-orgf2226e5" class="outline-3">
-<h3 id="orgf2226e5"><span class="section-number-3">1.2.</span> Multiple Array Declaration</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-org214f1d0" class="outline-3">
+<h3 id="org214f1d0"><span class="section-number-3">1.3.</span> Multiple Array Declaration</h3>
+<div class="outline-text-3" id="text-1-3">
 <p>
 <b>Two</b> <code>int</code> <code>Arrays</code>
 </p>
@@ -338,9 +346,9 @@ All valid:
 </div>
 </div>
 
-<div id="outline-container-orgf7da560" class="outline-4">
-<h4 id="orgf7da560"><span class="section-number-4">1.2.1.</span> <span class="underline">Exam Trick</span></h4>
-<div class="outline-text-4" id="text-1-2-1">
+<div id="outline-container-orge71e7f4" class="outline-4">
+<h4 id="orge71e7f4"><span class="section-number-4">1.3.1.</span> <span class="underline">Exam Trick</span></h4>
+<div class="outline-text-4" id="text-1-3-1">
 <p>
 <b>One</b> <code>int</code> array and one type <code>int</code>
 </p>

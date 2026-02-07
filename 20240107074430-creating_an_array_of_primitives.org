@@ -14,15 +14,23 @@ int[] numbers = new int[3];
 
 When you use this form to instantiate an array, all elements are set to the *default value* for that ~type~.
 
-#+BEGIN_SRC java
-int[] moreNumbers = new int[] {42, 55, 99};
-#+END_SRC
+** Default Types
+
+- Numeric = =0=
+- Char = =\u0000=
+- Boolean = =false= 
+
+** Anonymous Array (Array Initializer)
 
 Java recognizes that this expression is redundant.
 (Since you are specifying the type of the array on the =LHS=, Java already knows the ~type~.
 And since you are specifying the initial values, it already knows the ~size~.
 
-** Anonymous Array
+
+#+BEGIN_SRC java
+int[] moreNumbers = new int[] {42, 55, 99};
+#+END_SRC
+
 
 As a shortcut, Java lets you write this:
 
@@ -32,14 +40,9 @@ int[] moreNumbers = {42, 55, 99};
 
 This approach is called an =anonymous array=, it is anonymous because you don’t specify the ~type~ and ~size~.
 
-All valid:
-#+BEGIN_SRC java
-int[] numAnimals;
-int [] numAnimals2;
-int []numAnimals3;
-int numAnimals4[];
-int numAnimals5 [];
-#+END_SRC
+The ~new~ operator is *not* used in the array-initializer syntax.
+You have to *declare*, *create*, and *initialize* the array all in *one* statement.
+(Splitting it would cause a syntax error.)
 
 ** Multiple Array Declaration
 
