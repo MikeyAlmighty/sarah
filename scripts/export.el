@@ -1,7 +1,7 @@
 ;;; export.el --- Org-roam HTML export to /docs with index
 
 ;; Run with:
-;; /opt/homebrew/bin/emacs -Q --batch -l export.el
+;; emacs -Q --batch -l export.el
 
 ;; --------------------------
 ;; 1. Package bootstrap

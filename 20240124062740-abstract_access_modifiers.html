@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-07 Sat 17:54 -->
+<!-- 2026-02-08 Sun 09:59 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Abstract Access Modifiers</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -256,32 +256,31 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org3f99807">1. Abstract Access Modifiers</a>
+<li><a href="#orgb7aa4ce">1. Abstract Access Modifiers</a>
 <ul>
-<li><a href="#org6477525">1.1. Abstract and final</a>
+<li><a href="#orga927fdd">1.1. Abstract and final</a>
 <ul>
-<li><a href="#org87dd3de">1.1.1. Example</a></li>
+<li><a href="#org398369a">1.1.1. Example</a></li>
 </ul>
 </li>
-<li><a href="#orged4601d">1.2. Abstract and private</a>
+<li><a href="#org11bccee">1.2. Abstract and private</a>
 <ul>
-<li><a href="#org4039b66">1.2.1. Example</a></li>
+<li><a href="#org6ab0546">1.2.1. Example</a></li>
 </ul>
 </li>
-<li><a href="#org4353ec8">1.3. Abstract and protected</a></li>
-<li><a href="#org50772dd">1.4. Abstract and static</a></li>
+<li><a href="#org8b9cc90">1.3. Abstract and protected</a></li>
+<li><a href="#org8dc43fd">1.4. Abstract and static</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org3f99807" class="outline-2">
-<h2 id="org3f99807"><span class="section-number-2">1.</span> Abstract Access Modifiers</h2>
+<div id="outline-container-orgb7aa4ce" class="outline-2">
+<h2 id="orgb7aa4ce"><span class="section-number-2">1.</span> Abstract Access Modifiers</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org6477525" class="outline-3">
-<h3 id="org6477525"><span class="section-number-3">1.1.</span> Abstract and final</h3>
+<div id="outline-container-orga927fdd" class="outline-3">
+<h3 id="orga927fdd"><span class="section-number-3">1.1.</span> Abstract and final</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 What would happen if you marked a class or method both <code>abstract</code> and <code>final</code>?
@@ -297,9 +296,8 @@ These concepts are in <b>direct conflict</b> with each other.
 Due to this incompatibility, Java does not permit a class or method to be <b>marked</b> both <code>abstract</code> and <code>final</code>.
 </p>
 </div>
-
-<div id="outline-container-org87dd3de" class="outline-4">
-<h4 id="org87dd3de"><span class="section-number-4">1.1.1.</span> Example</h4>
+<div id="outline-container-org398369a" class="outline-4">
+<h4 id="org398369a"><span class="section-number-4">1.1.1.</span> Example</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 For example, the following code snippet will not compile:
@@ -312,9 +310,8 @@ For example, the following code snippet will not compile:
 </pre>
 </div>
 </div>
-
 <ol class="org-ol">
-<li><a id="org5e48b66"></a><span class="underline">Exam Trick</span><br />
+<li><a id="org3fe5b2d"></a><span class="underline">Exam Trick</span><br />
 <div class="outline-text-5" id="text-1-1-1-1">
 <p>
 In this example, <b>neither</b> the <code>class</code> nor the <code>method declarations</code> will compile because they are marked both <code>abstract</code> and <code>final</code>.
@@ -328,9 +325,8 @@ The exam doesn’t tend to use <code>final</code> modifiers on <code>classes</co
 </ol>
 </div>
 </div>
-
-<div id="outline-container-orged4601d" class="outline-3">
-<h3 id="orged4601d"><span class="section-number-3">1.2.</span> Abstract and private</h3>
+<div id="outline-container-org11bccee" class="outline-3">
+<h3 id="org11bccee"><span class="section-number-3">1.2.</span> Abstract and private</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 A <code>method</code> <b>cannot</b> be marked as both <code>abstract</code> and <code>private</code>.
@@ -345,9 +341,8 @@ This rule makes sense if you think about it.
 How would you define a subclass that implements a required method if the method is not inherited by the subclass?
 </p>
 </div>
-
-<div id="outline-container-org4039b66" class="outline-4">
-<h4 id="org4039b66"><span class="section-number-4">1.2.1.</span> Example</h4>
+<div id="outline-container-org6ab0546" class="outline-4">
+<h4 id="org6ab0546"><span class="section-number-4">1.2.1.</span> Example</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 The answer is that you <b>can’t</b>, which is why the compiler will complain if you try to do the following:
@@ -378,9 +373,8 @@ The compiler recognizes this in the <code>parent</code> class and reports an <b>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org4353ec8" class="outline-3">
-<h3 id="org4353ec8"><span class="section-number-3">1.3.</span> Abstract and protected</h3>
+<div id="outline-container-org8b9cc90" class="outline-3">
+<h3 id="org8b9cc90"><span class="section-number-3">1.3.</span> Abstract and protected</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 In this modified example, the code will still <b>not</b> compile, but for a completely different reason.
@@ -406,9 +400,8 @@ Even with <code>abstract</code> methods, the rules for <b>overriding methods</b>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org50772dd" class="outline-3">
-<h3 id="org50772dd"><span class="section-number-3">1.4.</span> Abstract and static</h3>
+<div id="outline-container-org8dc43fd" class="outline-3">
+<h3 id="org8dc43fd"><span class="section-number-3">1.4.</span> Abstract and static</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 A <code>static</code> method can only be <b>hidden</b>, <b>not overridden</b>.

@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-07 Sat 17:54 -->
+<!-- 2026-02-08 Sun 09:59 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Strategies for Thread safe code</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -256,48 +256,44 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orge5d4a6d">1. Confinement</a></li>
-<li><a href="#org6769bd2">2. Immutable</a></li>
-<li><a href="#org61c5e31">3. Synchronization</a></li>
-<li><a href="#orgf128bb1">4. Atomic Objects</a></li>
-<li><a href="#org32c3558">5. Partitioning</a>
+<li><a href="#org09bcae8">1. Confinement</a></li>
+<li><a href="#org6ca0b26">2. Immutable</a></li>
+<li><a href="#org68847ea">3. Synchronization</a></li>
+<li><a href="#orge7c1903">4. Atomic Objects</a></li>
+<li><a href="#org04bee4e">5. Partitioning</a>
 <ul>
-<li><a href="#org16a7dbf">5.1. Concurrent Collections</a></li>
+<li><a href="#orge37ae6f">5.1. Concurrent Collections</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orge5d4a6d" class="outline-2">
-<h2 id="orge5d4a6d"><span class="section-number-2">1.</span> <a href="20230127041730-confinement.html#ID-0a07a8a7-9849-46d6-8b8b-22e187f71080">Confinement</a></h2>
+<div id="outline-container-org09bcae8" class="outline-2">
+<h2 id="org09bcae8"><span class="section-number-2">1.</span> <a href="20230127041730-confinement.html#ID-0a07a8a7-9849-46d6-8b8b-22e187f71080">Confinement</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Don't share data across threads
 </p>
 </div>
 </div>
-
-<div id="outline-container-org6769bd2" class="outline-2">
-<h2 id="org6769bd2"><span class="section-number-2">2.</span> Immutable</h2>
+<div id="outline-container-org6ca0b26" class="outline-2">
+<h2 id="org6ca0b26"><span class="section-number-2">2.</span> Immutable</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Use immutable objects
 </p>
 </div>
 </div>
-
-<div id="outline-container-org61c5e31" class="outline-2">
-<h2 id="org61c5e31"><span class="section-number-2">3.</span> <a href="20230127044214-synchronization.html#ID-e69555ef-ade4-4b3e-ae63-59d3d6182b33">Synchronization</a></h2>
+<div id="outline-container-org68847ea" class="outline-2">
+<h2 id="org68847ea"><span class="section-number-2">3.</span> <a href="20230127044214-synchronization.html#ID-e69555ef-ade4-4b3e-ae63-59d3d6182b33">Synchronization</a></h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Prevent multiple threads from accessing same object concurrently
 </p>
 </div>
 </div>
-
-<div id="outline-container-orgf128bb1" class="outline-2">
-<h2 id="orgf128bb1"><span class="section-number-2">4.</span> <a href="20230127071652-atomic_objects.html#ID-4fbdf6dd-f4c9-4636-b7ff-d61bdd030ba5">Atomic Objects</a></h2>
+<div id="outline-container-orge7c1903" class="outline-2">
+<h2 id="orge7c1903"><span class="section-number-2">4.</span> <a href="20230127071652-atomic_objects.html#ID-4fbdf6dd-f4c9-4636-b7ff-d61bdd030ba5">Atomic Objects</a></h2>
 <div class="outline-text-2" id="text-4">
 <p>
 Increment atomicIntegers
@@ -305,17 +301,15 @@ Increment atomicIntegers
 </p>
 </div>
 </div>
-
-<div id="outline-container-org32c3558" class="outline-2">
-<h2 id="org32c3558"><span class="section-number-2">5.</span> Partitioning</h2>
+<div id="outline-container-org04bee4e" class="outline-2">
+<h2 id="org04bee4e"><span class="section-number-2">5.</span> Partitioning</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 Partitioning data into segments that can be access concurrently.
 </p>
 </div>
-
-<div id="outline-container-org16a7dbf" class="outline-3">
-<h3 id="org16a7dbf"><span class="section-number-3">5.1.</span> <a href="20230127073739-concurrent_collections.html#ID-ef30166a-db53-4698-bdb9-d969680625d9">Concurrent Collections</a></h3>
+<div id="outline-container-orge37ae6f" class="outline-3">
+<h3 id="orge37ae6f"><span class="section-number-3">5.1.</span> <a href="20230127073739-concurrent_collections.html#ID-ef30166a-db53-4698-bdb9-d969680625d9">Concurrent Collections</a></h3>
 </div>
 </div>
 </div>

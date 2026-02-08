@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-07 Sat 17:54 -->
+<!-- 2026-02-08 Sun 09:59 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Initializing final Fields</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -256,11 +256,11 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org8a4bfec">1. Initializing final Fields</a>
+<li><a href="#org335728a">1. Initializing final Fields</a>
 <ul>
-<li><a href="#org0f17a29">1.1. <span class="underline">Exam Trick</span></a>
+<li><a href="#org743c6ad">1.1. <span class="underline">Exam Trick</span></a>
 <ul>
-<li><a href="#orgebab32e">1.1.1. <span class="underline">Exam Trick</span></a></li>
+<li><a href="#org2623a23">1.1.1. <span class="underline">Exam Trick</span></a></li>
 </ul>
 </li>
 </ul>
@@ -268,9 +268,8 @@
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org8a4bfec" class="outline-2">
-<h2 id="org8a4bfec"><span class="section-number-2">1.</span> Initializing final Fields</h2>
+<div id="outline-container-org335728a" class="outline-2">
+<h2 id="org335728a"><span class="section-number-2">1.</span> Initializing final Fields</h2>
 <div class="outline-text-2" id="text-1">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">MouseHouse</span> {
@@ -288,10 +287,8 @@ Unlike <code>static</code> class members, though, <code>final instance</code> fi
 The <code>constructor</code> is part of the <b>initialization</b> process, so it is allowed to assign <code>final instance variables</code>.
 </p>
 </div>
-
-
-<div id="outline-container-org0f17a29" class="outline-3">
-<h3 id="org0f17a29"><span class="section-number-3">1.1.</span> <span class="underline">Exam Trick</span></h3>
+<div id="outline-container-org743c6ad" class="outline-3">
+<h3 id="org743c6ad"><span class="section-number-3">1.1.</span> <span class="underline">Exam Trick</span></h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 By the time the <code>constructor</code> completes, all <code>final instance variables</code> <b>must be assigned</b> a value <b>exactly once</b>.
@@ -301,7 +298,7 @@ By the time the <code>constructor</code> completes, all <code>final instance var
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">MouseHouse</span> {
     <span class="org-keyword">private</span> <span class="org-keyword">final</span> <span class="org-type">int</span> <span class="org-variable-name">volume</span>;
     <span class="org-keyword">private</span> <span class="org-keyword">final</span> <span class="org-type">String</span> <span class="org-variable-name">name</span>;
-    <span class="org-keyword">public</span> MouseHouse() {
+    <span class="org-keyword">public</span> <span class="org-function-name">MouseHouse</span>() {
         <span class="org-keyword">this</span>.name = <span class="org-string">"Empty House"</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">Constructor assignment
 </span>    }
     {
@@ -332,20 +329,19 @@ Failure to do so will result in a <b>compiler error</b> on the line that declare
         <span class="org-keyword">this</span>.volume = 10;
     }
 
-    <span class="org-keyword">public</span> MouseHouse(String type) {
+    <span class="org-keyword">public</span> <span class="org-function-name">MouseHouse</span>(<span class="org-type">String</span> <span class="org-variable-name">type</span>) {
         <span class="org-keyword">this</span>.type = type;
     }
 
-    <span class="org-keyword">public</span> MouseHouse() { <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
+    <span class="org-keyword">public</span> <span class="org-function-name">MouseHouse</span>() { <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>        <span class="org-keyword">this</span>.volume = 2; <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>    }
 }
 </pre>
 </div>
 </div>
-
-<div id="outline-container-orgebab32e" class="outline-4">
-<h4 id="orgebab32e"><span class="section-number-4">1.1.1.</span> <span class="underline">Exam Trick</span></h4>
+<div id="outline-container-org2623a23" class="outline-4">
+<h4 id="org2623a23"><span class="section-number-4">1.1.1.</span> <span class="underline">Exam Trick</span></h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 On the exam, be wary of any instance variables marked <code>final</code>.

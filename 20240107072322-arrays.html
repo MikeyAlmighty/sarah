@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-07 Sat 17:54 -->
+<!-- 2026-02-08 Sun 09:59 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Arrays</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -256,31 +256,29 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgf7cebbf">1. Arrays</a>
+<li><a href="#org409c39a">1. Arrays</a>
 <ul>
-<li><a href="#org53341e4">1.1. Syntax</a></li>
-<li><a href="#orgdfe7ec0">1.2. Creating an Array of Primitives</a></li>
-<li><a href="#org9d3d7f0">1.3. Creating an Array of Reference Variables</a>
+<li><a href="#org35a1830">1.1. Syntax</a></li>
+<li><a href="#org8c4792f">1.2. Creating an Array of Primitives</a></li>
+<li><a href="#org6f12a2e">1.3. Creating an Array of Reference Variables</a>
 <ul>
-<li><a href="#orga2ce0c6">1.3.1. .toString()</a></li>
+<li><a href="#org6032976">1.3.1. .toString()</a></li>
 </ul>
 </li>
-<li><a href="#orgdddfd63">1.4. Using an array</a></li>
-<li><a href="#orge201c1b">1.5. Foreach Loop</a></li>
-<li><a href="#org729b384">1.6. Array.sort()</a></li>
-<li><a href="#org97e343a">1.7. Array Searching</a></li>
-<li><a href="#orgf97e54f">1.8. Array.compare()</a></li>
-<li><a href="#org36ee860">1.9. Array.mismatch()</a></li>
-<li><a href="#org93400ef">1.10. Variable Arguments</a></li>
-<li><a href="#orgefa9de5">1.11. Multidimensional Arrays</a></li>
+<li><a href="#orged84172">1.4. Using an array</a></li>
+<li><a href="#org5316947">1.5. Foreach Loop</a></li>
+<li><a href="#org587f1f8">1.6. Array.sort()</a></li>
+<li><a href="#org43d2ada">1.7. Array Searching</a></li>
+<li><a href="#org82e7e50">1.8. Array.compare()</a></li>
+<li><a href="#orgca76a44">1.9. Array.mismatch()</a></li>
+<li><a href="#org63cfc0d">1.10. Multidimensional Arrays</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgf7cebbf" class="outline-2">
-<h2 id="orgf7cebbf"><span class="section-number-2">1.</span> Arrays</h2>
+<div id="outline-container-org409c39a" class="outline-2">
+<h2 id="org409c39a"><span class="section-number-2">1.</span> Arrays</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 An <code>array</code> is an <b>area of memory</b> on the <a href="20231230181446-heap.html#ID-dbcc90ea-bf9d-4bf5-9872-36b5794b88f0">Heap</a> with space for a designated number of elements.
@@ -311,9 +309,8 @@ If we didn’t want to use a <a href="20240103124304-creating_and_manipulating_s
 (This wouldn’t be very convenient because we’d lose all the <code>special</code> properties String gives us)
 </p>
 </div>
-
-<div id="outline-container-org53341e4" class="outline-3">
-<h3 id="org53341e4"><span class="section-number-3">1.1.</span> Syntax</h3>
+<div id="outline-container-org35a1830" class="outline-3">
+<h3 id="org35a1830"><span class="section-number-3">1.1.</span> Syntax</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-type">double</span>[] <span class="org-variable-name">myList</span> = <span class="org-keyword">new</span> <span class="org-type">double</span>[10];
@@ -321,16 +318,15 @@ If we didn’t want to use a <a href="20240103124304-creating_and_manipulating_s
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgdfe7ec0" class="outline-3">
-<h3 id="orgdfe7ec0"><span class="section-number-3">1.2.</span> <a href="20240107074430-creating_an_array_of_primitives.html#ID-2224ce47-ddac-4f11-965b-9dc6c649ca5a">Creating an Array of Primitives</a></h3>
+<div id="outline-container-org8c4792f" class="outline-3">
+<h3 id="org8c4792f"><span class="section-number-3">1.2.</span> <a href="20240107074430-creating_an_array_of_primitives.html#ID-2224ce47-ddac-4f11-965b-9dc6c649ca5a">Creating an Array of Primitives</a></h3>
 </div>
-<div id="outline-container-org9d3d7f0" class="outline-3">
-<h3 id="org9d3d7f0"><span class="section-number-3">1.3.</span> <a href="20240107074502-creating_an_array_of_reference_variables.html#ID-939b7ef7-fdb3-4e99-b858-4ede1a064ade">Creating an Array of Reference Variables</a></h3>
+<div id="outline-container-org6f12a2e" class="outline-3">
+<h3 id="org6f12a2e"><span class="section-number-3">1.3.</span> <a href="20240107074502-creating_an_array_of_reference_variables.html#ID-939b7ef7-fdb3-4e99-b858-4ede1a064ade">Creating an Array of Reference Variables</a></h3>
 <div class="outline-text-3" id="text-1-3">
 </div>
-<div id="outline-container-orga2ce0c6" class="outline-4">
-<h4 id="orga2ce0c6"><span class="section-number-4">1.3.1.</span> .toString()</h4>
+<div id="outline-container-org6032976" class="outline-4">
+<h4 id="org6032976"><span class="section-number-4">1.3.1.</span> .toString()</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <p>
 Java provides a method that prints an array nicely - <code>Arrays.toString(X)</code>:
@@ -345,30 +341,26 @@ System.out.println(names.toString()); <span class="org-comment-delimiter">// </s
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgdddfd63" class="outline-3">
-<h3 id="orgdddfd63"><span class="section-number-3">1.4.</span> <a href="20240107081539-using_an_array.html#ID-550094a3-6212-4f32-a473-9e331afbbb53">Using an array</a></h3>
+<div id="outline-container-orged84172" class="outline-3">
+<h3 id="orged84172"><span class="section-number-3">1.4.</span> <a href="20240107081539-using_an_array.html#ID-550094a3-6212-4f32-a473-9e331afbbb53">Using an array</a></h3>
 </div>
-<div id="outline-container-orge201c1b" class="outline-3">
-<h3 id="orge201c1b"><span class="section-number-3">1.5.</span> <a href="20260207175008-foreach_loop.html#ID-36e6d2a4-e907-46b6-a287-a00606c3d5df">Foreach Loop</a></h3>
+<div id="outline-container-org5316947" class="outline-3">
+<h3 id="org5316947"><span class="section-number-3">1.5.</span> <a href="20260207175008-foreach_loop.html#ID-36e6d2a4-e907-46b6-a287-a00606c3d5df">Foreach Loop</a></h3>
 </div>
-<div id="outline-container-org729b384" class="outline-3">
-<h3 id="org729b384"><span class="section-number-3">1.6.</span> <a href="20240107082011-array_sorting.html#ID-1a328fa4-9b9f-4856-88f3-fd490bce565b">Array.sort()</a></h3>
+<div id="outline-container-org587f1f8" class="outline-3">
+<h3 id="org587f1f8"><span class="section-number-3">1.6.</span> <a href="20240107082011-array_sorting.html#ID-1a328fa4-9b9f-4856-88f3-fd490bce565b">Array.sort()</a></h3>
 </div>
-<div id="outline-container-org97e343a" class="outline-3">
-<h3 id="org97e343a"><span class="section-number-3">1.7.</span> <a href="20240107100900-array_searching.html#ID-77196205-79e1-4284-bdec-cc31786e5729">Array Searching</a></h3>
+<div id="outline-container-org43d2ada" class="outline-3">
+<h3 id="org43d2ada"><span class="section-number-3">1.7.</span> <a href="20240107100900-array_searching.html#ID-77196205-79e1-4284-bdec-cc31786e5729">Array Searching</a></h3>
 </div>
-<div id="outline-container-orgf97e54f" class="outline-3">
-<h3 id="orgf97e54f"><span class="section-number-3">1.8.</span> <a href="20240107103646-array_comparison.html#ID-d06d8e67-0233-4275-8eaa-f0660d5b6cf1">Array.compare()</a></h3>
+<div id="outline-container-org82e7e50" class="outline-3">
+<h3 id="org82e7e50"><span class="section-number-3">1.8.</span> <a href="20240107103646-array_comparison.html#ID-d06d8e67-0233-4275-8eaa-f0660d5b6cf1">Array.compare()</a></h3>
 </div>
-<div id="outline-container-org36ee860" class="outline-3">
-<h3 id="org36ee860"><span class="section-number-3">1.9.</span> <a href="20240107131824-array_mismatch.html#ID-0392c33c-6152-4f81-afd8-a5455810b205">Array.mismatch()</a></h3>
+<div id="outline-container-orgca76a44" class="outline-3">
+<h3 id="orgca76a44"><span class="section-number-3">1.9.</span> <a href="20240107131824-array_mismatch.html#ID-0392c33c-6152-4f81-afd8-a5455810b205">Array.mismatch()</a></h3>
 </div>
-<div id="outline-container-org93400ef" class="outline-3">
-<h3 id="org93400ef"><span class="section-number-3">1.10.</span> <a href="20240107132638-variable_arguments.html#ID-9bb3ac0e-af2c-4243-9ae2-f2bfbee868c3">Variable Arguments</a></h3>
-</div>
-<div id="outline-container-orgefa9de5" class="outline-3">
-<h3 id="orgefa9de5"><span class="section-number-3">1.11.</span> <a href="20240107163028-multidimensional_arrays.html#ID-b9c11422-0e4c-468e-8fae-e13791b864f3">Multidimensional Arrays</a></h3>
+<div id="outline-container-org63cfc0d" class="outline-3">
+<h3 id="org63cfc0d"><span class="section-number-3">1.10.</span> <a href="20240107163028-multidimensional_arrays.html#ID-b9c11422-0e4c-468e-8fae-e13791b864f3">Multidimensional Arrays</a></h3>
 </div>
 </div>
 </div>

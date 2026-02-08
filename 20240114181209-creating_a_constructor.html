@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-07 Sat 17:54 -->
+<!-- 2026-02-08 Sun 09:59 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Creating a Constructor</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -256,34 +256,32 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org07483d1">1. Creating a Constructor</a>
+<li><a href="#orgab99754">1. Creating a Constructor</a>
 <ul>
-<li><a href="#orgf4f3478">1.1. Example</a>
+<li><a href="#org309e6d2">1.1. Example</a>
 <ul>
-<li><a href="#org6b898f5">1.1.1. <span class="underline">Exam Trick</span></a></li>
+<li><a href="#orge5aa8bb">1.1.1. <span class="underline">Exam Trick</span></a></li>
 </ul>
 </li>
-<li><a href="#org724e4af">1.2. Multiple Constructors (Constructor Overloading)</a></li>
+<li><a href="#org09cf3fe">1.2. Multiple Constructors (Constructor Overloading)</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org07483d1" class="outline-2">
-<h2 id="org07483d1"><span class="section-number-2">1.</span> Creating a Constructor</h2>
+<div id="outline-container-orgab99754" class="outline-2">
+<h2 id="orgab99754"><span class="section-number-2">1.</span> Creating a Constructor</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 The name of the <b>constructor</b>, <code>Bunny</code>, matches the name of the class, <code>Bunny</code>, and there is <b>no return type</b>, <b>not even void</b>.
 </p>
 </div>
-
-<div id="outline-container-orgf4f3478" class="outline-3">
-<h3 id="orgf4f3478"><span class="section-number-3">1.1.</span> Example</h3>
+<div id="outline-container-org309e6d2" class="outline-3">
+<h3 id="org309e6d2"><span class="section-number-3">1.1.</span> Example</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Bunny</span> {
-    <span class="org-keyword">public</span> Bunny() {
+    <span class="org-keyword">public</span> <span class="org-function-name">Bunny</span>() {
         System.out.println(<span class="org-string">"Hop"</span>);
     }
     <span class="org-keyword">public</span> bunny() {} <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
@@ -292,21 +290,19 @@ The name of the <b>constructor</b>, <code>Bunny</code>, matches the name of the 
 </pre>
 </div>
 </div>
-
-<div id="outline-container-org6b898f5" class="outline-4">
-<h4 id="org6b898f5"><span class="section-number-4">1.1.1.</span> <span class="underline">Exam Trick</span></h4>
+<div id="outline-container-orge5aa8bb" class="outline-4">
+<h4 id="orge5aa8bb"><span class="section-number-4">1.1.1.</span> <span class="underline">Exam Trick</span></h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 Like <code>method parameters</code>, <code>constructor parameters</code> can be any valid class, array, or <a href="20231230083124-primitive_types.html#ID-46582863-7f97-448d-bbc7-f7da4c1e7574">primitive Type</a>, including <code>generics</code>, but may <b>not</b> include <code>var</code>.
 </p>
 </div>
-
 <ol class="org-ol">
-<li><a id="org80c17bc"></a>Example<br />
+<li><a id="org38e93b8"></a>Example<br />
 <div class="outline-text-5" id="text-1-1-1-1">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Bonobo</span> {
-    <span class="org-keyword">public</span> Bonobo(var food) { <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
+    <span class="org-keyword">public</span> <span class="org-function-name">Bonobo</span>(<span class="org-type">var</span> <span class="org-variable-name">food</span>) { <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>
     }
 }
@@ -317,9 +313,8 @@ Like <code>method parameters</code>, <code>constructor parameters</code> can be 
 </ol>
 </div>
 </div>
-
-<div id="outline-container-org724e4af" class="outline-3">
-<h3 id="org724e4af"><span class="section-number-3">1.2.</span> Multiple Constructors (Constructor Overloading)</h3>
+<div id="outline-container-org09cf3fe" class="outline-3">
+<h3 id="org09cf3fe"><span class="section-number-3">1.2.</span> Multiple Constructors (Constructor Overloading)</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 A <code>class</code> <b>can</b> have multiple <code>constructors</code>, as long as each <code>constructor</code> has a unique <code>constructor</code> signature.
@@ -333,12 +328,12 @@ Like methods with the same name but different signatures, declaring multiple con
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Turtle</span> {
     <span class="org-keyword">private</span> <span class="org-type">String</span> <span class="org-variable-name">name</span>;
-    <span class="org-keyword">public</span> Turtle() {
+    <span class="org-keyword">public</span> <span class="org-function-name">Turtle</span>() {
         name = <span class="org-string">"John Doe"</span>;
     }
-    <span class="org-keyword">public</span> Turtle(<span class="org-type">int</span> <span class="org-variable-name">age</span>) {}
-    <span class="org-keyword">public</span> Turtle(<span class="org-type">long</span> <span class="org-variable-name">age</span>) {}
-    <span class="org-keyword">public</span> Turtle(<span class="org-type">String</span> <span class="org-variable-name">newName</span>, String... favoriteFoods) {
+    <span class="org-keyword">public</span> <span class="org-function-name">Turtle</span>(<span class="org-type">int</span> <span class="org-variable-name">age</span>) {}
+    <span class="org-keyword">public</span> <span class="org-function-name">Turtle</span>(<span class="org-type">long</span> <span class="org-variable-name">age</span>) {}
+    <span class="org-keyword">public</span> <span class="org-function-name">Turtle</span>(<span class="org-type">String</span> <span class="org-variable-name">newName</span>, <span class="org-type">String</span>... <span class="org-variable-name">favoriteFoods</span>) {
     name = newName;
     }
 }
