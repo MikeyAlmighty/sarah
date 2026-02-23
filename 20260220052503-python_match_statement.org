@@ -1,0 +1,98 @@
+:PROPERTIES:
+:ID:       87ef0e64-b8c7-4025-8fbf-b895ce41ea01
+:END:
+#+title: Python Match statement
+
+* Match Statement (Python 3.10+)
+The ~match~ statement (introduced in Python 3.10) performs *structural pattern matching*.
+It compares a value against patterns and executes the first matching case.
+
+It is similar to ~switch~ in other languages, but more powerful.
+
+** Basic Syntax
+
+#+begin_src python
+match value:
+    case pattern1:
+        # code block
+    case pattern2:
+        # code block
+    case _:
+        # default case
+#+end_src
+
+
+** Simple Example
+
+#+begin_src python
+status = 404
+
+match status:
+    case 200:
+        print("OK")
+    case 404:
+        print("Not Found")
+    case 500:
+        print("Server Error")
+    case _:
+        print("Unknown Status")
+#+end_src
+
+
+** Matching Multiple Values
+
+#+begin_src python
+day = "Saturday"
+
+match day:
+    case "Saturday" | "Sunday":
+        print("Weekend")
+    case _:
+        print("Weekday")
+#+end_src
+
+
+** Variable Capture
+
+#+begin_src python
+point = (3, 4)
+
+match point:
+    case (x, y):
+        print(f"X: {x}, Y: {y}")
+#+end_src
+
+
+** Matching with Conditions (Guards)
+
+#+begin_src python
+number = 15
+
+match number:
+    case n if n > 0:
+        print("Positive")
+    case n if n < 0:
+        print("Negative")
+    case _:
+        print("Zero")
+#+end_src
+
+
+** Matching Dictionaries
+
+#+begin_src python
+user = {"name": "Alice", "age": 30}
+
+match user:
+    case {"name": name, "age": age}:
+        print(f"{name} is {age} years old")
+#+end_src
+
+
+** Key Notes
+
+- Available in Python =3.10= and later.
+- Patterns are checked *top* *to* *bottom*.
+- ~`_`~ acts as a wildcard (*default* *case*).
+- Supports *literals*, *sequences*, *mappings*, *classes*, and more.
+- More expressive than traditional [[id:f70b131a-1ca9-437e-9ce9-b8d3b2295a2a][if/elif]].

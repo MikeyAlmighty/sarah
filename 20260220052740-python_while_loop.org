@@ -1,0 +1,97 @@
+:PROPERTIES:
+:ID:       bda809ee-6b78-4520-8db7-0c5d0b2ec2ff
+:END:
+#+title: Python While Loop
+
+* While Loop in Python
+
+A ~`while`~ loop repeatedly executes a block of code as long as a condition evaluates to =True=.
+
+** Basic Syntax
+
+#+begin_src python
+while condition:
+    # code block
+#+end_src
+
+
+** Basic Example
+
+#+begin_src python
+count = 0
+
+while count < 5:
+    print(count)
+    count += 1
+#+end_src
+
+
+** Infinite Loop
+
+#+begin_src python
+while True:
+    print("Running forever")
+#+end_src
+
+- Use ~`break`~ to exit an infinite loop.
+
+
+** Using break
+
+#+begin_src python
+count = 0
+
+while True:
+    if count == 3:
+        break
+    print(count)
+    count += 1
+#+end_src
+
+
+** Using continue
+
+#+begin_src python
+count = 0
+
+while count < 5:
+    count += 1
+    if count == 3:
+        continue
+    print(count)
+#+end_src
+
+
+** While-Else Statement
+
+The ~`else`~ block runs if the loop condition becomes =False= (not if exited with ~`break`~).
+
+#+begin_src python
+count = 0
+
+while count < 3:
+    print(count)
+    count += 1
+else:
+    print("Loop finished normally")
+#+end_src
+
+
+** Common Pattern: Input Validation
+
+#+begin_src python
+user_input = ""
+
+while user_input != "quit":
+    user_input = input("Type 'quit' to exit: ")
+#+end_src
+
+
+** Key Notes
+
+- Condition is *checked* before each *iteration*.
+- If condition is =False= initially, the loop never runs.
+- Be careful to update variables to *avoid* infinite loops.
+- ~`break`~ stops the loop immediately.
+- ~`continue`~ skips to the *next* iteration.
+- ~`else`~ runs only if the loop was not interrupted by ~`break`~.

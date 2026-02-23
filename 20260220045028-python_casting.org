@@ -1,0 +1,40 @@
+:PROPERTIES:
+:ID:       7a5aa8e6-d577-4512-a613-8cc1f6de279b
+:END:
+#+title: Python Casting
+
+* Python Type Casting
+
+| Function    | Converts To | Example                      | Result        | Notes                            |
+|-------------+-------------+------------------------------+---------------+----------------------------------|
+| int()       | Integer     | (int "10")                   | 10            | Converts string/float to integer |
+| float()     | Float       | (float "3.14")               | 3.14          | Converts int/string to float     |
+| complex()   | Complex     | (complex 2 3)                | 2+3j          | complex(real, imag)              |
+| str()       | String      | (str 123)                    | "123"         | Converts most types to string    |
+| list()      | List        | (list (tuple 1 2 3))         | [1, 2, 3]     | Converts iterable to list        |
+| tuple()     | Tuple       | (tuple [1 2 3])              | (1, 2, 3)     | Converts iterable to tuple       |
+| set()       | Set         | (set [1 1 2 3])              | {1, 2, 3}     | Removes duplicates               |
+| dict()      | Dictionary  | (dict (( "a" 1 ) ( "b" 2 ))) | {"a":1,"b":2} | Needs key-value pairs            |
+| bool()      | Boolean     | (bool 0)                     | False         | 0, None, "" → False              |
+| bytes()     | Bytes       | (bytes "hi" "utf-8")         | b"hi"         | Requires encoding for strings    |
+| bytearray() | Bytearray   | (bytearray 5)                | b'\x00'*5     | Mutable byte sequence            |
+
+* Examples in Python Syntax
+
+#+begin_src python
+int("10")        # 10
+float("3.14")    # 3.14
+str(123)         # "123"
+list((1,2,3))    # [1,2,3]
+set([1,1,2,3])   # {1,2,3}
+bool("")         # False
+bytes("hi", "utf-8")  # b'hi'
+#+end_src
+
+* Implicit Casting
+
+#+BEGIN_SRC python
+print(type(10 + 10.0))
+
+# Outputs:  <class 'float'>
+#+END_SRC
