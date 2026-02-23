@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-20 Fri 07:05 -->
+<!-- 2026-02-23 Mon 08:08 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Casting Between char and Numeric Types</title>
@@ -256,32 +256,32 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org49f8a1c">1. Casting Between char and Numeric Types</a>
+<li><a href="#orgfa119a0">1. Casting Between char and Numeric Types</a>
 <ul>
-<li><a href="#org74c8da3">1.1. Explanation</a>
+<li><a href="#org9956d0a">1.1. Explanation</a>
 <ul>
-<li><a href="#org99f6333">1.1.1. Step 1: Write the number in binary/hex</a></li>
-<li><a href="#org044adce">1.1.2. Step 2: Keep only the lower 16 bits</a></li>
-<li><a href="#orgc29a7f4">1.1.3. Step 3: Interpret 0x0041 as a Unicode character</a></li>
+<li><a href="#org40c234f">1.1.1. Step 1: Write the number in binary/hex</a></li>
+<li><a href="#orgdb6d01f">1.1.2. Step 2: Keep only the lower 16 bits</a></li>
+<li><a href="#org1f4f6ea">1.1.3. Step 3: Interpret 0x0041 as a Unicode character</a></li>
 </ul>
 </li>
-<li><a href="#org51df26c">1.2. Floating-Point</a>
+<li><a href="#org3dafbb2">1.2. Floating-Point</a>
 <ul>
-<li><a href="#orgb2bd16d">1.2.1. Example</a></li>
+<li><a href="#org5247e63">1.2.1. Example</a></li>
 </ul>
 </li>
-<li><a href="#orgea4b40b">1.3. Char to Numeric</a></li>
-<li><a href="#orgc7225d8">1.4. Implicit Casting</a></li>
-<li><a href="#orge237b4b">1.5. Explicit Casting</a></li>
-<li><a href="#org56b4987">1.6. Operators</a>
+<li><a href="#org9d50507">1.3. Char to Numeric</a></li>
+<li><a href="#org1e0909a">1.4. Implicit Casting</a></li>
+<li><a href="#org5e9e2e0">1.5. Explicit Casting</a></li>
+<li><a href="#orgad11952">1.6. Operators</a>
 <ul>
-<li><a href="#orgac61ab9">1.6.1. Examples</a></li>
+<li><a href="#orgdbbc78a">1.6.1. Examples</a></li>
 </ul>
 </li>
-<li><a href="#org8c5d294">1.7. Comparing and Testing Characters</a>
+<li><a href="#org73f8a5b">1.7. Comparing and Testing Characters</a>
 <ul>
-<li><a href="#org05a1226">1.7.1. Examples</a></li>
-<li><a href="#org6e71bce">1.7.2. Helper Methods</a></li>
+<li><a href="#org64d1bb8">1.7.1. Examples</a></li>
+<li><a href="#orgbe89a55">1.7.2. Helper Methods</a></li>
 </ul>
 </li>
 </ul>
@@ -290,8 +290,8 @@
 </div>
 </div>
 
-<div id="outline-container-org49f8a1c" class="outline-2">
-<h2 id="org49f8a1c"><span class="section-number-2">1.</span> Casting Between char and Numeric Types</h2>
+<div id="outline-container-orgfa119a0" class="outline-2">
+<h2 id="orgfa119a0"><span class="section-number-2">1.</span> Casting Between char and Numeric Types</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 A <code>char</code> can be <a href="20231224190739-widening_primitive_conversion.html#ID-3ef23225-ae37-428e-8ad3-5d7728f59478">cast</a> into any <a href="20260121194236-numeric_data_types.html#ID-4b7774f6-ef98-4e86-ae2c-49961d934c6f">numeric types</a>, (<b>vice</b> <b>versa</b>).
@@ -311,12 +311,12 @@ For example:
 </div>
 </div>
 
-<div id="outline-container-org74c8da3" class="outline-3">
-<h3 id="org74c8da3"><span class="section-number-3">1.1.</span> Explanation</h3>
+<div id="outline-container-org9956d0a" class="outline-3">
+<h3 id="org9956d0a"><span class="section-number-3">1.1.</span> Explanation</h3>
 <div class="outline-text-3" id="text-1-1">
 </div>
-<div id="outline-container-org99f6333" class="outline-4">
-<h4 id="org99f6333"><span class="section-number-4">1.1.1.</span> Step 1: Write the number in binary/hex</h4>
+<div id="outline-container-org40c234f" class="outline-4">
+<h4 id="org40c234f"><span class="section-number-4">1.1.1.</span> Step 1: Write the number in binary/hex</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 <code>0xAB0041</code> is a <code>32-bit</code> <b>int</b>:
@@ -339,8 +339,8 @@ Lower 16 bits: 0x0041   ← kept
 </div>
 </div>
 
-<div id="outline-container-org044adce" class="outline-4">
-<h4 id="org044adce"><span class="section-number-4">1.1.2.</span> Step 2: Keep only the lower 16 bits</h4>
+<div id="outline-container-orgdb6d01f" class="outline-4">
+<h4 id="orgdb6d01f"><span class="section-number-4">1.1.2.</span> Step 2: Keep only the lower 16 bits</h4>
 <div class="outline-text-4" id="text-1-1-2">
 <p>
 <code>(char) 0xAB0041</code>  →  <code>(char) 0x0041</code>
@@ -348,8 +348,8 @@ Lower 16 bits: 0x0041   ← kept
 </div>
 </div>
 
-<div id="outline-container-orgc29a7f4" class="outline-4">
-<h4 id="orgc29a7f4"><span class="section-number-4">1.1.3.</span> Step 3: Interpret 0x0041 as a Unicode character</h4>
+<div id="outline-container-org1f4f6ea" class="outline-4">
+<h4 id="org1f4f6ea"><span class="section-number-4">1.1.3.</span> Step 3: Interpret 0x0041 as a Unicode character</h4>
 <div class="outline-text-4" id="text-1-1-3">
 <p>
 <code>0x0041</code> = <b>65</b> decimal = <code>'A'</code>
@@ -362,16 +362,16 @@ Lower 16 bits: 0x0041   ← kept
 </div>
 </div>
 
-<div id="outline-container-org51df26c" class="outline-3">
-<h3 id="org51df26c"><span class="section-number-3">1.2.</span> Floating-Point</h3>
+<div id="outline-container-org3dafbb2" class="outline-3">
+<h3 id="org3dafbb2"><span class="section-number-3">1.2.</span> Floating-Point</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 When a <a href="20260121194347-floating_point_types.html#ID-8487dd79-f6a8-49d9-ba32-9b97c5056ef2">floating-point</a> value is <b>cast</b> into a <code>char</code>, the floating-point value is first <b>cast</b> into an <code>int</code>, which is then <b>cast</b> into a <code>char</code>.
 </p>
 </div>
 
-<div id="outline-container-orgb2bd16d" class="outline-4">
-<h4 id="orgb2bd16d"><span class="section-number-4">1.2.1.</span> Example</h4>
+<div id="outline-container-org5247e63" class="outline-4">
+<h4 id="org5247e63"><span class="section-number-4">1.2.1.</span> Example</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-type">char</span> <span class="org-variable-name">ch</span> = (<span class="org-type">char</span>)65.25; <span class="org-comment-delimiter">// </span><span class="org-comment">Decimal 65 is assigned to ch
@@ -382,8 +382,8 @@ When a <a href="20260121194347-floating_point_types.html#ID-8487dd79-f6a8-49d9-b
 </div>
 </div>
 
-<div id="outline-container-orgea4b40b" class="outline-3">
-<h3 id="orgea4b40b"><span class="section-number-3">1.3.</span> Char to Numeric</h3>
+<div id="outline-container-org9d50507" class="outline-3">
+<h3 id="org9d50507"><span class="section-number-3">1.3.</span> Char to Numeric</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 When a <code>char</code> is <b>cast</b> into a <code>numeric type</code>, the <b>character’s</b> <a href="20260126075828-unicode.html#ID-25824dca-cd38-447d-84fd-8c69f246709f">Unicode</a> is <b>cast</b> into the specified <code>numeric</code> <code>type</code>.
@@ -397,8 +397,8 @@ When a <code>char</code> is <b>cast</b> into a <code>numeric type</code>, the <b
 </div>
 </div>
 
-<div id="outline-container-orgc7225d8" class="outline-3">
-<h3 id="orgc7225d8"><span class="section-number-3">1.4.</span> Implicit Casting</h3>
+<div id="outline-container-org1e0909a" class="outline-3">
+<h3 id="org1e0909a"><span class="section-number-3">1.4.</span> Implicit Casting</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 <b>Implicit</b> <b>casting</b> can be used if the result of a <b>casting</b> fits into the <code>target</code> <code>variable</code>.
@@ -433,8 +433,8 @@ Any number <b>not</b> in this <b>range</b> <b>must</b> be <b>cast</b> into a <co
 </div>
 </div>
 
-<div id="outline-container-orge237b4b" class="outline-3">
-<h3 id="orge237b4b"><span class="section-number-3">1.5.</span> Explicit Casting</h3>
+<div id="outline-container-org5e9e2e0" class="outline-3">
+<h3 id="org5e9e2e0"><span class="section-number-3">1.5.</span> Explicit Casting</h3>
 <div class="outline-text-3" id="text-1-5">
 <p>
 To force this assignment, use <b>explicit</b> <b>casting</b>, as follows:
@@ -447,8 +447,8 @@ To force this assignment, use <b>explicit</b> <b>casting</b>, as follows:
 </div>
 </div>
 
-<div id="outline-container-org56b4987" class="outline-3">
-<h3 id="org56b4987"><span class="section-number-3">1.6.</span> Operators</h3>
+<div id="outline-container-orgad11952" class="outline-3">
+<h3 id="orgad11952"><span class="section-number-3">1.6.</span> Operators</h3>
 <div class="outline-text-3" id="text-1-6">
 <p>
 All <a href="20231231061730-arithmetic_operators.html#ID-f6e458df-99cf-45d6-b224-16f325cc1d2b">numeric operators</a> can be applied to <code>char</code> operands.
@@ -460,8 +460,8 @@ If a <code>string</code> is <b>concatenated</b> with a <code>character</code>, t
 </p>
 </div>
 
-<div id="outline-container-orgac61ab9" class="outline-4">
-<h4 id="orgac61ab9"><span class="section-number-4">1.6.1.</span> Examples</h4>
+<div id="outline-container-orgdbbc78a" class="outline-4">
+<h4 id="orgdbbc78a"><span class="section-number-4">1.6.1.</span> Examples</h4>
 <div class="outline-text-4" id="text-1-6-1">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-type">int</span> <span class="org-variable-name">i</span> = <span class="org-string">'2'</span> + <span class="org-string">'3'</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">(int)'2' is 50 and (int)'3' is 51
@@ -487,8 +487,8 @@ Chapter 2
 </div>
 </div>
 
-<div id="outline-container-org8c5d294" class="outline-3">
-<h3 id="org8c5d294"><span class="section-number-3">1.7.</span> Comparing and Testing Characters</h3>
+<div id="outline-container-org73f8a5b" class="outline-3">
+<h3 id="org73f8a5b"><span class="section-number-3">1.7.</span> Comparing and Testing Characters</h3>
 <div class="outline-text-3" id="text-1-7">
 <p>
 Two <code>characters</code> can be <b>compared</b> using the <a href="20231231063707-relational_operators.html#ID-bf93d4e3-f501-4e73-ac07-e1c6653831ba">relational operators</a> just like comparing two <b>numbers</b>.
@@ -499,8 +499,8 @@ This is done by comparing the <a href="20260126075828-unicode.html#ID-25824dca-c
 </p>
 </div>
 
-<div id="outline-container-org05a1226" class="outline-4">
-<h4 id="org05a1226"><span class="section-number-4">1.7.1.</span> Examples</h4>
+<div id="outline-container-org64d1bb8" class="outline-4">
+<h4 id="org64d1bb8"><span class="section-number-4">1.7.1.</span> Examples</h4>
 <div class="outline-text-4" id="text-1-7-1">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-string">'a'</span> &lt; <span class="org-string">'b'</span> is <span class="org-constant">true</span> because the Unicode <span class="org-keyword">for</span> <span class="org-string">'a'</span> (97) is less than the Unicode <span class="org-keyword">for</span> <span class="org-string">'b'</span> (98).
@@ -521,8 +521,8 @@ This is done by comparing the <a href="20260126075828-unicode.html#ID-25824dca-c
 </div>
 </div>
 
-<div id="outline-container-org6e71bce" class="outline-4">
-<h4 id="org6e71bce"><span class="section-number-4">1.7.2.</span> Helper Methods</h4>
+<div id="outline-container-orgbe89a55" class="outline-4">
+<h4 id="orgbe89a55"><span class="section-number-4">1.7.2.</span> Helper Methods</h4>
 <div class="outline-text-4" id="text-1-7-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -578,7 +578,7 @@ This is done by comparing the <a href="20260126075828-unicode.html#ID-25824dca-c
 </div>
 
 <ol class="org-ol">
-<li><a id="org5beb578"></a>Examples<br />
+<li><a id="org99b32fa"></a>Examples<br />
 <div class="outline-text-5" id="text-1-7-2-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 

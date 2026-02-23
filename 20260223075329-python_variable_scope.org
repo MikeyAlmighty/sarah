@@ -1,0 +1,158 @@
+:PROPERTIES:
+:ID:       d8b7ab94-42ce-47d8-833c-0fffadf0df76
+:END:
+#+title: Python Variable Scope
+
+* Python Scope Levels (LEGB)
+
+*LEGB* is a rule used by Python to resolve variable names.  
+It stands for:
+
+- *L* — *Local*
+- *E* — *Enclosing*
+- *G* — *Global*
+- *B* — *Built-in*
+
+Python searches for variables in this order.
+
+* 1. Local Scope (L)
+
+The local scope refers to variables defined inside a function.
+
+#+begin_src python
+def greet():
+    message = "Hello"
+    print(message)
+
+greet()
+#+end_src
+
+- ~message~ exists only inside ~greet~
+- It *cannot* be *accessed* outside the function
+
+Local scope has the *highest* priority.
+
+* 2. Enclosing Scope (E)
+
+The enclosing scope exists in nested functions (a function inside another function).
+
+#+begin_src python
+def outer():
+    x = "outer value"
+    
+    def inner():
+        print(x)
+    
+    inner()
+
+outer()
+#+end_src
+
+- ~inner~ does not have ~x~
+- Python looks in the enclosing function (~outer~)
+- This is also called a *nonlocal* scope
+
+You can modify enclosing variables using ~nonlocal~:
+
+#+begin_src python
+def outer():
+    x = 10
+    
+    def inner():
+        nonlocal x
+        x += 5
+    
+    inner()
+    print(x)  # 15
+
+outer()
+#+end_src
+
+* 3. Global Scope (G)
+
+The global scope refers to variables defined at the *top* level of a *file*.
+
+#+begin_src python
+x = 100
+
+def show():
+    print(x)
+
+show()
+#+end_src
+
+To modify a global variable inside a function, use ~global~:
+
+#+begin_src python
+x = 100
+
+def change():
+    global x
+    x = 200
+
+change()
+print(x)  # 200
+#+end_src
+
+* 4. Built-in Scope (B)
+
+The *built-in* scope contains names that are always available in Python.
+
+Examples:
+- ~print~
+- ~len~
+- ~range~
+- ~int~
+- ~str~
+
+These come from Python’s built-in namespace.
+
+#+begin_src python
+print(len("hello"))  # 5
+#+end_src
+
+You can inspect built-ins:
+
+#+begin_src python
+import builtins
+print(dir(builtins))
+#+end_src
+
+* Name Resolution Order
+
+When Python encounters a variable, it searches in this order:
+
+1. Local
+2. Enclosing
+3. Global
+4. Built-in
+
+If the name is not found after checking all four levels:
+- A ~NameError~ is raised.
+
+* Common Pitfalls
+
+*UnboundLocalError*
+
+#+begin_src python
+x = 10
+
+def func():
+    print(x)  # Error!
+    x = 5
+#+end_src
+
+Python treats ~x~ as local because it is *assigned* inside ~func~, so it raises:
+
+~UnboundLocalError: local variable referenced before assignment~
+
+* Quick Mental Model
+
+Think:
+
+- Inside current function? → Local
+- Inside parent function? → Enclosing
+- At module level? → Global
+- Always available names? → Built-in
+
+=LEGB= is fundamental to understanding ~closures~, ~decorators~, and ~functional~ ~patterns~ in Python.

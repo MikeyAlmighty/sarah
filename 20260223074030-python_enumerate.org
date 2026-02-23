@@ -1,0 +1,67 @@
+:PROPERTIES:
+:ID:       48f4d550-71d3-41f8-b531-e19f48fe1cb9
+:END:
+#+title: Python enumerate
+
+* Python enumerate
+** Overview
+The =enumerate()= function allows you to loop over an iterable while automatically keeping track of the index.
+
+This is preferred over manually incrementing a counter.
+
+** Basic Syntax
+#+BEGIN_SRC python
+for index, value in enumerate(iterable):
+# code block
+#+END_SRC
+
+** Example 1: Basic Usage
+#+BEGIN_SRC python
+fruits = ["apple", "banana", "cherry"]
+
+for index, fruit in enumerate(fruits):
+print(index, fruit)
+#+END_SRC
+
+Output:
+0 apple
+1 banana
+2 cherry
+
+** Starting Index at Custom Value
+By default, indexing starts at 0.
+
+You can change it:
+
+#+BEGIN_SRC python
+for index, fruit in enumerate(fruits, start=1):
+print(index, fruit)
+#+END_SRC
+
+Output:
+1 apple
+2 banana
+3 cherry
+
+** Equivalent Without enumerate (Not Recommended)
+#+BEGIN_SRC python
+fruits = ["apple", "banana", "cherry"]
+
+i = 0
+for fruit in fruits:
+print(i, fruit)
+i += 1
+#+END_SRC
+
+Why enumerate is Better:
+
+- Cleaner
+- Less error-prone
+- More Pythonic
+
+** When to Use enumerate
+Use =enumerate()= when:
+
+- You need both the index and value
+- You are modifying items by position
+- You are generating numbered output
