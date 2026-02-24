@@ -5,3 +5,54 @@
 
 * Python Tuple
 - Immutable
+
+** Basic Example
+#+begin_src python
+my_tuple = (1, 'strings', 4.5, True)
+
+print(my_tuple[1])        # strings
+print(type(my_tuple))     # <class 'tuple'>
+#+end_src
+
+** Tuple Methods
+
+*** count()
+Returns the *number* of times a value *appears*.
+
+#+begin_src python
+print(my_tuple.count(4.5))  # 1
+#+end_src
+
+*** index()
+Returns the *index* of the *first* occurrence of a *value*.
+
+#+begin_src python
+print(my_tuple.index(4.5))  # 2
+#+end_src
+
+** Iteration
+
+#+begin_src python
+for x in my_tuple:
+    print(x)
+#+end_src
+
+** Immutability
+
+Tuples are *immutable* (cannot be modified after creation).
+
+#+begin_src python
+my_tuple[2] = 'string'
+# TypeError: 'tuple' object does not support item assignment
+#+end_src
+
+** Notes
+- Tuples are *ordered* and *immutable*.
+- Allow *mixed* data types.
+- Faster than [[id:156dcdea-4f6c-440e-a23a-1165e466a5e0][lists]] for =read-only= data.
+- Can be used as *dictionary* *keys* (if elements are immutable).
+- Defined using parentheses ~()~ or by *comma* *separation*:
+#+begin_src python
+t1 = (1, 2, 3)
+t2 = 1, 2, 3
+#+end_src

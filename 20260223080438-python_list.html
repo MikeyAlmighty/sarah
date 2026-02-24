@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-23 Mon 08:08 -->
+<!-- 2026-02-24 Tue 06:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python List</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -256,17 +256,154 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org15d40a4">1. Python List</a></li>
+<li><a href="#org32092bd">1. Python List</a>
+<ul>
+<li><a href="#org7830660">1.1. Basic Example</a></li>
+<li><a href="#org50735ad">1.2. Insertion</a>
+<ul>
+<li><a href="#orgc964516">1.2.1. insert()</a></li>
+<li><a href="#orgda4e210">1.2.2. append()</a></li>
+<li><a href="#orgdf3a185">1.2.3. extend()</a></li>
+</ul>
+</li>
+<li><a href="#orgb6f2a2f">1.3. Removal</a>
+<ul>
+<li><a href="#orgecaff77">1.3.1. pop()</a></li>
+<li><a href="#orgd34b1b9">1.3.2. del</a></li>
+</ul>
+</li>
+<li><a href="#org4a083ee">1.4. Iteration</a></li>
+<li><a href="#org742546b">1.5. Notes</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org15d40a4" class="outline-2">
-<h2 id="org15d40a4"><span class="section-number-2">1.</span> Python List</h2>
+<div id="outline-container-org32092bd" class="outline-2">
+<h2 id="org32092bd"><span class="section-number-2">1.</span> Python List</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>Mutable</li>
 </ul>
+</div>
+<div id="outline-container-org7830660" class="outline-3">
+<h3 id="org7830660"><span class="section-number-3">1.1.</span> Basic Example</h3>
+<div class="outline-text-3" id="text-1-1">
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-variable-name">lst</span> <span class="org-operator">=</span> [1, 69, 420, 100, 99]
+
+<span class="org-builtin">print</span>(<span class="org-operator">*</span>lst)  <span class="org-comment-delimiter"># </span><span class="org-comment">1 69 420 100 99</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org50735ad" class="outline-3">
+<h3 id="org50735ad"><span class="section-number-3">1.2.</span> Insertion</h3>
+<div class="outline-text-3" id="text-1-2">
+</div>
+<div id="outline-container-orgc964516" class="outline-4">
+<h4 id="orgc964516"><span class="section-number-4">1.2.1.</span> insert()</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+Insert element at a <b>specific</b> <b>index</b>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">lst.insert(<span class="org-builtin">len</span>(lst), 15)
+
+<span class="org-builtin">print</span>(<span class="org-operator">*</span>lst)  <span class="org-comment-delimiter"># </span><span class="org-comment">1 69 420 100 99 15</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgda4e210" class="outline-4">
+<h4 id="orgda4e210"><span class="section-number-4">1.2.2.</span> append()</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+Add a <b>single</b> element to the <b>end</b>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">lst.append(6)
+
+<span class="org-builtin">print</span>(<span class="org-operator">*</span>lst)  <span class="org-comment-delimiter"># </span><span class="org-comment">1 69 420 100 99 15 6</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdf3a185" class="outline-4">
+<h4 id="orgdf3a185"><span class="section-number-4">1.2.3.</span> extend()</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+Add <b>multiple</b> <b>elements</b> to the <b>end</b>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">lst.extend([7, 8, 9])
+
+<span class="org-builtin">print</span>(<span class="org-operator">*</span>lst)  <span class="org-comment-delimiter"># </span><span class="org-comment">1 69 420 100 99 15 6 7 8 9</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb6f2a2f" class="outline-3">
+<h3 id="orgb6f2a2f"><span class="section-number-3">1.3.</span> Removal</h3>
+<div class="outline-text-3" id="text-1-3">
+</div>
+<div id="outline-container-orgecaff77" class="outline-4">
+<h4 id="orgecaff77"><span class="section-number-4">1.3.1.</span> pop()</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<p>
+<b>Remove</b> <b>element</b> at a <b>given</b> <b>index</b>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">lst.pop(3)
+
+<span class="org-builtin">print</span>(<span class="org-operator">*</span>lst)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd34b1b9" class="outline-4">
+<h4 id="orgd34b1b9"><span class="section-number-4">1.3.2.</span> del</h4>
+<div class="outline-text-4" id="text-1-3-2">
+<p>
+<b>Delete</b> <b>element</b> by <b>index</b>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">del</span> lst[0]
+
+<span class="org-builtin">print</span>(<span class="org-operator">*</span>lst)
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org4a083ee" class="outline-3">
+<h3 id="org4a083ee"><span class="section-number-3">1.4.</span> Iteration</h3>
+<div class="outline-text-3" id="text-1-4">
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">for</span> x <span class="org-keyword">in</span> lst:
+    <span class="org-builtin">print</span>(<span class="org-string">"Value"</span>, x)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org742546b" class="outline-3">
+<h3 id="org742546b"><span class="section-number-3">1.5.</span> Notes</h3>
+<div class="outline-text-3" id="text-1-5">
+<ul class="org-ul">
+<li>Lists in Python are <b>ordered</b> and <b>mutable</b>.</li>
+<li><code>insert()</code> is O(n)</li>
+<li><code>append()</code> is <a href="20260224051502-amortized.html#ID-ebb9877e-e173-4afa-86e7-a8d23780642e">amortized</a> <code>O(1)</code></li>
+<li><code>extend()</code> is <code>O(k)</code>, where <code>k</code> is the number of <b>added</b> <b>elements</b></li>
+<li><code>pop()</code> from end is <code>O(1)</code>, otherwise <code>O(n)</code></li>
+<li><code>del</code> depends on position (usually <code>O(n)</code>)</li>
+</ul>
+</div>
 </div>
 </div>
 </div>

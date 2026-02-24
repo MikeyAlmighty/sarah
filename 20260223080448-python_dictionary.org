@@ -3,4 +3,75 @@
 :END:
 #+title: Python Dictionary
 
-* Python Dictionary
+* Python Dictionaries
+** Basic Example
+#+begin_src python
+sample_dict = {1: 'Coffee', 2: 'Tea', 3: 'Juice'}
+
+print(sample_dict[1])  # Coffee
+#+end_src
+
+** Updating Values
+
+#+begin_src python
+sample_dict[2] = 'Mint Tea'
+
+print(sample_dict[2])  # Mint Tea
+#+end_src
+
+** Deletion
+
+#+begin_src python
+del sample_dict[3]
+
+print(sample_dict)  # {1: 'Coffee', 2: 'Mint Tea'}
+#+end_src
+
+** Dictionary Operation Functions
+
+#+begin_src python
+print(type(sample_dict))  # <class 'dict'>
+#+end_src
+
+** Key Behavior & Overriding
+
+#+begin_src python
+my_d = {'2': True, '1': False, 3: 'dead', 3: 'Pool'}
+#+end_src
+
+- Keys must be unique.
+- Duplicate keys → *last* *value* *overrides* previous.
+
+#+begin_src python
+print(my_d['1'])  # False
+
+print(my_d['3'])
+# KeyError: '3'  (string key does not exist)
+
+print(my_d[3])    # Pool (last value overrides)
+
+del my_d[3]
+#+end_src
+
+** Iteration
+
+*** Iterate Keys
+
+#+begin_src python
+for key in my_d:
+    print(key)
+#+end_src
+
+*** Iterate Key-Value Pairs
+
+#+begin_src python
+for key, val in my_d.items():
+    print(str(key) + ":" + str(val))
+#+end_src
+
+** Notes
+- Dictionaries are *unordered* (=insertion-ordere= as of Python 3.7+).
+- *Mutable* and *dynamic*.
+- Keys must be *immutable* *types* (~int~, ~string~, ~tuple~, etc.).
+- Fast lookup time: =O(1)= average case.
+- Internally implemented using *hash* *tables*.

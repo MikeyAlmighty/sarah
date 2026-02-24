@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-23 Mon 08:08 -->
+<!-- 2026-02-24 Tue 06:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python Tuple</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -256,17 +256,113 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc932218">1. Python Tuple</a></li>
+<li><a href="#org27ea48e">1. Python Tuple</a>
+<ul>
+<li><a href="#orgf3576b8">1.1. Basic Example</a></li>
+<li><a href="#org582cf05">1.2. Tuple Methods</a>
+<ul>
+<li><a href="#org4f22ff7">1.2.1. count()</a></li>
+<li><a href="#org1e63a11">1.2.2. index()</a></li>
+</ul>
+</li>
+<li><a href="#orge1ad643">1.3. Iteration</a></li>
+<li><a href="#orgb25efa9">1.4. Immutability</a></li>
+<li><a href="#orgf0468c2">1.5. Notes</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgc932218" class="outline-2">
-<h2 id="orgc932218"><span class="section-number-2">1.</span> Python Tuple</h2>
+<div id="outline-container-org27ea48e" class="outline-2">
+<h2 id="org27ea48e"><span class="section-number-2">1.</span> Python Tuple</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>Immutable</li>
 </ul>
+</div>
+<div id="outline-container-orgf3576b8" class="outline-3">
+<h3 id="orgf3576b8"><span class="section-number-3">1.1.</span> Basic Example</h3>
+<div class="outline-text-3" id="text-1-1">
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-variable-name">my_tuple</span> <span class="org-operator">=</span> (1, <span class="org-string">'strings'</span>, 4.5, <span class="org-constant">True</span>)
+
+<span class="org-builtin">print</span>(my_tuple[1])        <span class="org-comment-delimiter"># </span><span class="org-comment">strings
+</span><span class="org-builtin">print</span>(<span class="org-builtin">type</span>(my_tuple))     <span class="org-comment-delimiter"># </span><span class="org-comment">&lt;class 'tuple'&gt;</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org582cf05" class="outline-3">
+<h3 id="org582cf05"><span class="section-number-3">1.2.</span> Tuple Methods</h3>
+<div class="outline-text-3" id="text-1-2">
+</div>
+<div id="outline-container-org4f22ff7" class="outline-4">
+<h4 id="org4f22ff7"><span class="section-number-4">1.2.1.</span> count()</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+Returns the <b>number</b> of times a value <b>appears</b>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-builtin">print</span>(my_tuple.count(4.5))  <span class="org-comment-delimiter"># </span><span class="org-comment">1</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org1e63a11" class="outline-4">
+<h4 id="org1e63a11"><span class="section-number-4">1.2.2.</span> index()</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+Returns the <b>index</b> of the <b>first</b> occurrence of a <b>value</b>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-builtin">print</span>(my_tuple.index(4.5))  <span class="org-comment-delimiter"># </span><span class="org-comment">2</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orge1ad643" class="outline-3">
+<h3 id="orge1ad643"><span class="section-number-3">1.3.</span> Iteration</h3>
+<div class="outline-text-3" id="text-1-3">
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">for</span> x <span class="org-keyword">in</span> my_tuple:
+    <span class="org-builtin">print</span>(x)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb25efa9" class="outline-3">
+<h3 id="orgb25efa9"><span class="section-number-3">1.4.</span> Immutability</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+Tuples are <b>immutable</b> (cannot be modified after creation).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-variable-name">my_tuple</span>[2] <span class="org-operator">=</span> <span class="org-string">'string'</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">TypeError: 'tuple' object does not support item assignment</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf0468c2" class="outline-3">
+<h3 id="orgf0468c2"><span class="section-number-3">1.5.</span> Notes</h3>
+<div class="outline-text-3" id="text-1-5">
+<ul class="org-ul">
+<li>Tuples are <b>ordered</b> and <b>immutable</b>.</li>
+<li>Allow <b>mixed</b> data types.</li>
+<li>Faster than <a href="20260223080438-python_list.html#ID-156dcdea-4f6c-440e-a23a-1165e466a5e0">lists</a> for <code>read-only</code> data.</li>
+<li>Can be used as <b>dictionary</b> <b>keys</b> (if elements are immutable).</li>
+<li>Defined using parentheses <code>()</code> or by <b>comma</b> <b>separation</b>:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-variable-name">t1</span> <span class="org-operator">=</span> (1, 2, 3)
+<span class="org-variable-name">t2</span> <span class="org-operator">=</span> 1, 2, 3
+</pre>
+</div>
+</div>
 </div>
 </div>
 </div>

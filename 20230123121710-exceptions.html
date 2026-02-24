@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-23 Mon 08:09 -->
+<!-- 2026-02-24 Tue 06:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exceptions</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -256,42 +256,41 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2dfed5e">1. Types of Exceptions</a>
+<li><a href="#org7d5f530">1. Types of Exceptions</a>
 <ul>
-<li><a href="#orgd7fb21d">1.1. Checked</a></li>
-<li><a href="#org32b81b6">1.2. Unchecked</a></li>
-<li><a href="#org7f9e269">1.3. Errors</a></li>
+<li><a href="#orge3dd2af">1.1. Checked</a></li>
+<li><a href="#org162a682">1.2. Unchecked</a></li>
+<li><a href="#org6da4b92">1.3. Errors</a></li>
 </ul>
 </li>
-<li><a href="#org0c4b215">2. Hierarchy</a></li>
-<li><a href="#orgb581d8a">3. Catching Exceptions</a>
+<li><a href="#org9a55d43">2. Hierarchy</a></li>
+<li><a href="#org271e019">3. Catching Exceptions</a>
 <ul>
-<li><a href="#org6c03312">3.1. Single</a></li>
-<li><a href="#org6ec4e7b">3.2. Multiple</a></li>
-<li><a href="#org979fefb">3.3. Finally</a></li>
+<li><a href="#org86d74a8">3.1. Single</a></li>
+<li><a href="#org0e929e7">3.2. Multiple</a></li>
+<li><a href="#org28c6faf">3.3. Finally</a></li>
 </ul>
 </li>
-<li><a href="#orgbf4ef47">4. Throwing Exceptions</a>
+<li><a href="#orgb2b9616">4. Throwing Exceptions</a>
 <ul>
-<li><a href="#org806f981">4.1. Unchecked Exception example</a></li>
-<li><a href="#org696ebae">4.2. Checked Exception example</a></li>
+<li><a href="#org7b2d887">4.1. Unchecked Exception example</a></li>
+<li><a href="#orgf40890c">4.2. Checked Exception example</a></li>
 </ul>
 </li>
-<li><a href="#org23a5296">5. Custom Exceptions</a>
+<li><a href="#org8ec5f8d">5. Custom Exceptions</a>
 <ul>
-<li><a href="#orga1c49ed">5.1. Chaining Exceptions</a></li>
+<li><a href="#org28f65b2">5.1. Chaining Exceptions</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org2dfed5e" class="outline-2">
-<h2 id="org2dfed5e"><span class="section-number-2">1.</span> Types of Exceptions</h2>
+<div id="outline-container-org7d5f530" class="outline-2">
+<h2 id="org7d5f530"><span class="section-number-2">1.</span> Types of Exceptions</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgd7fb21d" class="outline-3">
-<h3 id="orgd7fb21d"><span class="section-number-3">1.1.</span> Checked</h3>
+<div id="outline-container-orge3dd2af" class="outline-3">
+<h3 id="orge3dd2af"><span class="section-number-3">1.1.</span> Checked</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 (Compile time) Developer should anticipate and handle errors
@@ -303,9 +302,8 @@
 </div>
 </div>
 </div>
-
-<div id="outline-container-org32b81b6" class="outline-3">
-<h3 id="org32b81b6"><span class="section-number-3">1.2.</span> Unchecked</h3>
+<div id="outline-container-org162a682" class="outline-3">
+<h3 id="org162a682"><span class="section-number-3">1.2.</span> Unchecked</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 (Run time) <code>NullPointerException</code>
@@ -328,9 +326,8 @@
 </p>
 </div>
 </div>
-
-<div id="outline-container-org7f9e269" class="outline-3">
-<h3 id="org7f9e269"><span class="section-number-3">1.3.</span> Errors</h3>
+<div id="outline-container-org6da4b92" class="outline-3">
+<h3 id="org6da4b92"><span class="section-number-3">1.3.</span> Errors</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 <code>StackOverflowError</code>
@@ -338,9 +335,8 @@
 </div>
 </div>
 </div>
-
-<div id="outline-container-org0c4b215" class="outline-2">
-<h2 id="org0c4b215"><span class="section-number-2">2.</span> Hierarchy</h2>
+<div id="outline-container-org9a55d43" class="outline-2">
+<h2 id="org9a55d43"><span class="section-number-2">2.</span> Hierarchy</h2>
 <div class="outline-text-2" id="text-2">
 <p>
                         Throwable
@@ -349,13 +345,12 @@ RuntimeException(unchecked)
 </p>
 </div>
 </div>
-
-<div id="outline-container-orgb581d8a" class="outline-2">
-<h2 id="orgb581d8a"><span class="section-number-2">3.</span> Catching Exceptions</h2>
+<div id="outline-container-org271e019" class="outline-2">
+<h2 id="org271e019"><span class="section-number-2">3.</span> Catching Exceptions</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org6c03312" class="outline-3">
-<h3 id="org6c03312"><span class="section-number-3">3.1.</span> Single</h3>
+<div id="outline-container-org86d74a8" class="outline-3">
+<h3 id="org86d74a8"><span class="section-number-3">3.1.</span> Single</h3>
 <div class="outline-text-3" id="text-3-1">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">try</span> {
@@ -367,9 +362,8 @@ RuntimeException(unchecked)
 </div>
 </div>
 </div>
-
-<div id="outline-container-org6ec4e7b" class="outline-3">
-<h3 id="org6ec4e7b"><span class="section-number-3">3.2.</span> Multiple</h3>
+<div id="outline-container-org0e929e7" class="outline-3">
+<h3 id="org0e929e7"><span class="section-number-3">3.2.</span> Multiple</h3>
 <div class="outline-text-3" id="text-3-2">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">try</span> {
@@ -411,9 +405,8 @@ Use <code>|</code> to inline exceptions, i.e:
 </div>
 </div>
 </div>
-
-<div id="outline-container-org979fefb" class="outline-3">
-<h3 id="org979fefb"><span class="section-number-3">3.3.</span> Finally</h3>
+<div id="outline-container-org28c6faf" class="outline-3">
+<h3 id="org28c6faf"><span class="section-number-3">3.3.</span> Finally</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 Used to release external resources (File handles, network connections, DB Connections etc.)
@@ -461,16 +454,15 @@ Used to release external resources (File handles, network connections, DB Connec
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgbf4ef47" class="outline-2">
-<h2 id="orgbf4ef47"><span class="section-number-2">4.</span> Throwing Exceptions</h2>
+<div id="outline-container-orgb2b9616" class="outline-2">
+<h2 id="orgb2b9616"><span class="section-number-2">4.</span> Throwing Exceptions</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 Defensive programming: (Good for library or framework) Or Input from user
 </p>
 </div>
-<div id="outline-container-org806f981" class="outline-3">
-<h3 id="org806f981"><span class="section-number-3">4.1.</span> Unchecked Exception example</h3>
+<div id="outline-container-org7b2d887" class="outline-3">
+<h3 id="org7b2d887"><span class="section-number-3">4.1.</span> Unchecked Exception example</h3>
 <div class="outline-text-3" id="text-4-1">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">deposit</span>(<span class="org-type">float</span> <span class="org-variable-name">value</span>) {
@@ -481,9 +473,8 @@ Defensive programming: (Good for library or framework) Or Input from user
 </div>
 </div>
 </div>
-
-<div id="outline-container-org696ebae" class="outline-3">
-<h3 id="org696ebae"><span class="section-number-3">4.2.</span> Checked Exception example</h3>
+<div id="outline-container-orgf40890c" class="outline-3">
+<h3 id="orgf40890c"><span class="section-number-3">4.2.</span> Checked Exception example</h3>
 <div class="outline-text-3" id="text-4-2">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">deposit</span>(<span class="org-type">float</span> <span class="org-variable-name">value</span>) <span class="org-keyword">throws</span> <span class="org-type">IOException</span> {
@@ -526,19 +517,18 @@ Re throwing error:
 </div>
 </div>
 </div>
-
-<div id="outline-container-org23a5296" class="outline-2">
-<h2 id="org23a5296"><span class="section-number-2">5.</span> Custom Exceptions</h2>
+<div id="outline-container-org8ec5f8d" class="outline-2">
+<h2 id="org8ec5f8d"><span class="section-number-2">5.</span> Custom Exceptions</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 <code>InsufficientFundsException.java</code>
 </p>
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">InsufficientFundsException</span> <span class="org-keyword">extends</span> <span class="org-type">Exception</span> {
-    <span class="org-keyword">public</span> InsufficientFundsException(){
+    <span class="org-keyword">public</span> <span class="org-function-name">InsufficientFundsException</span>(){
         <span class="org-keyword">super</span>(<span class="org-string">"Insufficient Funds in your account"</span>);
     }
-    <span class="org-keyword">public</span> InsufficientFundsException(String message){
+    <span class="org-keyword">public</span> <span class="org-function-name">InsufficientFundsException</span>(<span class="org-type">String</span> <span class="org-variable-name">message</span>){
         <span class="org-keyword">super</span>(message);
     }
 }
@@ -579,9 +569,8 @@ Re throwing error:
 </pre>
 </div>
 </div>
-
-<div id="outline-container-orga1c49ed" class="outline-3">
-<h3 id="orga1c49ed"><span class="section-number-3">5.1.</span> Chaining Exceptions</h3>
+<div id="outline-container-org28f65b2" class="outline-3">
+<h3 id="org28f65b2"><span class="section-number-3">5.1.</span> Chaining Exceptions</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
 Used a lot for libraries/framework code.
@@ -593,7 +582,7 @@ I.e. We can say <code>InsufficientFundsException</code> is derived from <code>Ac
 </p>
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">AccountException</span> <span class="org-keyword">extends</span> <span class="org-type">Exception</span> {
-    <span class="org-keyword">public</span> AccountException(Exception cause){
+    <span class="org-keyword">public</span> <span class="org-function-name">AccountException</span>(<span class="org-type">Exception</span> <span class="org-variable-name">cause</span>){
         <span class="org-keyword">super</span>(cause);
     }
 }

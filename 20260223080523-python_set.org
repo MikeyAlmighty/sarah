@@ -4,3 +4,96 @@
 #+title: Python Set
 
 * Python Set
+
+** Basic Example
+#+begin_src python
+set_a = {1, 2, 3, 4, 5, 5}
+
+print(set_a)  # duplicates automatically removed
+#+end_src
+
+- Sets are *unordered*.
+- Duplicate values are *automatically* *removed*.
+
+** Insertion
+
+*** add()
+*Add* a *single* *element*.
+
+#+begin_src python
+set_a.add(6)
+print(set_a)
+#+end_src
+
+** Removal
+
+*** remove()
+*Removes* an *element*.
+Raises =KeyError= if element is *not* *found*.
+
+#+begin_src python
+set_a.remove(2)
+print(set_a)
+#+end_src
+
+*** discard()
+*Removes* an *element*.
+Does *NOT* raise *error* if *element* is *missing*.
+
+#+begin_src python
+set_a.discard(4)
+print(set_a)
+#+end_src
+
+** Set Operations
+
+#+begin_src python
+set_b = {5, 6, 7, 8, 9}
+#+end_src
+
+*** Union
+*Combine* elements from *both* sets.
+
+#+begin_src python
+print(set_a.union(set_b))  # {1, 3, 5, 6, 7, 8, 9}
+print(set_a | set_b)       # same result
+#+end_src
+
+*** Intersection
+Common elements.
+
+#+begin_src python
+print(set_a.intersection(set_b))  # {5, 6}
+print(set_a & set_b)              # same result
+#+end_src
+
+*** Difference
+Elements in =set_a= but not in =set_b=.
+
+#+begin_src python
+print(set_a.difference(set_b))  # {1, 3}
+print(set_a - set_b)            # same result
+#+end_src
+
+*** Symmetric Difference
+Elements in *either* set but *not* *both*.
+
+#+begin_src python
+print(set_a.symmetric_difference(set_b))  # {1, 3, 7, 8, 9}
+print(set_a ^ set_b)                      # same result
+#+end_src
+
+** Indexing (Not Allowed)
+
+Sets are *unordered* and *not* *subscriptable*.
+
+#+begin_src python
+print(set_a[0])
+# TypeError: 'set' object is not subscriptable
+#+end_src
+
+** Notes
+- Sets are *unordered* and *mutable*.
+- Cannot contain mutable types (like *lists* or *other* *sets*).
+- Fast membership testing: O(1) average case.
+- Backed by hash tables internally.

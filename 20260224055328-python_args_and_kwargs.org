@@ -1,0 +1,75 @@
+:PROPERTIES:
+:ID:       671168c3-9fb5-4603-84ec-c3681cf38d88
+:END:
+#+title: Python args and kwargs
+
+* Python *args and **kwargs
+** Basic Positional Arguments
+
+#+begin_src python
+def sum_of(a, b):
+    return a + b
+
+print(sum_of(4, 5))  # 9
+#+end_src
+
+- Function expects a *fixed* *number* of *positional* *arguments*.
+- Calling with *fewer* or *more* arguments raises =TypeError=.
+
+** *args (Variable Positional Arguments)
+
+Allows a function to accept any number of positional arguments.
+Collected into a =tuple=.
+
+#+begin_src python
+def sum_of_args(*args):
+    total = 0
+    for x in args:
+        total += x
+    return total
+
+print(sum_of_args(4, 5, 6, 7))  # 22
+#+end_src
+
+- ~args~ is a =tuple=.
+- Name ~args~ is a convention (can be anything).
+- Useful when number of inputs is *unknown*.
+
+** **kwargs (Variable Keyword Arguments)
+
+Allows a function to accept *any* number of *keyword* *arguments*.
+Collected into a =dictionary=.
+
+#+begin_src python
+def sum_of_kwargs(**kwargs):
+    total = 0
+    for k, v in kwargs.items():
+        total += v
+    return round(total, 2)
+
+print(sum_of_kwargs(coffee=2.99, cake=4.99, juice=2.99))  # 10.97
+#+end_src
+
+- ~kwargs~ is a =dictionary=.
+- Keys are parameter names.
+- Name `kwargs~ is a convention.
+
+** Combining *args and **kwargs
+
+#+begin_src python
+def example(a, *args, **kwargs):
+    print("a:", a)
+    print("args:", args)
+    print("kwargs:", kwargs)
+#+end_src
+
+Order must be:
+1. Regular parameters
+2. ~*args~
+3. ~**kwargs~
+
+** Notes
+- ~*~ unpacks positional arguments.
+- ~**~ unpacks keyword arguments.
+- Useful for flexible APIs and wrapper functions.
+- Common in decorators and framework code.

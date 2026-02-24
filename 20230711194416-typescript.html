@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-23 Mon 08:08 -->
+<!-- 2026-02-24 Tue 06:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>TypeScript</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -256,65 +256,64 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc833568">1. TypeScript</a>
+<li><a href="#org11cb141">1. TypeScript</a>
 <ul>
-<li><a href="#org213052a">1.1. Benefits</a></li>
-<li><a href="#orgba9525b">1.2. JavaScript vs TypeScript</a></li>
-<li><a href="#org4fc8f05">1.3. Types</a></li>
-<li><a href="#orgbcfda75">1.4. Tuple</a></li>
-<li><a href="#org9862995">1.5. Enum</a>
+<li><a href="#orgec26482">1.1. Benefits</a></li>
+<li><a href="#org3e1a8a4">1.2. JavaScript vs TypeScript</a></li>
+<li><a href="#orgb562542">1.3. Types</a></li>
+<li><a href="#org63a0696">1.4. Tuple</a></li>
+<li><a href="#org56cc134">1.5. Enum</a>
 <ul>
-<li><a href="#orgf45454a">1.5.1. Union types</a></li>
-<li><a href="#orgc101361">1.5.2. Literal Types</a></li>
-<li><a href="#org97250b0">1.5.3. Type alias (Custom Type)</a></li>
+<li><a href="#org6aad044">1.5.1. Union types</a></li>
+<li><a href="#org1db0813">1.5.2. Literal Types</a></li>
+<li><a href="#orgd4e868a">1.5.3. Type alias (Custom Type)</a></li>
 </ul>
 </li>
-<li><a href="#org626b359">1.6. Function Types and callbacks</a></li>
-<li><a href="#org8ffac50">1.7. The "unknown" Type</a></li>
-<li><a href="#orgb845ed3">1.8. The "never" Type</a></li>
-<li><a href="#orgb3758b7">1.9. readonly</a></li>
-<li><a href="#org60383f4">1.10. Interfaces</a></li>
-<li><a href="#orgada9429">1.11. Exporting interfaces:</a></li>
-<li><a href="#org7202b48">1.12. Advanced Types</a>
+<li><a href="#org2536948">1.6. Function Types and callbacks</a></li>
+<li><a href="#org7c7dc97">1.7. The "unknown" Type</a></li>
+<li><a href="#org532be90">1.8. The "never" Type</a></li>
+<li><a href="#org91d8673">1.9. readonly</a></li>
+<li><a href="#org3b62906">1.10. Interfaces</a></li>
+<li><a href="#org0332ff0">1.11. Exporting interfaces:</a></li>
+<li><a href="#orgc906734">1.12. Advanced Types</a>
 <ul>
-<li><a href="#orgfed52b3">1.12.1. Intersection Types</a></li>
-<li><a href="#org808d018">1.12.2. Union Types</a></li>
+<li><a href="#orga17209f">1.12.1. Intersection Types</a></li>
+<li><a href="#orgd1fa71b">1.12.2. Union Types</a></li>
 </ul>
 </li>
-<li><a href="#orgd7b9b56">1.13. TypeGuarding</a></li>
-<li><a href="#orgcf1b229">1.14. Discriminated Unions</a></li>
-<li><a href="#org5d39bb4">1.15. Type Casting</a></li>
-<li><a href="#orgcd6ac35">1.16. TypeScript Declaration Files</a></li>
-<li><a href="#org31ef600">1.17. Index Types</a></li>
-<li><a href="#orgc2be6b5">1.18. Function Overloads</a></li>
-<li><a href="#orgf100b58">1.19. Generics</a>
+<li><a href="#orgd7df2a5">1.13. TypeGuarding</a></li>
+<li><a href="#org920be57">1.14. Discriminated Unions</a></li>
+<li><a href="#org077dfbd">1.15. Type Casting</a></li>
+<li><a href="#orgc5b5493">1.16. TypeScript Declaration Files</a></li>
+<li><a href="#org9ef261b">1.17. Index Types</a></li>
+<li><a href="#org4561ab2">1.18. Function Overloads</a></li>
+<li><a href="#orgba57d3a">1.19. Generics</a>
 <ul>
-<li><a href="#org90368bb">1.19.1. Generic constraints</a></li>
-<li><a href="#org2683b1e">1.19.2. Generic Utility Types</a></li>
+<li><a href="#org1e3ce60">1.19.1. Generic constraints</a></li>
+<li><a href="#org8e5a531">1.19.2. Generic Utility Types</a></li>
 </ul>
 </li>
-<li><a href="#orgf5fbd86">1.20. Decorators</a>
+<li><a href="#org50a3a35">1.20. Decorators</a>
 <ul>
-<li><a href="#org16d2b43">1.20.1. Decorator Factories</a></li>
+<li><a href="#orgafd9a52">1.20.1. Decorator Factories</a></li>
 </ul>
 </li>
-<li><a href="#org969aae0">1.21. Using Axios with TypeScript</a></li>
+<li><a href="#orgf447be5">1.21. Using Axios with TypeScript</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc833568" class="outline-2">
-<h2 id="orgc833568"><span class="section-number-2">1.</span> TypeScript</h2>
+<div id="outline-container-org11cb141" class="outline-2">
+<h2 id="org11cb141"><span class="section-number-2">1.</span> TypeScript</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Uses `.tsx`extension
 `.tsconfig` - Configuration File [Example tsconfig](../tsconfig.example.md)
 </p>
 </div>
-
-<div id="outline-container-org213052a" class="outline-3">
-<h3 id="org213052a"><span class="section-number-3">1.1.</span> Benefits</h3>
+<div id="outline-container-orgec26482" class="outline-3">
+<h3 id="orgec26482"><span class="section-number-3">1.1.</span> Benefits</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>Strong typing</li>
@@ -324,9 +323,8 @@ Uses `.tsx`extension
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgba9525b" class="outline-3">
-<h3 id="orgba9525b"><span class="section-number-3">1.2.</span> JavaScript vs TypeScript</h3>
+<div id="outline-container-org3e1a8a4" class="outline-3">
+<h3 id="org3e1a8a4"><span class="section-number-3">1.2.</span> JavaScript vs TypeScript</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 JavaScript dynamically typed (Resolved at runtime)
@@ -334,9 +332,8 @@ TypeScript statically typed (Set during Development)
 </p>
 </div>
 </div>
-
-<div id="outline-container-org4fc8f05" class="outline-3">
-<h3 id="org4fc8f05"><span class="section-number-3">1.3.</span> Types</h3>
+<div id="outline-container-orgb562542" class="outline-3">
+<h3 id="orgb562542"><span class="section-number-3">1.3.</span> Types</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 ``` typescript
@@ -350,9 +347,8 @@ number[]: Number array
 </p>
 </div>
 </div>
-
-<div id="outline-container-orgbcfda75" class="outline-3">
-<h3 id="orgbcfda75"><span class="section-number-3">1.4.</span> Tuple</h3>
+<div id="outline-container-org63a0696" class="outline-3">
+<h3 id="org63a0696"><span class="section-number-3">1.4.</span> Tuple</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 When you need exactly "x" amount of values and know type of each value before hand then a Tuple can be used:
@@ -369,9 +365,8 @@ const person = {
 </p>
 </div>
 </div>
-
-<div id="outline-container-org9862995" class="outline-3">
-<h3 id="org9862995"><span class="section-number-3">1.5.</span> Enum</h3>
+<div id="outline-container-org56cc134" class="outline-3">
+<h3 id="org56cc134"><span class="section-number-3">1.5.</span> Enum</h3>
 <div class="outline-text-3" id="text-1-5">
 <p>
 Assigns Labels to numbers
@@ -384,9 +379,8 @@ Role.READ
 ```
 </p>
 </div>
-
-<div id="outline-container-orgf45454a" class="outline-4">
-<h4 id="orgf45454a"><span class="section-number-4">1.5.1.</span> Union types</h4>
+<div id="outline-container-org6aad044" class="outline-4">
+<h4 id="org6aad044"><span class="section-number-4">1.5.1.</span> Union types</h4>
 <div class="outline-text-4" id="text-1-5-1">
 <p>
 ``` typescript
@@ -402,9 +396,8 @@ const combine = (input1: number | string, input2: number | string) {
 </p>
 </div>
 </div>
-
-<div id="outline-container-orgc101361" class="outline-4">
-<h4 id="orgc101361"><span class="section-number-4">1.5.2.</span> Literal Types</h4>
+<div id="outline-container-org1db0813" class="outline-4">
+<h4 id="org1db0813"><span class="section-number-4">1.5.2.</span> Literal Types</h4>
 <div class="outline-text-4" id="text-1-5-2">
 <p>
 Only 'Admin' or 'Write' is allowed
@@ -419,9 +412,8 @@ const deadPool = (role: 'Admin' | 'Write') =&gt; {
 </p>
 </div>
 </div>
-
-<div id="outline-container-org97250b0" class="outline-4">
-<h4 id="org97250b0"><span class="section-number-4">1.5.3.</span> Type alias (Custom Type)</h4>
+<div id="outline-container-orgd4e868a" class="outline-4">
+<h4 id="orgd4e868a"><span class="section-number-4">1.5.3.</span> Type alias (Custom Type)</h4>
 <div class="outline-text-4" id="text-1-5-3">
 <p>
 ``` typescript
@@ -431,9 +423,8 @@ type Combinable = string | number;
 </div>
 </div>
 </div>
-
-<div id="outline-container-org626b359" class="outline-3">
-<h3 id="org626b359"><span class="section-number-3">1.6.</span> Function Types and callbacks</h3>
+<div id="outline-container-org2536948" class="outline-3">
+<h3 id="org2536948"><span class="section-number-3">1.6.</span> Function Types and callbacks</h3>
 <div class="outline-text-3" id="text-1-6">
 <p>
 ``` typescript
@@ -459,9 +450,8 @@ addAndHandle(10, 10, (result) =&gt; console.log(result))
 </p>
 </div>
 </div>
-
-<div id="outline-container-org8ffac50" class="outline-3">
-<h3 id="org8ffac50"><span class="section-number-3">1.7.</span> The "unknown" Type</h3>
+<div id="outline-container-org7c7dc97" class="outline-3">
+<h3 id="org7c7dc97"><span class="section-number-3">1.7.</span> The "unknown" Type</h3>
 <div class="outline-text-3" id="text-1-7">
 <p>
 Rather use `unknown` than `any` where applicable.
@@ -485,9 +475,8 @@ Rather use `unknown` than `any` where applicable.
 </p>
 </div>
 </div>
-
-<div id="outline-container-orgb845ed3" class="outline-3">
-<h3 id="orgb845ed3"><span class="section-number-3">1.8.</span> The "never" Type</h3>
+<div id="outline-container-org532be90" class="outline-3">
+<h3 id="org532be90"><span class="section-number-3">1.8.</span> The "never" Type</h3>
 <div class="outline-text-3" id="text-1-8">
 <p>
 Useful for functions that "never" return anything, i.e: functions that could `throw` an error:
@@ -505,9 +494,8 @@ function generateError(message: string, code: number): never {
 </p>
 </div>
 </div>
-
-<div id="outline-container-orgb3758b7" class="outline-3">
-<h3 id="orgb3758b7"><span class="section-number-3">1.9.</span> readonly</h3>
+<div id="outline-container-org91d8673" class="outline-3">
+<h3 id="org91d8673"><span class="section-number-3">1.9.</span> readonly</h3>
 <div class="outline-text-3" id="text-1-9">
 <p>
 Set once during (and kept throughout) initialization.
@@ -517,9 +505,8 @@ constructor(private readonly id: string, public name: string)
 </p>
 </div>
 </div>
-
-<div id="outline-container-org60383f4" class="outline-3">
-<h3 id="org60383f4"><span class="section-number-3">1.10.</span> Interfaces</h3>
+<div id="outline-container-org3b62906" class="outline-3">
+<h3 id="org3b62906"><span class="section-number-3">1.10.</span> Interfaces</h3>
 <div class="outline-text-3" id="text-1-10">
 <p>
 ``` typescript
@@ -550,9 +537,8 @@ Interfaces describe the structure of an object.
 </p>
 </div>
 </div>
-
-<div id="outline-container-orgada9429" class="outline-3">
-<h3 id="orgada9429"><span class="section-number-3">1.11.</span> Exporting interfaces:</h3>
+<div id="outline-container-org0332ff0" class="outline-3">
+<h3 id="org0332ff0"><span class="section-number-3">1.11.</span> Exporting interfaces:</h3>
 <div class="outline-text-3" id="text-1-11">
 <p>
 `StringValidator.ts`
@@ -580,9 +566,8 @@ export class ZipCodeValidator implements StringValidator {
 </p>
 </div>
 </div>
-
-<div id="outline-container-org7202b48" class="outline-3">
-<h3 id="org7202b48"><span class="section-number-3">1.12.</span> Advanced Types</h3>
+<div id="outline-container-orgc906734" class="outline-3">
+<h3 id="orgc906734"><span class="section-number-3">1.12.</span> Advanced Types</h3>
 <div class="outline-text-3" id="text-1-12">
 <p>
 An `intersection type` combines <b><b>multiple types into one</b></b>.
@@ -590,9 +575,8 @@ A `union type` describes a value that can be <b><b>one of several</b></b> types.
 Usage and notation are quite simple, the `&amp;` symbol is used to build an <b><b>intersection</b></b> while the `|` symbol is for <b><b>union</b></b>.
 </p>
 </div>
-
-<div id="outline-container-orgfed52b3" class="outline-4">
-<h4 id="orgfed52b3"><span class="section-number-4">1.12.1.</span> Intersection Types</h4>
+<div id="outline-container-orga17209f" class="outline-4">
+<h4 id="orga17209f"><span class="section-number-4">1.12.1.</span> Intersection Types</h4>
 <div class="outline-text-4" id="text-1-12-1">
 <p>
 Allows us to combine two types (And merge it into one).
@@ -647,9 +631,8 @@ Intersection Types: Closely relate to interfaces using inheritance
 </p>
 </div>
 </div>
-
-<div id="outline-container-org808d018" class="outline-4">
-<h4 id="org808d018"><span class="section-number-4">1.12.2.</span> Union Types</h4>
+<div id="outline-container-orgd1fa71b" class="outline-4">
+<h4 id="orgd1fa71b"><span class="section-number-4">1.12.2.</span> Union Types</h4>
 <div class="outline-text-4" id="text-1-12-2">
 <p>
 Either one or the other, not both (Union)
@@ -677,9 +660,8 @@ type UnknownEmployee = Admin | Employee
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgd7b9b56" class="outline-3">
-<h3 id="orgd7b9b56"><span class="section-number-3">1.13.</span> TypeGuarding</h3>
+<div id="outline-container-orgd7df2a5" class="outline-3">
+<h3 id="orgd7df2a5"><span class="section-number-3">1.13.</span> TypeGuarding</h3>
 <div class="outline-text-3" id="text-1-13">
 <p>
 ``` typescript
@@ -745,9 +727,8 @@ if (e1 instanceof Employee) {
 </p>
 </div>
 </div>
-
-<div id="outline-container-orgcf1b229" class="outline-3">
-<h3 id="orgcf1b229"><span class="section-number-3">1.14.</span> Discriminated Unions</h3>
+<div id="outline-container-org920be57" class="outline-3">
+<h3 id="org920be57"><span class="section-number-3">1.14.</span> Discriminated Unions</h3>
 <div class="outline-text-3" id="text-1-14">
 <p>
 Common property in each object that makes up our Union.
@@ -810,9 +791,8 @@ Typescript supports us with nice intelli-sense based on which interface we're re
 </p>
 </div>
 </div>
-
-<div id="outline-container-org5d39bb4" class="outline-3">
-<h3 id="org5d39bb4"><span class="section-number-3">1.15.</span> Type Casting</h3>
+<div id="outline-container-org077dfbd" class="outline-3">
+<h3 id="org077dfbd"><span class="section-number-3">1.15.</span> Type Casting</h3>
 <div class="outline-text-3" id="text-1-15">
 <p>
 Lets you explicitly tell typescript the type.
@@ -851,9 +831,8 @@ userInputElement.value = 'deadpool'; // VALID
 </p>
 </div>
 </div>
-
-<div id="outline-container-orgcd6ac35" class="outline-3">
-<h3 id="orgcd6ac35"><span class="section-number-3">1.16.</span> TypeScript Declaration Files</h3>
+<div id="outline-container-orgc5b5493" class="outline-3">
+<h3 id="orgc5b5493"><span class="section-number-3">1.16.</span> TypeScript Declaration Files</h3>
 <div class="outline-text-3" id="text-1-16">
 <p>
 Special module that tells TypeScript we're only defining types:
@@ -870,9 +849,8 @@ This process is error-prone/duplicative, enter: [DefinitelyTyped](<a href="https
 </p>
 </div>
 </div>
-
-<div id="outline-container-org31ef600" class="outline-3">
-<h3 id="org31ef600"><span class="section-number-3">1.17.</span> Index Types</h3>
+<div id="outline-container-org9ef261b" class="outline-3">
+<h3 id="org9ef261b"><span class="section-number-3">1.17.</span> Index Types</h3>
 <div class="outline-text-3" id="text-1-17">
 <p>
 If you don't know exact property name, or property count, just that every property that which is added to this object - which is based on error container - MUST have a property name which must be interpreted to a String, as well as a value of type String.
@@ -894,9 +872,8 @@ interface ErrorContainer {
 </p>
 </div>
 </div>
-
-<div id="outline-container-orgc2be6b5" class="outline-3">
-<h3 id="orgc2be6b5"><span class="section-number-3">1.18.</span> Function Overloads</h3>
+<div id="outline-container-org4561ab2" class="outline-3">
+<h3 id="org4561ab2"><span class="section-number-3">1.18.</span> Function Overloads</h3>
 <div class="outline-text-3" id="text-1-18">
 <p>
 Overloads to help with type checking/intelli-sense
@@ -937,9 +914,8 @@ result.split('')
 </p>
 </div>
 </div>
-
-<div id="outline-container-orgf100b58" class="outline-3">
-<h3 id="orgf100b58"><span class="section-number-3">1.19.</span> Generics</h3>
+<div id="outline-container-orgba57d3a" class="outline-3">
+<h3 id="orgba57d3a"><span class="section-number-3">1.19.</span> Generics</h3>
 <div class="outline-text-3" id="text-1-19">
 <p>
 Generics: flexibility combined with type safety!
@@ -960,9 +936,8 @@ function merge&lt;T, U&gt;(objA: T, objB: U) {
 ```
 </p>
 </div>
-
-<div id="outline-container-org90368bb" class="outline-4">
-<h4 id="org90368bb"><span class="section-number-4">1.19.1.</span> Generic constraints</h4>
+<div id="outline-container-org1e3ce60" class="outline-4">
+<h4 id="org1e3ce60"><span class="section-number-4">1.19.1.</span> Generic constraints</h4>
 <div class="outline-text-4" id="text-1-19-1">
 <p>
 <b>Constraints</b> allow you to narrow down the `concrete types` that may be used in a <b><b>Generic function</b></b>.
@@ -998,9 +973,8 @@ function countAndDescribe&lt;T extends Lengthy&gt;(element: T): [T, string]{
 ```
 </p>
 </div>
-
 <ol class="org-ol">
-<li><a id="org3f5ffd2"></a>`keyof` contstraint<br />
+<li><a id="org7a31a7f"></a>`keyof` contstraint<br />
 <div class="outline-text-5" id="text-1-19-1-1">
 <p>
 Here we are telling Typescript that we pass in an `object T`, and `U` is a <b><b>key of</b></b> `object T`.
@@ -1022,13 +996,12 @@ const extractAndConvert = &lt;T extends object, U extends keyof T&gt;(obj: T , k
 </li>
 </ol>
 </div>
-
-<div id="outline-container-org2683b1e" class="outline-4">
-<h4 id="org2683b1e"><span class="section-number-4">1.19.2.</span> Generic Utility Types</h4>
+<div id="outline-container-org8e5a531" class="outline-4">
+<h4 id="org8e5a531"><span class="section-number-4">1.19.2.</span> Generic Utility Types</h4>
 <div class="outline-text-4" id="text-1-19-2">
 </div>
 <ol class="org-ol">
-<li><a id="org32cf3ae"></a>`Partial` All properties are optional<br />
+<li><a id="orgbcf7c8e"></a>`Partial` All properties are optional<br />
 <div class="outline-text-5" id="text-1-19-2-1">
 <p>
 ``` typescript
@@ -1055,8 +1028,7 @@ courseGoal.completeDate = completeDate
 </p>
 </div>
 </li>
-
-<li><a id="org41df083"></a>`Readonly`<br />
+<li><a id="org1952435"></a>`Readonly`<br />
 <div class="outline-text-5" id="text-1-19-2-2">
 <p>
 ``` typescript
@@ -1073,9 +1045,8 @@ const names: Readonly&lt;Array&lt;string&gt;&gt; = ['Mikey', 'Neo']
 </ol>
 </div>
 </div>
-
-<div id="outline-container-orgf5fbd86" class="outline-3">
-<h3 id="orgf5fbd86"><span class="section-number-3">1.20.</span> Decorators</h3>
+<div id="outline-container-org50a3a35" class="outline-3">
+<h3 id="org50a3a35"><span class="section-number-3">1.20.</span> Decorators</h3>
 <div class="outline-text-3" id="text-1-20">
 <p>
 Meta-programming
@@ -1122,9 +1093,8 @@ const person = new Person()
 ```
 </p>
 </div>
-
-<div id="outline-container-org16d2b43" class="outline-4">
-<h4 id="org16d2b43"><span class="section-number-4">1.20.1.</span> Decorator Factories</h4>
+<div id="outline-container-orgafd9a52" class="outline-4">
+<h4 id="orgafd9a52"><span class="section-number-4">1.20.1.</span> Decorator Factories</h4>
 <div class="outline-text-4" id="text-1-20-1">
 <p>
 ``` typescript
@@ -1160,9 +1130,8 @@ Execution of decorator functions fire off <b><b>bottom-up</b></b>. (Not the fact
 </div>
 </div>
 </div>
-
-<div id="outline-container-org969aae0" class="outline-3">
-<h3 id="org969aae0"><span class="section-number-3">1.21.</span> Using Axios with TypeScript</h3>
+<div id="outline-container-orgf447be5" class="outline-3">
+<h3 id="orgf447be5"><span class="section-number-3">1.21.</span> Using Axios with TypeScript</h3>
 <div class="outline-text-3" id="text-1-21">
 <p>
 ``` typescript

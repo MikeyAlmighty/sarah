@@ -5,3 +5,74 @@
 
 * Python List
 - Mutable
+
+** Basic Example
+#+begin_src python
+lst = [1, 69, 420, 100, 99]
+
+print(*lst)  # 1 69 420 100 99
+#+end_src
+
+** Insertion
+
+*** insert()
+Insert element at a *specific* *index*.
+
+#+begin_src python
+lst.insert(len(lst), 15)
+
+print(*lst)  # 1 69 420 100 99 15
+#+end_src
+
+*** append()
+Add a *single* element to the *end*.
+
+#+begin_src python
+lst.append(6)
+
+print(*lst)  # 1 69 420 100 99 15 6
+#+end_src
+
+*** extend()
+Add *multiple* *elements* to the *end*.
+
+#+begin_src python
+lst.extend([7, 8, 9])
+
+print(*lst)  # 1 69 420 100 99 15 6 7 8 9
+#+end_src
+
+** Removal
+
+*** pop()
+*Remove* *element* at a *given* *index*.
+
+#+begin_src python
+lst.pop(3)
+
+print(*lst)
+#+end_src
+
+*** del
+*Delete* *element* by *index*.
+
+#+begin_src python
+del lst[0]
+
+print(*lst)
+#+end_src
+
+** Iteration
+
+#+begin_src python
+for x in lst:
+    print("Value", x)
+#+end_src
+
+** Notes
+- Lists in Python are *ordered* and *mutable*.
+- ~insert()~ is O(n)
+- ~append()~ is [[id:ebb9877e-e173-4afa-86e7-a8d23780642e][amortized]] =O(1)=
+- ~extend()~ is =O(k)=, where =k= is the number of *added* *elements*
+- ~pop()~ from end is =O(1)=, otherwise =O(n)=
+- ~del~ depends on position (usually =O(n)=)
