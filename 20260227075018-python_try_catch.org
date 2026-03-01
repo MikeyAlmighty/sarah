@@ -1,0 +1,99 @@
+:PROPERTIES:
+:ID:       372795e7-9a0f-4c6d-aac0-ddfdbc49d157
+:END:
+#+title: Python Try/Catch
+
+* Python Try/Catch
+** Overview
+Python uses *try* and *except* blocks to handle *runtime* *errors* (*exceptions*) without crashing the program.
+
+Basic structure:
+
+#+BEGIN_SRC python
+try:
+    # code that may raise an exception
+except SomeException:
+    # handle specific exception
+except Exception:
+    # handle any other exception
+#+END_SRC
+
+
+** Example: Handling Division Errors
+
+#+BEGIN_SRC python
+def divide_by(a, b):
+    return a / b
+
+try:
+    print(divide_by(40, 0))
+except ZeroDivisionError as e:
+    print(e, 'We cannot divide by zero')
+except Exception as e:
+    print(e, 'Something went wrong')
+#+END_SRC
+
+
+** How It Works
+
+1. =divide_by(40, 0)= raises a =ZeroDivisionError=.
+2. Python immediately exits the =try= block.
+3. It matches the first compatible =except= block.
+4. The exception object is stored in variable =e=.
+5. The handler prints a friendly message instead of crashing.
+
+
+** Why Order Matters
+
+Exception blocks are checked ~top to bottom~.
+
+More specific exceptions must come before more general ones:
+
+#+BEGIN_SRC python
+except ZeroDivisionError:
+except Exception:  # broader — catches almost everything
+#+END_SRC
+
+If =Exception= came first, =ZeroDivisionError= would never be reached.
+
+** Optional Clauses
+
+*** else
+Runs if NO exception occurs.
+
+#+BEGIN_SRC python
+try:
+    result = divide_by(10, 2)
+except ZeroDivisionError:
+    print("Cannot divide by zero")
+else:
+    print("Result:", result)
+#+END_SRC
+
+
+*** finally
+Always runs (cleanup code, closing files, etc.).
+
+#+BEGIN_SRC python
+try:
+    result = divide_by(10, 2)
+except ZeroDivisionError:
+    print("Cannot divide by zero")
+finally:
+    print("Done.")
+#+END_SRC
+
+
+** Best Practices
+
+- Catch specific *exceptions* whenever possible.
+- Avoid bare =except:= (it catches *everything*, including *system-exiting exceptions*).
+- Use *exceptions* for exceptional cases, not normal control flow.
+- Keep try blocks small and focused.
+
+
+** Related Concepts
+
+- Raising exceptions: =raise ValueError("Invalid input")=
+- Creating custom exceptions (class MyError(Exception))
+- Logging errors instead of printing

@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-24 Tue 06:01 -->
+<!-- 2026-03-01 Sun 08:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python Match statement</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style type="text/css">
+<style>
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -256,22 +256,23 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org1bd0019">1. Match Statement (Python 3.10+)</a>
+<li><a href="#org31c6f02">1. Match Statement (Python 3.10+)</a>
 <ul>
-<li><a href="#org5f7846c">1.1. Basic Syntax</a></li>
-<li><a href="#org500c284">1.2. Simple Example</a></li>
-<li><a href="#org2d38e95">1.3. Matching Multiple Values</a></li>
-<li><a href="#org62b3afd">1.4. Variable Capture</a></li>
-<li><a href="#orgad74485">1.5. Matching with Conditions (Guards)</a></li>
-<li><a href="#orgc0b67ad">1.6. Matching Dictionaries</a></li>
-<li><a href="#orgf094cc7">1.7. Key Notes</a></li>
+<li><a href="#org2827597">1.1. Basic Syntax</a></li>
+<li><a href="#orgef7255b">1.2. Simple Example</a></li>
+<li><a href="#orgc7806fe">1.3. Matching Multiple Values</a></li>
+<li><a href="#orgfbe34ef">1.4. Variable Capture</a></li>
+<li><a href="#org55f2bd7">1.5. Matching with Conditions (Guards)</a></li>
+<li><a href="#orgd2b02c0">1.6. Matching Dictionaries</a></li>
+<li><a href="#orga7789fd">1.7. Key Notes</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org1bd0019" class="outline-2">
-<h2 id="org1bd0019"><span class="section-number-2">1.</span> Match Statement (Python 3.10+)</h2>
+
+<div id="outline-container-org31c6f02" class="outline-2">
+<h2 id="org31c6f02"><span class="section-number-2">1.</span> Match Statement (Python 3.10+)</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 The <code>match</code> statement (introduced in Python 3.10) performs <b>structural pattern matching</b>.
@@ -282,8 +283,9 @@ It compares a value against patterns and executes the first matching case.
 It is similar to <code>switch</code> in other languages, but more powerful.
 </p>
 </div>
-<div id="outline-container-org5f7846c" class="outline-3">
-<h3 id="org5f7846c"><span class="section-number-3">1.1.</span> Basic Syntax</h3>
+
+<div id="outline-container-org2827597" class="outline-3">
+<h3 id="org2827597"><span class="section-number-3">1.1.</span> Basic Syntax</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-keyword">match</span> value:
@@ -297,8 +299,10 @@ It is similar to <code>switch</code> in other languages, but more powerful.
 </div>
 </div>
 </div>
-<div id="outline-container-org500c284" class="outline-3">
-<h3 id="org500c284"><span class="section-number-3">1.2.</span> Simple Example</h3>
+
+
+<div id="outline-container-orgef7255b" class="outline-3">
+<h3 id="orgef7255b"><span class="section-number-3">1.2.</span> Simple Example</h3>
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-variable-name">status</span> <span class="org-operator">=</span> 404
@@ -316,8 +320,10 @@ It is similar to <code>switch</code> in other languages, but more powerful.
 </div>
 </div>
 </div>
-<div id="outline-container-org2d38e95" class="outline-3">
-<h3 id="org2d38e95"><span class="section-number-3">1.3.</span> Matching Multiple Values</h3>
+
+
+<div id="outline-container-orgc7806fe" class="outline-3">
+<h3 id="orgc7806fe"><span class="section-number-3">1.3.</span> Matching Multiple Values</h3>
 <div class="outline-text-3" id="text-1-3">
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-variable-name">day</span> <span class="org-operator">=</span> <span class="org-string">"Saturday"</span>
@@ -331,8 +337,10 @@ It is similar to <code>switch</code> in other languages, but more powerful.
 </div>
 </div>
 </div>
-<div id="outline-container-org62b3afd" class="outline-3">
-<h3 id="org62b3afd"><span class="section-number-3">1.4.</span> Variable Capture</h3>
+
+
+<div id="outline-container-orgfbe34ef" class="outline-3">
+<h3 id="orgfbe34ef"><span class="section-number-3">1.4.</span> Variable Capture</h3>
 <div class="outline-text-3" id="text-1-4">
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-variable-name">point</span> <span class="org-operator">=</span> (3, 4)
@@ -344,8 +352,10 @@ It is similar to <code>switch</code> in other languages, but more powerful.
 </div>
 </div>
 </div>
-<div id="outline-container-orgad74485" class="outline-3">
-<h3 id="orgad74485"><span class="section-number-3">1.5.</span> Matching with Conditions (Guards)</h3>
+
+
+<div id="outline-container-org55f2bd7" class="outline-3">
+<h3 id="org55f2bd7"><span class="section-number-3">1.5.</span> Matching with Conditions (Guards)</h3>
 <div class="outline-text-3" id="text-1-5">
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-variable-name">number</span> <span class="org-operator">=</span> 15
@@ -361,8 +371,10 @@ It is similar to <code>switch</code> in other languages, but more powerful.
 </div>
 </div>
 </div>
-<div id="outline-container-orgc0b67ad" class="outline-3">
-<h3 id="orgc0b67ad"><span class="section-number-3">1.6.</span> Matching Dictionaries</h3>
+
+
+<div id="outline-container-orgd2b02c0" class="outline-3">
+<h3 id="orgd2b02c0"><span class="section-number-3">1.6.</span> Matching Dictionaries</h3>
 <div class="outline-text-3" id="text-1-6">
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-variable-name">user</span> <span class="org-operator">=</span> {<span class="org-string">"name"</span>: <span class="org-string">"Alice"</span>, <span class="org-string">"age"</span>: 30}
@@ -374,8 +386,10 @@ It is similar to <code>switch</code> in other languages, but more powerful.
 </div>
 </div>
 </div>
-<div id="outline-container-orgf094cc7" class="outline-3">
-<h3 id="orgf094cc7"><span class="section-number-3">1.7.</span> Key Notes</h3>
+
+
+<div id="outline-container-orga7789fd" class="outline-3">
+<h3 id="orga7789fd"><span class="section-number-3">1.7.</span> Key Notes</h3>
 <div class="outline-text-3" id="text-1-7">
 <ul class="org-ul">
 <li>Available in Python <code>3.10</code> and later.</li>
