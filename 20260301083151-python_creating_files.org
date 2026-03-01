@@ -1,0 +1,92 @@
+:PROPERTIES:
+:ID:       f5a02386-8d5d-4001-bc73-bec36badb23c
+:END:
+#+title: Python Creating Files
+
+* Python Creating Files
+
+** Overview
+Python can create files automatically when opening them in certain modes.
+If the file does not exist, Python asks the operating system to create it before writing.
+
+Creation typically happens with:
+- =w= → *create* or *overwrite*
+- =a= → *create* or *append*
+- =x= → *create* only (*fails* *if* *file* *exists*)
+
+** Creating and Writing to a New File
+Using =write= modes that create the file if missing:
+
+#+begin_src python
+try:
+    with open('new_file.txt', mode="w") as file:
+        file.write("This is a new file created!\n")  # Single line
+        file.writelines([
+            "This is a line!\n",
+            "This is another Line!"
+        ])  # Multiple lines
+except FileNotFoundError as e:
+    print("ERROR", e)
+#+end_src
+
+Behavior of =w= mode:
+- Creates file if it does not exist
+- Overwrites entire file if it exists
+- Cursor starts at beginning
+
+** Creating and Appending to a File
+=Append= mode *preserves* existing content and adds new data to the end.
+
+#+begin_src python
+try:
+    with open('new_file_appending.txt', mode="a") as file:
+        file.write("\nThis is a new file created!\n")
+        file.writelines([
+            "This is a line!\n",
+            "This is another Line!\n"
+        ])
+        file.write("This is yet another line!\n")
+except FileNotFoundError as e:
+    print("ERROR", e)
+#+end_src
+
+Behavior of =a= mode:
+- Creates file if it does not exist
+- Never deletes existing content
+- Cursor always moves to end before writing
+
+** write() vs writelines()
+| Function     | Input Type          | Adds Newline Automatically | Typical Use       |
+|--------------+---------------------+----------------------------+-------------------|
+| write()      | Single string       | No                         | One piece of text |
+| writelines() | Iterable of strings | No                         | Multiple lines    |
+
+*** Note:
+=writelines()= does not insert newline characters.
+Each string must contain =\n= if line breaks are desired.
+
+** Why Use try/except?
+File creation can fail when:
+- Directory does *not* exist
+- *Permission* is *denied*
+- *Disk* is *full*
+
+Exception handling prevents program crashes and allows graceful recovery.
+
+** Safer Creation Mode
+To ensure a file is created only if it does NOT exist:
+
+#+begin_src python
+with open("unique_file.txt", "x") as f:
+    f.write("Created safely")
+#+end_src
+
+This raises =FileExistsError= if the file already exists.
+
+** Conceptual Model
+*Creating* a file in Python is not “making a thing” — it is requesting the operating system to *allocate* a named stream of bytes.
+The name lives in a directory table; the content lives in disk blocks somewhere else entirely.
+
+The filename is a label, not the data itself.
+
+This separation is why a file can exist yet contain nothing — an empty promise carved into the filesystem.

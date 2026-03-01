@@ -1,0 +1,98 @@
+:PROPERTIES:
+:ID:       b55baab9-a999-44c2-839c-67bee2246252
+:END:
+#+title: Python File Handling
+:PROPERTIES:
+
+* Python File Handling
+** Overview
+*File handling* in Python allows ~reading~ ~from~ and ~writing~ ~to~ *files.
+
+The built-in =open()= function returns a *file object* that provides methods for interacting with the file.
+
+Basic workflow:
+1. Open file
+2. Read or write
+3. Close file (or let context manager handle it)
+
+** Opening a File
+*** Syntax:
+#+begin_src python
+open(filename, mode)
+#+end_src
+
+** File Modes and Permissions
+| Mode | Meaning                  | File Must Exist      | Allows Writing | Pointer Position |
+|------+--------------------------+----------------------+----------------+------------------|
+| r    | Read                     | Yes                  | No             | Beginning        |
+| w    | Write (overwrite)        | No                   | Yes            | Beginning        |
+| a    | Append                   | No                   | Yes            | End              |
+| x    | Create new file          | No (fails if exists) | Yes            | Beginning        |
+| r+   | Read + Write             | Yes                  | Yes            | Beginning        |
+| w+   | Read + Write (overwrite) | No                   | Yes            | Beginning        |
+| a+   | Read + Append            | No                   | Yes            | End              |
+
+** Text vs Binary Modes
+| Type   | Mode Example | Data Type | Use Case                              |
+|--------+--------------+-----------+---------------------------------------|
+| Text   | r, w, a      | str       | Human-readable files (txt, csv, json) |
+| Binary | rb, wb, ab   | bytes     | Images, audio, compiled data          |
+
+Notes:
+- =Text= mode automatically handles ~encoding/decoding~.
+- =Binary= mode reads *raw* *bytes* exactly as stored.
+
+** Reading from a File (Manual Close)
+#+begin_src python
+file = open('test.txt', mode='r')
+
+data = file.readline()
+print(data)
+
+file.close()
+#+end_src
+
+*** Note:
+- *Always* ~close~ files to free system resources.
+
+** Using a Context Manager (Recommended)
+#+begin_src python
+with open('test.txt', mode='r') as file:
+    data = file.readline()
+    print(data)
+#+end_src
+
+Why this is better:
+- *Automatically* ~closes~ file
+- Safer if *exceptions* occur
+- Cleaner code
+
+** Common File Methods
+| Method           | Description              |
+|------------------+--------------------------|
+| read()           | Read entire file         |
+| readline()       | Read one line            |
+| readlines()      | Read all lines into list |
+| write(data)      | Write string to file     |
+| writelines(list) | Write list of strings    |
+
+** Encoding
+Default encoding depends on system. To control it:
+
+#+begin_src python
+with open('test.txt', 'r', encoding='utf-8') as f:
+    content = f.read()
+#+end_src
+
+** Mental Model
+A file object is a *stream*.
+You do not grab the file — you consume it progressively like a tape head moving forward.
+
+That’s why repeated reads return different results unless you reposition the cursor:
+
+#+begin_src python
+file.seek(0)  # rewind
+#+end_src
+
+** [[id:f5a02386-8d5d-4001-bc73-bec36badb23c][Python Creating Files]]
+** [[id:2273c697-7ac9-46f2-9734-acc34b998114][Python Reading Files]]

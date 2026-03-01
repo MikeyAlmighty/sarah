@@ -1,0 +1,92 @@
+:PROPERTIES:
+:ID:       2273c697-7ac9-46f2-9734-acc34b998114
+:END:
+#+title: Python Reading Files
+
+* Python Reading Files
+
+** Overview
+Reading files in Python means consuming data from a file stream provided by the operating system.
+A file object maintains an internal =cursor= that *advances* as data is *read*.
+
+*** Key idea:
+Reading changes the cursor position.
+Once content is consumed, subsequent reads return less (or nothing) unless the cursor is reset.
+
+** Reading Methods
+| Method      | What It Returns                | Behavior                           |
+|-------------+--------------------------------+------------------------------------|
+| read()      | Entire remaining content (str) | Reads from current cursor position |
+| read(n)     | Next n characters              | Stops after n characters           |
+| readline()  | One line                       | Stops at newline                   |
+| readlines() | List of lines                  | Reads all remaining lines          |
+
+** Reading Using Context Manager
+#+begin_src python
+try:
+    with open('sample.txt', mode='r') as file:
+        print(file.read())
+        print(file.read(10))      # First 10 characters from current position
+        print(file.readline())    # Next line
+        print(file.readlines())   # Remaining lines as list
+except Exception as e:
+    print("ERROR", e)
+#+end_src
+
+Important behavior:
+- After =read()= consumes the file, later reads return empty results.
+- Methods operate sequentially from the current cursor position.
+
+** Iterating Through a File
+A file object is iterable.
+
+Iteration reads one line at a time efficiently.
+
+#+begin_src python
+try:
+    with open('sample.txt', mode='r') as file:
+        for x in file:
+            print(x)
+except Exception as e:
+    print("ERROR", e)
+#+end_src
+
+Why iteration is powerful:
+- Memory efficient for large files
+- Lazy loading (reads as needed)
+- Clean syntax
+
+** Resetting the Cursor
+To read again from the beginning:
+
+#+begin_src python
+file.seek(0)
+#+end_src
+
+The argument represents byte position from the start.
+
+** Text vs Binary Reading
+| Mode | Returns | Typical Use                |
+|------+---------+----------------------------|
+| r    | str     | Text files                 |
+| rb   | bytes   | Images, audio, binary data |
+
+Text mode decodes bytes using an [[id:ef328551-cd74-449c-95c5-fef9ae9b7579][encoding Scheme]] (often UTF-8).
+~Binary~ mode exposes *raw* *bytes* without interpretation.
+
+** Error Handling Strategy
+Generic exception handling catches:
+- Missing file
+- Permission issues
+- Encoding errors
+- IO interruptions
+
+More specific exceptions can be used for precise control.
+
+** Conceptual Model
+*Reading* a file is not copying a container — it is advancing through a *stream*.
+Imagine a sliding window over a sequence of bytes.
+
+Once the window passes, the past is not “re-read” unless you explicitly rewind.
+
+This stream abstraction is shared across files, network sockets, and even some in-memory objects — different sources, same interface, same physics of flow.
