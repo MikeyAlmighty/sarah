@@ -1,0 +1,64 @@
+:PROPERTIES:
+:ID:       036fc75b-5a25-45f6-a697-82ac0753ac43
+:END:
+#+title: Python Extended Slice
+
+* Python Extended Slice
+** Overview
+Python sequences (~strings~, ~lists~, ~tuples~) support *extended slicing*, which allows extraction of elements with a specific =start=, =stop=, and =step=.
+
+Syntax:
+#+begin_src python
+sequence[start:stop:step]
+#+end_src
+
+- =start= → *index* where slicing begins (*inclusive*)
+- =stop= → *index* where slicing ends (*exclusive*)
+- =step= → *interval* between elements (can be *negative* for *reverse* *slicing*)
+
+** Examples with Strings
+
+#+begin_src python
+text = "Hello, World!"
+
+# Basic slice
+print(text[0:5])       # 'Hello'
+
+# Slice with step
+print(text[0:12:2])    # 'Hlo ol'
+
+# Reverse slice
+print(text[::-1])      # '!dlroW ,olleH'
+
+# Negative step with partial slice
+print(text[5:0:-1])    # ',oll'
+#+end_src
+
+** Examples with Lists
+#+begin_src python
+numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+# Every second element
+print(numbers[::2])    # [0, 2, 4, 6, 8]
+
+# Reverse list
+print(numbers[::-1])   # [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+
+# Slice with start and stop
+print(numbers[2:8:3])  # [2, 5]
+#+end_src
+
+** Notes
+- Omitting =start= → *defaults* to *beginning* of ~sequence~
+- Omitting =stop= → *defaults* to *end* of ~sequence~
+- Omitting =step= → *defaults* to ~1~
+- Negative indices count from the end (~-1~ is *last* element)
+- Extended slice is a powerful tool for *reversing*, *skipping*, or *selecting* patterned elements efficiently
+
+** Mental Model
+Think of a sequence as a conveyor belt of items.
+- =start= → where you place your hand
+- =stop= → where you stop reaching
+- =step= → how many items you skip between grabs
+
+It’s a compact way to extract patterns without loops.

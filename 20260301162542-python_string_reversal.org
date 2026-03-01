@@ -1,0 +1,55 @@
+:PROPERTIES:
+:ID:       37152f81-ad57-462b-a988-2f06e43e4e56
+:END:
+#+title: Python String Reversal
+
+* Python String Reversal
+** Overview
+Reversing a string means producing a new string with the characters in *opposite* *order*.
+
+** Method 1: [[id:036fc75b-5a25-45f6-a697-82ac0753ac43][Python Extended Slice]]
+Python’s extended slice syntax allows reversing a string concisely.
+
+#+begin_src python
+trial = "reversal"
+
+# Right-to-left traversal using step=-1
+new_trial = trial[::-1]
+print(new_trial)  # 'lasrever'
+#+end_src
+
+Notes:
+- =[::-1]= starts from the *end* and moves backwards to the start.
+- Efficient and Pythonic for simple reversal tasks.
+
+** Method 2: Recursion
+Recursion solves the problem by repeatedly reversing the rest of the string and appending the first character at the end.
+
+#+begin_src python
+def string_reverse(s):
+    if len(s) == 0:
+        return s
+    else:
+        return string_reverse(s[1:]) + s[0]
+
+s = "reversal"
+reverse = string_reverse(s)
+print(reverse)  # 'lasrever'
+#+end_src
+
+Notes:
+- *Base case*: empty string returns itself.
+- *Recursive case*: take the first character, reverse the remainder, and append the first character at the end.
+- Demonstrates algorithmic thinking and function call stack mechanics.
+
+** Comparison
+| Method         | Complexity                   | Pros                           | Cons                                                                             |
+|----------------+------------------------------+--------------------------------+----------------------------------------------------------------------------------|
+| Extended Slice | O(n)                         | Simple, concise, idiomatic     | Less flexible for complex transformations                                        |
+| Recursion      | O(n²) in naive string concat | Illustrates recursion concepts | Less efficient due to repeated concatenation, stack depth limit for long strings |
+
+** Conceptual Model
+- Extended slice is like reading a sentence backward from a printed line.
+- Recursion is like peeling the string character by character, then rebuilding it from the inside out — a mental exercise in *decomposition*.
+
+Both methods achieve the same end result but highlight different aspects of Python’s expressive power.
