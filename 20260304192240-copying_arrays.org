@@ -1,0 +1,97 @@
+:PROPERTIES:
+:ID:       47e5db91-e025-4f3e-afe0-bc78c92119ca
+:END:
+#+title: Copying Arrays
+
+* Copying Arrays
+
+** 1. Using a Loop
+
+#+BEGIN_SRC java
+public static void main(String[] args) throws Exception {
+    int[] sourceArray = { 2, 3, 1, 5, 10 };
+    int[] targetArray = new int[sourceArray.length];
+
+    for (int i = 0; i < sourceArray.length; i++) {
+        targetArray[i] = sourceArray[i];
+    }
+}
+#+END_SRC
+
+** 2. Using arraycopy
+
+Imported from ~java.lang.System~
+
+*** Syntax
+#+BEGIN_SRC java
+arraycopy(sourceArray, sourcePosition, targetArray, targetPosition, length);
+#+END_SRC
+
+The parameters ~sourcePosition~ and ~targetPosition~ indicate the *starting* positions in =sourceArray= and =targetArray=.
+
+The number of elements copied from =sourceArray= to =targetArray= is indicated by ~length~.
+
+**** Example
+#+BEGIN_SRC java
+import java.util.Arrays;
+
+public static void main(String[] args) throws Exception {
+    int[] sourceArray = { 2, 3, 1, 5, 10 };
+    int[] targetArray = new int[sourceArray.length];
+
+    System.arraycopy(sourceArray, 0, targetArray, 0, sourceArray.length);
+
+    System.out.println(Arrays.toString(targetArray));
+}
+#+END_SRC
+
+The ~arraycopy~ method does *not* allocate memory space for the =target= array.
+The =target= array must have *already* been created with its *memory* *space* *allocated*.
+
+After the *copying* takes place, =targetArray= and =sourceArray= have the *same* *content* but *independent* *memory* locations.
+
+** 3. Using Clone()
+The ~clone()~ method creates a *shallow* copy of the array.
+
+It is a simple and direct way to duplicate an array in Java.
+
+The ~clone()~ method creates a *new* =array= of the *same* *type* and *copies* *all* =elements=.
+
+It works well for primitive arrays (like ~int[]~, ~double[]~), where each element is copied separately.
+
+We must note though that, for *arrays* of =objects=, ~clone()~ performs what we call *shallow* copy, meaning that only =references= are *copied*, not the actual =objects=.
+
+If the original array contains =objects=, both arrays will still reference the same =objects=.
+
+
+*** Example
+
+#+BEGIN_SRC java
+public static void main(String[] args) {
+    int[] original = {5, 10, 15, 20, 25};
+
+    // Cloning the array
+    int[] copy = original.clone();
+
+    // Modifying the copied array
+    copy[1] = 99;
+
+    // Displaying both arrays
+    System.out.println("Original array: " + java.util.Arrays.toString(original));
+    System.out.println("Copied array: " + java.util.Arrays.toString(copy));
+}
+#+END_SRC
+
+** 4. Using copyOf()
+
+#+BEGIN_SRC java
+public static void main(String[] args) {
+    int[] original = { 10, 20, 30, 40, 50 };
+    int[] copy = Arrays.copyOf(original, original.length);
+
+    copy[1] = 99; // Modifying the copied array
+
+    System.out.println("Original array: " + Arrays.toString(original));
+    System.out.println("Copied array: " + Arrays.toString(copy));
+}
+#+END_SRC
