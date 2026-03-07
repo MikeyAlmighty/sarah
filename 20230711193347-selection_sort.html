@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-03-04 Wed 19:51 -->
+<!-- 2026-03-07 Sat 10:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Selection Sort</title>
@@ -256,43 +256,129 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2857f0d">1. Selection Sort</a></li>
+<li><a href="#orgb70a8ba">1. Selection Sort</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org2857f0d" class="outline-2">
-<h2 id="org2857f0d"><span class="section-number-2">1.</span> Selection Sort</h2>
+<div id="outline-container-orgb70a8ba" class="outline-2">
+<h2 id="orgb70a8ba"><span class="section-number-2">1.</span> Selection Sort</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-In place comparison sorting algorithm that keeps track of minimum value during each iteration, at the end of each iteration swap variables.
+<b>In place</b> comparison <b>sorting</b> algorithm that keeps track of <b>minimum</b> value during <b>each</b> <b>iteration</b>, at the end of <b>each</b> <b>iteration</b> <b>swap</b> <code>variables</code>.
 </p>
 
 <p>
-`Time complexity`: O(n&lt;sup&gt;2&lt;/sup&gt;)
+<code>Time complexity</code>: O(n<sup>2</sup>)
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-keyword">const</span> <span class="org-variable-name">selectionSort</span> = (array) =&gt; {
-  <span class="org-keyword">const</span> <span class="org-variable-name">arr</span> = array.slice()
-  <span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">i</span> = 0; i &lt; arr.length - 1; i++) {
-    <span class="org-keyword">let</span> <span class="org-variable-name">min</span> = i
-    <span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">j</span> = i + 1; j &lt; arr.length; j++) {
-      <span class="org-keyword">if</span> (arr[min] &gt; arr[j]) {
-        min = j
-      }
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">SelectionSort</span> {
+
+    <span class="org-doc">/** The method for sorting the numbers */</span>
+    <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">selectionSort</span>(<span class="org-type">double</span>[] <span class="org-variable-name">list</span>) {
+
+        <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; list.length - 1; i++) {
+
+            <span class="org-comment-delimiter">// </span><span class="org-comment">Find the minimum in the list[i..list.length-1]
+</span>            <span class="org-type">double</span> <span class="org-variable-name">currentMin</span> = list[i];
+            <span class="org-type">int</span> <span class="org-variable-name">currentMinIndex</span> = i;
+
+            <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">j</span> = i + 1; j &lt; list.length; j++) {
+                <span class="org-keyword">if</span> (currentMin &gt; list[j]) {
+                    currentMin = list[j];
+                    currentMinIndex = j;
+                }
+            }
+
+            <span class="org-comment-delimiter">// </span><span class="org-comment">Swap list[i] with list[currentMinIndex] if necessary
+</span>            <span class="org-keyword">if</span> (currentMinIndex != i) {
+                list[currentMinIndex] = list[i];
+                list[i] = currentMin;
+            }
+        }
+
     }
-    <span class="org-keyword">let</span> <span class="org-variable-name">temp</span> = arr[i]
-    arr[i] = arr[min]
-    arr[min] = temp
-  }
-  <span class="org-keyword">return</span> arr
 }
-
-<span class="org-keyword">const</span> <span class="org-variable-name">array</span> = [2, 19, 4, 25, 6, 520]
-
-console.log(selectionSort(array))
 </pre>
 </div>
+
+<p>
+<code>selectionSort(double[] list)</code> method <b>sorts</b> any array of <code>double</code> elements.
+</p>
+
+<p>
+The outer loop is iterated in order to find the <b>smallest</b> <code>element</code> in the <code>list</code>, which ranges from <code>list[i]</code> to <code>list[list.length−1]</code>, and exchanges it with <code>list[i]</code>.
+</p>
+
+<p>
+The variable <code>i</code> is initially <code>0</code>.
+</p>
+
+<p>
+After each iteration of the outer loop, <code>list[i]</code> is in the right place.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> Selection Sort Trace</caption>
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">Pass (i)</th>
+<th scope="col" class="org-left">Array State</th>
+<th scope="col" class="org-right">Minimum Found</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">Start</td>
+<td class="org-left">{1, 9, 4.5, 6.6, 5.7, -4.5}</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-right">0</td>
+<td class="org-left">{-4.5, 9, 4.5, 6.6, 5.7, 1}</td>
+<td class="org-right">-4.5</td>
+</tr>
+
+<tr>
+<td class="org-right">1</td>
+<td class="org-left">{-4.5, 1, 4.5, 6.6, 5.7, 9}</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-left">{-4.5, 1, 4.5, 6.6, 5.7, 9}</td>
+<td class="org-right">4.5</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-left">{-4.5, 1, 4.5, 5.7, 6.6, 9}</td>
+<td class="org-right">5.7</td>
+</tr>
+
+<tr>
+<td class="org-right">4</td>
+<td class="org-left">{-4.5, 1, 4.5, 5.7, 6.6, 9}</td>
+<td class="org-right">6.6</td>
+</tr>
+
+<tr>
+<td class="org-right">Sorted</td>
+<td class="org-left">{-4.5, 1, 4.5, 5.7, 6.6, 9}</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>

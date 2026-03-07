@@ -1,0 +1,63 @@
+:PROPERTIES:
+:ID:       35f7ebc2-73a4-4c61-b2c4-a256a1b4b0ba
+:END:
+#+title: Passing Arrays as Arguments
+
+* Passing Arrays as Arguments
+In Java, when an *array* is passed to a method, the argument value is the *reference to the array*, not a copy of the array itself.
+
+This behavior is often described as *pass-by-sharing*.
+
+Semantically:
+- The method receives a ~reference~ to the *same array object*.
+- Both the caller and the method refer to the *same memory location*.
+- If the method modifies the array, the changes are visible outside the method.
+
+Important points:
+- The *reference value* is passed by value.
+- The ~array~ *object* itself is shared between the *caller* and the *method*.
+- *Mutating* the ~array~ inside the method *affects* the *original* ~array~.
+
+* Example
+
+#+begin_src java
+public class ArrayArgumentExample {
+
+    public static void modifyArray(int[] arr) {
+        arr[0] = 99;  // modify the first element
+    }
+
+    public static void main(String[] args) {
+
+        int[] numbers = {1, 2, 3};
+
+        System.out.println("Before method call: " + numbers[0]);
+
+        modifyArray(numbers);
+
+        System.out.println("After method call: " + numbers[0]);
+    }
+}
+#+end_src
+
+* Output
+
+#+begin_src
+Before method call: 1
+After method call: 99
+#+end_src
+
+* Explanation
+
+1. The variable =numbers= holds a reference to an array.
+2. When =modifyArray(numbers)= is called, the reference value is passed.
+3. Inside the method, =arr= refers to the *same array object*.
+4. Changing =arr[0]= modifies the original array.
+
+Thus, the modification is visible outside the method.
+
+* Key Idea
+
+Java does **not copy arrays when passing them to methods**.
+
+Instead, the method receives a reference to the same array object, allowing it to modify the array contents.

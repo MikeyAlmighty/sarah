@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-03-04 Wed 19:51 -->
+<!-- 2026-03-07 Sat 10:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Array Searching</title>
@@ -256,51 +256,29 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org048ab22">1. Array Searching</a></li>
+<li><a href="#orgcbfdc1c">1. Array Searching</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org048ab22" class="outline-2">
-<h2 id="org048ab22"><span class="section-number-2">1.</span> Array Searching</h2>
+<div id="outline-container-orgcbfdc1c" class="outline-2">
+<h2 id="orgcbfdc1c"><span class="section-number-2">1.</span> Array Searching</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-Java also provides a convenient way to <b>search</b>, but only if the array is already <a href="20240107082011-array_sorting.html#ID-1a328fa4-9b9f-4856-88f3-fd490bce565b">sorted</a>.
-</p>
-
-
-<div id="org18d361d" class="figure">
-<p><img src="./assets/binary_search_rules.png" alt="binary_search_rules.png" />
-</p>
-</div>
-
-
-<div class="org-src-container">
-<pre class="src src-java"><span class="org-type">int</span>[] <span class="org-variable-name">numbers</span> = { 2, 4, 6, 8 };
-
-System.out.println(Arrays.binarySearch(numbers, 2)); <span class="org-comment-delimiter">// </span><span class="org-comment">0
-</span>System.out.println(Arrays.binarySearch(numbers, 4)); <span class="org-comment-delimiter">// </span><span class="org-comment">1
-</span>System.out.println(Arrays.binarySearch(numbers, 1)); <span class="org-comment-delimiter">// </span><span class="org-comment">-1
-</span>System.out.println(Arrays.binarySearch(numbers, 3)); <span class="org-comment-delimiter">// </span><span class="org-comment">-2
-</span>System.out.println(Arrays.binarySearch(numbers, 9)); <span class="org-comment-delimiter">// </span><span class="org-comment">-5</span>
-</pre>
-</div>
-
-<p>
-Although <code>1</code> isn’t in the list, the search can determine that it should be inserted at element <code>0</code> to <b>preserve the sorted order</b>.
-Since <code>0</code> already means something for array indexes, Java needs to <b>subtract 1</b> to give us the answer of <code>–1</code>.
+<b>Searching</b> is the process of looking for a specific element in an array.
 </p>
 
 <p>
-Although <code>3</code> isn’t in the list, it would need to be inserted at element <code>1</code> to preserve the sorted order.
+Many <code>algorithms</code> and <code>data structures</code> are devoted to <b>searching</b>.
 </p>
 
 <p>
-We <b>negate</b> and <b>subtract 1</b> for consistency, getting <code>–1 –1</code>, also known as <code>–2</code>.
+If an <code>array</code> is <a href="20240107082011-array_sorting.html#ID-1a328fa4-9b9f-4856-88f3-fd490bce565b">sorted</a>,  <a href="20240818100729-binary_search.html#ID-56a130ac-4450-463f-80bd-f8361498e863">binary Search</a> is more efficient than <a href="20240818091801-linear_search.html#ID-045a0561-49b8-4f28-973c-e0f840a4004f">linear search</a> for finding an <b>element</b> in the <code>array</code>.
 </p>
 
-<p>
-Finally, <code>9</code> should be inserted at index <code>4</code>. We again negate and subtract 1, getting <code>–4 –1</code>, also known as <code>–5</code>.
-</p>
+<ul class="org-ul">
+<li><a href="20240818091801-linear_search.html#ID-045a0561-49b8-4f28-973c-e0f840a4004f">Linear Search</a></li>
+<li><a href="20240818100729-binary_search.html#ID-56a130ac-4450-463f-80bd-f8361498e863">Binary Search</a></li>
+</ul>
 </div>
 </div>
 </div>

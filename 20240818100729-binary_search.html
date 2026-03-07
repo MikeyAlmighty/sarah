@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-03-04 Wed 19:51 -->
+<!-- 2026-03-07 Sat 10:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Binary Search</title>
@@ -256,33 +256,55 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org7ee1822">1. Binary Search</a>
+<li><a href="#org1edbc88">1. Binary Search</a>
 <ul>
-<li><a href="#orgda58f01">1.1. Time Complexity:</a></li>
-<li><a href="#orgf25004e">1.2. Description</a></li>
-<li><a href="#orga2adcf1">1.3. Example</a></li>
+<li><a href="#orgef28ae2">1.1. Time Complexity:</a></li>
+<li><a href="#org56d5820">1.2. Description</a></li>
+<li><a href="#org51bdde2">1.3. Example</a></li>
+<li><a href="#org6f0a350">1.4. Output</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org7ee1822" class="outline-2">
-<h2 id="org7ee1822"><span class="section-number-2">1.</span> Binary Search</h2>
+<div id="outline-container-org1edbc88" class="outline-2">
+<h2 id="org1edbc88"><span class="section-number-2">1.</span> Binary Search</h2>
 <div class="outline-text-2" id="text-1">
+<p>
+<code>Binary search</code> common search approach for a list of values.
+<code>elements</code> in the array must already be <b>ordered</b>.
+</p>
+
+<p>
+Assume that the array is in ascending order.
+</p>
+
+<p>
+The binary search first compares the <b>key</b> with the <b>element</b> in the <b>middle</b> of the <code>array</code>.
+</p>
+
+<p>
+Consider the following three cases:
+</p>
+<ol class="org-ol">
+<li>If the key is <b>less</b> than the <code>middle element</code>, you need to continue to search for the key only in the <b>first</b> <b>half</b> of the <code>array</code>.</li>
+<li>If the key is <b>equal</b> to the <code>middle element</code>, the <b>search</b> <b>ends</b> with a <code>match</code>.</li>
+<li>If the key is <b>greater</b> than the <code>middle element</code>, you need to continue to search for the key only in the <b>second</b> <b>half</b> of the <code>array</code>.</li>
+</ol>
 </div>
-<div id="outline-container-orgda58f01" class="outline-3">
-<h3 id="orgda58f01"><span class="section-number-3">1.1.</span> Time Complexity:</h3>
+<div id="outline-container-orgef28ae2" class="outline-3">
+<h3 id="orgef28ae2"><span class="section-number-3">1.1.</span> Time Complexity:</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 O(log n)
 </p>
 </div>
 </div>
-<div id="outline-container-orgf25004e" class="outline-3">
-<h3 id="orgf25004e"><span class="section-number-3">1.2.</span> Description</h3>
+<div id="outline-container-org56d5820" class="outline-3">
+<h3 id="org56d5820"><span class="section-number-3">1.2.</span> Description</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
-<code>Binary search</code> is an efficient algorithm for finding an <code>item</code> from a <b>sorted</b> list of items.
+<code>Binary search</code> is an efficient algorithm for finding an <code>item</code> from a <a href="20240107082011-array_sorting.html#ID-1a328fa4-9b9f-4856-88f3-fd490bce565b">sorted</a> list of items.
 </p>
 
 <p>
@@ -298,35 +320,192 @@ This process continues until the <code>value</code> is <b>found</b> or the <code
 </p>
 </div>
 </div>
-<div id="outline-container-orga2adcf1" class="outline-3">
-<h3 id="orga2adcf1"><span class="section-number-3">1.3.</span> Example</h3>
+<div id="outline-container-org51bdde2" class="outline-3">
+<h3 id="org51bdde2"><span class="section-number-3">1.3.</span> Example</h3>
 <div class="outline-text-3" id="text-1-3">
 <div class="org-src-container">
-<pre class="src src-typescript">/**
- * Performs binary search on a sorted array.
- * @param haystack - The sorted array to search through.
- * @param needle - The value to search for.
- * @returns The index of the target value if found, otherwise false.
- */
-const binarySearch = (haystack: number[], needle: number): boolean =&gt; {
-    let left = 0;
-    let right = haystack.length;
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">BinarySearchExample</span> {
 
-    do {
-       const middle = Math.floor(left + (right - left)/2)
-       const value = haystack[middle];
-        if (value === needle) {
-            return true
-        } else if (value &gt; needle) { // Value is higher than the midway point
-            right = middle; // Reduce the right side up until this middle
-        } else { // Our needle is greater than our value so we need to search on the higher side
-           left = middle +1;
+    <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">int</span> <span class="org-function-name">binarySearch</span>(<span class="org-type">int</span>[] <span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">key</span>) {
+        <span class="org-type">int</span> <span class="org-variable-name">low</span> = 0;
+        <span class="org-type">int</span> <span class="org-variable-name">hight</span> = arr.length - 1;
+
+        <span class="org-keyword">while</span> (low &lt;= hight) {
+
+            <span class="org-type">int</span> <span class="org-variable-name">mid</span> = low + (hight - low) / 2;
+
+            <span class="org-keyword">if</span> (arr[mid] == key) {
+                <span class="org-keyword">return</span> mid; <span class="org-comment-delimiter">// </span><span class="org-comment">key found
+</span>            }
+
+            <span class="org-keyword">if</span> (arr[mid] &lt; key) {
+                low = mid + 1; <span class="org-comment-delimiter">// </span><span class="org-comment">search upper half
+</span>            } <span class="org-keyword">else</span> {
+                high = mid - 1; <span class="org-comment-delimiter">// </span><span class="org-comment">search lower half
+</span>            }
         }
-    } while (left &lt; right);
-    return false;
+
+        <span class="org-keyword">return</span> -1; <span class="org-comment-delimiter">// </span><span class="org-comment">key not found
+</span>    }
+
+    <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
+
+        <span class="org-type">int</span>[] <span class="org-variable-name">numbers</span> = {1, 3, 5, 7, 9, 11, 13};
+
+        <span class="org-type">int</span> <span class="org-variable-name">key</span> = 7;
+
+        <span class="org-type">int</span> <span class="org-variable-name">result</span> = binarySearch(numbers, key);
+
+        <span class="org-keyword">if</span> (result != -1) {
+            System.out.println(<span class="org-string">"Element found at index: "</span> + result);
+        } <span class="org-keyword">else</span> {
+            System.out.println(<span class="org-string">"Element not found"</span>);
+        }
+    }
 }
 </pre>
 </div>
+</div>
+</div>
+<div id="outline-container-org6f0a350" class="outline-3">
+<h3 id="org6f0a350"><span class="section-number-3">1.4.</span> Output</h3>
+<div class="outline-text-3" id="text-1-4">
+<div class="org-src-container">
+<pre class="src src-nil">Element found at index: 3
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> Binary Search Trace</caption>
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">Step</th>
+<th scope="col" class="org-right">low</th>
+<th scope="col" class="org-right">high</th>
+<th scope="col" class="org-right">mid</th>
+<th scope="col" class="org-right">arr[mid]</th>
+<th scope="col" class="org-left">Comparison</th>
+<th scope="col" class="org-left">Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+<td class="org-right">6</td>
+<td class="org-right">3</td>
+<td class="org-right">7</td>
+<td class="org-left">7 == 7</td>
+<td class="org-left">Found index 3</td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 2:</span> Binary Search Trace (key = 11)</caption>
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">Step</th>
+<th scope="col" class="org-right">low</th>
+<th scope="col" class="org-right">high</th>
+<th scope="col" class="org-right">mid</th>
+<th scope="col" class="org-right">arr[mid]</th>
+<th scope="col" class="org-left">Comparison</th>
+<th scope="col" class="org-left">Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+<td class="org-right">6</td>
+<td class="org-right">3</td>
+<td class="org-right">7</td>
+<td class="org-left">7 &lt; 11</td>
+<td class="org-left">low = mid + 1 = 4</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-right">4</td>
+<td class="org-right">6</td>
+<td class="org-right">5</td>
+<td class="org-right">11</td>
+<td class="org-left">11 == 11</td>
+<td class="org-left">Found index 5</td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 3:</span> Binary Search Trace (visual range)</caption>
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">Step</th>
+<th scope="col" class="org-right">low</th>
+<th scope="col" class="org-right">high</th>
+<th scope="col" class="org-right">mid</th>
+<th scope="col" class="org-right">arr[mid]</th>
+<th scope="col" class="org-left">Remaining Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+<td class="org-right">6</td>
+<td class="org-right">3</td>
+<td class="org-right">7</td>
+<td class="org-left">{1,3,5,7,9,11,13}</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>

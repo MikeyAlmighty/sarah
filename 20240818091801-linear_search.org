@@ -7,35 +7,73 @@
 
 ** Time Complexity:
 O(n)
+
 ** Description
-*Linear search*, aka *sequential search*, is a straightforward [[id:db3f2baf-c51b-46bb-83d7-d6c6ee76709e][Algorithm]] used to find a specific value within a ~list~ or [[id:3135ba46-5312-4651-9e80-fecad77c479b][Array]].
-Here's a brief overview of how it works:
+*Linear search* (aka *sequential search*) is a straightforward [[id:db3f2baf-c51b-46bb-83d7-d6c6ee76709e][Algorithm]] used to find a specific value within a ~list~ or [[id:3135ba46-5312-4651-9e80-fecad77c479b][Array]]. (Can be in *any* order).
 
-
-*** Start at the Beginning:
+*** overview of how it works:
+**** Start at the Beginning:
 Begin at the *first* element of the ~list~ or ~array~.
 
-*** Compare Elements:
+**** Compare Elements:
 Compare the =target value= (the value you're searching for) with the =current element=.
 
-*** Check for Match:
+**** Check for Match:
 If the =current element= matches the =target value=, the search is successful, and you can return the *index* of the ~element~.
 If the =current element= does not match the =target value=, move to the *next* ~element~.
 
-*** Continue Until Found or End:
+**** Continue Until Found or End:
 Repeat until: The =target value= is found, or You reach the *end* of the ~list~ or ~array~.
 
-*** Handle Absence:
+**** Handle Absence:
 If you reach the *end* of the ~array~ without finding the =target value=, the search concludes that the value is *not* present.
 
 ** Example
-#+BEGIN_SRC typescript
-const linearSearch = (haystack: number[], needle: number): boolean => {
-    for (let index = 0; index < haystack.length; index++) {
-        if (haystack[index] === needle) {
-            return true
+
+#+BEGIN_SRC java
+public class LinearSearch {
+
+    public static int linearSearch(int[] list, int key) {
+        for (int i = 0; i < list.length; i++) {
+
+            // return index if found
+            if (key == list[i]) {
+                return i;
+            }
+
         }
+        // return -1 if not found
+        return -1;
     }
-    return false
+
+    public static void main(String[] args) {
+        int[] numbers = {4, 2, 7, 1, 9, 3};
+
+        int key1 = 7;
+        int key2 = 5;
+
+        int result1 = linearSearch(numbers, key1);
+        int result2 = linearSearch(numbers, key2);
+
+        if (result1 != -1) {
+            System.out.println("Element " + key1 + " found at index: " + result1);
+        } else {
+            System.out.println("Element " + key1 + " not found");
+        }
+
+        if (result2 != -1) {
+            System.out.println("Element " + key2 + " found at index: " + result2);
+        } else {
+            System.out.println("Element " + key2 + " not found");
+        }
+
+    }
 }
+#+END_SRC
+
+** Output
+
+#+BEGIN_SRC
+Element 7 found at index: 2
+Element 5 not found
 #+END_SRC
