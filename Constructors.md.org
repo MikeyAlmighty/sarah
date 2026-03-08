@@ -5,7 +5,12 @@
 :END:
 #+property: header-args :tangle code/java/constructors.java
 
-The main purpose of constructors is to *set the initial state* of an object, when the object is created by using the ~new~ operator.
+The main purpose of =constructors= is to *set the initial state* of an =object=, when the =object= is created by using the ~new~ operator.
+=Constructors= play the role of initializing objects.
+
+- A =constructor= must have the *same* *name* as the =class= itself.
+- =Constructors= do not have a ~return type~ not even ~void~.
+- =Constructors= are invoked using the ~new~ operator when an object is created.
 
 ** Example
 
@@ -56,56 +61,7 @@ public class Name {
 }
 #+end_src java
 
-* Default Constructor
+Like regular =methods=, =constructors= can be *overloaded* making it easy to *construct* ~objects~ with *different* initial *data* *values*.
 
-A default constructor is a *no-argument* ~constructor~.
-
-The only action taken by the default ~constructor~ is to call the ~superclass~ constructor.
-
-In addition, all instance variables in the object are set to the default value of their type, barring those that are initialized by an initialization expression in their declaration.
-
-If a class defines *any* constructor, the default constructor is *not* generated.
-If such a class requires a *no-argument constructor*, it must provide its own implementation.
-
-#+BEGIN_SRC java
-class_name() { super(); }
-#+END_SRC
-
-* Constructor Overloading
-:PROPERTIES:
-:CUSTOM_ID: constructor-overloading
-:END:
-#+begin_src java
-// ...
-var employee = new Employee(50_000); // Constructor 1
-var employee = new Employee(50_000, 20); // Constructor 2
-// ...
-public class Employee {
-    private int baseSalary;
-    private int hourlyRate;
-
-    // Constructor 1
-    public Employee(int baseSalary) {
-        setBaseSalary(baseSalary);
-        setHourlyRate(0);
-    }
-
-    // Constructor 2
-    public Employee(int baseSalary, int hourlyRate) {
-        setBaseSalary(baseSalary);
-        setHourlyRate(hourlyRate);
-    }
-
-    public void setBaseSalary(int baseSalary) {
-        if (baseSalary <= 0) throw new IllegalArgumentException("Salary can not be 0 or less.");
-        this.baseSalary = baseSalary;
-    }
-
-    public void setHourlyRate(int hourlyRate) {
-        if (hourlyRate <= 0) throw new IllegalArgumentException("Hourly rate can not be 0 or less.");
-        this.hourlyRate = baseSalary;
-    }
-}
-#+end_src
-
-Note: You can set a =final= field in a Class constructor
+* [[id:029f5f49-3afe-4d54-ac77-e3963bce5ee6][Default Constructor]]
+* [[id:6d0ddb05-83c3-4a23-bf52-9fab2633bd99][Calling overloaded Constructors with this()]]
