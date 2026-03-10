@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-03-09 Mon 07:07 -->
+<!-- 2026-03-10 Tue 06:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>TCP Socket States</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style type="text/css">
+<style>
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -256,18 +256,19 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org7f14f60">1. LISTEN</a></li>
-<li><a href="#orgc7a4920">2. SYN<sub>SENT</sub></a></li>
-<li><a href="#org477ddfa">3. SYN<sub>RECEIVED</sub></a></li>
-<li><a href="#org0559c94">4. ESTABLISHED</a></li>
-<li><a href="#org5fea059">5. FIN<sub>WAIT</sub></a></li>
-<li><a href="#org336d932">6. CLOSE<sub>WAIT</sub></a></li>
-<li><a href="#org44d7a79">7. CLOSED</a></li>
+<li><a href="#org3107332">1. LISTEN</a></li>
+<li><a href="#org15dce59">2. SYN<sub>SENT</sub></a></li>
+<li><a href="#orgf030135">3. SYN<sub>RECEIVED</sub></a></li>
+<li><a href="#org5ab95cc">4. ESTABLISHED</a></li>
+<li><a href="#org5696424">5. FIN<sub>WAIT</sub></a></li>
+<li><a href="#org15ebcf8">6. CLOSE<sub>WAIT</sub></a></li>
+<li><a href="#orgdfd1af1">7. CLOSED</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org7f14f60" class="outline-2">
-<h2 id="org7f14f60"><span class="section-number-2">1.</span> LISTEN</h2>
+
+<div id="outline-container-org3107332" class="outline-2">
+<h2 id="org3107332"><span class="section-number-2">1.</span> LISTEN</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 TCP socket is ready and listening for incoming connections.
@@ -275,8 +276,9 @@ TCP socket is ready and listening for incoming connections.
 </p>
 </div>
 </div>
-<div id="outline-container-orgc7a4920" class="outline-2">
-<h2 id="orgc7a4920"><span class="section-number-2">2.</span> SYN<sub>SENT</sub></h2>
+
+<div id="outline-container-org15dce59" class="outline-2">
+<h2 id="org15dce59"><span class="section-number-2">2.</span> SYN<sub>SENT</sub></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 A synchronization request has been sent, but the connection hasn't been established yet.
@@ -284,8 +286,9 @@ A synchronization request has been sent, but the connection hasn't been establis
 </p>
 </div>
 </div>
-<div id="outline-container-org477ddfa" class="outline-2">
-<h2 id="org477ddfa"><span class="section-number-2">3.</span> SYN<sub>RECEIVED</sub></h2>
+
+<div id="outline-container-orgf030135" class="outline-2">
+<h2 id="orgf030135"><span class="section-number-2">3.</span> SYN<sub>RECEIVED</sub></h2>
 <div class="outline-text-2" id="text-3">
 <p>
 This means that a socket previously in a <code>LISTEN</code> state has received a <code>synchronization</code> request and sent a <code>SYN/ACK</code> back, but it hasn't received the final <code>ACK</code> from the client yet.
@@ -293,32 +296,36 @@ This means that a socket previously in a <code>LISTEN</code> state has received 
 </p>
 </div>
 </div>
-<div id="outline-container-org0559c94" class="outline-2">
-<h2 id="org0559c94"><span class="section-number-2">4.</span> ESTABLISHED</h2>
+
+<div id="outline-container-org5ab95cc" class="outline-2">
+<h2 id="org5ab95cc"><span class="section-number-2">4.</span> ESTABLISHED</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 TCP connection is in working order and both sides are <b>free to send each</b> other data.
 </p>
 </div>
 </div>
-<div id="outline-container-org5fea059" class="outline-2">
-<h2 id="org5fea059"><span class="section-number-2">5.</span> FIN<sub>WAIT</sub></h2>
+
+<div id="outline-container-org5696424" class="outline-2">
+<h2 id="org5696424"><span class="section-number-2">5.</span> FIN<sub>WAIT</sub></h2>
 <div class="outline-text-2" id="text-5">
 <p>
 This means that a <code>FIN</code> has been sent but the corresponding <code>ACK</code> from the other end hasn't been received yet.
 </p>
 </div>
 </div>
-<div id="outline-container-org336d932" class="outline-2">
-<h2 id="org336d932"><span class="section-number-2">6.</span> CLOSE<sub>WAIT</sub></h2>
+
+<div id="outline-container-org15ebcf8" class="outline-2">
+<h2 id="org15ebcf8"><span class="section-number-2">6.</span> CLOSE<sub>WAIT</sub></h2>
 <div class="outline-text-2" id="text-6">
 <p>
 This means that the connection has been closed at the TCP layer, but that the application that opened the socket hasn't released its hold on the socket yet.
 </p>
 </div>
 </div>
-<div id="outline-container-org44d7a79" class="outline-2">
-<h2 id="org44d7a79"><span class="section-number-2">7.</span> CLOSED</h2>
+
+<div id="outline-container-orgdfd1af1" class="outline-2">
+<h2 id="orgdfd1af1"><span class="section-number-2">7.</span> CLOSED</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 This means that the connection has been fully terminated and that no further communication is possible.

@@ -4,51 +4,105 @@
 #+title: .this reference
 #+property: header-args :tangle code/java/this_reference.java
 
-The reference ~.this~ can be used to distinguish the *fields* from the *local variables*.
+* Java =this= Reference
 
-The ~.this~ reference to the current object is useful in situations where a ~local~ variable *hides*, or *shadows*, a field with the same name.
-i.e. ~`indicator`~ (2. field) or ~`location`~ (3. local variable) below.
+The keyword =this= refers to the *current (calling) object*.  
+When an instance method is *invoked* on an ~object~, the =this= reference is automatically set to that object.
 
-If a *member* is not shadowed by a =local declaration=, the simple name member is considered a shorthand notation for this.member. (4)
+It allows the =method= or =constructor= to access the object's *instance variables / methods*.
+
+The =this= reference is commonly used to:
+- Refer to the current object's instance variables
+- Distinguish *instance variables* from *local variables*
+- Invoke another =constructor= in the same ~class~
+
+* Referencing Instance Members
+
+You can explicitly use =this= to reference instance variables and methods.
+
+Example:
 
 #+BEGIN_SRC java
-public class Light {
-  // Fields:
-  int     noOfWatts;      // Wattage
-  boolean indicator;      // On or off
-  String  location;       // Placement
+public class Circle {
 
-  // Constructor:
-  public Light(int noOfWatts, boolean indicator, String site) {
-    // Local Variable
-    String location;
+    double radius;
 
-    this.noOfWatts = noOfWatts;   // (1) Assignment to field
-    indicator = indicator;        // (2) Incorrect Assignment to parameter
-    location = site;              // (3) Incorrect Assignment to local variable
-    this.superfluous();           // (4)
-    superfluous();                // equivalent to call at as it does not shadow a class member(4)
-  }
+    public double getArea() {
+        return Math.PI * this.radius * this.radius;
+    }
 
-  // Instance method:
-  public void superfluous() {
-    System.out.printf("Current object: %s%n", this); // (5)
-  }
+    public void printArea() {
+        System.out.println("Area: " + this.getArea());
+    }
 
-  // Static method:
-  public static void main(String[] args) {
-    Light light = new Light(100, true, "loft");
-    System.out.println("No. of watts: " + light.noOfWatts); // Prints 100
-    System.out.println("Indicator:    " + light.indicator); // Prints false
-    System.out.println("Location:     " + light.location); // Prints null
-  }
 }
-/*
-    Output:
-    Current object: Light@1bc4459
-    Current object: Light@1bc4459
-    No. of watts: 100
-    Indicator: false
-    Location: null
-*/
 #+END_SRC
+
+In this example:
+- =this.radius= refers to the current object's radius
+- =this.getArea()= explicitly calls the object's method
+
+Often, =this= is omitted for brevity.
+
+Example without =this=:
+
+#+BEGIN_SRC java
+public double getArea() {
+    return Math.PI * radius * radius;
+}
+#+END_SRC
+
+* Resolving Variable Shadowing
+
+The =this= keyword is necessary when a method or constructor parameter has the *same name* as an instance variable.
+
+Example:
+
+#+BEGIN_SRC java
+public class Circle {
+
+    double radius;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+}
+#+END_SRC
+
+Explanation:
+- The parameter =radius= hides the instance variable
+- =this.radius= refers to the object's field
+- =radius= refers to the constructor parameter
+
+* Invoking Another Constructor
+
+The =this()= syntax can call another constructor in the same class.
+
+#+BEGIN_SRC java
+public class Circle {
+
+    double radius;
+
+    public Circle() {
+        this(1.0);
+    }
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+}
+#+END_SRC
+
+Here:
+- =this(1.0)= calls the second constructor
+- This technique is known as *constructor chaining*
+
+* Key Points
+
+- =this= refers to the *current object*
+- It can reference instance variables and methods
+- It helps resolve variable name conflicts
+- It can invoke another constructor using =this()=
+- It is often omitted when the meaning is clear

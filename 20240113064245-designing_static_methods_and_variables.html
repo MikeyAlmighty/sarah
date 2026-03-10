@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-03-09 Mon 07:07 -->
+<!-- 2026-03-10 Tue 06:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Designing Static Methods and Variables</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style type="text/css">
+<style>
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -256,29 +256,31 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgaef4eaa">1. Designing Static Methods and Variables</a>
+<li><a href="#org708da5f">1. Designing Static Methods and Variables</a>
 <ul>
-<li><a href="#org14102f4">1.1. Example</a></li>
-<li><a href="#org2a2b4c7">1.2. Static Variables</a></li>
-<li><a href="#orgaea5af3">1.3. Static Methods</a></li>
-<li><a href="#orgda29ad9">1.4. Class VS Instance Membership</a></li>
-<li><a href="#orgd29e832">1.5. Static Variable Modifiers</a></li>
-<li><a href="#org006b4aa">1.6. Static Initializers</a></li>
-<li><a href="#org5761e7f">1.7. Static Imports</a></li>
+<li><a href="#org9dec19e">1.1. Example</a></li>
+<li><a href="#org988c122">1.2. Static Variables</a></li>
+<li><a href="#orgc58a069">1.3. Static Methods</a></li>
+<li><a href="#orgb22ddb4">1.4. Class VS Instance Membership</a></li>
+<li><a href="#orgdaa034f">1.5. Static Variable Modifiers</a></li>
+<li><a href="#orgc300340">1.6. Static Initializers</a></li>
+<li><a href="#org53de8e1">1.7. Static Imports</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgaef4eaa" class="outline-2">
-<h2 id="orgaef4eaa"><span class="section-number-2">1.</span> Designing Static Methods and Variables</h2>
+
+<div id="outline-container-org708da5f" class="outline-2">
+<h2 id="org708da5f"><span class="section-number-2">1.</span> Designing Static Methods and Variables</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <code>Methods</code> and <code>variables</code> declared <code>static</code> don’t require an <i>instance</i> of the <code>class</code>.
 </p>
 </div>
-<div id="outline-container-org14102f4" class="outline-3">
-<h3 id="org14102f4"><span class="section-number-3">1.1.</span> Example</h3>
+
+<div id="outline-container-org9dec19e" class="outline-3">
+<h3 id="org9dec19e"><span class="section-number-3">1.1.</span> Example</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 A common use for <code>static</code> variables is counting the number of <code>instances</code>:
@@ -287,7 +289,7 @@ A common use for <code>static</code> variables is counting the number of <code>i
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Counter</span> {
     <span class="org-keyword">private</span> <span class="org-keyword">static</span> <span class="org-type">int</span> <span class="org-variable-name">count</span>;
-    <span class="org-keyword">public</span> <span class="org-function-name">Counter</span>() { count++; }
+    <span class="org-keyword">public</span> Counter() { count++; }
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
         <span class="org-type">Counter</span> <span class="org-variable-name">c1</span> = <span class="org-keyword">new</span> <span class="org-type">Counter</span>();
         <span class="org-type">Counter</span> <span class="org-variable-name">c2</span> = <span class="org-keyword">new</span> <span class="org-type">Counter</span>();
@@ -299,23 +301,24 @@ A common use for <code>static</code> variables is counting the number of <code>i
 </div>
 </div>
 </div>
-<div id="outline-container-org2a2b4c7" class="outline-3">
-<h3 id="org2a2b4c7"><span class="section-number-3">1.2.</span> <a href="20240113065406-static_variable.html#ID-90b4776a-f230-4e13-b1a1-248b48026677">Static Variables</a></h3>
+
+<div id="outline-container-org988c122" class="outline-3">
+<h3 id="org988c122"><span class="section-number-3">1.2.</span> <a href="20240113065406-static_variable.html#ID-90b4776a-f230-4e13-b1a1-248b48026677">Static Variables</a></h3>
 </div>
-<div id="outline-container-orgaea5af3" class="outline-3">
-<h3 id="orgaea5af3"><span class="section-number-3">1.3.</span> <a href="20240113065453-static_methods.html#ID-71f8ac46-9cca-4866-b701-8f5a7f9f7fc0">Static Methods</a></h3>
+<div id="outline-container-orgc58a069" class="outline-3">
+<h3 id="orgc58a069"><span class="section-number-3">1.3.</span> <a href="20240113065453-static_methods.html#ID-71f8ac46-9cca-4866-b701-8f5a7f9f7fc0">Static Methods</a></h3>
 </div>
-<div id="outline-container-orgda29ad9" class="outline-3">
-<h3 id="orgda29ad9"><span class="section-number-3">1.4.</span> <a href="20240113070607-class_vs_instance_membership.html#ID-856bbd74-4651-4dc8-92d9-c9a2d280b85f">Class VS Instance Membership</a></h3>
+<div id="outline-container-orgb22ddb4" class="outline-3">
+<h3 id="orgb22ddb4"><span class="section-number-3">1.4.</span> <a href="20240113070607-class_vs_instance_membership.html#ID-856bbd74-4651-4dc8-92d9-c9a2d280b85f">Class VS Instance Membership</a></h3>
 </div>
-<div id="outline-container-orgd29e832" class="outline-3">
-<h3 id="orgd29e832"><span class="section-number-3">1.5.</span> <a href="20240114061956-static_variable_modifiers.html#ID-9a77d925-1adb-46ac-9e18-f117a8686ca2">Static Variable Modifiers</a></h3>
+<div id="outline-container-orgdaa034f" class="outline-3">
+<h3 id="orgdaa034f"><span class="section-number-3">1.5.</span> <a href="20240114061956-static_variable_modifiers.html#ID-9a77d925-1adb-46ac-9e18-f117a8686ca2">Static Variable Modifiers</a></h3>
 </div>
-<div id="outline-container-org006b4aa" class="outline-3">
-<h3 id="org006b4aa"><span class="section-number-3">1.6.</span> <a href="20240114063138-static_initializers.html#ID-9b5e5215-73c3-412e-8a72-57dc575c1ee9">Static Initializers</a></h3>
+<div id="outline-container-orgc300340" class="outline-3">
+<h3 id="orgc300340"><span class="section-number-3">1.6.</span> <a href="20240114063138-static_initializers.html#ID-9b5e5215-73c3-412e-8a72-57dc575c1ee9">Static Initializers</a></h3>
 </div>
-<div id="outline-container-org5761e7f" class="outline-3">
-<h3 id="org5761e7f"><span class="section-number-3">1.7.</span> <a href="20240114063840-static_imports.html#ID-17f335ce-26e0-4376-afc3-2092875622f6">Static Imports</a></h3>
+<div id="outline-container-org53de8e1" class="outline-3">
+<h3 id="org53de8e1"><span class="section-number-3">1.7.</span> <a href="20240114063840-static_imports.html#ID-17f335ce-26e0-4376-afc3-2092875622f6">Static Imports</a></h3>
 </div>
 </div>
 </div>
