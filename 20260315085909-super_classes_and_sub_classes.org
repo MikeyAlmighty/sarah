@@ -1,0 +1,141 @@
+:PROPERTIES:
+:ID:       89797854-0fbd-4965-b7d5-d21570c7d45c
+:END:
+#+title: Super-Classes and Sub-Classes
+
+* Super-Classes and Sub-Classes
+In Java terminology, a class =C1= *extended* from another class =C2= is called a *subclass*, and =C2= is called a *superclass*.
+
+A *superclass* is also referred to as a *parent class* or a *base class*
+A *subclass* is also referred to as a *child class*, an *extended class*, or a *derived class*.
+
+A =class= defines a *type*.
+
+A *type* defined by a *subclass* is called a =subtype=, and a *type* defined by its *superclass* is called a =supertype=.
+
+Therefore, you can say that =Circle= is a ~subtype~ of =GeometricObject=, and =GeometricObject= is a ~supertype~ for =Circle=.
+
+The *subclass* and its *superclass* are said to form a ~is-a~ relationship.
+
+A =Circle= object is a special type of general =GeometricObject=.
+
+The =Circle= class inherits all accessible data *fields* and *methods* from the =GeometricObject= class.
+
+In addition, it has a new data field, =radius=, and its associated *getter* and *setter* methods.
+
+The =Circle= class also contains the ~getArea()~, ~getPerimeter()~, and ~getDiameter()~ methods for returning the =area=, =perimeter=, and =diameter= of the =circle=.
+
+The =Rectangle= class inherits all accessible data *fields* and *methods* from the =GeometricObject= class.
+
+In addition, it has the data fields =width= and =height= and their associated *getter* and *setter* methods.
+
+It also contains the ~getArea()~ and ~getPerimeter()~ methods for returning the =area= and =perimeter= of the =rectangle=.
+
+Note that you may have used the terms width and length to describe the sides of a rectangle in geometry.
+
+
+#+BEGIN_SRC java
+public class GeometricObject {
+    private String color = "white";
+    private boolean filled;
+    private java.util.Date dateCreated;
+
+    // Construct a default geometric object
+    public GeometricObject() {
+        dateCreated = new java.util.Date();
+    }
+
+    /*
+     * Construct a geometric object with the specified
+     * color and filled value
+     */
+    public GeometricObject(String color, boolean filled) {
+        dateCreated = new java.util.Date();
+        this.color = color;
+        this.filled = filled;
+    }
+
+    // Return color
+    public String getColor() {
+        return color;
+    }
+
+    // Set a new color
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    /*
+     * Return filled.
+     * Since filled is a boolean, its getter method is named isFilled
+     */
+    public boolean isFilled() {
+        return filled;
+    }
+
+    // Set a new filled
+    public void setFilled(boolean filled) {
+        this.filled = filled;
+    }
+
+    // Get dateCreated
+    public java.util.Date getDateCreated() {
+        return dateCreated;
+    }
+
+    // Return a string representation of this Object
+    public String toString() {
+        return "created on " + dateCreated + "\ncolor: " + color + " and filled: " + filled;
+    }
+}
+#+END_SRC
+
+#+BEGIN_SRC java
+public class Circle extends GeometricObject {
+    private double radius;
+
+    public Circle() {
+
+    }
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    public Circle(double radius, String color, boolean filled) {
+        this.radius = radius;
+        setColor(color);
+        setFilled(filled);
+    }
+
+    public double getRadius() {
+        return radius;
+    }
+
+    public void setRadius(double radius) {
+        this.radius = radius;
+    }
+
+    public double getArea() {
+        return radius * radius * Math.PI;
+    }
+
+    public double getDiameter() {
+        return 2 * radius;
+    }
+
+    public double getPerimeter() {
+        return 2 * radius * Math.PI;
+    }
+
+    public void printCircle() {
+        System.out.println("The circle is created " + getDateCreated() + " and the radius is " + radius);
+    }
+}
+#+END_SRC
+
+The keyword ~extends~ tells the compiler that the =Circle= class *extends* the =GeometricObject= class, thus inheriting the methods ~getColor~, ~setColor~, ~isFilled~, ~setFilled~ and ~toString~.
+
+The overloaded constructor ~Circle(double radius, String color, boolean filled)~ is implemented by invoking the ~setColor~ and ~setFilled~ methods to set the ~color~ and ~filled~ properties.
+
+The *public methods* defined in the ~superclass~ =GeometricObject= are inherited in =Circle=, so they can be used in the =Circle= class.

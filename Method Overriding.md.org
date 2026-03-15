@@ -3,13 +3,26 @@
 :CUSTOM_ID: method-overriding
 :ID:       8fc63dcd-5c7f-4e3e-bb19-ad2c81a8237e
 :END:
-Override (Use =@Override= annotation) any method we inherit with a different/our
-own implementation.
+
+** Method Overriding Annotation
+
+Override (Use ~@Override~ annotation) any ~method~ we inherit with a *different* implementation.
 
 #+begin_src java
-   @Override // Override toString in parent Class
-   public String toString(){
-      var overriddenText = "Overridden mfer";
-      return overriddenText;
-   }
+public class Circle extends GeometricObject {
+    // Other methods are omitted
+    @Override
+    public String toString() {
+        return super.toString() + "\nradius is " + radius;
+    }
+}
 #+end_src
+
+This ~annotation~ denotes that the ~annotated~ *method* is required to *override* a method in its =superclass=.
+
+If a method with this annotation does *not override* its =superclass’s= method, the compiler will report an *error*.
+
+For example, if ~toString~ is mistyped as ~tostring~, a *compile error* is reported.
+
+If the ~@Override~ annotation isn’t used, the compiler *won’t* report an error.
+Using the ~@Override~ annotation *avoids* mistakes.

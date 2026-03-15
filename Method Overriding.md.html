@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-03-10 Tue 06:14 -->
+<!-- 2026-03-15 Sun 15:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -255,25 +255,52 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#method-overriding">1. Method Overriding</a></li>
+<li><a href="#method-overriding">1. Method Overriding</a>
+<ul>
+<li><a href="#org5f2728d">1.1. Method Overriding Annotation</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 <div id="outline-container-method-overriding" class="outline-2">
 <h2 id="method-overriding"><span class="section-number-2">1.</span> Method Overriding</h2>
 <div class="outline-text-2" id="text-method-overriding">
+</div>
+<div id="outline-container-org5f2728d" class="outline-3">
+<h3 id="org5f2728d"><span class="section-number-3">1.1.</span> Method Overriding Annotation</h3>
+<div class="outline-text-3" id="text-1-1">
 <p>
-Override (Use <code>@Override</code> annotation) any method we inherit with a different/our
-own implementation.
+Override (Use <code>@Override</code> annotation) any <code>method</code> we inherit with a <b>different</b> implementation.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-c-annotation">@Override</span> <span class="org-comment-delimiter">// </span><span class="org-comment">Override toString in parent Class
-</span><span class="org-keyword">public</span> <span class="org-type">String</span> <span class="org-function-name">toString</span>(){
-   <span class="org-type">var</span> <span class="org-variable-name">overriddenText</span> = <span class="org-string">"Overridden mfer"</span>;
-   <span class="org-keyword">return</span> overriddenText;
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Circle</span> <span class="org-keyword">extends</span> <span class="org-type">GeometricObject</span> {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Other methods are omitted
+</span>    <span class="org-c-annotation">@Override</span>
+    <span class="org-keyword">public</span> <span class="org-type">String</span> <span class="org-function-name">toString</span>() {
+        <span class="org-keyword">return</span> <span class="org-keyword">super</span>.toString() + <span class="org-string">"\nradius is "</span> + radius;
+    }
 }
 </pre>
+</div>
+
+<p>
+This <code>annotation</code> denotes that the <code>annotated</code> <b>method</b> is required to <b>override</b> a method in its <code>superclass</code>.
+</p>
+
+<p>
+If a method with this annotation does <b>not override</b> its <code>superclass’s</code> method, the compiler will report an <b>error</b>.
+</p>
+
+<p>
+For example, if <code>toString</code> is mistyped as <code>tostring</code>, a <b>compile error</b> is reported.
+</p>
+
+<p>
+If the <code>@Override</code> annotation isn’t used, the compiler <b>won’t</b> report an error.
+Using the <code>@Override</code> annotation <b>avoids</b> mistakes.
+</p>
 </div>
 </div>
 </div>

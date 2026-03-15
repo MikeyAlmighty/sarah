@@ -8,7 +8,21 @@
 
 The first statement of every constructor is a call to a *parent* constructor using ~super()~ or *another* constructor in the class using [[id:6d0ddb05-83c3-4a23-bf52-9fab2633bd99][this()]].
 
-~super()~, calls a *parent* constructor.
+~super()~ calls a *parent* constructor.
+
+Unlike *properties* and *methods*, the *constructors* of a =superclass= are *not* inherited by a =subclass=.
+
+They can only be invoked from the *constructors* of the =subclasses= using the keyword ~super~.
+The syntax to call a =superclass’s= *constructor* is:
+
+#+BEGIN_SRC java
+super();
+super(arguments);
+#+END_SRC
+
+The statement ~super()~ invokes the *no-arg constructor* of its =superclass=, and the statement ~super(arguments)~ invokes the =superclass= *constructor* that matches the arguments.
+
+The statement ~super()~ or ~super(arguments)~ must be the *first* statement of the =subclass’s= *constructor*; this is the only way to explicitly invoke a =superclass= *constructor*.
 
 ** Example
 
@@ -36,7 +50,7 @@ public class Zebra extends Animal {
 
 ** _Exam Trick_
 
-Like calling [[id:6d0ddb05-83c3-4a23-bf52-9fab2633bd99][this()]], calling ~super()~ can only be used as the *first* statement of the constructor.
+Like calling [[id:6d0ddb05-83c3-4a23-bf52-9fab2633bd99][this()]], calling ~super()~ can only be used as the *first* statement of the *constructor*.
 
 *** Example (Non callable)
 
@@ -112,3 +126,43 @@ public class Donkey {
     }
 }
 #+END_SRC
+
+*** Syntax Error When Calling a Superclass Constructor by Name
+
+Invoking a =superclass= *constructor's* name directly inside a =subclass= causes a *syntax error*.
+
+In Java, *constructors* are not inherited and cannot be called like normal methods.
+
+Instead, the keyword ~super~ must be used.
+
+#+BEGIN_SRC java
+class GeometricObject {
+    public GeometricObject(String color, boolean filled) {
+        System.out.println("GeometricObject constructor called");
+    }
+}
+
+class Circle extends GeometricObject {
+
+    public Circle(double radius, String color, boolean filled) {
+
+        // Incorrect: calling superclass constructor by name
+        GeometricObject(color, filled); // Syntax error
+
+    }
+}
+#+END_SRC
+
+The correct way to invoke the =superclass= constructor is with ~super(...)~:
+
+#+BEGIN_SRC java
+class Circle extends GeometricObject {
+
+    public Circle(double radius, String color, boolean filled) {
+        super(color, filled); // Correct
+    }
+}
+#+END_SRC
+
+** See also
+*** [[id:55699fdc-5fdc-4c94-b8d7-7b4c230ad0c5][Constructor Chaining]]

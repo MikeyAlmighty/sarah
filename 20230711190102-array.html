@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-03-10 Tue 06:14 -->
+<!-- 2026-03-15 Sun 15:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Array</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -256,101 +256,100 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org33ff2b5">1. Element Insertion</a>
+<li><a href="#orgb07c15e">1. Element Insertion</a>
 <ul>
-<li><a href="#org56e4890">1.1. Overview</a></li>
-<li><a href="#orgd92fa16">1.2. Insert at End of Array</a>
+<li><a href="#org7d70aa2">1.1. Overview</a></li>
+<li><a href="#orgc234427">1.2. Insert at End of Array</a>
 <ul>
-<li><a href="#org77ff144">1.2.1. push()</a></li>
-<li><a href="#org54b2a34">1.2.2. Spread (Immutable)</a></li>
+<li><a href="#org31f98db">1.2.1. push()</a></li>
+<li><a href="#org31666dd">1.2.2. Spread (Immutable)</a></li>
 </ul>
 </li>
-<li><a href="#org3c2b6bb">1.3. Insert at Beginning of Array</a>
+<li><a href="#org27b2691">1.3. Insert at Beginning of Array</a>
 <ul>
-<li><a href="#org9198ccb">1.3.1. unshift()</a></li>
-<li><a href="#orgc14e716">1.3.2. Spread (Immutable)</a></li>
+<li><a href="#org804ddeb">1.3.1. unshift()</a></li>
+<li><a href="#org1e1bc87">1.3.2. Spread (Immutable)</a></li>
 </ul>
 </li>
-<li><a href="#org0423406">1.4. Performance Notes</a></li>
-<li><a href="#org940970e">1.5. Notes</a></li>
+<li><a href="#org8e4428d">1.4. Performance Notes</a></li>
+<li><a href="#org3904df6">1.5. Notes</a></li>
 </ul>
 </li>
-<li><a href="#orgebfc49a">2. Element Removal</a>
+<li><a href="#org53978d8">2. Element Removal</a>
 <ul>
-<li><a href="#orgf47d68c">2.1. Overview</a></li>
-<li><a href="#org7ab0147">2.2. Remove from End of Array</a>
+<li><a href="#orgae504b0">2.1. Overview</a></li>
+<li><a href="#orgca241ed">2.2. Remove from End of Array</a>
 <ul>
-<li><a href="#org14f37bf">2.2.1. pop()</a></li>
-<li><a href="#orgee48ef2">2.2.2. Immutable (slice)</a></li>
+<li><a href="#org5fcb871">2.2.1. pop()</a></li>
+<li><a href="#org93bad25">2.2.2. Immutable (slice)</a></li>
 </ul>
 </li>
-<li><a href="#org816fed3">2.3. Remove from Beginning of Array</a>
+<li><a href="#org1382364">2.3. Remove from Beginning of Array</a>
 <ul>
-<li><a href="#org9ce3fa2">2.3.1. shift()</a></li>
-<li><a href="#org2fc7c08">2.3.2. Immutable (slice)</a></li>
+<li><a href="#org2056a15">2.3.1. shift()</a></li>
+<li><a href="#org148b34e">2.3.2. Immutable (slice)</a></li>
 </ul>
 </li>
-<li><a href="#orge5f5d69">2.4. Remove from Middle of Array</a>
+<li><a href="#org97e9e11">2.4. Remove from Middle of Array</a>
 <ul>
-<li><a href="#orgd30ec7a">2.4.1. splice()</a></li>
-<li><a href="#org239796d">2.4.2. Immutable (filter)</a></li>
-<li><a href="#orgf48f618">2.4.3. Immutable (slice + spread)</a></li>
+<li><a href="#orgfc63068">2.4.1. splice()</a></li>
+<li><a href="#org0c2c4b8">2.4.2. Immutable (filter)</a></li>
+<li><a href="#orge7ac05c">2.4.3. Immutable (slice + spread)</a></li>
 </ul>
 </li>
-<li><a href="#orgfeca2f6">2.5. Performance Notes</a></li>
-<li><a href="#org2a87cac">2.6. Notes</a></li>
+<li><a href="#orgc3a6a35">2.5. Performance Notes</a></li>
+<li><a href="#org0dda7bc">2.6. Notes</a></li>
 </ul>
 </li>
-<li><a href="#org011643e">3. Sorting</a>
+<li><a href="#org2bb8018">3. Sorting</a>
 <ul>
-<li><a href="#org0c1aa07">3.1. Overview</a></li>
-<li><a href="#org48a8b5b">3.2. reverse()</a>
+<li><a href="#org66a2e12">3.1. Overview</a></li>
+<li><a href="#org287bcaf">3.2. reverse()</a>
 <ul>
-<li><a href="#orgc3ec8f4">3.2.1. Immutable (copy + reverse)</a></li>
+<li><a href="#org4ca63ac">3.2.1. Immutable (copy + reverse)</a></li>
 </ul>
 </li>
-<li><a href="#org03a5973">3.3. sort()</a>
+<li><a href="#org18e430a">3.3. sort()</a>
 <ul>
-<li><a href="#orgb287a61">3.3.1. Numeric sort (ascending)</a></li>
-<li><a href="#org62a06a8">3.3.2. Numeric sort (descending)</a></li>
-<li><a href="#orgd95ac2f">3.3.3. String sort</a></li>
-<li><a href="#org586d055">3.3.4. Immutable (copy + sort)</a></li>
+<li><a href="#org4df86c4">3.3.1. Numeric sort (ascending)</a></li>
+<li><a href="#org949efcb">3.3.2. Numeric sort (descending)</a></li>
+<li><a href="#org55e8f13">3.3.3. String sort</a></li>
+<li><a href="#org892bccf">3.3.4. Immutable (copy + sort)</a></li>
 </ul>
 </li>
-<li><a href="#orge407db0">3.4. Performance Notes</a></li>
-<li><a href="#org9cabb02">3.5. Notes</a></li>
+<li><a href="#org7cefbfd">3.4. Performance Notes</a></li>
+<li><a href="#orgeccf220">3.5. Notes</a></li>
 </ul>
 </li>
-<li><a href="#org75ff24d">4. Iterators</a>
+<li><a href="#org60662c9">4. Iterators</a>
 <ul>
-<li><a href="#orgc74a603">4.1. Overview</a></li>
-<li><a href="#orgb4b50a2">4.2. forEach()</a></li>
-<li><a href="#org7c8ca68">4.3. map()</a></li>
-<li><a href="#orgd3e6b44">4.4. filter()</a></li>
-<li><a href="#orgaefe9c4">4.5. Chaining Example</a></li>
-<li><a href="#orged89e40">4.6. Performance Notes</a></li>
-<li><a href="#orge8522f1">4.7. Notes</a></li>
+<li><a href="#org8548f29">4.1. Overview</a></li>
+<li><a href="#orgd625af8">4.2. forEach()</a></li>
+<li><a href="#org4769b5a">4.3. map()</a></li>
+<li><a href="#org46e20e3">4.4. filter()</a></li>
+<li><a href="#org556e8a6">4.5. Chaining Example</a></li>
+<li><a href="#org8c51865">4.6. Performance Notes</a></li>
+<li><a href="#org79e1d14">4.7. Notes</a></li>
 </ul>
 </li>
-<li><a href="#orgb1b987e">5. Two-Dimensional Array Iteration</a>
+<li><a href="#orgfc8b678">5. Two-Dimensional Array Iteration</a>
 <ul>
-<li><a href="#org6d5b381">5.1. Overview</a></li>
-<li><a href="#orgde48828">5.2. Row-wise Iteration</a></li>
-<li><a href="#orgd377c55">5.3. Column-wise Iteration</a></li>
-<li><a href="#orga3af210">5.4. Column-wise with forEach</a></li>
-<li><a href="#org419f961">5.5. Notes</a></li>
+<li><a href="#org8df9fd6">5.1. Overview</a></li>
+<li><a href="#org351427b">5.2. Row-wise Iteration</a></li>
+<li><a href="#org9044563">5.3. Column-wise Iteration</a></li>
+<li><a href="#orgfe80c0a">5.4. Column-wise with forEach</a></li>
+<li><a href="#orgd41e492">5.5. Notes</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org33ff2b5" class="outline-2">
-<h2 id="org33ff2b5"><span class="section-number-2">1.</span> Element Insertion</h2>
+<div id="outline-container-orgb07c15e" class="outline-2">
+<h2 id="orgb07c15e"><span class="section-number-2">1.</span> Element Insertion</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org56e4890" class="outline-3">
-<h3 id="org56e4890"><span class="section-number-3">1.1.</span> Overview</h3>
+<div id="outline-container-org7d70aa2" class="outline-3">
+<h3 id="org7d70aa2"><span class="section-number-3">1.1.</span> Overview</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>Ordered collections of values</li>
@@ -359,13 +358,12 @@
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgd92fa16" class="outline-3">
-<h3 id="orgd92fa16"><span class="section-number-3">1.2.</span> Insert at End of Array</h3>
+<div id="outline-container-orgc234427" class="outline-3">
+<h3 id="orgc234427"><span class="section-number-3">1.2.</span> Insert at End of Array</h3>
 <div class="outline-text-3" id="text-1-2">
 </div>
-<div id="outline-container-org77ff144" class="outline-4">
-<h4 id="org77ff144"><span class="section-number-4">1.2.1.</span> push()</h4>
+<div id="outline-container-org31f98db" class="outline-4">
+<h4 id="org31f98db"><span class="section-number-4">1.2.1.</span> push()</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <ul class="org-ul">
 <li>Adds one or more elements to the end</li>
@@ -381,9 +379,8 @@ arr.push(4)
 </div>
 </div>
 </div>
-
-<div id="outline-container-org54b2a34" class="outline-4">
-<h4 id="org54b2a34"><span class="section-number-4">1.2.2.</span> Spread (Immutable)</h4>
+<div id="outline-container-org31666dd" class="outline-4">
+<h4 id="org31666dd"><span class="section-number-4">1.2.2.</span> Spread (Immutable)</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <ul class="org-ul">
 <li>Creates a new array</li>
@@ -398,13 +395,12 @@ arr.push(4)
 </div>
 </div>
 </div>
-
-<div id="outline-container-org3c2b6bb" class="outline-3">
-<h3 id="org3c2b6bb"><span class="section-number-3">1.3.</span> Insert at Beginning of Array</h3>
+<div id="outline-container-org27b2691" class="outline-3">
+<h3 id="org27b2691"><span class="section-number-3">1.3.</span> Insert at Beginning of Array</h3>
 <div class="outline-text-3" id="text-1-3">
 </div>
-<div id="outline-container-org9198ccb" class="outline-4">
-<h4 id="org9198ccb"><span class="section-number-4">1.3.1.</span> unshift()</h4>
+<div id="outline-container-org804ddeb" class="outline-4">
+<h4 id="org804ddeb"><span class="section-number-4">1.3.1.</span> unshift()</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <ul class="org-ul">
 <li>Adds one or more elements to the start</li>
@@ -420,9 +416,8 @@ arr.unshift(0)
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgc14e716" class="outline-4">
-<h4 id="orgc14e716"><span class="section-number-4">1.3.2.</span> Spread (Immutable)</h4>
+<div id="outline-container-org1e1bc87" class="outline-4">
+<h4 id="org1e1bc87"><span class="section-number-4">1.3.2.</span> Spread (Immutable)</h4>
 <div class="outline-text-4" id="text-1-3-2">
 <ul class="org-ul">
 <li>Creates a new array</li>
@@ -437,9 +432,8 @@ arr.unshift(0)
 </div>
 </div>
 </div>
-
-<div id="outline-container-org0423406" class="outline-3">
-<h3 id="org0423406"><span class="section-number-3">1.4.</span> Performance Notes</h3>
+<div id="outline-container-org8e4428d" class="outline-3">
+<h3 id="org8e4428d"><span class="section-number-3">1.4.</span> Performance Notes</h3>
 <div class="outline-text-3" id="text-1-4">
 <dl class="org-dl">
 <dt>push()</dt><dd>O(1)</dd>
@@ -447,9 +441,8 @@ arr.unshift(0)
 </dl>
 </div>
 </div>
-
-<div id="outline-container-org940970e" class="outline-3">
-<h3 id="org940970e"><span class="section-number-3">1.5.</span> Notes</h3>
+<div id="outline-container-org3904df6" class="outline-3">
+<h3 id="org3904df6"><span class="section-number-3">1.5.</span> Notes</h3>
 <div class="outline-text-3" id="text-1-5">
 <ul class="org-ul">
 <li>Prefer push() for performance-sensitive code</li>
@@ -458,13 +451,12 @@ arr.unshift(0)
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgebfc49a" class="outline-2">
-<h2 id="orgebfc49a"><span class="section-number-2">2.</span> Element Removal</h2>
+<div id="outline-container-org53978d8" class="outline-2">
+<h2 id="org53978d8"><span class="section-number-2">2.</span> Element Removal</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orgf47d68c" class="outline-3">
-<h3 id="orgf47d68c"><span class="section-number-3">2.1.</span> Overview</h3>
+<div id="outline-container-orgae504b0" class="outline-3">
+<h3 id="orgae504b0"><span class="section-number-3">2.1.</span> Overview</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>Arrays are mutable by default</li>
@@ -473,13 +465,12 @@ arr.unshift(0)
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org7ab0147" class="outline-3">
-<h3 id="org7ab0147"><span class="section-number-3">2.2.</span> Remove from End of Array</h3>
+<div id="outline-container-orgca241ed" class="outline-3">
+<h3 id="orgca241ed"><span class="section-number-3">2.2.</span> Remove from End of Array</h3>
 <div class="outline-text-3" id="text-2-2">
 </div>
-<div id="outline-container-org14f37bf" class="outline-4">
-<h4 id="org14f37bf"><span class="section-number-4">2.2.1.</span> pop()</h4>
+<div id="outline-container-org5fcb871" class="outline-4">
+<h4 id="org5fcb871"><span class="section-number-4">2.2.1.</span> pop()</h4>
 <div class="outline-text-4" id="text-2-2-1">
 <ul class="org-ul">
 <li>Removes the last element</li>
@@ -496,9 +487,8 @@ arr.unshift(0)
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgee48ef2" class="outline-4">
-<h4 id="orgee48ef2"><span class="section-number-4">2.2.2.</span> Immutable (slice)</h4>
+<div id="outline-container-org93bad25" class="outline-4">
+<h4 id="org93bad25"><span class="section-number-4">2.2.2.</span> Immutable (slice)</h4>
 <div class="outline-text-4" id="text-2-2-2">
 <ul class="org-ul">
 <li>Creates a new array without the last element</li>
@@ -513,13 +503,12 @@ arr.unshift(0)
 </div>
 </div>
 </div>
-
-<div id="outline-container-org816fed3" class="outline-3">
-<h3 id="org816fed3"><span class="section-number-3">2.3.</span> Remove from Beginning of Array</h3>
+<div id="outline-container-org1382364" class="outline-3">
+<h3 id="org1382364"><span class="section-number-3">2.3.</span> Remove from Beginning of Array</h3>
 <div class="outline-text-3" id="text-2-3">
 </div>
-<div id="outline-container-org9ce3fa2" class="outline-4">
-<h4 id="org9ce3fa2"><span class="section-number-4">2.3.1.</span> shift()</h4>
+<div id="outline-container-org2056a15" class="outline-4">
+<h4 id="org2056a15"><span class="section-number-4">2.3.1.</span> shift()</h4>
 <div class="outline-text-4" id="text-2-3-1">
 <ul class="org-ul">
 <li>Removes the first element</li>
@@ -536,9 +525,8 @@ arr.unshift(0)
 </div>
 </div>
 </div>
-
-<div id="outline-container-org2fc7c08" class="outline-4">
-<h4 id="org2fc7c08"><span class="section-number-4">2.3.2.</span> Immutable (slice)</h4>
+<div id="outline-container-org148b34e" class="outline-4">
+<h4 id="org148b34e"><span class="section-number-4">2.3.2.</span> Immutable (slice)</h4>
 <div class="outline-text-4" id="text-2-3-2">
 <ul class="org-ul">
 <li>Creates a new array without the first element</li>
@@ -553,13 +541,12 @@ arr.unshift(0)
 </div>
 </div>
 </div>
-
-<div id="outline-container-orge5f5d69" class="outline-3">
-<h3 id="orge5f5d69"><span class="section-number-3">2.4.</span> Remove from Middle of Array</h3>
+<div id="outline-container-org97e9e11" class="outline-3">
+<h3 id="org97e9e11"><span class="section-number-3">2.4.</span> Remove from Middle of Array</h3>
 <div class="outline-text-3" id="text-2-4">
 </div>
-<div id="outline-container-orgd30ec7a" class="outline-4">
-<h4 id="orgd30ec7a"><span class="section-number-4">2.4.1.</span> splice()</h4>
+<div id="outline-container-orgfc63068" class="outline-4">
+<h4 id="orgfc63068"><span class="section-number-4">2.4.1.</span> splice()</h4>
 <div class="outline-text-4" id="text-2-4-1">
 <ul class="org-ul">
 <li>Removes elements at a specific index</li>
@@ -583,9 +570,8 @@ console.log(arr.splice(2, 2)) <span class="org-comment-delimiter">// </span><spa
 </div>
 </div>
 </div>
-
-<div id="outline-container-org239796d" class="outline-4">
-<h4 id="org239796d"><span class="section-number-4">2.4.2.</span> Immutable (filter)</h4>
+<div id="outline-container-org0c2c4b8" class="outline-4">
+<h4 id="org0c2c4b8"><span class="section-number-4">2.4.2.</span> Immutable (filter)</h4>
 <div class="outline-text-4" id="text-2-4-2">
 <ul class="org-ul">
 <li>Removes elements by condition</li>
@@ -599,9 +585,8 @@ console.log(arr.splice(2, 2)) <span class="org-comment-delimiter">// </span><spa
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgf48f618" class="outline-4">
-<h4 id="orgf48f618"><span class="section-number-4">2.4.3.</span> Immutable (slice + spread)</h4>
+<div id="outline-container-orge7ac05c" class="outline-4">
+<h4 id="orge7ac05c"><span class="section-number-4">2.4.3.</span> Immutable (slice + spread)</h4>
 <div class="outline-text-4" id="text-2-4-3">
 <ul class="org-ul">
 <li>Removes element at a specific index</li>
@@ -620,9 +605,8 @@ console.log(arr.splice(2, 2)) <span class="org-comment-delimiter">// </span><spa
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgfeca2f6" class="outline-3">
-<h3 id="orgfeca2f6"><span class="section-number-3">2.5.</span> Performance Notes</h3>
+<div id="outline-container-orgc3a6a35" class="outline-3">
+<h3 id="orgc3a6a35"><span class="section-number-3">2.5.</span> Performance Notes</h3>
 <div class="outline-text-3" id="text-2-5">
 <ul class="org-ul">
 <li><code>pop()</code> → O(1)</li>
@@ -631,9 +615,8 @@ console.log(arr.splice(2, 2)) <span class="org-comment-delimiter">// </span><spa
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org2a87cac" class="outline-3">
-<h3 id="org2a87cac"><span class="section-number-3">2.6.</span> Notes</h3>
+<div id="outline-container-org0dda7bc" class="outline-3">
+<h3 id="org0dda7bc"><span class="section-number-3">2.6.</span> Notes</h3>
 <div class="outline-text-3" id="text-2-6">
 <ul class="org-ul">
 <li>Prefer <code>pop()</code> when possible for performance</li>
@@ -643,13 +626,12 @@ console.log(arr.splice(2, 2)) <span class="org-comment-delimiter">// </span><spa
 </div>
 </div>
 </div>
-
-<div id="outline-container-org011643e" class="outline-2">
-<h2 id="org011643e"><span class="section-number-2">3.</span> Sorting</h2>
+<div id="outline-container-org2bb8018" class="outline-2">
+<h2 id="org2bb8018"><span class="section-number-2">3.</span> Sorting</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org0c1aa07" class="outline-3">
-<h3 id="org0c1aa07"><span class="section-number-3">3.1.</span> Overview</h3>
+<div id="outline-container-org66a2e12" class="outline-3">
+<h3 id="org66a2e12"><span class="section-number-3">3.1.</span> Overview</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li>Arrays can be reordered in place</li>
@@ -658,9 +640,8 @@ console.log(arr.splice(2, 2)) <span class="org-comment-delimiter">// </span><spa
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org48a8b5b" class="outline-3">
-<h3 id="org48a8b5b"><span class="section-number-3">3.2.</span> reverse()</h3>
+<div id="outline-container-org287bcaf" class="outline-3">
+<h3 id="org287bcaf"><span class="section-number-3">3.2.</span> reverse()</h3>
 <div class="outline-text-3" id="text-3-2">
 <ul class="org-ul">
 <li>Reverses the order of elements</li>
@@ -675,9 +656,8 @@ arr.reverse()
 </pre>
 </div>
 </div>
-
-<div id="outline-container-orgc3ec8f4" class="outline-4">
-<h4 id="orgc3ec8f4"><span class="section-number-4">3.2.1.</span> Immutable (copy + reverse)</h4>
+<div id="outline-container-org4ca63ac" class="outline-4">
+<h4 id="org4ca63ac"><span class="section-number-4">3.2.1.</span> Immutable (copy + reverse)</h4>
 <div class="outline-text-4" id="text-3-2-1">
 <div class="org-src-container">
 <pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3]
@@ -688,9 +668,8 @@ arr.reverse()
 </div>
 </div>
 </div>
-
-<div id="outline-container-org03a5973" class="outline-3">
-<h3 id="org03a5973"><span class="section-number-3">3.3.</span> sort()</h3>
+<div id="outline-container-org18e430a" class="outline-3">
+<h3 id="org18e430a"><span class="section-number-3">3.3.</span> sort()</h3>
 <div class="outline-text-3" id="text-3-3">
 <ul class="org-ul">
 <li>Sorts elements in place</li>
@@ -706,9 +685,8 @@ arr.sort()
 </pre>
 </div>
 </div>
-
-<div id="outline-container-orgb287a61" class="outline-4">
-<h4 id="orgb287a61"><span class="section-number-4">3.3.1.</span> Numeric sort (ascending)</h4>
+<div id="outline-container-org4df86c4" class="outline-4">
+<h4 id="org4df86c4"><span class="section-number-4">3.3.1.</span> Numeric sort (ascending)</h4>
 <div class="outline-text-4" id="text-3-3-1">
 <div class="org-src-container">
 <pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [10, 2, 1]
@@ -718,9 +696,8 @@ arr.sort((a, b) =&gt; a - b)
 </div>
 </div>
 </div>
-
-<div id="outline-container-org62a06a8" class="outline-4">
-<h4 id="org62a06a8"><span class="section-number-4">3.3.2.</span> Numeric sort (descending)</h4>
+<div id="outline-container-org949efcb" class="outline-4">
+<h4 id="org949efcb"><span class="section-number-4">3.3.2.</span> Numeric sort (descending)</h4>
 <div class="outline-text-4" id="text-3-3-2">
 <div class="org-src-container">
 <pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [10, 2, 1]
@@ -730,9 +707,8 @@ arr.sort((a, b) =&gt; b - a)
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgd95ac2f" class="outline-4">
-<h4 id="orgd95ac2f"><span class="section-number-4">3.3.3.</span> String sort</h4>
+<div id="outline-container-org55e8f13" class="outline-4">
+<h4 id="org55e8f13"><span class="section-number-4">3.3.3.</span> String sort</h4>
 <div class="outline-text-4" id="text-3-3-3">
 <div class="org-src-container">
 <pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [<span class="org-string">"banana"</span>, <span class="org-string">"apple"</span>, <span class="org-string">"cherry"</span>]
@@ -742,9 +718,8 @@ arr.sort()
 </div>
 </div>
 </div>
-
-<div id="outline-container-org586d055" class="outline-4">
-<h4 id="org586d055"><span class="section-number-4">3.3.4.</span> Immutable (copy + sort)</h4>
+<div id="outline-container-org892bccf" class="outline-4">
+<h4 id="org892bccf"><span class="section-number-4">3.3.4.</span> Immutable (copy + sort)</h4>
 <div class="outline-text-4" id="text-3-3-4">
 <div class="org-src-container">
 <pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [3, 1, 2]
@@ -755,9 +730,8 @@ arr.sort()
 </div>
 </div>
 </div>
-
-<div id="outline-container-orge407db0" class="outline-3">
-<h3 id="orge407db0"><span class="section-number-3">3.4.</span> Performance Notes</h3>
+<div id="outline-container-org7cefbfd" class="outline-3">
+<h3 id="org7cefbfd"><span class="section-number-3">3.4.</span> Performance Notes</h3>
 <div class="outline-text-3" id="text-3-4">
 <ul class="org-ul">
 <li>reverse() → O(n)</li>
@@ -765,9 +739,8 @@ arr.sort()
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org9cabb02" class="outline-3">
-<h3 id="org9cabb02"><span class="section-number-3">3.5.</span> Notes</h3>
+<div id="outline-container-orgeccf220" class="outline-3">
+<h3 id="orgeccf220"><span class="section-number-3">3.5.</span> Notes</h3>
 <div class="outline-text-3" id="text-3-5">
 <ul class="org-ul">
 <li>Always provide a compare function for numeric sorting</li>
@@ -777,13 +750,12 @@ arr.sort()
 </div>
 </div>
 </div>
-
-<div id="outline-container-org75ff24d" class="outline-2">
-<h2 id="org75ff24d"><span class="section-number-2">4.</span> Iterators</h2>
+<div id="outline-container-org60662c9" class="outline-2">
+<h2 id="org60662c9"><span class="section-number-2">4.</span> Iterators</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-orgc74a603" class="outline-3">
-<h3 id="orgc74a603"><span class="section-number-3">4.1.</span> Overview</h3>
+<div id="outline-container-org8548f29" class="outline-3">
+<h3 id="org8548f29"><span class="section-number-3">4.1.</span> Overview</h3>
 <div class="outline-text-3" id="text-4-1">
 <ul class="org-ul">
 <li>Iterator methods process array elements sequentially</li>
@@ -794,9 +766,8 @@ arr.sort()
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgb4b50a2" class="outline-3">
-<h3 id="orgb4b50a2"><span class="section-number-3">4.2.</span> forEach()</h3>
+<div id="outline-container-orgd625af8" class="outline-3">
+<h3 id="orgd625af8"><span class="section-number-3">4.2.</span> forEach()</h3>
 <div class="outline-text-3" id="text-4-2">
 <ul class="org-ul">
 <li>Executes a function for each element</li>
@@ -825,9 +796,8 @@ arr.forEach(x =&gt; {
 </div>
 </div>
 </div>
-
-<div id="outline-container-org7c8ca68" class="outline-3">
-<h3 id="org7c8ca68"><span class="section-number-3">4.3.</span> map()</h3>
+<div id="outline-container-org4769b5a" class="outline-3">
+<h3 id="org4769b5a"><span class="section-number-3">4.3.</span> map()</h3>
 <div class="outline-text-3" id="text-4-3">
 <ul class="org-ul">
 <li>Transforms each element</li>
@@ -853,9 +823,8 @@ arr.forEach(x =&gt; {
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgd3e6b44" class="outline-3">
-<h3 id="orgd3e6b44"><span class="section-number-3">4.4.</span> filter()</h3>
+<div id="outline-container-org46e20e3" class="outline-3">
+<h3 id="org46e20e3"><span class="section-number-3">4.4.</span> filter()</h3>
 <div class="outline-text-3" id="text-4-4">
 <ul class="org-ul">
 <li>Selects elements based on a condition</li>
@@ -872,9 +841,8 @@ arr.forEach(x =&gt; {
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgaefe9c4" class="outline-3">
-<h3 id="orgaefe9c4"><span class="section-number-3">4.5.</span> Chaining Example</h3>
+<div id="outline-container-org556e8a6" class="outline-3">
+<h3 id="org556e8a6"><span class="section-number-3">4.5.</span> Chaining Example</h3>
 <div class="outline-text-3" id="text-4-5">
 <div class="org-src-container">
 <pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3, 4, 5]
@@ -886,9 +854,8 @@ arr.forEach(x =&gt; {
 </div>
 </div>
 </div>
-
-<div id="outline-container-orged89e40" class="outline-3">
-<h3 id="orged89e40"><span class="section-number-3">4.6.</span> Performance Notes</h3>
+<div id="outline-container-org8c51865" class="outline-3">
+<h3 id="org8c51865"><span class="section-number-3">4.6.</span> Performance Notes</h3>
 <div class="outline-text-3" id="text-4-6">
 <ul class="org-ul">
 <li>forEach() → O(n)</li>
@@ -897,9 +864,8 @@ arr.forEach(x =&gt; {
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orge8522f1" class="outline-3">
-<h3 id="orge8522f1"><span class="section-number-3">4.7.</span> Notes</h3>
+<div id="outline-container-org79e1d14" class="outline-3">
+<h3 id="org79e1d14"><span class="section-number-3">4.7.</span> Notes</h3>
 <div class="outline-text-3" id="text-4-7">
 <ul class="org-ul">
 <li>Use <code>forEach()</code> for side effects only</li>
@@ -910,13 +876,12 @@ arr.forEach(x =&gt; {
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgb1b987e" class="outline-2">
-<h2 id="orgb1b987e"><span class="section-number-2">5.</span> Two-Dimensional Array Iteration</h2>
+<div id="outline-container-orgfc8b678" class="outline-2">
+<h2 id="orgfc8b678"><span class="section-number-2">5.</span> Two-Dimensional Array Iteration</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-org6d5b381" class="outline-3">
-<h3 id="org6d5b381"><span class="section-number-3">5.1.</span> Overview</h3>
+<div id="outline-container-org8df9fd6" class="outline-3">
+<h3 id="org8df9fd6"><span class="section-number-3">5.1.</span> Overview</h3>
 <div class="outline-text-3" id="text-5-1">
 <ul class="org-ul">
 <li>A <b>two-dimensional</b> array is an array of arrays</li>
@@ -926,9 +891,8 @@ arr.forEach(x =&gt; {
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgde48828" class="outline-3">
-<h3 id="orgde48828"><span class="section-number-3">5.2.</span> Row-wise Iteration</h3>
+<div id="outline-container-org351427b" class="outline-3">
+<h3 id="org351427b"><span class="section-number-3">5.2.</span> Row-wise Iteration</h3>
 <div class="outline-text-3" id="text-5-2">
 <ul class="org-ul">
 <li>Traverse rows first, then columns</li>
@@ -964,9 +928,8 @@ arr.forEach(x =&gt; {
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgd377c55" class="outline-3">
-<h3 id="orgd377c55"><span class="section-number-3">5.3.</span> Column-wise Iteration</h3>
+<div id="outline-container-org9044563" class="outline-3">
+<h3 id="org9044563"><span class="section-number-3">5.3.</span> Column-wise Iteration</h3>
 <div class="outline-text-3" id="text-5-3">
 <ul class="org-ul">
 <li>Traverse columns first, then rows</li>
@@ -987,9 +950,8 @@ arr.forEach(x =&gt; {
 </div>
 </div>
 </div>
-
-<div id="outline-container-orga3af210" class="outline-3">
-<h3 id="orga3af210"><span class="section-number-3">5.4.</span> Column-wise with forEach</h3>
+<div id="outline-container-orgfe80c0a" class="outline-3">
+<h3 id="orgfe80c0a"><span class="section-number-3">5.4.</span> Column-wise with forEach</h3>
 <div class="outline-text-3" id="text-5-4">
 <div class="org-src-container">
 <pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">cols</span> = matrix[0].length
@@ -1003,9 +965,8 @@ arr.forEach(x =&gt; {
 </div>
 </div>
 </div>
-
-<div id="outline-container-org419f961" class="outline-3">
-<h3 id="org419f961"><span class="section-number-3">5.5.</span> Notes</h3>
+<div id="outline-container-orgd41e492" class="outline-3">
+<h3 id="orgd41e492"><span class="section-number-3">5.5.</span> Notes</h3>
 <div class="outline-text-3" id="text-5-5">
 <ul class="org-ul">
 <li>Row-wise is cache-friendly and most common</li>

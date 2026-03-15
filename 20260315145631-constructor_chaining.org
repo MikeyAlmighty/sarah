@@ -1,0 +1,204 @@
+:PROPERTIES:
+:ID:       55699fdc-5fdc-4c94-b8d7-7b4c230ad0c5
+:END:
+#+title: Constructor Chaining
+
+* Constructor Chaining
+
+A *constructor* may invoke an *overloaded constructor* or its =superclass= *constructor*.
+If *neither* is invoked *explicitly*, the compiler automatically puts ~super()~ as the first statement in the *constructor*.
+
+In any case, constructing an ~instance~ of a =class= invokes the *constructors* of all the *superclasses* along the =inheritance chain=.
+
+When *constructing* an ~object~ of a =subclass=, the =subclass= *constructor* first invokes its =superclass= *constructor* before performing its own tasks.
+
+If the =superclass= is derived from another =class=, the =superclass= *constructor* invokes its =parentclass= *constructor* before performing its own tasks.
+This process continues until the last *constructor* along the inheritance hierarchy is called.
+This is called *constructor chaining.*
+
+** Example
+
+#+BEGIN_SRC java
+public class Faculty extends Employee {
+    public static void main(String[] args) {
+        new Faculty();
+    }
+
+    public Faculty() {
+        System.out.println("(4) Performs Faculty's tasks");
+    }
+}
+
+class Employee extends Person {
+    public Employee() {
+        this("(2) Invokes Employee's overloaded constructor");
+        System.out.println("(3) Performs Employee's tasks ");
+    }
+
+    public Employee(String s) {
+        System.out.println(s);
+    }
+}
+
+class Person {
+    public Person() {
+        System.out.println("(1) Performs Person's tasks");
+    }
+}
+#+END_SRC
+
+
+#+BEGIN_SRC shell
+(1) Performs Person’s tasks
+(2) Invokes Employee’s overloaded constructor
+(3) Performs Employee’s tasks
+(4) Performs Faculty’s tasks
+#+END_SRC
+
+*** Step 1
+
+#+BEGIN_SRC java
+new Faculty();
+#+END_SRC
+
+This calls the =Faculty= *constructor*.
+
+But before ~Faculty()~ runs, Java must construct its =superclass= (=Employee=) first.
+
+*** Step 2
+
+~Employee()~ must run first
+
+Because =Faculty= extends =Employee=, Java automatically inserts:
+
+#+BEGIN_SRC java
+super();
+#+END_SRC
+
+at the beginning of ~Faculty()~.
+
+So effectively the *constructor* becomes:
+
+#+BEGIN_SRC java
+public Faculty() {
+    super();  // inserted automatically
+    System.out.println("(4) Performs Faculty's tasks");
+}
+#+END_SRC
+
+Now ~Employee()~ runs.
+
+*** Step 3
+
+~Employee()~ *constructor* runs
+
+#+BEGIN_SRC java
+public Employee() {
+    this("(2) Invokes Employee's overloaded constructor");
+    System.out.println("(3) Performs Employee's tasks ");
+}
+#+END_SRC
+
+This *constructor* calls another *constructor* in the same =class= using:
+
+#+BEGIN_SRC java
+this(...)
+#+END_SRC
+
+So Java calls:
+
+#+BEGIN_SRC java
+Employee(String s)
+#+END_SRC
+
+*** Step 4
+
+~Employee(String s)~ runs
+
+Before this *constructor* runs, Java again must construct the =superclass= (=Person=).
+
+So Java inserts:
+#+BEGIN_SRC java
+super();
+#+END_SRC
+
+
+meaning ~Person()~ runs first.
+
+*** Step 5
+
+~Person()~ constructor runs
+#+BEGIN_SRC java
+public Person() {
+    System.out.println("(1) Performs Person's tasks");
+}
+#+END_SRC
+
+**** Output:
+#+BEGIN_SRC shell
+(1) Performs Person’s tasks
+#+END_SRC
+
+~Person()~ finishes.
+
+*** Step 6
+
+Back to ~Employee(String s)~
+
+Now this *constructor* executes:
+
+#+BEGIN_SRC java
+System.out.println(s);
+#+END_SRC
+
+Output:
+
+#+BEGIN_SRC shell
+(2) Invokes Employee's overloaded constructor
+#+END_SRC
+
+This *constructor* ends.
+
+*** Step 7
+
+Back to ~Employee()~
+
+After the ~this(...)~ call finishes, execution continues:
+#+BEGIN_SRC java
+System.out.println("(3) Performs Employee's tasks ");
+#+END_SRC
+
+Output:
+
+#+BEGIN_SRC shell
+(3) Performs Employee's tasks
+#+END_SRC
+
+*** Step 8
+
+Back to ~Faculty()~
+
+Finally the =subclass= *constructor* runs:
+
+#+BEGIN_SRC java
+System.out.println("(4) Performs Faculty's tasks");
+#+END_SRC
+
+Output:
+
+#+BEGIN_SRC shell
+(4) Performs Faculty's tasks
+#+END_SRC
+
+*** Final Output:
+
+#+BEGIN_SRC shell
+(1) Performs Person’s tasks
+(2) Invokes Employee’s overloaded constructor
+(3) Performs Employee’s tasks
+(4) Performs Faculty’s tasks
+#+END_SRC
+
+** Design Guide
+
+If possible, you should provide a *no-arg constructor* for every =class= to make the =class= easy to extend and to avoid errors.

@@ -1,0 +1,33 @@
+:PROPERTIES:
+:ID:       f3e2b11f-4eaf-4d91-98da-20dd33e69471
+:END:
+#+title: Calling Superclass Methods
+
+* Calling Superclass Methods
+The keyword =super= can also be used to reference a *method* other than the *constructor* in the =superclass=.
+
+** Syntax:
+#+BEGIN_SRC java
+super.method(arguments);
+#+END_SRC
+
+You could rewrite the ~printCircle()~ method in the =Circle= class as follows:
+
+#+BEGIN_SRC java
+public class GeometricObject {
+    // ...
+    public java.util.Date getDateCreated() {
+        return dateCreated;
+    }
+    // ...
+}
+
+class Circle extends GeometricObject {
+    // ...
+    public void printCircle() {
+        System.out.println("The circle is created " +
+        super.getDateCreated() + " and the radius is " + radius);
+    }
+    // ...
+}
+#+END_SRC

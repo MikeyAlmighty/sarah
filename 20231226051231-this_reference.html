@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-03-10 Tue 06:14 -->
+<!-- 2026-03-15 Sun 15:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>.this reference</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -256,17 +256,16 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org8342be5">1. Java <code>this</code> Reference</a></li>
-<li><a href="#orgfcc9352">2. Referencing Instance Members</a></li>
-<li><a href="#orgbdfee30">3. Resolving Variable Shadowing</a></li>
-<li><a href="#org29858c9">4. Invoking Another Constructor</a></li>
-<li><a href="#orga0e5212">5. Key Points</a></li>
+<li><a href="#org67732d7">1. Java <code>this</code> Reference</a></li>
+<li><a href="#org1bcc474">2. Referencing Instance Members</a></li>
+<li><a href="#org178b6bd">3. Resolving Variable Shadowing</a></li>
+<li><a href="#org182c648">4. Invoking Another Constructor</a></li>
+<li><a href="#orgccbd7bf">5. Key Points</a></li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org8342be5" class="outline-2">
-<h2 id="org8342be5"><span class="section-number-2">1.</span> Java <code>this</code> Reference</h2>
+<div id="outline-container-org67732d7" class="outline-2">
+<h2 id="org67732d7"><span class="section-number-2">1.</span> Java <code>this</code> Reference</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 The keyword <code>this</code> refers to the <b>current (calling) object</b>.  
@@ -287,9 +286,8 @@ The <code>this</code> reference is commonly used to:
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgfcc9352" class="outline-2">
-<h2 id="orgfcc9352"><span class="section-number-2">2.</span> Referencing Instance Members</h2>
+<div id="outline-container-org1bcc474" class="outline-2">
+<h2 id="org1bcc474"><span class="section-number-2">2.</span> Referencing Instance Members</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 You can explicitly use <code>this</code> to reference instance variables and methods.
@@ -340,9 +338,8 @@ Example without <code>this</code>:
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgbdfee30" class="outline-2">
-<h2 id="orgbdfee30"><span class="section-number-2">3.</span> Resolving Variable Shadowing</h2>
+<div id="outline-container-org178b6bd" class="outline-2">
+<h2 id="org178b6bd"><span class="section-number-2">3.</span> Resolving Variable Shadowing</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 The <code>this</code> keyword is necessary when a method or constructor parameter has the <b>same name</b> as an instance variable.
@@ -357,7 +354,7 @@ Example:
 
     <span class="org-type">double</span> <span class="org-variable-name">radius</span>;
 
-    <span class="org-keyword">public</span> Circle(<span class="org-type">double</span> <span class="org-variable-name">radius</span>) {
+    <span class="org-keyword">public</span> <span class="org-function-name">Circle</span>(<span class="org-type">double</span> <span class="org-variable-name">radius</span>) {
         <span class="org-keyword">this</span>.radius = radius;
     }
 
@@ -375,9 +372,8 @@ Explanation:
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org29858c9" class="outline-2">
-<h2 id="org29858c9"><span class="section-number-2">4.</span> Invoking Another Constructor</h2>
+<div id="outline-container-org182c648" class="outline-2">
+<h2 id="org182c648"><span class="section-number-2">4.</span> Invoking Another Constructor</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 The <code>this()</code> syntax can call another constructor in the same class.
@@ -388,11 +384,11 @@ The <code>this()</code> syntax can call another constructor in the same class.
 
     <span class="org-type">double</span> <span class="org-variable-name">radius</span>;
 
-    <span class="org-keyword">public</span> Circle() {
+    <span class="org-keyword">public</span> <span class="org-function-name">Circle</span>() {
         <span class="org-keyword">this</span>(1.0);
     }
 
-    <span class="org-keyword">public</span> Circle(<span class="org-type">double</span> <span class="org-variable-name">radius</span>) {
+    <span class="org-keyword">public</span> <span class="org-function-name">Circle</span>(<span class="org-type">double</span> <span class="org-variable-name">radius</span>) {
         <span class="org-keyword">this</span>.radius = radius;
     }
 
@@ -409,9 +405,8 @@ Here:
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orga0e5212" class="outline-2">
-<h2 id="orga0e5212"><span class="section-number-2">5.</span> Key Points</h2>
+<div id="outline-container-orgccbd7bf" class="outline-2">
+<h2 id="orgccbd7bf"><span class="section-number-2">5.</span> Key Points</h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
 <li><code>this</code> refers to the <b>current object</b></li>
