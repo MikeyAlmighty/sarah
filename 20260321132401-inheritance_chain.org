@@ -1,0 +1,92 @@
+:PROPERTIES:
+:ID:       ecd628b6-567a-44e5-bcae-46b77c8d425b
+:END:
+#+title: Inheritance Chain
+
+* Inheritance Chain
+
+An =inheritance chain= is the sequence of classes formed through [[id:5e09bcf0-2de5-4b84-a9ed-b3654bf0df40][inheritance]], where each =class= *extends* another =class=.
+
+Example:
+
+#+BEGIN_SRC
+Person → Employee → Faculty
+#+END_SRC
+
+Here:
+- =Employee= inherits from =Person=
+- =Faculty= inherits from =Employee=
+
+* Key Idea
+
+When an ~object~ of a =subclass= is created, Java initializes all classes in the =inheritance chain= from the *top (root)* to the *bottom (subclass)*.
+
+This ensures that all inherited *data* and *behavior* are properly ~initialized~.
+
+* Constructor Execution Order
+
+Constructors are executed in the following order:
+
+#+BEGIN_SRC
+1. Top-level superclass constructor
+2. Next superclass constructor
+3. ...
+4. Subclass constructor
+#+END_SRC
+
+This process is called [[id:55699fdc-5fdc-4c94-b8d7-7b4c230ad0c5][Constructor Chaining]].
+
+* Example
+
+#+BEGIN_SRC java
+class Person {
+    public Person() {
+        System.out.println("Person constructor");
+    }
+}
+
+class Employee extends Person {
+    public Employee() {
+        System.out.println("Employee constructor");
+    }
+}
+
+class Faculty extends Employee {
+    public Faculty() {
+        System.out.println("Faculty constructor");
+    }
+
+    public static void main(String[] args) {
+        new Faculty();
+    }
+}
+#+END_SRC
+
+* Output
+
+#+BEGIN_SRC
+Person constructor
+Employee constructor
+Faculty constructor
+#+END_SRC
+
+* Explanation
+
+1. =Faculty()= is called
+2. Java first calls =Employee()=
+3. Then =Employee()= calls =Person()=
+4. Constructors execute from top to bottom
+5. Control returns back down the chain
+
+* Important Rules
+
+- Every class (except =Object=) has a =superclass=.
+- Java automatically inserts =super()= if not specified.
+- =super(...)= must be the *first statement* in a constructor.
+- =Constructors= are executed *once per class* in the chain.
+
+* Why It Matters
+
+- Ensures proper *initialization* of ~inherited fields.~
+- Maintains consistent object state.
+- Forms the foundation of Java’s object-oriented design.

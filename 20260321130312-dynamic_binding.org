@@ -1,0 +1,124 @@
+:PROPERTIES:
+:ID:       a036361c-34a9-4d80-9748-2128f0b99af8
+:END:
+#+title: Dynamic Binding
+
+* Dynamic Binding (AKA Dynamic Method Dispatch)
+
+In Java, runtime polymorphism relies on dynamic binding.
+
+When you invoke an overridden method on an object reference, Java binds the call to the correct method based on the object's actual class (not the reference type) during runtime.
+
+This allows the *same* =method= to *behave* *differently* based on the ~object type~.
+
+A =method= can be implemented in several =classes= along the *inheritance* chain.
+
+We are going to use the =Animal= *class* *hierarchy* to properly demonstrate *dynamic* *binding* and *polymorphism*.
+
+** Example
+
+#+BEGIN_SRC java
+// Superclass (Parent)
+class Animal {
+    // Method to be overridden
+    void makeSound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+// Subclass 1 (Child)
+class Dog extends Animal {
+    // Overriding makeSound() method
+    @Override
+    void makeSound() {
+        System.out.println("Dog barks");
+    }
+}
+
+// Subclass 2 (Child)
+class Cat extends Animal {
+    // Overriding makeSound() method
+    @Override
+    void makeSound() {
+        System.out.println("Cat meows");
+    }
+}
+
+// Main class to test dynamic binding and runtime polymorphism
+public class TestPolymorphism {
+    public static void main(String[] args) {
+        // Animal reference, but Dog object
+        Animal myAnimal = new Dog();
+        myAnimal.makeSound();  // Output: Dog barks (determined at runtime)
+
+        // Animal reference, but Cat object
+        myAnimal = new Cat();
+        myAnimal.makeSound();  // Output: Cat meows (determined at runtime)
+    }
+}
+
+#+END_SRC
+
+*** Superclass (Animal)
+
+Contains the ~makeSound()~ method.
+
+*** Subclasses (Dog, Cat)
+
+Both *override* the ~makeSound()~ method to provide specific implementations.
+
+*** Dynamic binding
+
+- In the ~main method~, we use an =Animal= *reference* to hold a =Dog= or =Cat= object.
+- At *runtime*, the JVM resolves the method call (~makeSound()~) based on the ~actual type~ of the object (either =Dog= or =Cat=), even though the *reference* *type* is =Animal=.
+- This is dynamic binding: Java calls the appropriate *overridden* *method* based on the ~object type~, not the ~reference type~.
+
+*** Runtime polymorphism
+
+The *reference* *variable* ~myAnimal~ can point to both =Dog= and =Cat=, and Java will invoke the *correct* =method= (~Dog~ barks or ~Cat~ meows) based on the ~actual object~ type at *runtime*.
+
+** Core Idea (Simplified)
+
+*Java* decides which =method= signature is valid at *compile time*, but decides which ~implementation~ to run at *runtime*.
+
+*Dynamic Binding* = *runtime* decision.
+
+*** Two Key Concepts
+
+**** Declared Type (*compile-time*)
+
+#+BEGIN_SRC java
+Animal myAnimal;
+#+END_SRC
+
+- This tells the compiler what *methods* are *allowed*.
+- The compiler checks: does =Animal= have =makeSound()=?
+- It does *NOT* decide which *implementation* runs.
+
+**** Actual Type (*runtime*)
+
+#+BEGIN_SRC java
+myAnimal = new Dog();   // or new Cat();
+#+END_SRC
+
+- This tells the *JVM* which actual =object= is being used.
+- At runtime, the object is either a =Dog= or a =Cat=.
+- This *DOES* decide which *method implementation* runs.
+
+**** Examples:
+
+#+BEGIN_SRC java
+Animal myAnimal = new Dog();
+myAnimal.makeSound();   // Dog barks
+
+myAnimal = new Cat();
+myAnimal.makeSound();   // Cat meows
+#+END_SRC
+
+*** The Rule You Must Remember
+
+*Method implementation* is chosen based on the ~Actual Type~ (*runtime*).
+
+*** Exam
+
+Dynamic binding does *NOT* apply to =static methods=.

@@ -1,0 +1,84 @@
+:PROPERTIES:
+:ID:       16577748-cab3-4067-a6ee-c92fb65fa48f
+:END:
+#+title: Polymorphism (Run Time)
+
+* Polymorphism (Run Time)
+
+- Achieved through [[id:c67b24a4-82f7-4423-83a9-75fc1c566166][method Overriding]].
+
+Decided at *runtime* using [[id:a036361c-34a9-4d80-9748-2128f0b99af8][Dynamic Method Dispatch]].
+
+#+BEGIN_SRC java
+// Superclass (Parent)
+class Animal {
+    // Method to be overridden
+    void makeSound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+// Subclass 1 (Child)
+class Dog extends Animal {
+    // Overriding makeSound() method
+    @Override
+    void makeSound() {
+        System.out.println("Dog barks");
+    }
+}
+
+// Subclass 2 (Child)
+class Cat extends Animal {
+    // Overriding makeSound() method
+    @Override
+    void makeSound() {
+        System.out.println("Cat meows");
+    }
+}
+
+// Subclass 3 (Child)
+class Cow extends Animal {
+    // Overriding makeSound() method
+    @Override
+    void makeSound() {
+        System.out.println("Cow moos");
+    }
+}
+
+// Main class to test polymorphism
+public class TestPolymorphism {
+    public static void main(String[] args) {
+        // Creating an Animal reference
+        Animal myAnimal;
+
+        // Assigning different subclass objects to the parent class reference
+        myAnimal = new Dog();
+        myAnimal.makeSound();  // Output: Dog barks
+
+        myAnimal = new Cat();
+        myAnimal.makeSound();  // Output: Cat meows
+
+        myAnimal = new Cow();
+        myAnimal.makeSound();  // Output: Cow moos
+    }
+}
+#+END_SRC
+
+** Method overriding
+The makeSound() method is defined in the Animal class.
+
+Each subclass (Dog, Cat, Cow) overrides this method with its own specific behaviour.
+
+** [[id:a036361c-34a9-4d80-9748-2128f0b99af8][Dynamic Binding (late binding)]]
+The =Animal= reference (~myAnimal~) is assigned different =subclass objects= (=Dog=, =Cat=, =Cow=).
+
+At *runtime*, Java determines the ~actual object type~ and calls the *overridden* method of the specific =subclass=.
+
+** Important note
+*** Inheritance enables polymorphism.
+
+Without *inheritance*, *method* *overriding* (a key part of polymorphism) wouldn’t be possible.
+
+*** Polymorphism enhances inheritance.
+
+When a =subclass= *overrides* a ~method~ of the =superclass=, it provides *specific* *behaviour* while maintaining the *inherited* *structure*.

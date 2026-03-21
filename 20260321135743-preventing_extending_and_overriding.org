@@ -1,0 +1,105 @@
+:PROPERTIES:
+:ID:       1b633d94-7e75-4895-816d-b2b2ce47b734
+:END:
+#+title: Preventing Extending and Overriding
+
+* Preventing Extending and Overriding
+
+Neither a =final class= nor a =final method= can be *extended*.
+
+A =final data field= is a *constant*.
+
+** Description
+
+You may occasionally want to prevent =classes= from being *extended*.
+
+In such cases, use the ~final~ *access modifier* to indicate a =class= is ~final~ and *cannot* be a =parent class=.
+
+The =Math= class is a ~final~ class.
+
+The =String=, =StringBuilder=, and =StringBuffer= classes, and all *wrapper* *classes* for  [[id:b8a89d64-e78d-4b77-9bbd-bdb837a751c0][Primitive Data types]] are also ~final~ =classes=.
+
+*** Example
+
+The following class =A= is ~final~ and *cannot* be *extended*:
+
+#+BEGIN_SRC java
+public final class A {
+    // Data fields, constructors, and methods omitted
+}
+#+END_SRC
+
+You also can define a method to be ~final~.
+A ~final~ method cannot be *overridden* by its =subclasses=.
+
+*** Example
+The following method =m= is ~final~ and *cannot* be *overridden*:
+
+#+BEGIN_SRC java
+public class Test {
+    // Data fields, constructors, and methods omitted
+    public final void m() {
+        // Do something
+    }
+}
+#+END_SRC
+
+** Note
+
+The [[id:78bf41e5-259a-4c97-8df7-1685989e3d8c][optional Specifiers]] ~public~, ~protected~, ~private~, ~static~, ~abstract~, and ~final~ are used on =classes= and =class members= (*data* and *methods*), except that the ~final~ modifier can also be used on *local* *variables* in a =method=.
+
+A ~final~ *local variable* is a *constant* inside a =method=.
+
+*** We can use final to:
+- Prevent *inheritance*: Use ~final~ for a =class= when you want to prevent it from being subclassed.
+- Prevent [[id:c67b24a4-82f7-4423-83a9-75fc1c566166][method overriding]]: Use ~final~ for a =method= when you want to *prevent* =subclasses= from *changing* its *behaviour*.
+- For *immutable objects*: Use ~final~ to make fields *immutable*.
+
+** Error
+
+If you try to *extend* a ~final~ =class=, the *compiler* will throw an *error*.
+
+#+BEGIN_SRC java
+final class Animal {
+    void makeSound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+// Attempting to extend a final class will cause a compile-time error
+class Dog extends Animal {  // Error: Cannot inherit from final 'Animal'
+    void makeSound() {
+        System.out.println("Dog barks");
+    }
+}
+#+END_SRC
+
+*** Preventing inheritance and overriding with 'final' together
+
+You can use ~final~ for both the =class= and its =methods= to fully lock down the class from any *subclassing* or [[id:c67b24a4-82f7-4423-83a9-75fc1c566166][Method Overriding]]:
+
+**** Example
+
+#+BEGIN_SRC java
+final class Animal {
+    // Final method: cannot be overridden in subclasses
+    final void makeSound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+// Trying to extend the final class or override the final method would result in errors.
+class Dog extends Animal {  // Error: Cannot inherit from final 'Animal'
+    @Override
+    void makeSound() {  // Error: Cannot override the final method from Animal
+        System.out.println("Dog barks");
+    }
+}
+
+public class TestFinal {
+    public static void main(String[] args) {
+        Animal animal = new Animal();
+        animal.makeSound();
+    }
+}
+#+END_SRC

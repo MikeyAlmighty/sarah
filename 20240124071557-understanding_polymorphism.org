@@ -5,8 +5,56 @@
 #+title: Understanding Polymorphism
 #+filetags: :OCP:
 
-* Understanding Polymorphism
+* Polymorphism
 
+*Polymorphism* means that a ~variable~ of a =supertype= can refer to a =subtype= object.
 *Polymorphism* allows objects of different =classes= to be treated as objects of a common =superclass=.
 
-The main idea is that you can invoke ~methods~ on objects without needing to know their exact =type=, enabling flexible and dynamic behaviour.
+The main idea is that you can invoke ~methods~ on objects without needing to know their exact =type=, enabling *flexible* and *dynamic behaviour*.
+
+The [[id:5e09bcf0-2de5-4b84-a9ed-b3654bf0df40][inheritance]] relationship enables a =subclass= to *inherit* *features* from its =superclass= with additional new features.
+
+A =subclass= is a *specialization* of its =superclass=; every *instance* of a =subclass= is also an *instance* of its =superclass=, but *not* vice versa.
+
+For example, every ~circle~ is a ~geometric~ object, but not every ~geometric~ object is a ~circle~.
+
+Therefore, you can always pass an *instance* of a =subclass= to a parameter of its =superclass= type.
+
+** Example
+
+#+BEGIN_SRC java
+public class PolymorphismDemo {
+    public static void main(String[] args) {
+        // Display circle and rectangle properties
+        displayObject(new Circle(1, "red", false));
+        displayObject(new Rectangle(1, 1, "black", true));
+    }
+
+    // Display geometric object properties
+    public static void displayObject(GeometricObject object) {
+        System.out.println("Created on " + object.getDateCreated() + ". Color is " + object.getColor());
+    }
+}
+#+END_SRC
+
+*** Output
+
+#+BEGIN_SRC java
+Created on Mon Mar 09 19:25:20 EDT 2011. Color is red
+Created on Mon Mar 09 19:25:20 EDT 2011. Color is black
+#+END_SRC
+
+The method ~displayObject~ takes as an argument, a parameter of the ~GeometricObject~ type.
+
+You can *invoke* ~displayObject~ by passing any instance of ~GeometricObject~ (e.g., ~new Circle(1, "red", false)~ and ~new Rectangle(1, 1, "black", true)~.
+
+An *object* of a =subclass= can be used wherever its =superclass= object is used.
+
+This is commonly known as *polymorphism* (from a Greek word meaning *“many forms”*).
+
+In simple terms, *polymorphism* means that a *variable* of a =supertype= can refer to a =subtype= object.
+
+See:
+- [[id:a036361c-34a9-4d80-9748-2128f0b99af8][Dynamic Binding]]
+- [[id:d0c4dfe1-3d96-4773-bb01-43bf1a261d0a][Polymorphism (Compile Time)]]
+- [[id:16577748-cab3-4067-a6ee-c92fb65fa48f][Polymorphism (Run Time)]]

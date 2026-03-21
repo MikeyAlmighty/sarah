@@ -1,0 +1,87 @@
+:PROPERTIES:
+:ID:       d0c4dfe1-3d96-4773-bb01-43bf1a261d0a
+:END:
+#+title: Polymorphism (Compile Time)
+
+* Polymorphism (Compile Time)
+
+- Achieved through [[id:28b95eeb-be70-4b92-b599-aa95d6d9b5d7][method Overloading]]
+
+#+BEGIN_SRC java
+// Superclass (Parent)
+class Animal {
+    // Method to be overloaded
+    void makeSound() {
+        System.out.println("Animal makes a sound");
+    }
+
+    // Overloaded method: same name, different parameter
+    void makeSound(String sound) {
+        System.out.println("Animal makes a " + sound);
+    }
+
+    // Overloaded method: same name, different parameter
+    void makeSound(int times) {
+        for (int i = 0; i < times; i++) {
+            System.out.println("Animal makes a sound");
+        }
+    }
+}
+
+// Subclass 1 (Child)
+class Dog extends Animal {
+    // Overloaded method with the same name, different parameter
+    @Override
+    void makeSound() {
+        System.out.println("Dog barks");
+    }
+
+    @Override
+    void makeSound(String sound) {
+        System.out.println("Dog says " + sound);
+    }
+}
+
+// Subclass 2 (Child)
+class Cat extends Animal {
+    // Overloaded method with the same name, different parameter
+    @Override
+    void makeSound() {
+        System.out.println("Cat meows");
+    }
+
+    @Override
+    void makeSound(String sound) {
+        System.out.println("Cat says " + sound);
+    }
+}
+
+// Main class to test compile-time polymorphism
+public class TestPolymorphism {
+    public static void main(String[] args) {
+        // Creating an Animal reference
+        Animal myAnimal;
+
+        // Calling the overloaded methods
+        myAnimal = new Dog();
+        myAnimal.makeSound();  // Output: Dog barks
+        myAnimal.makeSound("woof");  // Output: Dog says woof
+
+        myAnimal = new Cat();
+        myAnimal.makeSound();  // Output: Cat meows
+        myAnimal.makeSound("meow");  // Output: Cat says meow
+
+        // Using the method with an integer parameter
+        myAnimal.makeSound(3);  // Output: Animal makes a sound (3 times)
+    }
+}
+#+END_SRC
+
+** Method overloading
+
+The ~makeSound()~ method is defined in the =Animal= class, and it is *overloaded* by defining *multiple* ~methods~ with the *same* *name* but *different* *parameters*.
+
+** Compile-time resolution
+
+The =method= to be executed is selected at *compile* *time*, based on the *method* *signature* used when calling it.
+The signature includes the *method* ~name~ and the *number* or *types* of *parameters*.
