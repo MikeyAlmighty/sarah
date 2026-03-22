@@ -1,0 +1,147 @@
+:PROPERTIES:
+:ID:       9f1e2764-3581-4ae1-bdd0-05d8d0bf42d2
+:END:
+#+title: Implementing an Interface
+
+* Implementing an Interface
+
+This is accomplished by letting the =class= for the ~object~ *implement* this interface using the ~implements~ [[id:5f2b572a-ec31-49de-ba13-95b0c5edb4c0][keyword]].
+
+For example, the classes =Chicken= and =Fruit= in the code below *implement* the ~Edible~ *interface*.
+
+The relationship *between* the =class= and the ~interface~ is known as [[id:319ad80f-8f78-4418-b744-8301ad45a58c][interface inheritance]].
+
+- Since *interface inheritance* and *class inheritance* are essentially the same, we will simply refer to both as [[id:5e09bcf0-2de5-4b84-a9ed-b3654bf0df40][Inheritance]].
+
+** Example
+
+#+BEGIN_SRC java
+public interface Edible {
+    // Describe how to eat
+    public abstract String howToEat();
+}
+
+public class TestEdible {
+    public static void main(String[] args) {
+        Object[] objects = {new Tiger(), new Chicken(), new Apple()};
+        for (int i = 0; i < objects.length; i++) {
+            if (objects[i] instanceof Edible) {
+                System.out.println(((Edible)objects[i]).howToEat());
+            }
+
+            if (objects[i] instanceof Animal) {
+                System.out.println(((Animal)objects[i]).sound());
+            }
+        }
+    }
+}
+
+abstract class Animal {
+    private double weight;
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    // Return animal sound
+    public abstract String sound();
+}
+
+class Chicken extends Animal implements Edible {
+    @Override
+    public String howToEat() {
+        return "Chicken: Fry it";
+    }
+
+    @Override
+    public String sound() {
+        return "Chicken: cock-a-doodle-doo";
+    }
+}
+
+class Tiger extends Animal {
+    @Override
+    public String sound() {
+        return "Tiger: RROOAARR";
+    }
+}
+
+abstract class Fruit implements Edible {
+    // Data fields, constructors, and methods omitted here
+}
+
+class Apple extends Fruit {
+    @Override
+    public String howToEat() {
+        return "Apple: Make apple cider";
+    }
+}
+
+class Orange extends Fruit {
+    @Override
+    public String howToEat() {
+        return "Orange: Make orange juice";
+    }
+}
+#+END_SRC
+
+*** Output
+
+#+BEGIN_SRC java
+Tiger: RROOAARR
+Chicken: Fry it
+Chicken: cock-a-doodle-doo
+Apple: Make apple cider
+#+END_SRC
+
+The =Animal= class defines the ~weight~ property with its getters/setters and the ~sound~ method.
+
+The ~sound~ method is an *abstract method* and will be *implemented* by a /concrete/ =animal class=.
+
+The =Chicken class= *implements* ~Edible~ to specify that =chickens= are *edible*.
+
+When a =class= *implements* an =interface=, it *implements* *all* the *methods* *defined* in the *interface*.
+
+The =Chicken class= *implements* the ~howToEat~ method.
+
+=Chicken= also *extends* =Animal= to *implement* the ~sound~ method.
+
+The =Fruit= class *implements* ~Edible~.
+
+Since it does *not* *implement* the ~howToEat~ method, =Fruit= must be defined as *abstract*.
+
+The *concrete* =subclasses= of =Fruit= *must implement* the ~howToEat~ method.
+
+The =Apple= and =Orange classes= implement the ~howToEat~ method.
+
+The *main method* creates an array with three *objects* for =Tiger=, =Chicken=, and =Apple= and invokes the ~howToEat~ method if the element is =edible=, and the ~sound~ method if the element *is an* =animal=.
+
+In essence, the *Edible* ~interface~ defines common behavior for =edible objects=.
+- All edible objects have the ~howToEat~ method.
+
+** Note
+
+The modifiers ~public static final~ on *data* *fields* and the *modifiers* ~public abstract~ on *methods* can be *omitted* in an *interface*.
+
+*** Example
+
+The following *interface definitions* are *equivalent*:
+
+#+BEGIN_SRC java
+public interface T {
+    public static final int K = 1;
+    public abstract void p();
+}
+#+END_SRC
+
+#+BEGIN_SRC java
+public interface T {
+    int K = 1;
+    void p();
+}
+#+END_SRC
+
+Although the ~public~ modifier may be omitted for a method defined in the *interface*, the *method* *must* be *defined* ~public~ when it is *implemented* in a =subclass=.

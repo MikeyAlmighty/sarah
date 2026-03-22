@@ -6,15 +6,19 @@
 
 * Declaring Abstract Methods
 
+An ~abstract method~ is defined *without* /implementation/.
+
+Its /implementation/ is provided by the =subclasses=.
+
 An ~abstract method~ is *always* declared *without* a ~body~.
 
 It also includes a semicolon =(;)= after the *method declaration*.
 
-It might surprise you to know that an ~abstract class~ is *not* required to include any ~abstract methods~.
 
 ** Example
 
-For example, the following code compiles even though it doesn’t define any abstract methods:
+It might surprise you to know that an ~abstract class~ is *not* required to include any ~abstract methods~.
+The following code *compiles* even though it *doesn’t* define any abstract methods:
 
 #+BEGIN_SRC java
 public abstract class Llama {
@@ -25,9 +29,10 @@ public abstract class Llama {
 
 ** _Exam Trick_
 
-Even without abstract methods, the class cannot be directly instantiated.
+Even *without* ~abstract methods~, the =class= cannot be *directly* *instantiated*.
 
-For the exam, keep an eye out for abstract methods declared outside abstract classes, such as the following:
+For the exam, keep an eye out for abstract methods declared *outside* ~abstract classes~, such as the following:
+
 #+BEGIN_SRC java
 public class Egret { // DOES NOT COMPILE
     public abstract void peck();
@@ -46,11 +51,11 @@ abstract public class Tiger {
 }
 #+END_SRC
 
-
 ** _Exam Trick_
 
-The ~abstract~ modifier cannot be placed *after* the ~class~ keyword in a class declaration or after the ~return type~ in a ~method declaration~.
-The following ~Bear~ and ~howl()~ declarations do not compile for these reasons:
+The ~abstract~ modifier cannot be placed *after* the =class= keyword in a =class= *declaration* or after the ~return type~ in a ~method declaration~.
+
+The following ~Bear~ and ~howl()~ declarations *do not compile* for these reasons:
 
 #+BEGIN_SRC java
 public class abstract Bear { // DOES NOT COMPILE
@@ -58,9 +63,10 @@ public class abstract Bear { // DOES NOT COMPILE
 }
 #+END_SRC
 
-
 ** _Exam Trick_
 
-It is not possible to define an ~abstract method~ that has a body or default implementation.
+- It is not possible to define an ~abstract method~ that has a *body* or *default implementation*.
+
 You *can* still define a default method with a body ­ you just can’t mark it as ~abstract~.
+
 As long as you do not mark the method as ~final~, the ~subclass~ has the option to *override* the ~inherited method~.

@@ -1,0 +1,109 @@
+:PROPERTIES:
+:ID:       ef9940e7-a139-4cd1-91eb-263c38bec1ad
+:END:
+#+title: Inheritance Hierarcy
+
+* Inheritance Hierarcy
+
+An =inheritance hierarchy= is the structure formed when multiple =classes= are related through [[id:5e09bcf0-2de5-4b84-a9ed-b3654bf0df40][Inheritance]], creating a *chain* or *tree-like relationship*.
+
+At the top of every hierarchy in Java is the =Object= class.
+
+* Structure
+
+Example hierarchy:
+
+#+BEGIN_SRC
+Object
+  ↑
+Person
+  ↑
+Employee
+  ↑
+Faculty
+#+END_SRC
+
+- =Person= inherits from =Object=
+- =Employee= inherits from =Person=
+- =Faculty= inherits from =Employee=
+
+* Key Idea
+
+An ~object~ of a =subclass= contains:
+- Its /own/ *fields* and *methods*
+- All *inherited* *fields* and *methods* from its ancestors.
+
+* Constructor Execution
+
+When creating an ~object~, constructors are invoked from the *top* of the hierarchy *down*:
+
+#+BEGIN_SRC
+Object → Person → Employee → Faculty
+#+END_SRC
+
+This process is called *constructor chaining*.
+
+* Method Resolution
+
+When a =method= is invoked on an object:
+
+- The =JVM= starts searching from the *actual type* (most specific class).
+- Then moves up the hierarchy until the method is found.
+
+This is known as [[id:a036361c-34a9-4d80-9748-2128f0b99af8][dynamic binding]].
+
+* Example
+
+#+BEGIN_SRC java
+class Person {
+    public String toString() {
+        return "Person";
+    }
+}
+
+class Employee extends Person {
+    @Override
+    public String toString() {
+        return "Employee";
+    }
+}
+
+class Faculty extends Employee {
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Person p = new Faculty();
+        System.out.println(p.toString());
+    }
+}
+#+END_SRC
+
+* Output
+
+#+BEGIN_SRC
+Employee
+#+END_SRC
+
+* Explanation
+
+- Declared type: =Person=
+- Actual type: =Faculty=
+- =Faculty= does not override =toString()=
+- JVM searches:
+  =Faculty → Employee → Person=
+- Finds method in =Employee=
+
+* Important Rules
+
+- Java supports *single inheritance* for =classes=.
+- Every =class= implicitly extends =Object=.
+- =Subclasses= inherit *accessible* ~members~ from =superclasses=.
+- ~Private members~ are *not inherited*.
+- =Constructors= are *not inherited*, but are invoked.
+
+* Related Concepts
+
+- [[id:ecd628b6-567a-44e5-bcae-46b77c8d425b][Inheritance Chain]]
+- [[id:c67b24a4-82f7-4423-83a9-75fc1c566166][Method Overriding]]
+- [[id:ecaa3f5f-3cd3-4ad3-93dc-1da93d3cf395][Understanding Polymorphism]]

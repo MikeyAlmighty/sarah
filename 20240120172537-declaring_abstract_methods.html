@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-03-22 Sun 10:03 -->
+<!-- 2026-03-22 Sun 15:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Declaring Abstract Methods</title>
@@ -256,21 +256,29 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org358f0fd">1. Declaring Abstract Methods</a>
+<li><a href="#org898a720">1. Declaring Abstract Methods</a>
 <ul>
-<li><a href="#orge71872b">1.1. Example</a></li>
-<li><a href="#org89568ac">1.2. <span class="underline">Exam Trick</span></a></li>
-<li><a href="#orgbe98628">1.3. Example</a></li>
-<li><a href="#org5a6077f">1.4. <span class="underline">Exam Trick</span></a></li>
-<li><a href="#org2d0062b">1.5. <span class="underline">Exam Trick</span></a></li>
+<li><a href="#org1b2eb9d">1.1. Example</a></li>
+<li><a href="#org3114595">1.2. <span class="underline">Exam Trick</span></a></li>
+<li><a href="#orgd7c1184">1.3. Example</a></li>
+<li><a href="#orge87892c">1.4. <span class="underline">Exam Trick</span></a></li>
+<li><a href="#orgc8d07a7">1.5. <span class="underline">Exam Trick</span></a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org358f0fd" class="outline-2">
-<h2 id="org358f0fd"><span class="section-number-2">1.</span> Declaring Abstract Methods</h2>
+<div id="outline-container-org898a720" class="outline-2">
+<h2 id="org898a720"><span class="section-number-2">1.</span> Declaring Abstract Methods</h2>
 <div class="outline-text-2" id="text-1">
+<p>
+An <code>abstract method</code> is defined <b>without</b> <i>implementation</i>.
+</p>
+
+<p>
+Its <i>implementation</i> is provided by the <code>subclasses</code>.
+</p>
+
 <p>
 An <code>abstract method</code> is <b>always</b> declared <b>without</b> a <code>body</code>.
 </p>
@@ -278,16 +286,13 @@ An <code>abstract method</code> is <b>always</b> declared <b>without</b> a <code
 <p>
 It also includes a semicolon <code>(;)</code> after the <b>method declaration</b>.
 </p>
-
-<p>
-It might surprise you to know that an <code>abstract class</code> is <b>not</b> required to include any <code>abstract methods</code>.
-</p>
 </div>
-<div id="outline-container-orge71872b" class="outline-3">
-<h3 id="orge71872b"><span class="section-number-3">1.1.</span> Example</h3>
+<div id="outline-container-org1b2eb9d" class="outline-3">
+<h3 id="org1b2eb9d"><span class="section-number-3">1.1.</span> Example</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
-For example, the following code compiles even though it doesn’t define any abstract methods:
+It might surprise you to know that an <code>abstract class</code> is <b>not</b> required to include any <code>abstract methods</code>.
+The following code <b>compiles</b> even though it <b>doesn’t</b> define any abstract methods:
 </p>
 
 <div class="org-src-container">
@@ -298,16 +303,17 @@ For example, the following code compiles even though it doesn’t define any abs
 </div>
 </div>
 </div>
-<div id="outline-container-org89568ac" class="outline-3">
-<h3 id="org89568ac"><span class="section-number-3">1.2.</span> <span class="underline">Exam Trick</span></h3>
+<div id="outline-container-org3114595" class="outline-3">
+<h3 id="org3114595"><span class="section-number-3">1.2.</span> <span class="underline">Exam Trick</span></h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
-Even without abstract methods, the class cannot be directly instantiated.
+Even <b>without</b> <code>abstract methods</code>, the <code>class</code> cannot be <b>directly</b> <b>instantiated</b>.
 </p>
 
 <p>
-For the exam, keep an eye out for abstract methods declared outside abstract classes, such as the following:
+For the exam, keep an eye out for abstract methods declared <b>outside</b> <code>abstract classes</code>, such as the following:
 </p>
+
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Egret</span> { <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>    <span class="org-keyword">public</span> <span class="org-keyword">abstract</span> <span class="org-type">void</span> <span class="org-function-name">peck</span>();
@@ -320,8 +326,8 @@ The exam creators like to include invalid <code>class</code> declarations, mixin
 </p>
 </div>
 </div>
-<div id="outline-container-orgbe98628" class="outline-3">
-<h3 id="orgbe98628"><span class="section-number-3">1.3.</span> Example</h3>
+<div id="outline-container-orgd7c1184" class="outline-3">
+<h3 id="orgd7c1184"><span class="section-number-3">1.3.</span> Example</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 Like the <code>final</code> modifier, the <code>abstract</code> modifier can be placed <b>before</b> or <b>after</b> the <a href="20240114162548-class_access_modifiers.html#ID-8e0bae56-3a80-4227-ad57-4c5fd3070cd5">Class Access Modifiers</a> in <code>class</code> and <code>method declarations</code>:
@@ -335,12 +341,15 @@ Like the <code>final</code> modifier, the <code>abstract</code> modifier can be 
 </div>
 </div>
 </div>
-<div id="outline-container-org5a6077f" class="outline-3">
-<h3 id="org5a6077f"><span class="section-number-3">1.4.</span> <span class="underline">Exam Trick</span></h3>
+<div id="outline-container-orge87892c" class="outline-3">
+<h3 id="orge87892c"><span class="section-number-3">1.4.</span> <span class="underline">Exam Trick</span></h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
-The <code>abstract</code> modifier cannot be placed <b>after</b> the <code>class</code> keyword in a class declaration or after the <code>return type</code> in a <code>method declaration</code>.
-The following <code>Bear</code> and <code>howl()</code> declarations do not compile for these reasons:
+The <code>abstract</code> modifier cannot be placed <b>after</b> the <code>class</code> keyword in a <code>class</code> <b>declaration</b> or after the <code>return type</code> in a <code>method declaration</code>.
+</p>
+
+<p>
+The following <code>Bear</code> and <code>howl()</code> declarations <b>do not compile</b> for these reasons:
 </p>
 
 <div class="org-src-container">
@@ -351,12 +360,18 @@ The following <code>Bear</code> and <code>howl()</code> declarations do not comp
 </div>
 </div>
 </div>
-<div id="outline-container-org2d0062b" class="outline-3">
-<h3 id="org2d0062b"><span class="section-number-3">1.5.</span> <span class="underline">Exam Trick</span></h3>
+<div id="outline-container-orgc8d07a7" class="outline-3">
+<h3 id="orgc8d07a7"><span class="section-number-3">1.5.</span> <span class="underline">Exam Trick</span></h3>
 <div class="outline-text-3" id="text-1-5">
+<ul class="org-ul">
+<li>It is not possible to define an <code>abstract method</code> that has a <b>body</b> or <b>default implementation</b>.</li>
+</ul>
+
 <p>
-It is not possible to define an <code>abstract method</code> that has a body or default implementation.
 You <b>can</b> still define a default method with a body ­ you just can’t mark it as <code>abstract</code>.
+</p>
+
+<p>
 As long as you do not mark the method as <code>final</code>, the <code>subclass</code> has the option to <b>override</b> the <code>inherited method</code>.
 </p>
 </div>

@@ -8,9 +8,18 @@
 
 Defined with the ~interface~ [[id:5f2b572a-ec31-49de-ba13-95b0c5edb4c0][keyword]].
 
+*** Syntax
+
+#+BEGIN_SRC java
+modifier interface InterfaceName {
+    /** Constant declarations */
+    /** Abstract method signatures */
+}
+#+END_SRC
+
 *** Example
 
-In =Figure 7.1=, our ~interface~ declaration includes an *abstract method* and a *constant variable*.
+In =Figure 7.1=, our ~interface~ declaration /includes/ an *abstract method* and a *constant variable*.
 
 *Interface variables* are referred to as *constants* because they are assumed to be ~public~, ~static~, *and* ~final~.
 
@@ -24,9 +33,10 @@ public abstract interface CanBurrow {
 }
 #+END_SRC
 
-*** Example
+**** Error Examples
 
-This example *doesn’t* compile, as ~WalksOnTwoLegs~ is an interface and *cannot* be *instantiated*.
+***** Example
+This example *doesn’t* compile, as ~WalksOnTwoLegs~ is an *interface* and *cannot* be *instantiated*.
 
 #+BEGIN_SRC java
 public abstract interface WalksOnTwoLegs {}
@@ -36,13 +46,12 @@ public class Biped {
         var e = new WalksOnTwoLegs(); // DOES NOT COMPILE
     }
 }
-
-
 #+END_SRC
 
-*** Example
+***** Example
 
-This example, ~WalksOnEightLegs~, *doesn’t* compile because ~interfaces~ *cannot* be marked as ~final~ for the same reason that *abstract classes* cannot be marked as ~final~.
+In the belowe example, ~WalksOnEightLegs~, *doesn’t* compile because ~interfaces~ *cannot* be marked as ~final~ for the same reason that *abstract classes* cannot be marked as ~final~.
+
 #+BEGIN_SRC java
 public final interface WalksOnEightLegs {} // DOES NOT COMPILE
 #+END_SRC
@@ -57,6 +66,6 @@ public class FieldMouse implements Climb, CanBurrow {
 }
 #+END_SRC
 
-** _Exam Trick_
+** Note
 
 One aspect of an ~interface~ declaration that differs from an [[id:3893ce2e-cd85-4914-ba26-d7c7c732eb02][abstract class]] is that it contains [[id:11cb5831-7123-44df-a020-cfd8f6646645][implicit modifiers]].

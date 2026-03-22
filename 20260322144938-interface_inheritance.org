@@ -1,0 +1,98 @@
+:PROPERTIES:
+:ID:       319ad80f-8f78-4418-b744-8301ad45a58c
+:END:
+#+title: Interface Inheritance
+
+* Interface Inheritance
+
+In Java, an =interface= can inherit from *one* or *more* *interfaces* using the ~extends~ [[id:5f2b572a-ec31-49de-ba13-95b0c5edb4c0][Keyword]].
+
+Unlike classes, interfaces support *multiple inheritance*.
+
+* Syntax
+
+#+BEGIN_SRC java
+interface A {
+    void methodA();
+}
+
+interface B {
+    void methodB();
+}
+
+interface C extends A, B {
+    void methodC();
+}
+#+END_SRC
+
+- =C= inherits all methods from =A= and =B=
+- Any =class= *implementing* =C= must *implement* *all* /inherited methods/.
+
+* Example
+
+#+BEGIN_SRC java
+interface Animal {
+    void makeSound();
+}
+
+interface Pet {
+    void play();
+}
+
+interface Dog extends Animal, Pet {
+    void guard();
+}
+
+class MyDog implements Dog {
+
+    public void makeSound() {
+        System.out.println("Bark");
+    }
+
+    public void play() {
+        System.out.println("Playing");
+    }
+
+    public void guard() {
+        System.out.println("Guarding");
+    }
+}
+#+END_SRC
+
+* Key Rules
+
+- *Interfaces* use ~extends~ to *inherit* from *other* =interfaces=
+- A class uses ~implements~ to *implement* *interfaces*
+- *Interfaces* can extend *multiple* interfaces
+- *Classes* can *implement* *multiple* interfaces
+- Methods are implicitly =public abstract= (unless =default= or =static=)
+- Fields are implicitly =public static final=
+
+* Default Method Conflict
+
+If two interfaces provide the same default method, the implementing class must resolve it:
+
+#+BEGIN_SRC java
+interface A {
+    default void hello() {
+        System.out.println("Hello from A");
+    }
+}
+
+interface B {
+    default void hello() {
+        System.out.println("Hello from B");
+    }
+}
+
+class Test implements A, B {
+    @Override
+    public void hello() {
+        A.super.hello(); // resolve conflict
+    }
+}
+#+END_SRC
+
+* Key Idea
+
+An *interface* can combine *multiple* *behaviors*, forming a flexible =inheritance hierarchy= without the limitations of *class inheritance*.
