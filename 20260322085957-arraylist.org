@@ -1,0 +1,147 @@
+:PROPERTIES:
+:ID:       0b9a2ac7-77ee-4d0c-9ed7-a262b911d3a3
+:END:
+#+title: ArrayList
+
+* ArrayList
+
+The =ArrayList= class in Java is a *resizable* ~array~ implementation of the =List=.
+
+Unlike traditional arrays, which have a *fixed size*, an =ArrayList= can *dynamically* *grow* and *shrink*, making it a flexible data structure for storing elements.
+
+The =ArrayList= class has the following useful attributes:
+
+- Allows duplicate elements
+- Maintains insertion order
+- provides index-based access (accessed in constant time using their index).
+
+** Example
+
+#+BEGIN_SRC java
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> names = new ArrayList<>();
+        System.out.println("ArrayList Created!");
+    }
+}
+#+END_SRC
+
+** Adding Elements
+
+#+BEGIN_SRC java
+ArrayList<String> names = new ArrayList<>();
+names.add("Alice");
+names.add("Bob");
+names.add("Charlie");
+System.out.println(names); // Output: [Alice, Bob, Charlie]
+#+END_SRC
+
+** Accessing Elements
+
+#+BEGIN_SRC java
+System.out.println(names.get(1)); // Output: Bob
+#+END_SRC
+
+** Updating an Element
+
+#+BEGIN_SRC java
+names.set(1, "David");
+System.out.println(names); // Output: [Alice, David, Charlie]
+#+END_SRC
+
+** Removing Elements
+
+#+BEGIN_SRC java
+names.remove(1); // Removes "David"
+System.out.println(names); // Output: [Alice, Charlie]
+names.remove("Alice"); // Removes "Alice"
+System.out.println(names); // Output: [Charlie]
+#+END_SRC
+
+** Checking Size
+
+#+BEGIN_SRC java
+System.out.println("Size: " + names.size()); // Output: Size: 2
+#+END_SRC
+
+** Iteration
+
+#+BEGIN_SRC java
+for (int i = 0; i < names.size(); i++) {
+    System.out.println(names.get(i));
+}
+
+// Enhanced For
+for (String name : names) {
+    System.out.println(name);
+}
+#+END_SRC
+
+** Checking if Element exists
+
+#+BEGIN_SRC java
+System.out.println(names.contains("Alice")); // Output: true
+#+END_SRC
+
+** Clearing the ArrayList
+
+#+BEGIN_SRC java
+names.clear();
+System.out.println(names); // Output: []
+#+END_SRC
+
+** Full Code
+
+#+BEGIN_SRC java
+import java.util.ArrayList;
+
+public class ArrayListExample {
+
+    public static void main(String[] args) {
+        ArrayList<String> names = new ArrayList<>();
+        System.out.println("ArrayList Created!"); // ArrayList Created!
+
+        // Adding
+        names.add("Mikey");
+        names.add("Bob");
+        names.add("Steve");
+        System.out.println(names);// [Mikey, Bob, Steve]
+
+        // Accessing
+        System.out.println(names.get(0)); // Mikey
+        System.out.println(names.get(2)); // Steve
+
+        // Updating
+        names.set(0, "Michael");
+        System.out.println(names.get(0)); // Michael
+
+        // Removing
+        names.remove(1);
+        names.remove("Steve");
+        System.out.println(names);// [Michael]
+
+        // Exists?
+        System.out.println(names.contains("Alice")); // false
+        System.out.println(names.contains("Michael")); // true
+
+        // Length
+        System.out.println(names.size()); // 1
+
+        // Clearing
+        names.clear();
+        System.out.println(names); // []
+    }
+}
+#+END_SRC
+
+The =ArrayList= class is a *powerful* and *flexible* ~data structure~ that provides *dynamic resizing* and *efficient element management*.
+
+It is ideal for scenarios where *frequent* *data* *retrieval* is needed with *minimal* *modifications*.
+
+It is considered important in [[id:ecaa3f5f-3cd3-4ad3-93dc-1da93d3cf395][polymorphism]] since it:
+
+- Enables storing [[id:02899425-122e-473b-a920-8726da830404][heterogeneous]] objects= (instances of subclasses).
+- Allows *method* *overriding* so that objects exhibit behaviour *dynamically*.
+- Helps in *loose* *coupling*, where code works with a =parent= class/interface reference rather than *concrete* implementations.

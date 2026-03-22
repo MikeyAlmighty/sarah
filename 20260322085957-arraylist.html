@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-03-22 Sun 10:03 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ArrayList</title>
+<meta name="author" content="Mikey" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<style>
+        body {
+          font-family: sans-serif;
+          line-height: 1.5;
+          margin: 2em;
+          background-color: #ffffff;
+          color: #111111;
+        }
+
+        a { color: #1a0dab; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Code block styling */
+        pre.src {
+          padding: 1em;
+          border-radius: 6px;
+          overflow-x: auto;
+          background-color: #f0f0f0;
+          color: #222222;
+          border: 1px solid #ddd;
+          font-family: monospace;
+        }
+
+        /* Syntax highlighting for Org-generated classes */
+        span.org-keyword { color: #005999; font-weight: bold; }
+        span.org-string  { color: #aa3333; }
+        span.org-comment { color: #666666; font-style: italic; }
+        span.org-type    { color: #007700; font-weight: bold; }
+        span.org-variable { color: #993399; }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+          body {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+          }
+
+          a { color: #8ab4f8; }
+
+          pre.src {
+            background-color: #2c2c2c;
+            color: #f0f0f0;
+            border: 1px solid #444;
+          }
+
+          /* Dark syntax */
+          span.org-keyword { color: #569cd6; font-weight: bold; }
+          span.org-string  { color: #d7a65a; }
+          span.org-comment { color: #999988; font-style: italic; }
+          span.org-type    { color: #6ab04c; font-weight: bold; }
+          span.org-variable { color: #c586c0; }
+        }
+
+        ul { list-style-type: disc; padding-left: 2em; }
+      </style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">ArrayList</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgb983b4a">1. ArrayList</a>
+<ul>
+<li><a href="#org901b3de">1.1. Example</a></li>
+<li><a href="#org69e8802">1.2. Adding Elements</a></li>
+<li><a href="#org5214797">1.3. Accessing Elements</a></li>
+<li><a href="#org2eae819">1.4. Updating an Element</a></li>
+<li><a href="#orgcd20b15">1.5. Removing Elements</a></li>
+<li><a href="#orgfbdb562">1.6. Checking Size</a></li>
+<li><a href="#org282ab4a">1.7. Iteration</a></li>
+<li><a href="#org7c4b7d7">1.8. Checking if Element exists</a></li>
+<li><a href="#orge3b3051">1.9. Clearing the ArrayList</a></li>
+<li><a href="#orgff74498">1.10. Full Code</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb983b4a" class="outline-2">
+<h2 id="orgb983b4a"><span class="section-number-2">1.</span> ArrayList</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+The <code>ArrayList</code> class in Java is a <b>resizable</b> <code>array</code> implementation of the <code>List</code>.
+</p>
+
+<p>
+Unlike traditional arrays, which have a <b>fixed size</b>, an <code>ArrayList</code> can <b>dynamically</b> <b>grow</b> and <b>shrink</b>, making it a flexible data structure for storing elements.
+</p>
+
+<p>
+The <code>ArrayList</code> class has the following useful attributes:
+</p>
+
+<ul class="org-ul">
+<li>Allows duplicate elements</li>
+<li>Maintains insertion order</li>
+<li>provides index-based access (accessed in constant time using their index).</li>
+</ul>
+</div>
+<div id="outline-container-org901b3de" class="outline-3">
+<h3 id="org901b3de"><span class="section-number-3">1.1.</span> Example</h3>
+<div class="outline-text-3" id="text-1-1">
+<div class="org-src-container">
+<pre class="src src-java"><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">ArrayList</span>;
+
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Main</span> {
+    <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
+        <span class="org-type">ArrayList</span>&lt;<span class="org-type">String</span>&gt; <span class="org-variable-name">names</span> = <span class="org-keyword">new</span> <span class="org-type">ArrayList</span>&lt;&gt;();
+        System.out.println(<span class="org-string">"ArrayList Created!"</span>);
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org69e8802" class="outline-3">
+<h3 id="org69e8802"><span class="section-number-3">1.2.</span> Adding Elements</h3>
+<div class="outline-text-3" id="text-1-2">
+<div class="org-src-container">
+<pre class="src src-java"><span class="org-type">ArrayList</span>&lt;<span class="org-type">String</span>&gt; <span class="org-variable-name">names</span> = <span class="org-keyword">new</span> <span class="org-type">ArrayList</span>&lt;&gt;();
+names.add(<span class="org-string">"Alice"</span>);
+names.add(<span class="org-string">"Bob"</span>);
+names.add(<span class="org-string">"Charlie"</span>);
+System.out.println(names); <span class="org-comment-delimiter">// </span><span class="org-comment">Output: [Alice, Bob, Charlie]</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org5214797" class="outline-3">
+<h3 id="org5214797"><span class="section-number-3">1.3.</span> Accessing Elements</h3>
+<div class="outline-text-3" id="text-1-3">
+<div class="org-src-container">
+<pre class="src src-java">System.out.println(names.get(1)); <span class="org-comment-delimiter">// </span><span class="org-comment">Output: Bob</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2eae819" class="outline-3">
+<h3 id="org2eae819"><span class="section-number-3">1.4.</span> Updating an Element</h3>
+<div class="outline-text-3" id="text-1-4">
+<div class="org-src-container">
+<pre class="src src-java">names.set(1, <span class="org-string">"David"</span>);
+System.out.println(names); <span class="org-comment-delimiter">// </span><span class="org-comment">Output: [Alice, David, Charlie]</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcd20b15" class="outline-3">
+<h3 id="orgcd20b15"><span class="section-number-3">1.5.</span> Removing Elements</h3>
+<div class="outline-text-3" id="text-1-5">
+<div class="org-src-container">
+<pre class="src src-java">names.remove(1); <span class="org-comment-delimiter">// </span><span class="org-comment">Removes "David"
+</span>System.out.println(names); <span class="org-comment-delimiter">// </span><span class="org-comment">Output: [Alice, Charlie]
+</span>names.remove(<span class="org-string">"Alice"</span>); <span class="org-comment-delimiter">// </span><span class="org-comment">Removes "Alice"
+</span>System.out.println(names); <span class="org-comment-delimiter">// </span><span class="org-comment">Output: [Charlie]</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfbdb562" class="outline-3">
+<h3 id="orgfbdb562"><span class="section-number-3">1.6.</span> Checking Size</h3>
+<div class="outline-text-3" id="text-1-6">
+<div class="org-src-container">
+<pre class="src src-java">System.out.println(<span class="org-string">"Size: "</span> + names.size()); <span class="org-comment-delimiter">// </span><span class="org-comment">Output: Size: 2</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org282ab4a" class="outline-3">
+<h3 id="org282ab4a"><span class="section-number-3">1.7.</span> Iteration</h3>
+<div class="outline-text-3" id="text-1-7">
+<div class="org-src-container">
+<pre class="src src-java"><span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; names.size(); i++) {
+    System.out.println(names.get(i));
+}
+
+<span class="org-comment-delimiter">// </span><span class="org-comment">Enhanced For
+</span><span class="org-keyword">for</span> (<span class="org-type">String</span> <span class="org-variable-name">name</span> : names) {
+    System.out.println(name);
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7c4b7d7" class="outline-3">
+<h3 id="org7c4b7d7"><span class="section-number-3">1.8.</span> Checking if Element exists</h3>
+<div class="outline-text-3" id="text-1-8">
+<div class="org-src-container">
+<pre class="src src-java">System.out.println(names.contains(<span class="org-string">"Alice"</span>)); <span class="org-comment-delimiter">// </span><span class="org-comment">Output: true</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge3b3051" class="outline-3">
+<h3 id="orge3b3051"><span class="section-number-3">1.9.</span> Clearing the ArrayList</h3>
+<div class="outline-text-3" id="text-1-9">
+<div class="org-src-container">
+<pre class="src src-java">names.clear();
+System.out.println(names); <span class="org-comment-delimiter">// </span><span class="org-comment">Output: []</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgff74498" class="outline-3">
+<h3 id="orgff74498"><span class="section-number-3">1.10.</span> Full Code</h3>
+<div class="outline-text-3" id="text-1-10">
+<div class="org-src-container">
+<pre class="src src-java"><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">ArrayList</span>;
+
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">ArrayListExample</span> {
+
+    <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
+        <span class="org-type">ArrayList</span>&lt;<span class="org-type">String</span>&gt; <span class="org-variable-name">names</span> = <span class="org-keyword">new</span> <span class="org-type">ArrayList</span>&lt;&gt;();
+        System.out.println(<span class="org-string">"ArrayList Created!"</span>); <span class="org-comment-delimiter">// </span><span class="org-comment">ArrayList Created!
+</span>
+        <span class="org-comment-delimiter">// </span><span class="org-comment">Adding
+</span>        names.add(<span class="org-string">"Mikey"</span>);
+        names.add(<span class="org-string">"Bob"</span>);
+        names.add(<span class="org-string">"Steve"</span>);
+        System.out.println(names);<span class="org-comment-delimiter">// </span><span class="org-comment">[Mikey, Bob, Steve]
+</span>
+        <span class="org-comment-delimiter">// </span><span class="org-comment">Accessing
+</span>        System.out.println(names.get(0)); <span class="org-comment-delimiter">// </span><span class="org-comment">Mikey
+</span>        System.out.println(names.get(2)); <span class="org-comment-delimiter">// </span><span class="org-comment">Steve
+</span>
+        <span class="org-comment-delimiter">// </span><span class="org-comment">Updating
+</span>        names.set(0, <span class="org-string">"Michael"</span>);
+        System.out.println(names.get(0)); <span class="org-comment-delimiter">// </span><span class="org-comment">Michael
+</span>
+        <span class="org-comment-delimiter">// </span><span class="org-comment">Removing
+</span>        names.remove(1);
+        names.remove(<span class="org-string">"Steve"</span>);
+        System.out.println(names);<span class="org-comment-delimiter">// </span><span class="org-comment">[Michael]
+</span>
+        <span class="org-comment-delimiter">// </span><span class="org-comment">Exists?
+</span>        System.out.println(names.contains(<span class="org-string">"Alice"</span>)); <span class="org-comment-delimiter">// </span><span class="org-comment">false
+</span>        System.out.println(names.contains(<span class="org-string">"Michael"</span>)); <span class="org-comment-delimiter">// </span><span class="org-comment">true
+</span>
+        <span class="org-comment-delimiter">// </span><span class="org-comment">Length
+</span>        System.out.println(names.size()); <span class="org-comment-delimiter">// </span><span class="org-comment">1
+</span>
+        <span class="org-comment-delimiter">// </span><span class="org-comment">Clearing
+</span>        names.clear();
+        System.out.println(names); <span class="org-comment-delimiter">// </span><span class="org-comment">[]
+</span>    }
+}
+</pre>
+</div>
+
+<p>
+The <code>ArrayList</code> class is a <b>powerful</b> and <b>flexible</b> <code>data structure</code> that provides <b>dynamic resizing</b> and <b>efficient element management</b>.
+</p>
+
+<p>
+It is ideal for scenarios where <b>frequent</b> <b>data</b> <b>retrieval</b> is needed with <b>minimal</b> <b>modifications</b>.
+</p>
+
+<p>
+It is considered important in <a href="20240124071557-understanding_polymorphism.html#ID-ecaa3f5f-3cd3-4ad3-93dc-1da93d3cf395">polymorphism</a> since it:
+</p>
+
+<ul class="org-ul">
+<li>Enables storing <a href="20260322091243-heterogeneous.html#ID-02899425-122e-473b-a920-8726da830404">heterogeneous</a> objects= (instances of subclasses).</li>
+<li>Allows <b>method</b> <b>overriding</b> so that objects exhibit behaviour <b>dynamically</b>.</li>
+<li>Helps in <b>loose</b> <b>coupling</b>, where code works with a <code>parent</code> class/interface reference rather than <b>concrete</b> implementations.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
