@@ -34,8 +34,8 @@ public class Coyote extends Canine {}
 
 An ~abstract class~ can contain [[id:3e6ed9f7-a719-4f68-94f0-29cb4914ebf2][abstract methods]].
 
-An [[id:3e6ed9f7-a719-4f68-94f0-29cb4914ebf2][abstract methods]] is a method declared with the ~abstract~ modifier that does *not* define a body.
-Put another way, an [[id:3e6ed9f7-a719-4f68-94f0-29cb4914ebf2][abstract methods]] *forces* ~subclasses~ to *override* the method.
+An [[id:3e6ed9f7-a719-4f68-94f0-29cb4914ebf2][abstract method]] is a *method* declared with the ~abstract~ modifier that does *not* define a body.
+Put in another way, an [[id:3e6ed9f7-a719-4f68-94f0-29cb4914ebf2][abstract methods]] *forces* ~subclasses~ to *override* the method.
 
 Why would we want this? [[id:737de690-076a-4f7f-91f5-606587c75882][polymorphism]], of course!
 
@@ -93,15 +93,15 @@ public abstract class GeometricObjectv2 {
     }
 }
 #+END_SRC
-Abstract classes are denoted using the abstract modifier in the
-class header.
+
+~Abstract classes~ are denoted using the =abstract= modifier in the class header.
 
 In [[id:3ef13e32-b3fa-4c2f-9fa1-b1b0f359477a][UML]] the names of ~abstract classes~ and their ~abstract methods~ are /italicized/:
 
 #+ATTR_ORG: :width 900
 [[./assets/abstract-geometric-object-UML.png]]
 
-The =constructor= in the ~abstract class~ is defined as [[id:2085746a-5d79-403a-a417-5a0ef14f9933][protected]] because it is used only by =subclasses=.
+The =constructor= in the ~abstract class~ is defined as [[id:2085746a-5d79-403a-a417-5a0ef14f9933][protected]] because it is *used only* by =subclasses=.
 
 When you create an instance of a *concrete* *subclass*, its =superclass’s= constructor is *invoked* to initialize *data* *fields* defined in the =superclass=.
 
@@ -109,7 +109,7 @@ The ~GeometricObject~ *abstract class* defines the common features (*data* and *
 
 Because you *don’t* know how to compute areas and perimeters of =geometric objects=, ~getArea()~ and ~getPerimeter()~ are defined as [[id:3e6ed9f7-a719-4f68-94f0-29cb4914ebf2][Abstract Methods]].
 
-These methods are implemented in the =subclasses=.
+These methods are *implemented* in the =subclasses=.
 
 The *implementation* of ~Circle~ and ~Rectangle~:
 
@@ -127,19 +127,20 @@ public class Rectangle extends GeometricObject {
 
 - ~Abstract classes~ are like regular =classes=, but you *cannot* create =instances= of ~abstract classes~ using the ~new~ operator.
 
-- Only ~instance~ methods can be marked *abstract* within a =class=, not *variables*, *constructors*, or *static methods*.
+- Only ~instance~ *methods* can be marked *abstract* within a =class=, not *variables*, *constructors*, or *static methods*.
 
 - [[id:3e6ed9f7-a719-4f68-94f0-29cb4914ebf2][Abstract methods]] can only be declared in an ~abstract class~.
 
-- A *non­abstract* ~class~ that extends an ~abstract class~ *must* /implement/ all *inherited* [[id:3e6ed9f7-a719-4f68-94f0-29cb4914ebf2][abstract methods]].
+- A *non­abstract (Concrete)* ~class~ that extends an ~abstract class~ *must* /implement/ all *inherited* [[id:3e6ed9f7-a719-4f68-94f0-29cb4914ebf2][abstract methods]].
 
-- *Overriding* a [[id:3e6ed9f7-a719-4f68-94f0-29cb4914ebf2][abstract methods]] follows the existing rules for [[id:c67b24a4-82f7-4423-83a9-75fc1c566166][overriding methods]].
+- *Overriding* an [[id:3e6ed9f7-a719-4f68-94f0-29cb4914ebf2][abstract method]] follows the existing rules for [[id:c67b24a4-82f7-4423-83a9-75fc1c566166][overriding methods]].
 
 ** Why Abstract Methods?
 
 You may be wondering what advantage is gained by defining the methods ~getArea()~ and ~getPerimeter()~ as abstract in the ~GeometricObject~ =class=.
 
 *** Example
+
 The code below shows the benefits of defining them in the ~GeometricObject~ class.
 
 The program creates two =geometric objects=, a ~circle~ and a ~rectangle~, invokes the ~equalArea~ method to check whether they *have* *equal* ~areas~, and invokes the ~displayGeometricObject~ method to *display* them.
@@ -220,4 +221,4 @@ abstract class Alligator {
 }
 #+END_SRC
 
-An abstract class can be *initialized*, but only as part of the *instantiation* of a *non-abstract* ~subclass~.
+An ~abstract class~ can be *initialized*, but only as part of the *instantiation* of a *non-abstract* ~subclass~.

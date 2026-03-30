@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-03-22 Sun 15:25 -->
+<!-- 2026-03-30 Mon 08:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Differences between Interfaces and Abstract Classes</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style type="text/css">
+<style>
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -256,26 +256,178 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgdf3eaae">1. Differences between Interfaces and Abstract Classes</a>
+<li><a href="#orgf4415fd">1. Differences between Interfaces and Abstract Classes</a>
 <ul>
-<li><a href="#orgfe8a63e">1.1. Example</a></li>
+<li><a href="#org48b4cec">1.1. Summary</a></li>
+<li><a href="#orgdda5e0f">1.2. Example</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgdf3eaae" class="outline-2">
-<h2 id="orgdf3eaae"><span class="section-number-2">1.</span> Differences between Interfaces and Abstract Classes</h2>
+
+<div id="outline-container-orgf4415fd" class="outline-2">
+<h2 id="orgf4415fd"><span class="section-number-2">1.</span> Differences between Interfaces and Abstract Classes</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-Even though <a href="20240114162721-abstract_classes.html#ID-3893ce2e-cd85-4914-ba26-d7c7c732eb02">abstract classes</a>  and <a href="20240124071359-implementing_interfaces.html#ID-e1fb40df-c0b5-4c10-9704-39bac087c227">interfaces</a> are both considered <code>abstract types</code>, only <code>interfaces</code> make use of <a href="20240125070115-inserting_implicit_modifiers.html#ID-11cb5831-7123-44df-a020-cfd8f6646645">implicit modifiers</a>.
+Even though <a href="20240114162721-abstract_classes.html#ID-3893ce2e-cd85-4914-ba26-d7c7c732eb02">abstract classes</a> and <a href="20240124071359-implementing_interfaces.html#ID-e1fb40df-c0b5-4c10-9704-39bac087c227">interfaces</a> are both considered <code>abstract types</code>, only <code>interfaces</code> make use of <a href="20240125070115-inserting_implicit_modifiers.html#ID-11cb5831-7123-44df-a020-cfd8f6646645">implicit modifiers</a>.
 </p>
+
+<p>
+Java allows only <b>single inheritance</b> for class <code>extension</code>, but allows <b>multiple extensions</b> for <code>interfaces</code>.
+</p>
+
+<p>
+For example:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">NewClass</span> <span class="org-keyword">extends</span> <span class="org-type">BaseClass</span> <span class="org-keyword">implements</span> <span class="org-type">Interface1</span>, ... , InterfaceN {...}
+</pre>
 </div>
-<div id="outline-container-orgfe8a63e" class="outline-3">
-<h3 id="orgfe8a63e"><span class="section-number-3">1.1.</span> Example</h3>
+
+
+<p>
+An <b>interface</b> can <code>inherit</code> <b>other</b> <b>interfaces</b> using the <code>extends</code> keyword.
+</p>
+
+<p>
+Such an <b>interface</b> is <i>called</i> a <b>subinterface</b>.
+</p>
+
+<p>
+For example, <code>NewInterface</code> in the following code is a <b>subinterface</b> of <code>Interface1, . . . ,</code> and <code>InterfaceN</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">interface</span> <span class="org-type">NewInterface</span> <span class="org-keyword">extends</span> <span class="org-type">Interface1</span>, ... , InterfaceN {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">constants and abstract methods
+</span>}
+</pre>
+</div>
+
+<p>
+A <code>class</code> implementing <code>NewInterface</code> <b>must</b> <b>implement</b> the <b>abstract</b> <b>methods</b> defined in <code>NewInterface, Interface1, . . . , and InterfaceN</code>.
+</p>
+
+<p>
+An <b>interface</b> can extend other <b>interfaces</b>, but <b>not</b> <code>classes</code>.
+</p>
+
+<p>
+A <code>class</code> can <b>extend</b> its <code>superclass</code> and <b>implement</b> multiple <b>interfaces</b>.
+</p>
+
+<p>
+All <code>classes</code> share a single <b>root</b>, the <code>Object</code> class, but there is <b>no</b> <b>single</b> <b>root</b> for <code>interfaces</code>.
+</p>
+
+<p>
+Like a <code>class</code>, an <code>interface</code> also defines a <b>type</b>.
+</p>
+
+<p>
+A variable of an <code>interface type</code> can reference any instance of the <code>class</code> that implements the <b>interface</b>.
+</p>
+
+<p>
+If a class <b>implements</b> an <code>interface</code>, the <b>interface</b> is like a <code>superclass</code> for the <code>class</code>.
+</p>
+
+<p>
+You can use an <code>interface</code> as a <b>data type</b> and cast a variable of an <code>interface type</code> to its <code>subclass</code>, and vice versa.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Feature</th>
+<th scope="col" class="org-left">Abstract Class</th>
+<th scope="col" class="org-left">Interface</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Fields / Variables</td>
+<td class="org-left">No restrictions</td>
+<td class="org-left">All variables must be `public static final`</td>
+</tr>
+
+<tr>
+<td class="org-left">Constructors</td>
+<td class="org-left">Has constructors; invoked via subclass constructor chaining</td>
+<td class="org-left">No constructors</td>
+</tr>
+
+<tr>
+<td class="org-left">Instantiation</td>
+<td class="org-left">Cannot be instantiated using `new`</td>
+<td class="org-left">Cannot be instantiated using `new`</td>
+</tr>
+
+<tr>
+<td class="org-left">Methods</td>
+<td class="org-left">No restrictions (can have abstract + concrete methods)</td>
+<td class="org-left">May contain `public abstract` instance methods, `default`, and `static` methods</td>
+</tr>
+
+<tr>
+<td class="org-left">Inheritance</td>
+<td class="org-left">A class can extend only one abstract class</td>
+<td class="org-left">A class can implement multiple interfaces</td>
+</tr>
+
+<tr>
+<td class="org-left">Access Modifiers</td>
+<td class="org-left">Can have `private`, `protected`, `public` methods and fields</td>
+<td class="org-left">Methods are implicitly `public` (abstract methods by default)</td>
+</tr>
+
+<tr>
+<td class="org-left">Purpose</td>
+<td class="org-left">Used for shared base functionality and partial implementation</td>
+<td class="org-left">Used to define a contract (capabilities)</td>
+</tr>
+
+<tr>
+<td class="org-left">State</td>
+<td class="org-left">Can maintain instance state (fields)</td>
+<td class="org-left">Cannot maintain instance state (only constants)</td>
+</tr>
+
+<tr>
+<td class="org-left">Use Case</td>
+<td class="org-left">When classes share common code and behavior</td>
+<td class="org-left">When unrelated classes need to implement the same behavior</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="outline-container-org48b4cec" class="outline-3">
+<h3 id="org48b4cec"><span class="section-number-3">1.1.</span> Summary</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
-Both of these method definitions are considered <code>abstract</code>.
+<code>Abstract classes</code> are best when you need shared <b>state</b> and <b>implementation</b>.
+<code>Interfaces</code> are best for <b>defining</b> <b>capabilities</b> across <b>unrelated</b> <code>classes</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgdda5e0f" class="outline-3">
+<h3 id="orgdda5e0f"><span class="section-number-3">1.2.</span> Example</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Both of these method definitions are <i>considered</i> <code>abstract</code>.
 </p>
 
 <p>

@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-03-22 Sun 15:25 -->
+<!-- 2026-03-30 Mon 08:26 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python Variable Scope</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style type="text/css">
+<style>
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -256,19 +256,20 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2e9f4c4">1. Python Scope Levels (LEGB)</a></li>
-<li><a href="#org39b7f2b">2. 1. Local Scope (L)</a></li>
-<li><a href="#org6820817">3. 2. Enclosing Scope (E)</a></li>
-<li><a href="#org5d9eb87">4. 3. Global Scope (G)</a></li>
-<li><a href="#org5e5a5f7">5. 4. Built-in Scope (B)</a></li>
-<li><a href="#org67d9eca">6. Name Resolution Order</a></li>
-<li><a href="#orgf5b5688">7. Common Pitfalls</a></li>
-<li><a href="#org9d36a1d">8. Quick Mental Model</a></li>
+<li><a href="#org14be113">1. Python Scope Levels (LEGB)</a></li>
+<li><a href="#org572f9ca">2. 1. Local Scope (L)</a></li>
+<li><a href="#org7129f17">3. 2. Enclosing Scope (E)</a></li>
+<li><a href="#orgf300882">4. 3. Global Scope (G)</a></li>
+<li><a href="#org9ad0252">5. 4. Built-in Scope (B)</a></li>
+<li><a href="#org8eaa3a8">6. Name Resolution Order</a></li>
+<li><a href="#org6041e9d">7. Common Pitfalls</a></li>
+<li><a href="#org34ac2ba">8. Quick Mental Model</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org2e9f4c4" class="outline-2">
-<h2 id="org2e9f4c4"><span class="section-number-2">1.</span> Python Scope Levels (LEGB)</h2>
+
+<div id="outline-container-org14be113" class="outline-2">
+<h2 id="org14be113"><span class="section-number-2">1.</span> Python Scope Levels (LEGB)</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <b>LEGB</b> is a rule used by Python to resolve variable names.  
@@ -287,8 +288,9 @@ Python searches for variables in this order.
 </p>
 </div>
 </div>
-<div id="outline-container-org39b7f2b" class="outline-2">
-<h2 id="org39b7f2b"><span class="section-number-2">2.</span> 1. Local Scope (L)</h2>
+
+<div id="outline-container-org572f9ca" class="outline-2">
+<h2 id="org572f9ca"><span class="section-number-2">2.</span> 1. Local Scope (L)</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 The local scope refers to variables defined inside a function.
@@ -313,8 +315,9 @@ Local scope has the <b>highest</b> priority.
 </p>
 </div>
 </div>
-<div id="outline-container-org6820817" class="outline-2">
-<h2 id="org6820817"><span class="section-number-2">3.</span> 2. Enclosing Scope (E)</h2>
+
+<div id="outline-container-org7129f17" class="outline-2">
+<h2 id="org7129f17"><span class="section-number-2">3.</span> 2. Enclosing Scope (E)</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 The enclosing scope exists in nested functions (a function inside another function).
@@ -359,8 +362,9 @@ outer()
 </div>
 </div>
 </div>
-<div id="outline-container-org5d9eb87" class="outline-2">
-<h2 id="org5d9eb87"><span class="section-number-2">4.</span> 3. Global Scope (G)</h2>
+
+<div id="outline-container-orgf300882" class="outline-2">
+<h2 id="orgf300882"><span class="section-number-2">4.</span> 3. Global Scope (G)</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 The global scope refers to variables defined at the <b>top</b> level of a <b>file</b>.
@@ -393,8 +397,9 @@ change()
 </div>
 </div>
 </div>
-<div id="outline-container-org5e5a5f7" class="outline-2">
-<h2 id="org5e5a5f7"><span class="section-number-2">5.</span> 4. Built-in Scope (B)</h2>
+
+<div id="outline-container-org9ad0252" class="outline-2">
+<h2 id="org9ad0252"><span class="section-number-2">5.</span> 4. Built-in Scope (B)</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 The <b>built-in</b> scope contains names that are always available in Python.
@@ -431,8 +436,9 @@ You can inspect built-ins:
 </div>
 </div>
 </div>
-<div id="outline-container-org67d9eca" class="outline-2">
-<h2 id="org67d9eca"><span class="section-number-2">6.</span> Name Resolution Order</h2>
+
+<div id="outline-container-org8eaa3a8" class="outline-2">
+<h2 id="org8eaa3a8"><span class="section-number-2">6.</span> Name Resolution Order</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 When Python encounters a variable, it searches in this order:
@@ -453,8 +459,9 @@ If the name is not found after checking all four levels:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf5b5688" class="outline-2">
-<h2 id="orgf5b5688"><span class="section-number-2">7.</span> Common Pitfalls</h2>
+
+<div id="outline-container-org6041e9d" class="outline-2">
+<h2 id="org6041e9d"><span class="section-number-2">7.</span> Common Pitfalls</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 <b>UnboundLocalError</b>
@@ -478,8 +485,9 @@ Python treats <code>x</code> as local because it is <b>assigned</b> inside <code
 </p>
 </div>
 </div>
-<div id="outline-container-org9d36a1d" class="outline-2">
-<h2 id="org9d36a1d"><span class="section-number-2">8.</span> Quick Mental Model</h2>
+
+<div id="outline-container-org34ac2ba" class="outline-2">
+<h2 id="org34ac2ba"><span class="section-number-2">8.</span> Quick Mental Model</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 Think:

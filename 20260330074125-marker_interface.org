@@ -1,0 +1,93 @@
+:PROPERTIES:
+:ID:       2090e4c3-f6e3-4890-804e-73affd419447
+:END:
+#+title: Marker Interface
+
+* Marker Interface
+
+** Definition
+
+A *Marker Interface* in Java is an *empty* *interface* (contains no methods) that is /used/ to *“mark”* a =class=.
+
+It provides metadata to the *JVM* or other code, enabling /special behavior/.
+
+The presence of this *marker* is then checked at =runtime= (typically using ~instanceof~ or ~reflection~) to alter the behavior of methods or frameworks.
+
+** Key Idea
+
+Instead of defining *behavior* through ~methods~, a *marker* interface *signals metadata* about a =class= to the *JVM* or to *application* *logic*.
+
+** Example
+
+#+BEGIN_SRC java
+import java.io.Serializable;
+
+public class User implements Serializable {
+    private String name;
+}
+#+END_SRC
+
+In this example:
+
+- =Serializable= is a *marker interface*.
+- It tells the *JVM* that objects of this class can be *serialized*.
+
+** Common Marker Interfaces in Java
+
+- ~Serializable~ — indicates that an =object= can be *converted* into a ~byte stream~.
+- ~Cloneable~ — allows object *cloning* via ~Object.clone()~.
+- ~RandomAccess~ — signals efficient random access (used by collections like =ArrayList=).
+
+** How It Works
+
+#+BEGIN_SRC java
+if (obj instanceof Serializable) {
+    // perform serialization
+}
+#+END_SRC
+
+The system checks for the presence of the *marker* and *changes behavior* accordingly.
+
+** Use Cases
+
+- Enabling/disabling features (e.g., serialization, cloning)
+- Tagging classes for frameworks
+- Providing metadata without adding methods
+
+** Advantages
+
+- Simple and lightweight
+- No need to implement methods
+- Clear semantic intent (acts as a flag)
+
+** Disadvantages
+
+- Breaks encapsulation (logic depends on type checking)
+- Not type-safe compared to annotations
+- Modern Java favors ~annotations~ instead
+
+** Marker Interface vs Annotation
+| Feature          | Marker Interface | Annotation |
+|------------------+------------------+------------|
+| Methods          | None             | N/A        |
+| Type safety      | Weak             | Stronger   |
+| Reflection usage | Limited          | Extensive  |
+| Modern usage     | Legacy pattern   | Preferred  |
+
+** Modern Alternative
+
+~Annotations~ are now preferred for most use cases:
+
+#+BEGIN_SRC java
+@Serializable
+public class User {
+}
+#+END_SRC
+
+They provide more flexibility and better tooling support.
+
+** Summary
+
+- Marker interfaces are a legacy design pattern used to *“mark”* classes.
+- They rely on *runtime* checks to *influence* *behavior*.
+- While still used in core Java APIs, ~annotations~ have largly replaced them.

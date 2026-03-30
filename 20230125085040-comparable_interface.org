@@ -11,11 +11,11 @@ Suppose you want to design a generic method to find the larger of two objects of
 
 In order to accomplish this, the *two* ~objects~ must be *comparable*, so the common *behavior* for the ~objects~ must be *comparable*.
 
-Java provides the *Comparable interface* for this purpose.
+Java provides the =Comparable interface= for this purpose.
 
 ** Syntax
 
-The *interface* is defined as follows:
+The *interface* is /defined/ as follows:
 
 #+BEGIN_SRC java
 // Interface for comparing objects, defined in java.lang
@@ -27,20 +27,22 @@ public interface Comparable<E> {
 #+END_SRC
 
 The ~compareTo~ method determines the *order* of this ~object~ with the specified ~object o~ and returns:
-- A negative integer: Object is less than ~o~.
-- Zero: Object is equal to ~o~.
-- A positive integer: Object is greater than ~o~.
+- *Negative integer*: Object is /less/ than ~o~.
+- *Zero*: Object is /equal/ to ~o~.
+- *Positive integer*: Object is /greater/ than ~o~.
 
 The =Comparable interface= is a *generic interface*.
 
-The *generic* type ~E~ is replaced by a *concrete* type when *implementing* this *interface*.
+The *generic* type ~E~ is /replaced/ by a *concrete* type when *implementing* this *interface*.
 
 Many classes in the Java library implement =Comparable= to define a natural order for objects.
 
 The classes ~Byte, Short, Integer, Long, Float, Double, Character, BigInteger, BigDecimal, Calendar, String, and Date~ all *implement* the =Comparable interface=.
 
 *** Example
-For example, the ~Integer, BigInteger, String, and Date~ classes are defined as follows in the Java API:
+
+For example, the ~Integer, BigInteger, String, and Date~ classes are /defined/ as follows in the *Java API*:
+
 #+BEGIN_SRC java
 public final class Integer extends Number
     implements Comparable<Integer> {
@@ -131,9 +133,9 @@ d instanceof Object
 d instanceof Comparable
 #+END_SRC
 
-The =Object class= contains the ~equals~ method, which is intended for the =subclasses= of the =Object class= to *override* in order to *compare* whether the *contents* of the ~objects~ are *the* *same*.
+The =Object class= contains the ~equals~ method, which is /intended/ for the =subclasses= of the =Object class= to *override* in order to *compare* whether the *contents* of the ~objects~ are *the* *same*.
 
-Since the ~compareTo~ method is *not* defined in the =Object class=, the *Comparable interface* is defined to enable ~objects~ to be *compared* if they are =instances= of the *Comparable interface*.
+Since the ~compareTo~ method is *not* defined in the =Object class=, the *Comparable interface* is /defined/ to enable ~objects~ to be *compared* if they are =instances= of the *Comparable interface*.
 
 ~compareTo~ should be *consistent* with ~equals~.
 

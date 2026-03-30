@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-03-22 Sun 15:25 -->
+<!-- 2026-03-30 Mon 08:26 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Inheritance Hierarcy</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style type="text/css">
+<style>
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -256,21 +256,22 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org64bc746">1. Inheritance Hierarcy</a></li>
-<li><a href="#orge08b29e">2. Structure</a></li>
-<li><a href="#orgafd13a3">3. Key Idea</a></li>
-<li><a href="#org4bf39dc">4. Constructor Execution</a></li>
-<li><a href="#org1852c61">5. Method Resolution</a></li>
-<li><a href="#org8c7daa8">6. Example</a></li>
-<li><a href="#org155bff3">7. Output</a></li>
-<li><a href="#org6dba70c">8. Explanation</a></li>
-<li><a href="#org42f108c">9. Important Rules</a></li>
-<li><a href="#org72abdfd">10. Related Concepts</a></li>
+<li><a href="#org3bf2e48">1. Inheritance Hierarcy</a></li>
+<li><a href="#org11d89a0">2. Structure</a></li>
+<li><a href="#org206c3cd">3. Key Idea</a></li>
+<li><a href="#org42eaf14">4. Constructor Execution</a></li>
+<li><a href="#org0bbee6e">5. Method Resolution</a></li>
+<li><a href="#orge01dc58">6. Example</a></li>
+<li><a href="#orgcf42d7f">7. Output</a></li>
+<li><a href="#org7dde298">8. Explanation</a></li>
+<li><a href="#org92c6816">9. Important Rules</a></li>
+<li><a href="#orgf76c854">10. Related Concepts</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org64bc746" class="outline-2">
-<h2 id="org64bc746"><span class="section-number-2">1.</span> Inheritance Hierarcy</h2>
+
+<div id="outline-container-org3bf2e48" class="outline-2">
+<h2 id="org3bf2e48"><span class="section-number-2">1.</span> Inheritance Hierarcy</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 An <code>inheritance hierarchy</code> is the structure formed when multiple <code>classes</code> are related through <a href="20240114160906-understanding_inheritance.html#ID-5e09bcf0-2de5-4b84-a9ed-b3654bf0df40">Inheritance</a>, creating a <b>chain</b> or <b>tree-like relationship</b>.
@@ -281,15 +282,16 @@ At the top of every hierarchy in Java is the <code>Object</code> class.
 </p>
 </div>
 </div>
-<div id="outline-container-orge08b29e" class="outline-2">
-<h2 id="orge08b29e"><span class="section-number-2">2.</span> Structure</h2>
+
+<div id="outline-container-org11d89a0" class="outline-2">
+<h2 id="org11d89a0"><span class="section-number-2">2.</span> Structure</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Example hierarchy:
 </p>
 
-<div class="org-src-container">
-<pre class="src src-nil">Object
+<pre class="example">
+Object
   ↑
 Person
   ↑
@@ -297,7 +299,6 @@ Employee
   ↑
 Faculty
 </pre>
-</div>
 
 <ul class="org-ul">
 <li><code>Person</code> inherits from <code>Object</code></li>
@@ -306,8 +307,9 @@ Faculty
 </ul>
 </div>
 </div>
-<div id="outline-container-orgafd13a3" class="outline-2">
-<h2 id="orgafd13a3"><span class="section-number-2">3.</span> Key Idea</h2>
+
+<div id="outline-container-org206c3cd" class="outline-2">
+<h2 id="org206c3cd"><span class="section-number-2">3.</span> Key Idea</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 An <code>object</code> of a <code>subclass</code> contains:
@@ -318,25 +320,26 @@ An <code>object</code> of a <code>subclass</code> contains:
 </ul>
 </div>
 </div>
-<div id="outline-container-org4bf39dc" class="outline-2">
-<h2 id="org4bf39dc"><span class="section-number-2">4.</span> Constructor Execution</h2>
+
+<div id="outline-container-org42eaf14" class="outline-2">
+<h2 id="org42eaf14"><span class="section-number-2">4.</span> Constructor Execution</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 When creating an <code>object</code>, constructors are invoked from the <b>top</b> of the hierarchy <b>down</b>:
 </p>
 
-<div class="org-src-container">
-<pre class="src src-nil">Object → Person → Employee → Faculty
+<pre class="example">
+Object → Person → Employee → Faculty
 </pre>
-</div>
 
 <p>
 This process is called <b>constructor chaining</b>.
 </p>
 </div>
 </div>
-<div id="outline-container-org1852c61" class="outline-2">
-<h2 id="org1852c61"><span class="section-number-2">5.</span> Method Resolution</h2>
+
+<div id="outline-container-org0bbee6e" class="outline-2">
+<h2 id="org0bbee6e"><span class="section-number-2">5.</span> Method Resolution</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 When a <code>method</code> is invoked on an object:
@@ -352,8 +355,9 @@ This is known as <a href="20260321130312-dynamic_binding.html#ID-a036361c-34a9-4
 </p>
 </div>
 </div>
-<div id="outline-container-org8c7daa8" class="outline-2">
-<h2 id="org8c7daa8"><span class="section-number-2">6.</span> Example</h2>
+
+<div id="outline-container-orge01dc58" class="outline-2">
+<h2 id="orge01dc58"><span class="section-number-2">6.</span> Example</h2>
 <div class="outline-text-2" id="text-6">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">class</span> <span class="org-type">Person</span> {
@@ -382,17 +386,18 @@ This is known as <a href="20260321130312-dynamic_binding.html#ID-a036361c-34a9-4
 </div>
 </div>
 </div>
-<div id="outline-container-org155bff3" class="outline-2">
-<h2 id="org155bff3"><span class="section-number-2">7.</span> Output</h2>
+
+<div id="outline-container-orgcf42d7f" class="outline-2">
+<h2 id="orgcf42d7f"><span class="section-number-2">7.</span> Output</h2>
 <div class="outline-text-2" id="text-7">
-<div class="org-src-container">
-<pre class="src src-nil">Employee
+<pre class="example">
+Employee
 </pre>
 </div>
 </div>
-</div>
-<div id="outline-container-org6dba70c" class="outline-2">
-<h2 id="org6dba70c"><span class="section-number-2">8.</span> Explanation</h2>
+
+<div id="outline-container-org7dde298" class="outline-2">
+<h2 id="org7dde298"><span class="section-number-2">8.</span> Explanation</h2>
 <div class="outline-text-2" id="text-8">
 <ul class="org-ul">
 <li>Declared type: <code>Person</code></li>
@@ -404,8 +409,9 @@ This is known as <a href="20260321130312-dynamic_binding.html#ID-a036361c-34a9-4
 </ul>
 </div>
 </div>
-<div id="outline-container-org42f108c" class="outline-2">
-<h2 id="org42f108c"><span class="section-number-2">9.</span> Important Rules</h2>
+
+<div id="outline-container-org92c6816" class="outline-2">
+<h2 id="org92c6816"><span class="section-number-2">9.</span> Important Rules</h2>
 <div class="outline-text-2" id="text-9">
 <ul class="org-ul">
 <li>Java supports <b>single inheritance</b> for <code>classes</code>.</li>
@@ -416,8 +422,9 @@ This is known as <a href="20260321130312-dynamic_binding.html#ID-a036361c-34a9-4
 </ul>
 </div>
 </div>
-<div id="outline-container-org72abdfd" class="outline-2">
-<h2 id="org72abdfd"><span class="section-number-2">10.</span> Related Concepts</h2>
+
+<div id="outline-container-orgf76c854" class="outline-2">
+<h2 id="orgf76c854"><span class="section-number-2">10.</span> Related Concepts</h2>
 <div class="outline-text-2" id="text-10">
 <ul class="org-ul">
 <li><a href="20260321132401-inheritance_chain.html#ID-ecd628b6-567a-44e5-bcae-46b77c8d425b">Inheritance Chain</a></li>

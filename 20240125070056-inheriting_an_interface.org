@@ -6,7 +6,7 @@
 
 * Inheriting an Interface
 
-Like an [[id:3893ce2e-cd85-4914-ba26-d7c7c732eb02][abstract class]], when a ~concrete~ class *inherits* an ~interface~, all of the *inherited abstract methods* *must* be implemented.
+Like an [[id:3893ce2e-cd85-4914-ba26-d7c7c732eb02][abstract class]], when a ~concrete~ class *inherits* an ~interface~, all of the /inherited/ ~abstract methods~ *must* *be* *implemented*.
 
 #+ATTR_ORG: :width 600
 [[./assets/interface_inheritance.png]]
@@ -29,9 +29,13 @@ public interface HasWhiskers {
     public int getNumberOfWhiskers();
 }
 
-public abstract class HarborSeal implements HasTail, HasWhiskers {}
+public abstract class HarborSeal implements HasTail, HasWhiskers {
+    
+}
 
-public class CommonSeal extends HarborSeal {} // DOES NOT COMPILE
+public class CommonSeal extends HarborSeal { // DOES NOT COMPILE
+    
+} 
 #+END_SRC
 
 The ~HarborSeal~ class compiles because it is *abstract* and not required to implement any of the abstract methods it inherits.

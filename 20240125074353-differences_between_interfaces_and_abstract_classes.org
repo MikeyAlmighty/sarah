@@ -5,11 +5,65 @@
 
 * Differences between Interfaces and Abstract Classes
 
-Even though [[id:3893ce2e-cd85-4914-ba26-d7c7c732eb02][abstract classes]]  and [[id:e1fb40df-c0b5-4c10-9704-39bac087c227][interfaces]] are both considered ~abstract types~, only ~interfaces~ make use of [[id:11cb5831-7123-44df-a020-cfd8f6646645][implicit modifiers]].
+Even though [[id:3893ce2e-cd85-4914-ba26-d7c7c732eb02][abstract classes]] and [[id:e1fb40df-c0b5-4c10-9704-39bac087c227][interfaces]] are both considered ~abstract types~, only ~interfaces~ make use of [[id:11cb5831-7123-44df-a020-cfd8f6646645][implicit modifiers]].
+
+Java allows only *single inheritance* for class ~extension~, but allows *multiple extensions* for ~interfaces~.
+
+For example:
+
+#+BEGIN_SRC java
+public class NewClass extends BaseClass implements Interface1, ... , InterfaceN {...}
+#+END_SRC
+
+
+An *interface* can =inherit= *other* *interfaces* using the ~extends~ keyword.
+
+Such an *interface* is /called/ a *subinterface*.
+
+For example, ~NewInterface~ in the following code is a *subinterface* of ~Interface1, . . . ,~ and ~InterfaceN~:
+
+#+BEGIN_SRC java
+public interface NewInterface extends Interface1, ... , InterfaceN {
+    // constants and abstract methods
+}
+#+END_SRC
+
+A =class= implementing ~NewInterface~ *must* *implement* the *abstract* *methods* defined in ~NewInterface, Interface1, . . . , and InterfaceN~.
+
+An *interface* can extend other *interfaces*, but *not* =classes=.
+
+A =class= can *extend* its =superclass= and *implement* multiple *interfaces*.
+
+All =classes= share a single *root*, the =Object= class, but there is *no* *single* *root* for ~interfaces~.
+
+Like a =class=, an ~interface~ also defines a *type*.
+
+A variable of an ~interface type~ can reference any instance of the =class= that implements the *interface*.
+
+If a class *implements* an ~interface~, the *interface* is like a =superclass= for the =class=.
+
+You can use an ~interface~ as a *data type* and cast a variable of an ~interface type~ to its =subclass=, and vice versa.
+
+| Feature            | Abstract Class                                                | Interface                                                                       |
+|--------------------+---------------------------------------------------------------+---------------------------------------------------------------------------------|
+| Fields / Variables | No restrictions                                               | All variables must be `public static final`                                     |
+| Constructors       | Has constructors; invoked via subclass constructor chaining   | No constructors                                                                 |
+| Instantiation      | Cannot be instantiated using `new`                            | Cannot be instantiated using `new`                                              |
+| Methods            | No restrictions (can have abstract + concrete methods)        | May contain `public abstract` instance methods, `default`, and `static` methods |
+| Inheritance        | A class can extend only one abstract class                    | A class can implement multiple interfaces                                       |
+| Access Modifiers   | Can have `private`, `protected`, `public` methods and fields  | Methods are implicitly `public` (abstract methods by default)                   |
+| Purpose            | Used for shared base functionality and partial implementation | Used to define a contract (capabilities)                                        |
+| State              | Can maintain instance state (fields)                          | Cannot maintain instance state (only constants)                                 |
+| Use Case           | When classes share common code and behavior                   | When unrelated classes need to implement the same behavior                      |
+
+** Summary
+
+~Abstract classes~ are best when you need shared *state* and *implementation*.
+~Interfaces~ are best for *defining* *capabilities* across *unrelated* =classes=.
 
 ** Example
 
-Both of these method definitions are considered ~abstract~.
+Both of these method definitions are /considered/ ~abstract~.
 
 That said, the Husky class will *not* compile if the ~play()~ method is not *marked* ~abstract~.
 

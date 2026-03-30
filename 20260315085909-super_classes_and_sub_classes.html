@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-03-22 Sun 15:25 -->
+<!-- 2026-03-30 Mon 08:26 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Super-Classes and Sub-Classes</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style type="text/css">
+<style>
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -256,18 +256,19 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org3ed2d0d">1. Super-Classes and Sub-Classes</a>
+<li><a href="#org66e844d">1. Super-Classes and Sub-Classes</a>
 <ul>
-<li><a href="#org0636819">1.1. Circle</a></li>
-<li><a href="#org0bc26dc">1.2. Rectangle</a></li>
-<li><a href="#org50d163b">1.3. Code</a></li>
+<li><a href="#orgc3634b6">1.1. Circle</a></li>
+<li><a href="#org9036a75">1.2. Rectangle</a></li>
+<li><a href="#org166941e">1.3. Code</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org3ed2d0d" class="outline-2">
-<h2 id="org3ed2d0d"><span class="section-number-2">1.</span> Super-Classes and Sub-Classes</h2>
+
+<div id="outline-container-org66e844d" class="outline-2">
+<h2 id="org66e844d"><span class="section-number-2">1.</span> Super-Classes and Sub-Classes</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 In Java terminology, a class <code>C1</code> <b>extended</b> from <b>another</b> class <code>C2</code> is called a <b>subclass</b>, and <code>C2</code> is called a <b>superclass</b>.
@@ -294,8 +295,9 @@ Therefore, you can say that <code>Circle</code> is a <code>subtype</code> of <co
 The <b>subclass</b> and its <b>superclass</b> are said to form a <code>is-a</code> relationship.
 </p>
 </div>
-<div id="outline-container-org0636819" class="outline-3">
-<h3 id="org0636819"><span class="section-number-3">1.1.</span> Circle</h3>
+
+<div id="outline-container-orgc3634b6" class="outline-3">
+<h3 id="orgc3634b6"><span class="section-number-3">1.1.</span> Circle</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 A <code>Circle</code> object <b>is a</b> special type of general <code>GeometricObject</code>.
@@ -314,8 +316,9 @@ The <code>Circle</code> class also contains the <code>getArea()</code>, <code>ge
 </p>
 </div>
 </div>
-<div id="outline-container-org0bc26dc" class="outline-3">
-<h3 id="org0bc26dc"><span class="section-number-3">1.2.</span> Rectangle</h3>
+
+<div id="outline-container-org9036a75" class="outline-3">
+<h3 id="org9036a75"><span class="section-number-3">1.2.</span> Rectangle</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 The <code>Rectangle</code> class inherits all accessible data <b>fields</b> and <b>methods</b> from the <code>GeometricObject</code> class.
@@ -330,8 +333,9 @@ It also contains the <code>getArea()</code> and <code>getPerimeter()</code> meth
 </p>
 </div>
 </div>
-<div id="outline-container-org50d163b" class="outline-3">
-<h3 id="org50d163b"><span class="section-number-3">1.3.</span> Code</h3>
+
+<div id="outline-container-org166941e" class="outline-3">
+<h3 id="org166941e"><span class="section-number-3">1.3.</span> Code</h3>
 <div class="outline-text-3" id="text-1-3">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">GeometricObject</span> {
@@ -340,7 +344,7 @@ It also contains the <code>getArea()</code> and <code>getPerimeter()</code> meth
     <span class="org-keyword">private</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Date</span> <span class="org-variable-name">dateCreated</span>;
 
     <span class="org-comment-delimiter">// </span><span class="org-comment">Construct a default geometric object
-</span>    <span class="org-keyword">public</span> <span class="org-function-name">GeometricObject</span>() {
+</span>    <span class="org-keyword">public</span> GeometricObject() {
         dateCreated = <span class="org-keyword">new</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Date</span>();
     }
 
@@ -348,7 +352,7 @@ It also contains the <code>getArea()</code> and <code>getPerimeter()</code> meth
      * Construct a geometric object with the specified
      * color and filled value
 </span><span class="org-comment-delimiter">     */</span>
-    <span class="org-keyword">public</span> <span class="org-function-name">GeometricObject</span>(<span class="org-type">String</span> <span class="org-variable-name">color</span>, <span class="org-type">boolean</span> <span class="org-variable-name">filled</span>) {
+    <span class="org-keyword">public</span> GeometricObject(<span class="org-type">String</span> <span class="org-variable-name">color</span>, <span class="org-type">boolean</span> <span class="org-variable-name">filled</span>) {
         dateCreated = <span class="org-keyword">new</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Date</span>();
         <span class="org-keyword">this</span>.color = color;
         <span class="org-keyword">this</span>.filled = filled;
@@ -394,15 +398,15 @@ It also contains the <code>getArea()</code> and <code>getPerimeter()</code> meth
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Circle</span> <span class="org-keyword">extends</span> <span class="org-type">GeometricObject</span> {
     <span class="org-keyword">private</span> <span class="org-type">double</span> <span class="org-variable-name">radius</span>;
 
-    <span class="org-keyword">public</span> <span class="org-function-name">Circle</span>() {
+    <span class="org-keyword">public</span> Circle() {
 
     }
 
-    <span class="org-keyword">public</span> <span class="org-function-name">Circle</span>(<span class="org-type">double</span> <span class="org-variable-name">radius</span>) {
+    <span class="org-keyword">public</span> Circle(<span class="org-type">double</span> <span class="org-variable-name">radius</span>) {
         <span class="org-keyword">this</span>.radius = radius;
     }
 
-    <span class="org-keyword">public</span> <span class="org-function-name">Circle</span>(<span class="org-type">double</span> <span class="org-variable-name">radius</span>, <span class="org-type">String</span> <span class="org-variable-name">color</span>, <span class="org-type">boolean</span> <span class="org-variable-name">filled</span>) {
+    <span class="org-keyword">public</span> Circle(<span class="org-type">double</span> <span class="org-variable-name">radius</span>, <span class="org-type">String</span> <span class="org-variable-name">color</span>, <span class="org-type">boolean</span> <span class="org-variable-name">filled</span>) {
         <span class="org-keyword">this</span>.radius = radius;
         setColor(color);
         setFilled(filled);

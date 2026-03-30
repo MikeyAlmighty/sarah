@@ -4,3 +4,159 @@
 #+title: Cloneable Interface
 
 * Cloneable Interface
+
+The =Cloneable interface= specifies that an object can be *cloned*.
+
+Often, it is desirable to create a *copy* of an =object=.
+
+To do this, you need to use the ~clone method~ and understand the =Cloneable interface=.
+
+An [[id:e1fb40df-c0b5-4c10-9704-39bac087c227][Interface]] contains *constants* and [[id:3e6ed9f7-a719-4f68-94f0-29cb4914ebf2][abstract methods]], but the =Cloneable interface= is a /special case/.
+
+** Definition
+
+#+BEGIN_SRC java
+package java.lang;
+
+public interface Cloneable {
+    
+}
+
+#+END_SRC
+
+This *interface* is /empty/.
+
+An *interface* with an /empty body/ is /referred/ to as a [[id:2090e4c3-f6e3-4890-804e-73affd419447][Marker Interface]].
+
+A class that implements the =Cloneable interface= is *marked* ~cloneable~, and its =objects= can be *cloned* using the ~clone()~ method defined in the =Object class=.
+
+Many classes in the Java library (e.g., ~Date, Calendar~ and ~ArrayList~) implement =Cloneable=.
+
+Thus, the =instances= of these =classes= can be *cloned*.
+
+** Example
+
+#+BEGIN_SRC java
+Calendar calendar = new GregorianCalendar(2013, 2, 1);
+Calendar calendar1 = calendar;
+Calendar calendar2 = (Calendar)calendar.clone();
+
+System.out.println("calendar == calendar1 is " + (calendar == calendar1));
+System.out.println("calendar == calendar2 is " + (calendar == calendar2));
+System.out.println("calendar.equals(calendar2) is " + calendar.equals(calendar2));
+#+END_SRC
+
+*** Output
+
+#+BEGIN_SRC java
+calendar == calendar1 is true
+calendar == calendar2 is false
+calendar.equals(calendar2) is true
+#+END_SRC
+
+** Example
+
+#+BEGIN_SRC java
+public class House implements Cloneable, Comparable<House> {
+    private int id;
+    private double area;
+    private java.util.Date whenBuilt;
+    
+    public House(int id, double area) {
+         this.id = id;
+         this.area = area;
+         whenBuilt = new java.util.Date();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public double getArea() {
+        return area;
+    }
+
+    public java.util.Date getWhenBuilt() {
+        return whenBuilt;
+    }
+    
+    /** Override the protected clone method defined in the Object class,
+     *  and strengthen its accessibility.
+    */
+    @Override 
+    public Object clone() {
+        try {
+            return super.clone();
+        }
+        catch (CloneNotSupportedException ex) {
+            return null;
+        }
+    }
+
+    // Implement the compareTo method defined in Comparable
+    @Override 
+    public int compareTo(House o) {
+        if (area > o.area)
+            return 1;
+        else if (area < o.area)
+            return −1;
+        else
+            return 0;
+    }
+}
+
+#+END_SRC
+
+The =House class= *implements* the ~clone()~ method defined in the Object class.
+
+The header for the ~clone()~ method defined in the Object class is:
+
+#+BEGIN_SRC java
+protected native Object clone() throws CloneNotSupportedException;
+#+END_SRC
+
+The keyword ~native~ indicates that this method is *not* written in Java, but is /implemented/ in the *JVM* for the *native platform*.
+
+The keyword ~protected~ restricts the method to be *accessed* in the /same package/ or in a /subclass/.
+
+For this reason, the =House= class must *override* the method and change the *visibility modifier* to ~public~ so the method can be used in any package.
+
+Since the ~clone~ method implemented for the ~native~ *platform* in the =Object= class performs the task of *cloning objects*, the ~clone()~ method in the =House= class simply invokes ~super.clone()~.
+
+The ~clone()~ method defined in the *Object* class ~throws CloneNotSupportedException~ if the object is *not* a type of =Cloneable=.
+
+The =House= class implements the ~compareTo~ method defined in the [[id:978e88bf-bfac-4a29-a851-048441593c54][comparable interface]].
+
+The method *compares* the /areas/ of two =houses=.
+
+You can now create an object of the =House= class and create an /identical/ copy from it, as follows:
+
+#+BEGIN_SRC java
+House house1 = new House(1, 1750.50);
+House house2 = (House)house1.clone();
+#+END_SRC
+
+=house1= and =house2= are two *different* *objects* with *identical* *contents*.
+
+The ~clone()~ method in the =Object= class *copies* each field from the /original object/ to the /target object/.
+
+*** Primitive
+
+If the field is of a *primitive type*, its ~value~ is *copied*.
+
+For example, the value of ~area(double type)~ is *copied* from =house1= to =house2=.
+
+*** Reference
+
+If the field is of an =object=, the *reference* of the field is *copied*.
+
+For example, the field ~whenBuilt~ is of the =Date= class, so its *reference* is *copied* into =house2=.
+
+Therefore,
+
+#+BEGIN_SRC java
+house1.whenBuilt == house2.whenBuilt // True although:
+house1 == house2 // is false
+#+END_SRC
+
+This is referred to as a  [[id:ba8c9563-746c-4a73-96f7-5425adc041a3][Shallow Copy]] rather than a [[id:de88ea8c-8664-4275-ac25-aa1a575ce029][Deep Copy]], meaning if the field is of an object type, the object’s *reference* is *copied* rather than its /contents/.

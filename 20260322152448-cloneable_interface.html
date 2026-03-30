@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-03-22 Sun 15:25 -->
+<!-- 2026-03-30 Mon 08:26 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Cloneable Interface</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style type="text/css">
+<style>
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -256,12 +256,264 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org53a4092">1. Cloneable Interface</a></li>
+<li><a href="#org9a25bc9">1. Cloneable Interface</a>
+<ul>
+<li><a href="#org035c24e">1.1. Definition</a></li>
+<li><a href="#org97e7e9f">1.2. Example</a>
+<ul>
+<li><a href="#orge7b0dc9">1.2.1. Output</a></li>
+</ul>
+</li>
+<li><a href="#org4b662d6">1.3. Example</a>
+<ul>
+<li><a href="#org9ef91f0">1.3.1. Primitive</a></li>
+<li><a href="#org9ff15a2">1.3.2. Reference</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org53a4092" class="outline-2">
-<h2 id="org53a4092"><span class="section-number-2">1.</span> Cloneable Interface</h2>
+
+<div id="outline-container-org9a25bc9" class="outline-2">
+<h2 id="org9a25bc9"><span class="section-number-2">1.</span> Cloneable Interface</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+The <code>Cloneable interface</code> specifies that an object can be <b>cloned</b>.
+</p>
+
+<p>
+Often, it is desirable to create a <b>copy</b> of an <code>object</code>.
+</p>
+
+<p>
+To do this, you need to use the <code>clone method</code> and understand the <code>Cloneable interface</code>.
+</p>
+
+<p>
+An <a href="20240124071359-implementing_interfaces.html#ID-e1fb40df-c0b5-4c10-9704-39bac087c227">Interface</a> contains <b>constants</b> and <a href="20240120172537-declaring_abstract_methods.html#ID-3e6ed9f7-a719-4f68-94f0-29cb4914ebf2">abstract methods</a>, but the <code>Cloneable interface</code> is a <i>special case</i>.
+</p>
+</div>
+
+<div id="outline-container-org035c24e" class="outline-3">
+<h3 id="org035c24e"><span class="section-number-3">1.1.</span> Definition</h3>
+<div class="outline-text-3" id="text-1-1">
+<div class="org-src-container">
+<pre class="src src-java"><span class="org-keyword">package</span> java.<span class="org-constant">lang</span>;
+
+<span class="org-keyword">public</span> <span class="org-keyword">interface</span> <span class="org-type">Cloneable</span> {
+
+}
+
+</pre>
+</div>
+
+<p>
+This <b>interface</b> is <i>empty</i>.
+</p>
+
+<p>
+An <b>interface</b> with an <i>empty body</i> is <i>referred</i> to as a <a href="20260330074125-marker_interface.html#ID-2090e4c3-f6e3-4890-804e-73affd419447">Marker Interface</a>.
+</p>
+
+<p>
+A class that implements the <code>Cloneable interface</code> is <b>marked</b> <code>cloneable</code>, and its <code>objects</code> can be <b>cloned</b> using the <code>clone()</code> method defined in the <code>Object class</code>.
+</p>
+
+<p>
+Many classes in the Java library (e.g., <code>Date, Calendar</code> and <code>ArrayList</code>) implement <code>Cloneable</code>.
+</p>
+
+<p>
+Thus, the <code>instances</code> of these <code>classes</code> can be <b>cloned</b>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org97e7e9f" class="outline-3">
+<h3 id="org97e7e9f"><span class="section-number-3">1.2.</span> Example</h3>
+<div class="outline-text-3" id="text-1-2">
+<div class="org-src-container">
+<pre class="src src-java"><span class="org-type">Calendar</span> <span class="org-variable-name">calendar</span> = <span class="org-keyword">new</span> <span class="org-type">GregorianCalendar</span>(2013, 2, 1);
+<span class="org-type">Calendar</span> <span class="org-variable-name">calendar1</span> = calendar;
+<span class="org-type">Calendar</span> <span class="org-variable-name">calendar2</span> = (<span class="org-type">Calendar</span>)calendar.clone();
+
+System.out.println(<span class="org-string">"calendar == calendar1 is "</span> + (calendar == calendar1));
+System.out.println(<span class="org-string">"calendar == calendar2 is "</span> + (calendar == calendar2));
+System.out.println(<span class="org-string">"calendar.equals(calendar2) is "</span> + calendar.equals(calendar2));
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orge7b0dc9" class="outline-4">
+<h4 id="orge7b0dc9"><span class="section-number-4">1.2.1.</span> Output</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<div class="org-src-container">
+<pre class="src src-java">calendar == calendar1 is <span class="org-constant">true</span>
+calendar == calendar2 is <span class="org-constant">false</span>
+calendar.equals(calendar2) is <span class="org-constant">true</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4b662d6" class="outline-3">
+<h3 id="org4b662d6"><span class="section-number-3">1.3.</span> Example</h3>
+<div class="outline-text-3" id="text-1-3">
+<div class="org-src-container">
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">House</span> <span class="org-keyword">implements</span> <span class="org-type">Cloneable</span>, <span class="org-type">Comparable</span>&lt;<span class="org-type">House</span>&gt; {
+    <span class="org-keyword">private</span> <span class="org-type">int</span> <span class="org-variable-name">id</span>;
+    <span class="org-keyword">private</span> <span class="org-type">double</span> <span class="org-variable-name">area</span>;
+    <span class="org-keyword">private</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Date</span> <span class="org-variable-name">whenBuilt</span>;
+
+    <span class="org-keyword">public</span> House(<span class="org-type">int</span> <span class="org-variable-name">id</span>, <span class="org-type">double</span> <span class="org-variable-name">area</span>) {
+         <span class="org-keyword">this</span>.id = id;
+         <span class="org-keyword">this</span>.area = area;
+         whenBuilt = <span class="org-keyword">new</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Date</span>();
+    }
+
+    <span class="org-keyword">public</span> <span class="org-type">int</span> <span class="org-function-name">getId</span>() {
+        <span class="org-keyword">return</span> id;
+    }
+
+    <span class="org-keyword">public</span> <span class="org-type">double</span> <span class="org-function-name">getArea</span>() {
+        <span class="org-keyword">return</span> area;
+    }
+
+    <span class="org-keyword">public</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Date</span> <span class="org-function-name">getWhenBuilt</span>() {
+        <span class="org-keyword">return</span> whenBuilt;
+    }
+
+    <span class="org-doc">/** Override the protected clone method defined in the Object class,
+     *  and strengthen its accessibility.
+    */</span>
+    <span class="org-c-annotation">@Override</span> 
+    <span class="org-keyword">public</span> <span class="org-type">Object</span> <span class="org-function-name">clone</span>() {
+        <span class="org-keyword">try</span> {
+            <span class="org-keyword">return</span> <span class="org-keyword">super</span>.clone();
+        }
+        <span class="org-keyword">catch</span> (CloneNotSupportedException ex) {
+            <span class="org-keyword">return</span> <span class="org-constant">null</span>;
+        }
+    }
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Implement the compareTo method defined in Comparable
+</span>    <span class="org-c-annotation">@Override</span> 
+    <span class="org-keyword">public</span> <span class="org-type">int</span> <span class="org-function-name">compareTo</span>(<span class="org-type">House</span> <span class="org-variable-name">o</span>) {
+        <span class="org-keyword">if</span> (area &gt; o.area)
+            <span class="org-keyword">return</span> 1;
+        <span class="org-keyword">else</span> <span class="org-keyword">if</span> (area &lt; o.<span class="org-type">area</span>)
+            <span class="org-keyword">return</span> &#8722;1;
+        <span class="org-keyword">else</span>
+            <span class="org-keyword">return</span> 0;
+    }
+}
+
+</pre>
+</div>
+
+<p>
+The <code>House class</code> <b>implements</b> the <code>clone()</code> method defined in the Object class.
+</p>
+
+<p>
+The header for the <code>clone()</code> method defined in the Object class is:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span class="org-keyword">protected</span> <span class="org-keyword">native</span> <span class="org-type">Object</span> <span class="org-function-name">clone</span>() <span class="org-keyword">throws</span> <span class="org-type">CloneNotSupportedException</span>;
+</pre>
+</div>
+
+<p>
+The keyword <code>native</code> indicates that this method is <b>not</b> written in Java, but is <i>implemented</i> in the <b>JVM</b> for the <b>native platform</b>.
+</p>
+
+<p>
+The keyword <code>protected</code> restricts the method to be <b>accessed</b> in the <i>same package</i> or in a <i>subclass</i>.
+</p>
+
+<p>
+For this reason, the <code>House</code> class must <b>override</b> the method and change the <b>visibility modifier</b> to <code>public</code> so the method can be used in any package.
+</p>
+
+<p>
+Since the <code>clone</code> method implemented for the <code>native</code> <b>platform</b> in the <code>Object</code> class performs the task of <b>cloning objects</b>, the <code>clone()</code> method in the <code>House</code> class simply invokes <code>super.clone()</code>.
+</p>
+
+<p>
+The <code>clone()</code> method defined in the <b>Object</b> class <code>throws CloneNotSupportedException</code> if the object is <b>not</b> a type of <code>Cloneable</code>.
+</p>
+
+<p>
+The <code>House</code> class implements the <code>compareTo</code> method defined in the <a href="20230125085040-comparable_interface.html#ID-978e88bf-bfac-4a29-a851-048441593c54">comparable interface</a>.
+</p>
+
+<p>
+The method <b>compares</b> the <i>areas</i> of two <code>houses</code>.
+</p>
+
+<p>
+You can now create an object of the <code>House</code> class and create an <i>identical</i> copy from it, as follows:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span class="org-type">House</span> <span class="org-variable-name">house1</span> = <span class="org-keyword">new</span> <span class="org-type">House</span>(1, 1750.50);
+<span class="org-type">House</span> <span class="org-variable-name">house2</span> = (<span class="org-type">House</span>)house1.clone();
+</pre>
+</div>
+
+<p>
+<code>house1</code> and <code>house2</code> are two <b>different</b> <b>objects</b> with <b>identical</b> <b>contents</b>.
+</p>
+
+<p>
+The <code>clone()</code> method in the <code>Object</code> class <b>copies</b> each field from the <i>original object</i> to the <i>target object</i>.
+</p>
+</div>
+
+<div id="outline-container-org9ef91f0" class="outline-4">
+<h4 id="org9ef91f0"><span class="section-number-4">1.3.1.</span> Primitive</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<p>
+If the field is of a <b>primitive type</b>, its <code>value</code> is <b>copied</b>.
+</p>
+
+<p>
+For example, the value of <code>area(double type)</code> is <b>copied</b> from <code>house1</code> to <code>house2</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9ff15a2" class="outline-4">
+<h4 id="org9ff15a2"><span class="section-number-4">1.3.2.</span> Reference</h4>
+<div class="outline-text-4" id="text-1-3-2">
+<p>
+If the field is of an <code>object</code>, the <b>reference</b> of the field is <b>copied</b>.
+</p>
+
+<p>
+For example, the field <code>whenBuilt</code> is of the <code>Date</code> class, so its <b>reference</b> is <b>copied</b> into <code>house2</code>.
+</p>
+
+<p>
+Therefore,
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java">house1.whenBuilt == house2.whenBuilt <span class="org-comment-delimiter">// </span><span class="org-comment">True although:
+</span>house1 == house2 <span class="org-comment-delimiter">// </span><span class="org-comment">is false</span>
+</pre>
+</div>
+
+<p>
+This is referred to as a  <a href="20260330081211-shallow_copy.html#ID-ba8c9563-746c-4a73-96f7-5425adc041a3">Shallow Copy</a> rather than a <a href="20260330081226-deep_copy.html#ID-de88ea8c-8664-4275-ac25-aa1a575ce029">Deep Copy</a>, meaning if the field is of an object type, the object’s <b>reference</b> is <b>copied</b> rather than its <i>contents</i>.
+</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 </body>

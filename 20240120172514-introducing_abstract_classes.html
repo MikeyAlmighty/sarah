@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-03-22 Sun 15:25 -->
+<!-- 2026-03-30 Mon 08:26 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Introducing Abstract Classes</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style type="text/css">
+<style>
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -256,24 +256,25 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orge21cbe6">1. Introducing Abstract Classes</a>
+<li><a href="#orgb3391d2">1. Introducing Abstract Classes</a>
 <ul>
-<li><a href="#orgea90594">1.1. Example</a></li>
-<li><a href="#org9711f4a">1.2. Example</a></li>
-<li><a href="#orgf2a2286">1.3. Rules</a></li>
-<li><a href="#org57a0f08">1.4. Why Abstract Methods?</a>
+<li><a href="#org39e44c2">1.1. Example</a></li>
+<li><a href="#org7da06d4">1.2. Example</a></li>
+<li><a href="#org0253754">1.3. Rules</a></li>
+<li><a href="#orgd71b278">1.4. Why Abstract Methods?</a>
 <ul>
-<li><a href="#org6655c92">1.4.1. Example</a></li>
+<li><a href="#orgbdf7801">1.4.1. Example</a></li>
 </ul>
 </li>
-<li><a href="#org4a37bae">1.5. Error</a></li>
+<li><a href="#orgfc7b6d6">1.5. Error</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orge21cbe6" class="outline-2">
-<h2 id="orge21cbe6"><span class="section-number-2">1.</span> Introducing Abstract Classes</h2>
+
+<div id="outline-container-orgb3391d2" class="outline-2">
+<h2 id="orgb3391d2"><span class="section-number-2">1.</span> Introducing Abstract Classes</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 An <code>abstract class</code> <b>cannot</b> be used to <b>create</b> <code>objects</code>.
@@ -307,8 +308,9 @@ Sometimes, a <code>superclass</code> is so abstract it cannot be used to create 
 Such a class is referred to as an <b>abstract class</b>.
 </p>
 </div>
-<div id="outline-container-orgea90594" class="outline-3">
-<h3 id="orgea90594"><span class="section-number-3">1.1.</span> Example</h3>
+
+<div id="outline-container-org39e44c2" class="outline-3">
+<h3 id="org39e44c2"><span class="section-number-3">1.1.</span> Example</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">abstract</span> <span class="org-keyword">class</span> <span class="org-type">Canine</span> {}
@@ -324,8 +326,8 @@ An <code>abstract class</code> can contain <a href="20240120172537-declaring_abs
 </p>
 
 <p>
-An <a href="20240120172537-declaring_abstract_methods.html#ID-3e6ed9f7-a719-4f68-94f0-29cb4914ebf2">abstract methods</a> is a method declared with the <code>abstract</code> modifier that does <b>not</b> define a body.
-Put another way, an <a href="20240120172537-declaring_abstract_methods.html#ID-3e6ed9f7-a719-4f68-94f0-29cb4914ebf2">abstract methods</a> <b>forces</b> <code>subclasses</code> to <b>override</b> the method.
+An <a href="20240120172537-declaring_abstract_methods.html#ID-3e6ed9f7-a719-4f68-94f0-29cb4914ebf2">abstract method</a> is a <b>method</b> declared with the <code>abstract</code> modifier that does <b>not</b> define a body.
+Put in another way, an <a href="20240120172537-declaring_abstract_methods.html#ID-3e6ed9f7-a719-4f68-94f0-29cb4914ebf2">abstract methods</a> <b>forces</b> <code>subclasses</code> to <b>override</b> the method.
 </p>
 
 <p>
@@ -337,8 +339,9 @@ By declaring a method <code>abstract</code>, we can <b>guarantee</b> that some v
 </p>
 </div>
 </div>
-<div id="outline-container-org9711f4a" class="outline-3">
-<h3 id="org9711f4a"><span class="section-number-3">1.2.</span> Example</h3>
+
+<div id="outline-container-org7da06d4" class="outline-3">
+<h3 id="org7da06d4"><span class="section-number-3">1.2.</span> Example</h3>
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">abstract</span> <span class="org-keyword">class</span> <span class="org-type">GeometricObjectv2</span> {
@@ -346,11 +349,11 @@ By declaring a method <code>abstract</code>, we can <b>guarantee</b> that some v
     <span class="org-keyword">private</span> <span class="org-type">boolean</span> <span class="org-variable-name">filled</span>;
     <span class="org-keyword">private</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Date</span> <span class="org-variable-name">dateCreated</span>;
 
-    <span class="org-keyword">protected</span> <span class="org-function-name">GeometricObjectv2</span>() {
+    <span class="org-keyword">protected</span> GeometricObjectv2() {
         dateCreated = <span class="org-keyword">new</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Date</span>();
     }
 
-    <span class="org-keyword">protected</span> <span class="org-function-name">GeometricObjectv2</span>(<span class="org-type">String</span> <span class="org-variable-name">color</span>, <span class="org-type">boolean</span> <span class="org-variable-name">filled</span>) {
+    <span class="org-keyword">protected</span> GeometricObjectv2(<span class="org-type">String</span> <span class="org-variable-name">color</span>, <span class="org-type">boolean</span> <span class="org-variable-name">filled</span>) {
         dateCreated = <span class="org-keyword">new</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Date</span>();
         <span class="org-keyword">this</span>.color = color;
         <span class="org-keyword">this</span>.filled = filled;
@@ -391,9 +394,9 @@ By declaring a method <code>abstract</code>, we can <b>guarantee</b> that some v
 }
 </pre>
 </div>
+
 <p>
-Abstract classes are denoted using the abstract modifier in the
-class header.
+<code>Abstract classes</code> are denoted using the <code>abstract</code> modifier in the class header.
 </p>
 
 <p>
@@ -401,13 +404,13 @@ In <a href="20230812041308-unified_model_diagram.html#ID-3ef13e32-b3fa-4c2f-9fa1
 </p>
 
 
-<div id="org8bb902c" class="figure">
+<div id="org0d1898c" class="figure">
 <p><img src="./assets/abstract-geometric-object-UML.png" alt="abstract-geometric-object-UML.png" />
 </p>
 </div>
 
 <p>
-The <code>constructor</code> in the <code>abstract class</code> is defined as <a href="20240113044720-protected_access_modifier.html#ID-2085746a-5d79-403a-a417-5a0ef14f9933">protected</a> because it is used only by <code>subclasses</code>.
+The <code>constructor</code> in the <code>abstract class</code> is defined as <a href="20240113044720-protected_access_modifier.html#ID-2085746a-5d79-403a-a417-5a0ef14f9933">protected</a> because it is <b>used only</b> by <code>subclasses</code>.
 </p>
 
 <p>
@@ -423,7 +426,7 @@ Because you <b>don’t</b> know how to compute areas and perimeters of <code>geo
 </p>
 
 <p>
-These methods are implemented in the <code>subclasses</code>.
+These methods are <b>implemented</b> in the <code>subclasses</code>.
 </p>
 
 <p>
@@ -442,31 +445,34 @@ The <b>implementation</b> of <code>Circle</code> and <code>Rectangle</code>:
 </div>
 </div>
 </div>
-<div id="outline-container-orgf2a2286" class="outline-3">
-<h3 id="orgf2a2286"><span class="section-number-3">1.3.</span> Rules</h3>
+
+<div id="outline-container-org0253754" class="outline-3">
+<h3 id="org0253754"><span class="section-number-3">1.3.</span> Rules</h3>
 <div class="outline-text-3" id="text-1-3">
 <ul class="org-ul">
 <li><code>Abstract classes</code> are like regular <code>classes</code>, but you <b>cannot</b> create <code>instances</code> of <code>abstract classes</code> using the <code>new</code> operator.</li>
 
-<li>Only <code>instance</code> methods can be marked <b>abstract</b> within a <code>class</code>, not <b>variables</b>, <b>constructors</b>, or <b>static methods</b>.</li>
+<li>Only <code>instance</code> <b>methods</b> can be marked <b>abstract</b> within a <code>class</code>, not <b>variables</b>, <b>constructors</b>, or <b>static methods</b>.</li>
 
 <li><a href="20240120172537-declaring_abstract_methods.html#ID-3e6ed9f7-a719-4f68-94f0-29cb4914ebf2">Abstract methods</a> can only be declared in an <code>abstract class</code>.</li>
 
-<li>A <b>non­abstract</b> <code>class</code> that extends an <code>abstract class</code> <b>must</b> <i>implement</i> all <b>inherited</b> <a href="20240120172537-declaring_abstract_methods.html#ID-3e6ed9f7-a719-4f68-94f0-29cb4914ebf2">abstract methods</a>.</li>
+<li>A <b>non­abstract (Concrete)</b> <code>class</code> that extends an <code>abstract class</code> <b>must</b> <i>implement</i> all <b>inherited</b> <a href="20240120172537-declaring_abstract_methods.html#ID-3e6ed9f7-a719-4f68-94f0-29cb4914ebf2">abstract methods</a>.</li>
 
-<li><b>Overriding</b> a <a href="20240120172537-declaring_abstract_methods.html#ID-3e6ed9f7-a719-4f68-94f0-29cb4914ebf2">abstract methods</a> follows the existing rules for <a href="20240120133450-overriding_a_method.html#ID-c67b24a4-82f7-4423-83a9-75fc1c566166">overriding methods</a>.</li>
+<li><b>Overriding</b> an <a href="20240120172537-declaring_abstract_methods.html#ID-3e6ed9f7-a719-4f68-94f0-29cb4914ebf2">abstract method</a> follows the existing rules for <a href="20240120133450-overriding_a_method.html#ID-c67b24a4-82f7-4423-83a9-75fc1c566166">overriding methods</a>.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org57a0f08" class="outline-3">
-<h3 id="org57a0f08"><span class="section-number-3">1.4.</span> Why Abstract Methods?</h3>
+
+<div id="outline-container-orgd71b278" class="outline-3">
+<h3 id="orgd71b278"><span class="section-number-3">1.4.</span> Why Abstract Methods?</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 You may be wondering what advantage is gained by defining the methods <code>getArea()</code> and <code>getPerimeter()</code> as abstract in the <code>GeometricObject</code> <code>class</code>.
 </p>
 </div>
-<div id="outline-container-org6655c92" class="outline-4">
-<h4 id="org6655c92"><span class="section-number-4">1.4.1.</span> Example</h4>
+
+<div id="outline-container-orgbdf7801" class="outline-4">
+<h4 id="orgbdf7801"><span class="section-number-4">1.4.1.</span> Example</h4>
 <div class="outline-text-4" id="text-1-4-1">
 <p>
 The code below shows the benefits of defining them in the <code>GeometricObject</code> class.
@@ -506,8 +512,9 @@ The program creates two <code>geometric objects</code>, a <code>circle</code> an
 </pre>
 </div>
 </div>
+
 <ol class="org-ol">
-<li><a id="org2dde5ee"></a>Output<br />
+<li><a id="org91d7255"></a>Output<br />
 <div class="outline-text-5" id="text-1-4-1-1">
 <div class="org-src-container">
 <pre class="src src-java">The two objects have the same area? <span class="org-constant">false</span>
@@ -556,7 +563,9 @@ Similarly:
 </ul>
 </div>
 </li>
-<li><a id="org426e211"></a>Note<br />
+
+
+<li><a id="orgefce726"></a>Note<br />
 <div class="outline-text-5" id="text-1-4-1-2">
 <ul class="org-ul">
 <li>The <b>JVM</b> <b>dynamically</b> <b>determines</b> which of these <i>methods</i> to <b>invoke</b> at <b>runtime</b>, depending on the <code>actual object</code> that invokes the <i>method</i>.</li>
@@ -567,8 +576,9 @@ Similarly:
 </ol>
 </div>
 </div>
-<div id="outline-container-org4a37bae" class="outline-3">
-<h3 id="org4a37bae"><span class="section-number-3">1.5.</span> Error</h3>
+
+<div id="outline-container-orgfc7b6d6" class="outline-3">
+<h3 id="orgfc7b6d6"><span class="section-number-3">1.5.</span> Error</h3>
 <div class="outline-text-3" id="text-1-5">
 <p>
 If you attempt to <b>instantiate</b> it, the <b>compiler</b> will report an <b>exception</b>:
@@ -584,7 +594,7 @@ If you attempt to <b>instantiate</b> it, the <b>compiler</b> will report an <b>e
 </div>
 
 <p>
-An abstract class can be <b>initialized</b>, but only as part of the <b>instantiation</b> of a <b>non-abstract</b> <code>subclass</code>.
+An <code>abstract class</code> can be <b>initialized</b>, but only as part of the <b>instantiation</b> of a <b>non-abstract</b> <code>subclass</code>.
 </p>
 </div>
 </div>

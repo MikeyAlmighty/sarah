@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-03-22 Sun 15:25 -->
+<!-- 2026-03-30 Mon 08:26 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Default Constructor Tips and Tricks</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style type="text/css">
+<style>
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -256,11 +256,11 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgb099901">1. Default Constructor Tips and Tricks</a>
+<li><a href="#org69c4f15">1. Default Constructor Tips and Tricks</a>
 <ul>
-<li><a href="#org40201d7">1.1. Example</a>
+<li><a href="#org343439d">1.1. Example</a>
 <ul>
-<li><a href="#org18704e3">1.1.1. Solution</a></li>
+<li><a href="#orgecfecc1">1.1.1. Solution</a></li>
 </ul>
 </li>
 </ul>
@@ -268,12 +268,13 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb099901" class="outline-2">
-<h2 id="orgb099901"><span class="section-number-2">1.</span> Default Constructor Tips and Tricks</h2>
+
+<div id="outline-container-org69c4f15" class="outline-2">
+<h2 id="org69c4f15"><span class="section-number-2">1.</span> Default Constructor Tips and Tricks</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org40201d7" class="outline-3">
-<h3 id="org40201d7"><span class="section-number-3">1.1.</span> Example</h3>
+<div id="outline-container-org343439d" class="outline-3">
+<h3 id="org343439d"><span class="section-number-3">1.1.</span> Example</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 What happens if we define a <code>subclass</code> with no <code>constructors</code>, or a <code>subclass</code> with a <code>constructor</code> that doesn’t include a <code>super()</code> reference?
@@ -281,13 +282,13 @@ What happens if we define a <code>subclass</code> with no <code>constructors</co
 
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Mammal</span> {
-    <span class="org-keyword">public</span> <span class="org-function-name">Mammal</span>(<span class="org-type">int</span> <span class="org-variable-name">age</span>) {}
+    <span class="org-keyword">public</span> Mammal(<span class="org-type">int</span> <span class="org-variable-name">age</span>) {}
 }
 
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Seal</span> <span class="org-keyword">extends</span> <span class="org-type">Mammal</span> {} <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Elephant</span> <span class="org-keyword">extends</span> <span class="org-type">Mammal</span> {
-    <span class="org-keyword">public</span> <span class="org-function-name">Elephant</span>() {} <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
+    <span class="org-keyword">public</span> Elephant() {} <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>}
 </pre>
 </div>
@@ -303,7 +304,7 @@ The compiler will insert a default <code>no-argument constructor</code> into <co
 
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Seal</span> <span class="org-keyword">extends</span> <span class="org-type">Mammal</span> {
-    <span class="org-keyword">public</span> <span class="org-function-name">Seal</span>() {
+    <span class="org-keyword">public</span> Seal() {
         <span class="org-keyword">super</span>(); <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>    }
 }
@@ -317,25 +318,26 @@ The compiler doesn’t see a call to <code>super()</code> or <code>this()</code>
 
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Elephant</span> <span class="org-keyword">extends</span> <span class="org-type">Mammal</span> {
-    <span class="org-keyword">public</span> <span class="org-function-name">Elephant</span>() {
+    <span class="org-keyword">public</span> Elephant() {
         <span class="org-keyword">super</span>(); <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>    }
 }
 </pre>
 </div>
 </div>
-<div id="outline-container-org18704e3" class="outline-4">
-<h4 id="org18704e3"><span class="section-number-4">1.1.1.</span> Solution</h4>
+
+<div id="outline-container-orgecfecc1" class="outline-4">
+<h4 id="orgecfecc1"><span class="section-number-4">1.1.1.</span> Solution</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Seal</span> <span class="org-keyword">extends</span> <span class="org-type">Mammal</span> {
-    <span class="org-keyword">public</span> <span class="org-function-name">Seal</span>() {
+    <span class="org-keyword">public</span> Seal() {
         <span class="org-keyword">super</span>(6); <span class="org-comment-delimiter">// </span><span class="org-comment">Explicit call to parent constructor
 </span>    }
 }
 
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Elephant</span> <span class="org-keyword">extends</span> <span class="org-type">Mammal</span> {
-    <span class="org-keyword">public</span> <span class="org-function-name">Elephant</span>() {
+    <span class="org-keyword">public</span> Elephant() {
         <span class="org-keyword">super</span>(4); <span class="org-comment-delimiter">// </span><span class="org-comment">Explicit call to parent constructor
 </span>    }
 }
