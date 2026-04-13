@@ -61,6 +61,28 @@ You can use an ~interface~ as a *data type* and cast a variable of an ~interface
 ~Abstract classes~ are best when you need shared *state* and *implementation*.
 ~Interfaces~ are best for *defining* *capabilities* across *unrelated* =classes=.
 
+** Which to use
+
+In general, a strong *"is-a"* relationship that clearly describes a /parent-child/ relationship should be *modelled* using =classes=.
+
+For example, since an =orange= *is a* =fruit=, the relationship should be modelled using *class inheritance*. 
+
+A weak *"is-a"* relationship indicates that an object possesses a certain property.
+A weak *"is-a"* relationship can be modelled using =interfaces=.
+
+For example, all =strings= are *comparable*, so the =String= class /implements/ the ~Comparable~ *interface*.
+
+A =circle= or a =rectangle= is a =geometric object=, so =Circle= can be defined as a /subclass/ of =GeometricObject=.
+
+=Circles= are different and *comparable* based on their ~radius~, so =Circle= can implement the ~Comparable~ *interface*.
+
+~Interfaces~ are more /flexible/ than ~abstract classes~ because a =subclass= can extend only *one* =superclass= but can *implement* any number of ~interfaces~.
+
+However, ~interfaces~ cannot contain *concrete methods*.
+
+The virtues of ~interfaces~ and ~abstract classes~ can be *combined* by creating an =interface= with an =abstract class= that implements it.
+Then you can use the ~interface~ or the ~abstract class~, whichever is convenient.
+
 ** Example
 
 Both of these method definitions are /considered/ ~abstract~.

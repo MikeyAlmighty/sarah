@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-03-30 Mon 08:25 -->
+<!-- 2026-04-13 Mon 08:28 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Implementing Interfaces</title>
@@ -256,22 +256,35 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orga9bfc41">1. Implementing Interfaces</a>
+<li><a href="#org81aa27a">1. Implementing Interfaces</a>
 <ul>
-<li><a href="#org492a353">1.1. Declaring an Interface</a></li>
-<li><a href="#org61307c0">1.2. Implementing an Interface</a></li>
-<li><a href="#org7dda40d">1.3. Extending an Interface</a></li>
-<li><a href="#orgfcf6a9a">1.4. Inheriting an Interface</a></li>
-<li><a href="#org6c309be">1.5. Declaring Concrete Interface methods</a></li>
+<li><a href="#orgd6953f9">1.1. Declaring an Interface</a></li>
+<li><a href="#org3ed412a">1.2. Implementing an Interface</a></li>
+<li><a href="#org1d7c2b7">1.3. Multiple Interfaces</a></li>
+<li><a href="#orgf8bd36a">1.4. Extending an Interface</a></li>
+<li><a href="#org338e6a0">1.5. Inheriting an Interface</a></li>
+<li><a href="#org7b5e11a">1.6. Declaring Concrete Interface methods</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orga9bfc41" class="outline-2">
-<h2 id="orga9bfc41"><span class="section-number-2">1.</span> Implementing Interfaces</h2>
+<div id="outline-container-org81aa27a" class="outline-2">
+<h2 id="org81aa27a"><span class="section-number-2">1.</span> Implementing Interfaces</h2>
 <div class="outline-text-2" id="text-1">
+<p>
+An <b>interface</b> in Java is a <a href="20231230083220-reference_types.html#ID-ef3f4798-9f1d-462f-8eea-df2b75e512f6">reference type</a>, similar to a <code>class</code>, that can contain only <code>constants</code>, <code>method signatures</code>, <code>default methods</code>, <code>static methods</code>, and <code>nested types</code>.
+</p>
+
+<p>
+It <b>cannot</b> contain <code>instance fields</code> or <code>constructors</code>.
+</p>
+
+<p>
+<b>Interfaces</b> are used to represent a <i>contract</i> or a set of methods that a <code>class</code> <b>must implement</b>.
+</p>
+
 <p>
 An <b>interface</b> is a <i>class-like</i> construct for defining <b>common</b> <b>operations</b> for <code>objects</code>.
 </p>
@@ -287,22 +300,29 @@ In many ways an <b>interface</b> is similar to an <a href="20240114162721-abstra
 <p>
 Over time, the precise definition of an <code>interface</code> has changed, as new method types are now supported.
 </p>
+
+<p>
+<b>Interfaces</b> enable <b>multiple inheritance</b> (a class can <code>implement</code> <b>multiple interfaces</b>) and provide a way to achieve <i>abstraction</i>.
+</p>
 </div>
 
-<div id="outline-container-org492a353" class="outline-3">
-<h3 id="org492a353"><span class="section-number-3">1.1.</span> <a href="20240125070024-declaring_an_interface.html#ID-aa794172-0ba9-4817-928e-e296f2b05ec1">Declaring an Interface</a></h3>
+<div id="outline-container-orgd6953f9" class="outline-3">
+<h3 id="orgd6953f9"><span class="section-number-3">1.1.</span> <a href="20240125070024-declaring_an_interface.html#ID-aa794172-0ba9-4817-928e-e296f2b05ec1">Declaring an Interface</a></h3>
 </div>
-<div id="outline-container-org61307c0" class="outline-3">
-<h3 id="org61307c0"><span class="section-number-3">1.2.</span> <a href="20260322144731-implementing_an_interface.html#ID-9f1e2764-3581-4ae1-bdd0-05d8d0bf42d2">Implementing an Interface</a></h3>
+<div id="outline-container-org3ed412a" class="outline-3">
+<h3 id="org3ed412a"><span class="section-number-3">1.2.</span> <a href="20260322144731-implementing_an_interface.html#ID-9f1e2764-3581-4ae1-bdd0-05d8d0bf42d2">Implementing an Interface</a></h3>
 </div>
-<div id="outline-container-org7dda40d" class="outline-3">
-<h3 id="org7dda40d"><span class="section-number-3">1.3.</span> <a href="20240125070041-extending_an_interface.html#ID-8676fdb7-70f1-4677-b28f-d8bf036bacb2">Extending an Interface</a></h3>
+<div id="outline-container-org1d7c2b7" class="outline-3">
+<h3 id="org1d7c2b7"><span class="section-number-3">1.3.</span> <a href="20260413073506-multiple_interfaces.html#ID-0e4cebc1-2dfa-4848-96cf-a33ffb6c161d">Multiple Interfaces</a></h3>
 </div>
-<div id="outline-container-orgfcf6a9a" class="outline-3">
-<h3 id="orgfcf6a9a"><span class="section-number-3">1.4.</span> <a href="20240125070056-inheriting_an_interface.html#ID-aafc61bd-fc20-4fad-9489-83cdf133c2b5">Inheriting an Interface</a></h3>
+<div id="outline-container-orgf8bd36a" class="outline-3">
+<h3 id="orgf8bd36a"><span class="section-number-3">1.4.</span> <a href="20240125070041-extending_an_interface.html#ID-8676fdb7-70f1-4677-b28f-d8bf036bacb2">Extending an Interface</a></h3>
 </div>
-<div id="outline-container-org6c309be" class="outline-3">
-<h3 id="org6c309be"><span class="section-number-3">1.5.</span> <a href="20240125070139-declaring_concrete_interface_methods.html#ID-41a593b3-3a1b-473e-af20-11ef29027fc3">Declaring Concrete Interface methods</a></h3>
+<div id="outline-container-org338e6a0" class="outline-3">
+<h3 id="org338e6a0"><span class="section-number-3">1.5.</span> <a href="20240125070056-inheriting_an_interface.html#ID-aafc61bd-fc20-4fad-9489-83cdf133c2b5">Inheriting an Interface</a></h3>
+</div>
+<div id="outline-container-org7b5e11a" class="outline-3">
+<h3 id="org7b5e11a"><span class="section-number-3">1.6.</span> <a href="20240125070139-declaring_concrete_interface_methods.html#ID-41a593b3-3a1b-473e-af20-11ef29027fc3">Declaring Concrete Interface methods</a></h3>
 </div>
 </div>
 </div>

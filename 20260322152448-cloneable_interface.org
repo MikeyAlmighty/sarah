@@ -34,27 +34,66 @@ Many classes in the Java library (e.g., ~Date, Calendar~ and ~ArrayList~) implem
 
 Thus, the =instances= of these =classes= can be *cloned*.
 
-** Example
+** Implementation
+
+To properly implement *cloning*, follow these steps.
+
+- Implement the ~Cloneable~ interface in your =class=.
+- Override the ~clone()~ method and call ~super.clone()~.
+- Handle ~CloneNotSupportedException~, which is a checked exception.
+
+** Example 1.
 
 #+BEGIN_SRC java
-Calendar calendar = new GregorianCalendar(2013, 2, 1);
-Calendar calendar1 = calendar;
-Calendar calendar2 = (Calendar)calendar.clone();
+class Person implements Cloneable {
+    String name;
+    int age;
 
-System.out.println("calendar == calendar1 is " + (calendar == calendar1));
-System.out.println("calendar == calendar2 is " + (calendar == calendar2));
-System.out.println("calendar.equals(calendar2) is " + calendar.equals(calendar2));
+    // Constructor
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Overriding clone() method
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();  // Calls Object's clone() method
+    }
+
+    // Display method
+    public void display() {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+}
+
+public class CloneableExample {  
+    public static void main(String[] args) {  
+        try {  
+            Person p1 = new Person("Alice", 25);  
+            Person p2 = (Person) p1.clone();  // Cloning the object  
+
+            System.out.println("Original Object:");
+            p1.display();
+
+            System.out.println("Cloned Object:");
+            p2.display();
+
+        } catch (CloneNotSupportedException e) {
+            System.out.println("Clone not supported");
+        }
+    }
+}
 #+END_SRC
 
-*** Output
+** When to Use
 
-#+BEGIN_SRC java
-calendar == calendar1 is true
-calendar == calendar2 is false
-calendar.equals(calendar2) is true
-#+END_SRC
-
-** Example
+When to use ~Cloneable~?
+- Use when you need to *copy* objects efficiently. 
+- Useful for objects with *simple structures* (~primitive types~ and ~immutable fields~). 
+- Avoid for *complex* objects.
+  
+** Example 2.
 
 #+BEGIN_SRC java
 public class House implements Cloneable, Comparable<House> {

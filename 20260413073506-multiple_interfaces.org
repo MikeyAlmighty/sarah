@@ -1,0 +1,50 @@
+:PROPERTIES:
+:ID:       0e4cebc1-2dfa-4848-96cf-a33ffb6c161d
+:END:
+#+title: Multiple Interfaces
+
+* Multiple Interfaces
+
+A class in Java can implement *more than one* =interface=, (multiple inheritance).
+
+This is useful in scenarios where a class needs to implement functionality from more than one source.
+
+** Example
+
+In this example, the =Fish= class ~implements~ *both* the =Animal= and =Swimmer= *interfaces*.
+
+
+#+BEGIN_SRC java
+public class Dog implements Animal {
+    @Override
+    public void eat() {
+        System.out.println("Dog is eating");
+    }
+
+    @Override
+    public void sleep() {
+        System.out.println("Dog is sleeping");
+    }
+}
+
+public interface Swimmer {
+    void swim();
+}
+
+public class Fish implements Animal, Swimmer {
+    @Override
+    public void eat() {
+        System.out.println("Fish is eating");
+    }
+
+    @Override
+    public void sleep() {
+        System.out.println("Fish is sleeping");
+    }
+
+    @Override
+    public void swim() {
+        System.out.println("Fish is swimming");
+    }
+}
+#+END_SRC

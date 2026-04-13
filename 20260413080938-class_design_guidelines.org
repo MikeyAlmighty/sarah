@@ -1,0 +1,55 @@
+:PROPERTIES:
+:ID:       6474398d-ab05-43af-ab8a-464554085a43
+:END:
+#+title: Class Design Guidelines
+
+* Class Design Guidelines
+
+** Cohesion
+
+A =class= should describe a *single entity*, and all the class *operations* should logically fit together to support a coherent purpose.
+
+You can use a class for =students=, for example, but you should *not* combine =students= and =staff= in the same class, because students and staff are /different/ *entities*.
+
+A single entity with *many* responsibilities can be broken into *several* =classes= to *separate* the *responsibilities*.
+
+** Consistency
+
+Choose *informative* names for =classes=, ~data fields~, and ~methods~.
+- A popular style is to place the ~data declaration~ *before* the =constructor= and place =constructors= before ~methods~. 
+
+*Make the names consistent.*
+- It is not good practice to choose *different names* for *similar operations*.
+
+In general, you should consistently provide a =public no-arg constructor= for constructing a *default instance*.
+- If a class does *not* support a =no-arg constructor=, document the reason.
+
+If *no* constructors are defined explicitly, a =public default no-arg constructor= with an ~empty body~ is *assumed*.
+
+If you want to *prevent* users from creating an object for a class, you can declare a *private* =constructor= in the =class=.
+
+** Encapsulation
+
+A class should use the *private* modifier to *hide* its data from direct access by clients.
+
+This makes the class easy to maintain.
+
+Provide a ~getter~ method only if you want the data field to be *readable* and provide a ~setter~ method only if you want the data field to be *updateable*.
+
+** Clarity
+
+*Cohesion*, *consistency*, and *encapsulation* are good guidelines for achieving design clarity.
+
+Additionally, a =class= should have a *clear contract* that is easy to explain and easy to understand.
+
+Users can incorporate classes in /many/ different *combinations*, *orders*, and *environments*.
+
+*** Therefore, you should
+
+- Design a =class= that imposes *no* restrictions on /how/ or /when/ the user can use it;
+- Design the *properties* in a way that lets the user ~set~ them in any order and with any combination of values; and
+- Design methods that function *independently* of their *order of occurrence*.
+
+Methods should be *defined* intuitively without /causing confusion/.
+
+You should *not* declare a ~data field~ that can be *derived* from *other* ~data fields~.

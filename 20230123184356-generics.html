@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-03-30 Mon 08:25 -->
+<!-- 2026-04-13 Mon 08:28 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Generics</title>
@@ -256,14 +256,14 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgffe9b2c">1. Example</a></li>
-<li><a href="#org3bb4d88">2. Autoboxing</a></li>
-<li><a href="#orga9ba0d6">3. Unboxing</a></li>
-<li><a href="#orgcaca1c5">4. Constraints</a></li>
-<li><a href="#org3d1aa35">5. Type Erasue</a></li>
-<li><a href="#org0af22a0">6. Generic Methods</a></li>
-<li><a href="#org361e4af">7. Multiple Type Paramters</a></li>
-<li><a href="#org6c3ac23">8. Generic Wildcards</a></li>
+<li><a href="#org4c61e3f">1. Example</a></li>
+<li><a href="#orgf73e5e7">2. Autoboxing</a></li>
+<li><a href="#org69397e6">3. Unboxing</a></li>
+<li><a href="#org3246ce8">4. Constraints</a></li>
+<li><a href="#org40504bd">5. Type Erasue</a></li>
+<li><a href="#org5e9ae9e">6. Generic Methods</a></li>
+<li><a href="#orgc89680b">7. Multiple Type Paramters</a></li>
+<li><a href="#org073f8ba">8. Generic Wildcards</a></li>
 </ul>
 </div>
 </div>
@@ -274,8 +274,8 @@
 #+auto<sub>tangle</sub> t
 </p>
 
-<div id="outline-container-orgffe9b2c" class="outline-2">
-<h2 id="orgffe9b2c"><span class="section-number-2">1.</span> Example</h2>
+<div id="outline-container-org4c61e3f" class="outline-2">
+<h2 id="org4c61e3f"><span class="section-number-2">1.</span> Example</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <code>GenericList.java</code>
@@ -321,8 +321,8 @@ OR
 </div>
 </div>
 
-<div id="outline-container-org3bb4d88" class="outline-2">
-<h2 id="org3bb4d88"><span class="section-number-2">2.</span> Autoboxing</h2>
+<div id="outline-container-orgf73e5e7" class="outline-2">
+<h2 id="orgf73e5e7"><span class="section-number-2">2.</span> Autoboxing</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Automatic conversion that the Java compiler makes between the <code>primitive types</code> and their corresponding object <code>wrapper classes</code>.
@@ -347,8 +347,8 @@ Java compiler puts integer value inside a <code>box</code>.
 </div>
 
 
-<div id="outline-container-orga9ba0d6" class="outline-2">
-<h2 id="orga9ba0d6"><span class="section-number-2">3.</span> Unboxing</h2>
+<div id="outline-container-org69397e6" class="outline-2">
+<h2 id="org69397e6"><span class="section-number-2">3.</span> Unboxing</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Converts Wrapper reference into integer
@@ -357,8 +357,8 @@ Converts Wrapper reference into integer
 </div>
 </div>
 
-<div id="outline-container-orgcaca1c5" class="outline-2">
-<h2 id="orgcaca1c5"><span class="section-number-2">4.</span> Constraints</h2>
+<div id="outline-container-org3246ce8" class="outline-2">
+<h2 id="org3246ce8"><span class="section-number-2">4.</span> Constraints</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 Here we are constraining our Generic Class to only allow instances of <code>Number</code> (String won't work)
@@ -408,8 +408,8 @@ Note: <code>&lt;T extends Number&gt;</code> is called a <b>Bounded Type paramate
 </div>
 </div>
 
-<div id="outline-container-org3d1aa35" class="outline-2">
-<h2 id="org3d1aa35"><span class="section-number-2">5.</span> Type Erasue</h2>
+<div id="outline-container-org40504bd" class="outline-2">
+<h2 id="org40504bd"><span class="section-number-2">5.</span> Type Erasue</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 When we have multiple interface constraints,  i.e.: <code>GenericList&lt;T extends Comparable &amp; Cloneable&gt;</code> , Java Compiler will take the <b>Left Most</b>  (in this case <code>Comparable</code>) Type to replace all <code>T</code> (Erases all type paramaters and replaces with Class/Interface pending on constraints).
@@ -431,16 +431,16 @@ See <a href="20230125085040-comparable_interface.html#ID-978e88bf-bfac-4a29-a851
 </div>
 </div>
 
-<div id="outline-container-org0af22a0" class="outline-2">
-<h2 id="org0af22a0"><span class="section-number-2">6.</span> <a href="20230125085439-generic_methods.html#ID-da34a311-c25d-4d96-accf-60b35cf11cb7">Generic Methods</a></h2>
+<div id="outline-container-org5e9ae9e" class="outline-2">
+<h2 id="org5e9ae9e"><span class="section-number-2">6.</span> <a href="20230125085439-generic_methods.html#ID-da34a311-c25d-4d96-accf-60b35cf11cb7">Generic Methods</a></h2>
 </div>
 
-<div id="outline-container-org361e4af" class="outline-2">
-<h2 id="org361e4af"><span class="section-number-2">7.</span> <a href="20230125090226-multiple_type_paramters.html#ID-80ca3273-689f-425e-8fbb-b60fa157368b">Multiple Type Paramters</a></h2>
+<div id="outline-container-orgc89680b" class="outline-2">
+<h2 id="orgc89680b"><span class="section-number-2">7.</span> <a href="20230125090226-multiple_type_paramters.html#ID-80ca3273-689f-425e-8fbb-b60fa157368b">Multiple Type Paramters</a></h2>
 </div>
 
-<div id="outline-container-org6c3ac23" class="outline-2">
-<h2 id="org6c3ac23"><span class="section-number-2">8.</span> <a href="20230125091828-generic_wildcards.html#ID-ffe1e06a-8d8c-4e7f-87ce-c017aec04fd2">Generic Wildcards</a></h2>
+<div id="outline-container-org073f8ba" class="outline-2">
+<h2 id="org073f8ba"><span class="section-number-2">8.</span> <a href="20230125091828-generic_wildcards.html#ID-ffe1e06a-8d8c-4e7f-87ce-c017aec04fd2">Generic Wildcards</a></h2>
 </div>
 </div>
 </body>
