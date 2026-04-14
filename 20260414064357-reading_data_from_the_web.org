@@ -4,3 +4,63 @@
 #+title: Reading Data from the Web
 
 * Reading Data from the Web
+
+Just like you can *read* from a file on your computer, you can *read* from a file on the ~Web~. (If you know the [[id:7f6ccd08-47a2-4528-966d-3e08b8b40755][URL]])
+
+- Create a [[id:7f6ccd08-47a2-4528-966d-3e08b8b40755][URL]] object using ~java.net.URL~ class:
+  
+#+BEGIN_SRC java
+public URL(String spec) throws MalformedURLException
+#+END_SRC
+  
+
+** Example
+
+#+BEGIN_SRC java
+try {
+    URL url = new URL("http://www.google.com/index.html");
+} catch (MalformedURLException ex) {
+    ex.printStackTrace();
+}
+#+END_SRC
+
+A ~MalformedURLException~ is *thrown* if the URL string has a *syntax error*.
+
+For example, the URL string http:www.google.com/index.html would cause a ~MalformedURLException~ *runtime error* because two slashes (~//~) are *required* after the colon (~:~).
+ 
+*** Note
+- The ~http://~ prefix is *required* for the URL class to recognize a valid URL.
+- You can use the ~openStream()~ method defined in the URL class to open an input stream and use this stream to create a Scanner object as follows
+
+*** Example
+
+#+BEGIN_SRC java
+import java.util.Scanner;
+
+public class ReadFileFromURL {
+    public static void main(String[] args) {
+        System.out.print("Enter a URL: ");
+        String URLString = new Scanner(System.in).next();
+
+        try {
+            java.net.URL url = new java.net.URL(URLString);
+            int count = 0;
+            Scanner input = new Scanner(url.openStream());
+            while (input.hasNext()) {
+                String line = input.nextLine();
+                count += line.length();
+            }
+
+            System.out.println("The file size is " + count + " characters");
+        }
+        catch (java.net.MalformedURLException ex) {
+            System.out.println("Invalid URL");
+        }
+        catch (java.io.IOException ex) {
+            System.out.println("I/O Errors: no such file");
+        }
+    }
+}
+#+END_SRC
+
+- If the URL is does not exist, an ~IOException~ will be *thrown*.

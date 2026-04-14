@@ -1,0 +1,40 @@
+:PROPERTIES:
+:ID:       d0e61df3-50bc-48f6-8a40-78d711eb233d
+:END:
+#+title: Using Scanner to Read Data from File
+
+* Using Scanner to Read Data from File
+
+** Example
+
+#+BEGIN_SRC java
+import java.util.Scanner;
+
+public class ReadData {
+    public static void main(String[] args) throws Exception {
+        // Create a File instance
+        java.io.File file = new java.io.File("scores.txt");
+
+        // Create a Scanner for the file
+        Scanner input = new Scanner(file);
+
+        // Read data from a file
+        while (input.hasNext()) {
+            String firstName = input.next();
+            String mi = input.next();
+            String lastName = input.next();
+            int score = input.nextInt();
+            
+            System.out.println(firstName + " " + mi + " " + lastName + " " + score);
+        }
+
+        // Close the file
+        input.close();
+    }
+}
+#+END_SRC
+
+*** Notes
+
+- Invoking the =constructor= ~new Scanner(File)~ may *throw* an ~I/O exception~, so the =main method= declares ~throws Exception~.
+- Not necessary to ~close~ the input file, but it is a good practice to do so to release the resources occupied by the file. (You can rewrite this program using the [[id:0cd8b7c0-e7e2-4813-9dd7-e2ed160ac5c1][try-with-resources]] syntax)

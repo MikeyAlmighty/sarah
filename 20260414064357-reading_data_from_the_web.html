@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-14 Tue 08:19 -->
+<!-- 2026-04-14 Tue 19:34 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Reading Data from the Web</title>
@@ -256,13 +256,108 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgba0b415">1. Reading Data from the Web</a></li>
+<li><a href="#org29007f2">1. Reading Data from the Web</a>
+<ul>
+<li><a href="#org37bf252">1.1. Example</a>
+<ul>
+<li><a href="#orgfb956af">1.1.1. Note</a></li>
+<li><a href="#org231ff90">1.1.2. Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgba0b415" class="outline-2">
-<h2 id="orgba0b415"><span class="section-number-2">1.</span> Reading Data from the Web</h2>
+<div id="outline-container-org29007f2" class="outline-2">
+<h2 id="org29007f2"><span class="section-number-2">1.</span> Reading Data from the Web</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Just like you can <b>read</b> from a file on your computer, you can <b>read</b> from a file on the <code>Web</code>. (If you know the <a href="20230819080412-uniform_resource_locator_url.html#ID-7f6ccd08-47a2-4528-966d-3e08b8b40755">URL</a>)
+</p>
+
+<ul class="org-ul">
+<li>Create a <a href="20230819080412-uniform_resource_locator_url.html#ID-7f6ccd08-47a2-4528-966d-3e08b8b40755">URL</a> object using <code>java.net.URL</code> class:</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-java"><span class="org-keyword">public</span> URL(String spec) <span class="org-keyword">throws</span> <span class="org-type">MalformedURLException</span>
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org37bf252" class="outline-3">
+<h3 id="org37bf252"><span class="section-number-3">1.1.</span> Example</h3>
+<div class="outline-text-3" id="text-1-1">
+<div class="org-src-container">
+<pre class="src src-java"><span class="org-keyword">try</span> {
+    <span class="org-type">URL</span> <span class="org-variable-name">url</span> = <span class="org-keyword">new</span> <span class="org-type">URL</span>(<span class="org-string">"http://www.google.com/index.html"</span>);
+} <span class="org-keyword">catch</span> (MalformedURLException ex) {
+    ex.printStackTrace();
+}
+</pre>
+</div>
+
+<p>
+A <code>MalformedURLException</code> is <b>thrown</b> if the URL string has a <b>syntax error</b>.
+</p>
+
+<p>
+For example, the URL string <a href="http:www.google.com/index.html">http:www.google.com/index.html</a> would cause a <code>MalformedURLException</code> <b>runtime error</b> because two slashes (<code>//</code>) are <b>required</b> after the colon (<code>:</code>).
+</p>
+</div>
+
+<div id="outline-container-orgfb956af" class="outline-4">
+<h4 id="orgfb956af"><span class="section-number-4">1.1.1.</span> Note</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<ul class="org-ul">
+<li>The <code>http://</code> prefix is <b>required</b> for the URL class to recognize a valid URL.</li>
+<li>You can use the <code>openStream()</code> method defined in the URL class to open an input stream and use this stream to create a Scanner object as follows</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org231ff90" class="outline-4">
+<h4 id="org231ff90"><span class="section-number-4">1.1.2.</span> Example</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<div class="org-src-container">
+<pre class="src src-java"><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Scanner</span>;
+
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">ReadFileFromURL</span> {
+    <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
+        System.out.print(<span class="org-string">"Enter a URL: "</span>);
+        <span class="org-type">String</span> <span class="org-variable-name">URLString</span> = <span class="org-keyword">new</span> <span class="org-type">Scanner</span>(System.in).next();
+
+        <span class="org-keyword">try</span> {
+            <span class="org-constant">java</span>.<span class="org-constant">net</span>.<span class="org-type">URL</span> <span class="org-variable-name">url</span> = <span class="org-keyword">new</span> <span class="org-constant">java</span>.<span class="org-constant">net</span>.<span class="org-type">URL</span>(URLString);
+            <span class="org-type">int</span> <span class="org-variable-name">count</span> = 0;
+            <span class="org-type">Scanner</span> <span class="org-variable-name">input</span> = <span class="org-keyword">new</span> <span class="org-type">Scanner</span>(url.openStream());
+            <span class="org-keyword">while</span> (input.hasNext()) {
+                <span class="org-type">String</span> <span class="org-variable-name">line</span> = input.nextLine();
+                count += line.length();
+            }
+
+            System.out.println(<span class="org-string">"The file size is "</span> + count + <span class="org-string">" characters"</span>);
+        }
+        <span class="org-keyword">catch</span> (<span class="org-constant">java</span>.<span class="org-constant">net</span>.MalformedURLException ex) {
+            System.out.println(<span class="org-string">"Invalid URL"</span>);
+        }
+        <span class="org-keyword">catch</span> (<span class="org-constant">java</span>.<span class="org-constant">io</span>.IOException ex) {
+            System.out.println(<span class="org-string">"I/O Errors: no such file"</span>);
+        }
+    }
+}
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>If the URL is does not exist, an <code>IOException</code> will be <b>thrown</b>.</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 </body>

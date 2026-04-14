@@ -1,0 +1,64 @@
+:PROPERTIES:
+:ID:       e475d76f-73c3-4ee8-8ad1-f4d763ff0341
+:END:
+#+title: PrintWriter
+
+* PrintWriter
+
+The ~java.io.PrintWriter~ class can be used to *create* and *write* data to a text file.
+
+** Syntax
+
+#+BEGIN_SRC java
+PrintWriter output = new PrintWriter(filename);
+#+END_SRC
+
+You can invoke the ~print~, ~println~, and ~printf~ =methods= on the ~PrintWriter~ object to *write* data to a file.
+
+| Method / Constructor          | Description                                                               |
+|-------------------------------+---------------------------------------------------------------------------|
+| ~PrintWriter(file: File)~       | Creates a PrintWriter object for the specified file object.               |
+| ~PrintWriter(filename: String)~ | Creates a PrintWriter object for the specified file name string.          |
+| ~print(s: String): void~        | Writes a string to the file.                                              |
+| ~print(c: char): void~          | Writes a character to the file.                                           |
+| ~print(cArray: char[]): void~   | Writes an array of characters to the file.                                |
+| ~print(i: int): void~           | Writes an int value to the file.                                          |
+| ~print(l: long): void~          | Writes a long value to the file.                                          |
+| ~print(f: float): void~         | Writes a float value to the file.                                         |
+| ~print(d: double): void~        | Writes a double value to the file.                                        |
+| ~print(b: boolean): void~       | Writes a boolean value to the file.                                       |
+| ~println()~                     | Prints a line separator defined by the system.                            |
+| ~println(...)~                  | Acts like print; additionally prints a line separator after output.       |
+| ~printf(...)~                   | Formats and writes output (introduced for formatted console/file output). |
+| ~Line Separator~                | Defined by system: \r\n on Windows, \n on Unix.                           |
+
+*** Example
+
+#+BEGIN_SRC java
+public class WriteData {
+    public static void main(String[] args) throws java.io.IOException {
+        java.io.File file = new java.io.File("scores.txt");
+
+        if (file.exists()) {
+            System.out.println("File already exists");
+            System.exit(1);
+        }
+
+        // Create a file
+        java.io.PrintWriter output = new java.io.PrintWriter(file);
+
+        // Write formatted output to the file
+        output.print("John T Smith ");
+        output.println(90);
+        output.print("Eric K Jones ");
+        output.println(85);
+
+        // Close the file
+        output.close();
+    }
+}
+#+END_SRC
+
+*** See Also
+
+- [[id:0cd8b7c0-e7e2-4813-9dd7-e2ed160ac5c1][try-with-resources]]

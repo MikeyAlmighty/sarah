@@ -1,0 +1,53 @@
+:PROPERTIES:
+:ID:       0cd8b7c0-e7e2-4813-9dd7-e2ed160ac5c1
+:END:
+#+title: try-with-resources
+
+* try-with-resources
+
+Programmers often forget to *close* the file
+
+=JDK 7= provides the following ~try-with-resources~ syntax that automatically closes the files:
+
+#+BEGIN_SRC java
+try (declare and create resources) {
+    Use the resource to process the file
+}
+#+END_SRC
+
+** Example
+
+#+BEGIN_SRC java
+public class WriteDataWithAutoClose {
+    public static void main(String[] args) throws Exception {
+        java.io.File file = new java.io.File("scores.txt");
+        if (file.exists()) {
+            System.out.println("File already exists");
+            System.exit(0);
+        }
+
+        try (
+            // Create a file
+            java.io.PrintWriter output = new java.io.PrintWriter(file);
+        ) {
+            // Write formatted output to the file
+            output.print("John T Smith ");
+            output.println(90);
+            output.print("Eric K Jones ");
+            output.println(85);
+        }
+    }
+}
+#+END_SRC
+
+A *resource* is *declared and created* in the parentheses following the keyword try.
+
+The resources must be a subtype of ~AutoCloseable~ such as a ~PrinterWriter~ that has the ~close()~ method.
+
+A resource must be /declared/ and /created/ in the *same statement*. (Multiple resources can be /declared/ and /created/ inside the parentheses)
+
+** Summary
+
+- After the block is *finished*, the resource’s ~close()~ method is *automatically* invoked to close the resource.
+- *Avoid errors* and makes the *code simpler*.
+- The ~catch clause~ may be *omitted* in a ~try-with-resources statement~.

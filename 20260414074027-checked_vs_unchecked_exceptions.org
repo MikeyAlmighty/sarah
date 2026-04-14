@@ -7,19 +7,39 @@
 
 *** Unchecked Exceptions
 
- ~RuntimeException~, ~Error~, and their ~subclasses~.
+Also called ~runtime exceptions~, result from *programming errors* (I.e. ~null pointer dereferencing~ or ~out-of-bounds~ array access).
+
+**** Examples
+- ~RuntimeException~
+- ~Error~
+- ~NullPointerException~
+- ~ArithmeticException~
+- and their ~subclasses~
+
 
 *** Checked Exceptions
 
-All *other* ~exceptions~ are *checked exceptions*.
+Must be *handled* at *compile time* using ~try-catch blocks~ or declared with the ~throws~ keyword.
+
 
 The compiler /forces/ the programmer to *check and deal* with them in a ~try-catch~ block or declare it in the /method header/.
+
+**** Examples
+- ~IOException~
+- ~SQLException~
+
+*** Errors
+
+*Critical issues* that an application typically *cannot* recover from.
+- ~OutOfMemoryError~
+- ~StackOverflowError~
 
 *** Summary
 
 In most cases, *unchecked exceptions* reflect *programming logic errors* that are *unrecoverable*.
 
 **** Examples
+
 - A ~NullPointerException~ is /thrown/ if you access an object through a =reference variable= before an =object= is *assigned* to it.
 - An ~IndexOutOfBoundsException~ is /thrown/ if you *access an element* in an =array= *outside* the *bounds* of the =array=.
 
