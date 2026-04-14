@@ -1,0 +1,119 @@
+:PROPERTIES:
+:ID:       95428e3c-83e5-4d44-8d8e-8b2baa2b7696
+:END:
+#+title: Exception Handling
+
+* Exception Handling
+
+*Exceptions* are ~thrown~ from a =method=.
+The *caller* of the =method= can *catch* and /handle/ the *exception*.
+
+** Syntax
+
+#+begin_src java
+try {
+    // Code to run
+    // Code that may throw an exception
+}
+catch (Type ex) {
+    // Handle exception
+}
+#+end_src
+
+
+** Example
+
+#+BEGIN_SRC java
+import java.util.Scanner;
+
+public class QuotientWithException {
+    public static int quotient(int number1, int number2) {
+        if (number2 == 0)
+            throw new ArithmeticException("Divisor cannot be zero");
+
+        return number1 / number2;
+    }
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        // Prompt the user to enter two integers
+        System.out.print("Enter two integers: ");
+        int number1 = input.nextInt();
+        int number2 = input.nextInt();
+
+        try {
+            int result = quotient(number1, number2);
+            System.out.println(number1 + " / " + number2 + " is " + result);
+        }
+        catch (ArithmeticException ex) {
+            System.out.println("Exception: an integer cannot be divided by zero ");
+        }
+
+        System.out.println("Execution continues ...");
+    }
+}
+#+END_SRC
+
+* Exception Handling with throw, try, and catch
+
+** Key Concepts
+
+*- An *exception* is an object representing an /error/ or /abnormal condition/.
+
+*** Example:
+
+~new ArithmeticException("Divisor cannot be zero")~
+
+- This creates an *exception* object from the class ~java.lang.ArithmeticException~.
+- The string message *describes* the =error=.
+
+** Throwing an Exception
+
+The ~throw~ statement is used to *signal* that an =error= has occurred.
+*“Throwing an exception”* means passing this *exception* object to another part of the program.
+
+This interrupts the normal flow of execution.
+
+** Try-Catch Flow
+
+- Code that may cause an exception is placed inside a ~try~ block.
+  
+If an exception occurs:
+- Execution in the ~try~ block stops immediately.
+- Control transfers to the matching ~catch~ block.
+  
+The ~catch~ block handles the exception.
+
+*After handling, execution continues *after* the ~catch~ block (not back to where the exception occurred).
+
+*** Catch Block Parameter
+
+Syntax: ~catch (ArithmeticException ex)~
+
+  - ~ex~ is like a method *parameter*.
+  - It holds the thrown =exception object=.
+  - The type specifies which exceptions can be *caught*.
+
+** Exception Propagation
+
+A method can:
+- Handle the =exception= itself, OR
+- ~Throw~ it to its *caller*
+  
+* Example:
+
+  - ~main~ calls ~quotient~
+  - If ~quotient~ fails → it *throws* an =exception=
+  - ~main~ *catches* and *handles* it
+
+** Why This Matters
+
+- Separates error handling from normal logic
+- Allows lower-level methods (e.g., libraries) to *defer* handling
+- Gives higher-level code flexibility to decide what to do
+
+** Key Insight
+
+- *Without* =exception handling=: ~Methods~ must handle /errors/ themselves (or terminate the program).
+- *With* =exception handling=: /Errors/ can be *propagated* upward.

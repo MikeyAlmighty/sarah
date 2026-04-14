@@ -1,0 +1,30 @@
+:PROPERTIES:
+:ID:       2086f93d-52b5-400f-9f27-ddd0483cb168
+:END:
+#+title: Checked vs Unchecked Exceptions
+
+* Checked vs Unchecked Exceptions
+
+*** Unchecked Exceptions
+
+ ~RuntimeException~, ~Error~, and their ~subclasses~.
+
+*** Checked Exceptions
+
+All *other* ~exceptions~ are *checked exceptions*.
+
+The compiler /forces/ the programmer to *check and deal* with them in a ~try-catch~ block or declare it in the /method header/.
+
+*** Summary
+
+In most cases, *unchecked exceptions* reflect *programming logic errors* that are *unrecoverable*.
+
+**** Examples
+- A ~NullPointerException~ is /thrown/ if you access an object through a =reference variable= before an =object= is *assigned* to it.
+- An ~IndexOutOfBoundsException~ is /thrown/ if you *access an element* in an =array= *outside* the *bounds* of the =array=.
+
+These are *logic errors* that should be /corrected/ in the program.
+
+*Unchecked exceptions* can occur anywhere in a program.
+
+To avoid cumbersome overuse of ~try-catch~ blocks, Java does *not* mandate that you write code to /catch/ or /declare/ *unchecked exceptions*.

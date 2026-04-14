@@ -1,0 +1,43 @@
+:PROPERTIES:
+:ID:       d29bc8c1-c096-4068-a116-79b556c9723c
+:END:
+#+title: When to use Exceptions
+
+* When to use Exceptions
+
+- A *method* should /throw/ an ~exception~ if the *error* needs to be /handled/ by its =caller=.
+  
+The ~try block~ is *executed* in normal circumstances.
+The ~catch block~ is *executed* in exceptional circumstances.
+
+Exception handling separates error-handling code from normal programming tasks, thus making programs easier to read and to modify.
+
+** Note
+
+Be aware that *exception handling* usually requires *more time and resources*, because it requires =instantiating= a new =exception object=, rolling back the call stack, and propagating the exception through the chain of method calls to search for the *handler*.
+
+In general, *common exceptions* that may occur in /multiple classes/ in a project are candidates for ~exception classes~.
+
+*Simple errors* that may occur in individual methods are best handled *without* /throwing exceptions/.
+- Using ~if statements~ to /check/ for *errors*.
+
+** Usage 
+
+When should you use a ~try-catch block~ in the code?
+- Use it when you have to deal with *unexpected error conditions*.
+- Do *not* use a ~try-catch block~ to deal with *simple, expected situations*.
+
+  #+BEGIN_SRC java
+// Less appropriate
+try {
+    System.out.println(refVar.toString());
+} catch (NullPointerException ex) {
+    System.out.println("refVar is null");
+}
+
+// Better: use a simple conditional check
+if (refVar != null)
+    System.out.println(refVar.toString());
+else
+    System.out.println("refVar is null");
+  #+END_SRC

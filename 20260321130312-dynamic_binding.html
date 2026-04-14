@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-13 Mon 08:28 -->
+<!-- 2026-04-14 Tue 08:19 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Dynamic Binding</title>
@@ -256,21 +256,21 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org95a6138">1. Dynamic Binding (AKA Dynamic Method Dispatch / Late Binding)</a>
+<li><a href="#org72aa5c4">1. Dynamic Binding (AKA Dynamic Method Dispatch / Late Binding)</a>
 <ul>
-<li><a href="#org9ee30c3">1.1. Example</a>
+<li><a href="#org25f800e">1.1. Example</a>
 <ul>
-<li><a href="#org1b4cc80">1.1.1. Superclass (Animal)</a></li>
-<li><a href="#orgc71adae">1.1.2. Subclasses (Dog, Cat)</a></li>
-<li><a href="#org58a2129">1.1.3. Dynamic binding</a></li>
-<li><a href="#org353b89a">1.1.4. Runtime polymorphism</a></li>
+<li><a href="#org618f52d">1.1.1. Superclass (Animal)</a></li>
+<li><a href="#org3a3e8ce">1.1.2. Subclasses (Dog, Cat)</a></li>
+<li><a href="#org6f407f7">1.1.3. Dynamic binding</a></li>
+<li><a href="#org6ab71f3">1.1.4. Runtime polymorphism</a></li>
 </ul>
 </li>
-<li><a href="#org85995c7">1.2. Core Idea (Simplified)</a>
+<li><a href="#org6e10134">1.2. Core Idea (Simplified)</a>
 <ul>
-<li><a href="#org4989630">1.2.1. Two Key Concepts</a></li>
-<li><a href="#org45c1372">1.2.2. The Rule You Must Remember</a></li>
-<li><a href="#org2aa0ba8">1.2.3. Exam</a></li>
+<li><a href="#org68b63de">1.2.1. Two Key Concepts</a></li>
+<li><a href="#org8659a43">1.2.2. The Rule You Must Remember</a></li>
+<li><a href="#orgfefa65d">1.2.3. Exam</a></li>
 </ul>
 </li>
 </ul>
@@ -279,8 +279,8 @@
 </div>
 </div>
 
-<div id="outline-container-org95a6138" class="outline-2">
-<h2 id="org95a6138"><span class="section-number-2">1.</span> Dynamic Binding (AKA Dynamic Method Dispatch / Late Binding)</h2>
+<div id="outline-container-org72aa5c4" class="outline-2">
+<h2 id="org72aa5c4"><span class="section-number-2">1.</span> Dynamic Binding (AKA Dynamic Method Dispatch / Late Binding)</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 In Java, runtime polymorphism relies on dynamic binding.
@@ -303,8 +303,8 @@ We are going to use the <code>Animal</code> <b>class</b> <b>hierarchy</b> to pro
 </p>
 </div>
 
-<div id="outline-container-org9ee30c3" class="outline-3">
-<h3 id="org9ee30c3"><span class="section-number-3">1.1.</span> Example</h3>
+<div id="outline-container-org25f800e" class="outline-3">
+<h3 id="org25f800e"><span class="section-number-3">1.1.</span> Example</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">Superclass (Parent)
@@ -350,8 +350,8 @@ We are going to use the <code>Animal</code> <b>class</b> <b>hierarchy</b> to pro
 </div>
 </div>
 
-<div id="outline-container-org1b4cc80" class="outline-4">
-<h4 id="org1b4cc80"><span class="section-number-4">1.1.1.</span> Superclass (Animal)</h4>
+<div id="outline-container-org618f52d" class="outline-4">
+<h4 id="org618f52d"><span class="section-number-4">1.1.1.</span> Superclass (Animal)</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 Contains the <code>makeSound()</code> method.
@@ -359,8 +359,8 @@ Contains the <code>makeSound()</code> method.
 </div>
 </div>
 
-<div id="outline-container-orgc71adae" class="outline-4">
-<h4 id="orgc71adae"><span class="section-number-4">1.1.2.</span> Subclasses (Dog, Cat)</h4>
+<div id="outline-container-org3a3e8ce" class="outline-4">
+<h4 id="org3a3e8ce"><span class="section-number-4">1.1.2.</span> Subclasses (Dog, Cat)</h4>
 <div class="outline-text-4" id="text-1-1-2">
 <p>
 Both <b>override</b> the <code>makeSound()</code> method to provide specific implementations.
@@ -368,8 +368,8 @@ Both <b>override</b> the <code>makeSound()</code> method to provide specific imp
 </div>
 </div>
 
-<div id="outline-container-org58a2129" class="outline-4">
-<h4 id="org58a2129"><span class="section-number-4">1.1.3.</span> Dynamic binding</h4>
+<div id="outline-container-org6f407f7" class="outline-4">
+<h4 id="org6f407f7"><span class="section-number-4">1.1.3.</span> Dynamic binding</h4>
 <div class="outline-text-4" id="text-1-1-3">
 <ul class="org-ul">
 <li>In the <code>main method</code>, we use an <code>Animal</code> <b>reference</b> to hold a <code>Dog</code> or <code>Cat</code> object.</li>
@@ -379,8 +379,8 @@ Both <b>override</b> the <code>makeSound()</code> method to provide specific imp
 </div>
 </div>
 
-<div id="outline-container-org353b89a" class="outline-4">
-<h4 id="org353b89a"><span class="section-number-4">1.1.4.</span> Runtime polymorphism</h4>
+<div id="outline-container-org6ab71f3" class="outline-4">
+<h4 id="org6ab71f3"><span class="section-number-4">1.1.4.</span> Runtime polymorphism</h4>
 <div class="outline-text-4" id="text-1-1-4">
 <p>
 The <b>reference</b> <b>variable</b> <code>myAnimal</code> can point to both <code>Dog</code> and <code>Cat</code>, and Java will invoke the <b>correct</b> <code>method</code> (<code>Dog</code> barks or <code>Cat</code> meows) based on the <code>actual object</code> type at <b>runtime</b>.
@@ -389,8 +389,8 @@ The <b>reference</b> <b>variable</b> <code>myAnimal</code> can point to both <co
 </div>
 </div>
 
-<div id="outline-container-org85995c7" class="outline-3">
-<h3 id="org85995c7"><span class="section-number-3">1.2.</span> Core Idea (Simplified)</h3>
+<div id="outline-container-org6e10134" class="outline-3">
+<h3 id="org6e10134"><span class="section-number-3">1.2.</span> Core Idea (Simplified)</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 <b>Java</b> decides which <code>method</code> signature is valid at <b>compile time</b>, but decides which <code>implementation</code> to run at <b>runtime</b>.
@@ -401,12 +401,12 @@ The <b>reference</b> <b>variable</b> <code>myAnimal</code> can point to both <co
 </p>
 </div>
 
-<div id="outline-container-org4989630" class="outline-4">
-<h4 id="org4989630"><span class="section-number-4">1.2.1.</span> Two Key Concepts</h4>
+<div id="outline-container-org68b63de" class="outline-4">
+<h4 id="org68b63de"><span class="section-number-4">1.2.1.</span> Two Key Concepts</h4>
 <div class="outline-text-4" id="text-1-2-1">
 </div>
 <ol class="org-ol">
-<li><a id="orgff80e08"></a>Declared Type (<b>compile-time</b>)<br />
+<li><a id="org1ac3900"></a>Declared Type (<b>compile-time</b>)<br />
 <div class="outline-text-5" id="text-1-2-1-1">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-type">Animal</span> <span class="org-variable-name">myAnimal</span>;
@@ -421,7 +421,7 @@ The <b>reference</b> <b>variable</b> <code>myAnimal</code> can point to both <co
 </div>
 </li>
 
-<li><a id="orgaccc4a2"></a>Actual Type (<b>runtime</b>)<br />
+<li><a id="orge8d9331"></a>Actual Type (<b>runtime</b>)<br />
 <div class="outline-text-5" id="text-1-2-1-2">
 <div class="org-src-container">
 <pre class="src src-java">myAnimal = <span class="org-keyword">new</span> <span class="org-type">Dog</span>();   <span class="org-comment-delimiter">// </span><span class="org-comment">or new Cat();</span>
@@ -436,7 +436,7 @@ The <b>reference</b> <b>variable</b> <code>myAnimal</code> can point to both <co
 </div>
 </li>
 
-<li><a id="orgac8ca49"></a>Examples:<br />
+<li><a id="org9c64521"></a>Examples:<br />
 <div class="outline-text-5" id="text-1-2-1-3">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-type">Animal</span> <span class="org-variable-name">myAnimal</span> = <span class="org-keyword">new</span> <span class="org-type">Dog</span>();
@@ -451,8 +451,8 @@ myAnimal.makeSound();   <span class="org-comment-delimiter">// </span><span clas
 </ol>
 </div>
 
-<div id="outline-container-org45c1372" class="outline-4">
-<h4 id="org45c1372"><span class="section-number-4">1.2.2.</span> The Rule You Must Remember</h4>
+<div id="outline-container-org8659a43" class="outline-4">
+<h4 id="org8659a43"><span class="section-number-4">1.2.2.</span> The Rule You Must Remember</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <p>
 <b>Method implementation</b> is chosen based on the <code>Actual Type</code> (<b>runtime</b>).
@@ -460,8 +460,8 @@ myAnimal.makeSound();   <span class="org-comment-delimiter">// </span><span clas
 </div>
 </div>
 
-<div id="outline-container-org2aa0ba8" class="outline-4">
-<h4 id="org2aa0ba8"><span class="section-number-4">1.2.3.</span> Exam</h4>
+<div id="outline-container-orgfefa65d" class="outline-4">
+<h4 id="orgfefa65d"><span class="section-number-4">1.2.3.</span> Exam</h4>
 <div class="outline-text-4" id="text-1-2-3">
 <p>
 Dynamic binding does <b>NOT</b> apply to <code>static methods</code>.

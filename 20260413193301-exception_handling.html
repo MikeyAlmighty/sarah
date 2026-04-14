@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-04-14 Tue 08:19 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Exception Handling</title>
+<meta name="author" content="Michael Leibbrandt" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<style>
+        body {
+          font-family: sans-serif;
+          line-height: 1.5;
+          margin: 2em;
+          background-color: #ffffff;
+          color: #111111;
+        }
+
+        a { color: #1a0dab; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Code block styling */
+        pre.src {
+          padding: 1em;
+          border-radius: 6px;
+          overflow-x: auto;
+          background-color: #f0f0f0;
+          color: #222222;
+          border: 1px solid #ddd;
+          font-family: monospace;
+        }
+
+        /* Syntax highlighting for Org-generated classes */
+        span.org-keyword { color: #005999; font-weight: bold; }
+        span.org-string  { color: #aa3333; }
+        span.org-comment { color: #666666; font-style: italic; }
+        span.org-type    { color: #007700; font-weight: bold; }
+        span.org-variable { color: #993399; }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+          body {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+          }
+
+          a { color: #8ab4f8; }
+
+          pre.src {
+            background-color: #2c2c2c;
+            color: #f0f0f0;
+            border: 1px solid #444;
+          }
+
+          /* Dark syntax */
+          span.org-keyword { color: #569cd6; font-weight: bold; }
+          span.org-string  { color: #d7a65a; }
+          span.org-comment { color: #999988; font-style: italic; }
+          span.org-type    { color: #6ab04c; font-weight: bold; }
+          span.org-variable { color: #c586c0; }
+        }
+
+        ul { list-style-type: disc; padding-left: 2em; }
+      </style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Exception Handling</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org6d7e23a">1. Exception Handling</a>
+<ul>
+<li><a href="#org037c5e2">1.1. Syntax</a></li>
+<li><a href="#org6f2b452">1.2. Example</a></li>
+</ul>
+</li>
+<li><a href="#org94f1766">2. Exception Handling with throw, try, and catch</a>
+<ul>
+<li><a href="#org74a1373">2.1. Key Concepts</a>
+<ul>
+<li><a href="#orgcb5e3cb">2.1.1. Example:</a></li>
+</ul>
+</li>
+<li><a href="#org5704f65">2.2. Throwing an Exception</a></li>
+<li><a href="#org98ed12a">2.3. Try-Catch Flow</a>
+<ul>
+<li><a href="#orgdf12e51">2.3.1. Catch Block Parameter</a></li>
+</ul>
+</li>
+<li><a href="#org83fe575">2.4. Exception Propagation</a></li>
+</ul>
+</li>
+<li><a href="#orgdcb2428">3. Example:</a>
+<ul>
+<li><a href="#orgf1d6d70">3.1. Why This Matters</a></li>
+<li><a href="#orgbe1531b">3.2. Key Insight</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6d7e23a" class="outline-2">
+<h2 id="org6d7e23a"><span class="section-number-2">1.</span> Exception Handling</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+<b>Exceptions</b> are <code>thrown</code> from a <code>method</code>.
+The <b>caller</b> of the <code>method</code> can <b>catch</b> and <i>handle</i> the <b>exception</b>.
+</p>
+</div>
+
+<div id="outline-container-org037c5e2" class="outline-3">
+<h3 id="org037c5e2"><span class="section-number-3">1.1.</span> Syntax</h3>
+<div class="outline-text-3" id="text-1-1">
+<div class="org-src-container">
+<pre class="src src-java"><span class="org-keyword">try</span> {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Code to run
+</span>    <span class="org-comment-delimiter">// </span><span class="org-comment">Code that may throw an exception
+</span>}
+<span class="org-keyword">catch</span> (Type ex) {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Handle exception
+</span>}
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org6f2b452" class="outline-3">
+<h3 id="org6f2b452"><span class="section-number-3">1.2.</span> Example</h3>
+<div class="outline-text-3" id="text-1-2">
+<div class="org-src-container">
+<pre class="src src-java"><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Scanner</span>;
+
+<span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">QuotientWithException</span> {
+    <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">int</span> <span class="org-function-name">quotient</span>(<span class="org-type">int</span> <span class="org-variable-name">number1</span>, <span class="org-type">int</span> <span class="org-variable-name">number2</span>) {
+        <span class="org-keyword">if</span> (number2 == 0)
+            <span class="org-keyword">throw</span> <span class="org-keyword">new</span> <span class="org-type">ArithmeticException</span>(<span class="org-string">"Divisor cannot be zero"</span>);
+
+        <span class="org-keyword">return</span> number1 / number2;
+    }
+
+    <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
+        <span class="org-type">Scanner</span> <span class="org-variable-name">input</span> = <span class="org-keyword">new</span> <span class="org-type">Scanner</span>(System.in);
+
+        <span class="org-comment-delimiter">// </span><span class="org-comment">Prompt the user to enter two integers
+</span>        System.out.print(<span class="org-string">"Enter two integers: "</span>);
+        <span class="org-type">int</span> <span class="org-variable-name">number1</span> = input.nextInt();
+        <span class="org-type">int</span> <span class="org-variable-name">number2</span> = input.nextInt();
+
+        <span class="org-keyword">try</span> {
+            <span class="org-type">int</span> <span class="org-variable-name">result</span> = quotient(number1, number2);
+            System.out.println(number1 + <span class="org-string">" / "</span> + number2 + <span class="org-string">" is "</span> + result);
+        }
+        <span class="org-keyword">catch</span> (ArithmeticException ex) {
+            System.out.println(<span class="org-string">"Exception: an integer cannot be divided by zero "</span>);
+        }
+
+        System.out.println(<span class="org-string">"Execution continues ..."</span>);
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org94f1766" class="outline-2">
+<h2 id="org94f1766"><span class="section-number-2">2.</span> Exception Handling with throw, try, and catch</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org74a1373" class="outline-3">
+<h3 id="org74a1373"><span class="section-number-3">2.1.</span> Key Concepts</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+<b>- An *exception</b> is an object representing an <i>error</i> or <i>abnormal condition</i>.
+</p>
+</div>
+
+<div id="outline-container-orgcb5e3cb" class="outline-4">
+<h4 id="orgcb5e3cb"><span class="section-number-4">2.1.1.</span> Example:</h4>
+<div class="outline-text-4" id="text-2-1-1">
+<p>
+<code>new ArithmeticException("Divisor cannot be zero")</code>
+</p>
+
+<ul class="org-ul">
+<li>This creates an <b>exception</b> object from the class <code>java.lang.ArithmeticException</code>.</li>
+<li>The string message <b>describes</b> the <code>error</code>.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5704f65" class="outline-3">
+<h3 id="org5704f65"><span class="section-number-3">2.2.</span> Throwing an Exception</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+The <code>throw</code> statement is used to <b>signal</b> that an <code>error</code> has occurred.
+<b>“Throwing an exception”</b> means passing this <b>exception</b> object to another part of the program.
+</p>
+
+<p>
+This interrupts the normal flow of execution.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org98ed12a" class="outline-3">
+<h3 id="org98ed12a"><span class="section-number-3">2.3.</span> Try-Catch Flow</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li>Code that may cause an exception is placed inside a <code>try</code> block.</li>
+</ul>
+
+<p>
+If an exception occurs:
+</p>
+<ul class="org-ul">
+<li>Execution in the <code>try</code> block stops immediately.</li>
+<li>Control transfers to the matching <code>catch</code> block.</li>
+</ul>
+
+<p>
+The <code>catch</code> block handles the exception.
+</p>
+
+<p>
+<b>After handling, execution continues *after</b> the <code>catch</code> block (not back to where the exception occurred).
+</p>
+</div>
+
+<div id="outline-container-orgdf12e51" class="outline-4">
+<h4 id="orgdf12e51"><span class="section-number-4">2.3.1.</span> Catch Block Parameter</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<p>
+Syntax: <code>catch (ArithmeticException ex)</code>
+</p>
+
+<ul class="org-ul">
+<li><code>ex</code> is like a method <b>parameter</b>.</li>
+<li>It holds the thrown <code>exception object</code>.</li>
+<li>The type specifies which exceptions can be <b>caught</b>.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org83fe575" class="outline-3">
+<h3 id="org83fe575"><span class="section-number-3">2.4.</span> Exception Propagation</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+A method can:
+</p>
+<ul class="org-ul">
+<li>Handle the <code>exception</code> itself, OR</li>
+<li><code>Throw</code> it to its <b>caller</b></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdcb2428" class="outline-2">
+<h2 id="orgdcb2428"><span class="section-number-2">3.</span> Example:</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li><code>main</code> calls <code>quotient</code></li>
+<li>If <code>quotient</code> fails → it <b>throws</b> an <code>exception</code></li>
+<li><code>main</code> <b>catches</b> and <b>handles</b> it</li>
+</ul>
+</div>
+
+<div id="outline-container-orgf1d6d70" class="outline-3">
+<h3 id="orgf1d6d70"><span class="section-number-3">3.1.</span> Why This Matters</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li>Separates error handling from normal logic</li>
+<li>Allows lower-level methods (e.g., libraries) to <b>defer</b> handling</li>
+<li>Gives higher-level code flexibility to decide what to do</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgbe1531b" class="outline-3">
+<h3 id="orgbe1531b"><span class="section-number-3">3.2.</span> Key Insight</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li><b>Without</b> <code>exception handling</code>: <code>Methods</code> must handle <i>errors</i> themselves (or terminate the program).</li>
+<li><b>With</b> <code>exception handling</code>: <i>Errors</i> can be <b>propagated</b> upward.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

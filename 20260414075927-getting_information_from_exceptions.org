@@ -1,0 +1,25 @@
+:PROPERTIES:
+:ID:       3a3cb596-bd04-4f3c-a044-0226a640d39f
+:END:
+#+title: Getting Information from Exceptions
+
+* Getting Information from Exceptions
+
+An =exception object= contains valuable information about the exception.
+
+You may use the following =instance methods= in the ~java.lang.Throwable~ class to get information regarding the exception:
+
+| Method                                | Description                                                                                      |
+|---------------------------------------+--------------------------------------------------------------------------------------------------|
+| +getMessage(): String                 | Returns the message that describes this exception object.                                        |
+| +toString(): String                   | Returns the full exception class name, followed by ": ", and the result of getMessage().         |
+| +printStackTrace(): void              | Prints the Throwable object and its call stack trace information to the console.                 |
+| +getStackTrace(): StackTraceElement[] | Returns an array of stack trace elements representing the stack trace for this exception object. |
+
+** printStackTrace()
+
+Lists all the *methods* in the [[id:afb99458-6ae3-45d3-969c-e4a5e20be9b0][call stack]], which provides valuable information for debugging *runtime errors*.
+
+** getStackTrace()
+
+Provides programmatic access to the *stack trace information* printed by ~printStackTrace()~.
