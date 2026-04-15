@@ -1,0 +1,40 @@
+:PROPERTIES:
+:ID:       9a299a9d-8c57-489e-95c5-483007f2b4a8
+:END:
+#+title: BufferedReader
+
+* BufferedReader
+
+(Efficient File Reading)
+
+- ~BufferedReader~ used to *efficiently* read files.
+- *Buffers* the input and allowing *line-by-line reading*. (Improving performance compared to reading characters one by one).
+- Useful when working with large files / processing structured data *line by line*.
+
+#+BEGIN_SRC java
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class BufferedReaderExample {
+    public static void main(String[] args) {
+        // Specify the file name
+        String fileName = "example.txt";
+
+        // Use try-with-resources to automatically close the BufferedReader
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+
+            // Read lines until the end of the file
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line); // Print each line to the console
+            }
+
+            System.out.println("File reading completed.");
+
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + e.getMessage());
+        }
+    }
+}
+#+END_SRC

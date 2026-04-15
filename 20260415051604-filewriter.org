@@ -1,0 +1,48 @@
+:PROPERTIES:
+:ID:       6f26410b-0b10-4f78-ad2c-256c817af23a
+:END:
+#+title: FileWriter
+
+* FileWriter
+
+- Used to write ~character data~ *directly* to a *file*.
+- Allows writing data *character by character* or as a *whole string*.
+
+** Example
+
+#+BEGIN_SRC java
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class FileWriterExample {
+    public static void main(String[] args) {
+        try {
+            // Create a FileWriter object to write to "example.txt"
+            FileWriter writer = new FileWriter("example.txt");
+
+            // Write some text to the file
+            writer.write("Hello, FileWriter!\n");
+            writer.write("Writing to a file in Java.");
+
+            // Always close the writer to flush the data and save the file
+            writer.close();
+
+            // Print confirmation to the console
+            System.out.println("File written successfully.");
+        } catch (IOException e) {
+            // Handle any I/O exceptions that may occur
+            System.out.println("An error occurred: " + e.getMessage());
+        }
+    }
+}
+#+END_SRC
+
+*** Note
+
+By default, ~FileWriter~ *overwrites* the *file*.
+- To append to an existing file, pass ~true~ as the second parameter.
+  
+#+BEGIN_SRC java
+    FileWriter writer = new FileWriter("example.txt", true); // 'true' enables append mode
+#+END_SRC
+

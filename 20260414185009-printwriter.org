@@ -59,6 +59,18 @@ public class WriteData {
 }
 #+END_SRC
 
+~PrintWriter~ provides *better formatting* capabilities than [[id:c60438de-9931-45d5-97f3-303dd877d781][FileWriter, BufferedWriter]]:
+
+**** Example
+
+#+BEGIN_SRC java
+try (PrintWriter writer = new PrintWriter("formatted.txt")) {
+    writer.printf("Name: %s, Age: %d", "John", 25);
+} catch (IOException e) {
+    e.printStackTrace();
+}
+#+END_SRC
+
 *** See Also
 
 - [[id:0cd8b7c0-e7e2-4813-9dd7-e2ed160ac5c1][try-with-resources]]

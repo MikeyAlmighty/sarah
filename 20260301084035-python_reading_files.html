@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-14 Tue 19:34 -->
+<!-- 2026-04-15 Wed 05:46 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python Reading Files</title>
@@ -256,32 +256,32 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9ac0351">1. Python Reading Files</a>
+<li><a href="#org9bcd831">1. Python Reading Files</a>
 <ul>
-<li><a href="#orgf837059">1.1. Overview</a>
+<li><a href="#orgc44bd0e">1.1. Overview</a>
 <ul>
-<li><a href="#org11a2aa2">1.1.1. Key idea:</a></li>
+<li><a href="#org77d07e6">1.1.1. Key idea:</a></li>
 </ul>
 </li>
-<li><a href="#org7d4065e">1.2. Reading Methods</a></li>
-<li><a href="#org258580a">1.3. Reading Using Context Manager</a></li>
-<li><a href="#orgdfe35a2">1.4. Iterating Through a File</a></li>
-<li><a href="#org974599b">1.5. Resetting the Cursor</a></li>
-<li><a href="#orgac2d4f0">1.6. Text vs Binary Reading</a></li>
-<li><a href="#orgfc726b1">1.7. Error Handling Strategy</a></li>
-<li><a href="#org2ffdd54">1.8. Conceptual Model</a></li>
+<li><a href="#org82786ba">1.2. Reading Methods</a></li>
+<li><a href="#org814e126">1.3. Reading Using Context Manager</a></li>
+<li><a href="#org3d1aec5">1.4. Iterating Through a File</a></li>
+<li><a href="#orgd305a71">1.5. Resetting the Cursor</a></li>
+<li><a href="#org581e527">1.6. Text vs Binary Reading</a></li>
+<li><a href="#orgee6de4a">1.7. Error Handling Strategy</a></li>
+<li><a href="#org1970411">1.8. Conceptual Model</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org9ac0351" class="outline-2">
-<h2 id="org9ac0351"><span class="section-number-2">1.</span> Python Reading Files</h2>
+<div id="outline-container-org9bcd831" class="outline-2">
+<h2 id="org9bcd831"><span class="section-number-2">1.</span> Python Reading Files</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgf837059" class="outline-3">
-<h3 id="orgf837059"><span class="section-number-3">1.1.</span> Overview</h3>
+<div id="outline-container-orgc44bd0e" class="outline-3">
+<h3 id="orgc44bd0e"><span class="section-number-3">1.1.</span> Overview</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Reading files in Python means consuming data from a file stream provided by the operating system.
@@ -289,8 +289,8 @@ A file object maintains an internal <code>cursor</code> that <b>advances</b> as 
 </p>
 </div>
 
-<div id="outline-container-org11a2aa2" class="outline-4">
-<h4 id="org11a2aa2"><span class="section-number-4">1.1.1.</span> Key idea:</h4>
+<div id="outline-container-org77d07e6" class="outline-4">
+<h4 id="org77d07e6"><span class="section-number-4">1.1.1.</span> Key idea:</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 Reading changes the cursor position.
@@ -300,8 +300,8 @@ Once content is consumed, subsequent reads return less (or nothing) unless the c
 </div>
 </div>
 
-<div id="outline-container-org7d4065e" class="outline-3">
-<h3 id="org7d4065e"><span class="section-number-3">1.2.</span> Reading Methods</h3>
+<div id="outline-container-org82786ba" class="outline-3">
+<h3 id="org82786ba"><span class="section-number-3">1.2.</span> Reading Methods</h3>
 <div class="outline-text-3" id="text-1-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -349,8 +349,8 @@ Once content is consumed, subsequent reads return less (or nothing) unless the c
 </div>
 </div>
 
-<div id="outline-container-org258580a" class="outline-3">
-<h3 id="org258580a"><span class="section-number-3">1.3.</span> Reading Using Context Manager</h3>
+<div id="outline-container-org814e126" class="outline-3">
+<h3 id="org814e126"><span class="section-number-3">1.3.</span> Reading Using Context Manager</h3>
 <div class="outline-text-3" id="text-1-3">
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-keyword">try</span>:
@@ -374,8 +374,8 @@ Important behavior:
 </div>
 </div>
 
-<div id="outline-container-orgdfe35a2" class="outline-3">
-<h3 id="orgdfe35a2"><span class="section-number-3">1.4.</span> Iterating Through a File</h3>
+<div id="outline-container-org3d1aec5" class="outline-3">
+<h3 id="org3d1aec5"><span class="section-number-3">1.4.</span> Iterating Through a File</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 A file object is iterable.
@@ -406,8 +406,8 @@ Why iteration is powerful:
 </div>
 </div>
 
-<div id="outline-container-org974599b" class="outline-3">
-<h3 id="org974599b"><span class="section-number-3">1.5.</span> Resetting the Cursor</h3>
+<div id="outline-container-orgd305a71" class="outline-3">
+<h3 id="orgd305a71"><span class="section-number-3">1.5.</span> Resetting the Cursor</h3>
 <div class="outline-text-3" id="text-1-5">
 <p>
 To read again from the beginning:
@@ -424,8 +424,8 @@ The argument represents byte position from the start.
 </div>
 </div>
 
-<div id="outline-container-orgac2d4f0" class="outline-3">
-<h3 id="orgac2d4f0"><span class="section-number-3">1.6.</span> Text vs Binary Reading</h3>
+<div id="outline-container-org581e527" class="outline-3">
+<h3 id="org581e527"><span class="section-number-3">1.6.</span> Text vs Binary Reading</h3>
 <div class="outline-text-3" id="text-1-6">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -466,8 +466,8 @@ Text mode decodes bytes using an <a href="20260116075812-encoding_scheme.html#ID
 </div>
 </div>
 
-<div id="outline-container-orgfc726b1" class="outline-3">
-<h3 id="orgfc726b1"><span class="section-number-3">1.7.</span> Error Handling Strategy</h3>
+<div id="outline-container-orgee6de4a" class="outline-3">
+<h3 id="orgee6de4a"><span class="section-number-3">1.7.</span> Error Handling Strategy</h3>
 <div class="outline-text-3" id="text-1-7">
 <p>
 Generic exception handling catches:
@@ -485,8 +485,8 @@ More specific exceptions can be used for precise control.
 </div>
 </div>
 
-<div id="outline-container-org2ffdd54" class="outline-3">
-<h3 id="org2ffdd54"><span class="section-number-3">1.8.</span> Conceptual Model</h3>
+<div id="outline-container-org1970411" class="outline-3">
+<h3 id="org1970411"><span class="section-number-3">1.8.</span> Conceptual Model</h3>
 <div class="outline-text-3" id="text-1-8">
 <p>
 <b>Reading</b> a file is not copying a container — it is advancing through a <b>stream</b>.

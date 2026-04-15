@@ -1,0 +1,31 @@
+:PROPERTIES:
+:ID:       b823be43-36db-4848-8b52-b9777b738b1b
+:END:
+#+title: File Exception Handling
+
+* File Exception Handling
+
+Common *exceptions* include ~FileNotFoundException~ and ~IOException~.
+
+- ~FileNotFoundException~ attempting to access a file that *doesn’t exist* or *isn’t accessible*.
+- ~IOException~, on the other hand, is a more /general exception/ thrown when an *I/O operation fails*.
+
+** Example
+
+#+BEGIN_SRC java
+import java.io.FileReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+public class FileOperationExample {
+    public static void main(String[] args) {
+        try {
+            FileReader file = new FileReader("missing.txt");  // Try to read a non-existing file
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found: " + e.getMessage());  // Specific handling for FileNotFoundException
+        } catch (IOException e) {
+            System.out.println("I/O error: " + e.getMessage());  // General handling for I/O errors
+        }
+    }
+}
+#+END_SRC

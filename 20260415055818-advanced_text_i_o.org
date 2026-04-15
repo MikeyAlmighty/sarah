@@ -1,0 +1,67 @@
+:PROPERTIES:
+:ID:       e82ee635-e4be-4ad8-991c-7c2d2fcc9000
+:END:
+#+title: Advanced Text I/O
+
+* Advanced Text I/O
+
+** Large Files
+
+- ~java.nio.file~:
+  - Provides *efficient and scalable* handling of *large files* (compared to ~java.io~).
+  - Offers *non-blocking I/O (NIO)*, *memory-mapped files*, and *bulk file operations*.
+
+*** Example: Read
+
+~Files.lines()~ reads a file *line by line* as a *stream*.
+- *Reduced* /memory consumption/ (instead of loading *entire* file into /memory/)
+
+
+#+BEGIN_SRC java
+import java.io.IOException;
+import java.nio.file.Files; // nio
+import java.nio.file.Path; // nio
+import java.util.stream.Stream;
+
+public class ReadLargeFile {
+    public static void main(String[] args) {
+        Path filePath = Path.of("largefile.txt");
+
+        try (Stream<String> lines = Files.lines(filePath)) {
+            // Count the number of lines containing the word "Hello"
+            long count = lines.filter(line -> line.contains("Hello")).count();
+            System.out.println("Number of lines containing 'Hello': " + count);
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + e.getMessage());
+        }
+    }
+}
+#+END_SRC
+
+*** Example: Write
+
+~Files.write()~ Writing multiple lines efficiently.
+- Efficient for *bulk writes*
+
+#+BEGIN_SRC java
+import java.io.IOException;
+import java.nio.file.Files; // nio
+import java.nio.file.Path; // nio
+import java.nio.file.StandardOpenOption; //nio
+import java.util.List;
+
+public class WriteLargeFile {
+    public static void main(String[] args) {
+        Path filePath = Path.of("output.txt");
+        List<String> lines = List.of("Line 4", "Line 5", "Line 6");
+
+        try {
+            // Append the new lines to the file
+            Files.write(filePath, lines, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+            System.out.println("File written successfully.");
+        } catch (IOException e) {
+            System.out.println("Error writing file: " + e.getMessage());
+        }
+    }
+}
+#+END_SRC

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-14 Tue 19:34 -->
+<!-- 2026-04-15 Wed 05:46 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>PrintWriter</title>
@@ -288,12 +288,12 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc0a0250">1. PrintWriter</a>
+<li><a href="#orga300ba1">1. PrintWriter</a>
 <ul>
-<li><a href="#org744b3f7">1.1. Syntax</a>
+<li><a href="#org426ffb6">1.1. Syntax</a>
 <ul>
-<li><a href="#orgbc84b59">1.1.1. Example</a></li>
-<li><a href="#org6c1eef4">1.1.2. See Also</a></li>
+<li><a href="#org9c4cd24">1.1.1. Example</a></li>
+<li><a href="#orga30d816">1.1.2. See Also</a></li>
 </ul>
 </li>
 </ul>
@@ -302,16 +302,16 @@
 </div>
 </div>
 
-<div id="outline-container-orgc0a0250" class="outline-2">
-<h2 id="orgc0a0250"><span class="section-number-2">1.</span> PrintWriter</h2>
+<div id="outline-container-orga300ba1" class="outline-2">
+<h2 id="orga300ba1"><span class="section-number-2">1.</span> PrintWriter</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 The <code>java.io.PrintWriter</code> class can be used to <b>create</b> and <b>write</b> data to a text file.
 </p>
 </div>
 
-<div id="outline-container-org744b3f7" class="outline-3">
-<h3 id="org744b3f7"><span class="section-number-3">1.1.</span> Syntax</h3>
+<div id="outline-container-org426ffb6" class="outline-3">
+<h3 id="org426ffb6"><span class="section-number-3">1.1.</span> Syntax</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-type">PrintWriter</span> <span class="org-variable-name">output</span> = <span class="org-keyword">new</span> <span class="org-type">PrintWriter</span>(filename);
@@ -410,8 +410,8 @@ You can invoke the <code>print</code>, <code>println</code>, and <code>printf</c
 </table>
 </div>
 
-<div id="outline-container-orgbc84b59" class="outline-4">
-<h4 id="orgbc84b59"><span class="section-number-4">1.1.1.</span> Example</h4>
+<div id="outline-container-org9c4cd24" class="outline-4">
+<h4 id="org9c4cd24"><span class="section-number-4">1.1.1.</span> Example</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">WriteData</span> {
@@ -438,11 +438,30 @@ You can invoke the <code>print</code>, <code>println</code>, and <code>printf</c
 }
 </pre>
 </div>
-</div>
+
+<p>
+<code>PrintWriter</code> provides <b>better formatting</b> capabilities than <a href="20260415051547-filewriter_vs_bufferedwriter.html#ID-c60438de-9931-45d5-97f3-303dd877d781">FileWriter, BufferedWriter</a>:
+</p>
 </div>
 
-<div id="outline-container-org6c1eef4" class="outline-4">
-<h4 id="org6c1eef4"><span class="section-number-4">1.1.2.</span> See Also</h4>
+<ol class="org-ol">
+<li><a id="orgd0d39b2"></a>Example<br />
+<div class="outline-text-5" id="text-1-1-1-1">
+<div class="org-src-container">
+<pre class="src src-java"><span class="org-keyword">try</span> (<span class="org-type">PrintWriter</span> <span class="org-variable-name">writer</span> = <span class="org-keyword">new</span> <span class="org-type">PrintWriter</span>(<span class="org-string">"formatted.txt"</span>)) {
+    writer.printf(<span class="org-string">"Name: %s, Age: %d"</span>, <span class="org-string">"John"</span>, 25);
+} <span class="org-keyword">catch</span> (IOException e) {
+    e.printStackTrace();
+}
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-orga30d816" class="outline-4">
+<h4 id="orga30d816"><span class="section-number-4">1.1.2.</span> See Also</h4>
 <div class="outline-text-4" id="text-1-1-2">
 <ul class="org-ul">
 <li><a href="20260414190141-try_with_resources.html#ID-0cd8b7c0-e7e2-4813-9dd7-e2ed160ac5c1">try-with-resources</a></li>

@@ -1,0 +1,29 @@
+:PROPERTIES:
+:ID:       f035bb96-4594-4586-a61c-d6086df90e57
+:END:
+#+title: BufferedWriter
+
+* BufferedWriter
+
+- *Buffers* characters before *writing* them.
+- Efficient for *writing large text* files (Reduces I/O operations).
+- Provides a convenient ~newLine()~ method for writing new lines.
+
+** Example
+#+BEGIN_SRC java
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class Example {
+    public static void main(String[] args) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"))) {
+            writer.write("Hello, world!");
+            writer.newLine();
+            writer.write("This is a BufferedWriter example.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+#+END_SRC
