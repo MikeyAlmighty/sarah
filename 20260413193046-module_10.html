@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Module 10</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,91 +254,65 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Module 10</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#orgf83f9ab">1. Module 10</a>
-<ul>
-<li><a href="#org562fcde">1.1. Exceptions</a>
-<ul>
-<li><a href="#org90e9288">1.1.1. Exception Handling</a></li>
-<li><a href="#orgfaa49e0">1.1.2. Exception Types</a></li>
-<li><a href="#org4e63300">1.1.3. Declaring, Throwing and Catching Exceptions</a></li>
-<li><a href="#orgff89cca">1.1.4. Throw vs Throws</a></li>
-<li><a href="#orgead506c">1.1.5. Custom Exceptions</a></li>
-<li><a href="#orgf0774e6">1.1.6. Getting Information from Exceptions</a></li>
-<li><a href="#org214b706">1.1.7. Finally clause</a></li>
-<li><a href="#orgd20accb">1.1.8. When to use Exceptions</a></li>
-</ul>
-</li>
-<li><a href="#org278fb7a">1.2. I/O</a>
-<ul>
-<li><a href="#org42968aa">1.2.1. Understanding Streams</a></li>
-<li><a href="#org7eb8799">1.2.2. File Input and Output</a></li>
-<li><a href="#org9c923f5">1.2.3. try-with-resources</a></li>
-<li><a href="#org68e39d0">1.2.4. File Handling Basics</a></li>
-<li><a href="#org8750820">1.2.5. Reading Data from the Web</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+
+<div id="outline-container-org7bbc73c" class="outline-2">
+<h2 id="org7bbc73c">Module 10</h2>
+<div class="outline-text-2" id="text-org7bbc73c">
+</div>
+<div id="outline-container-org11d2f27" class="outline-3">
+<h3 id="org11d2f27">Exceptions</h3>
+<div class="outline-text-3" id="text-org11d2f27">
+</div>
+<div id="outline-container-org1d9547d" class="outline-4">
+<h4 id="org1d9547d"><a href="20260413193301-exception_handling.html#ID-95428e3c-83e5-4d44-8d8e-8b2baa2b7696">Exception Handling</a></h4>
+</div>
+<div id="outline-container-org2550c7f" class="outline-4">
+<h4 id="org2550c7f"><a href="20260413194647-exception_types.html#ID-e9b43d53-8367-4ab6-9416-f852b3efb73d">Exception Types</a></h4>
+</div>
+<div id="outline-container-orgf177d61" class="outline-4">
+<h4 id="orgf177d61"><a href="20260414064221-declaring_throwing_and_catching_exceptions.html#ID-712fb192-0dca-4165-958e-63d6a83ec943">Declaring, Throwing and Catching Exceptions</a></h4>
+</div>
+<div id="outline-container-org305d84b" class="outline-4">
+<h4 id="org305d84b"><a href="20260415044729-throw_vs_throws.html#ID-c0e977b4-1a50-4f72-981e-045e20f9fe16">Throw vs Throws</a></h4>
+</div>
+<div id="outline-container-org757b6ba" class="outline-4">
+<h4 id="org757b6ba"><a href="20260415044507-custom_exceptions.html#ID-5fe6b5cd-0c10-4029-9093-a94a2a1a425a">Custom Exceptions</a></h4>
+</div>
+<div id="outline-container-orgfbbe97d" class="outline-4">
+<h4 id="orgfbbe97d"><a href="20260414075927-getting_information_from_exceptions.html#ID-3a3cb596-bd04-4f3c-a044-0226a640d39f">Getting Information from Exceptions</a></h4>
+</div>
+<div id="outline-container-orge7b28f8" class="outline-4">
+<h4 id="orge7b28f8"><a href="20260414064239-finally_clause.html#ID-672c2838-35ee-4cb2-aa97-5b15d7cf9e75">Finally clause</a></h4>
+</div>
+<div id="outline-container-org7eebb01" class="outline-4">
+<h4 id="org7eebb01"><a href="20260414064256-when_to_use_exceptions.html#ID-d29bc8c1-c096-4068-a116-79b556c9723c">When to use Exceptions</a></h4>
 </div>
 </div>
 
-<div id="outline-container-orgf83f9ab" class="outline-2">
-<h2 id="orgf83f9ab"><span class="section-number-2">1.</span> Module 10</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-org87aa5dc" class="outline-3">
+<h3 id="org87aa5dc">I/O</h3>
+<div class="outline-text-3" id="text-org87aa5dc">
 </div>
-<div id="outline-container-org562fcde" class="outline-3">
-<h3 id="org562fcde"><span class="section-number-3">1.1.</span> Exceptions</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-org13dc5f1" class="outline-4">
+<h4 id="org13dc5f1"><a href="20260415050510-understanding_streams.html#ID-e0f41f9f-247e-45b7-b221-cc226acdf60c">Understanding Streams</a></h4>
 </div>
-<div id="outline-container-org90e9288" class="outline-4">
-<h4 id="org90e9288"><span class="section-number-4">1.1.1.</span> <a href="20260413193301-exception_handling.html#ID-95428e3c-83e5-4d44-8d8e-8b2baa2b7696">Exception Handling</a></h4>
+<div id="outline-container-org0d81118" class="outline-4">
+<h4 id="org0d81118"><a href="20260414064317-file_input_and_output.html#ID-95b41b26-c633-46c6-8db3-e08acfb121ca">File Input and Output</a></h4>
 </div>
-<div id="outline-container-orgfaa49e0" class="outline-4">
-<h4 id="orgfaa49e0"><span class="section-number-4">1.1.2.</span> <a href="20260413194647-exception_types.html#ID-e9b43d53-8367-4ab6-9416-f852b3efb73d">Exception Types</a></h4>
+<div id="outline-container-org13216a5" class="outline-4">
+<h4 id="org13216a5"><a href="20260414190141-try_with_resources.html#ID-0cd8b7c0-e7e2-4813-9dd7-e2ed160ac5c1">try-with-resources</a></h4>
 </div>
-<div id="outline-container-org4e63300" class="outline-4">
-<h4 id="org4e63300"><span class="section-number-4">1.1.3.</span> <a href="20260414064221-declaring_throwing_and_catching_exceptions.html#ID-712fb192-0dca-4165-958e-63d6a83ec943">Declaring, Throwing and Catching Exceptions</a></h4>
+<div id="outline-container-org4ed7472" class="outline-4">
+<h4 id="org4ed7472"><a href="20260415052531-file_handling_basics.html#ID-69f3e465-1735-42f1-88bd-1cd4d45e9235">File Handling Basics</a></h4>
 </div>
-<div id="outline-container-orgff89cca" class="outline-4">
-<h4 id="orgff89cca"><span class="section-number-4">1.1.4.</span> <a href="20260415044729-throw_vs_throws.html#ID-c0e977b4-1a50-4f72-981e-045e20f9fe16">Throw vs Throws</a></h4>
+<div id="outline-container-org3eed3b8" class="outline-4">
+<h4 id="org3eed3b8"><a href="20260415055818-advanced_text_i_o.html#ID-e82ee635-e4be-4ad8-991c-7c2d2fcc9000">Advanced Text I/O</a></h4>
 </div>
-<div id="outline-container-orgead506c" class="outline-4">
-<h4 id="orgead506c"><span class="section-number-4">1.1.5.</span> <a href="20260415044507-custom_exceptions.html#ID-5fe6b5cd-0c10-4029-9093-a94a2a1a425a">Custom Exceptions</a></h4>
+<div id="outline-container-org918178b" class="outline-4">
+<h4 id="org918178b"><a href="20260414064357-reading_data_from_the_web.html#ID-7a22f158-4076-4386-8040-5389efb3b17c">Reading Data from the Web</a></h4>
 </div>
-<div id="outline-container-orgf0774e6" class="outline-4">
-<h4 id="orgf0774e6"><span class="section-number-4">1.1.6.</span> <a href="20260414075927-getting_information_from_exceptions.html#ID-3a3cb596-bd04-4f3c-a044-0226a640d39f">Getting Information from Exceptions</a></h4>
-</div>
-<div id="outline-container-org214b706" class="outline-4">
-<h4 id="org214b706"><span class="section-number-4">1.1.7.</span> <a href="20260414064239-finally_clause.html#ID-672c2838-35ee-4cb2-aa97-5b15d7cf9e75">Finally clause</a></h4>
-</div>
-<div id="outline-container-orgd20accb" class="outline-4">
-<h4 id="orgd20accb"><span class="section-number-4">1.1.8.</span> <a href="20260414064256-when_to_use_exceptions.html#ID-d29bc8c1-c096-4068-a116-79b556c9723c">When to use Exceptions</a></h4>
-</div>
-</div>
-
-<div id="outline-container-org278fb7a" class="outline-3">
-<h3 id="org278fb7a"><span class="section-number-3">1.2.</span> I/O</h3>
-<div class="outline-text-3" id="text-1-2">
-</div>
-<div id="outline-container-org42968aa" class="outline-4">
-<h4 id="org42968aa"><span class="section-number-4">1.2.1.</span> <a href="20260415050510-understanding_streams.html#ID-e0f41f9f-247e-45b7-b221-cc226acdf60c">Understanding Streams</a></h4>
-</div>
-<div id="outline-container-org7eb8799" class="outline-4">
-<h4 id="org7eb8799"><span class="section-number-4">1.2.2.</span> <a href="20260414064317-file_input_and_output.html#ID-95b41b26-c633-46c6-8db3-e08acfb121ca">File Input and Output</a></h4>
-</div>
-<div id="outline-container-org9c923f5" class="outline-4">
-<h4 id="org9c923f5"><span class="section-number-4">1.2.3.</span> <a href="20260414190141-try_with_resources.html#ID-0cd8b7c0-e7e2-4813-9dd7-e2ed160ac5c1">try-with-resources</a></h4>
-</div>
-<div id="outline-container-org68e39d0" class="outline-4">
-<h4 id="org68e39d0"><span class="section-number-4">1.2.4.</span> <a href="20260415052531-file_handling_basics.html#ID-69f3e465-1735-42f1-88bd-1cd4d45e9235">File Handling Basics</a></h4>
-</div>
-<div id="outline-container-org8750820" class="outline-4">
-<h4 id="org8750820"><span class="section-number-4">1.2.5.</span> <a href="20260414064357-reading_data_from_the_web.html#ID-7a22f158-4076-4386-8040-5389efb3b17c">Reading Data from the Web</a></h4>
+<div id="outline-container-org07c6e63" class="outline-4">
+<h4 id="org07c6e63"><a href="20260415061324-file_exception_handling.html#ID-b823be43-36db-4848-8b52-b9777b738b1b">File Exception Handling</a></h4>
 </div>
 </div>
 </div>

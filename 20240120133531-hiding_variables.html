@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Hiding Variables</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,26 +254,10 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Hiding Variables</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org6f0bcb9">1. Hiding Variables</a>
-<ul>
-<li><a href="#orgd7b85cb">1.1. Example</a>
-<ul>
-<li><a href="#org4878b56">1.1.1. <span class="underline">Exam Trick</span></a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-org6f0bcb9" class="outline-2">
-<h2 id="org6f0bcb9"><span class="section-number-2">1.</span> Hiding Variables</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgf6f32c8" class="outline-2">
+<h2 id="orgf6f32c8">Hiding Variables</h2>
+<div class="outline-text-2" id="text-orgf6f32c8">
 <p>
 Java <b>doesn’t</b> allow variables to be <a href="20240120133450-overriding_a_method.html#ID-c67b24a4-82f7-4423-83a9-75fc1c566166">overriden</a>.
 </p>
@@ -297,9 +283,9 @@ Let’s take a look at a hidden variable:
 </p>
 </div>
 
-<div id="outline-container-orgd7b85cb" class="outline-3">
-<h3 id="orgd7b85cb"><span class="section-number-3">1.1.</span> Example</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-org7306368" class="outline-3">
+<h3 id="org7306368">Example</h3>
+<div class="outline-text-3" id="text-org7306368">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">class</span> <span class="org-type">Carnivore</span> {
     <span class="org-keyword">protected</span> <span class="org-type">boolean</span> <span class="org-variable-name">hasFur</span> = <span class="org-constant">false</span>;
@@ -329,9 +315,9 @@ The output changes depending on the reference variable used.
 </p>
 </div>
 
-<div id="outline-container-org4878b56" class="outline-4">
-<h4 id="org4878b56"><span class="section-number-4">1.1.1.</span> <span class="underline">Exam Trick</span></h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-orga3a1acc" class="outline-4">
+<h4 id="orga3a1acc"><span class="underline">Exam Trick</span></h4>
+<div class="outline-text-4" id="text-orga3a1acc">
 <p>
 For now, you just need to know that <a href="20240120133450-overriding_a_method.html#ID-c67b24a4-82f7-4423-83a9-75fc1c566166">overriding a method</a> replaces the <code>parent</code> method on all reference variables (other than <code>super</code>), whereas hiding a method or <a href="20240120133531-hiding_variables.html#ID-a6c7507b-e399-48a8-a8af-7f29fd05eaad">variables</a> replaces the member only if a <code>child</code> reference type is used.
 </p>

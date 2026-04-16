@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python args and kwargs</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,30 +254,14 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Python args and kwargs</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org192f906">1. Python *args and **kwargs</a>
-<ul>
-<li><a href="#org80f15a7">1.1. Basic Positional Arguments</a></li>
-<li><a href="#orgbc33f16">1.2. *args (Variable Positional Arguments)</a></li>
-<li><a href="#orgbfa62c6">1.3. **kwargs (Variable Keyword Arguments)</a></li>
-<li><a href="#org77363e7">1.4. Combining *args and **kwargs</a></li>
-<li><a href="#org82e9452">1.5. Notes</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-org192f906" class="outline-2">
-<h2 id="org192f906"><span class="section-number-2">1.</span> Python *args and **kwargs</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgd014974" class="outline-2">
+<h2 id="orgd014974">Python *args and **kwargs</h2>
+<div class="outline-text-2" id="text-orgd014974">
 </div>
-<div id="outline-container-org80f15a7" class="outline-3">
-<h3 id="org80f15a7"><span class="section-number-3">1.1.</span> Basic Positional Arguments</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-org30ac435" class="outline-3">
+<h3 id="org30ac435">Basic Positional Arguments</h3>
+<div class="outline-text-3" id="text-org30ac435">
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">sum_of</span>(a, b):
     <span class="org-keyword">return</span> a <span class="org-operator">+</span> b
@@ -291,9 +277,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgbc33f16" class="outline-3">
-<h3 id="orgbc33f16"><span class="section-number-3">1.2.</span> *args (Variable Positional Arguments)</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-org3754cd6" class="outline-3">
+<h3 id="org3754cd6">*args (Variable Positional Arguments)</h3>
+<div class="outline-text-3" id="text-org3754cd6">
 <p>
 Allows a function to accept any number of positional arguments.
 Collected into a <code>tuple</code>.
@@ -318,9 +304,9 @@ Collected into a <code>tuple</code>.
 </div>
 </div>
 
-<div id="outline-container-orgbfa62c6" class="outline-3">
-<h3 id="orgbfa62c6"><span class="section-number-3">1.3.</span> **kwargs (Variable Keyword Arguments)</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-orgff3edc8" class="outline-3">
+<h3 id="orgff3edc8">**kwargs (Variable Keyword Arguments)</h3>
+<div class="outline-text-3" id="text-orgff3edc8">
 <p>
 Allows a function to accept <b>any</b> number of <b>keyword</b> <b>arguments</b>.
 Collected into a <code>dictionary</code>.
@@ -345,9 +331,9 @@ Collected into a <code>dictionary</code>.
 </div>
 </div>
 
-<div id="outline-container-org77363e7" class="outline-3">
-<h3 id="org77363e7"><span class="section-number-3">1.4.</span> Combining *args and **kwargs</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-org1f3c494" class="outline-3">
+<h3 id="org1f3c494">Combining *args and **kwargs</h3>
+<div class="outline-text-3" id="text-org1f3c494">
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">example</span>(a, <span class="org-operator">*</span>args, <span class="org-operator">**</span>kwargs):
     <span class="org-builtin">print</span>(<span class="org-string">"a:"</span>, a)
@@ -367,9 +353,9 @@ Order must be:
 </div>
 </div>
 
-<div id="outline-container-org82e9452" class="outline-3">
-<h3 id="org82e9452"><span class="section-number-3">1.5.</span> Notes</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-orgc85888b" class="outline-3">
+<h3 id="orgc85888b">Notes</h3>
+<div class="outline-text-3" id="text-orgc85888b">
 <ul class="org-ul">
 <li><code>*</code> unpacks positional arguments.</li>
 <li><code>**</code> unpacks keyword arguments.</li>

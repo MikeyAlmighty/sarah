@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>.this reference</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,22 +254,10 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">.this reference</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#orgf156a6d">1. Java <code>this</code> Reference</a></li>
-<li><a href="#org5377c7c">2. Referencing Instance Members</a></li>
-<li><a href="#org8822e22">3. Resolving Variable Shadowing</a></li>
-<li><a href="#org45437db">4. Invoking Another Constructor</a></li>
-<li><a href="#org4267383">5. Key Points</a></li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-orgf156a6d" class="outline-2">
-<h2 id="orgf156a6d"><span class="section-number-2">1.</span> Java <code>this</code> Reference</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgf40ee49" class="outline-2">
+<h2 id="orgf40ee49">Java <code>this</code> Reference</h2>
+<div class="outline-text-2" id="text-orgf40ee49">
 <p>
 The keyword <code>this</code> refers to the <b>current (calling) object</b>.  
 When an instance method is <b>invoked</b> on an <code>object</code>, the <code>this</code> reference is automatically set to that object.
@@ -288,9 +278,9 @@ The <code>this</code> reference is commonly used to:
 </div>
 </div>
 
-<div id="outline-container-org5377c7c" class="outline-2">
-<h2 id="org5377c7c"><span class="section-number-2">2.</span> Referencing Instance Members</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-org3b8d448" class="outline-2">
+<h2 id="org3b8d448">Referencing Instance Members</h2>
+<div class="outline-text-2" id="text-org3b8d448">
 <p>
 You can explicitly use <code>this</code> to reference instance variables and methods.
 </p>
@@ -341,9 +331,9 @@ Example without <code>this</code>:
 </div>
 </div>
 
-<div id="outline-container-org8822e22" class="outline-2">
-<h2 id="org8822e22"><span class="section-number-2">3.</span> Resolving Variable Shadowing</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-orgedd4d07" class="outline-2">
+<h2 id="orgedd4d07">Resolving Variable Shadowing</h2>
+<div class="outline-text-2" id="text-orgedd4d07">
 <p>
 The <code>this</code> keyword is necessary when a method or constructor parameter has the <b>same name</b> as an instance variable.
 </p>
@@ -376,9 +366,9 @@ Explanation:
 </div>
 </div>
 
-<div id="outline-container-org45437db" class="outline-2">
-<h2 id="org45437db"><span class="section-number-2">4.</span> Invoking Another Constructor</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-orga990f3e" class="outline-2">
+<h2 id="orga990f3e">Invoking Another Constructor</h2>
+<div class="outline-text-2" id="text-orga990f3e">
 <p>
 The <code>this()</code> syntax can call another constructor in the same class.
 </p>
@@ -410,9 +400,9 @@ Here:
 </div>
 </div>
 
-<div id="outline-container-org4267383" class="outline-2">
-<h2 id="org4267383"><span class="section-number-2">5.</span> Key Points</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-orgee9a0be" class="outline-2">
+<h2 id="orgee9a0be">Key Points</h2>
+<div class="outline-text-2" id="text-orgee9a0be">
 <ul class="org-ul">
 <li><code>this</code> refers to the <b>current object</b></li>
 <li>It can reference instance variables and methods</li>

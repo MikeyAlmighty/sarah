@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Parsers</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,23 +254,10 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Parsers</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#orgc68ca15">1. Parser</a>
-<ul>
-<li><a href="#orgb59ce8e">1.1. Syntactic Analysis</a></li>
-</ul>
-</li>
-<li><a href="#orge3ffb35">2. Two main strategies for parsing</a></li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-orgc68ca15" class="outline-2">
-<h2 id="orgc68ca15"><span class="section-number-2">1.</span> Parser</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-org55ca97b" class="outline-2">
+<h2 id="org55ca97b">Parser</h2>
+<div class="outline-text-2" id="text-org55ca97b">
 <p>
 Software component that takes input data (frequently text) and builds a data structure – often some kind of parse <b>tree</b>, <a href="20230722074246-abstract_syntax_tree.html#ID-591ff1e4-b71e-4fd8-b700-ead280215a63">Abstract Syntax Tree (AST)</a> or other hierarchical structure – giving a structural representation of the input, checking for correct syntax in the process.
 </p>
@@ -283,9 +272,9 @@ The <b>parser</b> is often preceded by a separate <a href="20230722074259-lexer.
 </p>
 </div>
 
-<div id="outline-container-orgb59ce8e" class="outline-3">
-<h3 id="orgb59ce8e"><span class="section-number-3">1.1.</span> Syntactic Analysis</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-orga3feb3f" class="outline-3">
+<h3 id="orga3feb3f">Syntactic Analysis</h3>
+<div class="outline-text-3" id="text-orga3feb3f">
 <p>
 While building up the data structure, parsers unavoidably <b>analyse</b> the input, checking that it <b>conforms</b> to the <b>expected structure</b>.
 </p>
@@ -293,9 +282,9 @@ While building up the data structure, parsers unavoidably <b>analyse</b> the inp
 </div>
 </div>
 
-<div id="outline-container-orge3ffb35" class="outline-2">
-<h2 id="orge3ffb35"><span class="section-number-2">2.</span> Two main strategies for parsing</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-org5cdebc6" class="outline-2">
+<h2 id="org5cdebc6">Two main strategies for parsing</h2>
+<div class="outline-text-2" id="text-org5cdebc6">
 <ol class="org-ol">
 <li><a href="20230723123658-top_down_parsing.html#ID-36076481-3430-4352-9486-9ba937df495e">Top-down Parsing</a></li>
 <li><a href="20230723124200-bottom_up_parsing.html#ID-f44128c6-a450-4cd1-88b7-04a312b7b253">Bottom-up Parsing</a></li>

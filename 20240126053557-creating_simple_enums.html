@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Creating Simple Enums</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,36 +254,14 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Creating Simple Enums</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org6a0dcf4">1. Creating Simple Enums</a>
-<ul>
-<li><a href="#org3164ef0">1.1. Example</a>
-<ul>
-<li><a href="#orga69bfbf">1.1.1. <span class="underline">Exam Trick</span></a></li>
-</ul>
-</li>
-<li><a href="#orgc6f5e58">1.2. Calling the values(), name(), and ordinal() Methods</a>
-<ul>
-<li><a href="#org10ad59b">1.2.1. values()</a></li>
-<li><a href="#orgf6cdab0">1.2.2. valueOf()</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-org6a0dcf4" class="outline-2">
-<h2 id="org6a0dcf4"><span class="section-number-2">1.</span> Creating Simple Enums</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgd4d0492" class="outline-2">
+<h2 id="orgd4d0492">Creating Simple Enums</h2>
+<div class="outline-text-2" id="text-orgd4d0492">
 </div>
-<div id="outline-container-org3164ef0" class="outline-3">
-<h3 id="org3164ef0"><span class="section-number-3">1.1.</span> Example</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-org570dc52" class="outline-3">
+<h3 id="org570dc52">Example</h3>
+<div class="outline-text-3" id="text-org570dc52">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">enum</span> <span class="org-type">Season</span> {
     <span class="org-variable-name">Winter</span>,
@@ -301,9 +281,9 @@ System.out.println(<span class="org-constant">Season</span>.SUMMER); <span class
 </div>
 </div>
 
-<div id="outline-container-orga69bfbf" class="outline-4">
-<h4 id="orga69bfbf"><span class="section-number-4">1.1.1.</span> <span class="underline">Exam Trick</span></h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-org931fd8a" class="outline-4">
+<h4 id="org931fd8a"><span class="underline">Exam Trick</span></h4>
+<div class="outline-text-4" id="text-org931fd8a">
 <p>
 Enums print the <b>name</b> of the enum when <code>toString()</code> is called.
 </p>
@@ -319,13 +299,13 @@ In other words, you can use <code>equals()</code> or <code>==</code> to compare 
 </div>
 </div>
 
-<div id="outline-container-orgc6f5e58" class="outline-3">
-<h3 id="orgc6f5e58"><span class="section-number-3">1.2.</span> Calling the values(), name(), and ordinal() Methods</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-orgd5a4478" class="outline-3">
+<h3 id="orgd5a4478">Calling the values(), name(), and ordinal() Methods</h3>
+<div class="outline-text-3" id="text-orgd5a4478">
 </div>
-<div id="outline-container-org10ad59b" class="outline-4">
-<h4 id="org10ad59b"><span class="section-number-4">1.2.1.</span> values()</h4>
-<div class="outline-text-4" id="text-1-2-1">
+<div id="outline-container-org141c013" class="outline-4">
+<h4 id="org141c013">values()</h4>
+<div class="outline-text-4" id="text-org141c013">
 <p>
 An enum provides a <code>values()</code> method to get an <code>array</code> of all of the <b>values</b>.
 </p>
@@ -346,9 +326,9 @@ An enum provides a <code>values()</code> method to get an <code>array</code> of 
 </div>
 </div>
 
-<div id="outline-container-orgf6cdab0" class="outline-4">
-<h4 id="orgf6cdab0"><span class="section-number-4">1.2.2.</span> valueOf()</h4>
-<div class="outline-text-4" id="text-1-2-2">
+<div id="outline-container-org339ab6a" class="outline-4">
+<h4 id="org339ab6a">valueOf()</h4>
+<div class="outline-text-4" id="text-org339ab6a">
 <p>
 Another useful feature is retrieving an enum <code>value</code> from a <code>String</code> using the <code>valueOf()</code> method.
 </p>
@@ -362,9 +342,9 @@ The <code>String</code> passed in must match the enum <code>value</code> <b>exac
 </p>
 </div>
 
-<ol class="org-ol">
-<li><a id="org286ae9f"></a>Example<br />
-<div class="outline-text-5" id="text-1-2-2-1">
+<ul class="org-ul">
+<li><a id="orge0c5469"></a>Example<br />
+<div class="outline-text-5" id="text-orge0c5469">
 <p>
 The <code>first</code> statement works and assigns the proper enum value to <code>s</code>.
 Note that this line is not creating an enum value, at least not directly.
@@ -396,7 +376,7 @@ No <span class="org-keyword">enum</span> constant <span class="org-constant">enu
 </div>
 </div>
 </li>
-</ol>
+</ul>
 </div>
 </div>
 </div>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Overriding a Method</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,34 +254,18 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Overriding a Method</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org4635ed8">1. Overriding a Method</a>
-<ul>
-<li><a href="#org9f42b6d">1.1. Example</a>
-<ul>
-<li><a href="#orgc5724b3">1.1.1. Rules</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-org4635ed8" class="outline-2">
-<h2 id="org4635ed8"><span class="section-number-2">1.</span> Overriding a Method</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-org7ad566d" class="outline-2">
+<h2 id="org7ad566d">Overriding a Method</h2>
+<div class="outline-text-2" id="text-org7ad566d">
 <p>
 <b>Overriding</b> a <code>method</code> occurs when a <code>subclass</code> declares a new implementation for an <b>inherited</b> method with the <b>same signature and compatible return type</b>.
 </p>
 </div>
 
-<div id="outline-container-org9f42b6d" class="outline-3">
-<h3 id="org9f42b6d"><span class="section-number-3">1.1.</span> Example</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-org7d40104" class="outline-3">
+<h3 id="org7d40104">Example</h3>
+<div class="outline-text-3" id="text-org7d40104">
 <p>
 When you <b>override</b> a method, you may still <code>reference</code> the <code>parent</code> version of the method using the <code>super</code> keyword.
 </p>
@@ -308,9 +294,9 @@ In this manner, the keywords <code>this</code> and <code>super</code> allow you 
 </div>
 </div>
 
-<div id="outline-container-orgc5724b3" class="outline-4">
-<h4 id="orgc5724b3"><span class="section-number-4">1.1.1.</span> Rules</h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-orga59e97c" class="outline-4">
+<h4 id="orga59e97c">Rules</h4>
+<div class="outline-text-4" id="text-orga59e97c">
 <ol class="org-ol">
 <li>The method in the <code>child</code> class must have the <b>same signature</b> as the method in the <code>parent</code> class.</li>
 <li>The method in the <code>child</code> class must be at least as <b>accessible</b> as the method in the <code>parent</code> class.</li>

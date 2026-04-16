@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>6. Class Design</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,41 +254,18 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">6. Class Design</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org72ab614">1. Chapter 6. Class Design</a>
-<ul>
-<li><a href="#orga7cc6e5">1.1. Exam Objectives</a>
-<ul>
-<li><a href="#org5c4c647">1.1.1. Utilizing Java Object­Oriented Approach</a></li>
-</ul>
-</li>
-<li><a href="#orga687fe1">1.2. 1. Understanding Inheritance</a></li>
-<li><a href="#org22d647e">1.3. 2. Creating Classes</a></li>
-<li><a href="#orgf33158a">1.4. 3. Declaring Constructors</a></li>
-<li><a href="#orge0cd28b">1.5. 4. Initializing Objects</a></li>
-<li><a href="#orgc929367">1.6. 5. Inheriting Members</a></li>
-<li><a href="#orgdb8b939">1.7. 6. Abstract Classes</a></li>
-<li><a href="#orgab10a13">1.8. 7. Creating Immutable Objects</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-org72ab614" class="outline-2">
-<h2 id="org72ab614"><span class="section-number-2">1.</span> Chapter 6. Class Design</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgc01c64e" class="outline-2">
+<h2 id="orgc01c64e">Chapter 6. Class Design</h2>
+<div class="outline-text-2" id="text-orgc01c64e">
 </div>
-<div id="outline-container-orga7cc6e5" class="outline-3">
-<h3 id="orga7cc6e5"><span class="section-number-3">1.1.</span> Exam Objectives</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-org989d5f6" class="outline-3">
+<h3 id="org989d5f6">Exam Objectives</h3>
+<div class="outline-text-3" id="text-org989d5f6">
 </div>
-<div id="outline-container-org5c4c647" class="outline-4">
-<h4 id="org5c4c647"><span class="section-number-4">1.1.1.</span> Utilizing Java Object­Oriented Approach</h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-org3605c8f" class="outline-4">
+<h4 id="org3605c8f">Utilizing Java Object­Oriented Approach</h4>
+<div class="outline-text-4" id="text-org3605c8f">
 <ul class="org-ul">
 <li>Create <code>classes</code> and <code>records</code>, and define and use <code>instance</code> and <a href="20240113065406-static_variable.html#ID-90b4776a-f230-4e13-b1a1-248b48026677">Static Variables</a> and <a href="20240113065453-static_methods.html#ID-71f8ac46-9cca-4866-b701-8f5a7f9f7fc0">Static Methods</a>, <code>constructors</code>, and <code>instance</code> and <a href="20240114063138-static_initializers.html#ID-9b5e5215-73c3-412e-8a72-57dc575c1ee9">Static Initializers</a>.</li>
 
@@ -299,32 +278,32 @@ Perform type <a href="20231224190739-widening_primitive_conversion.html#ID-3ef23
 </div>
 </div>
 
-<div id="outline-container-orga687fe1" class="outline-3">
-<h3 id="orga687fe1"><span class="section-number-3">1.2.</span> 1. <a href="20240114160906-understanding_inheritance.html#ID-5e09bcf0-2de5-4b84-a9ed-b3654bf0df40">Understanding Inheritance</a></h3>
+<div id="outline-container-orge9b0c84" class="outline-3">
+<h3 id="orge9b0c84">1. <a href="20240114160906-understanding_inheritance.html#ID-5e09bcf0-2de5-4b84-a9ed-b3654bf0df40">Understanding Inheritance</a></h3>
 </div>
 
-<div id="outline-container-org22d647e" class="outline-3">
-<h3 id="org22d647e"><span class="section-number-3">1.3.</span> 2. <a href="20240114160923-creating_classes.html#ID-ffe80d3b-b8d3-44b1-b628-aff04d5eccb8">Creating Classes</a></h3>
+<div id="outline-container-org71c2b2a" class="outline-3">
+<h3 id="org71c2b2a">2. <a href="20240114160923-creating_classes.html#ID-ffe80d3b-b8d3-44b1-b628-aff04d5eccb8">Creating Classes</a></h3>
 </div>
 
-<div id="outline-container-orgf33158a" class="outline-3">
-<h3 id="orgf33158a"><span class="section-number-3">1.4.</span> 3. <a href="20240114161002-declaring_constructors.html#ID-f3a17739-2afe-4abe-84c3-778419d52cb8">Declaring Constructors</a></h3>
+<div id="outline-container-orge1f3f15" class="outline-3">
+<h3 id="orge1f3f15">3. <a href="20240114161002-declaring_constructors.html#ID-f3a17739-2afe-4abe-84c3-778419d52cb8">Declaring Constructors</a></h3>
 </div>
 
-<div id="outline-container-orge0cd28b" class="outline-3">
-<h3 id="orge0cd28b"><span class="section-number-3">1.5.</span> 4. <a href="20240114161012-initializing_objects.html#ID-116932af-887c-42c9-901e-e986ea92780b">Initializing Objects</a></h3>
+<div id="outline-container-orgb189108" class="outline-3">
+<h3 id="orgb189108">4. <a href="20240114161012-initializing_objects.html#ID-116932af-887c-42c9-901e-e986ea92780b">Initializing Objects</a></h3>
 </div>
 
-<div id="outline-container-orgc929367" class="outline-3">
-<h3 id="orgc929367"><span class="section-number-3">1.6.</span> 5. <a href="20240114161022-inheriting_members.html#ID-c4b6638f-ff45-43bb-9b49-c9333746ff33">Inheriting Members</a></h3>
+<div id="outline-container-org0c55ec8" class="outline-3">
+<h3 id="org0c55ec8">5. <a href="20240114161022-inheriting_members.html#ID-c4b6638f-ff45-43bb-9b49-c9333746ff33">Inheriting Members</a></h3>
 </div>
 
-<div id="outline-container-orgdb8b939" class="outline-3">
-<h3 id="orgdb8b939"><span class="section-number-3">1.7.</span> 6. <a href="20240114162721-abstract_classes.html#ID-3893ce2e-cd85-4914-ba26-d7c7c732eb02">Abstract Classes</a></h3>
+<div id="outline-container-orge91d280" class="outline-3">
+<h3 id="orge91d280">6. <a href="20240114162721-abstract_classes.html#ID-3893ce2e-cd85-4914-ba26-d7c7c732eb02">Abstract Classes</a></h3>
 </div>
 
-<div id="outline-container-orgab10a13" class="outline-3">
-<h3 id="orgab10a13"><span class="section-number-3">1.8.</span> 7. <a href="20240114161043-creating_immutable_objects.html#ID-e8eac75b-e98b-4e15-b3b0-58a56e6b1d85">Creating Immutable Objects</a></h3>
+<div id="outline-container-orgb4b89ff" class="outline-3">
+<h3 id="orgb4b89ff">7. <a href="20240114161043-creating_immutable_objects.html#ID-e8eac75b-e98b-4e15-b3b0-58a56e6b1d85">Creating Immutable Objects</a></h3>
 </div>
 </div>
 </div>

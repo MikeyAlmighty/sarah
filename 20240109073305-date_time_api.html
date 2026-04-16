@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Date­Time API</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,45 +254,10 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Date­Time API</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#orgb5dcf96">1. Date­Time API</a>
-<ul>
-<li><a href="#orgd00dff9">1.1. Types</a>
-<ul>
-<li><a href="#org319e9b7">1.1.1. 1. LocalDate</a></li>
-<li><a href="#orga6925e0">1.1.2. 2. LocalTime</a></li>
-<li><a href="#org7d7cade">1.1.3. 3. LocalDateTime</a></li>
-<li><a href="#orgdfca141">1.1.4. 4. ZonedDateTime</a></li>
-<li><a href="#org33e866b">1.1.5. <span class="underline">Exam Trick</span></a></li>
-<li><a href="#org38267a2">1.1.6. <span class="underline">Exam Trick</span></a></li>
-</ul>
-</li>
-<li><a href="#org8020fbe">1.2. Manipulating <code>Dates</code> and <code>Times</code></a>
-<ul>
-<li><a href="#orgdb01bb1">1.2.1. 1. Adding To Dates</a></li>
-<li><a href="#org9719ea3">1.2.2. 2. Subtracting From Dates</a></li>
-<li><a href="#org117e6ea">1.2.3. Date Methods</a></li>
-</ul>
-</li>
-<li><a href="#orgdba4438">1.3. Periods</a></li>
-<li><a href="#org22a03a2">1.4. Durations</a>
-<ul>
-<li><a href="#orgaa406de">1.4.1. Periods vs Durations</a></li>
-</ul>
-</li>
-<li><a href="#org239fe7e">1.5. Instants</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-orgb5dcf96" class="outline-2">
-<h2 id="orgb5dcf96"><span class="section-number-2">1.</span> Date­Time API</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-org924fd49" class="outline-2">
+<h2 id="org924fd49">Date­Time API</h2>
+<div class="outline-text-2" id="text-org924fd49">
 <p>
 To use it, add this import to your program:
 </p>
@@ -301,26 +268,26 @@ To use it, add this import to your program:
 </div>
 </div>
 
-<div id="outline-container-orgd00dff9" class="outline-3">
-<h3 id="orgd00dff9"><span class="section-number-3">1.1.</span> Types</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-org6533e5e" class="outline-3">
+<h3 id="org6533e5e">Types</h3>
+<div class="outline-text-3" id="text-org6533e5e">
 </div>
-<div id="outline-container-org319e9b7" class="outline-4">
-<h4 id="org319e9b7"><span class="section-number-4">1.1.1.</span> 1. <a href="20240109080216-localdate.html#ID-82317bb4-49e8-4783-aaac-d4d1ae819447">LocalDate</a></h4>
+<div id="outline-container-orgab1301f" class="outline-4">
+<h4 id="orgab1301f">1. <a href="20240109080216-localdate.html#ID-82317bb4-49e8-4783-aaac-d4d1ae819447">LocalDate</a></h4>
 </div>
-<div id="outline-container-orga6925e0" class="outline-4">
-<h4 id="orga6925e0"><span class="section-number-4">1.1.2.</span> 2. <a href="20240109080058-localtime.html#ID-dd1e2a29-2a02-4323-b043-9def30a388e5">LocalTime</a></h4>
+<div id="outline-container-org57b126e" class="outline-4">
+<h4 id="org57b126e">2. <a href="20240109080058-localtime.html#ID-dd1e2a29-2a02-4323-b043-9def30a388e5">LocalTime</a></h4>
 </div>
-<div id="outline-container-org7d7cade" class="outline-4">
-<h4 id="org7d7cade"><span class="section-number-4">1.1.3.</span> 3. <a href="20240109075711-localdatetime.html#ID-538ad23c-716d-409d-9846-88be3830d32a">LocalDateTime</a></h4>
+<div id="outline-container-org5c0525c" class="outline-4">
+<h4 id="org5c0525c">3. <a href="20240109075711-localdatetime.html#ID-538ad23c-716d-409d-9846-88be3830d32a">LocalDateTime</a></h4>
 </div>
-<div id="outline-container-orgdfca141" class="outline-4">
-<h4 id="orgdfca141"><span class="section-number-4">1.1.4.</span> 4. <a href="20240109080453-zoneddatetime.html#ID-d606a825-fdcb-4746-95c0-ff693073d4ac">ZonedDateTime</a></h4>
+<div id="outline-container-orgd056c68" class="outline-4">
+<h4 id="orgd056c68">4. <a href="20240109080453-zoneddatetime.html#ID-d606a825-fdcb-4746-95c0-ff693073d4ac">ZonedDateTime</a></h4>
 </div>
 
-<div id="outline-container-org33e866b" class="outline-4">
-<h4 id="org33e866b"><span class="section-number-4">1.1.5.</span> <span class="underline">Exam Trick</span></h4>
-<div class="outline-text-4" id="text-1-1-5">
+<div id="outline-container-orga651309" class="outline-4">
+<h4 id="orga651309"><span class="underline">Exam Trick</span></h4>
+<div class="outline-text-4" id="text-orga651309">
 <p>
 Also, we did not use a <a href="Constructors.md.html#ID-73a0f36b-e440-486a-bd88-6ca577be3351">Constructors</a> in any of the examples.
 The <code>Date</code> and <code>Time</code> classes have <b>private constructors</b> along with <b>static methods</b> that return <b>instances</b>.
@@ -338,9 +305,9 @@ You are <b>not</b> allowed to construct a <code>Date</code> or <code>Time</code>
 </div>
 </div>
 
-<div id="outline-container-org38267a2" class="outline-4">
-<h4 id="org38267a2"><span class="section-number-4">1.1.6.</span> <span class="underline">Exam Trick</span></h4>
-<div class="outline-text-4" id="text-1-1-6">
+<div id="outline-container-orgd4db356" class="outline-4">
+<h4 id="orgd4db356"><span class="underline">Exam Trick</span></h4>
+<div class="outline-text-4" id="text-orgd4db356">
 <p>
 Another trick is what happens when you pass <b>invalid</b> numbers to of(), for example:
 </p>
@@ -353,23 +320,23 @@ Another trick is what happens when you pass <b>invalid</b> numbers to of(), for 
 </div>
 </div>
 
-<div id="outline-container-org8020fbe" class="outline-3">
-<h3 id="org8020fbe"><span class="section-number-3">1.2.</span> Manipulating <code>Dates</code> and <code>Times</code></h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-orgbbe8845" class="outline-3">
+<h3 id="orgbbe8845">Manipulating <code>Dates</code> and <code>Times</code></h3>
+<div class="outline-text-3" id="text-orgbbe8845">
 </div>
-<div id="outline-container-orgdb01bb1" class="outline-4">
-<h4 id="orgdb01bb1"><span class="section-number-4">1.2.1.</span> 1. <a href="20240110075236-adding_to_dates.html#ID-bdd64d03-3bb6-4aa4-8407-83e2829e72f6">Adding To Dates</a></h4>
-</div>
-
-<div id="outline-container-org9719ea3" class="outline-4">
-<h4 id="org9719ea3"><span class="section-number-4">1.2.2.</span> 2. <a href="20240110075503-subtracting_from_dates.html#ID-ff2c44a3-d3bf-4415-92d0-5f01243bbc42">Subtracting From Dates</a></h4>
+<div id="outline-container-orge7cfc1a" class="outline-4">
+<h4 id="orge7cfc1a">1. <a href="20240110075236-adding_to_dates.html#ID-bdd64d03-3bb6-4aa4-8407-83e2829e72f6">Adding To Dates</a></h4>
 </div>
 
-<div id="outline-container-org117e6ea" class="outline-4">
-<h4 id="org117e6ea"><span class="section-number-4">1.2.3.</span> Date Methods</h4>
-<div class="outline-text-4" id="text-1-2-3">
+<div id="outline-container-org0c4c105" class="outline-4">
+<h4 id="org0c4c105">2. <a href="20240110075503-subtracting_from_dates.html#ID-ff2c44a3-d3bf-4415-92d0-5f01243bbc42">Subtracting From Dates</a></h4>
+</div>
 
-<div id="orgea00595" class="figure">
+<div id="outline-container-org8bf66cc" class="outline-4">
+<h4 id="org8bf66cc">Date Methods</h4>
+<div class="outline-text-4" id="text-org8bf66cc">
+
+<div id="orgce34aa0" class="figure">
 <p><img src="./assets/date_method_allowed.png" alt="date_method_allowed.png" />
 </p>
 </div>
@@ -377,18 +344,18 @@ Another trick is what happens when you pass <b>invalid</b> numbers to of(), for 
 </div>
 </div>
 
-<div id="outline-container-orgdba4438" class="outline-3">
-<h3 id="orgdba4438"><span class="section-number-3">1.3.</span> <a href="20240110080116-periods.html#ID-ac780a7c-43ae-4d1c-99b9-e14006e79591">Periods</a></h3>
+<div id="outline-container-orgbbc87d7" class="outline-3">
+<h3 id="orgbbc87d7"><a href="20240110080116-periods.html#ID-ac780a7c-43ae-4d1c-99b9-e14006e79591">Periods</a></h3>
 </div>
-<div id="outline-container-org22a03a2" class="outline-3">
-<h3 id="org22a03a2"><span class="section-number-3">1.4.</span> <a href="20240111050842-durations.html#ID-72d033eb-0e33-48e7-b244-0052b66434f7">Durations</a></h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-org3366a6d" class="outline-3">
+<h3 id="org3366a6d"><a href="20240111050842-durations.html#ID-72d033eb-0e33-48e7-b244-0052b66434f7">Durations</a></h3>
+<div class="outline-text-3" id="text-org3366a6d">
 </div>
-<div id="outline-container-orgaa406de" class="outline-4">
-<h4 id="orgaa406de"><span class="section-number-4">1.4.1.</span> Periods vs Durations</h4>
-<div class="outline-text-4" id="text-1-4-1">
+<div id="outline-container-orge975e1c" class="outline-4">
+<h4 id="orge975e1c">Periods vs Durations</h4>
+<div class="outline-text-4" id="text-orge975e1c">
 
-<div id="org5589435" class="figure">
+<div id="org3aa72c4" class="figure">
 <p><img src="./assets/periods_vs_durations.png" alt="periods_vs_durations.png" />
 </p>
 </div>
@@ -396,8 +363,8 @@ Another trick is what happens when you pass <b>invalid</b> numbers to of(), for 
 </div>
 </div>
 
-<div id="outline-container-org239fe7e" class="outline-3">
-<h3 id="org239fe7e"><span class="section-number-3">1.5.</span> <a href="20240111051906-instants.html#ID-c3b63bdb-4626-410b-aaa5-ff623855e62d">Instants</a></h3>
+<div id="outline-container-org9c97589" class="outline-3">
+<h3 id="org9c97589"><a href="20240111051906-instants.html#ID-c3b63bdb-4626-410b-aaa5-ff623855e62d">Instants</a></h3>
 </div>
 </div>
 </div>

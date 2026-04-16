@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>1. Building blocks</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,67 +254,27 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">1. Building blocks</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org782667b">1. Chapter 1. Building Blocks</a>
-<ul>
-<li><a href="#org3c840db">1.1. Exam Objectives</a>
-<ul>
-<li><a href="#org2675fac">1.1.1. Handling date, time, text, numeric and boolean values</a></li>
-<li><a href="#orga06a3b1">1.1.2. Utilizing Java Object­Oriented Approach</a></li>
-</ul>
-</li>
-<li><a href="#org500ab26">1.2. Compiling</a></li>
-<li><a href="#org73f36df">1.3. Running</a></li>
-<li><a href="#org0c9e5f8">1.4. Packages</a>
-<ul>
-<li><a href="#orgcfb2b7e">1.4.1. WildCards</a></li>
-<li><a href="#orgfa6683a">1.4.2. Redundant imports</a></li>
-<li><a href="#org4aacd5f">1.4.3. Invalid imports</a></li>
-<li><a href="#orgd58123d">1.4.4. Naming Conflicts</a></li>
-<li><a href="#orgf822384">1.4.5. Creating a new package</a></li>
-<li><a href="#orga1c43b5">1.4.6. Creating a JAR file</a></li>
-</ul>
-</li>
-<li><a href="#org6a22bb2">1.5. Constructors</a></li>
-<li><a href="#org12c4944">1.6. Order of Initialization</a></li>
-<li><a href="#org7371e55">1.7. Types</a>
-<ul>
-<li><a href="#org68816d8">1.7.1. Primitive Types</a></li>
-<li><a href="#org1b97e34">1.7.2. Reference Types</a></li>
-<li><a href="#org0887ac2">1.7.3. Type Conversions</a></li>
-</ul>
-</li>
-<li><a href="#org420bd31">1.8. Declaring Variables</a></li>
-<li><a href="#org6a77c84">1.9. Garbage Collection</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-org782667b" class="outline-2">
-<h2 id="org782667b"><span class="section-number-2">1.</span> Chapter 1. Building Blocks</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgc8ed783" class="outline-2">
+<h2 id="orgc8ed783">Chapter 1. Building Blocks</h2>
+<div class="outline-text-2" id="text-orgc8ed783">
 </div>
-<div id="outline-container-org3c840db" class="outline-3">
-<h3 id="org3c840db"><span class="section-number-3">1.1.</span> Exam Objectives</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-org98c2b5c" class="outline-3">
+<h3 id="org98c2b5c">Exam Objectives</h3>
+<div class="outline-text-3" id="text-org98c2b5c">
 </div>
-<div id="outline-container-org2675fac" class="outline-4">
-<h4 id="org2675fac"><span class="section-number-4">1.1.1.</span> Handling date, time, text, numeric and boolean values</h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-orgfb09c8c" class="outline-4">
+<h4 id="orgfb09c8c">Handling date, time, text, numeric and boolean values</h4>
+<div class="outline-text-4" id="text-orgfb09c8c">
 <ul class="org-ul">
 <li>Use primitives and <code>wrapper</code> classes including <code>Math</code> API, parentheses, <b>type promotion</b>, and <b>casting</b> to evaluate <b>arithmetic</b> and <b>boolean</b> expressions.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orga06a3b1" class="outline-4">
-<h4 id="orga06a3b1"><span class="section-number-4">1.1.2.</span> Utilizing Java Object­Oriented Approach</h4>
-<div class="outline-text-4" id="text-1-1-2">
+<div id="outline-container-orgbb209c0" class="outline-4">
+<h4 id="orgbb209c0">Utilizing Java Object­Oriented Approach</h4>
+<div class="outline-text-4" id="text-orgbb209c0">
 <ul class="org-ul">
 <li>Declare and instantiate Java objects including <code>nested class</code> objects, and explain the object life­cycle including <code>creation</code>, <code>reassigning references</code>, and <code>garbage collection</code></li>
 <li>Understand <b>variable scopes</b>, use local variable type inference, apply <a href="Encapsulation.md.html#ID-89e69431-4199-42ee-8633-4c2cc5da4d8a">encapsulation</a>, and make objects <b>immutable</b></li>
@@ -373,9 +335,9 @@
 </div>
 </div>
 
-<div id="outline-container-org500ab26" class="outline-3">
-<h3 id="org500ab26"><span class="section-number-3">1.2.</span> Compiling</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-org8bfe5ae" class="outline-3">
+<h3 id="org8bfe5ae">Compiling</h3>
+<div class="outline-text-3" id="text-org8bfe5ae">
 <p>
 (See also: <a href="20231105195519-single_file_source_code.html#ID-17935397-ee6a-41e5-b492-4e3cc99c4c4a">Single File Source Code</a>)
 Compiled using the <a href="20231224095703-javac.html#ID-d5b4004d-b5db-48a2-8e85-09359ca61a42">javac</a>
@@ -391,9 +353,9 @@ Compiled using the <a href="20231224095703-javac.html#ID-d5b4004d-b5db-48a2-8e85
 </div>
 </div>
 
-<div id="outline-container-org73f36df" class="outline-3">
-<h3 id="org73f36df"><span class="section-number-3">1.3.</span> Running</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-orgfb9243b" class="outline-3">
+<h3 id="orgfb9243b">Running</h3>
+<div class="outline-text-3" id="text-orgfb9243b">
 <p>
 It is the <code>bytecode</code> in the class files that is executed when a Java program is run—the source code is irrelevant in this regard.
 A Java program is run by the Java Application Launcher, <code>java</code>, which is also part of the <b>JDK</b>.
@@ -402,17 +364,17 @@ The <code>java</code> command creates an instance of the <b>JVM</b> that execute
 </div>
 </div>
 
-<div id="outline-container-org0c9e5f8" class="outline-3">
-<h3 id="org0c9e5f8"><span class="section-number-3">1.4.</span> Packages</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-orgfb12a94" class="outline-3">
+<h3 id="orgfb12a94">Packages</h3>
+<div class="outline-text-3" id="text-orgfb12a94">
 <p>
 Java <code>classes</code> are grouped into <b>packages</b>
 </p>
 </div>
 
-<div id="outline-container-orgcfb2b7e" class="outline-4">
-<h4 id="orgcfb2b7e"><span class="section-number-4">1.4.1.</span> WildCards</h4>
-<div class="outline-text-4" id="text-1-4-1">
+<div id="outline-container-org5b7e11e" class="outline-4">
+<h4 id="org5b7e11e">WildCards</h4>
+<div class="outline-text-4" id="text-org5b7e11e">
 <p>
 A shortcut to import <b>all</b> the classes in a package is using a wildcard (<code>*</code>)
 </p>
@@ -439,18 +401,18 @@ It imports only <code>classes</code> <b>directly under the package</b>.
 </div>
 </div>
 
-<div id="outline-container-orgfa6683a" class="outline-4">
-<h4 id="orgfa6683a"><span class="section-number-4">1.4.2.</span> Redundant imports</h4>
-<div class="outline-text-4" id="text-1-4-2">
+<div id="outline-container-org9b84cb8" class="outline-4">
+<h4 id="org9b84cb8">Redundant imports</h4>
+<div class="outline-text-4" id="text-org9b84cb8">
 <p>
 Already imported automatically: <code>import java.lang.*</code>
 </p>
 </div>
 </div>
 
-<div id="outline-container-org4aacd5f" class="outline-4">
-<h4 id="org4aacd5f"><span class="section-number-4">1.4.3.</span> Invalid imports</h4>
-<div class="outline-text-4" id="text-1-4-3">
+<div id="outline-container-org750c8a6" class="outline-4">
+<h4 id="org750c8a6">Invalid imports</h4>
+<div class="outline-text-4" id="text-org750c8a6">
 <p>
 Which import statements do you think would not work to get this code to compile?
 </p>
@@ -484,9 +446,9 @@ Which import statements do you think would not work to get this code to compile?
 </div>
 </div>
 
-<div id="outline-container-orgd58123d" class="outline-4">
-<h4 id="orgd58123d"><span class="section-number-4">1.4.4.</span> Naming Conflicts</h4>
-<div class="outline-text-4" id="text-1-4-4">
+<div id="outline-container-org30d57ee" class="outline-4">
+<h4 id="org30d57ee">Naming Conflicts</h4>
+<div class="outline-text-4" id="text-org30d57ee">
 <p>
 Example: Java provides 2 implementations of the Date class: <code>java.util.Date</code> and <code>java.sql.Date</code>
 </p>
@@ -516,39 +478,39 @@ Example: Java provides 2 implementations of the Date class: <code>java.util.Date
 </div>
 </div>
 
-<div id="outline-container-orgf822384" class="outline-4">
-<h4 id="orgf822384"><span class="section-number-4">1.4.5.</span> <a href="20231230051200-creating_a_new_package.html#ID-c13f080f-e542-44d0-8311-5e4cdb388991">Creating a new package</a></h4>
+<div id="outline-container-org293ded2" class="outline-4">
+<h4 id="org293ded2"><a href="20231230051200-creating_a_new_package.html#ID-c13f080f-e542-44d0-8311-5e4cdb388991">Creating a new package</a></h4>
 </div>
-<div id="outline-container-orga1c43b5" class="outline-4">
-<h4 id="orga1c43b5"><span class="section-number-4">1.4.6.</span> <a href="20231230053451-creating_a_jar_file.html#ID-e40da6d4-9a59-46c8-9a2f-c375c0d7dda8">Creating a JAR file</a></h4>
+<div id="outline-container-org3842590" class="outline-4">
+<h4 id="org3842590"><a href="20231230053451-creating_a_jar_file.html#ID-e40da6d4-9a59-46c8-9a2f-c375c0d7dda8">Creating a JAR file</a></h4>
 </div>
 </div>
-<div id="outline-container-org6a22bb2" class="outline-3">
-<h3 id="org6a22bb2"><span class="section-number-3">1.5.</span> <a href="Constructors.md.html#ID-73a0f36b-e440-486a-bd88-6ca577be3351">Constructors</a></h3>
+<div id="outline-container-org5bc38a7" class="outline-3">
+<h3 id="org5bc38a7"><a href="Constructors.md.html#ID-73a0f36b-e440-486a-bd88-6ca577be3351">Constructors</a></h3>
 </div>
-<div id="outline-container-org12c4944" class="outline-3">
-<h3 id="org12c4944"><span class="section-number-3">1.6.</span> <a href="20231230055218-order_of_initialization.html#ID-f041c4e7-7bfa-4554-9b25-6e6b8e086aec">Order of Initialization</a></h3>
+<div id="outline-container-org37d923c" class="outline-3">
+<h3 id="org37d923c"><a href="20231230055218-order_of_initialization.html#ID-f041c4e7-7bfa-4554-9b25-6e6b8e086aec">Order of Initialization</a></h3>
 </div>
 
-<div id="outline-container-org7371e55" class="outline-3">
-<h3 id="org7371e55"><span class="section-number-3">1.7.</span> Types</h3>
-<div class="outline-text-3" id="text-1-7">
+<div id="outline-container-org1fc002b" class="outline-3">
+<h3 id="org1fc002b">Types</h3>
+<div class="outline-text-3" id="text-org1fc002b">
 </div>
-<div id="outline-container-org68816d8" class="outline-4">
-<h4 id="org68816d8"><span class="section-number-4">1.7.1.</span> <a href="20231230083124-primitive_types.html#ID-46582863-7f97-448d-bbc7-f7da4c1e7574">Primitive Types</a></h4>
+<div id="outline-container-org72ba3ae" class="outline-4">
+<h4 id="org72ba3ae"><a href="20231230083124-primitive_types.html#ID-46582863-7f97-448d-bbc7-f7da4c1e7574">Primitive Types</a></h4>
 </div>
-<div id="outline-container-org1b97e34" class="outline-4">
-<h4 id="org1b97e34"><span class="section-number-4">1.7.2.</span> <a href="20231230083220-reference_types.html#ID-ef3f4798-9f1d-462f-8eea-df2b75e512f6">Reference Types</a></h4>
+<div id="outline-container-org0fa16d2" class="outline-4">
+<h4 id="org0fa16d2"><a href="20231230083220-reference_types.html#ID-ef3f4798-9f1d-462f-8eea-df2b75e512f6">Reference Types</a></h4>
 </div>
-<div id="outline-container-org0887ac2" class="outline-4">
-<h4 id="org0887ac2"><span class="section-number-4">1.7.3.</span> <a href="20231224190412-type_conversions.html#ID-a290d25a-c231-441d-85d4-1d7be3f3cb3f">Type Conversions</a></h4>
+<div id="outline-container-orgbf60168" class="outline-4">
+<h4 id="orgbf60168"><a href="20231224190412-type_conversions.html#ID-a290d25a-c231-441d-85d4-1d7be3f3cb3f">Type Conversions</a></h4>
 </div>
 </div>
-<div id="outline-container-org420bd31" class="outline-3">
-<h3 id="org420bd31"><span class="section-number-3">1.8.</span> <a href="20231230155210-declaring_variables.html#ID-c09c67cd-b686-417d-8b4b-bb26331a6997">Declaring Variables</a></h3>
+<div id="outline-container-org33afc61" class="outline-3">
+<h3 id="org33afc61"><a href="20231230155210-declaring_variables.html#ID-c09c67cd-b686-417d-8b4b-bb26331a6997">Declaring Variables</a></h3>
 </div>
-<div id="outline-container-org6a77c84" class="outline-3">
-<h3 id="org6a77c84"><span class="section-number-3">1.9.</span> <a href="20231230181407-garbage_collection.html#ID-9ccc2e2b-e387-499a-aaef-790bb6c1caa3">Garbage Collection</a></h3>
+<div id="outline-container-org6de68df" class="outline-3">
+<h3 id="org6de68df"><a href="20231230181407-garbage_collection.html#ID-9ccc2e2b-e387-499a-aaef-790bb6c1caa3">Garbage Collection</a></h3>
 </div>
 </div>
 </div>

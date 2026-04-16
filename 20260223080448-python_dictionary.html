@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python Dictionary</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,37 +254,14 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Python Dictionary</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org61b82dd">1. Python Dictionaries</a>
-<ul>
-<li><a href="#org8aa4f27">1.1. Basic Example</a></li>
-<li><a href="#org4a4caee">1.2. Updating Values</a></li>
-<li><a href="#orgad985cd">1.3. Deletion</a></li>
-<li><a href="#orgb9d0c36">1.4. Dictionary Operation Functions</a></li>
-<li><a href="#orgbf3065c">1.5. Key Behavior &amp; Overriding</a></li>
-<li><a href="#orge38c218">1.6. Iteration</a>
-<ul>
-<li><a href="#org521c370">1.6.1. Iterate Keys</a></li>
-<li><a href="#orgc1a4b4e">1.6.2. Iterate Key-Value Pairs</a></li>
-</ul>
-</li>
-<li><a href="#org55ba891">1.7. Notes</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-org61b82dd" class="outline-2">
-<h2 id="org61b82dd"><span class="section-number-2">1.</span> Python Dictionaries</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-org2b504d1" class="outline-2">
+<h2 id="org2b504d1">Python Dictionaries</h2>
+<div class="outline-text-2" id="text-org2b504d1">
 </div>
-<div id="outline-container-org8aa4f27" class="outline-3">
-<h3 id="org8aa4f27"><span class="section-number-3">1.1.</span> Basic Example</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-org0920359" class="outline-3">
+<h3 id="org0920359">Basic Example</h3>
+<div class="outline-text-3" id="text-org0920359">
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-variable-name">sample_dict</span> <span class="org-operator">=</span> {1: <span class="org-string">'Coffee'</span>, 2: <span class="org-string">'Tea'</span>, 3: <span class="org-string">'Juice'</span>}
 
@@ -292,9 +271,9 @@
 </div>
 </div>
 
-<div id="outline-container-org4a4caee" class="outline-3">
-<h3 id="org4a4caee"><span class="section-number-3">1.2.</span> Updating Values</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-org7273e05" class="outline-3">
+<h3 id="org7273e05">Updating Values</h3>
+<div class="outline-text-3" id="text-org7273e05">
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-variable-name">sample_dict</span>[2] <span class="org-operator">=</span> <span class="org-string">'Mint Tea'</span>
 
@@ -304,9 +283,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgad985cd" class="outline-3">
-<h3 id="orgad985cd"><span class="section-number-3">1.3.</span> Deletion</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-org2554fa8" class="outline-3">
+<h3 id="org2554fa8">Deletion</h3>
+<div class="outline-text-3" id="text-org2554fa8">
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-keyword">del</span> sample_dict[3]
 
@@ -316,9 +295,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgb9d0c36" class="outline-3">
-<h3 id="orgb9d0c36"><span class="section-number-3">1.4.</span> Dictionary Operation Functions</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-orgd3b6223" class="outline-3">
+<h3 id="orgd3b6223">Dictionary Operation Functions</h3>
+<div class="outline-text-3" id="text-orgd3b6223">
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-builtin">print</span>(<span class="org-builtin">type</span>(sample_dict))  <span class="org-comment-delimiter"># </span><span class="org-comment">&lt;class 'dict'&gt;</span>
 </pre>
@@ -326,9 +305,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgbf3065c" class="outline-3">
-<h3 id="orgbf3065c"><span class="section-number-3">1.5.</span> Key Behavior &amp; Overriding</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-org44701f0" class="outline-3">
+<h3 id="org44701f0">Key Behavior &amp; Overriding</h3>
+<div class="outline-text-3" id="text-org44701f0">
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-variable-name">my_d</span> <span class="org-operator">=</span> {<span class="org-string">'2'</span>: <span class="org-constant">True</span>, <span class="org-string">'1'</span>: <span class="org-constant">False</span>, 3: <span class="org-string">'dead'</span>, 3: <span class="org-string">'Pool'</span>}
 </pre>
@@ -353,13 +332,13 @@
 </div>
 </div>
 
-<div id="outline-container-orge38c218" class="outline-3">
-<h3 id="orge38c218"><span class="section-number-3">1.6.</span> Iteration</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-org929db3e" class="outline-3">
+<h3 id="org929db3e">Iteration</h3>
+<div class="outline-text-3" id="text-org929db3e">
 </div>
-<div id="outline-container-org521c370" class="outline-4">
-<h4 id="org521c370"><span class="section-number-4">1.6.1.</span> Iterate Keys</h4>
-<div class="outline-text-4" id="text-1-6-1">
+<div id="outline-container-orga819eda" class="outline-4">
+<h4 id="orga819eda">Iterate Keys</h4>
+<div class="outline-text-4" id="text-orga819eda">
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-keyword">for</span> key <span class="org-keyword">in</span> my_d:
     <span class="org-builtin">print</span>(key)
@@ -368,9 +347,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgc1a4b4e" class="outline-4">
-<h4 id="orgc1a4b4e"><span class="section-number-4">1.6.2.</span> Iterate Key-Value Pairs</h4>
-<div class="outline-text-4" id="text-1-6-2">
+<div id="outline-container-org6eea3a3" class="outline-4">
+<h4 id="org6eea3a3">Iterate Key-Value Pairs</h4>
+<div class="outline-text-4" id="text-org6eea3a3">
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-keyword">for</span> key, val <span class="org-keyword">in</span> my_d.items():
     <span class="org-builtin">print</span>(<span class="org-builtin">str</span>(key) <span class="org-operator">+</span> <span class="org-string">":"</span> <span class="org-operator">+</span> <span class="org-builtin">str</span>(val))
@@ -380,9 +359,9 @@
 </div>
 </div>
 
-<div id="outline-container-org55ba891" class="outline-3">
-<h3 id="org55ba891"><span class="section-number-3">1.7.</span> Notes</h3>
-<div class="outline-text-3" id="text-1-7">
+<div id="outline-container-orga6d37e1" class="outline-3">
+<h3 id="orga6d37e1">Notes</h3>
+<div class="outline-text-3" id="text-orga6d37e1">
 <ul class="org-ul">
 <li>Dictionaries are <b>unordered</b> (<code>insertion-ordere</code> as of Python 3.7+).</li>
 <li><b>Mutable</b> and <b>dynamic</b>.</li>

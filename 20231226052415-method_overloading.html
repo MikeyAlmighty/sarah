@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Method Overloading</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,37 +254,10 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Method Overloading</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org8549e7a">1. Method Overloading</a>
-<ul>
-<li><a href="#org4a155e0">1.1. Example</a></li>
-<li><a href="#org41f76a2">1.2. Reference Types</a>
-<ul>
-<li><a href="#org7cf7c38">1.2.1. Example</a></li>
-</ul>
-</li>
-<li><a href="#org31e61d1">1.3. Primitive Types</a>
-<ul>
-<li><a href="#orgf05a608">1.3.1. Example</a></li>
-</ul>
-</li>
-<li><a href="#org3831b01">1.4. Autoboxing</a>
-<ul>
-<li><a href="#orgdb755aa">1.4.1. Example</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-org8549e7a" class="outline-2">
-<h2 id="org8549e7a"><span class="section-number-2">1.</span> Method Overloading</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-org55346a9" class="outline-2">
+<h2 id="org55346a9">Method Overloading</h2>
+<div class="outline-text-2" id="text-org55346a9">
 <p>
 Each method has a <b>signature</b>, which comprises the <code>name</code> of the method plus the <code>types</code> and order of the <code>parameters</code> in the formal <a href="20240111063906-parameter_list.html#ID-94f7186e-22e8-4636-bc8c-a4cc040d9073">parameter list</a>.
 Several method implementations <b>may</b> have the same <code>name</code>, as long as the <code>method signatures</code> <b>differ</b>.
@@ -301,9 +276,9 @@ At <code>compile time</code>, the <b>right implementation</b> of an <code>overlo
 </p>
 </div>
 
-<div id="outline-container-org4a155e0" class="outline-3">
-<h3 id="org4a155e0"><span class="section-number-3">1.1.</span> Example</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-org762ca22" class="outline-3">
+<h3 id="org762ca22">Example</h3>
+<div class="outline-text-3" id="text-org762ca22">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-type">void</span> <span class="org-function-name">methodA</span>(<span class="org-type">int</span> <span class="org-variable-name">a</span>, <span class="org-type">double</span> <span class="org-variable-name">b</span>) { <span class="org-comment-delimiter">/* </span><span class="org-comment">...</span><span class="org-comment-delimiter"> */</span> } <span class="org-comment-delimiter">// </span><span class="org-comment">(1)
 </span><span class="org-type">int</span> <span class="org-function-name">methodA</span>(<span class="org-type">int</span> <span class="org-variable-name">a</span>) { <span class="org-keyword">return</span> a; } <span class="org-comment-delimiter">// </span><span class="org-comment">(2)
@@ -334,13 +309,13 @@ In the implementation, changing <b>just</b> the <code>return type</code> (as sho
 </div>
 </div>
 
-<div id="outline-container-org41f76a2" class="outline-3">
-<h3 id="org41f76a2"><span class="section-number-3">1.2.</span> Reference Types</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-orgd62fe8e" class="outline-3">
+<h3 id="orgd62fe8e">Reference Types</h3>
+<div class="outline-text-3" id="text-orgd62fe8e">
 </div>
-<div id="outline-container-org7cf7c38" class="outline-4">
-<h4 id="org7cf7c38"><span class="section-number-4">1.2.1.</span> Example</h4>
-<div class="outline-text-4" id="text-1-2-1">
+<div id="outline-container-org1cac3fd" class="outline-4">
+<h4 id="org1cac3fd">Example</h4>
+<div class="outline-text-4" id="text-org1cac3fd">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Pelican</span> {
     <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">fly</span>(<span class="org-type">String</span> <span class="org-variable-name">s</span>) {
@@ -363,9 +338,9 @@ In the implementation, changing <b>just</b> the <code>return type</code> (as sho
 </div>
 </div>
 
-<div id="outline-container-org31e61d1" class="outline-3">
-<h3 id="org31e61d1"><span class="section-number-3">1.3.</span> Primitive Types</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-org8889a69" class="outline-3">
+<h3 id="org8889a69">Primitive Types</h3>
+<div class="outline-text-3" id="text-org8889a69">
 <p>
 The answer is <code>int­long</code>.
 </p>
@@ -376,9 +351,9 @@ The second call passes a <code>long</code> and also sees an exact match.
 </p>
 </div>
 
-<div id="outline-container-orgf05a608" class="outline-4">
-<h4 id="orgf05a608"><span class="section-number-4">1.3.1.</span> Example</h4>
-<div class="outline-text-4" id="text-1-3-1">
+<div id="outline-container-orgc329ae7" class="outline-4">
+<h4 id="orgc329ae7">Example</h4>
+<div class="outline-text-4" id="text-orgc329ae7">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Ostrich</span> {
     <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">fly</span>(<span class="org-type">int</span> <span class="org-variable-name">i</span>) {
@@ -399,9 +374,9 @@ The second call passes a <code>long</code> and also sees an exact match.
 </div>
 </div>
 
-<ol class="org-ol">
-<li><a id="org7b56d2e"></a><span class="underline">Exam Trick</span><br />
-<div class="outline-text-5" id="text-1-3-1-1">
+<ul class="org-ul">
+<li><a id="org1f21a6d"></a><span class="underline">Exam Trick</span><br />
+<div class="outline-text-5" id="text-org1f21a6d">
 <p>
 If we comment out the overloaded method with the <code>int</code> parameter list, the output becomes <code>long­long</code>.
 </p>
@@ -415,21 +390,21 @@ Java has no problem calling a <b>larger</b> primitive.
 </p>
 </div>
 </li>
-</ol>
+</ul>
 </div>
 </div>
 
-<div id="outline-container-org3831b01" class="outline-3">
-<h3 id="org3831b01"><span class="section-number-3">1.4.</span> Autoboxing</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-org2e6346c" class="outline-3">
+<h3 id="org2e6346c">Autoboxing</h3>
+<div class="outline-text-3" id="text-org2e6346c">
 <p>
 These method overloads are valid.
 </p>
 </div>
 
-<div id="outline-container-orgdb755aa" class="outline-4">
-<h4 id="orgdb755aa"><span class="section-number-4">1.4.1.</span> Example</h4>
-<div class="outline-text-4" id="text-1-4-1">
+<div id="outline-container-org7731f28" class="outline-4">
+<h4 id="org7731f28">Example</h4>
+<div class="outline-text-4" id="text-org7731f28">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Kiwi</span> {
     <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">fly</span>(<span class="org-type">int</span> <span class="org-variable-name">numMiles</span>) {}
@@ -439,9 +414,9 @@ These method overloads are valid.
 </div>
 </div>
 
-<ol class="org-ol">
-<li><a id="org29ab4f2"></a><span class="underline">Exam Trick</span><br />
-<div class="outline-text-5" id="text-1-4-1-1">
+<ul class="org-ul">
+<li><a id="orge385f47"></a><span class="underline">Exam Trick</span><br />
+<div class="outline-text-5" id="text-orge385f47">
 <p>
 Java tries to use the most specific <a href="20240111063906-parameter_list.html#ID-94f7186e-22e8-4636-bc8c-a4cc040d9073">parameter list</a> it can find.
 </p>
@@ -463,7 +438,7 @@ However, when the <b>primitive</b> <code>int</code> version <b>is</b> provided, 
 </p>
 </div>
 </li>
-</ol>
+</ul>
 </div>
 </div>
 </div>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Cryptanalysis Attack Damages</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,22 +254,10 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Cryptanalysis Attack Damages</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#orgbde0070">1. Instance deduction</a></li>
-<li><a href="#orgac843df">2. Information deduction</a></li>
-<li><a href="#orga9a2256">3. Distinguishing algorithm</a></li>
-<li><a href="#orgb1704ce">4. Global deduction</a></li>
-<li><a href="#orgefeed84">5. Total break</a></li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-orgbde0070" class="outline-2">
-<h2 id="orgbde0070"><span class="section-number-2">1.</span> Instance deduction</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-org6849a3c" class="outline-2">
+<h2 id="org6849a3c">Instance deduction</h2>
+<div class="outline-text-2" id="text-org6849a3c">
 <p>
 Attacker discovers <b>additional</b> <code>plain/cipher text</code>.
 While the key isn’t found to break the code, the additional <code>plain/ciphertext</code> can be used to cause problems/continue attacks.
@@ -275,9 +265,9 @@ While the key isn’t found to break the code, the additional <code>plain/cipher
 </div>
 </div>
 
-<div id="outline-container-orgac843df" class="outline-2">
-<h2 id="orgac843df"><span class="section-number-2">2.</span> Information deduction</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-org2c1fa59" class="outline-2">
+<h2 id="org2c1fa59">Information deduction</h2>
+<div class="outline-text-2" id="text-org2c1fa59">
 <p>
 Attacker obtains some information about <code>plain/ciphertext</code> not previously known.
 The additional information can lead to more information about the encryption key.
@@ -285,9 +275,9 @@ The additional information can lead to more information about the encryption key
 </div>
 </div>
 
-<div id="outline-container-orga9a2256" class="outline-2">
-<h2 id="orga9a2256"><span class="section-number-2">3.</span> Distinguishing algorithm</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-org2a5858c" class="outline-2">
+<h2 id="org2a5858c">Distinguishing algorithm</h2>
+<div class="outline-text-2" id="text-org2a5858c">
 <p>
 where the attacker can <b>distinguish</b> the <a href="20230911070841-encryption_algorithm.html#ID-d5db0593-2283-4d73-b904-bcd9f32717ce">algorithm</a> from a random alteration.
 This information reveals clues about the <a href="20230911070841-encryption_algorithm.html#ID-d5db0593-2283-4d73-b904-bcd9f32717ce">algorithm</a> and can lead to more significant breaks.
@@ -295,9 +285,9 @@ This information reveals clues about the <a href="20230911070841-encryption_algo
 </div>
 </div>
 
-<div id="outline-container-orgb1704ce" class="outline-2">
-<h2 id="orgb1704ce"><span class="section-number-2">4.</span> Global deduction</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-orgb469cf7" class="outline-2">
+<h2 id="orgb469cf7">Global deduction</h2>
+<div class="outline-text-2" id="text-orgb469cf7">
 <p>
 Attacker finds an <a href="20230911070841-encryption_algorithm.html#ID-d5db0593-2283-4d73-b904-bcd9f32717ce">algorithm</a> that is functionally equivalent to the one used in the <b>key</b>.
 This algorithm is then used to <a href="20230911070513-decryption.html#ID-e35c79e8-db3e-4c13-9ad3-1a8f4387fa60">decrypt</a> all information and messages.
@@ -305,9 +295,9 @@ This algorithm is then used to <a href="20230911070513-decryption.html#ID-e35c79
 </div>
 </div>
 
-<div id="outline-container-orgefeed84" class="outline-2">
-<h2 id="orgefeed84"><span class="section-number-2">5.</span> Total break</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-org7d917f1" class="outline-2">
+<h2 id="org7d917f1">Total break</h2>
+<div class="outline-text-2" id="text-org7d917f1">
 <p>
 Attacker can gain the entire <b>key</b>.
 With the entire key, the attacker can <a href="20230911070513-decryption.html#ID-e35c79e8-db3e-4c13-9ad3-1a8f4387fa60">decrypt</a> all messages and information.

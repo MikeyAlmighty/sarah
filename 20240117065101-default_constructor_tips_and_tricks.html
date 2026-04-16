@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Default Constructor Tips and Tricks</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,30 +254,14 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Default Constructor Tips and Tricks</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org8ab7302">1. Default Constructor Tips and Tricks</a>
-<ul>
-<li><a href="#org102322a">1.1. Example</a>
-<ul>
-<li><a href="#org6d66a60">1.1.1. Solution</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-org8ab7302" class="outline-2">
-<h2 id="org8ab7302"><span class="section-number-2">1.</span> Default Constructor Tips and Tricks</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-org41c55f3" class="outline-2">
+<h2 id="org41c55f3">Default Constructor Tips and Tricks</h2>
+<div class="outline-text-2" id="text-org41c55f3">
 </div>
-<div id="outline-container-org102322a" class="outline-3">
-<h3 id="org102322a"><span class="section-number-3">1.1.</span> Example</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-orge83673c" class="outline-3">
+<h3 id="orge83673c">Example</h3>
+<div class="outline-text-3" id="text-orge83673c">
 <p>
 What happens if we define a <code>subclass</code> with no <code>constructors</code>, or a <code>subclass</code> with a <code>constructor</code> that doesn’t include a <code>super()</code> reference?
 </p>
@@ -326,9 +312,9 @@ The compiler doesn’t see a call to <code>super()</code> or <code>this()</code>
 </div>
 </div>
 
-<div id="outline-container-org6d66a60" class="outline-4">
-<h4 id="org6d66a60"><span class="section-number-4">1.1.1.</span> Solution</h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-orgc939bfa" class="outline-4">
+<h4 id="orgc939bfa">Solution</h4>
+<div class="outline-text-4" id="text-orgc939bfa">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Seal</span> <span class="org-keyword">extends</span> <span class="org-type">Mammal</span> {
     <span class="org-keyword">public</span> Seal() {

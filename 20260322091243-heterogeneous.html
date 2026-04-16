@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Heterogeneous</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,43 +254,23 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Heterogeneous</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#orgc3555a0">1. Heterogeneous</a>
-<ul>
-<li><a href="#org1230f42">1.1. Definition</a>
-<ul>
-<li><a href="#orge366fd8">1.1.1. Example</a></li>
-<li><a href="#org815ebb1">1.1.2. Why it works</a></li>
-<li><a href="#org57fe6c6">1.1.3. Contrast</a></li>
-<li><a href="#org71ef119">1.1.4. Key Insight</a></li>
-<li><a href="#org57fe484">1.1.5. Summary</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-orgc3555a0" class="outline-2">
-<h2 id="orgc3555a0"><span class="section-number-2">1.</span> Heterogeneous</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgd0e7001" class="outline-2">
+<h2 id="orgd0e7001">Heterogeneous</h2>
+<div class="outline-text-2" id="text-orgd0e7001">
 </div>
-<div id="outline-container-org1230f42" class="outline-3">
-<h3 id="org1230f42"><span class="section-number-3">1.1.</span> Definition</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-orgda9ac11" class="outline-3">
+<h3 id="orgda9ac11">Definition</h3>
+<div class="outline-text-3" id="text-orgda9ac11">
 <p>
 <b>Heterogeneous</b> means consisting of different types.
 In Java a <b>heterogeneous</b> collection stores objects of different <code>classes</code> (<code>types</code>), usually related through a <b>common</b> <code>superclass</code> or <code>interface</code>.
 </p>
 </div>
 
-<div id="outline-container-orge366fd8" class="outline-4">
-<h4 id="orge366fd8"><span class="section-number-4">1.1.1.</span> Example</h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-orgc203902" class="outline-4">
+<h4 id="orgc203902">Example</h4>
+<div class="outline-text-4" id="text-orgc203902">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-type">ArrayList</span> <span class="org-variable-name">animals</span> = <span class="org-keyword">new</span> <span class="org-type">ArrayList</span>&lt;&gt;();
 
@@ -303,9 +285,9 @@ Here, the ArrayList is <b>heterogeneous</b> because it contains <b>different</b>
 </div>
 </div>
 
-<div id="outline-container-org815ebb1" class="outline-4">
-<h4 id="org815ebb1"><span class="section-number-4">1.1.2.</span> Why it works</h4>
-<div class="outline-text-4" id="text-1-1-2">
+<div id="outline-container-orgf03e827" class="outline-4">
+<h4 id="orgf03e827">Why it works</h4>
+<div class="outline-text-4" id="text-orgf03e827">
 <ul class="org-ul">
 <li>Java uses  <a href="20240124071557-understanding_polymorphism.html#ID-ecaa3f5f-3cd3-4ad3-93dc-1da93d3cf395">polymorphism</a> All objects share a common type (e.g., Animal)</li>
 <li>Method calls are resolved at runtime (<a href="20260321130312-dynamic_binding.html#ID-a036361c-34a9-4d80-9748-2128f0b99af8">Dynamic Binding</a>)</li>
@@ -313,9 +295,9 @@ Here, the ArrayList is <b>heterogeneous</b> because it contains <b>different</b>
 </div>
 </div>
 
-<div id="outline-container-org57fe6c6" class="outline-4">
-<h4 id="org57fe6c6"><span class="section-number-4">1.1.3.</span> Contrast</h4>
-<div class="outline-text-4" id="text-1-1-3">
+<div id="outline-container-orgec45c5d" class="outline-4">
+<h4 id="orgec45c5d">Contrast</h4>
+<div class="outline-text-4" id="text-orgec45c5d">
 <ul class="org-ul">
 <li><b><a href="20260322091630-homogeneous.html#ID-cce1b149-cb9e-428c-9fae-3b10a99eadeb">Homogeneous</a></b>: <b>same</b> <b>type</b> only</li>
 <li><b>Heterogeneous</b>: <b>multiple</b> <b>types</b></li>
@@ -323,9 +305,9 @@ Here, the ArrayList is <b>heterogeneous</b> because it contains <b>different</b>
 </div>
 </div>
 
-<div id="outline-container-org71ef119" class="outline-4">
-<h4 id="org71ef119"><span class="section-number-4">1.1.4.</span> Key Insight</h4>
-<div class="outline-text-4" id="text-1-1-4">
+<div id="outline-container-org474403d" class="outline-4">
+<h4 id="org474403d">Key Insight</h4>
+<div class="outline-text-4" id="text-org474403d">
 <p>
 Heterogeneous collections rely on:
 </p>
@@ -337,9 +319,9 @@ Heterogeneous collections rely on:
 </div>
 </div>
 
-<div id="outline-container-org57fe484" class="outline-4">
-<h4 id="org57fe484"><span class="section-number-4">1.1.5.</span> Summary</h4>
-<div class="outline-text-4" id="text-1-1-5">
+<div id="outline-container-orgfd2c44a" class="outline-4">
+<h4 id="orgfd2c44a">Summary</h4>
+<div class="outline-text-4" id="text-orgfd2c44a">
 <p>
 <b>Heterogeneous</b> = <b>different</b> object <b>types</b> stored together via a <b>shared</b> <b>parent</b> <b>type</b>.
 </p>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Variable Lifetimes</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,23 +254,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Variable Lifetimes</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org3edfbf1">1. Instance variables:</a></li>
-<li><a href="#org34fa25b">2. Static variables:</a></li>
-<li><a href="#org38dcfd4">3. Local variables (also called method automatic variables):</a></li>
-</ul>
-</div>
-</div>
 <p>
 The lifetime of a variable—that is, the time a variable is accessible during execution—is determined by the <code>context</code> in which it is declared.
 </p>
 
-<div id="outline-container-org3edfbf1" class="outline-2">
-<h2 id="org3edfbf1"><span class="section-number-2">1.</span> Instance variables:</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgb7cbdaa" class="outline-2">
+<h2 id="orgb7cbdaa">Instance variables:</h2>
+<div class="outline-text-2" id="text-orgb7cbdaa">
 <p>
 The values of these variables at any given time constitute the state of the object.
 Instance variables <b>exist as long as the object they belong</b> to is in use at <code>runtime</code>.
@@ -276,18 +268,18 @@ Instance variables <b>exist as long as the object they belong</b> to is in use a
 </div>
 </div>
 
-<div id="outline-container-org34fa25b" class="outline-2">
-<h2 id="org34fa25b"><span class="section-number-2">2.</span> Static variables:</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-orgb4816de" class="outline-2">
+<h2 id="orgb4816de">Static variables:</h2>
+<div class="outline-text-2" id="text-orgb4816de">
 <p>
 <code>Created</code> when the class is <b>loaded at runtime</b> and exist as long as the class is <b>available</b> at <code>runtime</code>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org38dcfd4" class="outline-2">
-<h2 id="org38dcfd4"><span class="section-number-2">3.</span> Local variables (also called method automatic variables):</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-orga0c4f85" class="outline-2">
+<h2 id="orga0c4f85">Local variables (also called method automatic variables):</h2>
+<div class="outline-text-2" id="text-orga0c4f85">
 <p>
 Declared in <code>methods</code>, <code>constructors</code>, and <code>blocks</code>, and created for each execution of the <code>method</code>, <code>constructor</code>, or <code>block</code>.
 After the execution of the <code>method</code>, <code>constructor</code>, or <code>block</code> completes, local variables are <b>no longer accessible</b>.

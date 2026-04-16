@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Bitwise Operators</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,29 +254,10 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Bitwise Operators</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org6adaa5c">1. Bitwise Operators</a>
-<ul>
-<li><a href="#orgd419344">1.1. AND (&amp;)</a></li>
-<li><a href="#org465728c">1.2. OR (|)</a></li>
-<li><a href="#org322232d">1.3. XOR (^)</a></li>
-<li><a href="#orgacef6e3">1.4. NOT (~)</a></li>
-<li><a href="#org0f5a6b1">1.5. Left Shift (&lt;&lt;)</a></li>
-<li><a href="#orgae55848">1.6. Signed Right Shift (&gt;&gt;)</a></li>
-<li><a href="#orgce246ad">1.7. Common Uses</a></li>
-<li><a href="#orge49d67c">1.8. Notes</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-org6adaa5c" class="outline-2">
-<h2 id="org6adaa5c"><span class="section-number-2">1.</span> Bitwise Operators</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orge99c71b" class="outline-2">
+<h2 id="orge99c71b">Bitwise Operators</h2>
+<div class="outline-text-2" id="text-orge99c71b">
 <ul class="org-ul">
 <li><a href="20231231054220-bitwise_complement.html#ID-91190f03-3e70-4844-9a23-c50ca48da6b6">Bitwise Complement</a> <code>~</code> (<b>Only</b> applied to <a href="20231224104049-integer_data_types.html#ID-2483364b-73d3-4169-92b9-1fea473a9b01">Integer Data Types</a>)</li>
 </ul>
@@ -290,9 +273,9 @@ They are commonly used for:
 </ul>
 </div>
 
-<div id="outline-container-orgd419344" class="outline-3">
-<h3 id="orgd419344"><span class="section-number-3">1.1.</span> AND (&amp;)</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-org2bd1418" class="outline-3">
+<h3 id="org2bd1418">AND (&amp;)</h3>
+<div class="outline-text-3" id="text-org2bd1418">
 <ul class="org-ul">
 <li>Performs a bit-by-bit <code>AND</code> operation.</li>
 <li>Result bit is 1 only if both corresponding bits are 1.</li>
@@ -307,9 +290,9 @@ They are commonly used for:
 </div>
 </div>
 
-<div id="outline-container-org465728c" class="outline-3">
-<h3 id="org465728c"><span class="section-number-3">1.2.</span> OR (|)</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-orge855486" class="outline-3">
+<h3 id="orge855486">OR (|)</h3>
+<div class="outline-text-3" id="text-orge855486">
 <ul class="org-ul">
 <li>Performs a bit-by-bit <code>OR</code> operation.</li>
 <li>Result bit is 1 if at least one corresponding bit is 1.</li>
@@ -322,9 +305,9 @@ They are commonly used for:
 </div>
 </div>
 
-<div id="outline-container-org322232d" class="outline-3">
-<h3 id="org322232d"><span class="section-number-3">1.3.</span> XOR (^)</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-org100631b" class="outline-3">
+<h3 id="org100631b">XOR (^)</h3>
+<div class="outline-text-3" id="text-org100631b">
 <ul class="org-ul">
 <li>Performs a bit-by-bit exclusive OR.</li>
 <li>Result bit is 1 if the bits are different.</li>
@@ -337,9 +320,9 @@ They are commonly used for:
 </div>
 </div>
 
-<div id="outline-container-orgacef6e3" class="outline-3">
-<h3 id="orgacef6e3"><span class="section-number-3">1.4.</span> NOT (~)</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-org9233cc6" class="outline-3">
+<h3 id="org9233cc6">NOT (~)</h3>
+<div class="outline-text-3" id="text-org9233cc6">
 <ul class="org-ul">
 <li>Unary operator that inverts every bit.</li>
 <li>Converts <code>1 → 0</code> and <code>0 → 1</code>.</li>
@@ -354,9 +337,9 @@ They are commonly used for:
 </div>
 </div>
 
-<div id="outline-container-org0f5a6b1" class="outline-3">
-<h3 id="org0f5a6b1"><span class="section-number-3">1.5.</span> Left Shift (&lt;&lt;)</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-org220dec1" class="outline-3">
+<h3 id="org220dec1">Left Shift (&lt;&lt;)</h3>
+<div class="outline-text-3" id="text-org220dec1">
 <ul class="org-ul">
 <li>Shifts bits to the left.</li>
 <li>Zeros are added on the right.</li>
@@ -371,9 +354,9 @@ They are commonly used for:
 </div>
 </div>
 
-<div id="outline-container-orgae55848" class="outline-3">
-<h3 id="orgae55848"><span class="section-number-3">1.6.</span> Signed Right Shift (&gt;&gt;)</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-org70b26e5" class="outline-3">
+<h3 id="org70b26e5">Signed Right Shift (&gt;&gt;)</h3>
+<div class="outline-text-3" id="text-org70b26e5">
 <ul class="org-ul">
 <li>Shifts bits to the right.</li>
 <li>Preserves the sign bit (arithmetic shift).</li>
@@ -388,9 +371,9 @@ They are commonly used for:
 </div>
 </div>
 
-<div id="outline-container-orgce246ad" class="outline-3">
-<h3 id="orgce246ad"><span class="section-number-3">1.7.</span> Common Uses</h3>
-<div class="outline-text-3" id="text-1-7">
+<div id="outline-container-org7d7766a" class="outline-3">
+<h3 id="org7d7766a">Common Uses</h3>
+<div class="outline-text-3" id="text-org7d7766a">
 <ul class="org-ul">
 <li>Bit masks and flags</li>
 <li>Efficient arithmetic operations</li>
@@ -400,9 +383,9 @@ They are commonly used for:
 </div>
 </div>
 
-<div id="outline-container-orge49d67c" class="outline-3">
-<h3 id="orge49d67c"><span class="section-number-3">1.8.</span> Notes</h3>
-<div class="outline-text-3" id="text-1-8">
+<div id="outline-container-orgae6ede6" class="outline-3">
+<h3 id="orgae6ede6">Notes</h3>
+<div class="outline-text-3" id="text-orgae6ede6">
 <ul class="org-ul">
 <li>Shift distance is masked (only lower 5 bits used for int, 6 for long).</li>
 </ul>

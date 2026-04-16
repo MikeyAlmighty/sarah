@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Creating a Constructor</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,35 +254,18 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Creating a Constructor</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org392c45d">1. Creating a Constructor</a>
-<ul>
-<li><a href="#org87af2a3">1.1. Example</a>
-<ul>
-<li><a href="#org5d6f8c7">1.1.1. <span class="underline">Exam Trick</span></a></li>
-</ul>
-</li>
-<li><a href="#orgc5481ac">1.2. Multiple Constructors (Constructor Overloading)</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-org392c45d" class="outline-2">
-<h2 id="org392c45d"><span class="section-number-2">1.</span> Creating a Constructor</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-org442b371" class="outline-2">
+<h2 id="org442b371">Creating a Constructor</h2>
+<div class="outline-text-2" id="text-org442b371">
 <p>
 The name of the <b>constructor</b>, <code>Bunny</code>, matches the name of the class, <code>Bunny</code>, and there is <b>no return type</b>, <b>not even void</b>.
 </p>
 </div>
 
-<div id="outline-container-org87af2a3" class="outline-3">
-<h3 id="org87af2a3"><span class="section-number-3">1.1.</span> Example</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-org330ea39" class="outline-3">
+<h3 id="org330ea39">Example</h3>
+<div class="outline-text-3" id="text-org330ea39">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Bunny</span> {
     <span class="org-keyword">public</span> Bunny() {
@@ -293,17 +278,17 @@ The name of the <b>constructor</b>, <code>Bunny</code>, matches the name of the 
 </div>
 </div>
 
-<div id="outline-container-org5d6f8c7" class="outline-4">
-<h4 id="org5d6f8c7"><span class="section-number-4">1.1.1.</span> <span class="underline">Exam Trick</span></h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-org8982071" class="outline-4">
+<h4 id="org8982071"><span class="underline">Exam Trick</span></h4>
+<div class="outline-text-4" id="text-org8982071">
 <p>
 Like <code>method parameters</code>, <code>constructor parameters</code> can be any valid class, array, or <a href="20231230083124-primitive_types.html#ID-46582863-7f97-448d-bbc7-f7da4c1e7574">primitive Type</a>, including <code>generics</code>, but may <b>not</b> include <code>var</code>.
 </p>
 </div>
 
-<ol class="org-ol">
-<li><a id="org7b43557"></a>Example<br />
-<div class="outline-text-5" id="text-1-1-1-1">
+<ul class="org-ul">
+<li><a id="org0987d27"></a>Example<br />
+<div class="outline-text-5" id="text-org0987d27">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Bonobo</span> {
     <span class="org-keyword">public</span> Bonobo(var food) { <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
@@ -314,13 +299,13 @@ Like <code>method parameters</code>, <code>constructor parameters</code> can be 
 </div>
 </div>
 </li>
-</ol>
+</ul>
 </div>
 </div>
 
-<div id="outline-container-orgc5481ac" class="outline-3">
-<h3 id="orgc5481ac"><span class="section-number-3">1.2.</span> Multiple Constructors (Constructor Overloading)</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-org184b168" class="outline-3">
+<h3 id="org184b168">Multiple Constructors (Constructor Overloading)</h3>
+<div class="outline-text-3" id="text-org184b168">
 <p>
 A <code>class</code> <b>can</b> have multiple <code>constructors</code>, as long as each <code>constructor</code> has a unique <code>constructor</code> signature.
 In this case, that means the <code>constructor</code> parameters <b>must</b> be <b>distinct</b>.

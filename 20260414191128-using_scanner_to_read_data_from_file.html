@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Using Scanner to Read Data from File</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,30 +254,14 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Using Scanner to Read Data from File</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#orgc88c0e4">1. Using Scanner to Read Data from File</a>
-<ul>
-<li><a href="#org622cbba">1.1. Example</a>
-<ul>
-<li><a href="#orgb288357">1.1.1. Notes</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-orgc88c0e4" class="outline-2">
-<h2 id="orgc88c0e4"><span class="section-number-2">1.</span> Using Scanner to Read Data from File</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-org5811316" class="outline-2">
+<h2 id="org5811316">Using Scanner to Read Data from File</h2>
+<div class="outline-text-2" id="text-org5811316">
 </div>
-<div id="outline-container-org622cbba" class="outline-3">
-<h3 id="org622cbba"><span class="section-number-3">1.1.</span> Example</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-org39dfb60" class="outline-3">
+<h3 id="org39dfb60">Example</h3>
+<div class="outline-text-3" id="text-org39dfb60">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Scanner</span>;
 
@@ -305,9 +291,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgb288357" class="outline-4">
-<h4 id="orgb288357"><span class="section-number-4">1.1.1.</span> Notes</h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-orgc276b83" class="outline-4">
+<h4 id="orgc276b83">Notes</h4>
+<div class="outline-text-4" id="text-orgc276b83">
 <ul class="org-ul">
 <li>Invoking the <code>constructor</code> <code>new Scanner(File)</code> may <b>throw</b> an <code>I/O exception</code>, so the <code>main method</code> declares <code>throws Exception</code>.</li>
 <li>Not necessary to <code>close</code> the input file, but it is a good practice to do so to release the resources occupied by the file. (You can rewrite this program using the <a href="20260414190141-try_with_resources.html#ID-0cd8b7c0-e7e2-4813-9dd7-e2ed160ac5c1">try-with-resources</a> syntax)</li>

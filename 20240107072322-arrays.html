@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Arrays</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,35 +254,10 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Arrays</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org05c5386">1. Arrays</a>
-<ul>
-<li><a href="#org4a7d164">1.1. Syntax</a></li>
-<li><a href="#org9c632c8">1.2. Creating an Array of Primitives</a></li>
-<li><a href="#orge4b5bbd">1.3. Creating an Array of Reference Variables</a>
-<ul>
-<li><a href="#orge02a8e9">1.3.1. .toString()</a></li>
-</ul>
-</li>
-<li><a href="#orgcc7c891">1.4. Using an array</a></li>
-<li><a href="#orgc6caf4b">1.5. Foreach Loop</a></li>
-<li><a href="#orgeabb36e">1.6. Array.sort()</a></li>
-<li><a href="#orgeb7cf34">1.7. Array Searching</a></li>
-<li><a href="#org094a554">1.8. Array.compare()</a></li>
-<li><a href="#orgdefc64e">1.9. Array.mismatch()</a></li>
-<li><a href="#orgc6746da">1.10. Multidimensional Arrays</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-org05c5386" class="outline-2">
-<h2 id="org05c5386"><span class="section-number-2">1.</span> Arrays</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-org0fbfb4a" class="outline-2">
+<h2 id="org0fbfb4a">Arrays</h2>
+<div class="outline-text-2" id="text-org0fbfb4a">
 <p>
 An <code>array</code> is an <b>area of memory</b> on the <a href="20231230181446-heap.html#ID-dbcc90ea-bf9d-4bf5-9872-36b5794b88f0">Heap</a> with space for a designated number of elements.
 </p>
@@ -311,9 +288,9 @@ This wouldn’t be very convenient because we’d lose all the <code>special</co
 </p>
 </div>
 
-<div id="outline-container-org4a7d164" class="outline-3">
-<h3 id="org4a7d164"><span class="section-number-3">1.1.</span> Syntax</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-org96e26c3" class="outline-3">
+<h3 id="org96e26c3">Syntax</h3>
+<div class="outline-text-3" id="text-org96e26c3">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-type">double</span>[] <span class="org-variable-name">myList</span> = <span class="org-keyword">new</span> <span class="org-type">double</span>[10];
 </pre>
@@ -321,16 +298,16 @@ This wouldn’t be very convenient because we’d lose all the <code>special</co
 </div>
 </div>
 
-<div id="outline-container-org9c632c8" class="outline-3">
-<h3 id="org9c632c8"><span class="section-number-3">1.2.</span> <a href="20240107074430-creating_an_array_of_primitives.html#ID-2224ce47-ddac-4f11-965b-9dc6c649ca5a">Creating an Array of Primitives</a></h3>
+<div id="outline-container-org4666905" class="outline-3">
+<h3 id="org4666905"><a href="20240107074430-creating_an_array_of_primitives.html#ID-2224ce47-ddac-4f11-965b-9dc6c649ca5a">Creating an Array of Primitives</a></h3>
 </div>
-<div id="outline-container-orge4b5bbd" class="outline-3">
-<h3 id="orge4b5bbd"><span class="section-number-3">1.3.</span> <a href="20240107074502-creating_an_array_of_reference_variables.html#ID-939b7ef7-fdb3-4e99-b858-4ede1a064ade">Creating an Array of Reference Variables</a></h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-org212dd1b" class="outline-3">
+<h3 id="org212dd1b"><a href="20240107074502-creating_an_array_of_reference_variables.html#ID-939b7ef7-fdb3-4e99-b858-4ede1a064ade">Creating an Array of Reference Variables</a></h3>
+<div class="outline-text-3" id="text-org212dd1b">
 </div>
-<div id="outline-container-orge02a8e9" class="outline-4">
-<h4 id="orge02a8e9"><span class="section-number-4">1.3.1.</span> .toString()</h4>
-<div class="outline-text-4" id="text-1-3-1">
+<div id="outline-container-org1d31cee" class="outline-4">
+<h4 id="org1d31cee">.toString()</h4>
+<div class="outline-text-4" id="text-org1d31cee">
 <p>
 Java provides a method that prints an array nicely - <code>Arrays.toString(X)</code>:
 </p>
@@ -345,26 +322,26 @@ System.out.println(names.toString()); <span class="org-comment-delimiter">// </s
 </div>
 </div>
 
-<div id="outline-container-orgcc7c891" class="outline-3">
-<h3 id="orgcc7c891"><span class="section-number-3">1.4.</span> <a href="20240107081539-using_an_array.html#ID-550094a3-6212-4f32-a473-9e331afbbb53">Using an array</a></h3>
+<div id="outline-container-org37d9d98" class="outline-3">
+<h3 id="org37d9d98"><a href="20240107081539-using_an_array.html#ID-550094a3-6212-4f32-a473-9e331afbbb53">Using an array</a></h3>
 </div>
-<div id="outline-container-orgc6caf4b" class="outline-3">
-<h3 id="orgc6caf4b"><span class="section-number-3">1.5.</span> <a href="20260207175008-foreach_loop.html#ID-36e6d2a4-e907-46b6-a287-a00606c3d5df">Foreach Loop</a></h3>
+<div id="outline-container-org99dd7cd" class="outline-3">
+<h3 id="org99dd7cd"><a href="20260207175008-foreach_loop.html#ID-36e6d2a4-e907-46b6-a287-a00606c3d5df">Foreach Loop</a></h3>
 </div>
-<div id="outline-container-orgeabb36e" class="outline-3">
-<h3 id="orgeabb36e"><span class="section-number-3">1.6.</span> <a href="20240107082011-array_sorting.html#ID-1a328fa4-9b9f-4856-88f3-fd490bce565b">Array.sort()</a></h3>
+<div id="outline-container-orgf1445e4" class="outline-3">
+<h3 id="orgf1445e4"><a href="20240107082011-array_sorting.html#ID-1a328fa4-9b9f-4856-88f3-fd490bce565b">Array.sort()</a></h3>
 </div>
-<div id="outline-container-orgeb7cf34" class="outline-3">
-<h3 id="orgeb7cf34"><span class="section-number-3">1.7.</span> <a href="20240107100900-array_searching.html#ID-77196205-79e1-4284-bdec-cc31786e5729">Array Searching</a></h3>
+<div id="outline-container-org3f7b0f3" class="outline-3">
+<h3 id="org3f7b0f3"><a href="20240107100900-array_searching.html#ID-77196205-79e1-4284-bdec-cc31786e5729">Array Searching</a></h3>
 </div>
-<div id="outline-container-org094a554" class="outline-3">
-<h3 id="org094a554"><span class="section-number-3">1.8.</span> <a href="20240107103646-array_comparison.html#ID-d06d8e67-0233-4275-8eaa-f0660d5b6cf1">Array.compare()</a></h3>
+<div id="outline-container-org26ad9b6" class="outline-3">
+<h3 id="org26ad9b6"><a href="20240107103646-array_comparison.html#ID-d06d8e67-0233-4275-8eaa-f0660d5b6cf1">Array.compare()</a></h3>
 </div>
-<div id="outline-container-orgdefc64e" class="outline-3">
-<h3 id="orgdefc64e"><span class="section-number-3">1.9.</span> <a href="20240107131824-array_mismatch.html#ID-0392c33c-6152-4f81-afd8-a5455810b205">Array.mismatch()</a></h3>
+<div id="outline-container-org900af59" class="outline-3">
+<h3 id="org900af59"><a href="20240107131824-array_mismatch.html#ID-0392c33c-6152-4f81-afd8-a5455810b205">Array.mismatch()</a></h3>
 </div>
-<div id="outline-container-orgc6746da" class="outline-3">
-<h3 id="orgc6746da"><span class="section-number-3">1.10.</span> <a href="20240107163028-multidimensional_arrays.html#ID-b9c11422-0e4c-468e-8fae-e13791b864f3">Multidimensional Arrays</a></h3>
+<div id="outline-container-orgb9e1cd3" class="outline-3">
+<h3 id="orgb9e1cd3"><a href="20240107163028-multidimensional_arrays.html#ID-b9c11422-0e4c-468e-8fae-e13791b864f3">Multidimensional Arrays</a></h3>
 </div>
 </div>
 </div>

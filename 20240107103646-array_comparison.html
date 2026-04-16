@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Array Comparison</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,37 +254,18 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Array Comparison</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#orgecf16ad">1. Array Comparison</a>
-<ul>
-<li><a href="#org5567b02">1.1. Using <code>.compare()</code></a>
-<ul>
-<li><a href="#org16a1c0c">1.1.1. Example (Single length)</a></li>
-<li><a href="#org31acd33">1.1.2. Example (Multi length)</a></li>
-<li><a href="#org7beb304">1.1.3. What does smaller mean?</a></li>
-<li><a href="#org6dc099c">1.1.4. Examples</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-orgecf16ad" class="outline-2">
-<h2 id="orgecf16ad"><span class="section-number-2">1.</span> Array Comparison</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-org8666dce" class="outline-2">
+<h2 id="org8666dce">Array Comparison</h2>
+<div class="outline-text-2" id="text-org8666dce">
 <p>
 Java also provides methods to <b>compare</b> two arrays to determine which is <b>smaller</b>.
 </p>
 </div>
 
-<div id="outline-container-org5567b02" class="outline-3">
-<h3 id="org5567b02"><span class="section-number-3">1.1.</span> Using <code>.compare()</code></h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-orgb798f3f" class="outline-3">
+<h3 id="orgb798f3f">Using <code>.compare()</code></h3>
+<div class="outline-text-3" id="text-orgb798f3f">
 <ul class="org-ul">
 <li>A <b>negative</b> number means the <b>first</b> array is <b>smaller</b> than the <b>second</b>.</li>
 <li>A <b>zero</b> means the arrays <code>are equal</code>.</li>
@@ -290,9 +273,9 @@ Java also provides methods to <b>compare</b> two arrays to determine which is <b
 </ul>
 </div>
 
-<div id="outline-container-org16a1c0c" class="outline-4">
-<h4 id="org16a1c0c"><span class="section-number-4">1.1.1.</span> Example (Single length)</h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-org2efb9f6" class="outline-4">
+<h4 id="org2efb9f6">Example (Single length)</h4>
+<div class="outline-text-4" id="text-org2efb9f6">
 <div class="org-src-container">
 <pre class="src src-java">System.out.println(Arrays.compare(<span class="org-keyword">new</span> <span class="org-type">int</span>[] {1}, <span class="org-keyword">new</span> <span class="org-type">int</span>[] {2}));
 </pre>
@@ -300,9 +283,9 @@ Java also provides methods to <b>compare</b> two arrays to determine which is <b
 </div>
 </div>
 
-<div id="outline-container-org31acd33" class="outline-4">
-<h4 id="org31acd33"><span class="section-number-4">1.1.2.</span> Example (Multi length)</h4>
-<div class="outline-text-4" id="text-1-1-2">
+<div id="outline-container-orgdb07ac2" class="outline-4">
+<h4 id="orgdb07ac2">Example (Multi length)</h4>
+<div class="outline-text-4" id="text-orgdb07ac2">
 <ul class="org-ul">
 <li>If <b>both</b> arrays are the <b>same length</b> and have the <b>same values</b> in each spot in the <b>same order</b>, return <code>zero</code>.</li>
 
@@ -317,9 +300,9 @@ Java also provides methods to <b>compare</b> two arrays to determine which is <b
 </div>
 </div>
 
-<div id="outline-container-org7beb304" class="outline-4">
-<h4 id="org7beb304"><span class="section-number-4">1.1.3.</span> What does smaller mean?</h4>
-<div class="outline-text-4" id="text-1-1-3">
+<div id="outline-container-org787bf96" class="outline-4">
+<h4 id="org787bf96">What does smaller mean?</h4>
+<div class="outline-text-4" id="text-org787bf96">
 <ul class="org-ul">
 <li><code>null</code> is smaller than any other value.</li>
 
@@ -334,19 +317,19 @@ Java also provides methods to <b>compare</b> two arrays to determine which is <b
 </div>
 </div>
 
-<div id="outline-container-org6dc099c" class="outline-4">
-<h4 id="org6dc099c"><span class="section-number-4">1.1.4.</span> Examples</h4>
-<div class="outline-text-4" id="text-1-1-4">
+<div id="outline-container-orgafc3401" class="outline-4">
+<h4 id="orgafc3401">Examples</h4>
+<div class="outline-text-4" id="text-orgafc3401">
 
-<div id="orgdbb227b" class="figure">
+<div id="orge722a75" class="figure">
 <p><img src="./assets/array_compare_examples.png" alt="array_compare_examples.png" />
 </p>
 </div>
 </div>
 
-<ol class="org-ol">
-<li><a id="org91435d8"></a><span class="underline">Exam Trick</span><br />
-<div class="outline-text-5" id="text-1-1-4-1">
+<ul class="org-ul">
+<li><a id="org5fcba18"></a><span class="underline">Exam Trick</span><br />
+<div class="outline-text-5" id="text-org5fcba18">
 <p>
 Finally, this code does not compile because the <b>types are different</b>.
 When comparing two arrays, they <b>must</b> be the <b>same array type</b>.
@@ -358,7 +341,7 @@ When comparing two arrays, they <b>must</b> be the <b>same array type</b>.
 </div>
 </div>
 </li>
-</ol>
+</ul>
 </div>
 </div>
 </div>

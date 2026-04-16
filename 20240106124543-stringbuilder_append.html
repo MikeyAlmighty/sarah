@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>StringBuilder.append</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,34 +254,18 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">StringBuilder.append</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#orgac4cd18">1. <code>.append()</code></a>
-<ul>
-<li><a href="#orge2ec9f2">1.1. Signature</a>
-<ul>
-<li><a href="#orgb008619">1.1.1. Example</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-orgac4cd18" class="outline-2">
-<h2 id="orgac4cd18"><span class="section-number-2">1.</span> <code>.append()</code></h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-org628c7c9" class="outline-2">
+<h2 id="org628c7c9"><code>.append()</code></h2>
+<div class="outline-text-2" id="text-org628c7c9">
 <p>
 Adds the parameter to the <code>StringBuilder</code> and <b>returns a reference</b> to the current <code>StringBuilder</code>.
 </p>
 </div>
 
-<div id="outline-container-orge2ec9f2" class="outline-3">
-<h3 id="orge2ec9f2"><span class="section-number-3">1.1.</span> Signature</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-org38d5b0e" class="outline-3">
+<h3 id="org38d5b0e">Signature</h3>
+<div class="outline-text-3" id="text-org38d5b0e">
 <p>
 (There are <code>10</code> signatures, below is only showing <code>String</code>)
 </p>
@@ -290,9 +276,9 @@ Adds the parameter to the <code>StringBuilder</code> and <b>returns a reference<
 </div>
 </div>
 
-<div id="outline-container-orgb008619" class="outline-4">
-<h4 id="orgb008619"><span class="section-number-4">1.1.1.</span> Example</h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-orga86e3e8" class="outline-4">
+<h4 id="orga86e3e8">Example</h4>
+<div class="outline-text-4" id="text-orga86e3e8">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">sb</span> = <span class="org-keyword">new</span> <span class="org-type">StringBuilder</span>().append(1).append(<span class="org-string">'c'</span>);
 sb.append(<span class="org-string">"-&#173;"</span>).append(<span class="org-constant">true</span>);

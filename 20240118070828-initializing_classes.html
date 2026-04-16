@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Initializing Classes</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,26 +254,10 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Initializing Classes</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#orgc6077b8">1. Initializing Classes</a>
-<ul>
-<li><a href="#org84db03b">1.1. Example</a>
-<ul>
-<li><a href="#org11c48d5">1.1.1. Code Example</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-orgc6077b8" class="outline-2">
-<h2 id="orgc6077b8"><span class="section-number-2">1.</span> Initializing Classes</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgdbc86db" class="outline-2">
+<h2 id="orgdbc86db">Initializing Classes</h2>
+<div class="outline-text-2" id="text-orgdbc86db">
 <p>
 First, we <b>initialize</b> the class, which involves <b>invoking</b> all <a href="Static Members.md.html#ID-fc670fe7-04be-4783-92b9-d97c7ee72bd7">static members</a> in the class hierarchy, starting with the highest <code>superclass</code> and working downward.
 This is sometimes referred to as <b>loading the class</b>.
@@ -293,9 +279,9 @@ The class may also <b>never</b> be loaded if it is <b>not used</b> in the progra
 </p>
 </div>
 
-<div id="outline-container-org84db03b" class="outline-3">
-<h3 id="org84db03b"><span class="section-number-3">1.1.</span> Example</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-org2c17e1b" class="outline-3">
+<h3 id="org2c17e1b">Example</h3>
+<div class="outline-text-3" id="text-org2c17e1b">
 <p>
 Initialize <code>Class X</code>
 </p>
@@ -306,9 +292,9 @@ Initialize <code>Class X</code>
 </ol>
 </div>
 
-<div id="outline-container-org11c48d5" class="outline-4">
-<h4 id="org11c48d5"><span class="section-number-4">1.1.1.</span> Code Example</h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-org6bab4a5" class="outline-4">
+<h4 id="org6bab4a5">Code Example</h4>
+<div class="outline-text-4" id="text-org6bab4a5">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Animal</span> {
     <span class="org-keyword">static</span> { System.out.print(<span class="org-string">"A"</span>); }
@@ -336,16 +322,16 @@ Even though the <code>main()</code> method creates three instances, the class is
 </p>
 </div>
 
-<ol class="org-ol">
-<li><a id="orgc090854"></a><span class="underline">Exam Trick</span><br />
-<div class="outline-text-5" id="text-1-1-1-1">
+<ul class="org-ul">
+<li><a id="org05d79b8"></a><span class="underline">Exam Trick</span><br />
+<div class="outline-text-5" id="text-org05d79b8">
 <p>
 For the exam, you just need to know that a class <b>must be initialized</b> before it is <code>referenced</code> or <code>used</code>.
 Also, the class containing the program entry point, aka the <code>main()</code> method, is loaded before the <code>main()</code> method is executed.
 </p>
 </div>
 </li>
-</ol>
+</ul>
 </div>
 </div>
 </div>

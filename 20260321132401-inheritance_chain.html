@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Inheritance Chain</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,25 +254,10 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Inheritance Chain</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org2f2d700">1. Inheritance Chain</a></li>
-<li><a href="#org11ea7b2">2. Key Idea</a></li>
-<li><a href="#orgafc1114">3. Constructor Execution Order</a></li>
-<li><a href="#org74c9904">4. Example</a></li>
-<li><a href="#orge093755">5. Output</a></li>
-<li><a href="#org33ffb05">6. Explanation</a></li>
-<li><a href="#org284e553">7. Important Rules</a></li>
-<li><a href="#org7232bc5">8. Why It Matters</a></li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-org2f2d700" class="outline-2">
-<h2 id="org2f2d700"><span class="section-number-2">1.</span> Inheritance Chain</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgb2b179f" class="outline-2">
+<h2 id="orgb2b179f">Inheritance Chain</h2>
+<div class="outline-text-2" id="text-orgb2b179f">
 <p>
 An <code>inheritance chain</code> is the sequence of classes formed through <a href="20240114160906-understanding_inheritance.html#ID-5e09bcf0-2de5-4b84-a9ed-b3654bf0df40">inheritance</a>, where each <code>class</code> <b>extends</b> another <code>class</code>.
 </p>
@@ -293,9 +280,9 @@ Here:
 </div>
 </div>
 
-<div id="outline-container-org11ea7b2" class="outline-2">
-<h2 id="org11ea7b2"><span class="section-number-2">2.</span> Key Idea</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-orge407da0" class="outline-2">
+<h2 id="orge407da0">Key Idea</h2>
+<div class="outline-text-2" id="text-orge407da0">
 <p>
 When an <code>object</code> of a <code>subclass</code> is created, Java initializes all classes in the <code>inheritance chain</code> from the <b>top (root)</b> to the <b>bottom (subclass)</b>.
 </p>
@@ -306,9 +293,9 @@ This ensures that all inherited <b>data</b> and <b>behavior</b> are properly <co
 </div>
 </div>
 
-<div id="outline-container-orgafc1114" class="outline-2">
-<h2 id="orgafc1114"><span class="section-number-2">3.</span> Constructor Execution Order</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-org4d8d70f" class="outline-2">
+<h2 id="org4d8d70f">Constructor Execution Order</h2>
+<div class="outline-text-2" id="text-org4d8d70f">
 <p>
 Constructors are executed in the following order:
 </p>
@@ -326,9 +313,9 @@ This process is called <a href="20260315145631-constructor_chaining.html#ID-5569
 </div>
 </div>
 
-<div id="outline-container-org74c9904" class="outline-2">
-<h2 id="org74c9904"><span class="section-number-2">4.</span> Example</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-org2feb24d" class="outline-2">
+<h2 id="org2feb24d">Example</h2>
+<div class="outline-text-2" id="text-org2feb24d">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">class</span> <span class="org-type">Person</span> {
     <span class="org-keyword">public</span> Person() {
@@ -356,9 +343,9 @@ This process is called <a href="20260315145631-constructor_chaining.html#ID-5569
 </div>
 </div>
 
-<div id="outline-container-orge093755" class="outline-2">
-<h2 id="orge093755"><span class="section-number-2">5.</span> Output</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-orgd9e8916" class="outline-2">
+<h2 id="orgd9e8916">Output</h2>
+<div class="outline-text-2" id="text-orgd9e8916">
 <pre class="example">
 Person constructor
 Employee constructor
@@ -367,9 +354,9 @@ Faculty constructor
 </div>
 </div>
 
-<div id="outline-container-org33ffb05" class="outline-2">
-<h2 id="org33ffb05"><span class="section-number-2">6.</span> Explanation</h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-org5d403bb" class="outline-2">
+<h2 id="org5d403bb">Explanation</h2>
+<div class="outline-text-2" id="text-org5d403bb">
 <ol class="org-ol">
 <li><code>Faculty()</code> is called</li>
 <li>Java first calls <code>Employee()</code></li>
@@ -380,9 +367,9 @@ Faculty constructor
 </div>
 </div>
 
-<div id="outline-container-org284e553" class="outline-2">
-<h2 id="org284e553"><span class="section-number-2">7.</span> Important Rules</h2>
-<div class="outline-text-2" id="text-7">
+<div id="outline-container-orgb2ba63e" class="outline-2">
+<h2 id="orgb2ba63e">Important Rules</h2>
+<div class="outline-text-2" id="text-orgb2ba63e">
 <ul class="org-ul">
 <li>Every class (except <code>Object</code>) has a <code>superclass</code>.</li>
 <li>Java automatically inserts <code>super()</code> if not specified.</li>
@@ -392,9 +379,9 @@ Faculty constructor
 </div>
 </div>
 
-<div id="outline-container-org7232bc5" class="outline-2">
-<h2 id="org7232bc5"><span class="section-number-2">8.</span> Why It Matters</h2>
-<div class="outline-text-2" id="text-8">
+<div id="outline-container-org5a82ff9" class="outline-2">
+<h2 id="org5a82ff9">Why It Matters</h2>
+<div class="outline-text-2" id="text-org5a82ff9">
 <ul class="org-ul">
 <li>Ensures proper <b>initialization</b> of <code>inherited fields.</code></li>
 <li>Maintains consistent object state.</li>

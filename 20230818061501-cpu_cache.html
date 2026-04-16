@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CPU Cache</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,23 +254,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">CPU Cache</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#orgf9e02ef">1. L3:</a></li>
-<li><a href="#orgd83cffc">2. L2:</a></li>
-<li><a href="#org09a8fd8">3. L1:</a></li>
-</ul>
-</div>
-</div>
 <p>
 There are three different cache levels in a CPU:
 </p>
 
-<div id="outline-container-orgf9e02ef" class="outline-2">
-<h2 id="orgf9e02ef"><span class="section-number-2">1.</span> L3:</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-org1c74dff" class="outline-2">
+<h2 id="org1c74dff">L3:</h2>
+<div class="outline-text-2" id="text-org1c74dff">
 <p>
 Largest and slowest of CPU cache.
 </p>
@@ -287,9 +279,9 @@ L3 cache is often <code>shared by all cores</code> in a single CPU.
 </div>
 </div>
 
-<div id="outline-container-orgd83cffc" class="outline-2">
-<h2 id="orgd83cffc"><span class="section-number-2">2.</span> L2:</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-org08fed66" class="outline-2">
+<h2 id="org08fed66">L2:</h2>
+<div class="outline-text-2" id="text-org08fed66">
 <p>
 L2 cache holds <b>less data than L3</b> cache, but it has <code>faster access speeds</code>.
 </p>
@@ -304,9 +296,9 @@ Each <b>Core</b> normally has its <b>own</b> L2 cache.
 </div>
 </div>
 
-<div id="outline-container-org09a8fd8" class="outline-2">
-<h2 id="org09a8fd8"><span class="section-number-2">3.</span> L1:</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-orgbc9bcba" class="outline-2">
+<h2 id="orgbc9bcba">L1:</h2>
+<div class="outline-text-2" id="text-orgbc9bcba">
 <p>
 Fastest and smallest of the three CPU cache levels.
 </p>

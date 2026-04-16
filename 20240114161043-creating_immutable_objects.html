@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Creating Immutable Objects</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,32 +254,10 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Creating Immutable Objects</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org269e80f">1. Creating Immutable Objects</a>
-<ul>
-<li><a href="#orgfd0731c">1.1. 1. Declaring an Immutable Class</a>
-<ul>
-<li><a href="#orgb62547f">1.1.1. Mutable Object Example</a></li>
-<li><a href="#orgb140697">1.1.2. Immutable Object Example</a></li>
-</ul>
-</li>
-<li><a href="#org5e6bf1e">1.2. 2. Performing a Defensive Copy</a>
-<ul>
-<li><a href="#org9459d23">1.2.1. Example</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-org269e80f" class="outline-2">
-<h2 id="org269e80f"><span class="section-number-2">1.</span> Creating Immutable Objects</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-org65c917a" class="outline-2">
+<h2 id="org65c917a">Creating Immutable Objects</h2>
+<div class="outline-text-2" id="text-org65c917a">
 <p>
 The <code>immutable</code> objects pattern is an object­oriented design pattern in which an object <b>cannot be modified</b> after it is created.
 </p>
@@ -289,9 +269,9 @@ The <code>immutable</code> objects pattern is an object­oriented design pattern
 </div>
 
 
-<div id="outline-container-orgfd0731c" class="outline-3">
-<h3 id="orgfd0731c"><span class="section-number-3">1.1.</span> 1. Declaring an Immutable Class</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-orgcc9ee2f" class="outline-3">
+<h3 id="orgcc9ee2f">1. Declaring an Immutable Class</h3>
+<div class="outline-text-3" id="text-orgcc9ee2f">
 <ol class="org-ol">
 <li>Mark the class as <code>final</code> or make all of the <code>constructors</code> <code>private</code>.</li>
 <li>Mark all the <code>instance variables</code> <code>private</code> and <code>final</code>.</li>
@@ -303,9 +283,9 @@ The <code>immutable</code> objects pattern is an object­oriented design pattern
 </div>
 
 
-<div id="outline-container-orgb62547f" class="outline-4">
-<h4 id="orgb62547f"><span class="section-number-4">1.1.1.</span> Mutable Object Example</h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-org47a65b8" class="outline-4">
+<h4 id="org47a65b8">Mutable Object Example</h4>
+<div class="outline-text-4" id="text-org47a65b8">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.*;
 
@@ -351,9 +331,9 @@ Simple: by using delegate or wrapper methods to read the data (See below example
 </div>
 </div>
 
-<div id="outline-container-orgb140697" class="outline-4">
-<h4 id="orgb140697"><span class="section-number-4">1.1.2.</span> Immutable Object Example</h4>
-<div class="outline-text-4" id="text-1-1-2">
+<div id="outline-container-org8d736c9" class="outline-4">
+<h4 id="org8d736c9">Immutable Object Example</h4>
+<div class="outline-text-4" id="text-org8d736c9">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.*;
 
@@ -379,9 +359,9 @@ Simple: by using delegate or wrapper methods to read the data (See below example
 </div>
 </div>
 
-<div id="outline-container-org5e6bf1e" class="outline-3">
-<h3 id="org5e6bf1e"><span class="section-number-3">1.2.</span> 2. Performing a Defensive Copy</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-orgaf232be" class="outline-3">
+<h3 id="orgaf232be">2. Performing a Defensive Copy</h3>
+<div class="outline-text-3" id="text-orgaf232be">
 <p>
 So, what’s this about the <code>fifth</code> and final rule for creating <b>immutable</b> objects?
 </p>
@@ -395,9 +375,9 @@ This rule is often called an <a href="20240124070254-invariant.html#ID-f86f8b26-
 </p>
 </div>
 
-<div id="outline-container-org9459d23" class="outline-4">
-<h4 id="org9459d23"><span class="section-number-4">1.2.1.</span> Example</h4>
-<div class="outline-text-4" id="text-1-2-1">
+<div id="outline-container-org2767d60" class="outline-4">
+<h4 id="org2767d60">Example</h4>
+<div class="outline-text-4" id="text-org2767d60">
 <p>
 The <code>copy</code> operation is called a <code>defensive copy</code> because the copy is being made in case other code does something unexpected.
 </p>

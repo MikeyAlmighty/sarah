@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Obtaining Substrings</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,36 +254,19 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Obtaining Substrings</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org0bea821">1. Obtaining Substrings</a>
-<ul>
-<li><a href="#org0544a3e">1.1. Example,</a>
-<ul>
-<li><a href="#org78c2012">1.1.1. Note</a></li>
-<li><a href="#org86cd446">1.1.2. Finding a Character or a Substring in a String</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-org0bea821" class="outline-2">
-<h2 id="org0bea821"><span class="section-number-2">1.</span> Obtaining Substrings</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgd7f6d29" class="outline-2">
+<h2 id="orgd7f6d29">Obtaining Substrings</h2>
+<div class="outline-text-2" id="text-orgd7f6d29">
 <p>
 You can obtain a single character from a <code>string</code> using the <code>charAt</code> method.
 You can also obtain a <b>substring</b> from a <code>string</code> using the <code>substring</code> method.
 </p>
 </div>
 
-<div id="outline-container-org0544a3e" class="outline-3">
-<h3 id="org0544a3e"><span class="section-number-3">1.1.</span> Example,</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-orgf87cf4d" class="outline-3">
+<h3 id="orgf87cf4d">Example,</h3>
+<div class="outline-text-3" id="text-orgf87cf4d">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-type">String</span> <span class="org-variable-name">message</span> = <span class="org-string">"Welcome to Java"</span>;
 message = message.substring(0,11) + <span class="org-string">"HTML"</span>;
@@ -326,9 +311,9 @@ The string message now becomes <code>Welcome to HTML</code>.
 </div>
 
 
-<div id="outline-container-org78c2012" class="outline-4">
-<h4 id="org78c2012"><span class="section-number-4">1.1.1.</span> Note</h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-org9101452" class="outline-4">
+<h4 id="org9101452">Note</h4>
+<div class="outline-text-4" id="text-org9101452">
 <p>
 If <code>beginIndex</code> is <code>endIndex</code>, <code>substring(beginIndex, endIndex)</code> returns an <code>empty</code> <b>string</b> with length <code>0</code>.
 If <code>beginIndex</code> <code>&gt;</code> <code>endIndex</code>, it would be a <b>runtime</b> <b>error</b>.
@@ -336,9 +321,9 @@ If <code>beginIndex</code> <code>&gt;</code> <code>endIndex</code>, it would be 
 </div>
 </div>
 
-<div id="outline-container-org86cd446" class="outline-4">
-<h4 id="org86cd446"><span class="section-number-4">1.1.2.</span> Finding a Character or a Substring in a String</h4>
-<div class="outline-text-4" id="text-1-1-2">
+<div id="outline-container-org85b6bd9" class="outline-4">
+<h4 id="org85b6bd9">Finding a Character or a Substring in a String</h4>
+<div class="outline-text-4" id="text-org85b6bd9">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -408,9 +393,9 @@ If <code>beginIndex</code> <code>&gt;</code> <code>endIndex</code>, it would be 
 </table>
 </div>
 
-<ol class="org-ol">
-<li><a id="orgbb23a4d"></a>Examples<br />
-<div class="outline-text-5" id="text-1-1-2-1">
+<ul class="org-ul">
+<li><a id="org8deabd5"></a>Examples<br />
+<div class="outline-text-5" id="text-org8deabd5">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-string">"Welcome to Java"</span>.indexOf(<span class="org-string">'W'</span>) returns 0.
 <span class="org-string">"Welcome to Java"</span>.indexOf(<span class="org-string">'o'</span>) returns 4.
@@ -440,7 +425,7 @@ You can use the following code to extract the first and last name from the strin
 </div>
 </div>
 </li>
-</ol>
+</ul>
 </div>
 </div>
 </div>

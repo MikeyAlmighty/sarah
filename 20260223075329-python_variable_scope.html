@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python Variable Scope</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,25 +254,10 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Python Variable Scope</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org966a969">1. Python Scope Levels (LEGB)</a></li>
-<li><a href="#orgb5b28c8">2. 1. Local Scope (L)</a></li>
-<li><a href="#orgf626324">3. 2. Enclosing Scope (E)</a></li>
-<li><a href="#org54a7d17">4. 3. Global Scope (G)</a></li>
-<li><a href="#org7668f88">5. 4. Built-in Scope (B)</a></li>
-<li><a href="#orge6c8c8e">6. Name Resolution Order</a></li>
-<li><a href="#org762ecba">7. Common Pitfalls</a></li>
-<li><a href="#orgc82fa07">8. Quick Mental Model</a></li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-org966a969" class="outline-2">
-<h2 id="org966a969"><span class="section-number-2">1.</span> Python Scope Levels (LEGB)</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgcd12c7f" class="outline-2">
+<h2 id="orgcd12c7f">Python Scope Levels (LEGB)</h2>
+<div class="outline-text-2" id="text-orgcd12c7f">
 <p>
 <b>LEGB</b> is a rule used by Python to resolve variable names.  
 It stands for:
@@ -289,9 +276,9 @@ Python searches for variables in this order.
 </div>
 </div>
 
-<div id="outline-container-orgb5b28c8" class="outline-2">
-<h2 id="orgb5b28c8"><span class="section-number-2">2.</span> 1. Local Scope (L)</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-org4a61ff4" class="outline-2">
+<h2 id="org4a61ff4">1. Local Scope (L)</h2>
+<div class="outline-text-2" id="text-org4a61ff4">
 <p>
 The local scope refers to variables defined inside a function.
 </p>
@@ -316,9 +303,9 @@ Local scope has the <b>highest</b> priority.
 </div>
 </div>
 
-<div id="outline-container-orgf626324" class="outline-2">
-<h2 id="orgf626324"><span class="section-number-2">3.</span> 2. Enclosing Scope (E)</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-orgdebfb79" class="outline-2">
+<h2 id="orgdebfb79">2. Enclosing Scope (E)</h2>
+<div class="outline-text-2" id="text-orgdebfb79">
 <p>
 The enclosing scope exists in nested functions (a function inside another function).
 </p>
@@ -363,9 +350,9 @@ outer()
 </div>
 </div>
 
-<div id="outline-container-org54a7d17" class="outline-2">
-<h2 id="org54a7d17"><span class="section-number-2">4.</span> 3. Global Scope (G)</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-org3fc5c4c" class="outline-2">
+<h2 id="org3fc5c4c">3. Global Scope (G)</h2>
+<div class="outline-text-2" id="text-org3fc5c4c">
 <p>
 The global scope refers to variables defined at the <b>top</b> level of a <b>file</b>.
 </p>
@@ -398,9 +385,9 @@ change()
 </div>
 </div>
 
-<div id="outline-container-org7668f88" class="outline-2">
-<h2 id="org7668f88"><span class="section-number-2">5.</span> 4. Built-in Scope (B)</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-orgdbbb6d0" class="outline-2">
+<h2 id="orgdbbb6d0">4. Built-in Scope (B)</h2>
+<div class="outline-text-2" id="text-orgdbbb6d0">
 <p>
 The <b>built-in</b> scope contains names that are always available in Python.
 </p>
@@ -437,9 +424,9 @@ You can inspect built-ins:
 </div>
 </div>
 
-<div id="outline-container-orge6c8c8e" class="outline-2">
-<h2 id="orge6c8c8e"><span class="section-number-2">6.</span> Name Resolution Order</h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-orgad27fcd" class="outline-2">
+<h2 id="orgad27fcd">Name Resolution Order</h2>
+<div class="outline-text-2" id="text-orgad27fcd">
 <p>
 When Python encounters a variable, it searches in this order:
 </p>
@@ -460,9 +447,9 @@ If the name is not found after checking all four levels:
 </div>
 </div>
 
-<div id="outline-container-org762ecba" class="outline-2">
-<h2 id="org762ecba"><span class="section-number-2">7.</span> Common Pitfalls</h2>
-<div class="outline-text-2" id="text-7">
+<div id="outline-container-orgb5202a6" class="outline-2">
+<h2 id="orgb5202a6">Common Pitfalls</h2>
+<div class="outline-text-2" id="text-orgb5202a6">
 <p>
 <b>UnboundLocalError</b>
 </p>
@@ -486,9 +473,9 @@ Python treats <code>x</code> as local because it is <b>assigned</b> inside <code
 </div>
 </div>
 
-<div id="outline-container-orgc82fa07" class="outline-2">
-<h2 id="orgc82fa07"><span class="section-number-2">8.</span> Quick Mental Model</h2>
-<div class="outline-text-2" id="text-8">
+<div id="outline-container-org3902b7b" class="outline-2">
+<h2 id="org3902b7b">Quick Mental Model</h2>
+<div class="outline-text-2" id="text-org3902b7b">
 <p>
 Think:
 </p>

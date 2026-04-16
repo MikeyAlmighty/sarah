@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Declaring an Interface</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,37 +254,18 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Declaring an Interface</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org45ae381">1. Declaring an Interface</a>
-<ul>
-<li>
-<ul>
-<li><a href="#org6ec5fe5">1.0.1. Syntax</a></li>
-<li><a href="#org3b9a324">1.0.2. Example</a></li>
-</ul>
-</li>
-<li><a href="#org28eee6b">1.1. Implementing an Interface</a></li>
-<li><a href="#org0bf1f44">1.2. Note</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-org45ae381" class="outline-2">
-<h2 id="org45ae381"><span class="section-number-2">1.</span> Declaring an Interface</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgf713902" class="outline-2">
+<h2 id="orgf713902">Declaring an Interface</h2>
+<div class="outline-text-2" id="text-orgf713902">
 <p>
 Defined with the <code>interface</code> <a href="20231224102648-java_keywords.html#ID-5f2b572a-ec31-49de-ba13-95b0c5edb4c0">keyword</a>.
 </p>
 </div>
 
-<div id="outline-container-org6ec5fe5" class="outline-4">
-<h4 id="org6ec5fe5"><span class="section-number-4">1.0.1.</span> Syntax</h4>
-<div class="outline-text-4" id="text-1-0-1">
+<div id="outline-container-org9150d7a" class="outline-4">
+<h4 id="org9150d7a">Syntax</h4>
+<div class="outline-text-4" id="text-org9150d7a">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-type">modifier</span> <span class="org-keyword">interface</span> InterfaceName {
     <span class="org-doc">/** Constant declarations */</span>
@@ -293,9 +276,9 @@ Defined with the <code>interface</code> <a href="20231224102648-java_keywords.ht
 </div>
 </div>
 
-<div id="outline-container-org3b9a324" class="outline-4">
-<h4 id="org3b9a324"><span class="section-number-4">1.0.2.</span> Example</h4>
-<div class="outline-text-4" id="text-1-0-2">
+<div id="outline-container-org7b278e5" class="outline-4">
+<h4 id="org7b278e5">Example</h4>
+<div class="outline-text-4" id="text-org7b278e5">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">interface</span> <span class="org-type">Animal</span> {
     <span class="org-type">void</span> <span class="org-function-name">eat</span>();  <span class="org-comment-delimiter">// </span><span class="org-comment">Abstract method (no body)
@@ -313,7 +296,7 @@ In <code>Figure 7.1</code>, our <code>interface</code> declaration <i>includes</
 </p>
 
 
-<div id="org01ce670" class="figure">
+<div id="org7ac04f3" class="figure">
 <p><img src="./assets/defining_an_interface.png" alt="defining_an_interface.png" />
 </p>
 </div>
@@ -327,11 +310,11 @@ In <code>Figure 7.1</code>, our <code>interface</code> declaration <i>includes</
 </div>
 </div>
 
-<ol class="org-ol">
-<li><a id="orga69bb3f"></a>Error Examples<br />
-<ol class="org-ol">
-<li><a id="orga8f939f"></a>Example<br />
-<div class="outline-text-6" id="text-1-0-2-1-1">
+<ul class="org-ul">
+<li><a id="org682b8bb"></a>Error Examples<br />
+<ul class="org-ul">
+<li><a id="org2d2aef9"></a>Example<br />
+<div class="outline-text-6" id="text-org2d2aef9">
 <p>
 This example <b>doesn’t</b> compile, as <code>WalksOnTwoLegs</code> is an <b>interface</b> and <b>cannot</b> be <b>instantiated</b>.
 </p>
@@ -349,8 +332,8 @@ This example <b>doesn’t</b> compile, as <code>WalksOnTwoLegs</code> is an <b>i
 </div>
 </li>
 
-<li><a id="org0310c22"></a>Example<br />
-<div class="outline-text-6" id="text-1-0-2-1-2">
+<li><a id="orgb603282"></a>Example<br />
+<div class="outline-text-6" id="text-orgb603282">
 <p>
 <code>WalksOnEightLegs</code>, <b>doesn’t</b> compile because <code>interfaces</code> <b>cannot</b> be <i>marked</i> as <code>final</code> for the same reason that <b>abstract classes</b> cannot be <i>marked</i> as <code>final</code>.
 </p>
@@ -361,14 +344,14 @@ This example <b>doesn’t</b> compile, as <code>WalksOnTwoLegs</code> is an <b>i
 </div>
 </div>
 </li>
-</ol>
+</ul>
 </li>
-</ol>
+</ul>
 </div>
 
-<div id="outline-container-org28eee6b" class="outline-3">
-<h3 id="org28eee6b"><span class="section-number-3">1.1.</span> Implementing an Interface</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-org2c614fe" class="outline-3">
+<h3 id="org2c614fe">Implementing an Interface</h3>
+<div class="outline-text-3" id="text-org2c614fe">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">FieldMouse</span> <span class="org-keyword">implements</span> <span class="org-type">Climb</span>, <span class="org-type">CanBurrow</span> {
     <span class="org-keyword">public</span> <span class="org-type">Float</span> <span class="org-function-name">getSpeed</span>(<span class="org-type">int</span> <span class="org-variable-name">age</span>) {
@@ -380,9 +363,9 @@ This example <b>doesn’t</b> compile, as <code>WalksOnTwoLegs</code> is an <b>i
 </div>
 </div>
 
-<div id="outline-container-org0bf1f44" class="outline-3">
-<h3 id="org0bf1f44"><span class="section-number-3">1.2.</span> Note</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-orgd3029e9" class="outline-3">
+<h3 id="orgd3029e9">Note</h3>
+<div class="outline-text-3" id="text-orgd3029e9">
 <ul class="org-ul">
 <li>One aspect of an <code>interface</code> declaration that differs from an <a href="20240114162721-abstract_classes.html#ID-3893ce2e-cd85-4914-ba26-d7c7c732eb02">abstract class</a> is that it contains <a href="20240125070115-inserting_implicit_modifiers.html#ID-11cb5831-7123-44df-a020-cfd8f6646645">implicit modifiers</a>.</li>
 </ul>

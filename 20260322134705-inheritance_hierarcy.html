@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Inheritance Hierarcy</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,27 +254,10 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Inheritance Hierarcy</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org57fb01f">1. Inheritance Hierarcy</a></li>
-<li><a href="#org19f8060">2. Structure</a></li>
-<li><a href="#org4d5209c">3. Key Idea</a></li>
-<li><a href="#org65377d6">4. Constructor Execution</a></li>
-<li><a href="#orgdd29491">5. Method Resolution</a></li>
-<li><a href="#orgcdf7174">6. Example</a></li>
-<li><a href="#org7f08a85">7. Output</a></li>
-<li><a href="#orgfab8e84">8. Explanation</a></li>
-<li><a href="#orgf355dc7">9. Important Rules</a></li>
-<li><a href="#orga90373a">10. Related Concepts</a></li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-org57fb01f" class="outline-2">
-<h2 id="org57fb01f"><span class="section-number-2">1.</span> Inheritance Hierarcy</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-org9aa79fe" class="outline-2">
+<h2 id="org9aa79fe">Inheritance Hierarcy</h2>
+<div class="outline-text-2" id="text-org9aa79fe">
 <p>
 An <code>inheritance hierarchy</code> is the structure formed when multiple <code>classes</code> are related through <a href="20240114160906-understanding_inheritance.html#ID-5e09bcf0-2de5-4b84-a9ed-b3654bf0df40">Inheritance</a>, creating a <b>chain</b> or <b>tree-like relationship</b>.
 </p>
@@ -283,9 +268,9 @@ At the top of every hierarchy in Java is the <code>Object</code> class.
 </div>
 </div>
 
-<div id="outline-container-org19f8060" class="outline-2">
-<h2 id="org19f8060"><span class="section-number-2">2.</span> Structure</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-org7da30d5" class="outline-2">
+<h2 id="org7da30d5">Structure</h2>
+<div class="outline-text-2" id="text-org7da30d5">
 <p>
 Example hierarchy:
 </p>
@@ -308,9 +293,9 @@ Faculty
 </div>
 </div>
 
-<div id="outline-container-org4d5209c" class="outline-2">
-<h2 id="org4d5209c"><span class="section-number-2">3.</span> Key Idea</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-org8b74dee" class="outline-2">
+<h2 id="org8b74dee">Key Idea</h2>
+<div class="outline-text-2" id="text-org8b74dee">
 <p>
 An <code>object</code> of a <code>subclass</code> contains:
 </p>
@@ -321,9 +306,9 @@ An <code>object</code> of a <code>subclass</code> contains:
 </div>
 </div>
 
-<div id="outline-container-org65377d6" class="outline-2">
-<h2 id="org65377d6"><span class="section-number-2">4.</span> Constructor Execution</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-org9642b21" class="outline-2">
+<h2 id="org9642b21">Constructor Execution</h2>
+<div class="outline-text-2" id="text-org9642b21">
 <p>
 When creating an <code>object</code>, constructors are invoked from the <b>top</b> of the hierarchy <b>down</b>:
 </p>
@@ -338,9 +323,9 @@ This process is called <b>constructor chaining</b>.
 </div>
 </div>
 
-<div id="outline-container-orgdd29491" class="outline-2">
-<h2 id="orgdd29491"><span class="section-number-2">5.</span> Method Resolution</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-orgc56f2dc" class="outline-2">
+<h2 id="orgc56f2dc">Method Resolution</h2>
+<div class="outline-text-2" id="text-orgc56f2dc">
 <p>
 When a <code>method</code> is invoked on an object:
 </p>
@@ -356,9 +341,9 @@ This is known as <a href="20260321130312-dynamic_binding.html#ID-a036361c-34a9-4
 </div>
 </div>
 
-<div id="outline-container-orgcdf7174" class="outline-2">
-<h2 id="orgcdf7174"><span class="section-number-2">6.</span> Example</h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-orgd9a5a97" class="outline-2">
+<h2 id="orgd9a5a97">Example</h2>
+<div class="outline-text-2" id="text-orgd9a5a97">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">class</span> <span class="org-type">Person</span> {
     <span class="org-keyword">public</span> <span class="org-type">String</span> <span class="org-function-name">toString</span>() {
@@ -387,18 +372,18 @@ This is known as <a href="20260321130312-dynamic_binding.html#ID-a036361c-34a9-4
 </div>
 </div>
 
-<div id="outline-container-org7f08a85" class="outline-2">
-<h2 id="org7f08a85"><span class="section-number-2">7.</span> Output</h2>
-<div class="outline-text-2" id="text-7">
+<div id="outline-container-org600d8d8" class="outline-2">
+<h2 id="org600d8d8">Output</h2>
+<div class="outline-text-2" id="text-org600d8d8">
 <pre class="example">
 Employee
 </pre>
 </div>
 </div>
 
-<div id="outline-container-orgfab8e84" class="outline-2">
-<h2 id="orgfab8e84"><span class="section-number-2">8.</span> Explanation</h2>
-<div class="outline-text-2" id="text-8">
+<div id="outline-container-orga0c6348" class="outline-2">
+<h2 id="orga0c6348">Explanation</h2>
+<div class="outline-text-2" id="text-orga0c6348">
 <ul class="org-ul">
 <li>Declared type: <code>Person</code></li>
 <li>Actual type: <code>Faculty</code></li>
@@ -410,9 +395,9 @@ Employee
 </div>
 </div>
 
-<div id="outline-container-orgf355dc7" class="outline-2">
-<h2 id="orgf355dc7"><span class="section-number-2">9.</span> Important Rules</h2>
-<div class="outline-text-2" id="text-9">
+<div id="outline-container-org150cd23" class="outline-2">
+<h2 id="org150cd23">Important Rules</h2>
+<div class="outline-text-2" id="text-org150cd23">
 <ul class="org-ul">
 <li>Java supports <b>single inheritance</b> for <code>classes</code>.</li>
 <li>Every <code>class</code> implicitly extends <code>Object</code>.</li>
@@ -423,9 +408,9 @@ Employee
 </div>
 </div>
 
-<div id="outline-container-orga90373a" class="outline-2">
-<h2 id="orga90373a"><span class="section-number-2">10.</span> Related Concepts</h2>
-<div class="outline-text-2" id="text-10">
+<div id="outline-container-org7811350" class="outline-2">
+<h2 id="org7811350">Related Concepts</h2>
+<div class="outline-text-2" id="text-org7811350">
 <ul class="org-ul">
 <li><a href="20260321132401-inheritance_chain.html#ID-ecd628b6-567a-44e5-bcae-46b77c8d425b">Inheritance Chain</a></li>
 <li><a href="20240120133450-overriding_a_method.html#ID-c67b24a4-82f7-4423-83a9-75fc1c566166">Method Overriding</a></li>

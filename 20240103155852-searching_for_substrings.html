@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Searching for Substrings</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,53 +254,27 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Searching for Substrings</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org158dec5">1. Searching for Substrings</a>
-<ul>
-<li><a href="#org6b8fa47">1.1. 1. .startsWith()</a>
-<ul>
-<li><a href="#org002a21b">1.1.1. Signature</a></li>
-</ul>
-</li>
-<li><a href="#org1bc1ba0">1.2. 2. .endsWith()</a>
-<ul>
-<li><a href="#org9380bf4">1.2.1. Signature</a></li>
-</ul>
-</li>
-<li><a href="#orgadd89b9">1.3. 3. .contains()</a>
-<ul>
-<li><a href="#org55188df">1.3.1. Signature</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-org158dec5" class="outline-2">
-<h2 id="org158dec5"><span class="section-number-2">1.</span> Searching for Substrings</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-org4fe503c" class="outline-2">
+<h2 id="org4fe503c">Searching for Substrings</h2>
+<div class="outline-text-2" id="text-org4fe503c">
 </div>
-<div id="outline-container-org6b8fa47" class="outline-3">
-<h3 id="org6b8fa47"><span class="section-number-3">1.1.</span> 1. .startsWith()</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-orgcba308e" class="outline-3">
+<h3 id="orgcba308e">1. .startsWith()</h3>
+<div class="outline-text-3" id="text-orgcba308e">
 </div>
-<div id="outline-container-org002a21b" class="outline-4">
-<h4 id="org002a21b"><span class="section-number-4">1.1.1.</span> Signature</h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-org6d758d1" class="outline-4">
+<h4 id="org6d758d1">Signature</h4>
+<div class="outline-text-4" id="text-org6d758d1">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-type">boolean</span> <span class="org-function-name">startsWith</span>(<span class="org-type">String</span> <span class="org-variable-name">prefix</span>)
 </pre>
 </div>
 </div>
 
-<ol class="org-ol">
-<li><a id="org3d6a072"></a>Example<br />
-<div class="outline-text-5" id="text-1-1-1-1">
+<ul class="org-ul">
+<li><a id="org5cb8cba"></a>Example<br />
+<div class="outline-text-5" id="text-org5cb8cba">
 <div class="org-src-container">
 <pre class="src src-java">System.out.println(<span class="org-string">"abc"</span>.startsWith(<span class="org-string">"a"</span>)); <span class="org-comment-delimiter">// </span><span class="org-comment">true
 </span>System.out.println(<span class="org-string">"abc"</span>.startsWith(<span class="org-string">"A"</span>)); <span class="org-comment-delimiter">// </span><span class="org-comment">false</span>
@@ -306,26 +282,26 @@
 </div>
 </div>
 </li>
-</ol>
+</ul>
 </div>
 </div>
 
-<div id="outline-container-org1bc1ba0" class="outline-3">
-<h3 id="org1bc1ba0"><span class="section-number-3">1.2.</span> 2. .endsWith()</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-org2c2384b" class="outline-3">
+<h3 id="org2c2384b">2. .endsWith()</h3>
+<div class="outline-text-3" id="text-org2c2384b">
 </div>
-<div id="outline-container-org9380bf4" class="outline-4">
-<h4 id="org9380bf4"><span class="section-number-4">1.2.1.</span> Signature</h4>
-<div class="outline-text-4" id="text-1-2-1">
+<div id="outline-container-org5a9010e" class="outline-4">
+<h4 id="org5a9010e">Signature</h4>
+<div class="outline-text-4" id="text-org5a9010e">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-type">boolean</span> <span class="org-function-name">endsWith</span>(<span class="org-type">String</span> <span class="org-variable-name">suffix</span>)
 </pre>
 </div>
 </div>
 
-<ol class="org-ol">
-<li><a id="org44db804"></a>Example<br />
-<div class="outline-text-5" id="text-1-2-1-1">
+<ul class="org-ul">
+<li><a id="org5cd0fb7"></a>Example<br />
+<div class="outline-text-5" id="text-org5cd0fb7">
 <div class="org-src-container">
 <pre class="src src-java">System.out.println(<span class="org-string">"abc"</span>.endsWith(<span class="org-string">"c"</span>)); <span class="org-comment-delimiter">// </span><span class="org-comment">true
 </span>System.out.println(<span class="org-string">"abc"</span>.endsWith(<span class="org-string">"a"</span>)); <span class="org-comment-delimiter">// </span><span class="org-comment">false</span>
@@ -333,26 +309,26 @@
 </div>
 </div>
 </li>
-</ol>
+</ul>
 </div>
 </div>
 
-<div id="outline-container-orgadd89b9" class="outline-3">
-<h3 id="orgadd89b9"><span class="section-number-3">1.3.</span> 3. .contains()</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-org4779372" class="outline-3">
+<h3 id="org4779372">3. .contains()</h3>
+<div class="outline-text-3" id="text-org4779372">
 </div>
-<div id="outline-container-org55188df" class="outline-4">
-<h4 id="org55188df"><span class="section-number-4">1.3.1.</span> Signature</h4>
-<div class="outline-text-4" id="text-1-3-1">
+<div id="outline-container-org15c6ff5" class="outline-4">
+<h4 id="org15c6ff5">Signature</h4>
+<div class="outline-text-4" id="text-org15c6ff5">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-type">boolean</span> <span class="org-function-name">contains</span>(<span class="org-type">CharSequence</span> <span class="org-variable-name">charSeq</span>)
 </pre>
 </div>
 </div>
 
-<ol class="org-ol">
-<li><a id="org41379da"></a>Example<br />
-<div class="outline-text-5" id="text-1-3-1-1">
+<ul class="org-ul">
+<li><a id="orga655674"></a>Example<br />
+<div class="outline-text-5" id="text-orga655674">
 <div class="org-src-container">
 <pre class="src src-java">System.out.println(<span class="org-string">"abc"</span>.contains(<span class="org-string">"b"</span>)); <span class="org-comment-delimiter">// </span><span class="org-comment">true
 </span>System.out.println(<span class="org-string">"abc"</span>.contains(<span class="org-string">"B"</span>)); <span class="org-comment-delimiter">// </span><span class="org-comment">false</span>
@@ -360,7 +336,7 @@
 </div>
 </div>
 </li>
-</ol>
+</ul>
 </div>
 </div>
 </div>

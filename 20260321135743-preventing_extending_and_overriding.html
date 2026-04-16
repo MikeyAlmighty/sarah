@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Preventing Extending and Overriding</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,37 +254,10 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Preventing Extending and Overriding</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org284dbad">1. Preventing Extending and Overriding</a>
-<ul>
-<li><a href="#org12a6792">1.1. Description</a>
-<ul>
-<li><a href="#org881aff6">1.1.1. Example</a></li>
-<li><a href="#org026ee77">1.1.2. Example</a></li>
-</ul>
-</li>
-<li><a href="#org79b8214">1.2. Note</a>
-<ul>
-<li><a href="#orgdd5a018">1.2.1. We can use final to:</a></li>
-</ul>
-</li>
-<li><a href="#org1ca8787">1.3. Error</a>
-<ul>
-<li><a href="#orgad56310">1.3.1. Preventing inheritance and overriding with 'final' together</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-org284dbad" class="outline-2">
-<h2 id="org284dbad"><span class="section-number-2">1.</span> Preventing Extending and Overriding</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-org4c55a6a" class="outline-2">
+<h2 id="org4c55a6a">Preventing Extending and Overriding</h2>
+<div class="outline-text-2" id="text-org4c55a6a">
 <p>
 Neither a <code>final class</code> nor a <code>final method</code> can be <b>extended</b>.
 </p>
@@ -292,9 +267,9 @@ A <code>final data field</code> is a <b>constant</b>.
 </p>
 </div>
 
-<div id="outline-container-org12a6792" class="outline-3">
-<h3 id="org12a6792"><span class="section-number-3">1.1.</span> Description</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-orgc5a77cd" class="outline-3">
+<h3 id="orgc5a77cd">Description</h3>
+<div class="outline-text-3" id="text-orgc5a77cd">
 <p>
 You may occasionally want to prevent <code>classes</code> from being <b>extended</b>.
 </p>
@@ -312,9 +287,9 @@ The <code>String</code>, <code>StringBuilder</code>, and <code>StringBuffer</cod
 </p>
 </div>
 
-<div id="outline-container-org881aff6" class="outline-4">
-<h4 id="org881aff6"><span class="section-number-4">1.1.1.</span> Example</h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-orgbdd0346" class="outline-4">
+<h4 id="orgbdd0346">Example</h4>
+<div class="outline-text-4" id="text-orgbdd0346">
 <p>
 The following class <code>A</code> is <code>final</code> and <b>cannot</b> be <b>extended</b>:
 </p>
@@ -333,9 +308,9 @@ A <code>final</code> method cannot be <b>overridden</b> by its <code>subclasses<
 </div>
 </div>
 
-<div id="outline-container-org026ee77" class="outline-4">
-<h4 id="org026ee77"><span class="section-number-4">1.1.2.</span> Example</h4>
-<div class="outline-text-4" id="text-1-1-2">
+<div id="outline-container-orgda9e778" class="outline-4">
+<h4 id="orgda9e778">Example</h4>
+<div class="outline-text-4" id="text-orgda9e778">
 <p>
 The following method <code>m</code> is <code>final</code> and <b>cannot</b> be <b>overridden</b>:
 </p>
@@ -353,9 +328,9 @@ The following method <code>m</code> is <code>final</code> and <b>cannot</b> be <
 </div>
 </div>
 
-<div id="outline-container-org79b8214" class="outline-3">
-<h3 id="org79b8214"><span class="section-number-3">1.2.</span> Note</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-org2c6192c" class="outline-3">
+<h3 id="org2c6192c">Note</h3>
+<div class="outline-text-3" id="text-org2c6192c">
 <p>
 The <a href="20240111060525-optional_specifiers.html#ID-78bf41e5-259a-4c97-8df7-1685989e3d8c">optional Specifiers</a> <code>public</code>, <code>protected</code>, <code>private</code>, <code>static</code>, <code>abstract</code>, and <code>final</code> are used on <code>classes</code> and <code>class members</code> (<b>data</b> and <b>methods</b>), except that the <code>final</code> modifier can also be used on <b>local</b> <b>variables</b> in a <code>method</code>.
 </p>
@@ -365,9 +340,9 @@ A <code>final</code> <b>local variable</b> is a <b>constant</b> inside a <code>m
 </p>
 </div>
 
-<div id="outline-container-orgdd5a018" class="outline-4">
-<h4 id="orgdd5a018"><span class="section-number-4">1.2.1.</span> We can use final to:</h4>
-<div class="outline-text-4" id="text-1-2-1">
+<div id="outline-container-orgb0eda80" class="outline-4">
+<h4 id="orgb0eda80">We can use final to:</h4>
+<div class="outline-text-4" id="text-orgb0eda80">
 <ul class="org-ul">
 <li>Prevent <b>inheritance</b>: Use <code>final</code> for a <code>class</code> when you want to prevent it from being subclassed.</li>
 <li>Prevent <a href="20240120133450-overriding_a_method.html#ID-c67b24a4-82f7-4423-83a9-75fc1c566166">method overriding</a>: Use <code>final</code> for a <code>method</code> when you want to <b>prevent</b> <code>subclasses</code> from <b>changing</b> its <b>behaviour</b>.</li>
@@ -377,9 +352,9 @@ A <code>final</code> <b>local variable</b> is a <b>constant</b> inside a <code>m
 </div>
 </div>
 
-<div id="outline-container-org1ca8787" class="outline-3">
-<h3 id="org1ca8787"><span class="section-number-3">1.3.</span> Error</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-org32a0cae" class="outline-3">
+<h3 id="org32a0cae">Error</h3>
+<div class="outline-text-3" id="text-org32a0cae">
 <p>
 If you try to <b>extend</b> a <code>final</code> <code>class</code>, the <b>compiler</b> will throw an <b>error</b>.
 </p>
@@ -401,17 +376,17 @@ If you try to <b>extend</b> a <code>final</code> <code>class</code>, the <b>comp
 </div>
 </div>
 
-<div id="outline-container-orgad56310" class="outline-4">
-<h4 id="orgad56310"><span class="section-number-4">1.3.1.</span> Preventing inheritance and overriding with 'final' together</h4>
-<div class="outline-text-4" id="text-1-3-1">
+<div id="outline-container-org34882d8" class="outline-4">
+<h4 id="org34882d8">Preventing inheritance and overriding with 'final' together</h4>
+<div class="outline-text-4" id="text-org34882d8">
 <p>
 You can use <code>final</code> for both the <code>class</code> and its <code>methods</code> to fully lock down the class from any <b>subclassing</b> or <a href="20240120133450-overriding_a_method.html#ID-c67b24a4-82f7-4423-83a9-75fc1c566166">Method Overriding</a>:
 </p>
 </div>
 
-<ol class="org-ol">
-<li><a id="orgfef9989"></a>Example<br />
-<div class="outline-text-5" id="text-1-3-1-1">
+<ul class="org-ul">
+<li><a id="orgf0ebee1"></a>Example<br />
+<div class="outline-text-5" id="text-orgf0ebee1">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">final</span> <span class="org-keyword">class</span> <span class="org-type">Animal</span> {
     <span class="org-comment-delimiter">// </span><span class="org-comment">Final method: cannot be overridden in subclasses
@@ -438,7 +413,7 @@ You can use <code>final</code> for both the <code>class</code> and its <code>met
 </div>
 </div>
 </li>
-</ol>
+</ul>
 </div>
 </div>
 </div>

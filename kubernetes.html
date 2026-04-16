@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -251,39 +253,8 @@
 </head>
 <body>
 <div id="content" class="content">
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#kubernetes">1. Kubernetes</a>
-<ul>
-<li><a href="#master-node">1.1. 1. Master node</a>
-<ul>
-<li><a href="#api-server">1.1.1. API Server</a></li>
-<li><a href="#scheduler">1.1.2. Scheduler</a></li>
-<li><a href="#controller-manager">1.1.3. Controller Manager</a></li>
-<li><a href="#data-store-etcd">1.1.4. Data Store (etcd)</a></li>
-</ul>
-</li>
-<li><a href="#worker-node">1.2. 2. Worker node</a>
-<ul>
-<li><a href="#container-runtime">1.2.1. Container Runtime</a></li>
-<li><a href="#node-agent---kubelet">1.2.2. Node Agent - kubelet</a></li>
-<li><a href="#proxy---kube-proxy">1.2.3. Proxy - kube-proxy</a></li>
-<li><a href="#addons">1.2.4. Addons</a></li>
-<li><a href="#networking-issues">1.2.5. Networking issues</a></li>
-<li><a href="#container-to-container-communication-inside-pods">1.2.6. Container-to-Container Communication inside pods</a></li>
-<li><a href="#pod-to-pod-communication-across-nodes">1.2.7. Pod-to-Pod Communication Across Nodes</a></li>
-<li><a href="#pod-to-external-world-communication">1.2.8. Pod-to-External World communication</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 <div id="outline-container-kubernetes" class="outline-2">
-<h2 id="kubernetes"><span class="section-number-2">1.</span> Kubernetes</h2>
+<h2 id="kubernetes">Kubernetes</h2>
 <div class="outline-text-2" id="text-kubernetes">
 <p>
 Kubernetes is an open-source system for automating deployment, scaling,
@@ -368,7 +339,7 @@ failed containers.</li>
 </div>
 
 <div id="outline-container-master-node" class="outline-3">
-<h3 id="master-node"><span class="section-number-3">1.1.</span> 1. Master node</h3>
+<h3 id="master-node">1. Master node</h3>
 <div class="outline-text-3" id="text-master-node">
 <p>
 The <b>master node</b> provides a running environment for the <b>control plane</b>
@@ -433,7 +404,7 @@ In addition also runs: - Container runtime - Node Agent - Proxy
 </div>
 
 <div id="outline-container-api-server" class="outline-4">
-<h4 id="api-server"><span class="section-number-4">1.1.1.</span> API Server</h4>
+<h4 id="api-server">API Server</h4>
 <div class="outline-text-4" id="text-api-server">
 <p>
 All the <b>administrative tasks</b> are coordinated by the <code>kube-apiserver</code>,
@@ -450,7 +421,7 @@ any other control plane agent inquiring about the cluster's state.
 </div>
 
 <div id="outline-container-scheduler" class="outline-4">
-<h4 id="scheduler"><span class="section-number-4">1.1.2.</span> Scheduler</h4>
+<h4 id="scheduler">Scheduler</h4>
 <div class="outline-text-4" id="text-scheduler">
 <p>
 <b>kube-scheduler</b> is to assign new workload objects, such as pods, to
@@ -486,7 +457,7 @@ Scoring: Filter by predicate then scored by priority.
 </div>
 
 <div id="outline-container-controller-manager" class="outline-4">
-<h4 id="controller-manager"><span class="section-number-4">1.1.3.</span> Controller Manager</h4>
+<h4 id="controller-manager">Controller Manager</h4>
 <div class="outline-text-4" id="text-controller-manager">
 <p>
 Regulates the state of the Kubernetes cluster. Controllers are
@@ -498,7 +469,7 @@ state matches the desired state.</b>
 </p>
 </div>
 
-<ol class="org-ol">
+<ul class="org-ul">
 <li><a id="controllers"></a>Controllers:<br />
 <div class="outline-text-5" id="text-controllers">
 <ul class="org-ul">
@@ -512,11 +483,11 @@ service, and to manage load balancing and routing.</li>
 </ul>
 </div>
 </li>
-</ol>
+</ul>
 </div>
 
 <div id="outline-container-data-store-etcd" class="outline-4">
-<h4 id="data-store-etcd"><span class="section-number-4">1.1.4.</span> Data Store (etcd)</h4>
+<h4 id="data-store-etcd">Data Store (etcd)</h4>
 <div class="outline-text-4" id="text-data-store-etcd">
 <p>
 <code>etcd</code> is a <b>strongly consistent</b>, <b>distributed</b> key-value data store
@@ -574,7 +545,7 @@ store configuration details such as subnets, ConfigMaps, Secrets, etc.
 </div>
 
 <div id="outline-container-worker-node" class="outline-3">
-<h3 id="worker-node"><span class="section-number-3">1.2.</span> 2. Worker node</h3>
+<h3 id="worker-node">2. Worker node</h3>
 <div class="outline-text-3" id="text-worker-node">
 <p>
 A worker node provides a <b>running environment for client applications</b>.
@@ -606,7 +577,7 @@ logging.</li>
 </div>
 
 <div id="outline-container-container-runtime" class="outline-4">
-<h4 id="container-runtime"><span class="section-number-4">1.2.1.</span> Container Runtime</h4>
+<h4 id="container-runtime">Container Runtime</h4>
 <div class="outline-text-4" id="text-container-runtime">
 <p>
 In order to manage a container's lifecycle, Kubernetes requires a
@@ -627,7 +598,7 @@ Kubernetes
 </div>
 
 <div id="outline-container-node-agent---kubelet" class="outline-4">
-<h4 id="node-agent---kubelet"><span class="section-number-4">1.2.2.</span> Node Agent - kubelet</h4>
+<h4 id="node-agent---kubelet">Node Agent - kubelet</h4>
 <div class="outline-text-4" id="text-node-agent---kubelet">
 <p>
 The kubelet is an agent running on <b>each</b> node and <b>communicates with
@@ -687,7 +658,7 @@ containerd to create and manage containers:</li>
 </div>
 
 <div id="outline-container-proxy---kube-proxy" class="outline-4">
-<h4 id="proxy---kube-proxy"><span class="section-number-4">1.2.3.</span> Proxy - kube-proxy</h4>
+<h4 id="proxy---kube-proxy">Proxy - kube-proxy</h4>
 <div class="outline-text-4" id="text-proxy---kube-proxy">
 <p>
 The <code>kube-proxy</code> is the network agent which runs on each node
@@ -705,7 +676,7 @@ Responsible for <b>TCP</b>, <b>UDP</b>, and <b>SCTP stream</b> <code>forwarding<
 </div>
 
 <div id="outline-container-addons" class="outline-4">
-<h4 id="addons"><span class="section-number-4">1.2.4.</span> Addons</h4>
+<h4 id="addons">Addons</h4>
 <div class="outline-text-4" id="text-addons">
 <p>
 Addons are cluster features and functionality <i>not yet available in
@@ -727,7 +698,7 @@ central log store for analysis.</li>
 </div>
 
 <div id="outline-container-networking-issues" class="outline-4">
-<h4 id="networking-issues"><span class="section-number-4">1.2.5.</span> Networking issues</h4>
+<h4 id="networking-issues">Networking issues</h4>
 <div class="outline-text-4" id="text-networking-issues">
 <p>
 Decoupled microservices based applications rely heavily on <b>networking</b>
@@ -754,7 +725,7 @@ Kubernetes cluster.
 </div>
 
 <div id="outline-container-container-to-container-communication-inside-pods" class="outline-4">
-<h4 id="container-to-container-communication-inside-pods"><span class="section-number-4">1.2.6.</span> Container-to-Container Communication inside pods</h4>
+<h4 id="container-to-container-communication-inside-pods">Container-to-Container Communication inside pods</h4>
 <div class="outline-text-4" id="text-container-to-container-communication-inside-pods">
 <p>
 Making use of the
@@ -785,7 +756,7 @@ that they can all talk to each other via localhost.
 </div>
 
 <div id="outline-container-pod-to-pod-communication-across-nodes" class="outline-4">
-<h4 id="pod-to-pod-communication-across-nodes"><span class="section-number-4">1.2.7.</span> Pod-to-Pod Communication Across Nodes</h4>
+<h4 id="pod-to-pod-communication-across-nodes">Pod-to-Pod Communication Across Nodes</h4>
 <div class="outline-text-4" id="text-pod-to-pod-communication-across-nodes">
 <p>
 The Kubernetes network model aims to reduce complexity, and it treats
@@ -836,7 +807,7 @@ back to the requested <b>container runtime</b>.
 </div>
 
 <div id="outline-container-pod-to-external-world-communication" class="outline-4">
-<h4 id="pod-to-external-world-communication"><span class="section-number-4">1.2.8.</span> Pod-to-External World communication</h4>
+<h4 id="pod-to-external-world-communication">Pod-to-External World communication</h4>
 <div class="outline-text-4" id="text-pod-to-external-world-communication">
 <p>
 Kubernetes enables external accessibility through <b>Services</b>,

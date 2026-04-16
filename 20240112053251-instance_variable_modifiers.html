@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Instance Variable Modifiers</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,56 +254,40 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Instance Variable Modifiers</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org35552c6">1. Instance Variable Modifiers</a>
-<ul>
-<li><a href="#orgd8d5ec7">1.1. Optional Specifiers for Instance Variables</a>
-<ul>
-<li><a href="#orga148e0c">1.1.1. final</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-org35552c6" class="outline-2">
-<h2 id="org35552c6"><span class="section-number-2">1.</span> Instance Variable Modifiers</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-org80612ab" class="outline-2">
+<h2 id="org80612ab">Instance Variable Modifiers</h2>
+<div class="outline-text-2" id="text-org80612ab">
 <p>
 Same as <a href="20240111060109-access_modifiers.html#ID-0d43fdee-5463-4f66-8b65-ae9a7b4b74e2">Method Access Modifiers</a>
 </p>
 </div>
 
-<div id="outline-container-orgd8d5ec7" class="outline-3">
-<h3 id="orgd8d5ec7"><span class="section-number-3">1.1.</span> Optional Specifiers for Instance Variables</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-org300a079" class="outline-3">
+<h3 id="org300a079">Optional Specifiers for Instance Variables</h3>
+<div class="outline-text-3" id="text-org300a079">
 <p>
 Instance variables can also use <code>optional specifiers</code>:
 </p>
 
 
-<div id="orga28ebaa" class="figure">
+<div id="org42aad46" class="figure">
 <p><img src="./assets/instance_variable_optional_specifiers.png" alt="instance_variable_optional_specifiers.png" />
 </p>
 </div>
 </div>
 
-<div id="outline-container-orga148e0c" class="outline-4">
-<h4 id="orga148e0c"><span class="section-number-4">1.1.1.</span> final</h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-orgb0f6bb5" class="outline-4">
+<h4 id="orgb0f6bb5">final</h4>
+<div class="outline-text-4" id="text-orgb0f6bb5">
 <p>
 If an instance variable is marked <code>final</code>, then it must be <b>assigned</b> a value when it is <b>declared</b> or when the <b>object is instantiated</b>.
 </p>
 </div>
 
-<ol class="org-ol">
-<li><a id="org1f46f3e"></a>Example<br />
-<div class="outline-text-5" id="text-1-1-1-1">
+<ul class="org-ul">
+<li><a id="org5b40a33"></a>Example<br />
+<div class="outline-text-5" id="text-org5b40a33">
 <p>
 The <code>age</code> variable is given a value when it is declared, while the <code>fishEaten</code> variable is assigned a value in an <code>instance initializer</code>.
 The <code>name</code> variable is given a value in the <code>no-argument constructor</code>.
@@ -328,8 +314,8 @@ Failing to initialize an instance variable (or assigning a value more than once)
 </div>
 </li>
 
-<li><a id="org0d50cb7"></a><span class="underline">Exam Trick</span><br />
-<div class="outline-text-5" id="text-1-1-1-2">
+<li><a id="org991ad30"></a><span class="underline">Exam Trick</span><br />
+<div class="outline-text-5" id="text-org991ad30">
 <p>
 In <a href="20231229153446-1_building_blocks.html#ID-34f737cd-7010-42aa-9f37-5136eb75a44e">1. Building blocks</a>, we show that <code>instance variables</code> receive <b>default</b> values based on their <code>type</code> when not set.
 For example, <code>int</code> receives a default value of <code>0</code>, while an <code>object reference</code> receives a default value of <code>null</code>.
@@ -338,7 +324,7 @@ A <code>final</code> instance or <code>final</code> static variable must receive
 </p>
 </div>
 </li>
-</ol>
+</ul>
 </div>
 </div>
 </div>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python Extended Slice</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,30 +254,14 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Python Extended Slice</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org249d2b1">1. Python Extended Slice</a>
-<ul>
-<li><a href="#orgc867a0a">1.1. Overview</a></li>
-<li><a href="#org7591da7">1.2. Examples with Strings</a></li>
-<li><a href="#org71b2366">1.3. Examples with Lists</a></li>
-<li><a href="#org54bb572">1.4. Notes</a></li>
-<li><a href="#org41495a9">1.5. Mental Model</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-org249d2b1" class="outline-2">
-<h2 id="org249d2b1"><span class="section-number-2">1.</span> Python Extended Slice</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-org780478a" class="outline-2">
+<h2 id="org780478a">Python Extended Slice</h2>
+<div class="outline-text-2" id="text-org780478a">
 </div>
-<div id="outline-container-orgc867a0a" class="outline-3">
-<h3 id="orgc867a0a"><span class="section-number-3">1.1.</span> Overview</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-org5fdda77" class="outline-3">
+<h3 id="org5fdda77">Overview</h3>
+<div class="outline-text-3" id="text-org5fdda77">
 <p>
 Python sequences (<code>strings</code>, <code>lists</code>, <code>tuples</code>) support <b>extended slicing</b>, which allows extraction of elements with a specific <code>start</code>, <code>stop</code>, and <code>step</code>.
 </p>
@@ -296,9 +282,9 @@ Syntax:
 </div>
 </div>
 
-<div id="outline-container-org7591da7" class="outline-3">
-<h3 id="org7591da7"><span class="section-number-3">1.2.</span> Examples with Strings</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-org982d536" class="outline-3">
+<h3 id="org982d536">Examples with Strings</h3>
+<div class="outline-text-3" id="text-org982d536">
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-variable-name">text</span> <span class="org-operator">=</span> <span class="org-string">"Hello, World!"</span>
 
@@ -318,9 +304,9 @@ Syntax:
 </div>
 </div>
 
-<div id="outline-container-org71b2366" class="outline-3">
-<h3 id="org71b2366"><span class="section-number-3">1.3.</span> Examples with Lists</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-org762e564" class="outline-3">
+<h3 id="org762e564">Examples with Lists</h3>
+<div class="outline-text-3" id="text-org762e564">
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-variable-name">numbers</span> <span class="org-operator">=</span> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
@@ -337,9 +323,9 @@ Syntax:
 </div>
 </div>
 
-<div id="outline-container-org54bb572" class="outline-3">
-<h3 id="org54bb572"><span class="section-number-3">1.4.</span> Notes</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-org008a6a4" class="outline-3">
+<h3 id="org008a6a4">Notes</h3>
+<div class="outline-text-3" id="text-org008a6a4">
 <ul class="org-ul">
 <li>Omitting <code>start</code> → <b>defaults</b> to <b>beginning</b> of <code>sequence</code></li>
 <li>Omitting <code>stop</code> → <b>defaults</b> to <b>end</b> of <code>sequence</code></li>
@@ -350,9 +336,9 @@ Syntax:
 </div>
 </div>
 
-<div id="outline-container-org41495a9" class="outline-3">
-<h3 id="org41495a9"><span class="section-number-3">1.5.</span> Mental Model</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-org9ec0987" class="outline-3">
+<h3 id="org9ec0987">Mental Model</h3>
+<div class="outline-text-3" id="text-org9ec0987">
 <p>
 Think of a sequence as a conveyor belt of items.
 </p>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Observer Pattern</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,30 +254,16 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Observer Pattern</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#orgd5cfc3c">1. Observer Pattern</a>
-<ul>
-<li><a href="#org1e1cfc9">1.1. Loose Coupling</a></li>
-<li><a href="#org67835cc">1.2. When to use</a></li>
-<li><a href="#orgbe24b5f">1.3. Negative</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-orgd5cfc3c" class="outline-2">
-<h2 id="orgd5cfc3c"><span class="section-number-2">1.</span> Observer Pattern</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-org466cc68" class="outline-2">
+<h2 id="org466cc68">Observer Pattern</h2>
+<div class="outline-text-2" id="text-org466cc68">
 <p>
 <a href="https://github.com/MikeyAlmighty/design-patterns/tree/main/DesignPatterns/src/main/java/org/designpatterns/structural/observer">Observer Pattern Implementation</a>
 </p>
 
 
-<div id="orgb701baf" class="figure">
+<div id="org1847f52" class="figure">
 <p><img src="./assets/observer_pattern.png" alt="observer_pattern.png" />
 </p>
 </div>
@@ -293,9 +281,9 @@ The <b>Observer Pattern</b> defines a <b>one-to-many</b> dependency between obje
 </div>
 
 
-<div id="outline-container-org1e1cfc9" class="outline-3">
-<h3 id="org1e1cfc9"><span class="section-number-3">1.1.</span> Loose Coupling</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-org9b7e138" class="outline-3">
+<h3 id="org9b7e138">Loose Coupling</h3>
+<div class="outline-text-3" id="text-org9b7e138">
 <ul class="org-ul">
 <li>The only thing the <b>subject</b> knows about an <b>observer</b> is that it implements a certain interface (the <b>Observer interface</b>)</li>
 <li>We can add new <b>observers</b> at any time.</li>
@@ -306,18 +294,18 @@ The <b>Observer Pattern</b> defines a <b>one-to-many</b> dependency between obje
 </div>
 </div>
 
-<div id="outline-container-org67835cc" class="outline-3">
-<h3 id="org67835cc"><span class="section-number-3">1.2.</span> When to use</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-org7deb904" class="outline-3">
+<h3 id="org7deb904">When to use</h3>
+<div class="outline-text-3" id="text-org7deb904">
 <ul class="org-ul">
 <li>When you need many other objects to receive an <b>update</b> when <b>another object changes</b></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgbe24b5f" class="outline-3">
-<h3 id="orgbe24b5f"><span class="section-number-3">1.3.</span> Negative</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-org9ba13af" class="outline-3">
+<h3 id="org9ba13af">Negative</h3>
+<div class="outline-text-3" id="text-org9ba13af">
 <ul class="org-ul">
 <li><b>Subject</b> may send updates that don't matter to <b>Observers</b>.</li>
 </ul>

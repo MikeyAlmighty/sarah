@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Generics</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,21 +254,6 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Generics</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org64aca57">1. Example</a></li>
-<li><a href="#orgaaa8347">2. Autoboxing</a></li>
-<li><a href="#org992fb3e">3. Unboxing</a></li>
-<li><a href="#org5d49131">4. Constraints</a></li>
-<li><a href="#org80a07ae">5. Type Erasue</a></li>
-<li><a href="#org9b8d4cc">6. Generic Methods</a></li>
-<li><a href="#org2e92f7a">7. Multiple Type Paramters</a></li>
-<li><a href="#orgf5ba4f4">8. Generic Wildcards</a></li>
-</ul>
-</div>
-</div>
 <p>
 :ID:       ba915d24-80bf-4d9c-951a-351da356e216
 </p>
@@ -274,9 +261,9 @@
 #+auto<sub>tangle</sub> t
 </p>
 
-<div id="outline-container-org64aca57" class="outline-2">
-<h2 id="org64aca57"><span class="section-number-2">1.</span> Example</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgead2025" class="outline-2">
+<h2 id="orgead2025">Example</h2>
+<div class="outline-text-2" id="text-orgead2025">
 <p>
 <code>GenericList.java</code>
 </p>
@@ -321,9 +308,9 @@ OR
 </div>
 </div>
 
-<div id="outline-container-orgaaa8347" class="outline-2">
-<h2 id="orgaaa8347"><span class="section-number-2">2.</span> Autoboxing</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-orge1d9e27" class="outline-2">
+<h2 id="orge1d9e27">Autoboxing</h2>
+<div class="outline-text-2" id="text-orge1d9e27">
 <p>
 Automatic conversion that the Java compiler makes between the <code>primitive types</code> and their corresponding object <code>wrapper classes</code>.
 </p>
@@ -347,9 +334,9 @@ Java compiler puts integer value inside a <code>box</code>.
 </div>
 
 
-<div id="outline-container-org992fb3e" class="outline-2">
-<h2 id="org992fb3e"><span class="section-number-2">3.</span> Unboxing</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-org26bc46f" class="outline-2">
+<h2 id="org26bc46f">Unboxing</h2>
+<div class="outline-text-2" id="text-org26bc46f">
 <p>
 Converts Wrapper reference into integer
 <code>var number = numList.get(0);</code> Returns an `Instance` of the Integer class stored in a primitive Integer (Extracts value which is  stored in that Integer object).
@@ -357,9 +344,9 @@ Converts Wrapper reference into integer
 </div>
 </div>
 
-<div id="outline-container-org5d49131" class="outline-2">
-<h2 id="org5d49131"><span class="section-number-2">4.</span> Constraints</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-orgb91b763" class="outline-2">
+<h2 id="orgb91b763">Constraints</h2>
+<div class="outline-text-2" id="text-orgb91b763">
 <p>
 Here we are constraining our Generic Class to only allow instances of <code>Number</code> (String won't work)
 </p>
@@ -408,9 +395,9 @@ Note: <code>&lt;T extends Number&gt;</code> is called a <b>Bounded Type paramate
 </div>
 </div>
 
-<div id="outline-container-org80a07ae" class="outline-2">
-<h2 id="org80a07ae"><span class="section-number-2">5.</span> Type Erasue</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-org966eb71" class="outline-2">
+<h2 id="org966eb71">Type Erasue</h2>
+<div class="outline-text-2" id="text-org966eb71">
 <p>
 When we have multiple interface constraints,  i.e.: <code>GenericList&lt;T extends Comparable &amp; Cloneable&gt;</code> , Java Compiler will take the <b>Left Most</b>  (in this case <code>Comparable</code>) Type to replace all <code>T</code> (Erases all type paramaters and replaces with Class/Interface pending on constraints).
 If there are no constraints, all (generic) <code>T</code> will be replaced by <code>Object</code> class.
@@ -431,16 +418,16 @@ See <a href="20230125085040-comparable_interface.html#ID-978e88bf-bfac-4a29-a851
 </div>
 </div>
 
-<div id="outline-container-org9b8d4cc" class="outline-2">
-<h2 id="org9b8d4cc"><span class="section-number-2">6.</span> <a href="20230125085439-generic_methods.html#ID-da34a311-c25d-4d96-accf-60b35cf11cb7">Generic Methods</a></h2>
+<div id="outline-container-orgf046ba0" class="outline-2">
+<h2 id="orgf046ba0"><a href="20230125085439-generic_methods.html#ID-da34a311-c25d-4d96-accf-60b35cf11cb7">Generic Methods</a></h2>
 </div>
 
-<div id="outline-container-org2e92f7a" class="outline-2">
-<h2 id="org2e92f7a"><span class="section-number-2">7.</span> <a href="20230125090226-multiple_type_paramters.html#ID-80ca3273-689f-425e-8fbb-b60fa157368b">Multiple Type Paramters</a></h2>
+<div id="outline-container-orgf2271ab" class="outline-2">
+<h2 id="orgf2271ab"><a href="20230125090226-multiple_type_paramters.html#ID-80ca3273-689f-425e-8fbb-b60fa157368b">Multiple Type Paramters</a></h2>
 </div>
 
-<div id="outline-container-orgf5ba4f4" class="outline-2">
-<h2 id="orgf5ba4f4"><span class="section-number-2">8.</span> <a href="20230125091828-generic_wildcards.html#ID-ffe1e06a-8d8c-4e7f-87ce-c017aec04fd2">Generic Wildcards</a></h2>
+<div id="outline-container-orgd59a119" class="outline-2">
+<h2 id="orgd59a119"><a href="20230125091828-generic_wildcards.html#ID-ffe1e06a-8d8c-4e7f-87ce-c017aec04fd2">Generic Wildcards</a></h2>
 </div>
 </div>
 </body>

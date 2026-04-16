@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Dynamic Binding</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,36 +254,10 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Dynamic Binding</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#orgc9f18d3">1. Dynamic Binding (AKA Dynamic Method Dispatch / Late Binding)</a>
-<ul>
-<li><a href="#org41af5a2">1.1. Example</a>
-<ul>
-<li><a href="#org7fce934">1.1.1. Superclass (Animal)</a></li>
-<li><a href="#org91ec90b">1.1.2. Subclasses (Dog, Cat)</a></li>
-<li><a href="#org0593285">1.1.3. Dynamic binding</a></li>
-<li><a href="#orgc01e1a5">1.1.4. Runtime polymorphism</a></li>
-</ul>
-</li>
-<li><a href="#org8741c2e">1.2. Core Idea (Simplified)</a>
-<ul>
-<li><a href="#org221d4bf">1.2.1. Two Key Concepts</a></li>
-<li><a href="#orgad2a975">1.2.2. The Rule You Must Remember</a></li>
-<li><a href="#orgc2f9106">1.2.3. Exam</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-orgc9f18d3" class="outline-2">
-<h2 id="orgc9f18d3"><span class="section-number-2">1.</span> Dynamic Binding (AKA Dynamic Method Dispatch / Late Binding)</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgc46ea0f" class="outline-2">
+<h2 id="orgc46ea0f">Dynamic Binding (AKA Dynamic Method Dispatch / Late Binding)</h2>
+<div class="outline-text-2" id="text-orgc46ea0f">
 <p>
 In Java, runtime polymorphism relies on dynamic binding.
 </p>
@@ -303,9 +279,9 @@ We are going to use the <code>Animal</code> <b>class</b> <b>hierarchy</b> to pro
 </p>
 </div>
 
-<div id="outline-container-org41af5a2" class="outline-3">
-<h3 id="org41af5a2"><span class="section-number-3">1.1.</span> Example</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-orga6dfe00" class="outline-3">
+<h3 id="orga6dfe00">Example</h3>
+<div class="outline-text-3" id="text-orga6dfe00">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">Superclass (Parent)
 </span><span class="org-keyword">class</span> <span class="org-type">Animal</span> {
@@ -350,27 +326,27 @@ We are going to use the <code>Animal</code> <b>class</b> <b>hierarchy</b> to pro
 </div>
 </div>
 
-<div id="outline-container-org7fce934" class="outline-4">
-<h4 id="org7fce934"><span class="section-number-4">1.1.1.</span> Superclass (Animal)</h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-org8542fac" class="outline-4">
+<h4 id="org8542fac">Superclass (Animal)</h4>
+<div class="outline-text-4" id="text-org8542fac">
 <p>
 Contains the <code>makeSound()</code> method.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org91ec90b" class="outline-4">
-<h4 id="org91ec90b"><span class="section-number-4">1.1.2.</span> Subclasses (Dog, Cat)</h4>
-<div class="outline-text-4" id="text-1-1-2">
+<div id="outline-container-org41c1303" class="outline-4">
+<h4 id="org41c1303">Subclasses (Dog, Cat)</h4>
+<div class="outline-text-4" id="text-org41c1303">
 <p>
 Both <b>override</b> the <code>makeSound()</code> method to provide specific implementations.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org0593285" class="outline-4">
-<h4 id="org0593285"><span class="section-number-4">1.1.3.</span> Dynamic binding</h4>
-<div class="outline-text-4" id="text-1-1-3">
+<div id="outline-container-orgeb2e815" class="outline-4">
+<h4 id="orgeb2e815">Dynamic binding</h4>
+<div class="outline-text-4" id="text-orgeb2e815">
 <ul class="org-ul">
 <li>In the <code>main method</code>, we use an <code>Animal</code> <b>reference</b> to hold a <code>Dog</code> or <code>Cat</code> object.</li>
 <li>At <b>runtime</b>, the JVM resolves the method call (<code>makeSound()</code>) based on the <code>actual type</code> of the object (either <code>Dog</code> or <code>Cat</code>), even though the <b>reference</b> <b>type</b> is <code>Animal</code>.</li>
@@ -379,9 +355,9 @@ Both <b>override</b> the <code>makeSound()</code> method to provide specific imp
 </div>
 </div>
 
-<div id="outline-container-orgc01e1a5" class="outline-4">
-<h4 id="orgc01e1a5"><span class="section-number-4">1.1.4.</span> Runtime polymorphism</h4>
-<div class="outline-text-4" id="text-1-1-4">
+<div id="outline-container-org283c233" class="outline-4">
+<h4 id="org283c233">Runtime polymorphism</h4>
+<div class="outline-text-4" id="text-org283c233">
 <p>
 The <b>reference</b> <b>variable</b> <code>myAnimal</code> can point to both <code>Dog</code> and <code>Cat</code>, and Java will invoke the <b>correct</b> <code>method</code> (<code>Dog</code> barks or <code>Cat</code> meows) based on the <code>actual object</code> type at <b>runtime</b>.
 </p>
@@ -389,9 +365,9 @@ The <b>reference</b> <b>variable</b> <code>myAnimal</code> can point to both <co
 </div>
 </div>
 
-<div id="outline-container-org8741c2e" class="outline-3">
-<h3 id="org8741c2e"><span class="section-number-3">1.2.</span> Core Idea (Simplified)</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-org93b3763" class="outline-3">
+<h3 id="org93b3763">Core Idea (Simplified)</h3>
+<div class="outline-text-3" id="text-org93b3763">
 <p>
 <b>Java</b> decides which <code>method</code> signature is valid at <b>compile time</b>, but decides which <code>implementation</code> to run at <b>runtime</b>.
 </p>
@@ -401,13 +377,13 @@ The <b>reference</b> <b>variable</b> <code>myAnimal</code> can point to both <co
 </p>
 </div>
 
-<div id="outline-container-org221d4bf" class="outline-4">
-<h4 id="org221d4bf"><span class="section-number-4">1.2.1.</span> Two Key Concepts</h4>
-<div class="outline-text-4" id="text-1-2-1">
+<div id="outline-container-org9570300" class="outline-4">
+<h4 id="org9570300">Two Key Concepts</h4>
+<div class="outline-text-4" id="text-org9570300">
 </div>
-<ol class="org-ol">
-<li><a id="orgc9e8b56"></a>Declared Type (<b>compile-time</b>)<br />
-<div class="outline-text-5" id="text-1-2-1-1">
+<ul class="org-ul">
+<li><a id="org115be6e"></a>Declared Type (<b>compile-time</b>)<br />
+<div class="outline-text-5" id="text-org115be6e">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-type">Animal</span> <span class="org-variable-name">myAnimal</span>;
 </pre>
@@ -421,8 +397,8 @@ The <b>reference</b> <b>variable</b> <code>myAnimal</code> can point to both <co
 </div>
 </li>
 
-<li><a id="org3ca6da7"></a>Actual Type (<b>runtime</b>)<br />
-<div class="outline-text-5" id="text-1-2-1-2">
+<li><a id="orgd2b3606"></a>Actual Type (<b>runtime</b>)<br />
+<div class="outline-text-5" id="text-orgd2b3606">
 <div class="org-src-container">
 <pre class="src src-java">myAnimal = <span class="org-keyword">new</span> <span class="org-type">Dog</span>();   <span class="org-comment-delimiter">// </span><span class="org-comment">or new Cat();</span>
 </pre>
@@ -436,8 +412,8 @@ The <b>reference</b> <b>variable</b> <code>myAnimal</code> can point to both <co
 </div>
 </li>
 
-<li><a id="orgb7c30c2"></a>Examples:<br />
-<div class="outline-text-5" id="text-1-2-1-3">
+<li><a id="orgc71cfce"></a>Examples:<br />
+<div class="outline-text-5" id="text-orgc71cfce">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-type">Animal</span> <span class="org-variable-name">myAnimal</span> = <span class="org-keyword">new</span> <span class="org-type">Dog</span>();
 myAnimal.makeSound();   <span class="org-comment-delimiter">// </span><span class="org-comment">Dog barks
@@ -448,21 +424,21 @@ myAnimal.makeSound();   <span class="org-comment-delimiter">// </span><span clas
 </div>
 </div>
 </li>
-</ol>
+</ul>
 </div>
 
-<div id="outline-container-orgad2a975" class="outline-4">
-<h4 id="orgad2a975"><span class="section-number-4">1.2.2.</span> The Rule You Must Remember</h4>
-<div class="outline-text-4" id="text-1-2-2">
+<div id="outline-container-orgdcd475a" class="outline-4">
+<h4 id="orgdcd475a">The Rule You Must Remember</h4>
+<div class="outline-text-4" id="text-orgdcd475a">
 <p>
 <b>Method implementation</b> is chosen based on the <code>Actual Type</code> (<b>runtime</b>).
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgc2f9106" class="outline-4">
-<h4 id="orgc2f9106"><span class="section-number-4">1.2.3.</span> Exam</h4>
-<div class="outline-text-4" id="text-1-2-3">
+<div id="outline-container-orgc17e84e" class="outline-4">
+<h4 id="orgc17e84e">Exam</h4>
+<div class="outline-text-4" id="text-orgc17e84e">
 <p>
 Dynamic binding does <b>NOT</b> apply to <code>static methods</code>.
 </p>

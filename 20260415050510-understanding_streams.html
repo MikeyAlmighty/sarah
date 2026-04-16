@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-15 Wed 05:46 -->
+<!-- 2026-04-16 Thu 06:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Understanding Streams</title>
@@ -225,25 +225,27 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-          body {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-          }
+            body {
+                background-color: #262626;   /* lighter than #1e1e1e */
+                color: #e8e8e8;              /* slightly softer white */
+            }
 
-          a { color: #8ab4f8; }
+            a {
+                color: #9ecbff;              /* less intense blue */
+            }
 
-          pre.src {
-            background-color: #2c2c2c;
-            color: #f0f0f0;
-            border: 1px solid #444;
-          }
+            pre.src {
+                background-color: #303030;   /* lifted from body */
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
 
-          /* Dark syntax */
-          span.org-keyword { color: #569cd6; font-weight: bold; }
-          span.org-string  { color: #d7a65a; }
-          span.org-comment { color: #999988; font-style: italic; }
-          span.org-type    { color: #6ab04c; font-weight: bold; }
-          span.org-variable { color: #c586c0; }
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
         }
 
         ul { list-style-type: disc; padding-left: 2em; }
@@ -252,46 +254,27 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Understanding Streams</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#orgd0a6027">1. Understanding Streams</a>
-<ul>
-<li><a href="#org84b593d">1.1. Input Streams</a></li>
-<li><a href="#org2ad5747">1.2. Output Streams</a></li>
-<li><a href="#org1f815da">1.3. Types of Streams</a>
-<ul>
-<li><a href="#orgf9be02a">1.3.1. Byte streams</a></li>
-<li><a href="#orgfef5bf5">1.3.2. Character  streams</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 
-<div id="outline-container-orgd0a6027" class="outline-2">
-<h2 id="orgd0a6027"><span class="section-number-2">1.</span> Understanding Streams</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgf52320d" class="outline-2">
+<h2 id="orgf52320d">Understanding Streams</h2>
+<div class="outline-text-2" id="text-orgf52320d">
 <p>
 Streams in Java represent a continuous flow of data.
 </p>
 </div>
 
-<div id="outline-container-org84b593d" class="outline-3">
-<h3 id="org84b593d"><span class="section-number-3">1.1.</span> Input Streams</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-orgf2c8009" class="outline-3">
+<h3 id="orgf2c8009">Input Streams</h3>
+<div class="outline-text-3" id="text-orgf2c8009">
 <p>
 Used for reading data from a source.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org2ad5747" class="outline-3">
-<h3 id="org2ad5747"><span class="section-number-3">1.2.</span> Output Streams</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-org11815b3" class="outline-3">
+<h3 id="org11815b3">Output Streams</h3>
+<div class="outline-text-3" id="text-org11815b3">
 <p>
 Used for writing data to a destination.
 </p>
@@ -299,13 +282,13 @@ Used for writing data to a destination.
 </div>
 
 
-<div id="outline-container-org1f815da" class="outline-3">
-<h3 id="org1f815da"><span class="section-number-3">1.3.</span> Types of Streams</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-org567a02a" class="outline-3">
+<h3 id="org567a02a">Types of Streams</h3>
+<div class="outline-text-3" id="text-org567a02a">
 </div>
-<div id="outline-container-orgf9be02a" class="outline-4">
-<h4 id="orgf9be02a"><span class="section-number-4">1.3.1.</span> Byte streams</h4>
-<div class="outline-text-4" id="text-1-3-1">
+<div id="outline-container-org9b24fa6" class="outline-4">
+<h4 id="org9b24fa6">Byte streams</h4>
+<div class="outline-text-4" id="text-org9b24fa6">
 <p>
 Handle <b>raw binary data</b>.
 </p>
@@ -316,9 +299,9 @@ Handle <b>raw binary data</b>.
 </div>
 </div>
 
-<div id="outline-container-orgfef5bf5" class="outline-4">
-<h4 id="orgfef5bf5"><span class="section-number-4">1.3.2.</span> Character  streams</h4>
-<div class="outline-text-4" id="text-1-3-2">
+<div id="outline-container-org3cb04e2" class="outline-4">
+<h4 id="org3cb04e2">Character  streams</h4>
+<div class="outline-text-4" id="text-org3cb04e2">
 <p>
 Handle <b>character data</b>.
 </p>
