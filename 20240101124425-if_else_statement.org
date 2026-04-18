@@ -55,6 +55,8 @@ if (radius >= 0) { }; // Note semicolon
 To test whether a ~boolean~ variable is *true* or *false* in a test condition, it is redundant to use the [[id:700147ef-38e8-47dc-bdda-f675917ae802][equality]] testing operator like the code in =(a)=:
 Instead, it is better to test the ~boolean~ variable *directly*, as shown in =(b)=.
 
+**** Example
+
 #+BEGIN_SRC java
 // (a)
 if (even == true)
@@ -64,19 +66,29 @@ System.out.println("It is even.");
 if (even)
 System.out.println("It is even.");
 #+END_SRC
-(Another good reason for doing this is to avoid errors that are difficult to detect. Using the === operator instead of the ==== operator to compare the equality of two items in a test condition is a common error)
+
+Another good reason for doing this is to avoid errors that are difficult to detect.
+
+Using the === operator instead of the ==== operator to *compare* the *equality* of two items in a test condition is a common error
+
 It could lead to the following erroneous statement:
+
+***** Example
+
 #+BEGIN_SRC java
 if (even = true)
 System.out.println("It is even.");
 #+END_SRC
 
-This statement does *not* have *compile* errors. It assigns *true* to *even*, so *even* is always *true*.
+This statement does *not* have *compile* errors.
+- It assigns =true= to ~~even~, so ~even~ is always =true=.
 
 *** 4. Dangling Else ambiguity
 
 The dangling *else* ambiguity happens when *nested* If statements don’t use braces, making it unclear which *if* an *else* belongs to.
 In Java, the *else* is always matched with the nearest unmatched *if*.
+
+**** Example
 
 #+BEGIN_SRC java
 int x = 5;
@@ -92,6 +104,8 @@ The *else* pairs with ~if (x > 10)~, *not* ~if (x > 0)~.
 
 Use braces to resolve ambiguity:
 
+**** Example
+
 #+BEGIN_SRC java
 if (x > 0) {
     if (x > 10) {
@@ -103,9 +117,12 @@ if (x > 0) {
 #+END_SRC
 
 *** 5. Equality Test of Two Floating-Point Values
+
 Testing two *floating-point* values (~float~ or ~double~) for equality using ==== is *unreliable* because of *rounding* and *precision* errors in binary representation.
 
 Values that *should* be equal mathematically *may* *differ* *slightly* in *memory*.
+
+**** Example
 
 #+BEGIN_SRC java
 double a = 0.1 + 0.2;
@@ -114,18 +131,24 @@ double b = 0.3;
 System.out.println(a == b); // false
 #+END_SRC
 
-Numbers like =0.1= and =0.2= *cannot* be represented exactly in binary *floating-point*, so the result contains errors.
+Numbers like =0.1= and =0.2= *cannot* be represented exactly in binary *floating-point*, so the result *contains errors*.
+
 **** Solution
+
 You can compare whether they are close enough by testing whether the *difference* of the two numbers is less than some *threshold*.
-That is, two numbers =x= and =y= are very close if ∣x−y∣ < e, for a very small value e. ([[id:39a343ca-b4ef-40f2-8751-fc1458db3596][Epsilon]])
+
+That is, two numbers =x= and =y= are very close if ∣x−y∣ < e, for a very small value =e=. ([[id:39a343ca-b4ef-40f2-8751-fc1458db3596][Epsilon]])
 
 ***** Double
+
 e: ~10^-14~
 
 ***** Float
+
 e: ~10^-7~
 
 ***** Example
+
 #+BEGIN_SRC java
 final double EPSILON = 1E−14;
 

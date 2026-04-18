@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-16 Thu 06:41 -->
+<!-- 2026-04-18 Sat 15:36 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Pattern Matching</title>
@@ -255,9 +255,9 @@
 <div id="content" class="content">
 <h1 class="title">Pattern Matching</h1>
 
-<div id="outline-container-org9d309b4" class="outline-2">
-<h2 id="org9d309b4">Pattern Matching</h2>
-<div class="outline-text-2" id="text-org9d309b4">
+<div id="outline-container-org6f3a285" class="outline-2">
+<h2 id="org6f3a285">Pattern Matching</h2>
+<div class="outline-text-2" id="text-org6f3a285">
 <ul class="org-ul">
 <li>Introduced in <b>Java 16</b></li>
 </ul>
@@ -268,9 +268,9 @@ It is used in conjunction with <a href="20240101124425-if_else_statement.html#ID
 </p>
 </div>
 
-<div id="outline-container-org0da8625" class="outline-3">
-<h3 id="org0da8625">Legacy (pre 16)</h3>
-<div class="outline-text-3" id="text-org0da8625">
+<div id="outline-container-orgd72b565" class="outline-3">
+<h3 id="orgd72b565">Legacy (pre 16)</h3>
+<div class="outline-text-3" id="text-orgd72b565">
 <p>
 Consider the following code that takes a <code>Number</code> instance and compares it with the value <code>5</code>:
 </p>
@@ -296,9 +296,9 @@ Code that <b>first checks if a variable is of a particular type</b> and then <b>
 </div>
 </div>
 
-<div id="outline-container-org681d9aa" class="outline-3">
-<h3 id="org681d9aa">Patter Variables (Java 16)</h3>
-<div class="outline-text-3" id="text-org681d9aa">
+<div id="outline-container-org1cc3aac" class="outline-3">
+<h3 id="org1cc3aac">Patter Variables (Java 16)</h3>
+<div class="outline-text-3" id="text-org1cc3aac">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-type">void</span> <span class="org-function-name">compareIntegers</span>(<span class="org-type">Number</span> <span class="org-variable-name">number</span>) {
     <span class="org-keyword">if</span>(number <span class="org-keyword">instanceof</span> Integer data) {
@@ -314,9 +314,9 @@ Notice that this code also avoids any potential <code>ClassCastException</code> 
 </p>
 </div>
 
-<div id="outline-container-org35ec081" class="outline-4">
-<h4 id="org35ec081">Reassigning Pattern Variables</h4>
-<div class="outline-text-4" id="text-org35ec081">
+<div id="outline-container-org36f9609" class="outline-4">
+<h4 id="org36f9609">Reassigning Pattern Variables</h4>
+<div class="outline-text-4" id="text-org36f9609">
 <p>
 While possible, it is a bad practice to <b>reassign</b> a <code>pattern variable</code> since doing so can lead to ambiguity about what <b>is and is not in scope</b>:
 </p>
@@ -341,9 +341,9 @@ The reassignment can be <b>prevented</b> with a <code>final</code> modifier, but
 </div>
 </div>
 
-<div id="outline-container-orge0d9050" class="outline-3">
-<h3 id="orge0d9050">Pattern Variables and Expressions</h3>
-<div class="outline-text-3" id="text-orge0d9050">
+<div id="outline-container-org8a5bebd" class="outline-3">
+<h3 id="org8a5bebd">Pattern Variables and Expressions</h3>
+<div class="outline-text-3" id="text-org8a5bebd">
 <p>
 <code>Pattern matching</code> includes expressions that can be used to filter data out, such as in the following example:
 </p>
@@ -363,9 +363,9 @@ Notice that we’re using the <code>pattern variable</code> in an expression in 
 </div>
 </div>
 
-<div id="outline-container-orgb410825" class="outline-3">
-<h3 id="orgb410825">Subtypes</h3>
-<div class="outline-text-3" id="text-orgb410825">
+<div id="outline-container-orgf65417b" class="outline-3">
+<h3 id="orgf65417b">Subtypes</h3>
+<div class="outline-text-3" id="text-orgf65417b">
 <p>
 The <code>type</code> of the <b>pattern variable</b> must be a <b>subtype</b> of the variable on the <code>LHS</code> of the expression.
 </p>
@@ -383,18 +383,18 @@ While the second line compiles, the last line does not compile because <code>pat
 </div>
 </div>
 
-<div id="outline-container-orgdbb30a2" class="outline-3">
-<h3 id="orgdbb30a2">Flow Scoping</h3>
-<div class="outline-text-3" id="text-orgdbb30a2">
+<div id="outline-container-org349aaf4" class="outline-3">
+<h3 id="org349aaf4">Flow Scoping</h3>
+<div class="outline-text-3" id="text-org349aaf4">
 <p>
 The compiler applies <code>flow scoping</code> when working with <b>pattern matching</b>.
 <code>Flow scoping</code> means the variable is <b>only in scope</b> when the compiler can <b>definitively</b> determine its type.
 </p>
 </div>
 
-<div id="outline-container-org412f830" class="outline-4">
-<h4 id="org412f830"><span class="underline">Exam trick</span></h4>
-<div class="outline-text-4" id="text-org412f830">
+<div id="outline-container-orgd194cd7" class="outline-4">
+<h4 id="orgd194cd7"><span class="underline">Exam trick</span></h4>
+<div class="outline-text-4" id="text-orgd194cd7">
 <p>
 It might surprise you to learn this code does compile:
 </p>

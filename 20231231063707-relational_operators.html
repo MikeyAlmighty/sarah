@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-16 Thu 06:41 -->
+<!-- 2026-04-18 Sat 15:36 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Relational Operators</title>
@@ -255,29 +255,30 @@
 <div id="content" class="content">
 <h1 class="title">Relational Operators</h1>
 
-<div id="outline-container-org0861b44" class="outline-2">
-<h2 id="org0861b44">Relational Operators (<code>&lt;, &lt;=, &gt;,</code> and <code>&gt;=</code>)</h2>
-<div class="outline-text-2" id="text-org0861b44">
-<p>
-Aka <b>Comparison Operators</b>
-</p>
+<div id="outline-container-orgf77f329" class="outline-2">
+<h2 id="orgf77f329">Relational Operators (<code>&lt;, &lt;=, &gt;,</code> and <code>&gt;=</code>)</h2>
+<div class="outline-text-2" id="text-orgf77f329">
+<ul class="org-ul">
+<li>Aka <b>Comparison Operators</b></li>
+</ul>
 
 <p>
-<a href="20231231060610-binary_operators.html#ID-9bcf2aef-060a-4011-98b5-cb949a9f7d1a">Binary Operators</a> revolved around <b>comparing</b> two expressions and return a <code>boolean</code> value.
+<a href="20231231060610-binary_operators.html#ID-9bcf2aef-060a-4011-98b5-cb949a9f7d1a">Binary Operators</a> revolved around <b>comparing</b> <b>two expressions</b> which <b>return</b> a <code>boolean</code> value.
 </p>
 
 
-<div id="org38adea8" class="figure">
+<div id="orgf670997" class="figure">
 <p><img src="./assets/relational_operators.png" alt="relational_operators.png" />
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgbf94437" class="outline-3">
-<h3 id="orgbf94437">Numeric Comparison Operators</h3>
-<div class="outline-text-3" id="text-orgbf94437">
+<div id="outline-container-orgd069ed6" class="outline-3">
+<h3 id="orgd069ed6">Numeric Comparison Operators</h3>
+<div class="outline-text-3" id="text-orgd069ed6">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-type">int</span> <span class="org-variable-name">gibbonNumFeet</span> = 2, <span class="org-variable-name">wolfNumFeet</span> = 4, <span class="org-variable-name">ostrichNumFeet</span> = 2;
+
 System.out.println(gibbonNumFeet &lt; <span class="org-type">wolfNumFeet</span>); <span class="org-comment-delimiter">// </span><span class="org-comment">true
 </span>System.out.println(gibbonNumFeet &lt;= wolfNumFeet); <span class="org-comment-delimiter">// </span><span class="org-comment">true
 </span>System.out.println(gibbonNumFeet &gt;= ostrichNumFeet); <span class="org-comment-delimiter">// </span><span class="org-comment">true
@@ -287,9 +288,9 @@ System.out.println(gibbonNumFeet &lt; <span class="org-type">wolfNumFeet</span>)
 </div>
 </div>
 
-<div id="outline-container-orgaf4dbe4" class="outline-3">
-<h3 id="orgaf4dbe4">instanceof Operator</h3>
-<div class="outline-text-3" id="text-orgaf4dbe4">
+<div id="outline-container-orgb574255" class="outline-3">
+<h3 id="orgb574255">instanceof Operator</h3>
+<div class="outline-text-3" id="text-orgb574255">
 <p>
 It is useful for determining whether an arbitrary <code>object</code> is a <code>member of a particular class or interface</code> at <b>runtime</b>.
 </p>
@@ -305,6 +306,7 @@ It is useful for determining whether an arbitrary <code>object</code> is a <code
 }
 </pre>
 </div>
+
 <p>
 Notice that we cast the <code>Integer</code> value in this example.
 </p>
@@ -318,12 +320,17 @@ It is considered a good coding practice to use the <code>instanceof</code> opera
 </p>
 </div>
 
-<div id="outline-container-org27220ad" class="outline-4">
-<h4 id="org27220ad">Invalid instanceof</h4>
-<div class="outline-text-4" id="text-org27220ad">
+<div id="outline-container-orgc5a278b" class="outline-4">
+<h4 id="orgc5a278b">Invalid instanceof</h4>
+<div class="outline-text-4" id="text-orgc5a278b">
 <p>
-If the compiler can determine that a variable cannot possibly be <code>cast</code> to a specific class, it reports an error.
+If the compiler can determine that a variable cannot possibly be <code>cast</code> to a specific class, it reports a <b>compilation error</b>.
 </p>
+</div>
+
+<ul class="org-ul">
+<li><a id="orgf3a4baa"></a>Example<br />
+<div class="outline-text-5" id="text-orgf3a4baa">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">openZoo</span>(<span class="org-type">Number</span> <span class="org-variable-name">time</span>) {
   <span class="org-keyword">if</span>(time <span class="org-keyword">instanceof</span> String) <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
@@ -332,15 +339,21 @@ If the compiler can determine that a variable cannot possibly be <code>cast</cod
 </pre>
 </div>
 </div>
+</li>
+</ul>
 </div>
 
-<div id="outline-container-org47f3d66" class="outline-4">
-<h4 id="org47f3d66">null and instanceof</h4>
-<div class="outline-text-4" id="text-org47f3d66">
+<div id="outline-container-org55ab1ba" class="outline-4">
+<h4 id="org55ab1ba">null and instanceof</h4>
+<div class="outline-text-4" id="text-org55ab1ba">
 <p>
-Calling <b>instanceof</b> on the <code>null</code> literal or a <code>null reference</code> always returns false
+Calling <b>instanceof</b> on the <code>null</code> literal or a <code>null reference</code> always returns <code>false</code>
 </p>
+</div>
 
+<ul class="org-ul">
+<li><a id="orgf34e55d"></a>Example<br />
+<div class="outline-text-5" id="text-orgf34e55d">
 <div class="org-src-container">
 <pre class="src src-java">System.out.print(<span class="org-constant">null</span> <span class="org-keyword">instanceof</span> Object); <span class="org-comment-delimiter">// </span><span class="org-comment">false
 </span>
@@ -351,6 +364,8 @@ System.out.print(<span class="org-constant">null</span> <span class="org-keyword
 </pre>
 </div>
 </div>
+</li>
+</ul>
 </div>
 </div>
 </div>

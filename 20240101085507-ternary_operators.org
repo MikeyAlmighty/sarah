@@ -5,7 +5,9 @@
 #+property: header-args :tangle code/ocp/2/ternary_operators.java
 
 * Ternary Operators
-A [[id:a29b45cb-d2f6-49fd-90c7-4c8f1b8e898a][Conditional Operator]]
+
+- [[id:a29b45cb-d2f6-49fd-90c7-4c8f1b8e898a][Conditional Operator]]
+  
 It is notable in that it is the only operator that takes *three* operands.
 
 #+BEGIN_SRC java
@@ -23,14 +25,15 @@ System.out.print((stripes > 5) ? 21 : "Zebra");
 int animal = (stripes < 9) ? 3 : "Horse"; // DOES NOT COMPILE
 #+END_SRC
 
-Both expressions evaluate similar boolean values and return an ~int~ and a ~String~,
-although only the first one will compile.
+Both expressions evaluate similar boolean values and return an ~int~ and a ~String~, although only the first one will compile.
 
-~System.out.print()~ does not care that the expressions are completely *different* types, because it can convert both to ~Object~ values and call ~toString()~ on them.
+~System.out.print()~ does not care that the expressions are *different* types, because it can convert both to ~Object~ values and call ~toString()~ on them.
 
 On the other hand, the compiler does know that ~"Horse"~ is of the *wrong* data type and cannot be assigned to an ~int~; therefore, it does not allow the code to be compiled.
 
 ** Unperformed Side Effects
+
+*** Example
 
 #+BEGIN_SRC java
 int sheep = 1;
@@ -43,6 +46,8 @@ Notice that since the =LHS= boolean expression was *true*, *only* sheep was incr
 
 Contrast the preceding example with the following modification:
 
+**** Example
+
 #+BEGIN_SRC java
 int sheep = 1;
 int zzz = 1;
@@ -53,7 +58,9 @@ System.out.print(sheep + "," + zzz); // 1,2
 The =LHS= boolean expression evaluates to *false*, only ~zzz~ is *incremented*.
 
 *** Embedded Conditional Expressions
+
 **** Example
+
 The following code assigns =1=, =0=, or =−1= to status if ~n1 > n1~, ~n1 ~==~ ~n2~, or ~n1 < n2~:
 
 #+BEGIN_SRC java

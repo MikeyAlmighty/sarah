@@ -4,7 +4,8 @@
 #+title: Casting Between char and Numeric Types
 
 * Casting Between char and Numeric Types
-A =char= can be [[id:3ef23225-ae37-428e-8ad3-5d7728f59478][cast]] into any [[id:4b7774f6-ef98-4e86-ae2c-49961d934c6f][numeric types]], (*vice* *versa*).
+
+A =char= can be [[id:3ef23225-ae37-428e-8ad3-5d7728f59478][cast]] into any [[id:4b7774f6-ef98-4e86-ae2c-49961d934c6f][numeric types]] (*vice* *versa*).
 
 When an =integer= is *cast* into a =char=, only its lower (right-most) ~16 bits~ of data are used; the other part is ignored.
 For example:
@@ -13,7 +14,7 @@ For example:
 // Note a hex integer is written using prefix 0X
 char ch = (char)0XAB0041; // The lower 16 bits hex code 0041 is
                           // assigned to ch
-System.out.println(ch);   // ch is character A
+System.out.println(ch);   // ch is character 'A'
 #+END_SRC
 
 ** Explanation
@@ -21,8 +22,7 @@ System.out.println(ch);   // ch is character A
 
 ~0xAB0041~ is a =32-bit= *int*:
 
-0xAB0041
-= 0x00AB0041 (=32 bits=)
+~0xAB0041~ = ~0x00AB0041~ (=32 bits=)
 
 
 Split it into *upper* =16 bits= and *lower* =16 bits=:
@@ -31,9 +31,11 @@ Upper 16 bits: 0xAB00   ← ignored
 Lower 16 bits: 0x0041   ← kept
 
 *** Step 2: Keep only the lower 16 bits
+
 ~(char) 0xAB0041~  →  ~(char) 0x0041~
 
 *** Step 3: Interpret 0x0041 as a Unicode character
+
 ~0x0041~ = *65* decimal = ~'A'~
 
 ~System.out.println(ch);  // prints A~
@@ -87,6 +89,7 @@ byte b = (byte)'\uFFF4';
 #+END_SRC
 
 ** Operators
+
 All [[id:f6e458df-99cf-45d6-b224-16f325cc1d2b][numeric operators]] can be applied to =char= operands.
 A =char= *operand* is *automatically* *cast* into a =number= if the other operand is a =number= or a =character=.
 
@@ -97,13 +100,15 @@ If a =string= is *concatenated* with a =character=, the =character= is *converte
 #+BEGIN_SRC java
 int i = '2' + '3'; // (int)'2' is 50 and (int)'3' is 51
 System.out.println("i is " + i); // i is 101
+
 int j = 2 + 'a'; // (int)'a' is 97
 System.out.println("j is " + j); // j is 99
 System.out.println(j + " is the Unicode for character ") + (char)j); // 99 is the Unicode for character c
 System.out.println("Chapter " + '2');
 #+END_SRC
 
-Displays:
+**** Outputs:
+
 #+BEGIN_SRC shell
 i is 101
 j is 99
