@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-18 Sat 15:36 -->
+<!-- 2026-04-19 Sun 10:07 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Accessing Objects via Reference Variables</title>
@@ -255,21 +255,21 @@
 <div id="content" class="content">
 <h1 class="title">Accessing Objects via Reference Variables</h1>
 
-<div id="outline-container-org553ffbd" class="outline-2">
-<h2 id="org553ffbd">Accessing Objects via Reference Variables</h2>
-<div class="outline-text-2" id="text-org553ffbd">
+<div id="outline-container-org225522e" class="outline-2">
+<h2 id="org225522e">Accessing Objects via Reference Variables</h2>
+<div class="outline-text-2" id="text-org225522e">
 <p>
 An <code>object’s</code> <code>data</code> and <code>methods</code> can be accessed through the <code>dot</code> (<code>.</code>) operator (aka <b>object member access operator</b>) via the <code>object’s</code> <b>reference</b> <b>variable</b>.
 </p>
 
-<p>
-Newly created objects are <b>allocated</b> in the <b>memory</b>.
-</p>
+<ul class="org-ul">
+<li>Newly created objects are <b>allocated</b> in the <b>memory</b>.</li>
+</ul>
 </div>
 
-<div id="outline-container-org8b8493b" class="outline-3">
-<h3 id="org8b8493b">Syntax</h3>
-<div class="outline-text-3" id="text-org8b8493b">
+<div id="outline-container-org0419ec5" class="outline-3">
+<h3 id="org0419ec5">Syntax</h3>
+<div class="outline-text-3" id="text-org0419ec5">
 <p>
 <code>ClassName objectRefVar;</code>
 </p>
@@ -278,51 +278,67 @@ Newly created objects are <b>allocated</b> in the <b>memory</b>.
 A <code>class</code> is essentially a programmer-defined <b>type</b>.
 </p>
 
-<p>
-A class is a <a href="20231230083220-reference_types.html#ID-ef3f4798-9f1d-462f-8eea-df2b75e512f6">reference type</a>, which means that a <b>variable</b> of the <code>class</code> type can <b>reference</b> an <b>instance</b> of the <code>class</code>.
-</p>
+<ul class="org-ul">
+<li>A class is a <a href="20231230083220-reference_types.html#ID-ef3f4798-9f1d-462f-8eea-df2b75e512f6">reference type</a>, which means that a <b>variable</b> of the <code>class</code> type can <b>reference</b> an <b>instance</b> of the <code>class</code>.</li>
+</ul>
 
 <p>
 The following statement declares the variable <code>myCircle</code> to be of the <code>Circle</code> type:
-<code>Circle myCircle;</code>
-</p>
-
-<p>
-The variable <code>myCircle</code> can <b>reference</b> a <code>Circle</code> object.
-The next statement <b>creates</b> an <b>object</b> and assigns its <b>reference</b> to <code>myCircle</code>:
-</p>
-
-<p>
-<code>myCircle = new Circle();</code>
-</p>
-
-<p>
-You can write a single statement that combines the <b>declaration</b> of an <code>object</code> <b>reference</b> <b>variable</b>, the <b>creation</b> of an <code>object</code>, and the <b>assigning</b> of an <code>object</code> reference to the variable with the following syntax:
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">ClassName</span> <span class="org-variable-name">objectRefVar</span> = <span class="org-keyword">new</span> <span class="org-type">ClassName</span>();
+<pre class="src src-java"><span class="org-type">Circle</span> <span class="org-variable-name">myCircle</span>;
+</pre>
+</div>
 
-<span class="org-type">Circle</span> <span class="org-variable-name">myCircle</span> = <span class="org-keyword">new</span> <span class="org-type">Circle</span>();
+<ul class="org-ul">
+<li>The variable <code>myCircle</code> can <b>reference</b> a <code>Circle</code> object.</li>
+<li>The next statement <b>creates</b> an <b>object</b> and assigns its <b>reference</b> to <code>myCircle</code>:</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-java">myCircle = <span class="org-keyword">new</span> <span class="org-type">Circle</span>();
 </pre>
 </div>
 
 <p>
-The variable <code>myCircle</code> holds a <b>reference</b> to a <code>Circle</code> <b>object</b>.
+You can write a single statement that combines the <b>declaration</b> of an <code>object</code> <b>reference</b> <b>variable</b>, the <b>creation</b> of an <code>object</code>, and the <b>assigning</b> of an <code>object</code> reference to the variable with the following syntax:
 </p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span class="org-type">ClassName</span> <span class="org-variable-name">objectRefVar</span> = <span class="org-keyword">new</span> <span class="org-type">ClassName</span>();
+</pre>
 </div>
 </div>
 
-<div id="outline-container-orgac62b4d" class="outline-3">
-<h3 id="orgac62b4d">Reference Data Fields and the null Valuee</h3>
-<div class="outline-text-3" id="text-orgac62b4d">
-<p>
-The <b>data</b> <b>fields</b> can be of <a href="20231230083220-reference_types.html#ID-ef3f4798-9f1d-462f-8eea-df2b75e512f6">reference types</a>.
-</p>
+<div id="outline-container-orgb2ebbc0" class="outline-4">
+<h4 id="orgb2ebbc0">Example</h4>
+<div class="outline-text-4" id="text-orgb2ebbc0">
+<div class="org-src-container">
+<pre class="src src-java"><span class="org-type">Circle</span> <span class="org-variable-name">myCircle</span> = <span class="org-keyword">new</span> <span class="org-type">Circle</span>();
+</pre>
+</div>
 
-<p>
-For example, the following <code>Student</code> <b>class</b> contains a data field <code>name</code> of the <code>String</code> type.
-String is a predefined Java class.
-</p>
+<ul class="org-ul">
+<li><code>myCircle</code> holds a <b>reference</b> to a <code>Circle</code> <b>object</b>.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org17a8445" class="outline-3">
+<h3 id="org17a8445">Reference Data Fields and the null Valuee</h3>
+<div class="outline-text-3" id="text-org17a8445">
+<ul class="org-ul">
+<li>The <b>data</b> <b>fields</b> can be of <a href="20231230083220-reference_types.html#ID-ef3f4798-9f1d-462f-8eea-df2b75e512f6">reference types</a>.</li>
+</ul>
+</div>
+
+<div id="outline-container-orga57dfcb" class="outline-4">
+<h4 id="orga57dfcb">Example</h4>
+<div class="outline-text-4" id="text-orga57dfcb">
+<ul class="org-ul">
+<li>The following <code>Student</code> <b>class</b> contains a data field <code>name</code> of the <code>String</code> type.</li>
+</ul>
 
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">class</span> <span class="org-type">Student</span> {
@@ -341,31 +357,28 @@ String is a predefined Java class.
 </pre>
 </div>
 
-<p>
-If a <b>data</b> <b>field</b> of a <code>reference</code> type does not reference any <code>object</code>, the data field holds a special Java value, <code>null</code>.
-</p>
+<ul class="org-ul">
+<li>If a <b>data</b> <b>field</b> of a <code>reference</code> type does not reference any <code>object</code>, the data field holds a special Java value, <code>null</code>.</li>
 
-<p>
-<code>null</code> is a <b>literal</b> just like <code>true</code> and <code>false</code>.
-While <code>true</code> and <code>false</code> are <code>Boolean</code> literals, <code>null</code> is a literal for a <code>reference</code> type.
-</p>
+<li><code>null</code> is a <b>literal</b> just like <code>true</code> and <code>false</code>.
+<ul class="org-ul">
+<li>While <code>true</code> and <code>false</code> are <code>Boolean</code> literals, <code>null</code> is a literal for a <code>reference</code> type.</li>
+</ul></li>
 
-<p>
-<code>null</code> is <b>not</b> a Java <b>keyword</b>, but it is a <a href="20260119073051-reserved_words.html#ID-8799def5-f75d-4933-9b5e-aabd642107c4">Reserved Words</a> in Java.
-</p>
+<li><code>null</code> is <b>not</b> a Java <b>keyword</b>, but it is a <a href="20260119073051-reserved_words.html#ID-8799def5-f75d-4933-9b5e-aabd642107c4">Reserved Words</a> in Java.</li>
 
-<p>
-The <b>default</b> <b>value</b> of a <b>data</b> <b>field</b> is <code>null</code> for a <a href="20231230083220-reference_types.html#ID-ef3f4798-9f1d-462f-8eea-df2b75e512f6">reference</a>, <code>0</code> for a <a href="20260121194236-numeric_data_types.html#ID-4b7774f6-ef98-4e86-ae2c-49961d934c6f">numeric</a>, <code>false</code> for a <a href="20260121195257-boolean_data_types.html#ID-d7a6412b-caff-4103-95ab-fb266ec855be">Boolean</a>, and <code>\u0000</code> for a <a href="20260121194803-character_data_types.html#ID-8ec85e4d-ce23-471d-9afd-c9853ecae6fe">Character</a>.
-</p>
+<li>The <b>default</b> <b>value</b> of a <b>data</b> <b>field</b> is <code>null</code> for a <a href="20231230083220-reference_types.html#ID-ef3f4798-9f1d-462f-8eea-df2b75e512f6">reference</a>, <code>0</code> for a <a href="20260121194236-numeric_data_types.html#ID-4b7774f6-ef98-4e86-ae2c-49961d934c6f">numeric</a>, <code>false</code> for a <a href="20260121195257-boolean_data_types.html#ID-d7a6412b-caff-4103-95ab-fb266ec855be">Boolean</a>, and <code>\u0000</code> for a <a href="20260121194803-character_data_types.html#ID-8ec85e4d-ce23-471d-9afd-c9853ecae6fe">Character</a>.</li>
+</ul>
 
 <p>
 However, Java assigns <b>no</b> <code>default</code> value to a <b>local</b> <b>variable</b> inside a method.
 </p>
 </div>
+</div>
 
-<div id="outline-container-orgaa74813" class="outline-4">
-<h4 id="orgaa74813">Example</h4>
-<div class="outline-text-4" id="text-orgaa74813">
+<div id="outline-container-org44a574b" class="outline-4">
+<h4 id="org44a574b">Example</h4>
+<div class="outline-text-4" id="text-org44a574b">
 <p>
 The following code displays the <code>default</code> <b>values</b> of the data fields <code>name</code>, <code>age</code>, <code>isScienceMajor</code> and <code>gender</code> for a <code>Student</code> <b>object</b>:
 </p>
@@ -381,61 +394,48 @@ The following code displays the <code>default</code> <b>values</b> of the data f
 <span class="org-keyword">class</span> <span class="org-type">TestStudent</span> {
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
         <span class="org-type">Student</span> <span class="org-variable-name">student</span> = <span class="org-keyword">new</span> <span class="org-type">Student</span>();
-        System.out.println(<span class="org-string">"name? "</span> + student.name);
-        System.out.println(<span class="org-string">"age? "</span> + student.age);
-        System.out.println(<span class="org-string">"isScienceMajor? "</span> + student.isScienceMajor);
-        System.out.println(<span class="org-string">"gender? "</span> + student.gender);
-    }
+        System.out.println(<span class="org-string">"name? "</span> + student.name); <span class="org-comment-delimiter">// </span><span class="org-comment">name? null
+</span>        System.out.println(<span class="org-string">"age? "</span> + student.age); <span class="org-comment-delimiter">// </span><span class="org-comment">age? 0
+</span>        System.out.println(<span class="org-string">"isScienceMajor? "</span> + student.isScienceMajor); <span class="org-comment-delimiter">// </span><span class="org-comment">isScienceMajor? false
+</span>        System.out.println(<span class="org-string">"gender? "</span> + student.gender); <span class="org-comment-delimiter">// </span><span class="org-comment">gender?
+</span>    }
 }
 </pre>
 </div>
 </div>
+</div>
 
+<div id="outline-container-org5785c3c" class="outline-4">
+<h4 id="org5785c3c">Note</h4>
+<div class="outline-text-4" id="text-org5785c3c">
 <ul class="org-ul">
-<li><a id="orge6b0b81"></a>Output<br />
-<div class="outline-text-5" id="text-orge6b0b81">
-<pre class="example">
-name? null
-age? 0
-isScienceMajor? false
-gender?
-</pre>
-</div>
-</li>
+<li>The following has a <b>compile error</b>, because the <b>local</b> <b>variables</b> <code>x</code> and <code>y</code> are <b>not</b> <b>initialized</b>:</li>
 </ul>
-</div>
-
-<div id="outline-container-orgb032375" class="outline-4">
-<h4 id="orgb032375">Note</h4>
-<div class="outline-text-4" id="text-orgb032375">
-<p>
-The following has a <b>compile error</b>, because the <b>local</b> <b>variables</b> <code>x</code> and <code>y</code> are <b>not</b> <b>initialized</b>:
-</p>
 
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">class</span> <span class="org-type">TestLocalVariables</span> {
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
         <span class="org-type">int</span> <span class="org-variable-name">x</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">x has no default value
 </span>        <span class="org-type">String</span> <span class="org-variable-name">y</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">y has no default value
-</span>        System.out.println(<span class="org-string">"x is "</span> + x);
-        System.out.println(<span class="org-string">"y is "</span> + y);
-    }
+</span>        System.out.println(<span class="org-string">"x is "</span> + x); <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
+</span>        System.out.println(<span class="org-string">"y is "</span> + y); <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
+</span>    }
 }
 </pre>
 </div>
 </div>
 
 <ul class="org-ul">
-<li><a id="orgd226fca"></a>Note<br />
-<div class="outline-text-5" id="text-orgd226fca">
-<p>
-<code>NullPointerException</code> is a common <b>runtime</b> <b>error</b>.
-It occurs when you invoke a <code>method</code> on a <code>reference</code> <b>variable</b> with a <code>null</code> value.
-</p>
+<li><a id="orgf95a72f"></a>Note<br />
+<div class="outline-text-5" id="text-orgf95a72f">
+<ul class="org-ul">
+<li><code>NullPointerException</code> is a common <b>runtime</b> <b>error</b>.
+<ul class="org-ul">
+<li>It occurs when you invoke a <code>method</code> on a <code>reference</code> <b>variable</b> with a <code>null</code> value.</li>
+</ul></li>
 
-<p>
-Make sure you <b>assign</b> an <code>object</code> <code>reference</code> to the variable <b>before</b> invoking the <code>method</code> through the reference variable.
-</p>
+<li>Make sure you <b>assign</b> an <code>object</code> <code>reference</code> to the variable <b>before</b> invoking the <code>method</code> through the <b>reference variable</b>.</li>
+</ul>
 </div>
 </li>
 </ul>

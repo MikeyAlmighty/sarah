@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-18 Sat 15:36 -->
+<!-- 2026-04-19 Sun 10:06 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Method Overloading</title>
@@ -255,13 +255,16 @@
 <div id="content" class="content">
 <h1 class="title">Method Overloading</h1>
 
-<div id="outline-container-orgfe9467e" class="outline-2">
-<h2 id="orgfe9467e">Method Overloading</h2>
-<div class="outline-text-2" id="text-orgfe9467e">
+<div id="outline-container-org5ce4937" class="outline-2">
+<h2 id="org5ce4937">Method Overloading</h2>
+<div class="outline-text-2" id="text-org5ce4937">
 <p>
 Each method has a <b>signature</b>, which comprises the <code>name</code> of the method plus the <code>types</code> and order of the <code>parameters</code> in the formal <a href="20240111063906-parameter_list.html#ID-94f7186e-22e8-4636-bc8c-a4cc040d9073">parameter list</a>.
-Several method implementations <b>may</b> have the same <code>name</code>, as long as the <code>method signatures</code> <b>differ</b>.
 </p>
+
+<ul class="org-ul">
+<li>Several method implementations <b>may</b> have the same <code>name</code>, as long as the <code>method signatures</code> <b>differ</b>.</li>
+</ul>
 
 <p>
 This practice is called <b>method overloading</b>.
@@ -276,9 +279,9 @@ At <code>compile time</code>, the <b>right implementation</b> of an <code>overlo
 </p>
 </div>
 
-<div id="outline-container-org8076cd1" class="outline-3">
-<h3 id="org8076cd1">Example</h3>
-<div class="outline-text-3" id="text-org8076cd1">
+<div id="outline-container-org00abb07" class="outline-3">
+<h3 id="org00abb07">Example</h3>
+<div class="outline-text-3" id="text-org00abb07">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-type">void</span> <span class="org-function-name">methodA</span>(<span class="org-type">int</span> <span class="org-variable-name">a</span>, <span class="org-type">double</span> <span class="org-variable-name">b</span>) { <span class="org-comment-delimiter">/* </span><span class="org-comment">...</span><span class="org-comment-delimiter"> */</span> } <span class="org-comment-delimiter">// </span><span class="org-comment">(1)
 </span><span class="org-type">int</span> <span class="org-function-name">methodA</span>(<span class="org-type">int</span> <span class="org-variable-name">a</span>) { <span class="org-keyword">return</span> a; } <span class="org-comment-delimiter">// </span><span class="org-comment">(2)
@@ -300,7 +303,11 @@ At <code>compile time</code>, the <b>right implementation</b> of an <code>overlo
 <p>
 In the implementation, changing <b>just</b> the <code>return type</code> (as shown at <code>(1)</code> and <code>(2)</code> in the preceding example) is <b>not enough</b> to <b>overload</b> a <code>method</code> and will be flagged as a <b>compile-time</b> <b>error</b>.
 </p>
+</div>
 
+<div id="outline-container-orgc733a38" class="outline-4">
+<h4 id="orgc733a38">Example</h4>
+<div class="outline-text-4" id="text-orgc733a38">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-type">int</span> <span class="org-function-name">halfIt</span>(<span class="org-type">int</span> <span class="org-variable-name">a</span>) { <span class="org-keyword">return</span> a/2; } <span class="org-comment-delimiter">// </span><span class="org-comment">(1)
 </span><span class="org-type">double</span> <span class="org-function-name">halfIt</span>(<span class="org-type">int</span> <span class="org-variable-name">a</span>) { <span class="org-keyword">return</span> a/2.0; } <span class="org-comment-delimiter">// </span><span class="org-comment">(2) Not OK</span>
@@ -308,14 +315,15 @@ In the implementation, changing <b>just</b> the <code>return type</code> (as sho
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgbddfa1f" class="outline-3">
-<h3 id="orgbddfa1f">Reference Types</h3>
-<div class="outline-text-3" id="text-orgbddfa1f">
 </div>
-<div id="outline-container-org956d9b7" class="outline-4">
-<h4 id="org956d9b7">Example</h4>
-<div class="outline-text-4" id="text-org956d9b7">
+
+<div id="outline-container-orgdd138b3" class="outline-3">
+<h3 id="orgdd138b3">Reference Types</h3>
+<div class="outline-text-3" id="text-orgdd138b3">
+</div>
+<div id="outline-container-orgb0f25c9" class="outline-4">
+<h4 id="orgb0f25c9">Example</h4>
+<div class="outline-text-4" id="text-orgb0f25c9">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Pelican</span> {
     <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">fly</span>(<span class="org-type">String</span> <span class="org-variable-name">s</span>) {
@@ -338,9 +346,9 @@ In the implementation, changing <b>just</b> the <code>return type</code> (as sho
 </div>
 </div>
 
-<div id="outline-container-org02ec0df" class="outline-3">
-<h3 id="org02ec0df">Primitive Types</h3>
-<div class="outline-text-3" id="text-org02ec0df">
+<div id="outline-container-org1de6ac8" class="outline-3">
+<h3 id="org1de6ac8">Primitive Types</h3>
+<div class="outline-text-3" id="text-org1de6ac8">
 <p>
 The answer is <code>int­long</code>.
 </p>
@@ -351,9 +359,9 @@ The second call passes a <code>long</code> and also sees an exact match.
 </p>
 </div>
 
-<div id="outline-container-orgf63a875" class="outline-4">
-<h4 id="orgf63a875">Example</h4>
-<div class="outline-text-4" id="text-orgf63a875">
+<div id="outline-container-orgbdda46d" class="outline-4">
+<h4 id="orgbdda46d">Example</h4>
+<div class="outline-text-4" id="text-orgbdda46d">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Ostrich</span> {
     <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">fly</span>(<span class="org-type">int</span> <span class="org-variable-name">i</span>) {
@@ -375,8 +383,8 @@ The second call passes a <code>long</code> and also sees an exact match.
 </div>
 
 <ul class="org-ul">
-<li><a id="org0d40c20"></a><span class="underline">Exam Trick</span><br />
-<div class="outline-text-5" id="text-org0d40c20">
+<li><a id="org655a43f"></a><span class="underline">Exam Trick</span><br />
+<div class="outline-text-5" id="text-org655a43f">
 <p>
 If we comment out the overloaded method with the <code>int</code> parameter list, the output becomes <code>long­long</code>.
 </p>
@@ -394,17 +402,17 @@ Java has no problem calling a <b>larger</b> primitive.
 </div>
 </div>
 
-<div id="outline-container-org2fae126" class="outline-3">
-<h3 id="org2fae126">Autoboxing</h3>
-<div class="outline-text-3" id="text-org2fae126">
-<p>
-These method overloads are valid.
-</p>
+<div id="outline-container-org890cb9f" class="outline-3">
+<h3 id="org890cb9f">Autoboxing</h3>
+<div class="outline-text-3" id="text-org890cb9f">
+<ul class="org-ul">
+<li>The following <code>method</code> <b>overloads</b> are <b>valid</b>.</li>
+</ul>
 </div>
 
-<div id="outline-container-org6a0daad" class="outline-4">
-<h4 id="org6a0daad">Example</h4>
-<div class="outline-text-4" id="text-org6a0daad">
+<div id="outline-container-org67d645d" class="outline-4">
+<h4 id="org67d645d">Example</h4>
+<div class="outline-text-4" id="text-org67d645d">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Kiwi</span> {
     <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">fly</span>(<span class="org-type">int</span> <span class="org-variable-name">numMiles</span>) {}
@@ -415,27 +423,15 @@ These method overloads are valid.
 </div>
 
 <ul class="org-ul">
-<li><a id="org68daf75"></a><span class="underline">Exam Trick</span><br />
-<div class="outline-text-5" id="text-org68daf75">
-<p>
-Java tries to use the most specific <a href="20240111063906-parameter_list.html#ID-94f7186e-22e8-4636-bc8c-a4cc040d9073">parameter list</a> it can find.
-</p>
-
-<p>
-This is true for <a href="20231225083210-java_boxing.html#ID-2af44b3c-ac25-4fc8-a372-20adc491f7f5">autoboxing</a> as well as other matching types.
-</p>
-
-<p>
-This means calling <code>fly(3)</code> will call the first method.
-</p>
-
-<p>
-When the <b>primitive</b> <code>int</code> version isn’t present, Java will <a href="20231225083210-java_boxing.html#ID-2af44b3c-ac25-4fc8-a372-20adc491f7f5">autobox</a>.
-</p>
-
-<p>
-However, when the <b>primitive</b> <code>int</code> version <b>is</b> provided, there is <b>no</b> reason for Java to do the extra work of autoboxing.
-</p>
+<li><a id="orgadd8c25"></a><span class="underline">Exam Trick</span><br />
+<div class="outline-text-5" id="text-orgadd8c25">
+<ul class="org-ul">
+<li>Java tries to use the most specific <a href="20240111063906-parameter_list.html#ID-94f7186e-22e8-4636-bc8c-a4cc040d9073">parameter list</a> it can find.</li>
+<li>This is <b>true</b> for <a href="20231225083210-java_boxing.html#ID-2af44b3c-ac25-4fc8-a372-20adc491f7f5">autoboxing</a> as well as other matching types.</li>
+<li>This means calling <code>fly(3)</code> will call the first method.</li>
+<li>When the <b>primitive</b> <code>int</code> version isn’t present, Java will <a href="20231225083210-java_boxing.html#ID-2af44b3c-ac25-4fc8-a372-20adc491f7f5">autobox</a>.</li>
+<li>When the <b>primitive</b> <code>int</code> version <b>is</b> provided, there is <b>no</b> reason for Java to do the extra work of <a href="20231225083210-java_boxing.html#ID-2af44b3c-ac25-4fc8-a372-20adc491f7f5">auto boxing</a>.</li>
+</ul>
 </div>
 </li>
 </ul>

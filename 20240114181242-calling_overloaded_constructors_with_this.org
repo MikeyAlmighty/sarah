@@ -10,10 +10,9 @@ Since a ~class~ can contain *multiple overloaded* =constructors=, these =constru
 
 ** Example
 
-One of the constructors takes a single ~int~ parameter.
-The other takes an ~int~ and a ~String~.
-
-These [[id:94f7186e-22e8-4636-bc8c-a4cc040d9073][parameter lists]] are different, so the ~constructors~ are successfully *overloaded*.
+- One of the constructors takes a single ~int~ parameter.
+- The other takes an ~int~ and a ~String~.
+  - These [[id:94f7186e-22e8-4636-bc8c-a4cc040d9073][parameter lists]] are different, so the ~constructors~ are successfully *overloaded*.
 
 There is a bit of duplication, as ~this.weight~ is assigned the same way in both constructors.
 
@@ -49,7 +48,7 @@ public class Hamster {
     private String color;
     private int weight;
 
-    public Hamster(int weight, String color) { // First constructor
+    public Hamster(int weight, String color) {
         this.weight = weight;
         this.color = color;
     }
@@ -62,10 +61,12 @@ public class Hamster {
 
 *** _Exam Trick_
 
-Calling ~this()~ has one special rule you need to know.
-If you choose to call it, the ~this()~ call must be the *first* statement in the ~constructor~.
+- Calling ~this()~ has one special rule you need to know.
+  - If you choose to call it, the ~this()~ call must be the *first* statement in the ~constructor~.
 
-The side effect of this is that there can be *only one* call to ~this()~ in any constructor.
+- The side effect of this is that there can be *only one* call to ~this()~ in any constructor.
+
+**** Example
 
 #+BEGIN_SRC java
 public Hamster(int weight) {

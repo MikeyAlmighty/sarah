@@ -6,8 +6,9 @@
 
 * Java =this= Reference
 
-The keyword =this= refers to the *current (calling) object*.  
-When an instance method is *invoked* on an ~object~, the =this= reference is automatically set to that object.
+- =this= refers to the *current (calling) object*.  
+  
+When an *instance* method is *invoked* on an ~object~, the =this= reference is automatically set to that object.
 
 It allows the =method= or =constructor= to access the object's *instance variables / methods*.
 
@@ -20,7 +21,7 @@ The =this= reference is commonly used to:
 
 You can explicitly use =this= to reference instance variables and methods.
 
-Example:
+** Example
 
 #+BEGIN_SRC java
 public class Circle {
@@ -39,12 +40,12 @@ public class Circle {
 #+END_SRC
 
 In this example:
-- =this.radius= refers to the current object's radius
-- =this.getArea()= explicitly calls the object's method
+- ~this.radius~ refers to the current object's ~radius~
+- ~this.getArea()~ explicitly calls the object's method
 
-Often, =this= is omitted for brevity.
+Often, =this= is *omitted* for brevity.
 
-Example without =this=:
+*** Example without =this=
 
 #+BEGIN_SRC java
 public double getArea() {
@@ -54,9 +55,9 @@ public double getArea() {
 
 * Resolving Variable Shadowing
 
-The =this= keyword is necessary when a method or constructor parameter has the *same name* as an instance variable.
+- The =this= keyword is necessary when a method or constructor parameter has the *same name* as an instance variable.
 
-Example:
+** Example
 
 #+BEGIN_SRC java
 public class Circle {
@@ -70,14 +71,14 @@ public class Circle {
 }
 #+END_SRC
 
-Explanation:
-- The parameter =radius= hides the instance variable
-- =this.radius= refers to the object's field
-- =radius= refers to the constructor parameter
+*** Explanation
+- The parameter =radius= hides the *instance variable*
+  - ~this.radius~ refers to the *object's* field.
+  - ~radius~ refers to the *constructor parameter.*
 
 * Invoking Another Constructor
 
-The =this()= syntax can call another constructor in the same class.
+- =this()= can call another *constructor* in the *same* =class=.
 
 #+BEGIN_SRC java
 public class Circle {
@@ -95,10 +96,11 @@ public class Circle {
 }
 #+END_SRC
 
-Here:
-- =this(1.0)= calls the second constructor
-- This technique is known as *constructor chaining*
+** Explanation
 
+- ~this(1.0)~ calls the second constructor
+  - Known as [[id:55699fdc-5fdc-4c94-b8d7-7b4c230ad0c5][constructor chaining]].
+    
 * Key Points
 
 - =this= refers to the *current object*

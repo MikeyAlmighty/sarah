@@ -4,18 +4,21 @@
 #+title: Passing Arrays as Arguments
 
 * Passing Arrays as Arguments
-In Java, when an *array* is passed to a method, the argument value is the *reference to the array*, not a copy of the array itself.
+
+In =Java=, when an *array* is *passed* to a =method=, the argument value is the *reference to the array*, not a copy of the array itself.
 
 This behavior is often described as *pass-by-sharing*.
 
-Semantically:
-- The method receives a ~reference~ to the *same array object*.
-- Both the caller and the method refer to the *same memory location*.
-- If the method modifies the array, the changes are visible outside the method.
+** Semantically:
 
-Important points:
-- The *reference value* is passed by value.
-- The ~array~ *object* itself is shared between the *caller* and the *method*.
+- The method receives a ~reference~ to the *same array object*.
+- Both the =caller= and the =method= refer to the *same memory location*.
+- If the =method= /modifies/ the *array*, the changes are visible *outside the method*.
+
+** Important points:
+
+- The *reference value* is /passed/ by value.
+- The ~array~ *object* itself is /shared/ between the *caller* and the *method*.
 - *Mutating* the ~array~ inside the method *affects* the *original* ~array~.
 
 * Example
@@ -47,17 +50,16 @@ Before method call: 1
 After method call: 99
 #+end_src
 
-* Explanation
+** Explanation
 
-1. The variable =numbers= holds a reference to an array.
-2. When =modifyArray(numbers)= is called, the reference value is passed.
-3. Inside the method, =arr= refers to the *same array object*.
-4. Changing =arr[0]= modifies the original array.
+1. The variable =numbers= holds a *reference* to an *array*.
+2. When ~modifyArray(numbers)~ is called, the *reference value* is /passed/.
+3. Inside the =method=, ~arr~ refers to the *same array object*.
+4. Changing ~arr[0]~ modifies the *original array*.
 
 Thus, the modification is visible outside the method.
 
 * Key Idea
 
-Java does **not copy arrays when passing them to methods**.
-
-Instead, the method receives a reference to the same array object, allowing it to modify the array contents.
+- Java does *not* /copy/ arrays when passing them to methods.
+- Instead, the =method= receives a *reference*.

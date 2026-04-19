@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-18 Sat 15:36 -->
+<!-- 2026-04-19 Sun 10:06 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>StringBuilder</title>
@@ -255,18 +255,21 @@
 <div id="content" class="content">
 <h1 class="title">StringBuilder</h1>
 
-<div id="outline-container-org284ac6a" class="outline-2">
-<h2 id="org284ac6a"><code>StringBuilder</code></h2>
-<div class="outline-text-2" id="text-org284ac6a">
+<div id="outline-container-orgd67c7ee" class="outline-2">
+<h2 id="orgd67c7ee"><code>StringBuilder</code></h2>
+<div class="outline-text-2" id="text-orgd67c7ee">
 <p>
-Unlike the <a href="20240103124304-creating_and_manipulating_strings.html#ID-afe76105-5f94-4dac-a929-e7a7dcdb5983">String class</a>, <code>StringBuilder</code> is <b>not</b> immutable.
+Unlike the <a href="20240103124304-creating_and_manipulating_strings.html#ID-afe76105-5f94-4dac-a929-e7a7dcdb5983">String class(Immutable)</a>, <code>StringBuilder</code> is <b>mutable</b>.
+</p>
+
+<p>
 For frequent or large-scale concatenation, <code>StringBuilder</code> (or <code>StringBuffer</code> for <b>thread</b> <b>safety</b>) is <b>more</b> <code>efficient</code> than the <code>+</code> operator or <code>concat()</code>.
 </p>
 </div>
 
-<div id="outline-container-org9a99863" class="outline-3">
-<h3 id="org9a99863">Signature</h3>
-<div class="outline-text-3" id="text-org9a99863">
+<div id="outline-container-org581a80f" class="outline-3">
+<h3 id="org581a80f">Signature</h3>
+<div class="outline-text-3" id="text-org581a80f">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-type">StringBuilder</span> <span class="org-variable-name">sb1</span> = <span class="org-keyword">new</span> <span class="org-type">StringBuilder</span>(); <span class="org-comment-delimiter">// </span><span class="org-comment">empty sequence of characters
 </span><span class="org-type">StringBuilder</span> <span class="org-variable-name">sb2</span> = <span class="org-keyword">new</span> <span class="org-type">StringBuilder</span>(<span class="org-string">"animal"</span>); <span class="org-comment-delimiter">// </span><span class="org-comment">animal
@@ -276,9 +279,9 @@ For frequent or large-scale concatenation, <code>StringBuilder</code> (or <code>
 </div>
 </div>
 
-<div id="outline-container-org2c364eb" class="outline-3">
-<h3 id="org2c364eb">Example</h3>
-<div class="outline-text-3" id="text-org2c364eb">
+<div id="outline-container-org75153f4" class="outline-3">
+<h3 id="org75153f4">Example</h3>
+<div class="outline-text-3" id="text-org75153f4">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-type">StringBuilder</span> <span class="org-variable-name">alpha</span> = <span class="org-keyword">new</span> <span class="org-type">StringBuilder</span>();
 <span class="org-keyword">for</span> (<span class="org-type">char</span> <span class="org-variable-name">current</span> = <span class="org-string">'a'</span>; current &lt;= <span class="org-string">'z'</span>; current++) {
@@ -290,37 +293,44 @@ System.out.println(alpha); <span class="org-comment-delimiter">// </span><span c
 </div>
 </div>
 
-<div id="outline-container-orgd8920f2" class="outline-3">
-<h3 id="orgd8920f2">Mutability and Chaining</h3>
-<div class="outline-text-3" id="text-orgd8920f2">
+<div id="outline-container-org925a692" class="outline-3">
+<h3 id="org925a692">Mutability and Chaining</h3>
+<div class="outline-text-3" id="text-org925a692">
 <p>
 When we chained <code>String</code> method calls, the result was a <b>new</b> <code>String</code> with the answer.
-Chaining <code>StringBuilder</code> methods doesn’t work this way.
 </p>
+<ul class="org-ul">
+<li>Chaining <code>StringBuilder</code> methods doesn’t work this way.</li>
+</ul>
 
 <p>
-Instead, the <code>StringBuilder</code> <b>changes its own state and returns a reference to itself</b>:
+Instead, the <code>StringBuilder</code> changes its <b>own state</b> and <b>returns a reference</b> to itself:
 </p>
+</div>
 
+<div id="outline-container-org3cc470d" class="outline-4">
+<h4 id="org3cc470d">Example</h4>
+<div class="outline-text-4" id="text-org3cc470d">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">StringBuilder</span> <span class="org-variable-name">sb</span> = <span class="org-keyword">new</span> <span class="org-type">StringBuilder</span>(<span class="org-string">"start"</span>); <span class="org-comment-delimiter">// </span><span class="org-comment">sb = start
+<pre class="src src-java"><span class="org-type">StringBuilder</span> <span class="org-variable-name">sb</span> = <span class="org-keyword">new</span> <span class="org-type">StringBuilder</span>(<span class="org-string">"start"</span>); <span class="org-comment-delimiter">// </span><span class="org-comment">sb = 'start'
 </span>
-sb.append(<span class="org-string">"+middle"</span>); <span class="org-comment-delimiter">// </span><span class="org-comment">sb = start+middle
+sb.append(<span class="org-string">"+middle"</span>); <span class="org-comment-delimiter">// </span><span class="org-comment">sb = 'start+middle'
 </span>
-<span class="org-type">StringBuilder</span> <span class="org-variable-name">same</span> = sb.append(<span class="org-string">"+end"</span>); <span class="org-comment-delimiter">// </span><span class="org-comment">sb = start+middle+end</span>
+<span class="org-type">StringBuilder</span> <span class="org-variable-name">same</span> = sb.append(<span class="org-string">"+end"</span>); <span class="org-comment-delimiter">// </span><span class="org-comment">sb = 'start+middle+end'</span>
 </pre>
 </div>
 </div>
+</div>
 
-<div id="outline-container-orgcf1f9fb" class="outline-4">
-<h4 id="orgcf1f9fb"><span class="underline">Exam Trick</span></h4>
-<div class="outline-text-4" id="text-orgcf1f9fb">
+<div id="outline-container-orgabfb455" class="outline-4">
+<h4 id="orgabfb455"><span class="underline">Exam Trick</span></h4>
+<div class="outline-text-4" id="text-orgabfb455">
 <p>
 There’s only <b>one</b> <code>StringBuilder</code> object here.
 </p>
 
 <p>
-We know that because <code>new StringBuilder()</code> is called <b>only once</b>!
+We know that because <code>new StringBuilder()</code> is <i>called</i> <b>only once</b>!
 </p>
 
 <div class="org-src-container">
@@ -338,17 +348,17 @@ On <code>line 6</code>, those <b>two</b> variables are still <b>referring to tha
 </div>
 </div>
 
-<div id="outline-container-orgc4a6824" class="outline-4">
-<h4 id="orgc4a6824">Methods</h4>
-<div class="outline-text-4" id="text-orgc4a6824">
+<div id="outline-container-org3cea910" class="outline-4">
+<h4 id="org3cea910">Methods</h4>
+<div class="outline-text-4" id="text-org3cea910">
 </div>
 <ul class="org-ul">
-<li><a id="orgf508d5b"></a><a href="20240106124543-stringbuilder_append.html#ID-6800ccf4-e0a1-41a9-8618-f952173bcb4d">StringBuilder.append</a><br /></li>
-<li><a id="orgad2a736"></a><a href="20240106124625-stringbuilder_insert.html#ID-0fd3d1f3-3241-4fd0-bcc4-71f7fa03d8cd">StringBuilder.insert</a><br /></li>
-<li><a id="orgd6055eb"></a><a href="20240106124954-stringbuilder_delete.html#ID-9808d612-53f4-4b51-b926-1c065047711c">StringBuilder.delete</a><br /></li>
-<li><a id="org896b063"></a><a href="20240106125451-stringbuilder_replace.html#ID-5ec54700-2395-4cdc-9da2-ffbef6ec2c23">StringBuilder.replace</a><br /></li>
-<li><a id="orgc85a141"></a><a href="20240106125913-stringbuilder_reverse.html#ID-02412a54-508e-4f57-85e8-6bdd48508a92">StringBuilder.reverse</a><br /></li>
-<li><a id="orgd4a64f3"></a><a href="20240106130216-stringbuilder_tostring.html#ID-98a2b73f-e560-45c2-bcb1-40c6cd044777">StringBuilder.toString</a><br /></li>
+<li><a id="orgb57bf08"></a><a href="20240106124543-stringbuilder_append.html#ID-6800ccf4-e0a1-41a9-8618-f952173bcb4d">StringBuilder.append</a><br /></li>
+<li><a id="org66fd77c"></a><a href="20240106124625-stringbuilder_insert.html#ID-0fd3d1f3-3241-4fd0-bcc4-71f7fa03d8cd">StringBuilder.insert</a><br /></li>
+<li><a id="orge5c6dbb"></a><a href="20240106124954-stringbuilder_delete.html#ID-9808d612-53f4-4b51-b926-1c065047711c">StringBuilder.delete</a><br /></li>
+<li><a id="orgf3f0b81"></a><a href="20240106125451-stringbuilder_replace.html#ID-5ec54700-2395-4cdc-9da2-ffbef6ec2c23">StringBuilder.replace</a><br /></li>
+<li><a id="orgc5fe7b6"></a><a href="20240106125913-stringbuilder_reverse.html#ID-02412a54-508e-4f57-85e8-6bdd48508a92">StringBuilder.reverse</a><br /></li>
+<li><a id="org2763dbf"></a><a href="20240106130216-stringbuilder_tostring.html#ID-98a2b73f-e560-45c2-bcb1-40c6cd044777">StringBuilder.toString</a><br /></li>
 </ul>
 </div>
 </div>

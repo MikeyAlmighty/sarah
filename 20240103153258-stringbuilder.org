@@ -6,7 +6,8 @@
 
 * ~StringBuilder~
 
-Unlike the [[id:afe76105-5f94-4dac-a929-e7a7dcdb5983][String class]], ~StringBuilder~ is *not* immutable.
+Unlike the [[id:afe76105-5f94-4dac-a929-e7a7dcdb5983][String class(Immutable)]], ~StringBuilder~ is *mutable*.
+
 For frequent or large-scale concatenation, ~StringBuilder~ (or ~StringBuffer~ for *thread* *safety*) is *more* =efficient= than the ~+~ operator or ~concat()~.
 
 ** Signature
@@ -30,22 +31,25 @@ System.out.println(alpha); // abcdefghijklmnopqrstuvwxyz
 ** Mutability and Chaining
 
 When we chained ~String~ method calls, the result was a *new* ~String~ with the answer.
-Chaining ~StringBuilder~ methods doesn’t work this way.
+- Chaining ~StringBuilder~ methods doesn’t work this way.
 
-Instead, the ~StringBuilder~ *changes its own state and returns a reference to itself*:
+Instead, the ~StringBuilder~ changes its *own state* and *returns a reference* to itself:
+
+*** Example
 
 #+BEGIN_SRC java
-StringBuilder sb = new StringBuilder("start"); // sb = start
+StringBuilder sb = new StringBuilder("start"); // sb = 'start'
 
-sb.append("+middle"); // sb = start+middle
+sb.append("+middle"); // sb = 'start+middle'
 
-StringBuilder same = sb.append("+end"); // sb = start+middle+end
+StringBuilder same = sb.append("+end"); // sb = 'start+middle+end'
 #+END_SRC
 
 *** _Exam Trick_
+
 There’s only *one* ~StringBuilder~ object here.
 
-We know that because ~new StringBuilder()~ is called *only once*!
+We know that because ~new StringBuilder()~ is /called/ *only once*!
 
 #+BEGIN_SRC java
 StringBuilder a = new StringBuilder("abc");

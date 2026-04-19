@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-18 Sat 15:36 -->
+<!-- 2026-04-19 Sun 10:06 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>.this reference</title>
@@ -255,12 +255,15 @@
 <div id="content" class="content">
 <h1 class="title">.this reference</h1>
 
-<div id="outline-container-orgb277f29" class="outline-2">
-<h2 id="orgb277f29">Java <code>this</code> Reference</h2>
-<div class="outline-text-2" id="text-orgb277f29">
+<div id="outline-container-org9bb959a" class="outline-2">
+<h2 id="org9bb959a">Java <code>this</code> Reference</h2>
+<div class="outline-text-2" id="text-org9bb959a">
+<ul class="org-ul">
+<li><code>this</code> refers to the <b>current (calling) object</b>.</li>
+</ul>
+
 <p>
-The keyword <code>this</code> refers to the <b>current (calling) object</b>.  
-When an instance method is <b>invoked</b> on an <code>object</code>, the <code>this</code> reference is automatically set to that object.
+When an <b>instance</b> method is <b>invoked</b> on an <code>object</code>, the <code>this</code> reference is automatically set to that object.
 </p>
 
 <p>
@@ -278,17 +281,17 @@ The <code>this</code> reference is commonly used to:
 </div>
 </div>
 
-<div id="outline-container-orga24fc60" class="outline-2">
-<h2 id="orga24fc60">Referencing Instance Members</h2>
-<div class="outline-text-2" id="text-orga24fc60">
+<div id="outline-container-orgc188432" class="outline-2">
+<h2 id="orgc188432">Referencing Instance Members</h2>
+<div class="outline-text-2" id="text-orgc188432">
 <p>
 You can explicitly use <code>this</code> to reference instance variables and methods.
 </p>
+</div>
 
-<p>
-Example:
-</p>
-
+<div id="outline-container-org1dd02ab" class="outline-3">
+<h3 id="org1dd02ab">Example</h3>
+<div class="outline-text-3" id="text-org1dd02ab">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Circle</span> {
 
@@ -310,18 +313,18 @@ Example:
 In this example:
 </p>
 <ul class="org-ul">
-<li><code>this.radius</code> refers to the current object's radius</li>
+<li><code>this.radius</code> refers to the current object's <code>radius</code></li>
 <li><code>this.getArea()</code> explicitly calls the object's method</li>
 </ul>
 
 <p>
-Often, <code>this</code> is omitted for brevity.
+Often, <code>this</code> is <b>omitted</b> for brevity.
 </p>
+</div>
 
-<p>
-Example without <code>this</code>:
-</p>
-
+<div id="outline-container-org4b4f33b" class="outline-4">
+<h4 id="org4b4f33b">Example without <code>this</code></h4>
+<div class="outline-text-4" id="text-org4b4f33b">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-type">double</span> <span class="org-function-name">getArea</span>() {
     <span class="org-keyword">return</span> <span class="org-constant">Math</span>.PI * radius * radius;
@@ -330,18 +333,20 @@ Example without <code>this</code>:
 </div>
 </div>
 </div>
+</div>
+</div>
 
-<div id="outline-container-orgec9d8cf" class="outline-2">
-<h2 id="orgec9d8cf">Resolving Variable Shadowing</h2>
-<div class="outline-text-2" id="text-orgec9d8cf">
-<p>
-The <code>this</code> keyword is necessary when a method or constructor parameter has the <b>same name</b> as an instance variable.
-</p>
+<div id="outline-container-orgc363fe8" class="outline-2">
+<h2 id="orgc363fe8">Resolving Variable Shadowing</h2>
+<div class="outline-text-2" id="text-orgc363fe8">
+<ul class="org-ul">
+<li>The <code>this</code> keyword is necessary when a method or constructor parameter has the <b>same name</b> as an instance variable.</li>
+</ul>
+</div>
 
-<p>
-Example:
-</p>
-
+<div id="outline-container-orgf2206f2" class="outline-3">
+<h3 id="orgf2206f2">Example</h3>
+<div class="outline-text-3" id="text-orgf2206f2">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Circle</span> {
 
@@ -354,24 +359,29 @@ Example:
 }
 </pre>
 </div>
+</div>
 
-<p>
-Explanation:
-</p>
+<div id="outline-container-org5e0be65" class="outline-4">
+<h4 id="org5e0be65">Explanation</h4>
+<div class="outline-text-4" id="text-org5e0be65">
 <ul class="org-ul">
-<li>The parameter <code>radius</code> hides the instance variable</li>
-<li><code>this.radius</code> refers to the object's field</li>
-<li><code>radius</code> refers to the constructor parameter</li>
+<li>The parameter <code>radius</code> hides the <b>instance variable</b>
+<ul class="org-ul">
+<li><code>this.radius</code> refers to the <b>object's</b> field.</li>
+<li><code>radius</code> refers to the <b>constructor parameter.</b></li>
+</ul></li>
 </ul>
 </div>
 </div>
+</div>
+</div>
 
-<div id="outline-container-org3bc70d3" class="outline-2">
-<h2 id="org3bc70d3">Invoking Another Constructor</h2>
-<div class="outline-text-2" id="text-org3bc70d3">
-<p>
-The <code>this()</code> syntax can call another constructor in the same class.
-</p>
+<div id="outline-container-orgd24ab91" class="outline-2">
+<h2 id="orgd24ab91">Invoking Another Constructor</h2>
+<div class="outline-text-2" id="text-orgd24ab91">
+<ul class="org-ul">
+<li><code>this()</code> can call another <b>constructor</b> in the <b>same</b> <code>class</code>.</li>
+</ul>
 
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Circle</span> {
@@ -389,20 +399,24 @@ The <code>this()</code> syntax can call another constructor in the same class.
 }
 </pre>
 </div>
+</div>
 
-<p>
-Here:
-</p>
+<div id="outline-container-org1bed8ba" class="outline-3">
+<h3 id="org1bed8ba">Explanation</h3>
+<div class="outline-text-3" id="text-org1bed8ba">
 <ul class="org-ul">
-<li><code>this(1.0)</code> calls the second constructor</li>
-<li>This technique is known as <b>constructor chaining</b></li>
+<li><code>this(1.0)</code> calls the second constructor
+<ul class="org-ul">
+<li>Known as <a href="20260315145631-constructor_chaining.html#ID-55699fdc-5fdc-4c94-b8d7-7b4c230ad0c5">constructor chaining</a>.</li>
+</ul></li>
 </ul>
 </div>
 </div>
+</div>
 
-<div id="outline-container-orgf63fff1" class="outline-2">
-<h2 id="orgf63fff1">Key Points</h2>
-<div class="outline-text-2" id="text-orgf63fff1">
+<div id="outline-container-org050c3c0" class="outline-2">
+<h2 id="org050c3c0">Key Points</h2>
+<div class="outline-text-2" id="text-org050c3c0">
 <ul class="org-ul">
 <li><code>this</code> refers to the <b>current object</b></li>
 <li>It can reference instance variables and methods</li>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-18 Sat 15:36 -->
+<!-- 2026-04-19 Sun 10:07 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Copying Arrays</title>
@@ -255,13 +255,13 @@
 <div id="content" class="content">
 <h1 class="title">Copying Arrays</h1>
 
-<div id="outline-container-orgb1961f5" class="outline-2">
-<h2 id="orgb1961f5">Copying Arrays</h2>
-<div class="outline-text-2" id="text-orgb1961f5">
+<div id="outline-container-org3f471b3" class="outline-2">
+<h2 id="org3f471b3">Copying Arrays</h2>
+<div class="outline-text-2" id="text-org3f471b3">
 </div>
-<div id="outline-container-org4eb84dd" class="outline-3">
-<h3 id="org4eb84dd">1. Using a Loop</h3>
-<div class="outline-text-3" id="text-org4eb84dd">
+<div id="outline-container-org2c84538" class="outline-3">
+<h3 id="org2c84538">1. Using a Loop</h3>
+<div class="outline-text-3" id="text-org2c84538">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) <span class="org-keyword">throws</span> <span class="org-type">Exception</span> {
     <span class="org-type">int</span>[] <span class="org-variable-name">sourceArray</span> = { 2, 3, 1, 5, 10 };
@@ -276,34 +276,31 @@
 </div>
 </div>
 
-<div id="outline-container-org13ee01e" class="outline-3">
-<h3 id="org13ee01e">2. Using arraycopy</h3>
-<div class="outline-text-3" id="text-org13ee01e">
-<p>
-Imported from <code>java.lang.System</code>
-</p>
+<div id="outline-container-org19e674a" class="outline-3">
+<h3 id="org19e674a">2. Using arraycopy</h3>
+<div class="outline-text-3" id="text-org19e674a">
+<ul class="org-ul">
+<li>Imported from <code>java.lang.System</code></li>
+</ul>
 </div>
 
-<div id="outline-container-org12278d6" class="outline-4">
-<h4 id="org12278d6">Syntax</h4>
-<div class="outline-text-4" id="text-org12278d6">
+<div id="outline-container-org29deeeb" class="outline-4">
+<h4 id="org29deeeb">Syntax</h4>
+<div class="outline-text-4" id="text-org29deeeb">
 <div class="org-src-container">
 <pre class="src src-java">arraycopy(<span class="org-type">sourceArray</span>, <span class="org-type">sourcePosition</span>, <span class="org-type">targetArray</span>, <span class="org-type">targetPosition</span>, <span class="org-type">length</span>);
 </pre>
 </div>
 
-<p>
-The parameters <code>sourcePosition</code> and <code>targetPosition</code> indicate the <b>starting</b> positions in <code>sourceArray</code> and <code>targetArray</code>.
-</p>
-
-<p>
-The number of elements copied from <code>sourceArray</code> to <code>targetArray</code> is indicated by <code>length</code>.
-</p>
+<ul class="org-ul">
+<li><code>sourcePosition</code> and <code>targetPosition</code> indicate the <b>starting</b> positions in <code>sourceArray</code> and <code>targetArray</code>.</li>
+<li>The number of elements copied from <code>sourceArray</code> to <code>targetArray</code> is indicated by <code>length</code>.</li>
+</ul>
 </div>
 
 <ul class="org-ul">
-<li><a id="orgdd5bcd5"></a>Example<br />
-<div class="outline-text-5" id="text-orgdd5bcd5">
+<li><a id="orgffe608a"></a>Example<br />
+<div class="outline-text-5" id="text-orgffe608a">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Arrays</span>;
 
@@ -318,52 +315,40 @@ The number of elements copied from <code>sourceArray</code> to <code>targetArray
 </pre>
 </div>
 
-<p>
-The <code>arraycopy</code> method does <b>not</b> allocate memory space for the <code>target</code> array.
-The <code>target</code> array must have <b>already</b> been created with its <b>memory</b> <b>space</b> <b>allocated</b>.
-</p>
-
-<p>
-After the <b>copying</b> takes place, <code>targetArray</code> and <code>sourceArray</code> have the <b>same</b> <b>content</b> but <b>independent</b> <b>memory</b> locations.
-</p>
+<ul class="org-ul">
+<li>The <code>arraycopy</code> method does <b>not</b> allocate memory space for the <code>target</code> array.</li>
+<li>The <code>target</code> array must have <b>already</b> been <b>created</b> with its <b>memory</b> <b>space is</b> <b>allocated</b>.</li>
+<li>After the <b>copying</b> takes place, <code>targetArray</code> and <code>sourceArray</code> have the <b>same</b> <b>content</b> but <b>independent</b> <b>memory</b> locations.</li>
+</ul>
 </div>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org7b41432" class="outline-3">
-<h3 id="org7b41432">3. Using Clone()</h3>
-<div class="outline-text-3" id="text-org7b41432">
+<div id="outline-container-org6ebae81" class="outline-3">
+<h3 id="org6ebae81">3. Using Clone()</h3>
+<div class="outline-text-3" id="text-org6ebae81">
 <p>
 The <code>clone()</code> method creates a <b>shallow</b> copy of the array.
 </p>
 
-<p>
-It is a simple and direct way to duplicate an array in Java.
-</p>
+<ul class="org-ul">
+<li>Simple and direct way to duplicate an array in <code>Java</code>.</li>
 
-<p>
-The <code>clone()</code> method creates a <b>new</b> <code>array</code> of the <b>same</b> <b>type</b> and <b>copies</b> <b>all</b> <code>elements</code>.
-</p>
+<li>The <code>clone()</code> method creates a <b>new</b> <code>array</code> of the <b>same</b> <b>type</b> and <b>copies</b> <b>all</b> <code>elements</code>.</li>
 
-<p>
-It works well for primitive arrays (like <code>int[]</code>, <code>double[]</code>), where each element is copied separately.
-</p>
+<li>Works well for <b>primitive</b> arrays (like <code>int[]</code>, <code>double[]</code>), where each element is <b>copied</b> separately.</li>
 
-<p>
-We must note though that, for <b>arrays</b> of <code>objects</code>, <code>clone()</code> performs what we call <b>shallow</b> copy, meaning that only <code>references</code> are <b>copied</b>, not the actual <code>objects</code>.
-</p>
-
-<p>
-If the original array contains <code>objects</code>, both arrays will still reference the same <code>objects</code>.
-</p>
+<li>For <b>arrays</b> of <code>objects</code>, <code>clone()</code> performs what we call <b>shallow</b> copy, meaning that only <code>references</code> are <b>copied</b>, not the actual <code>objects</code>.</li>
+<li>If the original array contains <code>objects</code>, both arrays will still reference the same <code>objects</code>.</li>
+</ul>
 </div>
 
 
-<div id="outline-container-orgbeabc19" class="outline-4">
-<h4 id="orgbeabc19">Example</h4>
-<div class="outline-text-4" id="text-orgbeabc19">
+<div id="outline-container-orga3f8a51" class="outline-4">
+<h4 id="orga3f8a51">Example</h4>
+<div class="outline-text-4" id="text-orga3f8a51">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
     <span class="org-type">int</span>[] <span class="org-variable-name">original</span> = {5, 10, 15, 20, 25};
@@ -384,9 +369,9 @@ If the original array contains <code>objects</code>, both arrays will still refe
 </div>
 </div>
 
-<div id="outline-container-orgae2775f" class="outline-3">
-<h3 id="orgae2775f">4. Using copyOf()</h3>
-<div class="outline-text-3" id="text-orgae2775f">
+<div id="outline-container-org513ad02" class="outline-3">
+<h3 id="org513ad02">4. Using copyOf()</h3>
+<div class="outline-text-3" id="text-org513ad02">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
     <span class="org-type">int</span>[] <span class="org-variable-name">original</span> = { 10, 20, 30, 40, 50 };

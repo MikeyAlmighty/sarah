@@ -8,8 +8,8 @@
 
 The ~protected~ modifier means the method can be called only from a class in the *same* =package= or a =subclass=.
 
-~Protected access~ allows everything that package access does, and more.
-The ~protected access~ modifier adds the ability to access members of a parent class.
+- ~Protected access~ allows everything that [[id:0d8e8caf-96d3-4fd2-b0ae-460b7b93d6ae][package access]] does, and more.
+- ~protected access~ modifier adds the ability to access members of a =parent class=.
 
 For now, we cover the simplest possible use of a ~subclass~.
 
@@ -58,12 +58,17 @@ public class Gosling extends Bird {
 }
 #+END_SRC
 
-(Above) *Extending* means creating a ~subclass~ that has access to any =protected= or =public members= of the ~parentClass~.
-Running this program prints floating twice: once from calling ~floatInWater()~, and once from the print statement in ~swim()~.
-Since ~Gosling~ is a =subclass= of ~Bird~, it can access these members even though it is in a different package.
+- (Above) *Extending* means creating a ~subclass~ that has access to any =protected= or =public members= of the ~parentClass~.
+  
+Running this program prints floating twice:
+- Once from calling ~floatInWater()~
+- Once from the print statement in ~swim()~.
+  
+Since ~Gosling~ is a =subclass= of ~Bird~, it can *access* these members even though it is in a *different package*.
 
 Remember that ~protected~ also gives us access to everything that [[id:0d8e8caf-96d3-4fd2-b0ae-460b7b93d6ae][package access]] does.
-This means a ~class~ in the *same package* as ~Bird~ can access its *protected* members.
+
+- This means a ~class~ in the *same package* as ~Bird~ can access its *protected* members.
 
 #+BEGIN_SRC java
 package pond.shore; // Same package as Bird

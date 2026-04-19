@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-18 Sat 15:36 -->
+<!-- 2026-04-19 Sun 10:07 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Passing Arrays as Arguments</title>
@@ -255,40 +255,44 @@
 <div id="content" class="content">
 <h1 class="title">Passing Arrays as Arguments</h1>
 
-<div id="outline-container-org24f3129" class="outline-2">
-<h2 id="org24f3129">Passing Arrays as Arguments</h2>
-<div class="outline-text-2" id="text-org24f3129">
+<div id="outline-container-org33b8a2b" class="outline-2">
+<h2 id="org33b8a2b">Passing Arrays as Arguments</h2>
+<div class="outline-text-2" id="text-org33b8a2b">
 <p>
-In Java, when an <b>array</b> is passed to a method, the argument value is the <b>reference to the array</b>, not a copy of the array itself.
+In <code>Java</code>, when an <b>array</b> is <b>passed</b> to a <code>method</code>, the argument value is the <b>reference to the array</b>, not a copy of the array itself.
 </p>
 
 <p>
 This behavior is often described as <b>pass-by-sharing</b>.
 </p>
+</div>
 
-<p>
-Semantically:
-</p>
+<div id="outline-container-org2dccd0a" class="outline-3">
+<h3 id="org2dccd0a">Semantically:</h3>
+<div class="outline-text-3" id="text-org2dccd0a">
 <ul class="org-ul">
 <li>The method receives a <code>reference</code> to the <b>same array object</b>.</li>
-<li>Both the caller and the method refer to the <b>same memory location</b>.</li>
-<li>If the method modifies the array, the changes are visible outside the method.</li>
+<li>Both the <code>caller</code> and the <code>method</code> refer to the <b>same memory location</b>.</li>
+<li>If the <code>method</code> <i>modifies</i> the <b>array</b>, the changes are visible <b>outside the method</b>.</li>
 </ul>
+</div>
+</div>
 
-<p>
-Important points:
-</p>
+<div id="outline-container-org2a84d3d" class="outline-3">
+<h3 id="org2a84d3d">Important points:</h3>
+<div class="outline-text-3" id="text-org2a84d3d">
 <ul class="org-ul">
-<li>The <b>reference value</b> is passed by value.</li>
-<li>The <code>array</code> <b>object</b> itself is shared between the <b>caller</b> and the <b>method</b>.</li>
+<li>The <b>reference value</b> is <i>passed</i> by value.</li>
+<li>The <code>array</code> <b>object</b> itself is <i>shared</i> between the <b>caller</b> and the <b>method</b>.</li>
 <li><b>Mutating</b> the <code>array</code> inside the method <b>affects</b> the <b>original</b> <code>array</code>.</li>
 </ul>
 </div>
 </div>
+</div>
 
-<div id="outline-container-orgb64bcad" class="outline-2">
-<h2 id="orgb64bcad">Example</h2>
-<div class="outline-text-2" id="text-orgb64bcad">
+<div id="outline-container-org017f042" class="outline-2">
+<h2 id="org017f042">Example</h2>
+<div class="outline-text-2" id="text-org017f042">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">ArrayArgumentExample</span> {
 
@@ -312,24 +316,23 @@ Important points:
 </div>
 </div>
 
-<div id="outline-container-orgadfddb7" class="outline-2">
-<h2 id="orgadfddb7">Output</h2>
-<div class="outline-text-2" id="text-orgadfddb7">
+<div id="outline-container-org53c83aa" class="outline-2">
+<h2 id="org53c83aa">Output</h2>
+<div class="outline-text-2" id="text-org53c83aa">
 <pre class="example">
 Before method call: 1
 After method call: 99
 </pre>
 </div>
-</div>
 
-<div id="outline-container-orgc7e2b75" class="outline-2">
-<h2 id="orgc7e2b75">Explanation</h2>
-<div class="outline-text-2" id="text-orgc7e2b75">
+<div id="outline-container-org8c37065" class="outline-3">
+<h3 id="org8c37065">Explanation</h3>
+<div class="outline-text-3" id="text-org8c37065">
 <ol class="org-ol">
-<li>The variable <code>numbers</code> holds a reference to an array.</li>
-<li>When <code>modifyArray(numbers)</code> is called, the reference value is passed.</li>
-<li>Inside the method, <code>arr</code> refers to the <b>same array object</b>.</li>
-<li>Changing <code>arr[0]</code> modifies the original array.</li>
+<li>The variable <code>numbers</code> holds a <b>reference</b> to an <b>array</b>.</li>
+<li>When <code>modifyArray(numbers)</code> is called, the <b>reference value</b> is <i>passed</i>.</li>
+<li>Inside the <code>method</code>, <code>arr</code> refers to the <b>same array object</b>.</li>
+<li>Changing <code>arr[0]</code> modifies the <b>original array</b>.</li>
 </ol>
 
 <p>
@@ -337,17 +340,15 @@ Thus, the modification is visible outside the method.
 </p>
 </div>
 </div>
+</div>
 
-<div id="outline-container-org4147a59" class="outline-2">
-<h2 id="org4147a59">Key Idea</h2>
-<div class="outline-text-2" id="text-org4147a59">
-<p>
-Java does <b><b>not copy arrays when passing them to methods</b></b>.
-</p>
-
-<p>
-Instead, the method receives a reference to the same array object, allowing it to modify the array contents.
-</p>
+<div id="outline-container-org8d930ef" class="outline-2">
+<h2 id="org8d930ef">Key Idea</h2>
+<div class="outline-text-2" id="text-org8d930ef">
+<ul class="org-ul">
+<li>Java does <b>not</b> <i>copy</i> arrays when passing them to methods.</li>
+<li>Instead, the <code>method</code> receives a <b>reference</b>.</li>
+</ul>
 </div>
 </div>
 </div>

@@ -7,7 +7,8 @@
 * Method Overloading
 
 Each method has a *signature*, which comprises the ~name~ of the method plus the ~types~ and order of the ~parameters~ in the formal [[id:94f7186e-22e8-4636-bc8c-a4cc040d9073][parameter list]].
-Several method implementations *may* have the same ~name~, as long as the =method signatures= *differ*.
+
+- Several method implementations *may* have the same ~name~, as long as the =method signatures= *differ*.
 
 This practice is called *method overloading*.
 
@@ -35,6 +36,8 @@ public static long min(long a, long b)
 #+END_SRC
 
 In the implementation, changing *just* the ~return type~ (as shown at =(1)= and =(2)= in the preceding example) is *not enough* to *overload* a =method= and will be flagged as a *compile-time* *error*.
+
+*** Example
 
 #+BEGIN_SRC java
 int halfIt(int a) { return a/2; } // (1)
@@ -64,6 +67,7 @@ public class Pelican {
 #+END_SRC
 
 ** Primitive Types
+
 The answer is =int­long=.
 
 The first call passes an ~int~ and sees an exact match.
@@ -99,7 +103,7 @@ Java has no problem calling a *larger* primitive.
 
 ** Autoboxing
 
-These method overloads are valid.
+- The following =method= *overloads* are *valid*.
 
 *** Example
 
@@ -111,12 +115,9 @@ public class Kiwi {
 #+END_SRC
 
 **** _Exam Trick_
-Java tries to use the most specific [[id:94f7186e-22e8-4636-bc8c-a4cc040d9073][parameter list]] it can find.
 
-This is true for [[id:2af44b3c-ac25-4fc8-a372-20adc491f7f5][autoboxing]] as well as other matching types.
-
-This means calling ~fly(3)~ will call the first method.
-
-When the *primitive* ~int~ version isn’t present, Java will [[id:2af44b3c-ac25-4fc8-a372-20adc491f7f5][autobox]].
-
-However, when the *primitive* ~int~ version *is* provided, there is *no* reason for Java to do the extra work of autoboxing.
+- Java tries to use the most specific [[id:94f7186e-22e8-4636-bc8c-a4cc040d9073][parameter list]] it can find.
+- This is *true* for [[id:2af44b3c-ac25-4fc8-a372-20adc491f7f5][autoboxing]] as well as other matching types.
+- This means calling ~fly(3)~ will call the first method.
+- When the *primitive* ~int~ version isn’t present, Java will [[id:2af44b3c-ac25-4fc8-a372-20adc491f7f5][autobox]].
+- When the *primitive* ~int~ version *is* provided, there is *no* reason for Java to do the extra work of [[id:2af44b3c-ac25-4fc8-a372-20adc491f7f5][auto boxing]].

@@ -7,9 +7,9 @@
 
 ** Core Idea
 
-- Scanner supports *token-based* and *line-based* input.
-- Token-based methods read values separated by *delimiters* (default: whitespace).
-- Line-based method reads an entire line.
+- Scanner supports *token-based* and *line-based* input:
+  - *Token-based* methods read values separated by *delimiters* (default: whitespace).
+  - *Line-based* method reads an /entire line/.
 
 ** Token-Based Input Methods
 
@@ -19,82 +19,90 @@
   - ~next()~
     
 - Behavior:
-  - Skips leading delimiters
-  - Reads until the next delimiter
-  - Converts token to the required type (except next())
-    
-- ~next()~:
-  - Returns a *String*
-  - *No* type conversion
+  - Skips *leading* =delimiters=
+  - Reads until the next =delimiter=
+  - Converts *token* to the required type (except ~next()~):
+    - ~next()~:
+      - Returns a *String*
+      - *No* type conversion
 
-** Delimiters
+*** Delimiters
 
-- Default: whitespace
+- Default: *whitespace*
 - Custom:
   - ~useDelimiter(String regex)~
 
-** Exceptions
+*** Exceptions
 
 - If token doesn't match expected type: ~java.util.InputMismatchException~
 
 ** Line-Based Input
-- ~nextLine()~:
-  - Reads until line separator
-  - Returns the line (excluding separator)
 
-** Line Separators
+- ~nextLine()~:
+  - Reads until *line separator*
+  - Returns the =line= (*excluding separator*)
+
+*** Line Separators
 
 - Platform dependent:
-  - Windows: \r\n
-  - UNIX/Linux: \n
+  - Windows: ~\r\n~
+  - UNIX/Linux: ~\n~
 - Retrieve via:
-  - System.getProperty("line.separator")
+  - ~System.getProperty("line.separator")~
 
-** Important Behavior
+*** Important Behavior
 
-- Token-based methods DO NOT consume the delimiter.
-- nextLine() reads:
-  - Remaining delimiter
-  - Up to next line separator
+- *Token-based* methods DO NOT consume the =delimiter=.
+- ~nextLine()~ reads:
+  - Remaining =delimiter=
+  - Up to next *line separator*
 
-** Common Pitfall
+*** Common Pitfall
 
 - Mixing ~nextInt()~ (or other token methods) with ~nextLine()~
 
 *** Example (File Input)
 
 - File content:
-  34 567
+  ~34 567~
 
 - Code:
+  
 #+BEGIN_SRC java
 int intValue = input.nextInt();
 String line = input.nextLine();
 #+END_SRC
 
 - Result:
-  - intValue = 34
-  - line = " 567" (leading space included)
+  
+#+BEGIN_SRC shell
+intValue = 34
+line = " 567" (leading space included)
+#+END_SRC
 
 *** Example (Keyboard Input)
 
 - Input:
-  34 [Enter]
-  567 [Enter]
+  
+  ~34 [Enter]~
+  ~567 [Enter]~
 
 - Result:
+  
+#+BEGIN_SRC shell
   - intValue = 34
   - line = "" (empty string)
+#+END_SRC
 
 *** Reason
 
-- ~nextInt()~ stops at newline (delimiter)
-- ~nextLine()~ reads the leftover newline → returns empty string
+- ~nextInt()~ stops at newline (*delimiter*)
+- ~nextLine()~ reads the leftover newline → returns *empty string*
 
 ** Best Practice
 
-- Avoid mixing token-based and line-based input
-- Or consume leftover newline before calling nextLine()
+- Avoid mixing *token-based* and *line-based input*
+- Or consume leftover newline before calling ~nextLine()~
 
 ** Additional Capability
 

@@ -20,18 +20,19 @@ public static void main(String[] args) throws Exception {
 
 ** 2. Using arraycopy
 
-Imported from ~java.lang.System~
+- Imported from ~java.lang.System~
 
 *** Syntax
+
 #+BEGIN_SRC java
 arraycopy(sourceArray, sourcePosition, targetArray, targetPosition, length);
 #+END_SRC
 
-The parameters ~sourcePosition~ and ~targetPosition~ indicate the *starting* positions in =sourceArray= and =targetArray=.
-
-The number of elements copied from =sourceArray= to =targetArray= is indicated by ~length~.
+- ~sourcePosition~ and ~targetPosition~ indicate the *starting* positions in =sourceArray= and =targetArray=.
+- The number of elements copied from =sourceArray= to =targetArray= is indicated by ~length~.
 
 **** Example
+
 #+BEGIN_SRC java
 import java.util.Arrays;
 
@@ -45,24 +46,22 @@ public static void main(String[] args) throws Exception {
 }
 #+END_SRC
 
-The ~arraycopy~ method does *not* allocate memory space for the =target= array.
-The =target= array must have *already* been created with its *memory* *space* *allocated*.
-
-After the *copying* takes place, =targetArray= and =sourceArray= have the *same* *content* but *independent* *memory* locations.
+- The ~arraycopy~ method does *not* allocate memory space for the =target= array.
+- The =target= array must have *already* been *created* with its *memory* *space is* *allocated*.
+- After the *copying* takes place, =targetArray= and =sourceArray= have the *same* *content* but *independent* *memory* locations.
 
 ** 3. Using Clone()
 
 The ~clone()~ method creates a *shallow* copy of the array.
 
-It is a simple and direct way to duplicate an array in Java.
+- Simple and direct way to duplicate an array in =Java=.
 
-The ~clone()~ method creates a *new* =array= of the *same* *type* and *copies* *all* =elements=.
+- The ~clone()~ method creates a *new* =array= of the *same* *type* and *copies* *all* =elements=.
 
-It works well for primitive arrays (like ~int[]~, ~double[]~), where each element is copied separately.
+- Works well for *primitive* arrays (like ~int[]~, ~double[]~), where each element is *copied* separately.
 
-We must note though that, for *arrays* of =objects=, ~clone()~ performs what we call *shallow* copy, meaning that only =references= are *copied*, not the actual =objects=.
-
-If the original array contains =objects=, both arrays will still reference the same =objects=.
+- For *arrays* of =objects=, ~clone()~ performs what we call *shallow* copy, meaning that only =references= are *copied*, not the actual =objects=.
+- If the original array contains =objects=, both arrays will still reference the same =objects=.
 
 
 *** Example

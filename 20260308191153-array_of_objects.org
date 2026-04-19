@@ -4,16 +4,20 @@
 #+title: Array of Objects
 
 * Array of Objects
-~Circle[] circleArray = new Circle[10];~
 
-To initialize ~circleArray~, you can use a for loop as follows:
+** Example
+
+- To initialize ~circleArray~, you can use a for loop as follows:
+
 #+BEGIN_SRC java
+Circle[] circleArray = new Circle[10];
+
 for (int i = 0; i < circleArray.length; i++) {
     circleArray[i] = new Circle();
 }
 #+END_SRC
 
-An *array* of *objects* is actually an *array* of *reference* *variables*.
-
-Thus, invoking ~circleArray[1].getArea()~ involves two levels of referencing.
-~circleArray~ references the entire array, and ~circleArray[1]~ references a =Circle= *object*.
+- An *array* of *objects* is actually an *array* of *reference* *variables*.
+- Invoking ~circleArray[1].getArea()~ involves two levels of referencing:
+  - ~circleArray~ references the *entire array*.
+  - ~circleArray[1]~ references a =Circle= *object*.

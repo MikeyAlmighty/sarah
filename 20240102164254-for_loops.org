@@ -37,13 +37,16 @@ for (int i = 0; i < 5; i ++) {
 #+BEGIN_SRC java
 for (var counter = 4; counter >= 0; counter-­) {
     System.out.print(counter + " ");
-} // 4 3 2 1 0
+}
+
+// 4 3 2 1 0
 #+END_SRC
 
 ** 1. Creating an infinite loop
 
 Although this *for* *loop* may look like it does not compile, it will in fact *compile* and *run* without issue.
-Note that the =semicolons= separating the three sections *are* required, as ~for( )~ *without* any semicolons will *not* compile.
+
+- Note that the =semicolons= separating the three sections *are* required, as ~for( )~ *without* any semicolons will *not compile*.
 
 #+BEGIN_SRC java
 for( ; ; )
@@ -52,12 +55,17 @@ for( ; ; )
 
 ** 2. Multiple Terms
 
-=initialization block= *requires* values to be of the same type. (In below code block: ~y~ and ~z~ are both *only* allowed to be ~long~.)
+=initialization block= *requires* values to be of the same type.
+
+- In below code block: ~y~ and ~z~ are both *only* allowed to be ~long~.
 
 This code demonstrates three variations of the ~for loop~ you may not have seen.
 - First, you can *declare* a variable, such as ~x~ in this example, before the loop begins and use it after it completes.
-- Second, your =initialization block=, =boolean expression=, and =update statements= can include extra variables that *may* or *may not* reference each other. For example, ~z~ is defined in the initialization block and is never used.
+- Second, your =initialization block=, =boolean expression=, and =update statements= can include extra variables that *may* or *may not* reference each other.
+  - For example, ~z~ is defined in the =initialization block= and is *never used*.
 - Finally, the =update statement= can *modify* multiple variables.
+
+*** Example
 
 #+BEGIN_SRC java
 int x = 0;
@@ -90,8 +98,12 @@ for(x = 0; x < 5; x++)
 
 ** 4. Using incompatible Data Types in the Initialization Block
 
-The variables in the =initialization block= *must* all be of the same type.
-In this example, they ~y~ and ~z~ have different *types*, so the code will *not compile*.
+- The variables in the =initialization block= *must* all be of the *same type*.
+  
+*** Example
+
+~y~ and ~z~ have different *types*, so the code will *not compile*.
+
 #+BEGIN_SRC java
 int x = 0;
 for(long y = 0, int z = 4; x < 5; x++) // DOES NOT COMPILE
@@ -99,13 +111,13 @@ for(long y = 0, int z = 4; x < 5; x++) // DOES NOT COMPILE
 #+END_SRC
 
 ** 5. Using Loop variables outside the loop
-If you notice, ~x~ is defined in the =initialization block= of the loop and then used after the loop terminates.
-Since ~x~ was *only* scoped for the loop, using it *outside* the loop will cause a *compiler error*.
+
+~x~ is /defined/ in the =initialization block= of the loop and then used /after/ the *loop terminates*.
+
+- Since ~x~ was *only* scoped for the loop, using it *outside* the loop will cause a *compiler error*.
 
 #+BEGIN_SRC java
 for(long y = 0, x = 4; x < 5 && y < 10; x++, y++)
     System.out.print(y + " ");
 System.out.print(x); // DOES NOT COMPILE
 #+END_SRC
-
-* [[id:3f396004-6fa8-4352-ab88-12f7edb8bc88][For Each Loop]]

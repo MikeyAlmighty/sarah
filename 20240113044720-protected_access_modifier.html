@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-18 Sat 15:36 -->
+<!-- 2026-04-19 Sun 10:07 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Protected Access Modifier</title>
@@ -255,26 +255,26 @@
 <div id="content" class="content">
 <h1 class="title">Protected Access Modifier</h1>
 
-<div id="outline-container-org67fd6e8" class="outline-2">
-<h2 id="org67fd6e8">Protected Access Modifier</h2>
-<div class="outline-text-2" id="text-org67fd6e8">
+<div id="outline-container-org0a46411" class="outline-2">
+<h2 id="org0a46411">Protected Access Modifier</h2>
+<div class="outline-text-2" id="text-org0a46411">
 <p>
 The <code>protected</code> modifier means the method can be called only from a class in the <b>same</b> <code>package</code> or a <code>subclass</code>.
 </p>
 
-<p>
-<code>Protected access</code> allows everything that package access does, and more.
-The <code>protected access</code> modifier adds the ability to access members of a parent class.
-</p>
+<ul class="org-ul">
+<li><code>Protected access</code> allows everything that <a href="20240112062023-package_access_modifier.html#ID-0d8e8caf-96d3-4fd2-b0ae-460b7b93d6ae">package access</a> does, and more.</li>
+<li><code>protected access</code> modifier adds the ability to access members of a <code>parent class</code>.</li>
+</ul>
 
 <p>
 For now, we cover the simplest possible use of a <code>subclass</code>.
 </p>
 </div>
 
-<div id="outline-container-orga1ce1e7" class="outline-3">
-<h3 id="orga1ce1e7">Simple Example</h3>
-<div class="outline-text-3" id="text-orga1ce1e7">
+<div id="outline-container-org0147e53" class="outline-3">
+<h3 id="org0147e53">Simple Example</h3>
+<div class="outline-text-3" id="text-org0147e53">
 <p>
 In the following example, the  <code>ClownFish (subClass)</code> of the <code>Fish (parentClass)</code>, using the <code>extends</code> keyword to connect them:
 </p>
@@ -297,9 +297,9 @@ If the two classes are in the same package, then the subclass also gains access 
 </div>
 </div>
 
-<div id="outline-container-orgdd85397" class="outline-3">
-<h3 id="orgdd85397">Example</h3>
-<div class="outline-text-3" id="text-orgdd85397">
+<div id="outline-container-orgb9e1024" class="outline-3">
+<h3 id="orgb9e1024">Example</h3>
+<div class="outline-text-3" id="text-orgb9e1024">
 <div class="org-src-container">
 <pre class="src src-java">
 <span class="org-comment-delimiter">// </span><span class="org-comment">Parent Class
@@ -329,16 +329,29 @@ If the two classes are in the same package, then the subclass also gains access 
 </pre>
 </div>
 
+<ul class="org-ul">
+<li>(Above) <b>Extending</b> means creating a <code>subclass</code> that has access to any <code>protected</code> or <code>public members</code> of the <code>parentClass</code>.</li>
+</ul>
+
 <p>
-(Above) <b>Extending</b> means creating a <code>subclass</code> that has access to any <code>protected</code> or <code>public members</code> of the <code>parentClass</code>.
-Running this program prints floating twice: once from calling <code>floatInWater()</code>, and once from the print statement in <code>swim()</code>.
-Since <code>Gosling</code> is a <code>subclass</code> of <code>Bird</code>, it can access these members even though it is in a different package.
+Running this program prints floating twice:
+</p>
+<ul class="org-ul">
+<li>Once from calling <code>floatInWater()</code></li>
+<li>Once from the print statement in <code>swim()</code>.</li>
+</ul>
+
+<p>
+Since <code>Gosling</code> is a <code>subclass</code> of <code>Bird</code>, it can <b>access</b> these members even though it is in a <b>different package</b>.
 </p>
 
 <p>
 Remember that <code>protected</code> also gives us access to everything that <a href="20240112062023-package_access_modifier.html#ID-0d8e8caf-96d3-4fd2-b0ae-460b7b93d6ae">package access</a> does.
-This means a <code>class</code> in the <b>same package</b> as <code>Bird</code> can access its <b>protected</b> members.
 </p>
+
+<ul class="org-ul">
+<li>This means a <code>class</code> in the <b>same package</b> as <code>Bird</code> can access its <b>protected</b> members.</li>
+</ul>
 
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">package</span> pond.<span class="org-constant">shore</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">Same package as Bird
@@ -359,9 +372,9 @@ Since <code>Bird</code> and <code>BirdWatcher</code> are in the <b>same package<
 </div>
 </div>
 
-<div id="outline-container-org57c24a9" class="outline-3">
-<h3 id="org57c24a9">Negative Example</h3>
-<div class="outline-text-3" id="text-org57c24a9">
+<div id="outline-container-org667f137" class="outline-3">
+<h3 id="org667f137">Negative Example</h3>
+<div class="outline-text-3" id="text-org667f137">
 <p>
 <code>BirdWatcherFromAfar</code> is <b>not in the same package</b> as <code>Bird</code>, and it <b>doesn’t</b> inherit from <code>Bird</code> therefore it <b>cannot</b> access the members from <code>Bird</code>.
 </p>
@@ -383,9 +396,9 @@ Since <code>Bird</code> and <code>BirdWatcher</code> are in the <b>same package<
 </div>
 
 
-<div id="outline-container-orgcd51bee" class="outline-4">
-<h4 id="orgcd51bee"><span class="underline">Exam Trick</span></h4>
-<div class="outline-text-4" id="text-orgcd51bee">
+<div id="outline-container-orga09491b" class="outline-4">
+<h4 id="orga09491b"><span class="underline">Exam Trick</span></h4>
+<div class="outline-text-4" id="text-orga09491b">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">package</span> pond.<span class="org-constant">swan</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">Different package than Bird
 </span>
@@ -419,16 +432,16 @@ Since <code>Bird</code> and <code>BirdWatcher</code> are in the <b>same package<
 </div>
 
 <ul class="org-ul">
-<li><a id="orga65ebe1"></a>Inheritance<br />
-<div class="outline-text-6" id="text-orga65ebe1">
+<li><a id="orgbe38c64"></a>Inheritance<br />
+<div class="outline-text-6" id="text-orgbe38c64">
 <ul class="org-ul">
 <li><code>Lines 5 and 6</code> refer to <b>protected</b> members via <i>inheriting</i> them.</li>
 </ul>
 </div>
 </li>
 
-<li><a id="org3cb8265"></a>Instantiation<br />
-<div class="outline-text-6" id="text-org3cb8265">
+<li><a id="org6bd6e67"></a>Instantiation<br />
+<div class="outline-text-6" id="text-org6bd6e67">
 <p>
 <code>Lines 10 and 11</code> also successfully use <b>protected</b> members of <code>Bird</code>.
 </p>
@@ -448,8 +461,8 @@ The <code>Swan</code> class is allowed to use <b>protected</b> members of <code>
 </div>
 </li>
 
-<li><a id="org28f4d79"></a>Failed Compilation<br />
-<div class="outline-text-6" id="text-org28f4d79">
+<li><a id="orga90fa3d"></a>Failed Compilation<br />
+<div class="outline-text-6" id="text-orga90fa3d">
 <p>
 <code>Lines 15 and 16</code> do <b>not</b> compile.
 </p>
@@ -490,8 +503,8 @@ The code just happens to be in the <code>Swan</code> class.
 </li>
 </ul>
 
-<li><a id="org0979ffb"></a>Rules<br />
-<div class="outline-text-5" id="text-org0979ffb">
+<li><a id="org3cece68"></a>Rules<br />
+<div class="outline-text-5" id="text-org3cece68">
 <p>
 The <b>protected</b> rules apply under two scenarios:
 </p>
