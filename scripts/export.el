@@ -58,9 +58,6 @@
           color: #111111;
         }
 
-        a { color: #1a0dab; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-
         /* Code block styling */
         pre.src {
           padding: 1em;
