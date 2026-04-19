@@ -5,13 +5,12 @@
 
 * Dynamic Binding (AKA Dynamic Method Dispatch / Late Binding)
 
-In Java, runtime polymorphism relies on dynamic binding.
-
-When you invoke an overridden method on an object reference, Java binds the call to the correct method based on the object's actual class (not the reference type) during runtime.
+- In Java, *runtime polymorphism* relies on *dynamic binding*.
+- When you invoke an *overridden* method on an =object reference=, Java binds the call to the correct method based on the object's actual class (not the reference type) during runtime.
 
 This allows the *same* =method= to *behave* *differently* based on the ~object type~.
 
-A =method= can be implemented in several =classes= along the *inheritance* chain.
+- A =method= can be implemented in several =classes= along the *inheritance* chain.
 
 We are going to use the =Animal= *class* *hierarchy* to properly demonstrate *dynamic* *binding* and *polymorphism*.
 
@@ -71,17 +70,17 @@ Both *override* the ~makeSound()~ method to provide specific implementations.
 
 - In the ~main method~, we use an =Animal= *reference* to hold a =Dog= or =Cat= object.
 - At *runtime*, the JVM resolves the method call (~makeSound()~) based on the ~actual type~ of the object (either =Dog= or =Cat=), even though the *reference* *type* is =Animal=.
-- This is dynamic binding: Java calls the appropriate *overridden* *method* based on the ~object type~, not the ~reference type~.
+- This is dynamic binding:
+  - Java calls the appropriate *overridden* *method* based on the ~object type~ (Not the ~reference type~).
 
-*** Runtime polymorphism
+**** [[id:16577748-cab3-4067-a6ee-c92fb65fa48f][Polymorphism (Run Time)]]
 
-The *reference* *variable* ~myAnimal~ can point to both =Dog= and =Cat=, and Java will invoke the *correct* =method= (~Dog~ barks or ~Cat~ meows) based on the ~actual object~ type at *runtime*.
+- The =reference variable= ~myAnimal~ can point to both =Dog= and =Cat=, and Java will invoke the *correct* =method= (~Dog~ *barks* or ~Cat~ *meows*) based on the ~actual object type~ at *runtime*.
 
 ** Core Idea (Simplified)
 
-*Java* decides which =method= signature is valid at *compile time*, but decides which ~implementation~ to run at *runtime*.
-
-*Dynamic Binding* = *runtime* decision.
+- *Java* decides which =method= signature is valid at *compile time*, but decides which ~implementation~ to run at *runtime*.
+- *Dynamic Binding* = *runtime* decision.
 
 *** Two Key Concepts
 
@@ -121,4 +120,4 @@ myAnimal.makeSound();   // Cat meows
 
 *** Exam
 
-Dynamic binding does *NOT* apply to =static methods=.
+*Dynamic binding* does *NOT* apply to =static methods=.

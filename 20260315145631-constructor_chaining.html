@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-19 Sun 10:06 -->
+<!-- 2026-04-19 Sun 11:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Constructor Chaining</title>
@@ -225,11 +225,6 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-            body {
-                background-color: #262626;   /* lighter than #1e1e1e */
-                color: #e8e8e8;              /* slightly softer white */
-            }
-
             a {
                 color: #9ecbff;              /* less intense blue */
             }
@@ -255,35 +250,37 @@
 <div id="content" class="content">
 <h1 class="title">Constructor Chaining</h1>
 
-<div id="outline-container-orgd5e4e34" class="outline-2">
-<h2 id="orgd5e4e34">Constructor Chaining</h2>
-<div class="outline-text-2" id="text-orgd5e4e34">
+<div id="outline-container-org3a1a5f6" class="outline-2">
+<h2 id="org3a1a5f6">Constructor Chaining</h2>
+<div class="outline-text-2" id="text-org3a1a5f6">
 <p>
 A <b>constructor</b> may invoke an <b>overloaded constructor</b> or its <code>superclass</code> <b>constructor</b>.
 </p>
 
 <ul class="org-ul">
-<li>If <b>neither</b> is invoked <b>explicitly</b>, the compiler automatically puts <code>super()</code> as the first statement in the <b>constructor</b>.</li>
+<li>If <b>neither</b> is invoked <b>explicitly</b>, the compiler automatically puts <code>super()</code> as the <b>first statement</b> in the <b>constructor</b>.</li>
 </ul>
 
 <p>
-In any case, constructing an <code>instance</code> of a <code>class</code> invokes the <b>constructors</b> of all the <b>superclasses</b> along the <code>inheritance chain</code>.
+Constructing an <code>instance</code> of a <code>class</code> invokes the <b>constructors</b> of <i>all</i> the <b>superclasses</b> along the <code>inheritance chain</code>.
 </p>
 
-<p>
-When <b>constructing</b> an <code>object</code> of a <code>subclass</code>, the <code>subclass</code> <b>constructor</b> first invokes its <code>superclass</code> <b>constructor</b> before performing its own tasks.
-</p>
+<ul class="org-ul">
+<li>When <b>constructing</b> an <code>object</code> of a <code>subclass</code>, the <code>subclass</code> <b>constructor</b> first invokes its <code>superclass</code> <b>constructor</b> before performing its own tasks.</li>
+<li>If the <code>superclass</code> is <i>derived</i> from another <code>class</code>, the <code>superclass</code> <b>constructor</b> invokes its <code>parentclass</code> <b>constructor</b> before performing its own tasks.</li>
+</ul>
 
 <p>
-If the <code>superclass</code> is derived from another <code>class</code>, the <code>superclass</code> <b>constructor</b> invokes its <code>parentclass</code> <b>constructor</b> before performing its own tasks.
-This process continues until the last <b>constructor</b> along the inheritance hierarchy is called.
-This is called <b>constructor chaining.</b>
+This process continues until the <i>last</i> <b>constructor</b> along the <a href="20260322134705-inheritance_hierarcy.html#ID-ef9940e7-a139-4cd1-91eb-263c38bec1ad">inheritance hierarcy</a> is called.
 </p>
+<ul class="org-ul">
+<li>This is called <b>constructor chaining.</b></li>
+</ul>
 </div>
 
-<div id="outline-container-orge66f190" class="outline-3">
-<h3 id="orge66f190">Example</h3>
-<div class="outline-text-3" id="text-orge66f190">
+<div id="outline-container-org3d12eee" class="outline-3">
+<h3 id="org3d12eee">Example</h3>
+<div class="outline-text-3" id="text-org3d12eee">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Faculty</span> <span class="org-keyword">extends</span> <span class="org-type">Employee</span> {
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
@@ -324,9 +321,9 @@ This is called <b>constructor chaining.</b>
 </div>
 </div>
 
-<div id="outline-container-org5042c7e" class="outline-4">
-<h4 id="org5042c7e">Step 1</h4>
-<div class="outline-text-4" id="text-org5042c7e">
+<div id="outline-container-org4c08736" class="outline-4">
+<h4 id="org4c08736">Step 1</h4>
+<div class="outline-text-4" id="text-org4c08736">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">new</span> <span class="org-type">Faculty</span>();
 </pre>
@@ -342,9 +339,9 @@ But before <code>Faculty()</code> runs, Java must construct its <code>superclass
 </div>
 </div>
 
-<div id="outline-container-orgb2e7505" class="outline-4">
-<h4 id="orgb2e7505">Step 2</h4>
-<div class="outline-text-4" id="text-orgb2e7505">
+<div id="outline-container-org2ef7ab8" class="outline-4">
+<h4 id="org2ef7ab8">Step 2</h4>
+<div class="outline-text-4" id="text-org2ef7ab8">
 <p>
 <code>Employee()</code> must run first
 </p>
@@ -380,9 +377,9 @@ Now <code>Employee()</code> runs.
 </div>
 </div>
 
-<div id="outline-container-org5c410a5" class="outline-4">
-<h4 id="org5c410a5">Step 3</h4>
-<div class="outline-text-4" id="text-org5c410a5">
+<div id="outline-container-org32fe144" class="outline-4">
+<h4 id="org32fe144">Step 3</h4>
+<div class="outline-text-4" id="text-org32fe144">
 <p>
 <code>Employee()</code> <b>constructor</b> runs
 </p>
@@ -415,9 +412,9 @@ So Java calls:
 </div>
 </div>
 
-<div id="outline-container-orgbb3fdc9" class="outline-4">
-<h4 id="orgbb3fdc9">Step 4</h4>
-<div class="outline-text-4" id="text-orgbb3fdc9">
+<div id="outline-container-org1a09578" class="outline-4">
+<h4 id="org1a09578">Step 4</h4>
+<div class="outline-text-4" id="text-org1a09578">
 <p>
 <code>Employee(String s)</code> runs
 </p>
@@ -441,9 +438,9 @@ meaning <code>Person()</code> runs first.
 </div>
 </div>
 
-<div id="outline-container-orge5e9581" class="outline-4">
-<h4 id="orge5e9581">Step 5</h4>
-<div class="outline-text-4" id="text-orge5e9581">
+<div id="outline-container-org1247d4b" class="outline-4">
+<h4 id="org1247d4b">Step 5</h4>
+<div class="outline-text-4" id="text-org1247d4b">
 <p>
 <code>Person()</code> constructor runs
 </p>
@@ -456,8 +453,8 @@ meaning <code>Person()</code> runs first.
 </div>
 
 <ul class="org-ul">
-<li><a id="org7f915e2"></a>Output:<br />
-<div class="outline-text-5" id="text-org7f915e2">
+<li><a id="org950d525"></a>Output:<br />
+<div class="outline-text-5" id="text-org950d525">
 <div class="org-src-container">
 <pre class="src src-shell">(1) Performs Person&#8217;s tasks
 </pre>
@@ -471,9 +468,9 @@ meaning <code>Person()</code> runs first.
 </ul>
 </div>
 
-<div id="outline-container-orgf578d89" class="outline-4">
-<h4 id="orgf578d89">Step 6</h4>
-<div class="outline-text-4" id="text-orgf578d89">
+<div id="outline-container-org23db16d" class="outline-4">
+<h4 id="org23db16d">Step 6</h4>
+<div class="outline-text-4" id="text-org23db16d">
 <p>
 Back to <code>Employee(String s)</code>
 </p>
@@ -502,9 +499,9 @@ This <b>constructor</b> ends.
 </div>
 </div>
 
-<div id="outline-container-orgacdbf8e" class="outline-4">
-<h4 id="orgacdbf8e">Step 7</h4>
-<div class="outline-text-4" id="text-orgacdbf8e">
+<div id="outline-container-org56f2e5d" class="outline-4">
+<h4 id="org56f2e5d">Step 7</h4>
+<div class="outline-text-4" id="text-org56f2e5d">
 <p>
 Back to <code>Employee()</code>
 </p>
@@ -528,9 +525,9 @@ Output:
 </div>
 </div>
 
-<div id="outline-container-org946bf9d" class="outline-4">
-<h4 id="org946bf9d">Step 8</h4>
-<div class="outline-text-4" id="text-org946bf9d">
+<div id="outline-container-org06136d7" class="outline-4">
+<h4 id="org06136d7">Step 8</h4>
+<div class="outline-text-4" id="text-org06136d7">
 <p>
 Back to <code>Faculty()</code>
 </p>
@@ -555,9 +552,9 @@ Output:
 </div>
 </div>
 
-<div id="outline-container-org01499eb" class="outline-4">
-<h4 id="org01499eb">Final Output:</h4>
-<div class="outline-text-4" id="text-org01499eb">
+<div id="outline-container-orgf227f6c" class="outline-4">
+<h4 id="orgf227f6c">Final Output:</h4>
+<div class="outline-text-4" id="text-orgf227f6c">
 <div class="org-src-container">
 <pre class="src src-shell">(1) Performs Person&#8217;s tasks
 (2) Invokes Employee&#8217;s overloaded constructor
@@ -569,9 +566,9 @@ Output:
 </div>
 </div>
 
-<div id="outline-container-org762a2bb" class="outline-3">
-<h3 id="org762a2bb">Design Guide</h3>
-<div class="outline-text-3" id="text-org762a2bb">
+<div id="outline-container-orgaa1c01c" class="outline-3">
+<h3 id="orgaa1c01c">Design Guide</h3>
+<div class="outline-text-3" id="text-orgaa1c01c">
 <ul class="org-ul">
 <li>If possible, you should provide a <b>no-arg constructor</b> for every <code>class</code> to make the <code>class</code> easy to extend and to avoid errors.</li>
 </ul>

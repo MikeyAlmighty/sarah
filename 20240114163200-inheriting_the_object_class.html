@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-19 Sun 10:06 -->
+<!-- 2026-04-19 Sun 11:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Inheriting The Object Class</title>
@@ -225,11 +225,6 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-            body {
-                background-color: #262626;   /* lighter than #1e1e1e */
-                color: #e8e8e8;              /* slightly softer white */
-            }
-
             a {
                 color: #9ecbff;              /* less intense blue */
             }
@@ -255,41 +250,41 @@
 <div id="content" class="content">
 <h1 class="title">Inheriting The Object Class</h1>
 
-<div id="outline-container-org026b81d" class="outline-2">
-<h2 id="org026b81d">Inheriting The Object Class</h2>
-<div class="outline-text-2" id="text-org026b81d">
+<div id="outline-container-org3e14294" class="outline-2">
+<h2 id="org3e14294">Inheriting The Object Class</h2>
+<div class="outline-text-2" id="text-org3e14294">
 <p>
-In Java, <b>all</b> classes inherit from a single class: <code>java.lang.Object</code>, or <code>Object</code> for short.
+In Java, <b>all</b> classes inherit from a single class: <code>java.lang.Object</code> (<code>Object</code> for short).
 </p>
 
-<p>
-Object is the <b>only</b> class that <b>doesn’t</b> have a <code>parent</code> class.
-</p>
+<ul class="org-ul">
+<li><code>Object</code> is the <b>only</b> class that <b>doesn’t</b> have a <code>parent</code> class.</li>
+</ul>
 
 <p>
-The key is that when Java sees you define a <code>class</code> that <b>doesn’t</b> <code>extend</code> another <code>class</code>, the compiler <b>automatically</b> adds the syntax extends <code>java.lang.Object</code> to the class definition.
+The key is that when Java sees you define a <code>class</code> that <b>doesn’t</b> <code>extend</code> another <code>class</code>, the compiler <b>automatically</b> adds the syntax <code>extends java.lang.Object</code> to the <code>class</code> <b>definition</b>.
 </p>
 
+<ul class="org-ul">
+<li>The result is that <b>every</b> <code>class</code> gains access to any <b>accessible methods</b> in the <code>Object</code> class.</li>
+</ul>
+</div>
+
+<div id="outline-container-org770d773" class="outline-3">
+<h3 id="org770d773">Example</h3>
+<div class="outline-text-3" id="text-org770d773">
 <p>
-The result is that <b>every</b> <code>class</code> gains access to any <b>accessible methods</b> in the <code>Object</code> class.
+The <code>toString()</code> and <code>equals()</code> methods are available in <code>Object</code>.
 </p>
 </div>
 
-<div id="outline-container-org943e18a" class="outline-3">
-<h3 id="org943e18a">Example</h3>
-<div class="outline-text-3" id="text-org943e18a">
-<p>
-For example, the <code>toString()</code> and <code>equals()</code> methods are available in <code>Object</code>.
-</p>
-</div>
-
-<div id="outline-container-org8f0f09a" class="outline-4">
-<h4 id="org8f0f09a"><span class="underline">Exam Trick</span></h4>
-<div class="outline-text-4" id="text-org8f0f09a">
-<p>
-On the other hand, when you define a new <code>class</code> that <code>extends</code> an existing <code>class</code>, Java does <b>not</b> automatically extend the <code>Object class</code>.
-Since all <code>classes</code> inherit from <code>Object</code>, extending an existing <code>class</code> means the child <b>already inherits</b> from <code>Object</code> by definition.
-</p>
+<div id="outline-container-orgeb9c4f2" class="outline-4">
+<h4 id="orgeb9c4f2"><span class="underline">Exam Trick</span></h4>
+<div class="outline-text-4" id="text-orgeb9c4f2">
+<ul class="org-ul">
+<li>On the other hand, when you define a new <code>class</code> that <code>extends</code> an existing <code>class</code>, Java does <b>not</b> automatically extend the <code>Object class</code>.</li>
+<li>Since all <code>classes</code> inherit from <code>Object</code>, extending an existing <code>class</code> means the child <b>already inherits</b> from <code>Object</code> by definition.</li>
+</ul>
 </div>
 </div>
 </div>

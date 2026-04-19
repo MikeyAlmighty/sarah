@@ -7,36 +7,36 @@
 
 In Java terminology, a class =C1= *extended* from *another* class =C2= is called a *subclass*, and =C2= is called a *superclass*.
 
-- *superclass* also referred to as a *parent class* or a *base class*
-- *subclass* also referred to as a *child class*, an *extended class*, or a *derived class*.
+- *superclass* / *parent class / *base class*.
+- *subclass* / *child class* / *extended class* / *derived class*.
 
 A =class= defines a *type*.
 
 A *type* defined by a *subclass* is called a =subtype=, and a *type* defined by its *superclass* is called a =supertype=.
 
-Therefore, you can say that =Circle= is a ~subtype~ of =GeometricObject=, and =GeometricObject= is a ~supertype~ for =Circle=.
+- =GeometricObject= is a ~supertype~ for =Circle=.
+- =Circle= is a ~subtype~ of =GeometricObject=,
 
 The *subclass* and its *superclass* are said to form a ~is-a~ relationship.
 
+- A =Circle= *is a* =GeometricObject=.
+- A =Rectangle= *is a* =GeometricObject=.
+
 ** Circle
 
-A =Circle= object *is a* special type of general =GeometricObject=.
-
-The =Circle= class inherits all accessible data *fields* and *methods* from the =GeometricObject= class.
-
-In addition, it has a new data field, =radius=, and its associated *getter* and *setter* methods.
-
-The =Circle= class also contains the ~getArea()~, ~getPerimeter()~, and ~getDiameter()~ methods for returning the =area=, =perimeter=, and =diameter= of the =circle=.
+- Inherits all accessible data *fields* and *methods* from the =GeometricObject= class.
+- In addition, it has a new data field, =radius=, and its associated *getter* and *setter* methods.
+- Also contains the ~getArea()~, ~getPerimeter()~, and ~getDiameter()~ methods.
 
 ** Rectangle
 
-The =Rectangle= class inherits all accessible data *fields* and *methods* from the =GeometricObject= class.
-
-In addition, it has the data fields =width= and =height= and their associated *getter* and *setter* methods.
-
-It also contains the ~getArea()~ and ~getPerimeter()~ methods for returning the =area= and =perimeter= of the =rectangle=.
+- Inherits all accessible data *fields* and *methods* from the =GeometricObject= class.
+- In addition, it has the data fields =width= and =height= and their associated *getter* and *setter* methods.
+- Also contains the ~getArea()~ and ~getPerimeter()~ methods.
 
 ** Code
+
+*** Parent 
 
 #+BEGIN_SRC java
 public class GeometricObject {
@@ -94,6 +94,8 @@ public class GeometricObject {
 }
 #+END_SRC
 
+**** Child
+
 #+BEGIN_SRC java
 public class Circle extends GeometricObject {
     private double radius;
@@ -138,8 +140,12 @@ public class Circle extends GeometricObject {
 }
 #+END_SRC
 
-The keyword ~extends~ tells the compiler that the =Circle= class *extends* the =GeometricObject= class, thus inheriting the methods ~getColor~, ~setColor~, ~isFilled~, ~setFilled~ and ~toString~.
+- The ~extends~ *keyword* tells the compiler that =Circle= *extends* =GeometricObject=, thus *inheriting* the methods:
+  - ~getColor~
+  - ~setColor~
+  - ~isFilled~
+  - ~setFilled~
+  - ~toString~
 
-The overloaded constructor ~Circle(double radius, String color, boolean filled)~ is implemented by invoking the ~setColor~ and ~setFilled~ methods to set the ~color~ and ~filled~ properties.
-
-The *public methods* defined in the ~superclass~ =GeometricObject= are inherited in =Circle=, so they can be used in the =Circle= class.
+- The overloaded constructor ~Circle(double radius, String color, boolean filled)~ is *implemented* by invoking the ~setColor~ and ~setFilled~ methods (to set the ~color~ and ~filled~ properties).
+- The *public methods* defined in the ~superclass~ =GeometricObject= are *inherited* in =Circle=, so they /can/ be used in the =Circle= class.

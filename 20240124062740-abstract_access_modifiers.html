@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-19 Sun 10:06 -->
+<!-- 2026-04-19 Sun 11:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Abstract Access Modifiers</title>
@@ -225,11 +225,6 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-            body {
-                background-color: #262626;   /* lighter than #1e1e1e */
-                color: #e8e8e8;              /* slightly softer white */
-            }
-
             a {
                 color: #9ecbff;              /* less intense blue */
             }
@@ -255,13 +250,13 @@
 <div id="content" class="content">
 <h1 class="title">Abstract Access Modifiers</h1>
 
-<div id="outline-container-org74105dd" class="outline-2">
-<h2 id="org74105dd">Abstract Access Modifiers</h2>
-<div class="outline-text-2" id="text-org74105dd">
+<div id="outline-container-org260384b" class="outline-2">
+<h2 id="org260384b">Abstract Access Modifiers</h2>
+<div class="outline-text-2" id="text-org260384b">
 </div>
-<div id="outline-container-org6fd3a71" class="outline-3">
-<h3 id="org6fd3a71">Abstract and final</h3>
-<div class="outline-text-3" id="text-org6fd3a71">
+<div id="outline-container-org624ce76" class="outline-3">
+<h3 id="org624ce76">Abstract and final</h3>
+<div class="outline-text-3" id="text-org624ce76">
 <p>
 What would happen if you marked a class or method both <code>abstract</code> and <code>final</code>?
 If you mark something abstract, you intend for someone else to extend or implement it.
@@ -277,9 +272,9 @@ Due to this incompatibility, Java does not permit a class or method to be <b>mar
 </p>
 </div>
 
-<div id="outline-container-orgd4fab42" class="outline-4">
-<h4 id="orgd4fab42">Example</h4>
-<div class="outline-text-4" id="text-orgd4fab42">
+<div id="outline-container-org588a5ed" class="outline-4">
+<h4 id="org588a5ed">Example</h4>
+<div class="outline-text-4" id="text-org588a5ed">
 <p>
 For example, the following code snippet will not compile:
 </p>
@@ -293,8 +288,8 @@ For example, the following code snippet will not compile:
 </div>
 
 <ul class="org-ul">
-<li><a id="org14954da"></a><span class="underline">Exam Trick</span><br />
-<div class="outline-text-5" id="text-org14954da">
+<li><a id="org30f38d9"></a><span class="underline">Exam Trick</span><br />
+<div class="outline-text-5" id="text-org30f38d9">
 <p>
 In this example, <b>neither</b> the <code>class</code> nor the <code>method declarations</code> will compile because they are marked both <code>abstract</code> and <code>final</code>.
 </p>
@@ -308,9 +303,9 @@ The exam doesn’t tend to use <code>final</code> modifiers on <code>classes</co
 </div>
 </div>
 
-<div id="outline-container-orga6e38fc" class="outline-3">
-<h3 id="orga6e38fc">Abstract and private</h3>
-<div class="outline-text-3" id="text-orga6e38fc">
+<div id="outline-container-org51a4f8e" class="outline-3">
+<h3 id="org51a4f8e">Abstract and private</h3>
+<div class="outline-text-3" id="text-org51a4f8e">
 <p>
 A <code>method</code> <b>cannot</b> be marked as both <code>abstract</code> and <code>private</code>.
 </p>
@@ -325,9 +320,9 @@ How would you define a subclass that implements a required method if the method 
 </p>
 </div>
 
-<div id="outline-container-orgc3a154b" class="outline-4">
-<h4 id="orgc3a154b">Example</h4>
-<div class="outline-text-4" id="text-orgc3a154b">
+<div id="outline-container-org7999e14" class="outline-4">
+<h4 id="org7999e14">Example</h4>
+<div class="outline-text-4" id="text-org7999e14">
 <p>
 The answer is that you <b>can’t</b>, which is why the compiler will complain if you try to do the following:
 </p>
@@ -358,9 +353,9 @@ The compiler recognizes this in the <code>parent</code> class and reports an <b>
 </div>
 </div>
 
-<div id="outline-container-org5b3a308" class="outline-3">
-<h3 id="org5b3a308">Abstract and protected</h3>
-<div class="outline-text-3" id="text-org5b3a308">
+<div id="outline-container-orgf658830" class="outline-3">
+<h3 id="orgf658830">Abstract and protected</h3>
+<div class="outline-text-3" id="text-orgf658830">
 <p>
 In this modified example, the code will still <b>not</b> compile, but for a completely different reason.
 If you remember the rules for <a href="20240120133450-overriding_a_method.html#ID-c67b24a4-82f7-4423-83a9-75fc1c566166">Overriding a Method</a>, the <code>subclass</code> cannot reduce the visibility of the <code>parent</code> method, <code>sing()</code>.
@@ -386,9 +381,9 @@ Even with <code>abstract</code> methods, the rules for <b>overriding methods</b>
 </div>
 </div>
 
-<div id="outline-container-org1f6cfc5" class="outline-3">
-<h3 id="org1f6cfc5">Abstract and static</h3>
-<div class="outline-text-3" id="text-org1f6cfc5">
+<div id="outline-container-orga471b6e" class="outline-3">
+<h3 id="orga471b6e">Abstract and static</h3>
+<div class="outline-text-3" id="text-orga471b6e">
 <p>
 A <code>static</code> method can only be <b>hidden</b>, <b>not overridden</b>.
 </p>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-19 Sun 10:06 -->
+<!-- 2026-04-19 Sun 11:28 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Calling Superclass Methods</title>
@@ -225,11 +225,6 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-            body {
-                background-color: #262626;   /* lighter than #1e1e1e */
-                color: #e8e8e8;              /* slightly softer white */
-            }
-
             a {
                 color: #9ecbff;              /* less intense blue */
             }
@@ -255,25 +250,29 @@
 <div id="content" class="content">
 <h1 class="title">Calling Superclass Methods</h1>
 
-<div id="outline-container-org5205aea" class="outline-2">
-<h2 id="org5205aea">Calling Superclass Methods</h2>
-<div class="outline-text-2" id="text-org5205aea">
+<div id="outline-container-org8c2e445" class="outline-2">
+<h2 id="org8c2e445">Calling Superclass Methods</h2>
+<div class="outline-text-2" id="text-org8c2e445">
 <p>
-The keyword <code>super</code> can also be used to reference a <b>method</b> other than the <b>constructor</b> in the <code>superclass</code>.
+The keyword <code>super</code> can also be used to reference a <b>method</b> in the <code>superclass</code>.
 </p>
 </div>
 
-<div id="outline-container-orgcfeaaa7" class="outline-3">
-<h3 id="orgcfeaaa7">Syntax:</h3>
-<div class="outline-text-3" id="text-orgcfeaaa7">
+<div id="outline-container-org2d9eff3" class="outline-3">
+<h3 id="org2d9eff3">Syntax</h3>
+<div class="outline-text-3" id="text-org2d9eff3">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">super</span>.method(<span class="org-type">arguments</span>);
 </pre>
 </div>
+</div>
 
-<p>
-You could rewrite the <code>printCircle()</code> method in the <code>Circle</code> class as follows:
-</p>
+<div id="outline-container-org85c439a" class="outline-4">
+<h4 id="org85c439a">Example</h4>
+<div class="outline-text-4" id="text-org85c439a">
+<ul class="org-ul">
+<li>You could rewrite the <code>printCircle()</code> method in the <code>Circle</code> class as follows:</li>
+</ul>
 
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">GeometricObject</span> {
@@ -287,12 +286,12 @@ You could rewrite the <code>printCircle()</code> method in the <code>Circle</cod
 <span class="org-keyword">class</span> <span class="org-type">Circle</span> <span class="org-keyword">extends</span> <span class="org-type">GeometricObject</span> {
     <span class="org-comment-delimiter">// </span><span class="org-comment">...
 </span>    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">printCircle</span>() {
-        System.out.println(<span class="org-string">"The circle is created "</span> +
-        <span class="org-keyword">super</span>.getDateCreated() + <span class="org-string">" and the radius is "</span> + radius);
+        System.out.println(<span class="org-string">"The circle is created "</span> + <span class="org-keyword">super</span>.getDateCreated() + <span class="org-string">" and the radius is "</span> + radius);
     }
     <span class="org-comment-delimiter">// </span><span class="org-comment">...
 </span>}
 </pre>
+</div>
 </div>
 </div>
 </div>

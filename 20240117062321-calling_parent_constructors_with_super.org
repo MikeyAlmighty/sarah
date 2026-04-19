@@ -8,21 +8,25 @@
 
 The first statement of every constructor is a call to a *parent* constructor using ~super()~ or *another* constructor in the class using [[id:6d0ddb05-83c3-4a23-bf52-9fab2633bd99][this()]].
 
-~super()~ calls a *parent* constructor.
+- ~super()~ calls a *parent* constructor.
 
 Unlike *properties* and *methods*, the *constructors* of a =superclass= are *not* inherited by a =subclass=.
 
-They can only be invoked from the *constructors* of the =subclasses= using the keyword ~super~.
-The syntax to call a =superclass’s= *constructor* is:
+They can only be *invoked* from the *constructors* of the =subclasses= using the keyword ~super~.
+
+** Syntax
 
 #+BEGIN_SRC java
 super();
 super(arguments);
 #+END_SRC
 
-The statement ~super()~ invokes the *no-arg constructor* of its =superclass=, and the statement ~super(arguments)~ invokes the =superclass= *constructor* that matches the arguments.
+- ~super()~ invokes the *no-arg constructor* of its =superclass=
+- ~super(arguments)~ invokes the =superclass= *constructor* that matches the arguments.
 
-The statement ~super()~ or ~super(arguments)~ must be the *first* statement of the =subclass’s= *constructor*; this is the only way to explicitly invoke a =superclass= *constructor*.
+*** Note
+
+~super()~ or ~super(arguments)~ *must* be the *first* statement of the =subclass’s= *constructor*; this is the /only way/ to explicitly invoke a =superclass= *constructor*.
 
 ** Example
 
@@ -72,9 +76,9 @@ public class Zoo {
 
 ** Overloaded Parent Constructors
 
+- If the ~parent class~ has more than one =constructor=, the ~child class~ may use any valid ~parent~ =constructor= in its definition.
+  
 *** Example
-
-If the ~parent class~ has more than one =constructor=, the ~child class~ may use any valid ~parent~ =constructor= in its definition:
 
 #+BEGIN_SRC java
 public class Animal {
@@ -109,7 +113,7 @@ public class Gorilla extends Animal {
 
 The [[id:d5b4004d-b5db-48a2-8e85-09359ca61a42][javac]] automatically inserts a call to the *no­argument* =constructor= ~super()~ if you do *not* explicitly call ~this()~ or ~super()~ as the first line of a constructor.
 
-For example, the following three ~class~ and =constructor= definitions are equivalent, because the *compiler* will automatically convert them all to the last example.
+- The following three ~class~ and =constructor= definitions are equivalent, because the *compiler* will automatically convert them all to the last example.
 
 **** Example
 
@@ -129,11 +133,10 @@ public class Donkey {
 
 *** Syntax Error When Calling a Superclass Constructor by Name
 
-Invoking a =superclass= *constructor's* name directly inside a =subclass= causes a *syntax error*.
+- Invoking a =superclass= *constructor's* name directly inside a =subclass= causes a *syntax error*.
+- In =Java=, *constructors* are *not inherited* and *cannot* be called like /normal methods/. (The keyword ~super~ *must* be used!)
 
-In Java, *constructors* are not inherited and cannot be called like normal methods.
-
-Instead, the keyword ~super~ must be used.
+**** Invalid Call
 
 #+BEGIN_SRC java
 class GeometricObject {
@@ -152,6 +155,8 @@ class Circle extends GeometricObject {
     }
 }
 #+END_SRC
+
+**** Valid Call
 
 The correct way to invoke the =superclass= constructor is with ~super(...)~:
 

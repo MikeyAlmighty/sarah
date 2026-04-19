@@ -5,23 +5,19 @@
 
 * Preventing Extending and Overriding
 
-Neither a =final class= nor a =final method= can be *extended*.
-
-A =final data field= is a *constant*.
+- Neither a =final class= nor a =final method= can be *extended*.
+- A =final data field= is a *constant*.
 
 ** Description
 
-You may occasionally want to prevent =classes= from being *extended*.
+- You may occasionally want to prevent =classes= from being *extended*.
+  - Use the ~final~ *access modifier* to indicate a =class= is ~final~ and *cannot* be a =parent class=.
 
-In such cases, use the ~final~ *access modifier* to indicate a =class= is ~final~ and *cannot* be a =parent class=.
-
-The =Math= class is a ~final~ class.
-
-The =String=, =StringBuilder=, and =StringBuffer= classes, and all *wrapper* *classes* for  [[id:b8a89d64-e78d-4b77-9bbd-bdb837a751c0][Primitive Data types]] are also ~final~ =classes=.
+- The =Math=, =String=, =StringBuilder=, and =StringBuffer= classes, and all *wrapper* *classes* for [[id:b8a89d64-e78d-4b77-9bbd-bdb837a751c0][Primitive Data types]] are also ~final~ =classes=.
 
 *** Example
 
-The following class =A= is ~final~ and *cannot* be *extended*:
+- The following =class= ~A~ is *final* and *cannot* be *extended*.
 
 #+BEGIN_SRC java
 public final class A {
@@ -29,11 +25,12 @@ public final class A {
 }
 #+END_SRC
 
-You also can define a method to be ~final~.
-A ~final~ method cannot be *overridden* by its =subclasses=.
+- You also can define a *method* to be ~final~.
+  - A ~final~ *method* cannot be *overridden* by its =subclasses=.
 
 *** Example
-The following method =m= is ~final~ and *cannot* be *overridden*:
+
+- The following =method= ~m~ is *final* and *cannot* be *overridden*:
 
 #+BEGIN_SRC java
 public class Test {
@@ -48,12 +45,16 @@ public class Test {
 
 The [[id:78bf41e5-259a-4c97-8df7-1685989e3d8c][optional Specifiers]] ~public~, ~protected~, ~private~, ~static~, ~abstract~, and ~final~ are used on =classes= and =class members= (*data* and *methods*), except that the ~final~ modifier can also be used on *local* *variables* in a =method=.
 
-A ~final~ *local variable* is a *constant* inside a =method=.
+- A ~final~ *local variable* is a *constant* inside a =method=.
 
 *** We can use final to:
-- Prevent *inheritance*: Use ~final~ for a =class= when you want to prevent it from being subclassed.
-- Prevent [[id:c67b24a4-82f7-4423-83a9-75fc1c566166][method overriding]]: Use ~final~ for a =method= when you want to *prevent* =subclasses= from *changing* its *behaviour*.
-- For *immutable objects*: Use ~final~ to make fields *immutable*.
+
+- Prevent *inheritance*:
+  - Use ~final~ for a =class= when you want to prevent it from being subclassed.
+- Prevent [[id:c67b24a4-82f7-4423-83a9-75fc1c566166][method overriding]]:
+  - Use ~final~ for a =method= when you want to *prevent* =subclasses= from *changing* its *behaviour*.
+- For *immutable objects*:
+  - Use ~final~ to make fields *immutable*.
 
 ** Error
 

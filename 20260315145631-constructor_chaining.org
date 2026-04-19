@@ -7,15 +7,15 @@
 
 A *constructor* may invoke an *overloaded constructor* or its =superclass= *constructor*.
 
-- If *neither* is invoked *explicitly*, the compiler automatically puts ~super()~ as the first statement in the *constructor*.
+- If *neither* is invoked *explicitly*, the compiler automatically puts ~super()~ as the *first statement* in the *constructor*.
 
-In any case, constructing an ~instance~ of a =class= invokes the *constructors* of all the *superclasses* along the =inheritance chain=.
+Constructing an ~instance~ of a =class= invokes the *constructors* of /all/ the *superclasses* along the =inheritance chain=.
 
-When *constructing* an ~object~ of a =subclass=, the =subclass= *constructor* first invokes its =superclass= *constructor* before performing its own tasks.
+- When *constructing* an ~object~ of a =subclass=, the =subclass= *constructor* first invokes its =superclass= *constructor* before performing its own tasks.
+- If the =superclass= is /derived/ from another =class=, the =superclass= *constructor* invokes its =parentclass= *constructor* before performing its own tasks.
 
-If the =superclass= is derived from another =class=, the =superclass= *constructor* invokes its =parentclass= *constructor* before performing its own tasks.
-This process continues until the last *constructor* along the inheritance hierarchy is called.
-This is called *constructor chaining.*
+This process continues until the /last/ *constructor* along the [[id:ef9940e7-a139-4cd1-91eb-263c38bec1ad][inheritance hierarcy]] is called.
+- This is called *constructor chaining.*
 
 ** Example
 

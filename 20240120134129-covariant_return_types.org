@@ -5,13 +5,47 @@
 
 * Covariant Return Types
 
-The ability of a ~subclass~ method to *override* a ~superclass~ method and return a *more specific* ~type~ than the return ~type~ of the *overridden* method.
+- The ability of a ~subclass~ method to *override* a ~superclass~ method and return a *more specific* ~type~ than the return ~type~ of the *overridden* method.
 
 A simple test for *covariance* is the following:
-Given an inherited return ~type A~ and an *overriding* return ~type B~, can you assign an instance of ~B~ to a reference variable for ~A~ without a cast?
+- Given an inherited return ~type A~ and an *overriding* return ~type B~, can you assign an instance of ~B~ to a reference variable for ~A~ /without/ a *cast*?
+  - If so, then they are *covariant*.
 
-If so, then they are *covariant*.
+This rule applies to both [[id:46582863-7f97-448d-bbc7-f7da4c1e7574][primitive types]] and [[id:ef3f4798-9f1d-462f-8eea-df2b75e512f6][reference types]].
 
-This rule applies to [[id:46582863-7f97-448d-bbc7-f7da4c1e7574][primitive types]] and [[id:ef3f4798-9f1d-462f-8eea-df2b75e512f6][reference types]] alike.
+If one of the return types is ~void~, then they *both* must be ~void~, as nothing is *covariant* with ~void~ except itself.
 
-If one of the return types is ~void~, then they both must be ~void~, as nothing is *covariant* with ~void~ except itself.
+** Example
+
+#+BEGIN_SRC java
+class Shape {
+    public Shape draw() {
+        System.out.println("Drawing a shape");
+        return this;
+    }
+}
+
+class Circle extends Shape {
+
+    // Covariant return type: returns Circle (instead of Shape)
+    @Override
+    public Circle draw() {
+        System.out.println("Drawing a circle");
+        return this;
+    }
+
+    public void radiusInfo() {
+        System.out.println("Circle has a radius");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Circle c = new Circle();
+
+        // No casting needed
+        Circle result = c.draw();
+        result.radiusInfo();
+    }
+}
+#+END_SRC
