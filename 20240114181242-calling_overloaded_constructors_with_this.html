@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-19 Sun 16:10 -->
+<!-- 2026-04-19 Sun 16:20 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Calling overloaded Constructors with this()</title>
@@ -222,12 +222,8 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-            a {
-                color: #9ecbff;              /* less intense blue */
-            }
-
             pre.src {
-                background-color: #303030;   /* lifted from body */
+                background-color: #000000;
                 color: #f5f5f5;
                 border: 1px solid #555;
             }
@@ -247,17 +243,17 @@
 <div id="content" class="content">
 <h1 class="title">Calling overloaded Constructors with this()</h1>
 
-<div id="outline-container-org28dbd52" class="outline-2">
-<h2 id="org28dbd52">Calling overloaded Constructors with this()</h2>
-<div class="outline-text-2" id="text-org28dbd52">
+<div id="outline-container-org7b83b20" class="outline-2">
+<h2 id="org7b83b20">Calling overloaded Constructors with this()</h2>
+<div class="outline-text-2" id="text-org7b83b20">
 <p>
 Since a <code>class</code> can contain <b>multiple overloaded</b> <code>constructors</code>, these <code>constructors</code> can actually call one another!
 </p>
 </div>
 
-<div id="outline-container-org00621ef" class="outline-3">
-<h3 id="org00621ef">Example</h3>
-<div class="outline-text-3" id="text-org00621ef">
+<div id="outline-container-org4189236" class="outline-3">
+<h3 id="org4189236">Example</h3>
+<div class="outline-text-3" id="text-org4189236">
 <ul class="org-ul">
 <li>One of the constructors takes a single <code>int</code> parameter.</li>
 <li>The other takes an <code>int</code> and a <code>String</code>.
@@ -297,9 +293,9 @@ For example, imagine that we have five variables being set like <code>this.weigh
 </div>
 </div>
 
-<div id="outline-container-orga4a9251" class="outline-4">
-<h4 id="orga4a9251">Solution</h4>
-<div class="outline-text-4" id="text-orga4a9251">
+<div id="outline-container-org53404a0" class="outline-4">
+<h4 id="org53404a0">Solution</h4>
+<div class="outline-text-4" id="text-org53404a0">
 <p>
 What we really want is for the <b>first</b> <code>constructor</code> to <b>call</b> the <b>second</b> <code>constructor</code> with two parameters.
 </p>
@@ -327,9 +323,9 @@ When <code>this()</code> is used <b>with parentheses</b>, Java calls <b>another 
 </div>
 </div>
 
-<div id="outline-container-orgb9ac2c7" class="outline-4">
-<h4 id="orgb9ac2c7"><span class="underline">Exam Trick</span></h4>
-<div class="outline-text-4" id="text-orgb9ac2c7">
+<div id="outline-container-org92b4bb3" class="outline-4">
+<h4 id="org92b4bb3"><span class="underline">Exam Trick</span></h4>
+<div class="outline-text-4" id="text-org92b4bb3">
 <ul class="org-ul">
 <li>Calling <code>this()</code> has one special rule you need to know.
 <ul class="org-ul">
@@ -341,8 +337,8 @@ When <code>this()</code> is used <b>with parentheses</b>, Java calls <b>another 
 </div>
 
 <ul class="org-ul">
-<li><a id="orgfeb4c2c"></a>Example<br />
-<div class="outline-text-5" id="text-orgfeb4c2c">
+<li><a id="org8710001"></a>Example<br />
+<div class="outline-text-5" id="text-org8710001">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> Hamster(<span class="org-type">int</span> <span class="org-variable-name">weight</span>) {
     System.out.println(<span class="org-string">"chew"</span>);
@@ -356,9 +352,9 @@ When <code>this()</code> is used <b>with parentheses</b>, Java calls <b>another 
 </ul>
 </div>
 
-<div id="outline-container-orgf7dbef2" class="outline-4">
-<h4 id="orgf7dbef2">Infinite Cycle (Cyclic)</h4>
-<div class="outline-text-4" id="text-orgf7dbef2">
+<div id="outline-container-org443fcc5" class="outline-4">
+<h4 id="org443fcc5">Infinite Cycle (Cyclic)</h4>
+<div class="outline-text-4" id="text-org443fcc5">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Gopher</span> {
     <span class="org-keyword">public</span> Gopher(<span class="org-type">int</span> <span class="org-variable-name">dugHoles</span>) {
@@ -370,9 +366,9 @@ When <code>this()</code> is used <b>with parentheses</b>, Java calls <b>another 
 </div>
 </div>
 
-<div id="outline-container-orgb7fe3ae" class="outline-4">
-<h4 id="orgb7fe3ae">Rules</h4>
-<div class="outline-text-4" id="text-orgb7fe3ae">
+<div id="outline-container-org544edc5" class="outline-4">
+<h4 id="org544edc5">Rules</h4>
+<div class="outline-text-4" id="text-org544edc5">
 <ul class="org-ul">
 <li>A <code>class</code> can contain <b>many</b> overloaded constructors, provided the signature for each is <b>distinct</b>.</li>
 <li>The compiler inserts a <b>default</b> no­argument <code>constructor</code> if no <code>constructors</code> are declared.</li>

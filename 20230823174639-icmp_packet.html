@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-19 Sun 16:10 -->
+<!-- 2026-04-19 Sun 16:20 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ICMP Packet</title>
@@ -222,12 +222,8 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-            a {
-                color: #9ecbff;              /* less intense blue */
-            }
-
             pre.src {
-                background-color: #303030;   /* lifted from body */
+                background-color: #000000;
                 color: #f5f5f5;
                 border: 1px solid #555;
             }
@@ -249,13 +245,13 @@
 <p>
 It has a header with a few fields
 </p>
-<div id="outline-container-org146d13e" class="outline-2">
-<h2 id="org146d13e">Header</h2>
-<div class="outline-text-2" id="text-org146d13e">
+<div id="outline-container-orgc0accea" class="outline-2">
+<h2 id="orgc0accea">Header</h2>
+<div class="outline-text-2" id="text-orgc0accea">
 </div>
-<div id="outline-container-org65c3741" class="outline-3">
-<h3 id="org65c3741">Type Field</h3>
-<div class="outline-text-3" id="text-org65c3741">
+<div id="outline-container-orgd724bae" class="outline-3">
+<h3 id="orgd724bae">Type Field</h3>
+<div class="outline-text-3" id="text-orgd724bae">
 <p>
 <b>8 bits</b>
 Specifies what type of message is being delivered (Destination not reachable)
@@ -263,9 +259,9 @@ Specifies what type of message is being delivered (Destination not reachable)
 </div>
 </div>
 
-<div id="outline-container-org0eff321" class="outline-3">
-<h3 id="org0eff321">Code Field</h3>
-<div class="outline-text-3" id="text-org0eff321">
+<div id="outline-container-orgb851a1c" class="outline-3">
+<h3 id="orgb851a1c">Code Field</h3>
+<div class="outline-text-3" id="text-orgb851a1c">
 <p>
 <b>8 bits</b>
 Indicates specific code for error reason (Port unreachable, Destination unreachable etc.)
@@ -273,18 +269,18 @@ Indicates specific code for error reason (Port unreachable, Destination unreacha
 </div>
 </div>
 
-<div id="outline-container-org845ffdb" class="outline-3">
-<h3 id="org845ffdb">Checksum Field</h3>
-<div class="outline-text-3" id="text-org845ffdb">
+<div id="outline-container-orgd78e64d" class="outline-3">
+<h3 id="orgd78e64d">Checksum Field</h3>
+<div class="outline-text-3" id="text-orgd78e64d">
 <p>
 <b>16 bits</b>
 </p>
 </div>
 </div>
 
-<div id="outline-container-org4ae3b5b" class="outline-3">
-<h3 id="org4ae3b5b">Rest of Header</h3>
-<div class="outline-text-3" id="text-org4ae3b5b">
+<div id="outline-container-orgfbc52f2" class="outline-3">
+<h3 id="orgfbc52f2">Rest of Header</h3>
+<div class="outline-text-3" id="text-orgfbc52f2">
 <p>
 <b>32 bits</b>
 Optionally used by specific types/codes to send more data.
@@ -293,9 +289,9 @@ Optionally used by specific types/codes to send more data.
 </div>
 </div>
 
-<div id="outline-container-org11997dc" class="outline-2">
-<h2 id="org11997dc">Payload</h2>
-<div class="outline-text-2" id="text-org11997dc">
+<div id="outline-container-orgb2de600" class="outline-2">
+<h2 id="orgb2de600">Payload</h2>
+<div class="outline-text-2" id="text-orgb2de600">
 <p>
 Exists entirely so that the recipient of the message knows which of their transmissions caused the error being reported
 It contains the entire <code>IP header</code> and the first <b>8 bytes</b> of the <code>data payload section</code> of the offending packet.

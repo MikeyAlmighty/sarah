@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-19 Sun 16:10 -->
+<!-- 2026-04-19 Sun 16:20 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Switch Expressions</title>
@@ -222,12 +222,8 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-            a {
-                color: #9ecbff;              /* less intense blue */
-            }
-
             pre.src {
-                background-color: #303030;   /* lifted from body */
+                background-color: #000000;
                 color: #f5f5f5;
                 border: 1px solid #555;
             }
@@ -247,9 +243,9 @@
 <div id="content" class="content">
 <h1 class="title">Switch Expressions</h1>
 
-<div id="outline-container-org6c94972" class="outline-2">
-<h2 id="org6c94972">Switch Expressions</h2>
-<div class="outline-text-2" id="text-org6c94972">
+<div id="outline-container-org98fb98c" class="outline-2">
+<h2 id="org98fb98c">Switch Expressions</h2>
+<div class="outline-text-2" id="text-org98fb98c">
 <ul class="org-ul">
 <li>Introduced in <b>Java 14</b></li>
 </ul>
@@ -279,13 +275,13 @@ Each <code>case</code> or <code>default</code> expression requires a <b>semicolo
 </p>
 </div>
 
-<div id="outline-container-org30a3b60" class="outline-3">
-<h3 id="org30a3b60">Rules</h3>
-<div class="outline-text-3" id="text-org30a3b60">
+<div id="outline-container-org7dfd1e2" class="outline-3">
+<h3 id="org7dfd1e2">Rules</h3>
+<div class="outline-text-3" id="text-org7dfd1e2">
 </div>
-<div id="outline-container-org52621ca" class="outline-4">
-<h4 id="org52621ca">1. Return consistent Data Type</h4>
-<div class="outline-text-4" id="text-org52621ca">
+<div id="outline-container-orgd07e088" class="outline-4">
+<h4 id="orgd07e088">1. Return consistent Data Type</h4>
+<div class="outline-text-4" id="text-orgd07e088">
 <p>
 <b>All of the branches</b> of a <code>switch</code> expression that <b>do not</b> throw an exception must return a <code>consistent data type</code> (if the <code>switch</code> expression returns a value).
 </p>
@@ -305,9 +301,9 @@ Each <code>case</code> or <code>default</code> expression requires a <b>semicolo
 </div>
 </div>
 
-<div id="outline-container-org5b9aa91" class="outline-4">
-<h4 id="org5b9aa91">2. Yielding Values</h4>
-<div class="outline-text-4" id="text-org5b9aa91">
+<div id="outline-container-org00e4ad7" class="outline-4">
+<h4 id="org00e4ad7">2. Yielding Values</h4>
+<div class="outline-text-4" id="text-org00e4ad7">
 <p>
 If the switch expression returns a value, then every branch that <b>isn’t</b> an expression must <code>yield a value</code>.
 </p>
@@ -339,9 +335,9 @@ The <code>yield</code> keyword is equivalent to a <code>return statement</code> 
 </div>
 </div>
 
-<div id="outline-container-org9cba3ef" class="outline-4">
-<h4 id="org9cba3ef">3. Default Branch</h4>
-<div class="outline-text-4" id="text-org9cba3ef">
+<div id="outline-container-orgf3150eb" class="outline-4">
+<h4 id="orgf3150eb">3. Default Branch</h4>
+<div class="outline-text-4" id="text-orgf3150eb">
 <p>
 A <code>default</code> branch is required unless <b>all</b> cases are covered or no <b>value</b> is returned.
 </p>
@@ -349,9 +345,9 @@ A <code>default</code> branch is required unless <b>all</b> cases are covered or
 </div>
 </div>
 
-<div id="outline-container-org8bfa7d2" class="outline-3">
-<h3 id="org8bfa7d2">Multiple value Case Statements</h3>
-<div class="outline-text-3" id="text-org8bfa7d2">
+<div id="outline-container-orga655acc" class="outline-3">
+<h3 id="orga655acc">Multiple value Case Statements</h3>
+<div class="outline-text-3" id="text-orga655acc">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">String</span> <span class="org-function-name">printSeason</span>(<span class="org-type">int</span> <span class="org-variable-name">month</span>) <span class="org-keyword">throws</span> <span class="org-type">IllegalStateException</span> {
     <span class="org-keyword">return</span> <span class="org-keyword">switch</span>(month) {
@@ -367,9 +363,9 @@ A <code>default</code> branch is required unless <b>all</b> cases are covered or
 </div>
 </div>
 
-<div id="outline-container-orgb335fa3" class="outline-3">
-<h3 id="orgb335fa3"><span class="underline">Exam trick</span></h3>
-<div class="outline-text-3" id="text-orgb335fa3">
+<div id="outline-container-org706e87f" class="outline-3">
+<h3 id="org706e87f"><span class="underline">Exam trick</span></h3>
+<div class="outline-text-3" id="text-org706e87f">
 <p>
 Unlike a regular <a href="20240102090649-switch_statements.html#ID-0526ffdf-bdb1-4f35-a65f-ef29391f84a3">switch statement</a>, a <b>switch expression</b> can be used with the <a href="20231231131429-assignment_operators.html#ID-32c06110-1f45-4d85-9583-74d13aaa083f">assignment Operator</a> and <b>requires a semicolon</b> when doing so.
 </p>
@@ -388,22 +384,22 @@ Furthermore, <code>semicolons</code> are <b>required</b> for <code>case expressi
 </div>
 </div>
 
-<div id="outline-container-orgb34107a" class="outline-3">
-<h3 id="orgb34107a"><span class="underline">Exam trick</span></h3>
-<div class="outline-text-3" id="text-orgb34107a">
+<div id="outline-container-org325b2c1" class="outline-3">
+<h3 id="org325b2c1"><span class="underline">Exam trick</span></h3>
+<div class="outline-text-3" id="text-org325b2c1">
 </div>
-<div id="outline-container-orgcb953c6" class="outline-4">
-<h4 id="orgcb953c6">Does return value</h4>
-<div class="outline-text-4" id="text-orgcb953c6">
+<div id="outline-container-org608d826" class="outline-4">
+<h4 id="org608d826">Does return value</h4>
+<div class="outline-text-4" id="text-org608d826">
 <p>
 A <code>switch expression</code> that <code>returns a value</code> <b>must</b> handle <b>all possible</b> input values.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org14e2f8e" class="outline-4">
-<h4 id="org14e2f8e">Does NOT return value</h4>
-<div class="outline-text-4" id="text-org14e2f8e">
+<div id="outline-container-orga792e69" class="outline-4">
+<h4 id="orga792e69">Does NOT return value</h4>
+<div class="outline-text-4" id="text-orga792e69">
 <p>
 When it does <b>not</b> return a value, it is <code>optional</code>.
 </p>

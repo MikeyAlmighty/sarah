@@ -78,12 +78,8 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-            a {
-                color: #9ecbff;              /* less intense blue */
-            }
-
             pre.src {
-                background-color: #303030;   /* lifted from body */
+                background-color: #000000;
                 color: #f5f5f5;
                 border: 1px solid #555;
             }

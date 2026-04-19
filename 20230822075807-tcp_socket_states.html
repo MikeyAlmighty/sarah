@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-19 Sun 16:10 -->
+<!-- 2026-04-19 Sun 16:20 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>TCP Socket States</title>
@@ -222,12 +222,8 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-            a {
-                color: #9ecbff;              /* less intense blue */
-            }
-
             pre.src {
-                background-color: #303030;   /* lifted from body */
+                background-color: #000000;
                 color: #f5f5f5;
                 border: 1px solid #555;
             }
@@ -247,9 +243,9 @@
 <div id="content" class="content">
 <h1 class="title">TCP Socket States</h1>
 
-<div id="outline-container-org86632f8" class="outline-2">
-<h2 id="org86632f8">LISTEN</h2>
-<div class="outline-text-2" id="text-org86632f8">
+<div id="outline-container-orgecea8e9" class="outline-2">
+<h2 id="orgecea8e9">LISTEN</h2>
+<div class="outline-text-2" id="text-orgecea8e9">
 <p>
 TCP socket is ready and listening for incoming connections.
 (Server-side only)
@@ -257,9 +253,9 @@ TCP socket is ready and listening for incoming connections.
 </div>
 </div>
 
-<div id="outline-container-org3a6c8d6" class="outline-2">
-<h2 id="org3a6c8d6">SYN<sub>SENT</sub></h2>
-<div class="outline-text-2" id="text-org3a6c8d6">
+<div id="outline-container-org7ea0dbb" class="outline-2">
+<h2 id="org7ea0dbb">SYN<sub>SENT</sub></h2>
+<div class="outline-text-2" id="text-org7ea0dbb">
 <p>
 A synchronization request has been sent, but the connection hasn't been established yet.
 (Client-side only)
@@ -267,9 +263,9 @@ A synchronization request has been sent, but the connection hasn't been establis
 </div>
 </div>
 
-<div id="outline-container-org6c20f4a" class="outline-2">
-<h2 id="org6c20f4a">SYN<sub>RECEIVED</sub></h2>
-<div class="outline-text-2" id="text-org6c20f4a">
+<div id="outline-container-org9660d94" class="outline-2">
+<h2 id="org9660d94">SYN<sub>RECEIVED</sub></h2>
+<div class="outline-text-2" id="text-org9660d94">
 <p>
 This means that a socket previously in a <code>LISTEN</code> state has received a <code>synchronization</code> request and sent a <code>SYN/ACK</code> back, but it hasn't received the final <code>ACK</code> from the client yet.
 (Server-side only)
@@ -277,36 +273,36 @@ This means that a socket previously in a <code>LISTEN</code> state has received 
 </div>
 </div>
 
-<div id="outline-container-org0e492e1" class="outline-2">
-<h2 id="org0e492e1">ESTABLISHED</h2>
-<div class="outline-text-2" id="text-org0e492e1">
+<div id="outline-container-org17c658b" class="outline-2">
+<h2 id="org17c658b">ESTABLISHED</h2>
+<div class="outline-text-2" id="text-org17c658b">
 <p>
 TCP connection is in working order and both sides are <b>free to send each</b> other data.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org3a5459c" class="outline-2">
-<h2 id="org3a5459c">FIN<sub>WAIT</sub></h2>
-<div class="outline-text-2" id="text-org3a5459c">
+<div id="outline-container-orgffd25c7" class="outline-2">
+<h2 id="orgffd25c7">FIN<sub>WAIT</sub></h2>
+<div class="outline-text-2" id="text-orgffd25c7">
 <p>
 This means that a <code>FIN</code> has been sent but the corresponding <code>ACK</code> from the other end hasn't been received yet.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgf8972bf" class="outline-2">
-<h2 id="orgf8972bf">CLOSE<sub>WAIT</sub></h2>
-<div class="outline-text-2" id="text-orgf8972bf">
+<div id="outline-container-orgf6fb6f5" class="outline-2">
+<h2 id="orgf6fb6f5">CLOSE<sub>WAIT</sub></h2>
+<div class="outline-text-2" id="text-orgf6fb6f5">
 <p>
 This means that the connection has been closed at the TCP layer, but that the application that opened the socket hasn't released its hold on the socket yet.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org33cab9e" class="outline-2">
-<h2 id="org33cab9e">CLOSED</h2>
-<div class="outline-text-2" id="text-org33cab9e">
+<div id="outline-container-org66fc68c" class="outline-2">
+<h2 id="org66fc68c">CLOSED</h2>
+<div class="outline-text-2" id="text-org66fc68c">
 <p>
 This means that the connection has been fully terminated and that no further communication is possible.
 </p>
