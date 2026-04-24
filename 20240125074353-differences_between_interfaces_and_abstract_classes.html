@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-19 Sun 16:20 -->
+<!-- 2026-04-24 Fri 04:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Differences between Interfaces and Abstract Classes</title>
@@ -243,9 +243,9 @@
 <div id="content" class="content">
 <h1 class="title">Differences between Interfaces and Abstract Classes</h1>
 
-<div id="outline-container-org27259ef" class="outline-2">
-<h2 id="org27259ef">Differences between Interfaces and Abstract Classes</h2>
-<div class="outline-text-2" id="text-org27259ef">
+<div id="outline-container-orge0ba8e1" class="outline-2">
+<h2 id="orge0ba8e1">Differences between Interfaces and Abstract Classes</h2>
+<div class="outline-text-2" id="text-orge0ba8e1">
 <p>
 Even though <a href="20240114162721-abstract_classes.html#ID-3893ce2e-cd85-4914-ba26-d7c7c732eb02">abstract classes</a> and <a href="20240124071359-implementing_interfaces.html#ID-e1fb40df-c0b5-4c10-9704-39bac087c227">interfaces</a> are both considered <code>abstract types</code>, only <code>interfaces</code> make use of <a href="20240125070115-inserting_implicit_modifiers.html#ID-11cb5831-7123-44df-a020-cfd8f6646645">implicit modifiers</a>.
 </p>
@@ -253,16 +253,15 @@ Even though <a href="20240114162721-abstract_classes.html#ID-3893ce2e-cd85-4914-
 <p>
 Java allows only <b>single inheritance</b> for class <code>extension</code>, but allows <b>multiple extensions</b> for <code>interfaces</code>.
 </p>
+</div>
 
-<p>
-For example:
-</p>
-
+<div id="outline-container-org163de32" class="outline-3">
+<h3 id="org163de32">Example</h3>
+<div class="outline-text-3" id="text-org163de32">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">NewClass</span> <span class="org-keyword">extends</span> <span class="org-type">BaseClass</span> <span class="org-keyword">implements</span> <span class="org-type">Interface1</span>, ... , InterfaceN {...}
 </pre>
 </div>
-
 
 <p>
 An <b>interface</b> can <code>inherit</code> <b>other</b> <b>interfaces</b> using the <code>extends</code> keyword.
@@ -287,13 +286,11 @@ For example, <code>NewInterface</code> in the following code is a <b>subinterfac
 A <code>class</code> implementing <code>NewInterface</code> <b>must</b> <b>implement</b> the <b>abstract</b> <b>methods</b> defined in <code>NewInterface, Interface1, . . . , and InterfaceN</code>.
 </p>
 
-<p>
-An <b>interface</b> can extend other <b>interfaces</b>, but <b>not</b> <code>classes</code>.
-</p>
+<ul class="org-ul">
+<li>An <b>interface</b> can extend other <b>interfaces</b>, but <b>not</b> <code>classes</code>.</li>
 
-<p>
-A <code>class</code> can <b>extend</b> its <code>superclass</code> and <b>implement</b> multiple <b>interfaces</b>.
-</p>
+<li>A <code>class</code> can <b>extend</b> its <code>superclass</code> and <b>implement</b> multiple <b>interfaces</b>.</li>
+</ul>
 
 <p>
 All <code>classes</code> share a single <b>root</b>, the <code>Object</code> class, but there is <b>no</b> <b>single</b> <b>root</b> for <code>interfaces</code>.
@@ -389,10 +386,11 @@ You can use an <code>interface</code> as a <b>data type</b> and cast a variable 
 </tbody>
 </table>
 </div>
+</div>
 
-<div id="outline-container-org940d626" class="outline-3">
-<h3 id="org940d626">Summary</h3>
-<div class="outline-text-3" id="text-org940d626">
+<div id="outline-container-orgbd322f5" class="outline-3">
+<h3 id="orgbd322f5">Summary</h3>
+<div class="outline-text-3" id="text-orgbd322f5">
 <p>
 <code>Abstract classes</code> are best when you need shared <b>state</b> and <b>implementation</b>.
 <code>Interfaces</code> are best for <b>defining</b> <b>capabilities</b> across <b>unrelated</b> <code>classes</code>.
@@ -400,9 +398,9 @@ You can use an <code>interface</code> as a <b>data type</b> and cast a variable 
 </div>
 </div>
 
-<div id="outline-container-org7f3303c" class="outline-3">
-<h3 id="org7f3303c">Which to use</h3>
-<div class="outline-text-3" id="text-org7f3303c">
+<div id="outline-container-org8c09122" class="outline-3">
+<h3 id="org8c09122">Which to use</h3>
+<div class="outline-text-3" id="text-org8c09122">
 <p>
 In general, a strong <b>"is-a"</b> relationship that clearly describes a <i>parent-child</i> relationship should be <b>modelled</b> using <code>classes</code>.
 </p>
@@ -413,8 +411,10 @@ For example, since an <code>orange</code> <b>is a</b> <code>fruit</code>, the re
 
 <p>
 A weak <b>"is-a"</b> relationship indicates that an object possesses a certain property.
-A weak <b>"is-a"</b> relationship can be modelled using <code>interfaces</code>.
 </p>
+<ul class="org-ul">
+<li>A weak <b>"is-a"</b> relationship can be modelled using <code>interfaces</code>.</li>
+</ul>
 
 <p>
 For example, all <code>strings</code> are <b>comparable</b>, so the <code>String</code> class <i>implements</i> the <code>Comparable</code> <b>interface</b>.
@@ -424,9 +424,9 @@ For example, all <code>strings</code> are <b>comparable</b>, so the <code>String
 A <code>circle</code> or a <code>rectangle</code> is a <code>geometric object</code>, so <code>Circle</code> can be defined as a <i>subclass</i> of <code>GeometricObject</code>.
 </p>
 
-<p>
-<code>Circles</code> are different and <b>comparable</b> based on their <code>radius</code>, so <code>Circle</code> can implement the <code>Comparable</code> <b>interface</b>.
-</p>
+<ul class="org-ul">
+<li><code>Circles</code> are different and <b>comparable</b> based on their <code>radius</code>, so <code>Circle</code> can implement the <code>Comparable</code> <b>interface</b>.</li>
+</ul>
 
 <p>
 <code>Interfaces</code> are more <i>flexible</i> than <code>abstract classes</code> because a <code>subclass</code> can extend only <b>one</b> <code>superclass</code> but can <b>implement</b> any number of <code>interfaces</code>.
@@ -443,9 +443,9 @@ Then you can use the <code>interface</code> or the <code>abstract class</code>, 
 </div>
 </div>
 
-<div id="outline-container-org7f60193" class="outline-3">
-<h3 id="org7f60193">Example</h3>
-<div class="outline-text-3" id="text-org7f60193">
+<div id="outline-container-orgf2eb57a" class="outline-3">
+<h3 id="orgf2eb57a">Example</h3>
+<div class="outline-text-3" id="text-orgf2eb57a">
 <p>
 Both of these method definitions are <i>considered</i> <code>abstract</code>.
 </p>

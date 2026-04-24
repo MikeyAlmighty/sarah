@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-04-19 Sun 16:20 -->
+<!-- 2026-04-24 Fri 04:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Abstract Access Modifiers</title>
@@ -243,34 +243,31 @@
 <div id="content" class="content">
 <h1 class="title">Abstract Access Modifiers</h1>
 
-<div id="outline-container-org4ec7a2b" class="outline-2">
-<h2 id="org4ec7a2b">Abstract Access Modifiers</h2>
-<div class="outline-text-2" id="text-org4ec7a2b">
+<div id="outline-container-org723d2d5" class="outline-2">
+<h2 id="org723d2d5">Abstract Access Modifiers</h2>
+<div class="outline-text-2" id="text-org723d2d5">
 </div>
-<div id="outline-container-org63c242a" class="outline-3">
-<h3 id="org63c242a">Abstract and final</h3>
-<div class="outline-text-3" id="text-org63c242a">
+<div id="outline-container-org2911632" class="outline-3">
+<h3 id="org2911632">Abstract and final</h3>
+<div class="outline-text-3" id="text-org2911632">
 <p>
 What would happen if you marked a class or method both <code>abstract</code> and <code>final</code>?
-If you mark something abstract, you intend for someone else to extend or implement it.
-But if you mark something final, you are preventing anyone from extending or implementing it.
+If you mark something abstract, you intend for someone else to <b>extend</b> or <b>implement</b> it.
+But if you mark something <code>final</code>, you are preventing anyone from <b>extending</b> or <b>implementing</b> it.
 </p>
 
-<p>
-These concepts are in <b>direct conflict</b> with each other.
-</p>
-
-<p>
-Due to this incompatibility, Java does not permit a class or method to be <b>marked</b> both <code>abstract</code> and <code>final</code>.
-</p>
+<ul class="org-ul">
+<li>These concepts are in <b>direct conflict</b> with each other.</li>
+<li>Due to this incompatibility, Java does <b>not</b> permit a class or method to be <b>marked</b> both <code>abstract</code> and <code>final</code>.</li>
+</ul>
 </div>
 
-<div id="outline-container-orga3f7b93" class="outline-4">
-<h4 id="orga3f7b93">Example</h4>
-<div class="outline-text-4" id="text-orga3f7b93">
-<p>
-For example, the following code snippet will not compile:
-</p>
+<div id="outline-container-orgae8649d" class="outline-4">
+<h4 id="orgae8649d">Example</h4>
+<div class="outline-text-4" id="text-orgae8649d">
+<ul class="org-ul">
+<li>The following code snippet will not compile:</li>
+</ul>
 
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">abstract</span> <span class="org-keyword">final</span> <span class="org-keyword">class</span> <span class="org-type">Tortoise</span> {<span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
@@ -281,8 +278,8 @@ For example, the following code snippet will not compile:
 </div>
 
 <ul class="org-ul">
-<li><a id="org8321f86"></a><span class="underline">Exam Trick</span><br />
-<div class="outline-text-5" id="text-org8321f86">
+<li><a id="orgf5d49e7"></a><span class="underline">Exam Trick</span><br />
+<div class="outline-text-5" id="text-orgf5d49e7">
 <p>
 In this example, <b>neither</b> the <code>class</code> nor the <code>method declarations</code> will compile because they are marked both <code>abstract</code> and <code>final</code>.
 </p>
@@ -296,9 +293,9 @@ The exam doesn’t tend to use <code>final</code> modifiers on <code>classes</co
 </div>
 </div>
 
-<div id="outline-container-org6409ac8" class="outline-3">
-<h3 id="org6409ac8">Abstract and private</h3>
-<div class="outline-text-3" id="text-org6409ac8">
+<div id="outline-container-org7226a28" class="outline-3">
+<h3 id="org7226a28">Abstract and private</h3>
+<div class="outline-text-3" id="text-org7226a28">
 <p>
 A <code>method</code> <b>cannot</b> be marked as both <code>abstract</code> and <code>private</code>.
 </p>
@@ -313,9 +310,9 @@ How would you define a subclass that implements a required method if the method 
 </p>
 </div>
 
-<div id="outline-container-orgc4f5bfb" class="outline-4">
-<h4 id="orgc4f5bfb">Example</h4>
-<div class="outline-text-4" id="text-orgc4f5bfb">
+<div id="outline-container-org04ef289" class="outline-4">
+<h4 id="org04ef289">Example</h4>
+<div class="outline-text-4" id="text-org04ef289">
 <p>
 The answer is that you <b>can’t</b>, which is why the compiler will complain if you try to do the following:
 </p>
@@ -346,9 +343,9 @@ The compiler recognizes this in the <code>parent</code> class and reports an <b>
 </div>
 </div>
 
-<div id="outline-container-org972bb39" class="outline-3">
-<h3 id="org972bb39">Abstract and protected</h3>
-<div class="outline-text-3" id="text-org972bb39">
+<div id="outline-container-org7a4f82a" class="outline-3">
+<h3 id="org7a4f82a">Abstract and protected</h3>
+<div class="outline-text-3" id="text-org7a4f82a">
 <p>
 In this modified example, the code will still <b>not</b> compile, but for a completely different reason.
 If you remember the rules for <a href="20240120133450-overriding_a_method.html#ID-c67b24a4-82f7-4423-83a9-75fc1c566166">Overriding a Method</a>, the <code>subclass</code> cannot reduce the visibility of the <code>parent</code> method, <code>sing()</code>.
@@ -374,9 +371,9 @@ Even with <code>abstract</code> methods, the rules for <b>overriding methods</b>
 </div>
 </div>
 
-<div id="outline-container-org3b1d098" class="outline-3">
-<h3 id="org3b1d098">Abstract and static</h3>
-<div class="outline-text-3" id="text-org3b1d098">
+<div id="outline-container-orgba7ec43" class="outline-3">
+<h3 id="orgba7ec43">Abstract and static</h3>
+<div class="outline-text-3" id="text-orgba7ec43">
 <p>
 A <code>static</code> method can only be <b>hidden</b>, <b>not overridden</b>.
 </p>
