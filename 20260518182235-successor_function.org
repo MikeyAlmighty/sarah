@@ -1,0 +1,136 @@
+:PROPERTIES:
+:ID:       435da084-f189-49f3-846b-7401dd76cc5e
+:END:
+#+title: Successor Function
+
+* Successor Function
+
+The *successor* of a natural number is the next natural number after it.
+
+We define the successor function \(S\) by:
+
+\[
+S(n) = n + 1
+\]
+
+Examples:
+
+| \(n\) | \(S(n)\) |
+|-------+-----------|
+| 0     | 1         |
+| 1     | 2         |
+| 2     | 3         |
+| 10    | 11        |
+
+So:
+- \(S(0)=1\)
+- \(S(1)=2\)
+- \(S(2)=3\)
+
+The successor function gives us a way to generate all natural numbers starting from \(0\).
+
+Beginning with \(0\):
+
+\[
+0
+\]
+
+Apply \(S\):
+
+\[
+S(0)=1
+\]
+
+Apply \(S\) again:
+
+\[
+S(S(0))=2
+\]
+
+Again:
+
+\[
+S(S(S(0)))=3
+\]
+
+and so on forever.
+
+In this way, the entire set of natural numbers can be constructed from:
+- A starting element (\(0\))
+- The successor operation
+
+** Why It Matters
+
+The successor function is important because it provides:
+- A formal definition of counting
+- A basis for ordering
+- A foundation for recursion
+- A foundation for mathematical induction
+
+Counting is really repeated application of the successor function.
+
+For example, counting from 0 to 4 is:
+
+\[
+0 \to 1 \to 2 \to 3 \to 4
+\]
+
+which is:
+
+\[
+0 \to S(0) \to S(S(0)) \to \dots
+\]
+
+** Ordering Using Successors
+
+We can define ordering entirely using successors.
+
+We say:
+
+\[
+m \leq n
+\]
+
+if \(n\) can be reached from \(m\) by applying the successor function finitely many times.
+
+For example:
+
+\[
+2 \leq 5
+\]
+
+because:
+
+\[
+2 \to 3 \to 4 \to 5
+\]
+
+using the successor function repeatedly.
+
+** Connection to Computer Science
+
+The successor function is closely related to:
+- iteration
+- loops
+- recursion
+
+For example, a loop counter behaves like repeated successor applications:
+
+#+begin_src python
+i = 0
+i = i + 1
+i = i + 1
+#+end_src
+
+Each increment:
+#+begin_example
+i = i + 1
+#+end_example
+
+is essentially applying the successor function.
+
+This is why the successor concept appears in:
+- formal logic
+- computability theory
+- recursive function theory
+- proofs by induction
