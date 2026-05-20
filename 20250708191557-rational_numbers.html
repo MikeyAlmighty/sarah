@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-18 Mon 18:42 -->
+<!-- 2026-05-20 Wed 18:39 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Rational numbers $\mathbb{Q}$</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -193,62 +194,509 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
-<style>
-        body {
-          font-family: sans-serif;
-          line-height: 1.5;
-          margin: 2em;
-          background-color: #ffffff;
-          color: #111111;
-        }
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
 
-        /* Code block styling */
-        pre.src {
-          padding: 1em;
-          border-radius: 6px;
-          overflow-x: auto;
-          background-color: #f0f0f0;
-          color: #222222;
-          border: 1px solid #ddd;
-          font-family: monospace;
-        }
-
-        /* Syntax highlighting for Org-generated classes */
-        span.org-keyword { color: #005999; font-weight: bold; }
-        span.org-string  { color: #aa3333; }
-        span.org-comment { color: #666666; font-style: italic; }
-        span.org-type    { color: #007700; font-weight: bold; }
-        span.org-variable { color: #993399; }
-
-        /* Dark mode support */
-        @media (prefers-color-scheme: dark) {
-            pre.src {
-                background-color: #000000;
-                color: #f5f5f5;
-                border: 1px solid #555;
-            }
-
-            /* Syntax highlighting */
-            span.org-keyword { color: #6fb1ff; font-weight: bold; }
-            span.org-string  { color: #e6c07b; }
-            span.org-comment { color: #aaaaaa; font-style: italic; }
-            span.org-type    { color: #7bd88f; font-weight: bold; }
-            span.org-variable { color: #d4a5ff; }
-        }
-
-        ul { list-style-type: disc; padding-left: 2em; }
-      </style>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 </head>
 <body>
 <div id="content" class="content">
 <h1 class="title">Rational numbers \(\mathbb{Q}\)</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org78d8fae">1. Rational Numbers \(\mathbb{Q}\)</a></li>
+<li><a href="#orgb0656b8">2. Non-Uniqueness of Representation</a></li>
+<li><a href="#org2b96d9a">3. Why We Introduce Rational Numbers</a></li>
+<li><a href="#org52a1ad4">4. Field Structure</a></li>
+<li><a href="#org854e0db">5. Ordering of Rational Numbers</a></li>
+<li><a href="#orgfe59754">6. Density of the Rational Numbers</a></li>
+<li><a href="#org2342f25">7. Loss of Successor Structure</a></li>
+<li><a href="#org246d455">8. Why Division by Zero is Undefined</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org78d8fae" class="outline-2">
+<h2 id="org78d8fae"><span class="section-number-2">1.</span> Rational Numbers \(\mathbb{Q}\)</h2>
+<div class="outline-text-2" id="text-1">
 <p>
-The set of rational numbers, denoted by Q, includes all numbers that can be expressed as a fraction p/q, where p and q are integers and q is not zero.
+A <b>rational number</b> is a number that can be written as a fraction:
 </p>
 
 <p>
-This set encompasses integers (which can be written as fractions with a denominator of 1), fractions, and decimals that either terminate or have a repeating pattern.
+\[
+\frac{p}{q}
+\]
 </p>
+
+<p>
+where:
+</p>
+<ul class="org-ul">
+<li>\(p \in \mathbb{Z}\) (the numerator)</li>
+<li>\(q \in \mathbb{Z}\) (the denominator)</li>
+<li>\(q \neq 0\)</li>
+</ul>
+
+<p>
+The set of rational numbers is denoted by \(\mathbb{Q}\) (<b>Quotient</b>)
+</p>
+
+<p>
+Examples of rational numbers:
+</p>
+<ul class="org-ul">
+<li>\(\frac{1}{2}\)</li>
+<li>\(-\frac{3}{4}\)</li>
+<li>\(5 = \frac{5}{1}\)</li>
+<li>\(0 = \frac{0}{1}\)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb0656b8" class="outline-2">
+<h2 id="orgb0656b8"><span class="section-number-2">2.</span> Non-Uniqueness of Representation</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+A rational number can often be represented in many different ways.
+</p>
+
+<p>
+For example:
+</p>
+
+<p>
+\[
+\frac{1}{2} = \frac{2}{4} = \frac{3}{6}
+\]
+</p>
+
+<p>
+These fractions all represent the same rational number.
+</p>
+
+<p>
+To obtain a <b>unique representation</b>, we require:
+</p>
+<ul class="org-ul">
+<li>\(q > 0\)</li>
+<li>the fraction is in <b>lowest terms</b></li>
+</ul>
+
+<p>
+A fraction is in lowest terms if:
+</p>
+<ul class="org-ul">
+<li>the numerator and denominator share no common factors</li>
+</ul>
+
+<p>
+For example:
+</p>
+<ul class="org-ul">
+<li>\(\frac{2}{4}\) is not in lowest terms</li>
+<li>\(\frac{1}{2}\) is in lowest terms</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2b96d9a" class="outline-2">
+<h2 id="org2b96d9a"><span class="section-number-2">3.</span> Why We Introduce Rational Numbers</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+The integers \( \mathbb{Z} \) are <b>not closed</b> under <i>division</i>.
+</p>
+
+<p>
+For example:
+</p>
+
+<p>
+\[
+1 \div 2 = \frac{1}{2}
+\]
+</p>
+
+<p>
+but:
+</p>
+
+<p>
+\[
+\frac{1}{2} \notin \mathbb{Z}
+\]
+</p>
+
+<p>
+By extending \( \mathbb{Z} \) to \( \mathbb{Q} \), division becomes possible whenever the divisor is <b>non-zero</b>.
+</p>
+
+<p>
+Thus, in \( \mathbb{Q} \), we can:
+</p>
+<ul class="org-ul">
+<li><i>add</i></li>
+<li><i>subtract</i></li>
+<li><i>multiply</i></li>
+<li><i>divide</i> (except by <b>zero</b>)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org52a1ad4" class="outline-2">
+<h2 id="org52a1ad4"><span class="section-number-2">4.</span> Field Structure</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+The rational numbers form a <b>field</b>.
+</p>
+
+<p>
+A field is a number system where:
+</p>
+<ul class="org-ul">
+<li><i>addition</i></li>
+<li><i>subtraction</i></li>
+<li><i>multiplication</i></li>
+<li><i>division</i> (by non-zero elements)</li>
+</ul>
+
+<p>
+are all <b>well-defined</b> and <b>closed</b>.
+</p>
+
+<p>
+The rational numbers are the standard example of a <b>field</b> in algebra.
+</p>
+</div>
+</div>
+<div id="outline-container-org854e0db" class="outline-2">
+<h2 id="org854e0db"><span class="section-number-2">5.</span> Ordering of Rational Numbers</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+The rational numbers admit an ordering \(<\).
+</p>
+
+<p>
+Given:
+</p>
+
+<p>
+\[
+\frac{p_1}{q_1}, \frac{p_2}{q_2}
+\]
+</p>
+
+<p>
+with:
+</p>
+
+<p>
+\[
+q_1, q_2 > 0
+\]
+</p>
+
+<p>
+we define:
+</p>
+
+<p>
+\[
+\frac{p_1}{q_1} < \frac{p_2}{q_2}
+\]
+</p>
+
+<p>
+if:
+</p>
+
+<p>
+\[
+p_1 q_2 < p_2 q_1
+\]
+</p>
+
+<p>
+This allows rational numbers to be compared without converting them to decimals.
+</p>
+
+<p>
+Example:
+</p>
+
+<p>
+\[
+\frac{1}{2} < \frac{3}{4}
+\]
+</p>
+
+<p>
+because:
+</p>
+
+<p>
+\[
+1 \times 4 < 3 \times 2
+\]
+</p>
+
+<p>
+that is:
+</p>
+
+<p>
+\[
+4 < 6
+\]
+</p>
+</div>
+</div>
+<div id="outline-container-orgfe59754" class="outline-2">
+<h2 id="orgfe59754"><span class="section-number-2">6.</span> Density of the Rational Numbers</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Unlike \( \mathbb{Z} \), the rational numbers do <b>not</b> have a unique next element.
+</p>
+
+<p>
+Between any two rational numbers, there is always another rational number.
+</p>
+
+<p>
+We say that the ordering of \( \mathbb{Q} \) is <b>dense</b>.
+</p>
+
+<p>
+For example, between:
+</p>
+
+<p>
+\[
+\frac{1}{2}
+\quad \text{and} \quad
+\frac{3}{4}
+\]
+</p>
+
+<p>
+we can find:
+</p>
+
+<p>
+\[
+\frac{5}{8}
+\]
+</p>
+
+<p>
+More generally, if:
+</p>
+
+<p>
+\[
+a_1 < a_2
+\]
+</p>
+
+<p>
+then the average:
+</p>
+
+<p>
+\[
+\frac{a_1 + a_2}{2}
+\]
+</p>
+
+<p>
+lies strictly between them.
+</p>
+
+<p>
+Since rational numbers are closed under addition and division by non-zero integers:
+</p>
+<ul class="org-ul">
+<li>this average is also rational</li>
+</ul>
+
+<p>
+Thus:
+</p>
+<ul class="org-ul">
+<li>there is always another rational number between two rational numbers</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2342f25" class="outline-2">
+<h2 id="org2342f25"><span class="section-number-2">7.</span> Loss of Successor Structure</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+In \( \mathbb{N} \):
+</p>
+<ul class="org-ul">
+<li>every number has a unique successor</li>
+</ul>
+
+<p>
+In \( \mathbb{Q} \):
+</p>
+<ul class="org-ul">
+<li>no rational number has an immediate next rational number</li>
+</ul>
+
+<p>
+This means:
+</p>
+<ul class="org-ul">
+<li>the discrete ordering of \( \mathbb{N} \) and \( \mathbb{Z} \) is lost</li>
+</ul>
+
+<p>
+The rational numbers are instead <b>densely ordered</b>.
+</p>
+</div>
+</div>
+<div id="outline-container-org246d455" class="outline-2">
+<h2 id="org246d455"><span class="section-number-2">8.</span> Why Division by Zero is Undefined</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+Division is defined as the inverse of multiplication.
+</p>
+
+<p>
+So:
+</p>
+
+<p>
+\[
+z = \frac{x}{y}
+\]
+</p>
+
+<p>
+means:
+</p>
+
+<p>
+\[
+z \times y = x
+\]
+</p>
+
+<p>
+Suppose we attempted to divide by zero:
+</p>
+
+<p>
+\[
+z = \frac{x}{0}
+\]
+</p>
+
+<p>
+Then we would require:
+</p>
+
+<p>
+\[
+z \times 0 = x
+\]
+</p>
+
+<p>
+But for every number \(z\):
+</p>
+
+<p>
+\[
+z \times 0 = 0
+\]
+</p>
+
+<p>
+So this equation is only possible if:
+</p>
+
+<p>
+\[
+x = 0
+\]
+</p>
+
+<p>
+Even then, we encounter a problem.
+</p>
+
+<p>
+For:
+</p>
+
+<p>
+\[
+\frac{0}{0}
+\]
+</p>
+
+<p>
+we would need a number \(z\) satisfying:
+</p>
+
+<p>
+\[
+z \times 0 = 0
+\]
+</p>
+
+<p>
+But <b>every</b> number satisfies this condition.
+</p>
+
+<p>
+Thus:
+</p>
+<ul class="org-ul">
+<li>there is no unique answer</li>
+<li>division by zero is undefined</li>
+</ul>
+
+<p>
+Therefore:
+</p>
+<ul class="org-ul">
+<li>division by zero is considered meaningless in standard arithmetic.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Michael Leibbrandt</p>
+<p class="date">Created: 2026-05-20 Wed 18:39</p>
 </div>
 </body>
 </html>
