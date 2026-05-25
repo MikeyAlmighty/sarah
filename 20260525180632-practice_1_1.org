@@ -1,0 +1,86 @@
+:PROPERTIES:
+:ID:       bea34faf-91d7-490f-aa96-ee24f37026fe
+:END:
+#+title: Practice 1.1
+
+* Practice 1.1
+
+** Exercise 1: Irrationality of √3 (Proof by Contradiction)
+
+*** Proof that √3 is irrational
+
+Assume, by contradtiction, √3 is rational, i.e. √3 = p/q where p, q ∈ ℤ, q ≠ 0, and the fraction is in lowest terms (~gcd(p,q) = 1~).
+
+Then:
+#+begin_example
+3 = p²/q²  →  p² = 3q²
+#+end_example
+
+So 3 divides p², which means 3 divides p (since 3 is prime). Write p = 3k:
+
+#+begin_example
+(3k)² = 3q²  →  9k² = 3q²  →  q² = 3k²
+#+end_example
+
+So 3 divides q² and therefore 3 divides q. But now 3 divides both p and q, *contradicting* ~gcd(p,q) = 1~.
+
+*** Why the same proof fails for √4
+
+Assume √4 = p/q in lowest terms. Then:
+#+begin_example
+p² = 4q²
+#+end_example
+
+We can only conclude that 4 divides p², but this does *not* force 4 to divide p — for example p could be 2, making p² = 4 divisible by 4 without p itself being divisible by 4.
+
+The chain of reasoning breaks down because 4 is not prime.
+
+Indeed √4 = 2, which is rational.
+
+** Exercise 2: Closure Under Addition and Subtraction
+
+| Set                        | Closed under + | Closed under - |
+|----------------------------+----------------+----------------|
+| Positive integers          | ✓              | ✗              |
+| Positive integers > 3      | ✓              | ✗              |
+| Even integers              | ✓              | ✓              |
+| Primes {2,3,5,7,11,...}    | ✗              | ✗              |
+
+*** Notes
+
+- *Positive integers*: 3 - 5 = -2, which is not a positive integer. Fails
+  subtraction.
+- *Positive integers > 3*: 4 + 4 = 8 ✓, but 5 - 4 = 1 which is not > 3.
+  Fails subtraction. Also note 4 + 4 = 8 stays in the set but closure under
+  addition holds generally since sum of two numbers > 3 is > 6 > 3.
+- *Even integers*: sum and difference of even numbers are always even. ✓
+- *Primes*: 2 + 3 = 5 ✓ but 3 + 5 = 8, which is not prime. Fails addition.
+  Also 5 - 3 = 2 ✓ but 7 - 2 = 5 ✓ yet 3 - 3 = 0, not prime. Fails both.
+
+** Exercise 3: x + 5 = 1 Across Number Systems
+
+The equation x + 5 = 1 has solution x = -4.
+
+| System | Solution exists? | Reason                              |
+|--------+------------------+-------------------------------------|
+| ℕ      | ✗                | ℕ has no negative numbers           |
+| ℤ      | ✓                | x = -4 ∈ ℤ                         |
+| ℚ      | ✓                | x = -4 ∈ ℚ ⊂ ℝ                     |
+| ℝ      | ✓                | x = -4 ∈ ℝ                         |
+| ℂ      | ✓                | x = -4 ∈ ℂ (with imaginary part 0) |
+
+This illustrates why the step ℕ → ℤ is necessary: ℕ is not closed under
+subtraction and cannot express negative solutions. See [[id:b3790d1e-e594-47ee-80ca-fcf7ef25545c][Properties of Number Systems]].
+
+** Exercise 4: x² - 3 = 0 — Solutions in ℝ but not ℚ
+
+The equation x² = 3 has solutions x = ±√3.
+
+- *In ℝ*: √3 ∈ ℝ, so solutions exist.
+- *In ℚ*: √3 is irrational (proven by the same method as Exercise 1 above,
+  substituting 3 for 3 throughout — the key step again relies on 3 being
+  prime). Since √3 ∉ ℚ, the equation has no solution in ℚ.
+
+This illustrates the necessity of extending ℚ to ℝ: ℚ is dense on the number line but has "gaps" at irrational values like √3, √2, π, e.
+
+ℝ fills in all these gaps See [[id:b3790d1e-e594-47ee-80ca-fcf7ef25545c][Properties of Number Systems]].

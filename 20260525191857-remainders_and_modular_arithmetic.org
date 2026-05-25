@@ -1,0 +1,74 @@
+:PROPERTIES:
+:ID:       b8eda62b-bf4d-4b2c-b023-d1be29bcc9ed
+:END:
+#+title: Remainders and Modular Arithmetic
+
+* Remainders and Modular Arithmetic
+
+** Division with Remainders
+
+For any positive integers \(a\) and \(b\), we can always write:
+
+\[ b = a \cdot q + r \]
+
+where \(0 \leq r < a\) is the *remainder*.
+
+If \(r = 0\) then \(a \mid b\).
+
+For example, with \(b = 14\) and \(a = 3\):
+
+\[ 14 = 3 \cdot 4 + 2 \]
+
+where \(4\) is the *quotient* and \(2\) is the *remainder*.
+
+** Modular Notation
+
+To put the focus on the *remainder* \(r\) rather than the *quotient* \(q\), we write:
+
+\[ b \mod a = r \]
+
+We read this as "\(r\) equals \(b\) modulo \(a\)".
+
+It tells us there exists some integer \(q\) such that \(b = a \cdot q + r\).
+
+This is especially important in *cryptology* and *computer science*, where the *remainder* is often /more useful/ than the *quotient*.
+
+** Examples
+
+\[ 11 \mod 3 = 2 \quad \text{since} \quad 11 = 3 \times 3 + 2 \]
+
+\[ 17 \mod 3 = 2 \quad \text{since} \quad 17 = 3 \times 5 + 2 \]
+
+Since \(11\) and \(17\) have the same remainder when divided by \(3\), we can write:
+
+\[ 11 \mod 3 = 17 \mod 3 \].
+
+We can also note that \(2 \mod 3 = 2\) since \(2 = 3 \times 0 + 2\), giving us:
+
+\[ 11 \mod 3 = 17 \mod 3 = 2 \mod 3 \].
+
+In general, if \(m\) divides the difference \(a - b\), then:
+
+\[ a \mod m = b \mod m \]
+
+This lets us verify \(11 \mod 3 = 17 \mod 3\) without computing remainders
+at all — since \(17 - 11 = 6\) is divisible by \(3\).
+
+** Key Property
+
+If \(m\) divides the difference \(a - b\), then:
+
+\[ a \mod m = b \mod m \]
+
+This lets us check equality of remainders *without* computing them directly.
+For example, \(17 - 11 = 6\) is divisible by \(3\), so we immediately know
+\(17 \mod 3 = 11 \mod 3\) without doing the division.
+
+** Notational Warning
+
+The notation \(11 = 2 \mod 3\) does *not* mean "the remainder when dividing
+\(2\) by \(3\) is \(11\)". It is shorthand for:
+
+\[ 11 \mod 3 = 2 \mod 3 \]
+
+i.e. that \(11\) and \(2\) have the same remainder when divided by \(3\).

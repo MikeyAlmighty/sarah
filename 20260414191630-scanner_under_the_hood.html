@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-20 Wed 19:11 -->
+<!-- 2026-05-25 Mon 19:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Scanner under the hood</title>
@@ -243,13 +243,13 @@
 <div id="content" class="content">
 <h1 class="title">Scanner under the hood</h1>
 
-<div id="outline-container-orgce57f51" class="outline-2">
-<h2 id="orgce57f51">Scanner under the hood</h2>
-<div class="outline-text-2" id="text-orgce57f51">
+<div id="outline-container-org074fbb0" class="outline-2">
+<h2 id="org074fbb0">Scanner under the hood</h2>
+<div class="outline-text-2" id="text-org074fbb0">
 </div>
-<div id="outline-container-orgfe7f86a" class="outline-3">
-<h3 id="orgfe7f86a">Core Idea</h3>
-<div class="outline-text-3" id="text-orgfe7f86a">
+<div id="outline-container-org0a6fd51" class="outline-3">
+<h3 id="org0a6fd51">Core Idea</h3>
+<div class="outline-text-3" id="text-org0a6fd51">
 <ul class="org-ul">
 <li>Scanner supports <b>token-based</b> and <b>line-based</b> input:
 <ul class="org-ul">
@@ -260,9 +260,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgcefbea4" class="outline-3">
-<h3 id="orgcefbea4">Token-Based Input Methods</h3>
-<div class="outline-text-3" id="text-orgcefbea4">
+<div id="outline-container-orgbe63e82" class="outline-3">
+<h3 id="orgbe63e82">Token-Based Input Methods</h3>
+<div class="outline-text-3" id="text-orgbe63e82">
 <ul class="org-ul">
 <li>Methods:
 <ul class="org-ul">
@@ -287,9 +287,9 @@
 </ul>
 </div>
 
-<div id="outline-container-org6af17f8" class="outline-4">
-<h4 id="org6af17f8">Delimiters</h4>
-<div class="outline-text-4" id="text-org6af17f8">
+<div id="outline-container-org13a2865" class="outline-4">
+<h4 id="org13a2865">Delimiters</h4>
+<div class="outline-text-4" id="text-org13a2865">
 <ul class="org-ul">
 <li>Default: <b>whitespace</b></li>
 <li>Custom:
@@ -300,9 +300,9 @@
 </div>
 </div>
 
-<div id="outline-container-org6cc5686" class="outline-4">
-<h4 id="org6cc5686">Exceptions</h4>
-<div class="outline-text-4" id="text-org6cc5686">
+<div id="outline-container-orgd396b36" class="outline-4">
+<h4 id="orgd396b36">Exceptions</h4>
+<div class="outline-text-4" id="text-orgd396b36">
 <ul class="org-ul">
 <li>If token doesn't match expected type: <code>java.util.InputMismatchException</code></li>
 </ul>
@@ -310,9 +310,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgfba9a1f" class="outline-3">
-<h3 id="orgfba9a1f">Line-Based Input</h3>
-<div class="outline-text-3" id="text-orgfba9a1f">
+<div id="outline-container-org5b13765" class="outline-3">
+<h3 id="org5b13765">Line-Based Input</h3>
+<div class="outline-text-3" id="text-org5b13765">
 <ul class="org-ul">
 <li><code>nextLine()</code>:
 <ul class="org-ul">
@@ -322,9 +322,9 @@
 </ul>
 </div>
 
-<div id="outline-container-org3eb994a" class="outline-4">
-<h4 id="org3eb994a">Line Separators</h4>
-<div class="outline-text-4" id="text-org3eb994a">
+<div id="outline-container-org0b75a7f" class="outline-4">
+<h4 id="org0b75a7f">Line Separators</h4>
+<div class="outline-text-4" id="text-org0b75a7f">
 <ul class="org-ul">
 <li>Platform dependent:
 <ul class="org-ul">
@@ -339,9 +339,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgbe0a3ba" class="outline-4">
-<h4 id="orgbe0a3ba">Important Behavior</h4>
-<div class="outline-text-4" id="text-orgbe0a3ba">
+<div id="outline-container-org43d3087" class="outline-4">
+<h4 id="org43d3087">Important Behavior</h4>
+<div class="outline-text-4" id="text-org43d3087">
 <ul class="org-ul">
 <li><b>Token-based</b> methods DO NOT consume the <code>delimiter</code>.</li>
 <li><code>nextLine()</code> reads:
@@ -353,18 +353,18 @@
 </div>
 </div>
 
-<div id="outline-container-orgbee9f34" class="outline-4">
-<h4 id="orgbee9f34">Common Pitfall</h4>
-<div class="outline-text-4" id="text-orgbee9f34">
+<div id="outline-container-org8b0d410" class="outline-4">
+<h4 id="org8b0d410">Common Pitfall</h4>
+<div class="outline-text-4" id="text-org8b0d410">
 <ul class="org-ul">
 <li>Mixing <code>nextInt()</code> (or other token methods) with <code>nextLine()</code></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgc7bd9e8" class="outline-4">
-<h4 id="orgc7bd9e8">Example (File Input)</h4>
-<div class="outline-text-4" id="text-orgc7bd9e8">
+<div id="outline-container-org294fdcd" class="outline-4">
+<h4 id="org294fdcd">Example (File Input)</h4>
+<div class="outline-text-4" id="text-org294fdcd">
 <ul class="org-ul">
 <li>File content:
 <code>34 567</code></li>
@@ -390,9 +390,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgba7f8b6" class="outline-4">
-<h4 id="orgba7f8b6">Example (Keyboard Input)</h4>
-<div class="outline-text-4" id="text-orgba7f8b6">
+<div id="outline-container-org6c3cb26" class="outline-4">
+<h4 id="org6c3cb26">Example (Keyboard Input)</h4>
+<div class="outline-text-4" id="text-org6c3cb26">
 <ul class="org-ul">
 <li><p>
 Input:
@@ -414,9 +414,9 @@ Input:
 </div>
 </div>
 
-<div id="outline-container-org0c61b68" class="outline-4">
-<h4 id="org0c61b68">Reason</h4>
-<div class="outline-text-4" id="text-org0c61b68">
+<div id="outline-container-org26e8ac6" class="outline-4">
+<h4 id="org26e8ac6">Reason</h4>
+<div class="outline-text-4" id="text-org26e8ac6">
 <ul class="org-ul">
 <li><code>nextInt()</code> stops at newline (<b>delimiter</b>)</li>
 <li><code>nextLine()</code> reads the leftover newline → returns <b>empty string</b></li>
@@ -425,9 +425,9 @@ Input:
 </div>
 </div>
 
-<div id="outline-container-org03bb07b" class="outline-3">
-<h3 id="org03bb07b">Best Practice</h3>
-<div class="outline-text-3" id="text-org03bb07b">
+<div id="outline-container-orge75f726" class="outline-3">
+<h3 id="orge75f726">Best Practice</h3>
+<div class="outline-text-3" id="text-orge75f726">
 <ul class="org-ul">
 <li>Avoid mixing <b>token-based</b> and <b>line-based input</b></li>
 <li>Or consume leftover newline before calling <code>nextLine()</code></li>
@@ -435,9 +435,9 @@ Input:
 </div>
 </div>
 
-<div id="outline-container-orga281623" class="outline-3">
-<h3 id="orga281623">Additional Capability</h3>
-<div class="outline-text-3" id="text-orga281623">
+<div id="outline-container-orga3025fe" class="outline-3">
+<h3 id="orga3025fe">Additional Capability</h3>
+<div class="outline-text-3" id="text-orga3025fe">
 <ul class="org-ul">
 <li>Scanner can read from:
 <ul class="org-ul">

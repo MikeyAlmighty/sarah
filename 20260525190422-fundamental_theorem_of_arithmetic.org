@@ -1,0 +1,92 @@
+:PROPERTIES:
+:ID:       f99de303-6cfc-4cd8-9d51-d4e1796f26db
+:END:
+#+title: Fundamental Theorem of Arithmetic (Prime Factorization)
+#+HTML_HEAD: <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+#+HTML_HEAD: <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+* Fundamental Theorem of Arithmetic (Prime Factorization)
+
+** Statement
+
+Every integer \(n > 1\) can be written as a product of primes, and this
+factorisation is *unique* (up to ordering):
+
+\[ n = p_1^{e_1} \cdot p_2^{e_2} \cdots p_k^{e_k} \]
+
+** Proof
+
+*** Existence
+
+Every integer \(n > 1\) is either prime itself, or can be factorised into
+smaller factors. Repeatedly factorising those factors eventually yields at
+least one prime factorisation.
+
+*** Uniqueness (by contradiction)
+
+Assume \(n\) is the *smallest* integer \(> 1\) with two distinct prime
+factorisations:
+
+\[ n = p_1^{e_1} \cdot p_2^{e_2} \cdots p_k^{e_k} = q_1^{f_1} \cdot q_2^{f_2} \cdots q_\ell^{f_\ell} \]
+
+*Step 1:* All \(p_i\) are distinct from all \(q_j\). If any \(p_i = q_j\),
+we could divide \(n\) by it and obtain a smaller integer with two prime
+factorisations, contradicting minimality.
+
+*Step 2:* Assume primes are listed in increasing order and \(k, \ell \geq 2\)
+(otherwise \(n\) is a prime power). Write:
+
+\[ n = p_1 \cdot P = q_1 \cdot Q \]
+
+where \(P > p_1\) and \(Q > q_1\).
+
+*Step 3:* Subtract \(p_1 q_1\) from all parts:
+
+\[ n - p_1 q_1 = p_1(P - q_1) = q_1(Q - p_1) \]
+
+*Step 4:* Since both \(n\) and \(p_1 q_1\) are multiples of \(p_1\), so is
+\(n - p_1 q_1\). Similarly it is a multiple of \(q_1\). Therefore
+\(n - p_1 q_1\) can be written in two different ways as a product of
+integers, and:
+
+\[ n - p_1 q_1 \geq p_1 > 1 \]
+
+So \(n - p_1 q_1\) is smaller than \(n\) with two distinct prime
+factorisations — contradicting that \(n\) was the smallest such number.
+
+** Connection to Divisibility
+
+The uniqueness of *prime factorisation* underpins the theory of [[id:8e6d90a4-57da-421e-83b8-3e9b129064f2][divisibility]] in ℤ — it guarantees that *primes* are the true "building blocks" of the integers, and that factorisation into them is unambiguous.
+
+** Example
+
+Find the prime factorisation of \(1820\).
+
+*** Method: Trial Division
+We start by checking whether \(2\), the smallest prime, divides \(1820\):
+
+\[ 1820 = 2 \cdot 910 \]
+
+Next we check whether \(2\) divides \(910\):
+
+\[ 910 = 2 \cdot 455 \]
+
+Since \(455\) is not divisible by \(2\), we know that \(1820 = 2^2 \cdot 455\)
+and that \(1820\) has no more factors of \(2\).
+
+Moving to the next prime, \(3\): since \(455\) is not divisible by \(3\),
+neither is \(1820\).
+
+Next we check \(5\):
+
+\[ 455 = 5 \cdot 91 \]
+
+So \(1820 = 2^2 \cdot 5 \cdot 91\).
+
+Continuing, \(91 = 7 \cdot 13\), where \(13\) is itself prime.
+
+*** Result
+
+This gives us the full factorisation:
+
+\[ 1820 = 2^2 \cdot 5 \cdot 7 \cdot 13 \]
