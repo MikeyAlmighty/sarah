@@ -1,0 +1,58 @@
+:PROPERTIES:
+:ID:       6b63f77a-4875-45cf-be70-b143b16cfc56
+:END:
+#+title: Modular Arithmetic
+
+* Modular Arithmetic
+
+** Modular Notation
+
+To put the focus on the *remainder* \(r\) rather than the *quotient* \(q\), we write:
+
+\[ b \mod a = r \]
+
+We read this as "\(r\) equals \(b\) modulo \(a\)". It tells us there exists
+some integer \(q\) such that \(b = a \cdot q + r\). This is especially
+important in *cryptology* and *computer science*, where the *remainder* is
+often /more useful/ than the *quotient*.
+
+** Examples
+
+\[ 11 = 3 \times 3 + 2 \implies 11 \mod 3 = 2 \]
+
+| Dividend | Divisor | Quotient | Remainder |
+|----------+---------+----------+-----------|
+| 11       | 3       | 3        | 2         |
+
+\[ 17 = 3 \times 5 + 2 \implies 17 \mod 3 = 2 \]
+
+| Dividend | Divisor | Quotient | Remainder |
+|----------+---------+----------+-----------|
+| 17       | 3       | 5        | 2         |
+
+Since \(11\) and \(17\) have the same remainder when divided by \(3\):
+
+\[ 11 \mod 3 = 17 \mod 3 \]
+
+We can also note that \(2 \mod 3 = 2\) since \(2 = 3 \times 0 + 2\), giving us:
+
+\[ 11 \mod 3 = 17 \mod 3 = 2 \mod 3 \]
+
+** Key Property
+
+If \(m\) divides the difference \(a - b\), then:
+
+\[ a \mod m = b \mod m \]
+
+This lets us check equality of remainders *without* computing them directly.
+For example, \(17 - 11 = 6\) is divisible by \(3\), so we immediately know
+\(17 \mod 3 = 11 \mod 3\) without doing the division.
+
+** Notational Warning
+
+The notation \(11 = 2 \mod 3\) does *not* mean "the remainder when dividing
+\(2\) by \(3\) is \(11\)". It is shorthand for:
+
+\[ 11 \mod 3 = 2 \mod 3 \]
+
+i.e. that \(11\) and \(2\) have the same remainder when divided by \(3\).
