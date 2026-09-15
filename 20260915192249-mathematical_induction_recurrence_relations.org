@@ -1,0 +1,106 @@
+:PROPERTIES:
+:ID:       828a074f-940e-4c59-a4e4-0baeb1396b7c
+:END:
+#+title: Mathematical Induction (Recurrence Relations)
+
+* The problem
+
+Let $\{a_n\}$ be the sequence defined by
+
+$$a_1 = 1, \qquad a_{n+1} = a_n + 8n, \qquad n \geq 1$$
+
+Prove by induction that $a_n = (2n-1)^2$ for all positive integers
+$n$.
+
+* Why this example is different
+
+Earlier examples (sums of odd numbers, sums of integers, sums of
+powers of 2) built the link between $P(k)$ and $P(k+1)$ by
+*bracketing a sum* - splitting off its last term.
+
+Here there is no sum to bracket. Instead, **the recurrence itself
+is the bridge** between $a_k$ and $a_{k+1}$ — it is given directly
+in the problem and plays the same structural role bracketing played
+before: it's the one piece of information that connects consecutive
+terms, without which there'd be no legal way to get from the
+assumption to the target.
+
+There are two separate formulas in play, doing different jobs:
+
+- *The recurrence* ($a_{n+1}=a_n+8n$) - how the sequence is
+  actually built. True by definition, given, never needs proving.
+- *The formula being proved* ($a_n=(2n-1)^2$) - the claim, $P(n)$.
+  Not automatically true; that's the whole point of the proof.
+
+* Statement $P(n)$
+
+$$P(n): \quad a_n = (2n-1)^2$$
+
+* Base case: $P(1)$
+
+$$a_1 = (2(1)-1)^2 = 1^2 = 1$$
+
+Since $a_1=1$ is given directly, this matches. $P(1)$ holds.
+
+* Inductive hypothesis: assume $P(k)$
+
+$$a_k = (2k-1)^2$$
+
+* Inductive step: show $P(k+1)$ follows
+
+** Part 1 — write the target (substitute $n=k+1$ into the formula)
+
+Substitute into $a_n=(2n-1)^2$: replace both occurrences of $n$
+(the subscript, and the one inside the bracket) with $(k+1)$:
+
+$$a_{k+1} = \big(2(k+1)-1\big)^2$$
+
+Simplify inside the bracket: $2(k+1)-1 = 2k+2-1 = 2k+1$.
+
+$$\text{Target: } \quad a_{k+1} = (2k+1)^2$$
+
+This step uses only the formula — nothing to do with the recurrence
+yet.
+
+** Part 2 — get an equation for $a_{k+1}$ from the recurrence
+
+Recurrence: $a_{n+1}=a_n+8n$, true for every $n\geq 1$. To get an
+equation about $a_{k+1}$ specifically, set $n=k$ (since we need
+$n+1=k+1$):
+
+$$a_{k+1} = a_k + 8k$$
+
+This is a fact from the recurrence alone — no assumption used yet.
+
+** Part 3 — substitute the assumption $P(k)$
+
+$P(k)$ says $a_k=(2k-1)^2$. Substitute:
+
+$$a_{k+1} = (2k-1)^2 + 8k$$
+
+** Part 4 — algebra
+
+Expand $(2k-1)^2 = 4k^2-4k+1$:
+
+$$a_{k+1} = 4k^2-4k+1+8k = 4k^2+4k+1$$
+
+Factor:
+
+$$4k^2+4k+1 = (2k+1)^2$$
+
+This matches the target from Part 1 exactly. $P(k+1)$ follows from
+$P(k)$.
+
+* Conclusion
+
+By the principle of mathematical induction, $a_n=(2n-1)^2$ for all
+positive integers $n$.
+
+* The general pattern for recurrence + induction problems
+
+| Step | What happens                                                                                              |
+|------+-----------------------------------------------------------------------------------------------------------|
+|    1 | Write $P(k+1)$'s claim by substituting $n=k+1$ into the formula - this is the *target*, set aside untouched |
+|    2 | Use the recurrence, substituting $n=k$, to get $a_{k+1}$ in terms of $a_k$ - this is the *bridge*              |
+|    3 | Substitute the assumption $P(k)$ for $a_k$                                                                |
+|    4 | Do algebra until the result matches the target exactly                                                    |
