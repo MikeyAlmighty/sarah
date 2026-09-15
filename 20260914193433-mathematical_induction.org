@@ -1,0 +1,136 @@
+:PROPERTIES:
+:ID:       8b1e8e5b-d981-41e0-93a7-eded048cd150
+:END:
+#+title: Mathematical Induction
+
+* Examples
+
+** Mathematical Induction — the three steps
+
+1. *Base case.* Show $P(1)$ is true.
+2. *Inductive step.* Assume $P(k)$ is true (for arbitrary positive
+   integer $k$), and show $P(k+1)$ follows from it.
+3. *Conclusion.* By induction, $P(n)$ is true for all positive
+   integers $n$.
+
+Key discipline: only manipulate the *LHS*.
+
+RHS is the *target*, write it once (by substituting $n=k+1$ into the formula) and never
+touch it again.
+
+The proof is complete when algebra on the LHS lands exactly on that untouched RHS.
+
+** Example: Sum Of Odd Numbers
+
+Prove that for any positive integer $n$:
+$$1 + 3 + 5 + 7 + \dots + (2n-1) = n^2$$
+
+*** Statement $P(n)$
+
+$$P(n): \quad 1+3+5+7+\dots+(2n-1) = n^2$$
+
+*** Base case: $P(1)$
+
+$$1 = 1^2$$
+
+True (with $n=1$ the sum has only one term, the last term
+$2(1)-1=1$). Hence $P(1)$ holds.
+
+*** Inductive hypothesis: assume $P(k)$
+
+$$1+3+5+7+\dots+(2k-1) = k^2$$
+
+*** Inductive step: show $P(k+1)$ follows
+
+Target ($P(k+1)$, obtained by substituting $n=k+1$):
+
+$$1+3+5+7+\dots+(2k+1) = (k+1)^2$$
+
+(the new last term is $2(k+1)-1 = 2k+1$ — the next odd number after
+$2k-1$, since consecutive odd numbers differ by 2)
+
+Work the LHS only:
+
+$$1+3+5+\dots+(2k-1)+(2k+1) = \big[1+3+5+\dots+(2k-1)\big] + (2k+1)$$
+
+(pure bracketing — no calculation yet)
+
+Use the assumption $P(k)$ to replace the bracket with $k^2$:
+
+$$= k^2 + 2k+1$$
+
+Algebra (standard expansion, run in reverse):
+
+$$k^2+2k+1 = (k+1)^2$$
+
+This matches the target RHS exactly. $P(k+1)$ follows from $P(k)$.
+
+*** Conclusion
+
+By the principle of mathematical induction, $P(n)$ holds for every
+positive integer $n$.
+
+** Example: sum of first $n$ integers
+Prove that for any positive integer $n$:
+$$1+2+3+\dots+n = \frac{n(n+1)}{2}$$
+
+*** Statement $P(n)$
+
+$$P(n): \quad 1+2+3+\dots+n = \frac{n(n+1)}{2}$$
+
+*** Base case: $P(1)$
+
+$$1 = \frac{1(1+1)}{2} = \frac{2}{2} = 1$$
+
+True. Hence $P(1)$ holds.
+
+*** Inductive hypothesis: assume $P(k)$
+
+$$1+2+3+\dots+k = \frac{k(k+1)}{2}$$
+
+*** Inductive step: show $P(k+1)$ follows
+
+Target ($P(k+1)$, substitute $n=k+1$ into both sides):
+
+- LHS: $1+2+3+\dots+k+(k+1)$ — the sum extended by the next
+  integer, $(k+1)$ (not "+1" tacked on — the whole quantity $(k+1)$
+  is the new term)
+- RHS: $\dfrac{(k+1)\big((k+1)+1\big)}{2} = \dfrac{(k+1)(k+2)}{2}$
+
+So the target is:
+
+$$1+2+3+\dots+k+(k+1) = \frac{(k+1)(k+2)}{2}$$
+
+Work the LHS only:
+
+$$1+2+3+\dots+k+(k+1) = \big[1+2+3+\dots+k\big] + (k+1)$$
+
+(pure bracketing)
+
+Use the assumption $P(k)$ to replace the bracket:
+
+$$= \frac{k(k+1)}{2} + (k+1)$$
+
+Common denominator:
+
+$$= \frac{k(k+1)}{2} + \frac{2(k+1)}{2} = \frac{k(k+1) + 2(k+1)}{2}$$
+
+Factor out $(k+1)$ from the numerator:
+
+$$= \frac{(k+1)(k+2)}{2}$$
+
+This matches the target RHS exactly. $P(k+1)$ follows from $P(k)$.
+
+*** Conclusion
+
+By the principle of mathematical induction, $P(n)$ holds for every positive integer $n$.
+
+** Summary — the LHS/RHS discipline
+
+| Step | What happens                                                               |
+|------+----------------------------------------------------------------------------|
+|    1 | Write $P(k+1)$'s LHS and RHS by substituting $n=k+1$                       |
+|    2 | Set the RHS aside — it is the fixed target, never modified                 |
+|    3 | Bracket the LHS to isolate the $P(k)$-shaped part                          |
+|    4 | Substitute $k^2$ (or $\frac{k(k+1)}{2}$, etc.) using the assumption $P(k)$ |
+|    5 | Do algebra on the LHS until it equals the RHS exactly                      |
