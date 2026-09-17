@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-14 Mon 19:43 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mathematical Induction</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -194,6 +194,51 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
+<style>
+        body {
+          font-family: sans-serif;
+          line-height: 1.5;
+          margin: 2em;
+          background-color: #ffffff;
+          color: #111111;
+        }
+
+        /* Code block styling */
+        pre.src {
+          padding: 1em;
+          border-radius: 6px;
+          overflow-x: auto;
+          background-color: #f0f0f0;
+          color: #222222;
+          border: 1px solid #ddd;
+          font-family: monospace;
+        }
+
+        /* Syntax highlighting for Org-generated classes */
+        span.org-keyword { color: #005999; font-weight: bold; }
+        span.org-string  { color: #aa3333; }
+        span.org-comment { color: #666666; font-style: italic; }
+        span.org-type    { color: #007700; font-weight: bold; }
+        span.org-variable { color: #993399; }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            pre.src {
+                background-color: #000000;
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
+
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
+        }
+
+        ul { list-style-type: disc; padding-left: 2em; }
+      </style>
 <script>
   window.MathJax = {
     tex: {
@@ -230,44 +275,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Mathematical Induction</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#orgbad23c2">1. Examples</a>
-<ul>
-<li><a href="#org53f4fd0">1.1. Mathematical Induction — the three steps</a></li>
-<li><a href="#org1e5a681">1.2. Example: Sum Of Odd Numbers</a>
-<ul>
-<li><a href="#org684a994">1.2.1. Statement \(P(n)\)</a></li>
-<li><a href="#org22460a6">1.2.2. Base case: \(P(1)\)</a></li>
-<li><a href="#org185198a">1.2.3. Inductive hypothesis: assume \(P(k)\)</a></li>
-<li><a href="#org146bd59">1.2.4. Inductive step: show \(P(k+1)\) follows</a></li>
-<li><a href="#orgaee7f4c">1.2.5. Conclusion</a></li>
-</ul>
-</li>
-<li><a href="#org84ab97c">1.3. Example: sum of first \(n\) integers</a>
-<ul>
-<li><a href="#orgad457d4">1.3.1. Statement \(P(n)\)</a></li>
-<li><a href="#orgb59e540">1.3.2. Base case: \(P(1)\)</a></li>
-<li><a href="#org85f56ae">1.3.3. Inductive hypothesis: assume \(P(k)\)</a></li>
-<li><a href="#orga4f8c55">1.3.4. Inductive step: show \(P(k+1)\) follows</a></li>
-<li><a href="#org01f51ed">1.3.5. Conclusion</a></li>
-</ul>
-</li>
-<li><a href="#org4aa5dfb">1.4. Summary — the LHS/RHS discipline</a></li>
-</ul>
-</li>
-</ul>
+<div id="outline-container-org2485eb7" class="outline-2">
+<h2 id="org2485eb7">Examples</h2>
+<div class="outline-text-2" id="text-org2485eb7">
 </div>
-</div>
-<div id="outline-container-orgbad23c2" class="outline-2">
-<h2 id="orgbad23c2"><span class="section-number-2">1.</span> Examples</h2>
-<div class="outline-text-2" id="text-1">
-</div>
-<div id="outline-container-org53f4fd0" class="outline-3">
-<h3 id="org53f4fd0"><span class="section-number-3">1.1.</span> Mathematical Induction — the three steps</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-orgc2f4e0e" class="outline-3">
+<h3 id="orgc2f4e0e">Mathematical Induction — the three steps</h3>
+<div class="outline-text-3" id="text-orgc2f4e0e">
 <ol class="org-ol">
 <li><b>Base case.</b> Show \(P(1)\) is true.</li>
 <li><b>Inductive step.</b> Assume \(P(k)\) is true (for arbitrary positive
@@ -277,7 +291,7 @@ integers \(n\).</li>
 </ol>
 
 <p>
-Key discipline: only manipulate the LHS.
+Key discipline: only manipulate the <b>LHS</b>.
 </p>
 
 <p>
@@ -290,25 +304,25 @@ The proof is complete when algebra on the LHS lands exactly on that untouched RH
 </p>
 </div>
 </div>
-<div id="outline-container-org1e5a681" class="outline-3">
-<h3 id="org1e5a681"><span class="section-number-3">1.2.</span> Example: Sum Of Odd Numbers</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-org8e16c3a" class="outline-3">
+<h3 id="org8e16c3a">Example: Sum Of Odd Numbers</h3>
+<div class="outline-text-3" id="text-org8e16c3a">
 <p>
 Prove that for any positive integer \(n\):
 \[1 + 3 + 5 + 7 + \dots + (2n-1) = n^2\]
 </p>
 </div>
-<div id="outline-container-org684a994" class="outline-4">
-<h4 id="org684a994"><span class="section-number-4">1.2.1.</span> Statement \(P(n)\)</h4>
-<div class="outline-text-4" id="text-1-2-1">
+<div id="outline-container-orgdcc578a" class="outline-4">
+<h4 id="orgdcc578a">Statement \(P(n)\)</h4>
+<div class="outline-text-4" id="text-orgdcc578a">
 <p>
 \[P(n): \quad 1+3+5+7+\dots+(2n-1) = n^2\]
 </p>
 </div>
 </div>
-<div id="outline-container-org22460a6" class="outline-4">
-<h4 id="org22460a6"><span class="section-number-4">1.2.2.</span> Base case: \(P(1)\)</h4>
-<div class="outline-text-4" id="text-1-2-2">
+<div id="outline-container-orgabfcba0" class="outline-4">
+<h4 id="orgabfcba0">Base case: \(P(1)\)</h4>
+<div class="outline-text-4" id="text-orgabfcba0">
 <p>
 \[1 = 1^2\]
 </p>
@@ -319,17 +333,17 @@ True (with \(n=1\) the sum has only one term, the last term
 </p>
 </div>
 </div>
-<div id="outline-container-org185198a" class="outline-4">
-<h4 id="org185198a"><span class="section-number-4">1.2.3.</span> Inductive hypothesis: assume \(P(k)\)</h4>
-<div class="outline-text-4" id="text-1-2-3">
+<div id="outline-container-org0802536" class="outline-4">
+<h4 id="org0802536">Inductive hypothesis: assume \(P(k)\)</h4>
+<div class="outline-text-4" id="text-org0802536">
 <p>
 \[1+3+5+7+\dots+(2k-1) = k^2\]
 </p>
 </div>
 </div>
-<div id="outline-container-org146bd59" class="outline-4">
-<h4 id="org146bd59"><span class="section-number-4">1.2.4.</span> Inductive step: show \(P(k+1)\) follows</h4>
-<div class="outline-text-4" id="text-1-2-4">
+<div id="outline-container-orgfb49462" class="outline-4">
+<h4 id="orgfb49462">Inductive step: show \(P(k+1)\) follows</h4>
+<div class="outline-text-4" id="text-orgfb49462">
 <p>
 Target (\(P(k+1)\), obtained by substituting \(n=k+1\)):
 </p>
@@ -376,9 +390,9 @@ This matches the target RHS exactly. \(P(k+1)\) follows from \(P(k)\).
 </p>
 </div>
 </div>
-<div id="outline-container-orgaee7f4c" class="outline-4">
-<h4 id="orgaee7f4c"><span class="section-number-4">1.2.5.</span> Conclusion</h4>
-<div class="outline-text-4" id="text-1-2-5">
+<div id="outline-container-org59011e6" class="outline-4">
+<h4 id="org59011e6">Conclusion</h4>
+<div class="outline-text-4" id="text-org59011e6">
 <p>
 By the principle of mathematical induction, \(P(n)\) holds for every
 positive integer \(n\).
@@ -386,25 +400,25 @@ positive integer \(n\).
 </div>
 </div>
 </div>
-<div id="outline-container-org84ab97c" class="outline-3">
-<h3 id="org84ab97c"><span class="section-number-3">1.3.</span> Example: sum of first \(n\) integers</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-org8fb1539" class="outline-3">
+<h3 id="org8fb1539">Example: sum of first \(n\) integers</h3>
+<div class="outline-text-3" id="text-org8fb1539">
 <p>
 Prove that for any positive integer \(n\):
 \[1+2+3+\dots+n = \frac{n(n+1)}{2}\]
 </p>
 </div>
-<div id="outline-container-orgad457d4" class="outline-4">
-<h4 id="orgad457d4"><span class="section-number-4">1.3.1.</span> Statement \(P(n)\)</h4>
-<div class="outline-text-4" id="text-1-3-1">
+<div id="outline-container-org64e5084" class="outline-4">
+<h4 id="org64e5084">Statement \(P(n)\)</h4>
+<div class="outline-text-4" id="text-org64e5084">
 <p>
 \[P(n): \quad 1+2+3+\dots+n = \frac{n(n+1)}{2}\]
 </p>
 </div>
 </div>
-<div id="outline-container-orgb59e540" class="outline-4">
-<h4 id="orgb59e540"><span class="section-number-4">1.3.2.</span> Base case: \(P(1)\)</h4>
-<div class="outline-text-4" id="text-1-3-2">
+<div id="outline-container-orgdd83e6b" class="outline-4">
+<h4 id="orgdd83e6b">Base case: \(P(1)\)</h4>
+<div class="outline-text-4" id="text-orgdd83e6b">
 <p>
 \[1 = \frac{1(1+1)}{2} = \frac{2}{2} = 1\]
 </p>
@@ -414,24 +428,24 @@ True. Hence \(P(1)\) holds.
 </p>
 </div>
 </div>
-<div id="outline-container-org85f56ae" class="outline-4">
-<h4 id="org85f56ae"><span class="section-number-4">1.3.3.</span> Inductive hypothesis: assume \(P(k)\)</h4>
-<div class="outline-text-4" id="text-1-3-3">
+<div id="outline-container-org7dac2da" class="outline-4">
+<h4 id="org7dac2da">Inductive hypothesis: assume \(P(k)\)</h4>
+<div class="outline-text-4" id="text-org7dac2da">
 <p>
 \[1+2+3+\dots+k = \frac{k(k+1)}{2}\]
 </p>
 </div>
 </div>
-<div id="outline-container-orga4f8c55" class="outline-4">
-<h4 id="orga4f8c55"><span class="section-number-4">1.3.4.</span> Inductive step: show \(P(k+1)\) follows</h4>
-<div class="outline-text-4" id="text-1-3-4">
+<div id="outline-container-org513a677" class="outline-4">
+<h4 id="org513a677">Inductive step: show \(P(k+1)\) follows</h4>
+<div class="outline-text-4" id="text-org513a677">
 <p>
 Target (\(P(k+1)\), substitute \(n=k+1\) into both sides):
 </p>
 
 <ul class="org-ul">
 <li>LHS: \(1+2+3+\dots+k+(k+1)\) — the sum extended by the next
-integer, \((k+1)\) (not &ldquo;+1&rdquo; tacked on — the whole quantity \((k+1)\)
+integer, \((k+1)\) (not "+1" tacked on — the whole quantity \((k+1)\)
 is the new term)</li>
 <li>RHS: \(\dfrac{(k+1)\big((k+1)+1\big)}{2} = \dfrac{(k+1)(k+2)}{2}\)</li>
 </ul>
@@ -485,18 +499,22 @@ This matches the target RHS exactly. \(P(k+1)\) follows from \(P(k)\).
 </p>
 </div>
 </div>
-<div id="outline-container-org01f51ed" class="outline-4">
-<h4 id="org01f51ed"><span class="section-number-4">1.3.5.</span> Conclusion</h4>
-<div class="outline-text-4" id="text-1-3-5">
+<div id="outline-container-org80e10cd" class="outline-4">
+<h4 id="org80e10cd">Conclusion</h4>
+<div class="outline-text-4" id="text-org80e10cd">
 <p>
 By the principle of mathematical induction, \(P(n)\) holds for every positive integer \(n\).
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org4aa5dfb" class="outline-3">
-<h3 id="org4aa5dfb"><span class="section-number-3">1.4.</span> Summary — the LHS/RHS discipline</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-orga85be36" class="outline-3">
+<h3 id="orga85be36">See Also: <a href="20260915192249-mathematical_induction_recurrence_relations.html#ID-828a074f-940e-4c59-a4e4-0baeb1396b7c">Mathematical Induction (Recurrence Relations)</a></h3>
+</div>
+
+<div id="outline-container-org5b7e02b" class="outline-3">
+<h3 id="org5b7e02b">Summary — the LHS/RHS discipline</h3>
+<div class="outline-text-3" id="text-org5b7e02b">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -514,7 +532,7 @@ By the principle of mathematical induction, \(P(n)\) holds for every positive in
 <tbody>
 <tr>
 <td class="org-right">1</td>
-<td class="org-left">Write \(P(k+1)\)&rsquo;s LHS and RHS by substituting \(n=k+1\)</td>
+<td class="org-left">Write \(P(k+1)\)'s LHS and RHS by substituting \(n=k+1\)</td>
 </tr>
 
 <tr>
@@ -541,10 +559,6 @@ By the principle of mathematical induction, \(P(n)\) holds for every positive in
 </div>
 </div>
 </div>
-</div>
-<div id="postamble" class="status">
-<p class="author">Author: Mikey</p>
-<p class="date">Created: 2026-09-14 Mon 19:43</p>
 </div>
 </body>
 </html>

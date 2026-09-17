@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Big O</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -243,91 +244,83 @@
 <div id="content" class="content">
 <h1 class="title">Big O</h1>
 
-<div id="org7595c75" class="figure">
+<div id="org7c93fd0" class="figure">
 <p><img src="./assets/big-o.png" alt="big-o.png" />
 </p>
 </div>
-
-<div id="outline-container-org2505f4d" class="outline-2">
-<h2 id="org2505f4d">Types</h2>
-<div class="outline-text-2" id="text-org2505f4d">
+<div id="outline-container-orgcd29910" class="outline-2">
+<h2 id="orgcd29910">Types</h2>
+<div class="outline-text-2" id="text-orgcd29910">
 </div>
-<div id="outline-container-org888a7c5" class="outline-3">
-<h3 id="org888a7c5">O(1): Constant Time</h3>
-<div class="outline-text-3" id="text-org888a7c5">
+<div id="outline-container-orgf05549f" class="outline-3">
+<h3 id="orgf05549f">O(1): Constant Time</h3>
+<div class="outline-text-3" id="text-orgf05549f">
 <p>
 Doesn't depend on the size of the data set.
 Example: Accessing an array element by its index.
 </p>
 </div>
 </div>
-
-<div id="outline-container-org039e4ea" class="outline-3">
-<h3 id="org039e4ea">O(log n): Logarithmic Time (Divide and Conquer)</h3>
-<div class="outline-text-3" id="text-org039e4ea">
+<div id="outline-container-org4212bd6" class="outline-3">
+<h3 id="org4212bd6">O(log n): Logarithmic Time (Divide and Conquer)</h3>
+<div class="outline-text-3" id="text-org4212bd6">
 <p>
 Splits the data in each step (divide and conquer).
 Example: Binary search.
 </p>
 </div>
 </div>
-
-<div id="outline-container-org1ec1a89" class="outline-3">
-<h3 id="org1ec1a89">O(n): Linear Time (Proportional)</h3>
-<div class="outline-text-3" id="text-org1ec1a89">
+<div id="outline-container-org16c15be" class="outline-3">
+<h3 id="org16c15be">O(n): Linear Time (Proportional)</h3>
+<div class="outline-text-3" id="text-org16c15be">
 <p>
 Directly proportional to the data set size.
 Example: Looping through an array.
 </p>
 </div>
 </div>
-
-<div id="outline-container-orgc7ffcf1" class="outline-3">
-<h3 id="orgc7ffcf1">O(n log n): Linearithmic Time</h3>
-<div class="outline-text-3" id="text-orgc7ffcf1">
+<div id="outline-container-org32045b5" class="outline-3">
+<h3 id="org32045b5">O(n log n): Linearithmic Time</h3>
+<div class="outline-text-3" id="text-org32045b5">
 <p>
 Splits and sorts or searches data.
 Example: Merge sort, quick sort.
 </p>
 </div>
 </div>
-
-<div id="outline-container-org78114fe" class="outline-3">
-<h3 id="org78114fe">O(n<sup>2</sup>): Polynomial Time</h3>
-<div class="outline-text-3" id="text-org78114fe">
+<div id="outline-container-orgb607ae9" class="outline-3">
+<h3 id="orgb607ae9">O(n<sup>2</sup>): Polynomial Time</h3>
+<div class="outline-text-3" id="text-orgb607ae9">
 <p>
 Nested loops for each power of n.
 Example: <a href="20230711192749-bubble_sort.html#ID-550e0301-0b4d-4a19-915d-2dd5d0cea67b">Bubble Sort</a>  O(n<sup>2</sup>).
 </p>
 </div>
 </div>
-
-<div id="outline-container-org2737b5d" class="outline-3">
-<h3 id="org2737b5d">Notation</h3>
-<div class="outline-text-3" id="text-org2737b5d">
+<div id="outline-container-orge306fb3" class="outline-3">
+<h3 id="orge306fb3">Notation</h3>
+<div class="outline-text-3" id="text-orge306fb3">
 </div>
-<div id="outline-container-org4c6fbb4" class="outline-4">
-<h4 id="org4c6fbb4">Omega (Ω) - Lower Bound</h4>
-<div class="outline-text-4" id="text-org4c6fbb4">
+<div id="outline-container-org8de2737" class="outline-4">
+<h4 id="org8de2737">Omega (Ω) - Lower Bound</h4>
+<div class="outline-text-4" id="text-org8de2737">
 <ul class="org-ul">
 <li>What it means: Omega (Ω) describes the best-case scenario for an algorithm.</li>
 <li>In simple terms: It tells you the fastest an algorithm can run in the best circumstances.</li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgea37035" class="outline-4">
-<h4 id="orgea37035">Theta (Θ) - Tight Bound</h4>
-<div class="outline-text-4" id="text-orgea37035">
+<div id="outline-container-org8105f73" class="outline-4">
+<h4 id="org8105f73">Theta (Θ) - Tight Bound</h4>
+<div class="outline-text-4" id="text-org8105f73">
 <ul class="org-ul">
 <li>In simple terms: It tells you what to generally expect in terms of time complexity.</li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org161bbbe" class="outline-4">
-<h4 id="org161bbbe">Big O (O) - Upper Bound (Worst Case)</h4>
-<div class="outline-text-4" id="text-org161bbbe">
+<div id="outline-container-org3bbc459" class="outline-4">
+<h4 id="org3bbc459">Big O (O) - Upper Bound (Worst Case)</h4>
+<div class="outline-text-4" id="text-org3bbc459">
 <ul class="org-ul">
 <li>What it means: Big O (O) describes the worst-case scenario for an algorithm.</li>
 <li>In simple terms: It tells you the slowest an algorithm can run in the worst circumstances.</li>
@@ -336,10 +329,9 @@ Example: <a href="20230711192749-bubble_sort.html#ID-550e0301-0b4d-4a19-915d-2dd
 </div>
 </div>
 </div>
-
-<div id="outline-container-org5125f17" class="outline-2">
-<h2 id="org5125f17">Useful Tips</h2>
-<div class="outline-text-2" id="text-org5125f17">
+<div id="outline-container-org7edbd79" class="outline-2">
+<h2 id="org7edbd79">Useful Tips</h2>
+<div class="outline-text-2" id="text-org7edbd79">
 <ul class="org-ul">
 <li>Best Case, Average Case, Worst Case</li>
 <li>Consider all scenarios when analysing.</li>

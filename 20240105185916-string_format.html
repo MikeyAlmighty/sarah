@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>String.format</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,10 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">String.format</h1>
-
-<div id="outline-container-org9dfbb3f" class="outline-2">
-<h2 id="org9dfbb3f">.format()</h2>
-<div class="outline-text-2" id="text-org9dfbb3f">
+<div id="outline-container-orgb6be6a3" class="outline-2">
+<h2 id="orgb6be6a3">.format()</h2>
+<div class="outline-text-2" id="text-orgb6be6a3">
 <p>
 Formats <code>String</code> values using formatting flags.
 </p>
@@ -267,45 +267,43 @@ They return a <code>reference</code> to the <code>instance</code> they are calle
 </p>
 
 
-<div id="orgcee326d" class="figure">
+<div id="org65df95c" class="figure">
 <p><img src="./assets/string_formatting_symbols.png" alt="string_formatting_symbols.png" />
 </p>
 </div>
 </div>
-
-<div id="outline-container-orga6a604f" class="outline-3">
-<h3 id="orga6a604f">Signature</h3>
-<div class="outline-text-3" id="text-orga6a604f">
+<div id="outline-container-orgc09c093" class="outline-3">
+<h3 id="orgc09c093">Signature</h3>
+<div class="outline-text-3" id="text-orgc09c093">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">String</span> <span class="org-function-name">format</span>(<span class="org-type">String</span> <span class="org-variable-name">format</span>, <span class="org-type">Object</span> <span class="org-variable-name">args</span>...)
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">String</span> <span class="org-function-name">format</span>(<span class="org-type">String</span> <span class="org-variable-name">format</span>, <span class="org-type">Object</span> <span class="org-variable-name">args</span>...)
 <span class="org-keyword">public</span> <span class="org-keyword">static</span> String format(<span class="org-type">Locale</span> <span class="org-variable-name">loc</span>, <span class="org-type">String</span> <span class="org-variable-name">format</span>, Object args...)
 <span class="org-keyword">public</span> String formatted(Object args...)
-</pre>
+</code></pre>
 </div>
 
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">name</span> = <span class="org-string">"Kate"</span>;
-<span class="org-type">var</span> <span class="org-variable-name">orderId</span> = 5;
+<pre class="src src-java"><code><span class="org-keyword">var</span> <span class="org-variable-name">name</span> = <span class="org-string">"Kate"</span>;
+<span class="org-keyword">var</span> <span class="org-variable-name">orderId</span> = 5;
 <span class="org-comment-delimiter">// </span><span class="org-comment">All print: Hello Kate, order 5 is ready
 </span>System.out.println(<span class="org-string">"Hello "</span> + name + <span class="org-string">", order "</span> + orderId + <span class="org-string">" is ready"</span>);
 System.out.println(String.format(<span class="org-string">"Hello %s, order %d is ready"</span>, name, orderId));
 System.out.println(<span class="org-string">"Hello %s, order %d is ready"</span>.formatted(name, orderId));
 
-<span class="org-type">var</span> <span class="org-variable-name">name</span> = <span class="org-string">"James"</span>;
-<span class="org-type">var</span> <span class="org-variable-name">score</span> = 90.25;
-<span class="org-type">var</span> <span class="org-variable-name">total</span> = 100;
+<span class="org-keyword">var</span> <span class="org-variable-name">name</span> = <span class="org-string">"James"</span>;
+<span class="org-keyword">var</span> <span class="org-variable-name">score</span> = 90.25;
+<span class="org-keyword">var</span> <span class="org-variable-name">total</span> = 100;
 System.out.println(<span class="org-string">"%s:%n   Score: %f out of %d"</span>.formatted(name, score, total));
 <span class="org-comment-delimiter">/* </span><span class="org-comment">OUTPUT:</span><span class="org-comment-delimiter"> */</span>
 <span class="org-comment-delimiter">// </span><span class="org-comment">James:
 </span><span class="org-comment-delimiter">//   </span><span class="org-comment">Score: 90.250000 out of 100</span>
-</pre>
+</code></pre>
 </div>
 </div>
-
-<div id="outline-container-org3294e29" class="outline-4">
-<h4 id="org3294e29"><span class="underline">Exam Trick</span></h4>
-<div class="outline-text-4" id="text-org3294e29">
+<div id="outline-container-org1457377" class="outline-4">
+<h4 id="org1457377"><span class="underline">Exam Trick</span></h4>
+<div class="outline-text-4" id="text-org1457377">
 <ul class="org-ul">
 <li>Mixing <code>data</code> types may cause exceptions at runtime.</li>
 </ul>
@@ -314,8 +312,8 @@ For example, the following throws an <b>exception</b> because a <code>floating­
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">str</span> = <span class="org-string">"Food: %d tons"</span>.formatted(2.0); <span class="org-comment-delimiter">// </span><span class="org-comment">IllegalFormatConversionException</span>
-</pre>
+<pre class="src src-java"><code><span class="org-keyword">var</span> <span class="org-variable-name">str</span> = <span class="org-string">"Food: %d tons"</span>.formatted(2.0); <span class="org-comment-delimiter">// </span><span class="org-comment">IllegalFormatConversionException</span>
+</code></pre>
 </div>
 
 <p>
@@ -332,14 +330,14 @@ For example, <code>90.250000</code> will be displayed as <code>90.3</code> (not 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">pi</span> = 3.14159265359;
+<pre class="src src-java"><code><span class="org-keyword">var</span> <span class="org-variable-name">pi</span> = 3.14159265359;
 
 System.out.format(<span class="org-string">"[%f]"</span>,pi);<span class="org-comment-delimiter">// </span><span class="org-comment">[3.141593]
 </span>System.out.format(<span class="org-string">"[%12.8f]"</span>,pi);<span class="org-comment-delimiter">// </span><span class="org-comment">[  3.14159265]
 </span>System.out.format(<span class="org-string">"[%012f]"</span>,pi);<span class="org-comment-delimiter">// </span><span class="org-comment">[00003.141593]
 </span>System.out.format(<span class="org-string">"[%12.2f]"</span>,pi);<span class="org-comment-delimiter">// </span><span class="org-comment">[        3.14]
 </span>System.out.format(<span class="org-string">"[%.3f]"</span>,pi);<span class="org-comment-delimiter">// </span><span class="org-comment">[3.142]</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>

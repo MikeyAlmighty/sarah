@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Thread</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -243,7 +244,7 @@
 <div id="content" class="content">
 <h1 class="title">Thread</h1>
 
-<div id="org3320f2c" class="figure">
+<div id="orgfaafbc3" class="figure">
 <p><img src="./assets/thread-life-cycle.png" alt="thread-life-cycle.png" />
 </p>
 </div>
@@ -252,7 +253,7 @@
 <code>DownloadFileTask</code>
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">DownloadFileTask</span> <span class="org-keyword">implements</span> <span class="org-type">Runnable</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">DownloadFileTask</span> <span class="org-keyword">implements</span> <span class="org-type">Runnable</span> {
     <span class="org-c-annotation">@Override</span>
     <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">run</span>() {
     System.out.println(<span class="org-string">"Downloading a file: "</span> + Thread.currentThread().getName());
@@ -260,31 +261,29 @@
 </span>
     }
 }
-</pre>
+</code></pre>
 </div>
-
-<div id="outline-container-orgc03ac5e" class="outline-2">
-<h2 id="orgc03ac5e">Starting a thread</h2>
-<div class="outline-text-2" id="text-orgc03ac5e">
+<div id="outline-container-org74f4e87" class="outline-2">
+<h2 id="org74f4e87">Starting a thread</h2>
+<div class="outline-text-2" id="text-org74f4e87">
 <p>
 <code>ThreadDemo.java</code>
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
         System.out.println(Thread.currentThread().getName());
-        <span class="org-keyword">for</span>(<span class="org-type">var</span> <span class="org-variable-name">i</span> = 0; i &lt; 10; i++){
+        <span class="org-keyword">for</span>(<span class="org-keyword">var</span> <span class="org-variable-name">i</span> = 0; i &lt; 10; i++){
             <span class="org-type">Thread</span> <span class="org-variable-name">thread</span> = <span class="org-keyword">new</span> <span class="org-type">Thread</span>(<span class="org-keyword">new</span> <span class="org-type">DownloadFileTask</span>());
             thread.start();
         }
     }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org6e99595" class="outline-2">
-<h2 id="org6e99595"><code>.join</code> Tell current thread to wait for completion of another thread.</h2>
-<div class="outline-text-2" id="text-org6e99595">
+<div id="outline-container-orgcb3bbf0" class="outline-2">
+<h2 id="orgcb3bbf0"><code>.join</code> Tell current thread to wait for completion of another thread.</h2>
+<div class="outline-text-2" id="text-orgcb3bbf0">
 <p>
 Allows one thread to wait until another thread completes its execution.
 In simpler words, it means it waits for the other thread to die.
@@ -292,7 +291,7 @@ It has a <code>void</code> type and <code>throws InterruptedException</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
     <span class="org-type">Thread</span> <span class="org-variable-name">thread</span> = <span class="org-keyword">new</span> <span class="org-type">Thread</span>(<span class="org-keyword">new</span> <span class="org-type">DownloadFileTask</span>());
     thread.start();
     <span class="org-keyword">try</span> {
@@ -303,14 +302,13 @@ It has a <code>void</code> type and <code>throws InterruptedException</code>.
     }
     System.out.println(<span class="org-string">"File is ready to be scanned"</span>);
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org2d522ef" class="outline-2">
-<h2 id="org2d522ef">Interrupt a thread</h2>
-<div class="outline-text-2" id="text-org2d522ef">
+<div id="outline-container-org21af63b" class="outline-2">
+<h2 id="org21af63b">Interrupt a thread</h2>
+<div class="outline-text-2" id="text-org21af63b">
 <p>
 Simply calling <code>thread.interrupt</code> doesn't stop the thread, but sends a request.
 We need to check if a specific thread is interrupted, then we can kill.
@@ -321,9 +319,9 @@ We need to check if a specific thread is interrupted, then we can kill.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">thread.interrupt();
+<pre class="src src-java"><code>thread.interrupt();
 <span class="org-keyword">if</span> (Thread.currentThread().isInterrupted()) <span class="org-keyword">return</span>;
-</pre>
+</code></pre>
 </div>
 </div>
 </div>

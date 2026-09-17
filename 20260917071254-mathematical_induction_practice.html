@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-09-17 Thu 07:24 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mathematical Induction Practice</title>
+<meta name="author" content="Michael Leibbrandt" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<style>
+        body {
+          font-family: sans-serif;
+          line-height: 1.5;
+          margin: 2em;
+          background-color: #ffffff;
+          color: #111111;
+        }
+
+        /* Code block styling */
+        pre.src {
+          padding: 1em;
+          border-radius: 6px;
+          overflow-x: auto;
+          background-color: #f0f0f0;
+          color: #222222;
+          border: 1px solid #ddd;
+          font-family: monospace;
+        }
+
+        /* Syntax highlighting for Org-generated classes */
+        span.org-keyword { color: #005999; font-weight: bold; }
+        span.org-string  { color: #aa3333; }
+        span.org-comment { color: #666666; font-style: italic; }
+        span.org-type    { color: #007700; font-weight: bold; }
+        span.org-variable { color: #993399; }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            pre.src {
+                background-color: #000000;
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
+
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
+        }
+
+        ul { list-style-type: disc; padding-left: 2em; }
+      </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Mathematical Induction Practice</h1>
+<div id="outline-container-orgf5ae4ed" class="outline-2">
+<h2 id="orgf5ae4ed">Mathematical Induction Practice</h2>
+</div>
+
+<div id="outline-container-org5d00fd5" class="outline-2">
+<h2 id="org5d00fd5">Recurrence Relations</h2>
+<div class="outline-text-2" id="text-org5d00fd5">
+</div>
+<div id="outline-container-org937b524" class="outline-3">
+<h3 id="org937b524">Method reminder</h3>
+<div class="outline-text-3" id="text-org937b524">
+<p>
+For each exercise:
+</p>
+
+<ol class="org-ol">
+<li>State \(P(n)\).</li>
+<li>Base case — check \(P(1)\).</li>
+<li>Inductive hypothesis — write \(P(k)\).</li>
+<li>Inductive step:
+<ul class="org-ul">
+<li>(a) Target — substitute \(n=k+1\) into the formula, simplify, set aside.</li>
+<li>(b) Bridge — substitute \(n=k\) into the recurrence.</li>
+<li>(c) Substitute the assumption into the bridge.</li>
+<li>(d) Algebra — simplify until it matches the target.</li>
+</ul></li>
+<li>Conclusion.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org490eebb" class="outline-3">
+<h3 id="org490eebb">Question 1</h3>
+<div class="outline-text-3" id="text-org490eebb">
+<p>
+Let \(\{a_n\}\) be the sequence defined by \(a_1 = 2\) and
+</p>
+
+<p>
+\[a_{n+1} = a_n + 4n+2, \qquad n \geq 1\]
+</p>
+
+<p>
+Prove by induction that \(a_n = 2n^2\) for all positive integers \(n\).
+</p>
+</div>
+</div>
+<div id="outline-container-org93afd3b" class="outline-3">
+<h3 id="org93afd3b">Question 2</h3>
+<div class="outline-text-3" id="text-org93afd3b">
+<p>
+Let \(\{a_n\}\) be the sequence defined by \(a_1 = 1\) and
+</p>
+
+<p>
+\[a_{n+1} = a_n + 3n^2+3n+1, \qquad n \geq 1\]
+</p>
+
+<p>
+Prove by induction that \(a_n = n^3\) for all positive integers \(n\).
+</p>
+</div>
+</div>
+<div id="outline-container-org33ddf58" class="outline-3">
+<h3 id="org33ddf58">Question 3</h3>
+<div class="outline-text-3" id="text-org33ddf58">
+<p>
+Let \(\{a_n\}\) be the sequence defined by \(a_1 = 6\) and
+</p>
+
+<p>
+\[a_{n+1} = a_n + 4n+6, \qquad n \geq 1\]
+</p>
+
+<p>
+Prove by induction that \(a_n = 2n^2+4n\) for all positive integers \(n\).
+</p>
+</div>
+</div>
+<div id="outline-container-org30cee9a" class="outline-3">
+<h3 id="org30cee9a">Question 4</h3>
+<div class="outline-text-3" id="text-org30cee9a">
+<p>
+Let \(\{a_n\}\) be the sequence defined by \(a_1 = 2\) and
+</p>
+
+<p>
+\[a_{n+1} = 2a_n, \qquad n \geq 1\]
+</p>
+
+<p>
+Prove by induction that \(a_n = 2^n\) for all positive integers \(n\).
+</p>
+</div>
+</div>
+<div id="outline-container-org4c7e107" class="outline-3">
+<h3 id="org4c7e107">Question 5</h3>
+<div class="outline-text-3" id="text-org4c7e107">
+<p>
+Let \(\{a_n\}\) be the sequence defined by \(a_1 = 0\) and
+</p>
+
+<p>
+\[a_{n+1} = a_n + 2n, \qquad n \geq 1\]
+</p>
+
+<p>
+Prove by induction that \(a_n = n^2-n\) for all positive integers \(n\).
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org36b4c02" class="outline-2">
+<h2 id="org36b4c02">Summation</h2>
+<div class="outline-text-2" id="text-org36b4c02">
+</div>
+<div id="outline-container-org4e55164" class="outline-3">
+<h3 id="org4e55164">Method reminder</h3>
+<div class="outline-text-3" id="text-org4e55164">
+<p>
+For each exercise:
+</p>
+
+<ol class="org-ol">
+<li>State \(P(n)\).</li>
+<li>Base case — check \(P(1)\).</li>
+<li>Inductive hypothesis — write \(P(k)\).</li>
+<li>Inductive step:
+<ul class="org-ul">
+<li>(a) Target — substitute \(n=k+1\) into the formula, simplify, set aside.</li>
+<li>(b) Bracket the LHS sum, isolating everything up to the <code>k-th</code>
+term (pure regrouping, no calculation yet).</li>
+<li>(c) Use \(P(k)\) to replace the bracketed part with its RHS.</li>
+<li>(d) Algebra — simplify until it matches the target.</li>
+</ul></li>
+<li>Conclusion.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgfb606aa" class="outline-3">
+<h3 id="orgfb606aa">Question 1</h3>
+<div class="outline-text-3" id="text-orgfb606aa">
+<p>
+Prove by induction that for all positive integers \(n\):
+</p>
+
+<p>
+\[2+4+6+\dots+2n = n(n+1)\]
+</p>
+</div>
+</div>
+<div id="outline-container-org3281362" class="outline-3">
+<h3 id="org3281362">Question 2</h3>
+<div class="outline-text-3" id="text-org3281362">
+<p>
+Prove by induction that for all positive integers \(n\):
+</p>
+
+<p>
+\[1^2+2^2+3^2+\dots+n^2 = \frac{n(n+1)(2n+1)}{6}\]
+</p>
+</div>
+</div>
+<div id="outline-container-org8f2c07a" class="outline-3">
+<h3 id="org8f2c07a">Question 3</h3>
+<div class="outline-text-3" id="text-org8f2c07a">
+<p>
+Prove by induction that for all positive integers \(n\):
+</p>
+
+<p>
+\[1+4+7+\dots+(3n-2) = \frac{n(3n-1)}{2}\]
+</p>
+</div>
+</div>
+<div id="outline-container-org58821f3" class="outline-3">
+<h3 id="org58821f3">Question 4</h3>
+<div class="outline-text-3" id="text-org58821f3">
+<p>
+Prove by induction that for all positive integers \(n\):
+</p>
+
+<p>
+\[1^3+2^3+3^3+\dots+n^3 = \left[\frac{n(n+1)}{2}\right]^2\]
+</p>
+</div>
+</div>
+<div id="outline-container-orgbfd0ff8" class="outline-3">
+<h3 id="orgbfd0ff8">Question 5</h3>
+<div class="outline-text-3" id="text-orgbfd0ff8">
+<p>
+Prove by induction that for all positive integers \(n\):
+</p>
+
+<p>
+\[\frac{1}{1\cdot2}+\frac{1}{2\cdot3}+\dots+\frac{1}{n(n+1)} = \frac{n}{n+1}\]
+</p>
+
+<p>
+Note: the terms are fractions here rather than integers, but the
+same bracketing method applies — isolate the sum up to the <code>k-th</code>
+term, replace using \(P(k)\), then combine with the new term
+algebraically (common denominator).
+</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python Match statement</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,10 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Python Match statement</h1>
-
-<div id="outline-container-org2abd4d4" class="outline-2">
-<h2 id="org2abd4d4">Match Statement (Python 3.10+)</h2>
-<div class="outline-text-2" id="text-org2abd4d4">
+<div id="outline-container-orgbf0cabd" class="outline-2">
+<h2 id="orgbf0cabd">Match Statement (Python 3.10+)</h2>
+<div class="outline-text-2" id="text-orgbf0cabd">
 <p>
 The <code>match</code> statement (introduced in Python 3.10) performs <b>structural pattern matching</b>.
 It compares a value against patterns and executes the first matching case.
@@ -255,29 +255,26 @@ It compares a value against patterns and executes the first matching case.
 It is similar to <code>switch</code> in other languages, but more powerful.
 </p>
 </div>
-
-<div id="outline-container-orgf28db54" class="outline-3">
-<h3 id="orgf28db54">Basic Syntax</h3>
-<div class="outline-text-3" id="text-orgf28db54">
+<div id="outline-container-org8fa4f68" class="outline-3">
+<h3 id="org8fa4f68">Basic Syntax</h3>
+<div class="outline-text-3" id="text-org8fa4f68">
 <div class="org-src-container">
-<pre class="src src-python"><span class="org-keyword">match</span> value:
+<pre class="src src-python"><code><span class="org-keyword">match</span> value:
     <span class="org-keyword">case</span> pattern1:
         <span class="org-comment-delimiter"># </span><span class="org-comment">code block
 </span>    <span class="org-keyword">case</span> pattern2:
         <span class="org-comment-delimiter"># </span><span class="org-comment">code block
 </span>    <span class="org-keyword">case</span> _:
         <span class="org-comment-delimiter"># </span><span class="org-comment">default case</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-
-<div id="outline-container-org50bccdb" class="outline-3">
-<h3 id="org50bccdb">Simple Example</h3>
-<div class="outline-text-3" id="text-org50bccdb">
+<div id="outline-container-orgf7326fa" class="outline-3">
+<h3 id="orgf7326fa">Simple Example</h3>
+<div class="outline-text-3" id="text-orgf7326fa">
 <div class="org-src-container">
-<pre class="src src-python"><span class="org-variable-name">status</span> <span class="org-operator">=</span> 404
+<pre class="src src-python"><code><span class="org-variable-name">status</span> <span class="org-operator">=</span> 404
 
 <span class="org-keyword">match</span> status:
     <span class="org-keyword">case</span> 200:
@@ -288,49 +285,43 @@ It is similar to <code>switch</code> in other languages, but more powerful.
         <span class="org-builtin">print</span>(<span class="org-string">"Server Error"</span>)
     <span class="org-keyword">case</span> _:
         <span class="org-builtin">print</span>(<span class="org-string">"Unknown Status"</span>)
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-
-<div id="outline-container-org257fc5b" class="outline-3">
-<h3 id="org257fc5b">Matching Multiple Values</h3>
-<div class="outline-text-3" id="text-org257fc5b">
+<div id="outline-container-orge50e7cf" class="outline-3">
+<h3 id="orge50e7cf">Matching Multiple Values</h3>
+<div class="outline-text-3" id="text-orge50e7cf">
 <div class="org-src-container">
-<pre class="src src-python"><span class="org-variable-name">day</span> <span class="org-operator">=</span> <span class="org-string">"Saturday"</span>
+<pre class="src src-python"><code><span class="org-variable-name">day</span> <span class="org-operator">=</span> <span class="org-string">"Saturday"</span>
 
 <span class="org-keyword">match</span> day:
     <span class="org-keyword">case</span> <span class="org-string">"Saturday"</span> <span class="org-operator">|</span> <span class="org-string">"Sunday"</span>:
         <span class="org-builtin">print</span>(<span class="org-string">"Weekend"</span>)
     <span class="org-keyword">case</span> _:
         <span class="org-builtin">print</span>(<span class="org-string">"Weekday"</span>)
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-
-<div id="outline-container-orgfbd8217" class="outline-3">
-<h3 id="orgfbd8217">Variable Capture</h3>
-<div class="outline-text-3" id="text-orgfbd8217">
+<div id="outline-container-org559871d" class="outline-3">
+<h3 id="org559871d">Variable Capture</h3>
+<div class="outline-text-3" id="text-org559871d">
 <div class="org-src-container">
-<pre class="src src-python"><span class="org-variable-name">point</span> <span class="org-operator">=</span> (3, 4)
+<pre class="src src-python"><code><span class="org-variable-name">point</span> <span class="org-operator">=</span> (3, 4)
 
 <span class="org-keyword">match</span> point:
     <span class="org-keyword">case</span> (x, y):
         <span class="org-builtin">print</span>(f<span class="org-string">"X: </span>{x}<span class="org-string">, Y: </span>{y}<span class="org-string">"</span>)
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-
-<div id="outline-container-org7831ac3" class="outline-3">
-<h3 id="org7831ac3">Matching with Conditions (Guards)</h3>
-<div class="outline-text-3" id="text-org7831ac3">
+<div id="outline-container-orgda40e3c" class="outline-3">
+<h3 id="orgda40e3c">Matching with Conditions (Guards)</h3>
+<div class="outline-text-3" id="text-orgda40e3c">
 <div class="org-src-container">
-<pre class="src src-python"><span class="org-variable-name">number</span> <span class="org-operator">=</span> 15
+<pre class="src src-python"><code><span class="org-variable-name">number</span> <span class="org-operator">=</span> 15
 
 <span class="org-keyword">match</span> number:
     <span class="org-keyword">case</span> n <span class="org-keyword">if</span> n <span class="org-operator">&gt;</span> 0:
@@ -339,30 +330,26 @@ It is similar to <code>switch</code> in other languages, but more powerful.
         <span class="org-builtin">print</span>(<span class="org-string">"Negative"</span>)
     <span class="org-keyword">case</span> _:
         <span class="org-builtin">print</span>(<span class="org-string">"Zero"</span>)
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-
-<div id="outline-container-org17e7306" class="outline-3">
-<h3 id="org17e7306">Matching Dictionaries</h3>
-<div class="outline-text-3" id="text-org17e7306">
+<div id="outline-container-orgf9d8fb9" class="outline-3">
+<h3 id="orgf9d8fb9">Matching Dictionaries</h3>
+<div class="outline-text-3" id="text-orgf9d8fb9">
 <div class="org-src-container">
-<pre class="src src-python"><span class="org-variable-name">user</span> <span class="org-operator">=</span> {<span class="org-string">"name"</span>: <span class="org-string">"Alice"</span>, <span class="org-string">"age"</span>: 30}
+<pre class="src src-python"><code><span class="org-variable-name">user</span> <span class="org-operator">=</span> {<span class="org-string">"name"</span>: <span class="org-string">"Alice"</span>, <span class="org-string">"age"</span>: 30}
 
 <span class="org-keyword">match</span> user:
     <span class="org-keyword">case</span> {<span class="org-string">"name"</span>: name, <span class="org-string">"age"</span>: age}:
         <span class="org-builtin">print</span>(f<span class="org-string">"</span>{name}<span class="org-string"> is </span>{age}<span class="org-string"> years old"</span>)
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-
-<div id="outline-container-org0771b14" class="outline-3">
-<h3 id="org0771b14">Key Notes</h3>
-<div class="outline-text-3" id="text-org0771b14">
+<div id="outline-container-org82fba2b" class="outline-3">
+<h3 id="org82fba2b">Key Notes</h3>
+<div class="outline-text-3" id="text-org82fba2b">
 <ul class="org-ul">
 <li>Available in Python <code>3.10</code> and later.</li>
 <li>Patterns are checked <b>top</b> <b>to</b> <b>bottom</b>.</li>

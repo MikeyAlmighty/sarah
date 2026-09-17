@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Accessing Objects via Reference Variables</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,10 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Accessing Objects via Reference Variables</h1>
-
-<div id="outline-container-org924a3c4" class="outline-2">
-<h2 id="org924a3c4">Accessing Objects via Reference Variables</h2>
-<div class="outline-text-2" id="text-org924a3c4">
+<div id="outline-container-orgea9ed4d" class="outline-2">
+<h2 id="orgea9ed4d">Accessing Objects via Reference Variables</h2>
+<div class="outline-text-2" id="text-orgea9ed4d">
 <p>
 An <code>object’s</code> <code>data</code> and <code>methods</code> can be accessed through the <code>dot</code> (<code>.</code>) operator (aka <b>object member access operator</b>) via the <code>object’s</code> <b>reference</b> <b>variable</b>.
 </p>
@@ -254,10 +254,9 @@ An <code>object’s</code> <code>data</code> and <code>methods</code> can be acc
 <li>Newly created objects are <b>allocated</b> in the <b>memory</b>.</li>
 </ul>
 </div>
-
-<div id="outline-container-org96fd53a" class="outline-3">
-<h3 id="org96fd53a">Syntax</h3>
-<div class="outline-text-3" id="text-org96fd53a">
+<div id="outline-container-org18e1057" class="outline-3">
+<h3 id="org18e1057">Syntax</h3>
+<div class="outline-text-3" id="text-org18e1057">
 <p>
 <code>ClassName objectRefVar;</code>
 </p>
@@ -274,8 +273,8 @@ A <code>class</code> is essentially a programmer-defined <b>type</b>.
 The following statement declares the variable <code>myCircle</code> to be of the <code>Circle</code> type:
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">Circle</span> <span class="org-variable-name">myCircle</span>;
-</pre>
+<pre class="src src-java"><code><span class="org-type">Circle</span> <span class="org-variable-name">myCircle</span>;
+</code></pre>
 </div>
 
 <ul class="org-ul">
@@ -284,8 +283,8 @@ The following statement declares the variable <code>myCircle</code> to be of the
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-java">myCircle = <span class="org-keyword">new</span> <span class="org-type">Circle</span>();
-</pre>
+<pre class="src src-java"><code>myCircle = <span class="org-keyword">new</span> <span class="org-type">Circle</span>();
+</code></pre>
 </div>
 
 <p>
@@ -293,17 +292,16 @@ You can write a single statement that combines the <b>declaration</b> of an <cod
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">ClassName</span> <span class="org-variable-name">objectRefVar</span> = <span class="org-keyword">new</span> <span class="org-type">ClassName</span>();
-</pre>
+<pre class="src src-java"><code><span class="org-type">ClassName</span> <span class="org-variable-name">objectRefVar</span> = <span class="org-keyword">new</span> <span class="org-type">ClassName</span>();
+</code></pre>
 </div>
 </div>
-
-<div id="outline-container-org6acf127" class="outline-4">
-<h4 id="org6acf127">Example</h4>
-<div class="outline-text-4" id="text-org6acf127">
+<div id="outline-container-orgae0ebee" class="outline-4">
+<h4 id="orgae0ebee">Example</h4>
+<div class="outline-text-4" id="text-orgae0ebee">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">Circle</span> <span class="org-variable-name">myCircle</span> = <span class="org-keyword">new</span> <span class="org-type">Circle</span>();
-</pre>
+<pre class="src src-java"><code><span class="org-type">Circle</span> <span class="org-variable-name">myCircle</span> = <span class="org-keyword">new</span> <span class="org-type">Circle</span>();
+</code></pre>
 </div>
 
 <ul class="org-ul">
@@ -312,24 +310,22 @@ You can write a single statement that combines the <b>declaration</b> of an <cod
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgfd78fb9" class="outline-3">
-<h3 id="orgfd78fb9">Reference Data Fields and the null Valuee</h3>
-<div class="outline-text-3" id="text-orgfd78fb9">
+<div id="outline-container-orgd21904c" class="outline-3">
+<h3 id="orgd21904c">Reference Data Fields and the null Valuee</h3>
+<div class="outline-text-3" id="text-orgd21904c">
 <ul class="org-ul">
 <li>The <b>data</b> <b>fields</b> can be of <a href="20231230083220-reference_types.html#ID-ef3f4798-9f1d-462f-8eea-df2b75e512f6">reference types</a>.</li>
 </ul>
 </div>
-
-<div id="outline-container-orgfe76fdf" class="outline-4">
-<h4 id="orgfe76fdf">Example</h4>
-<div class="outline-text-4" id="text-orgfe76fdf">
+<div id="outline-container-org7b1a823" class="outline-4">
+<h4 id="org7b1a823">Example</h4>
+<div class="outline-text-4" id="text-org7b1a823">
 <ul class="org-ul">
 <li>The following <code>Student</code> <b>class</b> contains a data field <code>name</code> of the <code>String</code> type.</li>
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">class</span> <span class="org-type">Student</span> {
+<pre class="src src-java"><code><span class="org-keyword">class</span> <span class="org-type">Student</span> {
     <span class="org-comment-delimiter">// </span><span class="org-comment">name has the default value null
 </span>    <span class="org-type">String</span> <span class="org-variable-name">name</span>;
 
@@ -342,7 +338,7 @@ You can write a single statement that combines the <b>declaration</b> of an <cod
     <span class="org-comment-delimiter">// </span><span class="org-comment">gender has default value '\u0000'
 </span>    <span class="org-type">char</span> <span class="org-variable-name">gender</span>;
 }
-</pre>
+</code></pre>
 </div>
 
 <ul class="org-ul">
@@ -363,16 +359,15 @@ However, Java assigns <b>no</b> <code>default</code> value to a <b>local</b> <b>
 </p>
 </div>
 </div>
-
-<div id="outline-container-orga32e3c5" class="outline-4">
-<h4 id="orga32e3c5">Example</h4>
-<div class="outline-text-4" id="text-orga32e3c5">
+<div id="outline-container-orgc6de8f2" class="outline-4">
+<h4 id="orgc6de8f2">Example</h4>
+<div class="outline-text-4" id="text-orgc6de8f2">
 <p>
 The following code displays the <code>default</code> <b>values</b> of the data fields <code>name</code>, <code>age</code>, <code>isScienceMajor</code> and <code>gender</code> for a <code>Student</code> <b>object</b>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">class</span> <span class="org-type">Student</span> {
+<pre class="src src-java"><code><span class="org-keyword">class</span> <span class="org-type">Student</span> {
     <span class="org-type">String</span> <span class="org-variable-name">name</span>;
     <span class="org-type">int</span> <span class="org-variable-name">age</span>;
     <span class="org-type">boolean</span> <span class="org-variable-name">isScienceMajor</span>;
@@ -388,20 +383,19 @@ The following code displays the <code>default</code> <b>values</b> of the data f
 </span>        System.out.println(<span class="org-string">"gender? "</span> + student.gender); <span class="org-comment-delimiter">// </span><span class="org-comment">gender?
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org6100c79" class="outline-4">
-<h4 id="org6100c79">Note</h4>
-<div class="outline-text-4" id="text-org6100c79">
+<div id="outline-container-org0ad322d" class="outline-4">
+<h4 id="org0ad322d">Note</h4>
+<div class="outline-text-4" id="text-org0ad322d">
 <ul class="org-ul">
 <li>The following has a <b>compile error</b>, because the <b>local</b> <b>variables</b> <code>x</code> and <code>y</code> are <b>not</b> <b>initialized</b>:</li>
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">class</span> <span class="org-type">TestLocalVariables</span> {
+<pre class="src src-java"><code><span class="org-keyword">class</span> <span class="org-type">TestLocalVariables</span> {
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
         <span class="org-type">int</span> <span class="org-variable-name">x</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">x has no default value
 </span>        <span class="org-type">String</span> <span class="org-variable-name">y</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">y has no default value
@@ -409,13 +403,12 @@ The following code displays the <code>default</code> <b>values</b> of the data f
 </span>        System.out.println(<span class="org-string">"y is "</span> + y); <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 </div>
-
 <ul class="org-ul">
-<li><a id="org0a3be42"></a>Note<br />
-<div class="outline-text-5" id="text-org0a3be42">
+<li><a id="org8aa4366"></a>Note<br />
+<div class="outline-text-5" id="text-org8aa4366">
 <ul class="org-ul">
 <li><code>NullPointerException</code> is a common <b>runtime</b> <b>error</b>.
 <ul class="org-ul">

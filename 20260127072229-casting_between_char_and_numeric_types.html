@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Casting Between char and Numeric Types</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,10 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Casting Between char and Numeric Types</h1>
-
-<div id="outline-container-org804760d" class="outline-2">
-<h2 id="org804760d">Casting Between char and Numeric Types</h2>
-<div class="outline-text-2" id="text-org804760d">
+<div id="outline-container-orge0145db" class="outline-2">
+<h2 id="orge0145db">Casting Between char and Numeric Types</h2>
+<div class="outline-text-2" id="text-orge0145db">
 <p>
 A <code>char</code> can be <a href="20231224190739-widening_primitive_conversion.html#ID-3ef23225-ae37-428e-8ad3-5d7728f59478">cast</a> into any <a href="20260121194236-numeric_data_types.html#ID-4b7774f6-ef98-4e86-ae2c-49961d934c6f">numeric types</a> (<b>vice</b> <b>versa</b>).
 </p>
@@ -256,21 +256,20 @@ For example:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">Note a hex integer is written using prefix 0X
+<pre class="src src-java"><code><span class="org-comment-delimiter">// </span><span class="org-comment">Note a hex integer is written using prefix 0X
 </span><span class="org-type">char</span> <span class="org-variable-name">ch</span> = (<span class="org-type">char</span>)0XAB0041; <span class="org-comment-delimiter">// </span><span class="org-comment">The lower 16 bits hex code 0041 is
 </span>                          <span class="org-comment-delimiter">// </span><span class="org-comment">assigned to ch
 </span>System.out.println(ch);   <span class="org-comment-delimiter">// </span><span class="org-comment">ch is character 'A'</span>
-</pre>
+</code></pre>
 </div>
 </div>
-
-<div id="outline-container-orge3c71ae" class="outline-3">
-<h3 id="orge3c71ae">Explanation</h3>
-<div class="outline-text-3" id="text-orge3c71ae">
+<div id="outline-container-org9251f50" class="outline-3">
+<h3 id="org9251f50">Explanation</h3>
+<div class="outline-text-3" id="text-org9251f50">
 </div>
-<div id="outline-container-org4a2c96e" class="outline-4">
-<h4 id="org4a2c96e">Step 1: Write the number in binary/hex</h4>
-<div class="outline-text-4" id="text-org4a2c96e">
+<div id="outline-container-org541e718" class="outline-4">
+<h4 id="org541e718">Step 1: Write the number in binary/hex</h4>
+<div class="outline-text-4" id="text-org541e718">
 <p>
 <code>0xAB0041</code> is a <code>32-bit</code> <b>int</b>:
 </p>
@@ -290,19 +289,17 @@ Lower 16 bits: 0x0041   ← kept
 </p>
 </div>
 </div>
-
-<div id="outline-container-org9833d85" class="outline-4">
-<h4 id="org9833d85">Step 2: Keep only the lower 16 bits</h4>
-<div class="outline-text-4" id="text-org9833d85">
+<div id="outline-container-org6c78470" class="outline-4">
+<h4 id="org6c78470">Step 2: Keep only the lower 16 bits</h4>
+<div class="outline-text-4" id="text-org6c78470">
 <p>
 <code>(char) 0xAB0041</code>  →  <code>(char) 0x0041</code>
 </p>
 </div>
 </div>
-
-<div id="outline-container-org0187a6b" class="outline-4">
-<h4 id="org0187a6b">Step 3: Interpret 0x0041 as a Unicode character</h4>
-<div class="outline-text-4" id="text-org0187a6b">
+<div id="outline-container-org1a2b743" class="outline-4">
+<h4 id="org1a2b743">Step 3: Interpret 0x0041 as a Unicode character</h4>
+<div class="outline-text-4" id="text-org1a2b743">
 <p>
 <code>0x0041</code> = <b>65</b> decimal = <code>'A'</code>
 </p>
@@ -313,45 +310,41 @@ Lower 16 bits: 0x0041   ← kept
 </div>
 </div>
 </div>
-
-<div id="outline-container-org3e18c35" class="outline-3">
-<h3 id="org3e18c35">Floating-Point</h3>
-<div class="outline-text-3" id="text-org3e18c35">
+<div id="outline-container-orgec5c4a0" class="outline-3">
+<h3 id="orgec5c4a0">Floating-Point</h3>
+<div class="outline-text-3" id="text-orgec5c4a0">
 <p>
 When a <a href="20260121194347-floating_point_types.html#ID-8487dd79-f6a8-49d9-ba32-9b97c5056ef2">floating-point</a> value is <b>cast</b> into a <code>char</code>, the floating-point value is first <b>cast</b> into an <code>int</code>, which is then <b>cast</b> into a <code>char</code>.
 </p>
 </div>
-
-<div id="outline-container-org32294ba" class="outline-4">
-<h4 id="org32294ba">Example</h4>
-<div class="outline-text-4" id="text-org32294ba">
+<div id="outline-container-orga479d15" class="outline-4">
+<h4 id="orga479d15">Example</h4>
+<div class="outline-text-4" id="text-orga479d15">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">char</span> <span class="org-variable-name">ch</span> = (<span class="org-type">char</span>)65.25; <span class="org-comment-delimiter">// </span><span class="org-comment">Decimal 65 is assigned to ch
+<pre class="src src-java"><code><span class="org-type">char</span> <span class="org-variable-name">ch</span> = (<span class="org-type">char</span>)65.25; <span class="org-comment-delimiter">// </span><span class="org-comment">Decimal 65 is assigned to ch
 </span>System.out.println(ch); <span class="org-comment-delimiter">// </span><span class="org-comment">ch is character A</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org08975c8" class="outline-3">
-<h3 id="org08975c8">Char to Numeric</h3>
-<div class="outline-text-3" id="text-org08975c8">
+<div id="outline-container-org8a2963d" class="outline-3">
+<h3 id="org8a2963d">Char to Numeric</h3>
+<div class="outline-text-3" id="text-org8a2963d">
 <p>
 When a <code>char</code> is <b>cast</b> into a <code>numeric type</code>, the <b>character’s</b> <a href="20260126075828-unicode.html#ID-25824dca-cd38-447d-84fd-8c69f246709f">Unicode</a> is <b>cast</b> into the specified <code>numeric</code> <code>type</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">int</span> <span class="org-variable-name">i</span> = (<span class="org-type">int</span>)<span class="org-string">'A'</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">The Unicode of character A is assigned to i
+<pre class="src src-java"><code><span class="org-type">int</span> <span class="org-variable-name">i</span> = (<span class="org-type">int</span>)<span class="org-string">'A'</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">The Unicode of character A is assigned to i
 </span>System.out.println(i); <span class="org-comment-delimiter">// </span><span class="org-comment">i is 65</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org398eb05" class="outline-3">
-<h3 id="org398eb05">Implicit Casting</h3>
-<div class="outline-text-3" id="text-org398eb05">
+<div id="outline-container-orgd57f18d" class="outline-3">
+<h3 id="orgd57f18d">Implicit Casting</h3>
+<div class="outline-text-3" id="text-orgd57f18d">
 <p>
 <b>Implicit</b> <b>casting</b> can be used if the result of a <b>casting</b> fits into the <code>target</code> <code>variable</code>.
 Otherwise, <b>explicit</b> <b>casting</b> must be <b>used</b>.
@@ -361,9 +354,9 @@ Otherwise, <b>explicit</b> <b>casting</b> must be <b>used</b>.
 For example, since the Unicode of <code>'a'</code> is <code>97</code>, which is <b>within</b> the <b>range</b> of a <code>byte</code>, these implicit castings are fine:
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">byte</span> <span class="org-variable-name">b</span> = <span class="org-string">'a'</span>;
+<pre class="src src-java"><code><span class="org-type">byte</span> <span class="org-variable-name">b</span> = <span class="org-string">'a'</span>;
 <span class="org-type">int</span> <span class="org-variable-name">i</span> = <span class="org-string">'a'</span>;
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -371,8 +364,8 @@ But the following statement is <b>incorrect</b>, because the Unicode <code>\uFFF
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">byte</span> <span class="org-variable-name">b</span> = <span class="org-string">'\uFFF4'</span>;
-</pre>
+<pre class="src src-java"><code><span class="org-type">byte</span> <span class="org-variable-name">b</span> = <span class="org-string">'\uFFF4'</span>;
+</code></pre>
 </div>
 
 <p>
@@ -384,24 +377,22 @@ Any number <b>not</b> in this <b>range</b> <b>must</b> be <b>cast</b> into a <co
 </p>
 </div>
 </div>
-
-<div id="outline-container-org409b13f" class="outline-3">
-<h3 id="org409b13f">Explicit Casting</h3>
-<div class="outline-text-3" id="text-org409b13f">
+<div id="outline-container-orgd673bfb" class="outline-3">
+<h3 id="orgd673bfb">Explicit Casting</h3>
+<div class="outline-text-3" id="text-orgd673bfb">
 <p>
 To force this assignment, use <b>explicit</b> <b>casting</b>, as follows:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">byte</span> <span class="org-variable-name">b</span> = (<span class="org-type">byte</span>)<span class="org-string">'\uFFF4'</span>;
-</pre>
+<pre class="src src-java"><code><span class="org-type">byte</span> <span class="org-variable-name">b</span> = (<span class="org-type">byte</span>)<span class="org-string">'\uFFF4'</span>;
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-orge712ce0" class="outline-3">
-<h3 id="orge712ce0">Operators</h3>
-<div class="outline-text-3" id="text-orge712ce0">
+<div id="outline-container-org7d54b56" class="outline-3">
+<h3 id="org7d54b56">Operators</h3>
+<div class="outline-text-3" id="text-org7d54b56">
 <p>
 All <a href="20231231061730-arithmetic_operators.html#ID-f6e458df-99cf-45d6-b224-16f325cc1d2b">numeric operators</a> can be applied to <code>char</code> operands.
 A <code>char</code> <b>operand</b> is <b>automatically</b> <b>cast</b> into a <code>number</code> if the other operand is a <code>number</code> or a <code>character</code>.
@@ -411,41 +402,38 @@ A <code>char</code> <b>operand</b> is <b>automatically</b> <b>cast</b> into a <c
 If a <code>string</code> is <b>concatenated</b> with a <code>character</code>, the <code>character</code> is <b>converted</b> into a <code>string</code>.
 </p>
 </div>
-
-<div id="outline-container-org7264325" class="outline-4">
-<h4 id="org7264325">Examples</h4>
-<div class="outline-text-4" id="text-org7264325">
+<div id="outline-container-orgfaf21bf" class="outline-4">
+<h4 id="orgfaf21bf">Examples</h4>
+<div class="outline-text-4" id="text-orgfaf21bf">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">int</span> <span class="org-variable-name">i</span> = <span class="org-string">'2'</span> + <span class="org-string">'3'</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">(int)'2' is 50 and (int)'3' is 51
+<pre class="src src-java"><code><span class="org-type">int</span> <span class="org-variable-name">i</span> = <span class="org-string">'2'</span> + <span class="org-string">'3'</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">(int)'2' is 50 and (int)'3' is 51
 </span>System.out.println(<span class="org-string">"i is "</span> + i); <span class="org-comment-delimiter">// </span><span class="org-comment">i is 101
 </span>
 <span class="org-type">int</span> <span class="org-variable-name">j</span> = 2 + <span class="org-string">'a'</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">(int)'a' is 97
 </span>System.out.println(<span class="org-string">"j is "</span> + j); <span class="org-comment-delimiter">// </span><span class="org-comment">j is 99
 </span>System.out.println(j + <span class="org-string">" is the Unicode for character "</span>) + (<span class="org-type">char</span>)j); <span class="org-comment-delimiter">// </span><span class="org-comment">99 is the Unicode for character c
 </span>System.out.println(<span class="org-string">"Chapter "</span> + <span class="org-string">'2'</span>);
-</pre>
+</code></pre>
 </div>
 </div>
-
 <ul class="org-ul">
-<li><a id="orgd962620"></a>Outputs:<br />
-<div class="outline-text-5" id="text-orgd962620">
+<li><a id="orge072323"></a>Outputs:<br />
+<div class="outline-text-5" id="text-orge072323">
 <div class="org-src-container">
-<pre class="src src-shell">i is 101
+<pre class="src src-shell"><code>i is 101
 j is 99
 99 is the Unicode for character c
 Chapter 2
-</pre>
+</code></pre>
 </div>
 </div>
 </li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org527541f" class="outline-3">
-<h3 id="org527541f">Comparing and Testing Characters</h3>
-<div class="outline-text-3" id="text-org527541f">
+<div id="outline-container-org12f7520" class="outline-3">
+<h3 id="org12f7520">Comparing and Testing Characters</h3>
+<div class="outline-text-3" id="text-org12f7520">
 <p>
 Two <code>characters</code> can be <b>compared</b> using the <a href="20231231063707-relational_operators.html#ID-bf93d4e3-f501-4e73-ac07-e1c6653831ba">relational operators</a> just like comparing two <b>numbers</b>.
 </p>
@@ -454,32 +442,30 @@ Two <code>characters</code> can be <b>compared</b> using the <a href="2023123106
 This is done by comparing the <a href="20260126075828-unicode.html#ID-25824dca-cd38-447d-84fd-8c69f246709f">Unicodes</a> of the <b>two</b> <code>characters</code>.
 </p>
 </div>
-
-<div id="outline-container-org8e55ccb" class="outline-4">
-<h4 id="org8e55ccb">Examples</h4>
-<div class="outline-text-4" id="text-org8e55ccb">
+<div id="outline-container-orgdd58d86" class="outline-4">
+<h4 id="orgdd58d86">Examples</h4>
+<div class="outline-text-4" id="text-orgdd58d86">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-string">'a'</span> &lt; <span class="org-string">'b'</span> is <span class="org-constant">true</span> because the Unicode <span class="org-keyword">for</span> <span class="org-string">'a'</span> (97) is less than the Unicode <span class="org-keyword">for</span> <span class="org-string">'b'</span> (98).
+<pre class="src src-java"><code><span class="org-string">'a'</span> &lt; <span class="org-string">'b'</span> is <span class="org-constant">true</span> because the Unicode <span class="org-keyword">for</span> <span class="org-string">'a'</span> (97) is less than the Unicode <span class="org-keyword">for</span> <span class="org-string">'b'</span> (98).
 <span class="org-string">'a'</span> &lt; <span class="org-string">'A'</span> is <span class="org-constant">false</span> because the Unicodefor <span class="org-string">'a'</span>(97) is greater than the Unicodefor <span class="org-string">'A'</span> (65).
 <span class="org-string">'1'</span> &lt; <span class="org-string">'8'</span> is <span class="org-constant">true</span> because the Unicode <span class="org-keyword">for</span> <span class="org-string">'1'</span> (49) is less than the Unicode <span class="org-keyword">for</span> <span class="org-string">'8'</span>
-</pre>
+</code></pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">if</span> (ch &gt;= <span class="org-string">'A'</span> &amp;&amp; ch &lt;= <span class="org-string">'Z'</span>)
+<pre class="src src-java"><code><span class="org-keyword">if</span> (ch &gt;= <span class="org-string">'A'</span> &amp;&amp; ch &lt;= <span class="org-string">'Z'</span>)
     System.out.println(ch + <span class="org-string">" is an uppercase letter"</span>);
 <span class="org-keyword">else</span> <span class="org-keyword">if</span> (ch &gt;= <span class="org-string">'a'</span> &amp;&amp; ch &lt;= <span class="org-string">'z'</span>)
     System.out.println(ch + <span class="org-string">" is a lowercase letter"</span>);
 <span class="org-keyword">else</span> <span class="org-keyword">if</span> (ch &gt;= <span class="org-string">'0'</span> &amp;&amp; ch &lt;= <span class="org-string">'9'</span>)
     System.out.println(ch + <span class="org-string">" is a numeric character"</span>);
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org84e5871" class="outline-4">
-<h4 id="org84e5871">Helper Methods</h4>
-<div class="outline-text-4" id="text-org84e5871">
+<div id="outline-container-orgff9e865" class="outline-4">
+<h4 id="orgff9e865">Helper Methods</h4>
+<div class="outline-text-4" id="text-orgff9e865">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -532,10 +518,9 @@ This is done by comparing the <a href="20260126075828-unicode.html#ID-25824dca-c
 </tbody>
 </table>
 </div>
-
 <ul class="org-ul">
-<li><a id="org806fe66"></a>Examples<br />
-<div class="outline-text-5" id="text-org806fe66">
+<li><a id="orgf4e3fa0"></a>Examples<br />
+<div class="outline-text-5" id="text-orgf4e3fa0">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 

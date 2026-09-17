@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Creating Simple Enums</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,36 +243,34 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Creating Simple Enums</h1>
-
-<div id="outline-container-orgb9eef42" class="outline-2">
-<h2 id="orgb9eef42">Creating Simple Enums</h2>
-<div class="outline-text-2" id="text-orgb9eef42">
+<div id="outline-container-orgfa6dac5" class="outline-2">
+<h2 id="orgfa6dac5">Creating Simple Enums</h2>
+<div class="outline-text-2" id="text-orgfa6dac5">
 </div>
-<div id="outline-container-org9b11312" class="outline-3">
-<h3 id="org9b11312">Example</h3>
-<div class="outline-text-3" id="text-org9b11312">
+<div id="outline-container-org5ecc90e" class="outline-3">
+<h3 id="org5ecc90e">Example</h3>
+<div class="outline-text-3" id="text-org5ecc90e">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">enum</span> <span class="org-type">Season</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">enum</span> <span class="org-type">Season</span> {
     <span class="org-variable-name">Winter</span>,
     <span class="org-variable-name">SPRING</span>,
     <span class="org-variable-name">SUMMER</span>,
     <span class="org-variable-name">FALL</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">Optional for Simple Enums
 </span>}
-</pre>
+</code></pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">s</span> = <span class="org-constant">Season</span>.SUMMER;
+<pre class="src src-java"><code><span class="org-keyword">var</span> <span class="org-variable-name">s</span> = <span class="org-constant">Season</span>.SUMMER;
 
 System.out.println(<span class="org-constant">Season</span>.SUMMER); <span class="org-comment-delimiter">// </span><span class="org-comment">SUMMER
 </span>System.out.println(s == <span class="org-constant">Season</span>.SUMMER); <span class="org-comment-delimiter">// </span><span class="org-comment">true</span>
-</pre>
+</code></pre>
 </div>
 </div>
-
-<div id="outline-container-org2c13f60" class="outline-4">
-<h4 id="org2c13f60"><span class="underline">Exam Trick</span></h4>
-<div class="outline-text-4" id="text-org2c13f60">
+<div id="outline-container-orgb92bfdf" class="outline-4">
+<h4 id="orgb92bfdf"><span class="underline">Exam Trick</span></h4>
+<div class="outline-text-4" id="text-orgb92bfdf">
 <p>
 Enums print the <b>name</b> of the enum when <code>toString()</code> is called.
 </p>
@@ -286,20 +285,19 @@ In other words, you can use <code>equals()</code> or <code>==</code> to compare 
 </div>
 </div>
 </div>
-
-<div id="outline-container-orge880e52" class="outline-3">
-<h3 id="orge880e52">Calling the values(), name(), and ordinal() Methods</h3>
-<div class="outline-text-3" id="text-orge880e52">
+<div id="outline-container-org2d80e24" class="outline-3">
+<h3 id="org2d80e24">Calling the values(), name(), and ordinal() Methods</h3>
+<div class="outline-text-3" id="text-org2d80e24">
 </div>
-<div id="outline-container-org81c40f2" class="outline-4">
-<h4 id="org81c40f2">values()</h4>
-<div class="outline-text-4" id="text-org81c40f2">
+<div id="outline-container-org6e5831b" class="outline-4">
+<h4 id="org6e5831b">values()</h4>
+<div class="outline-text-4" id="text-org6e5831b">
 <p>
 An enum provides a <code>values()</code> method to get an <code>array</code> of all of the <b>values</b>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">for</span>(<span class="org-type">var</span> <span class="org-variable-name">season</span>: Season.values()) {
+<pre class="src src-java"><code><span class="org-keyword">for</span>(<span class="org-keyword">var</span> <span class="org-variable-name">season</span>: Season.values()) {
     System.out.println(season.name() + <span class="org-string">" "</span> + season.ordinal());
 }
 <span class="org-comment-delimiter">/*</span><span class="org-comment">
@@ -309,14 +307,13 @@ An enum provides a <code>values()</code> method to get an <code>array</code> of 
  * SUMMER 2
  * FALL 3
 </span><span class="org-comment-delimiter">*/</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgbe5e660" class="outline-4">
-<h4 id="orgbe5e660">valueOf()</h4>
-<div class="outline-text-4" id="text-orgbe5e660">
+<div id="outline-container-org51f26df" class="outline-4">
+<h4 id="org51f26df">valueOf()</h4>
+<div class="outline-text-4" id="text-org51f26df">
 <p>
 Another useful feature is retrieving an enum <code>value</code> from a <code>String</code> using the <code>valueOf()</code> method.
 </p>
@@ -329,10 +326,9 @@ This is helpful when working with older code or parsing user input.
 The <code>String</code> passed in must match the enum <code>value</code> <b>exactly</b>, though.
 </p>
 </div>
-
 <ul class="org-ul">
-<li><a id="orgf3f4643"></a>Example<br />
-<div class="outline-text-5" id="text-orgf3f4643">
+<li><a id="orgb542a0d"></a>Example<br />
+<div class="outline-text-5" id="text-orgb542a0d">
 <p>
 The <code>first</code> statement works and assigns the proper enum value to <code>s</code>.
 Note that this line is not creating an enum value, at least not directly.
@@ -347,9 +343,9 @@ Once the enum has been loaded, it retrieves the single enum value with the match
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">Season</span> <span class="org-variable-name">s</span> = Season.valueOf(<span class="org-string">"SUMMER"</span>); <span class="org-comment-delimiter">// </span><span class="org-comment">SUMMER
+<pre class="src src-java"><code><span class="org-type">Season</span> <span class="org-variable-name">s</span> = Season.valueOf(<span class="org-string">"SUMMER"</span>); <span class="org-comment-delimiter">// </span><span class="org-comment">SUMMER
 </span><span class="org-type">Season</span> <span class="org-variable-name">t</span> = Season.valueOf(<span class="org-string">"summer"</span>); <span class="org-comment-delimiter">// </span><span class="org-comment">IllegalArgumentException</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -358,9 +354,9 @@ There is no enum value with the lowercase name <code>summer</code>. (throws an <
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">Exception in thread <span class="org-string">"main"</span> <span class="org-constant">java</span>.<span class="org-constant">lang</span>.IllegalArgumentException:
+<pre class="src src-java"><code>Exception in thread <span class="org-string">"main"</span> <span class="org-constant">java</span>.<span class="org-constant">lang</span>.IllegalArgumentException:
 No <span class="org-keyword">enum</span> constant <span class="org-constant">enums</span>.Season.summer
-</pre>
+</code></pre>
 </div>
 </div>
 </li>

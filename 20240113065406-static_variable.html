@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Static Variable</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,24 +243,22 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Static Variable</h1>
-
-<div id="outline-container-org85c15b6" class="outline-2">
-<h2 id="org85c15b6">Static Variable</h2>
-<div class="outline-text-2" id="text-org85c15b6">
+<div id="outline-container-orgf43c075" class="outline-2">
+<h2 id="orgf43c075">Static Variable</h2>
+<div class="outline-text-2" id="text-orgf43c075">
 <p>
 You can think of a <code>static</code> variable as being a member of the single <code>class</code> object that exists <b>independently</b> of any <b>instances</b> of that <code>class</code>.
 </p>
 </div>
-
-<div id="outline-container-orgdf64f52" class="outline-4">
-<h4 id="orgdf64f52">Example</h4>
-<div class="outline-text-4" id="text-orgdf64f52">
+<div id="outline-container-org5327819" class="outline-4">
+<h4 id="org5327819">Example</h4>
+<div class="outline-text-4" id="text-org5327819">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Penguin</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Penguin</span> {
     <span class="org-type">String</span> <span class="org-variable-name">name</span>;
     <span class="org-keyword">static</span> <span class="org-type">String</span> <span class="org-variable-name">nameOfTallestPenguin</span>;
 }
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -267,12 +266,12 @@ We see that each <code>Penguin</code> instance is updated with its own unique na
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">unused</span>) {
-    <span class="org-type">var</span> <span class="org-variable-name">p1</span> = <span class="org-keyword">new</span> <span class="org-type">Penguin</span>();
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">unused</span>) {
+    <span class="org-keyword">var</span> <span class="org-variable-name">p1</span> = <span class="org-keyword">new</span> <span class="org-type">Penguin</span>();
     p1.name = <span class="org-string">"Lilly"</span>;
     p1.nameOfTallestPenguin = <span class="org-string">"Lilly"</span>;
 
-    <span class="org-type">var</span> <span class="org-variable-name">p2</span> = <span class="org-keyword">new</span> <span class="org-type">Penguin</span>();
+    <span class="org-keyword">var</span> <span class="org-variable-name">p2</span> = <span class="org-keyword">new</span> <span class="org-type">Penguin</span>();
     p2.name = <span class="org-string">"Willy"</span>;
     p2.nameOfTallestPenguin = <span class="org-string">"Willy"</span>;
 
@@ -282,14 +281,13 @@ We see that each <code>Penguin</code> instance is updated with its own unique na
     System.out.println(p2.name); <span class="org-comment-delimiter">// </span><span class="org-comment">Willy
 </span>    System.out.println(p2.nameOfTallestPenguin); <span class="org-comment-delimiter">// </span><span class="org-comment">Willy
 </span>}
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org315036c" class="outline-3">
-<h3 id="org315036c">Access</h3>
-<div class="outline-text-3" id="text-org315036c">
+<div id="outline-container-org92c1952" class="outline-3">
+<h3 id="org92c1952">Access</h3>
+<div class="outline-text-3" id="text-org92c1952">
 <p>
 See: <a href="20240113065951-accessing_a_static_variable_or_method.html#ID-11df9fd0-ceac-43be-aeba-9028fb7cfa60">Accessing a Static Variable or Method</a>
 </p>

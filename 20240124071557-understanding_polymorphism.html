@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Understanding Polymorphism</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,10 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Understanding Polymorphism</h1>
-
-<div id="outline-container-org97793ab" class="outline-2">
-<h2 id="org97793ab">Polymorphism</h2>
-<div class="outline-text-2" id="text-org97793ab">
+<div id="outline-container-orgaec2860" class="outline-2">
+<h2 id="orgaec2860">Polymorphism</h2>
+<div class="outline-text-2" id="text-orgaec2860">
 <ul class="org-ul">
 <li>Means that a <code>variable</code> of a <code>supertype</code> can refer to a <code>subtype</code> object.</li>
 <li>Allows objects of different <code>classes</code> to be treated as objects of a common <code>superclass</code>.</li>
@@ -271,12 +271,11 @@ Every <code>circle</code> is a <code>geometric</code> object, but not every <cod
 Therefore, you can always pass an <b>instance</b> of a <code>subclass</code> to a parameter of its <code>superclass</code> type.
 </p>
 </div>
-
-<div id="outline-container-orgf985d89" class="outline-3">
-<h3 id="orgf985d89">Example</h3>
-<div class="outline-text-3" id="text-orgf985d89">
+<div id="outline-container-org3a3cebd" class="outline-3">
+<h3 id="org3a3cebd">Example</h3>
+<div class="outline-text-3" id="text-org3a3cebd">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">PolymorphismDemo</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">PolymorphismDemo</span> {
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
         <span class="org-comment-delimiter">// </span><span class="org-comment">Display circle and rectangle properties
 </span>        displayObject(<span class="org-keyword">new</span> <span class="org-type">Circle</span>(1, <span class="org-string">"red"</span>, <span class="org-constant">false</span>));
@@ -288,17 +287,16 @@ Therefore, you can always pass an <b>instance</b> of a <code>subclass</code> to 
         System.out.println(<span class="org-string">"Created on "</span> + object.getDateCreated() + <span class="org-string">". Color is "</span> + object.getColor());
     }
 }
-</pre>
+</code></pre>
 </div>
 </div>
-
-<div id="outline-container-orgd80fba0" class="outline-4">
-<h4 id="orgd80fba0">Output</h4>
-<div class="outline-text-4" id="text-orgd80fba0">
+<div id="outline-container-org8c1a403" class="outline-4">
+<h4 id="org8c1a403">Output</h4>
+<div class="outline-text-4" id="text-org8c1a403">
 <div class="org-src-container">
-<pre class="src src-java">Created on Mon Mar 09 19:25:20 EDT <span class="org-constant">2011</span>. Color is red
+<pre class="src src-java"><code>Created on Mon Mar 09 19:25:20 EDT <span class="org-constant">2011</span>. Color is red
 Created on Mon Mar 09 19:25:20 EDT <span class="org-constant">2011</span>. Color is black
-</pre>
+</code></pre>
 </div>
 
 <ul class="org-ul">
@@ -310,10 +308,9 @@ Created on Mon Mar 09 19:25:20 EDT <span class="org-constant">2011</span>. Color
 </ul></li>
 </ul>
 </div>
-
 <ul class="org-ul">
-<li><a id="orgfad0706"></a>Note<br />
-<div class="outline-text-5" id="text-orgfad0706">
+<li><a id="org83f41f5"></a>Note<br />
+<div class="outline-text-5" id="text-org83f41f5">
 <ul class="org-ul">
 <li>An <b>object</b> of a <code>subclass</code> can be used wherever its <code>superclass</code> object is used.</li>
 </ul>
@@ -326,10 +323,9 @@ This is commonly known as <b>polymorphism</b> (from a Greek word meaning <b>“m
 In simple terms, <b>polymorphism</b> means that a <b>variable</b> of a <code>supertype</code> can refer to a <code>subtype</code> object.
 </p>
 </div>
-
 <ul class="org-ul">
-<li><a id="orge24f0c1"></a>See:<br />
-<div class="outline-text-6" id="text-orge24f0c1">
+<li><a id="org23e6da6"></a>See:<br />
+<div class="outline-text-6" id="text-org23e6da6">
 <ul class="org-ul">
 <li><a href="20260321142411-polymorphism_compile_time.html#ID-d0c4dfe1-3d96-4773-bb01-43bf1a261d0a">Polymorphism (Compile Time)</a></li>
 <li><a href="20260321142428-polymorphism_run_time.html#ID-16577748-cab3-4067-a6ee-c92fb65fa48f">Polymorphism (Run Time)</a></li>

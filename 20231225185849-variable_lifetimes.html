@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Variable Lifetimes</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -245,29 +246,26 @@
 <p>
 The lifetime of a variable—that is, the time a variable is accessible during execution—is determined by the <code>context</code> in which it is declared.
 </p>
-
-<div id="outline-container-org105b278" class="outline-2">
-<h2 id="org105b278">Instance variables:</h2>
-<div class="outline-text-2" id="text-org105b278">
+<div id="outline-container-org7fab421" class="outline-2">
+<h2 id="org7fab421">Instance variables:</h2>
+<div class="outline-text-2" id="text-org7fab421">
 <p>
 The values of these variables at any given time constitute the state of the object.
 Instance variables <b>exist as long as the object they belong</b> to is in use at <code>runtime</code>.
 </p>
 </div>
 </div>
-
-<div id="outline-container-org6ac6ec7" class="outline-2">
-<h2 id="org6ac6ec7">Static variables:</h2>
-<div class="outline-text-2" id="text-org6ac6ec7">
+<div id="outline-container-org3b68aa3" class="outline-2">
+<h2 id="org3b68aa3">Static variables:</h2>
+<div class="outline-text-2" id="text-org3b68aa3">
 <p>
 <code>Created</code> when the class is <b>loaded at runtime</b> and exist as long as the class is <b>available</b> at <code>runtime</code>.
 </p>
 </div>
 </div>
-
-<div id="outline-container-org2507c06" class="outline-2">
-<h2 id="org2507c06">Local variables (also called method automatic variables):</h2>
-<div class="outline-text-2" id="text-org2507c06">
+<div id="outline-container-org8be354d" class="outline-2">
+<h2 id="org8be354d">Local variables (also called method automatic variables):</h2>
+<div class="outline-text-2" id="text-org8be354d">
 <p>
 Declared in <code>methods</code>, <code>constructors</code>, and <code>blocks</code>, and created for each execution of the <code>method</code>, <code>constructor</code>, or <code>block</code>.
 After the execution of the <code>method</code>, <code>constructor</code>, or <code>block</code> completes, local variables are <b>no longer accessible</b>.

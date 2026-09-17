@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Static Variable Modifiers</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,10 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Static Variable Modifiers</h1>
-
-<div id="outline-container-org64f2aa7" class="outline-2">
-<h2 id="org64f2aa7">Static Variable Modifiers</h2>
-<div class="outline-text-2" id="text-org64f2aa7">
+<div id="outline-container-org3d804b8" class="outline-2">
+<h2 id="org3d804b8">Static Variable Modifiers</h2>
+<div class="outline-text-2" id="text-org3d804b8">
 <p>
 <code>Static</code> variables can be declared with the same <a href="20240112053251-instance_variable_modifiers.html#ID-ce19a18e-7f0c-475c-a05b-facbf29af10d">instance Variables</a>, such as <code>final</code>, <code>transient</code>, and <code>volatile</code>.
 <code>Static</code> variables that are never meant to change are known as a <b>constant</b>.
@@ -257,36 +257,34 @@ It uses the <code>final</code> modifier to ensure the variable <b>never changes<
 They use <b>all uppercase letters</b> with <b>underscores between words</b>.
 </p>
 </div>
-
-<div id="outline-container-orgc9178cd" class="outline-3">
-<h3 id="orgc9178cd">Example</h3>
-<div class="outline-text-3" id="text-orgc9178cd">
+<div id="outline-container-orgae5c943" class="outline-3">
+<h3 id="orgae5c943">Example</h3>
+<div class="outline-text-3" id="text-orgae5c943">
 <p>
 The compiler will make sure that you do not accidentally try to update a <code>final</code> variable.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">ZooPen</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">ZooPen</span> {
     <span class="org-keyword">private</span> <span class="org-keyword">static</span> <span class="org-keyword">final</span> <span class="org-type">int</span> <span class="org-variable-name">NUM_BUCKETS</span> = 45;
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
         NUM_BUCKETS = 5; <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org881b8f6" class="outline-3">
-<h3 id="org881b8f6">Example (Modification)</h3>
-<div class="outline-text-3" id="text-org881b8f6">
+<div id="outline-container-orgb49aae3" class="outline-3">
+<h3 id="orgb49aae3">Example (Modification)</h3>
+<div class="outline-text-3" id="text-orgb49aae3">
 <p>
 We are allowed to <b>modify</b> the reference variables:
 All the compiler can do is check that we don’t try to <b>reassign</b> <code>treats</code> to point to a <b>different object</b>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.*;
+<pre class="src src-java"><code><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.*;
 
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">ZooInventoryManager</span> {
     <span class="org-keyword">private</span> <span class="org-keyword">static</span> <span class="org-keyword">final</span> <span class="org-type">String</span>[] <span class="org-variable-name">treats</span> = <span class="org-keyword">new</span> <span class="org-type">String</span>[10];
@@ -294,7 +292,7 @@ All the compiler can do is check that we don’t try to <b>reassign</b> <code>tr
         treats[0] = <span class="org-string">"popcorn"</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">Allowed
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>

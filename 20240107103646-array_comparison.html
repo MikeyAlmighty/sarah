@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Array Comparison</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,38 +243,34 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Array Comparison</h1>
-
-<div id="outline-container-org6d55649" class="outline-2">
-<h2 id="org6d55649">Array Comparison</h2>
-<div class="outline-text-2" id="text-org6d55649">
+<div id="outline-container-orgced3174" class="outline-2">
+<h2 id="orgced3174">Array Comparison</h2>
+<div class="outline-text-2" id="text-orgced3174">
 <p>
 Java also provides methods to <b>compare</b> two arrays to determine which is <b>smaller</b>.
 </p>
 </div>
-
-<div id="outline-container-org0c038a5" class="outline-3">
-<h3 id="org0c038a5">Using <code>.compare()</code></h3>
-<div class="outline-text-3" id="text-org0c038a5">
+<div id="outline-container-org57dabee" class="outline-3">
+<h3 id="org57dabee">Using <code>.compare()</code></h3>
+<div class="outline-text-3" id="text-org57dabee">
 <ul class="org-ul">
 <li>A <b>negative</b> number means the <b>first</b> array is <b>smaller</b> than the <b>second</b>.</li>
 <li>A <b>zero</b> means the arrays <code>are equal</code>.</li>
 <li>A <b>positive</b> number means the <b>first</b> array is <b>larger</b> than the <b>second</b>.</li>
 </ul>
 </div>
-
-<div id="outline-container-org0aefb9c" class="outline-4">
-<h4 id="org0aefb9c">Example (Single length)</h4>
-<div class="outline-text-4" id="text-org0aefb9c">
+<div id="outline-container-org7291625" class="outline-4">
+<h4 id="org7291625">Example (Single length)</h4>
+<div class="outline-text-4" id="text-org7291625">
 <div class="org-src-container">
-<pre class="src src-java">System.out.println(Arrays.compare(<span class="org-keyword">new</span> <span class="org-type">int</span>[] {1}, <span class="org-keyword">new</span> <span class="org-type">int</span>[] {2}));
-</pre>
+<pre class="src src-java"><code>System.out.println(Arrays.compare(<span class="org-keyword">new</span> <span class="org-type">int</span>[] {1}, <span class="org-keyword">new</span> <span class="org-type">int</span>[] {2}));
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org91d7ac2" class="outline-4">
-<h4 id="org91d7ac2">Example (Multi length)</h4>
-<div class="outline-text-4" id="text-org91d7ac2">
+<div id="outline-container-org2a03699" class="outline-4">
+<h4 id="org2a03699">Example (Multi length)</h4>
+<div class="outline-text-4" id="text-org2a03699">
 <ul class="org-ul">
 <li>If <b>both</b> arrays are the <b>same length</b> and have the <b>same values</b> in each spot in the <b>same order</b>, return <code>zero</code>.</li>
 
@@ -287,10 +284,9 @@ Java also provides methods to <b>compare</b> two arrays to determine which is <b
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgd60c2cc" class="outline-4">
-<h4 id="orgd60c2cc">What does smaller mean?</h4>
-<div class="outline-text-4" id="text-orgd60c2cc">
+<div id="outline-container-org11b1701" class="outline-4">
+<h4 id="org11b1701">What does smaller mean?</h4>
+<div class="outline-text-4" id="text-org11b1701">
 <ul class="org-ul">
 <li><code>null</code> is smaller than any other value.</li>
 
@@ -304,20 +300,18 @@ Java also provides methods to <b>compare</b> two arrays to determine which is <b
 </ul>
 </div>
 </div>
+<div id="outline-container-orga82cbc0" class="outline-4">
+<h4 id="orga82cbc0">Examples</h4>
+<div class="outline-text-4" id="text-orga82cbc0">
 
-<div id="outline-container-org892c68f" class="outline-4">
-<h4 id="org892c68f">Examples</h4>
-<div class="outline-text-4" id="text-org892c68f">
-
-<div id="orgc4fb048" class="figure">
+<div id="orgd617b68" class="figure">
 <p><img src="./assets/array_compare_examples.png" alt="array_compare_examples.png" />
 </p>
 </div>
 </div>
-
 <ul class="org-ul">
-<li><a id="orgd76120e"></a><span class="underline">Exam Trick</span><br />
-<div class="outline-text-5" id="text-orgd76120e">
+<li><a id="org00c5d20"></a><span class="underline">Exam Trick</span><br />
+<div class="outline-text-5" id="text-org00c5d20">
 <ul class="org-ul">
 <li>This code does <b>not compile</b> because the <code>types</code> are <b>different</b>.
 <ul class="org-ul">
@@ -325,13 +319,12 @@ Java also provides methods to <b>compare</b> two arrays to determine which is <b
 </ul></li>
 </ul>
 </div>
-
 <ul class="org-ul">
-<li><a id="org9798188"></a>Example<br />
-<div class="outline-text-6" id="text-org9798188">
+<li><a id="orgb2a451b"></a>Example<br />
+<div class="outline-text-6" id="text-orgb2a451b">
 <div class="org-src-container">
-<pre class="src src-java">System.out.println(Arrays.compare(<span class="org-keyword">new</span> <span class="org-type">int</span>[] {1}, <span class="org-keyword">new</span> <span class="org-type">String</span>[] {<span class="org-string">"a"</span>})); <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE</span>
-</pre>
+<pre class="src src-java"><code>System.out.println(Arrays.compare(<span class="org-keyword">new</span> <span class="org-type">int</span>[] {1}, <span class="org-keyword">new</span> <span class="org-type">String</span>[] {<span class="org-string">"a"</span>})); <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE</span>
+</code></pre>
 </div>
 </div>
 </li>

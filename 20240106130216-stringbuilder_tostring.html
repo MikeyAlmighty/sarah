@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>StringBuilder.toString</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,10 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">StringBuilder.toString</h1>
-
-<div id="outline-container-org18bcc36" class="outline-2">
-<h2 id="org18bcc36"><code>.toString()</code></h2>
-<div class="outline-text-2" id="text-org18bcc36">
+<div id="outline-container-orgc4168e6" class="outline-2">
+<h2 id="orgc4168e6"><code>.toString()</code></h2>
+<div class="outline-text-2" id="text-orgc4168e6">
 <p>
 The <code>Object</code> class contains a <code>toString()</code> method that <i>many</i> classes provide custom implementations of.
 </p>
@@ -258,19 +258,18 @@ The <code>Object</code> class contains a <code>toString()</code> method that <i>
 Often <code>StringBuilder</code> is used internally for performance purposes, but the end result needs to be a <code>String</code>.
 </p>
 </div>
-
-<div id="outline-container-org616316c" class="outline-3">
-<h3 id="org616316c">Example</h3>
-<div class="outline-text-3" id="text-org616316c">
+<div id="outline-container-orgf6a1814" class="outline-3">
+<h3 id="orgf6a1814">Example</h3>
+<div class="outline-text-3" id="text-orgf6a1814">
 <p>
 For example, maybe it needs to be passed to another method that is expecting a <code>String</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">sb</span> = <span class="org-keyword">new</span> <span class="org-type">StringBuilder</span>(<span class="org-string">"ABC"</span>);
+<pre class="src src-java"><code><span class="org-keyword">var</span> <span class="org-variable-name">sb</span> = <span class="org-keyword">new</span> <span class="org-type">StringBuilder</span>(<span class="org-string">"ABC"</span>);
 <span class="org-type">String</span> <span class="org-variable-name">s</span> = sb.toString();
 System.out.println(s); <span class="org-comment-delimiter">// </span><span class="org-comment">ABC</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>

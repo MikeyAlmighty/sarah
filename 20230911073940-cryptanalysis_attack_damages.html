@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Cryptanalysis Attack Damages</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,50 +243,45 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Cryptanalysis Attack Damages</h1>
-
-<div id="outline-container-orge04f1ef" class="outline-2">
-<h2 id="orge04f1ef">Instance deduction</h2>
-<div class="outline-text-2" id="text-orge04f1ef">
+<div id="outline-container-orgdbb6be9" class="outline-2">
+<h2 id="orgdbb6be9">Instance deduction</h2>
+<div class="outline-text-2" id="text-orgdbb6be9">
 <p>
 Attacker discovers <b>additional</b> <code>plain/cipher text</code>.
 While the key isn’t found to break the code, the additional <code>plain/ciphertext</code> can be used to cause problems/continue attacks.
 </p>
 </div>
 </div>
-
-<div id="outline-container-orgcfa755d" class="outline-2">
-<h2 id="orgcfa755d">Information deduction</h2>
-<div class="outline-text-2" id="text-orgcfa755d">
+<div id="outline-container-org76c98d9" class="outline-2">
+<h2 id="org76c98d9">Information deduction</h2>
+<div class="outline-text-2" id="text-org76c98d9">
 <p>
 Attacker obtains some information about <code>plain/ciphertext</code> not previously known.
 The additional information can lead to more information about the encryption key.
 </p>
 </div>
 </div>
-
-<div id="outline-container-org55ef3db" class="outline-2">
-<h2 id="org55ef3db">Distinguishing algorithm</h2>
-<div class="outline-text-2" id="text-org55ef3db">
+<div id="outline-container-orgaf5720b" class="outline-2">
+<h2 id="orgaf5720b">Distinguishing algorithm</h2>
+<div class="outline-text-2" id="text-orgaf5720b">
 <p>
 where the attacker can <b>distinguish</b> the <a href="20230911070841-encryption_algorithm.html#ID-d5db0593-2283-4d73-b904-bcd9f32717ce">algorithm</a> from a random alteration.
 This information reveals clues about the <a href="20230911070841-encryption_algorithm.html#ID-d5db0593-2283-4d73-b904-bcd9f32717ce">algorithm</a> and can lead to more significant breaks.
 </p>
 </div>
 </div>
-
-<div id="outline-container-org69d98d7" class="outline-2">
-<h2 id="org69d98d7">Global deduction</h2>
-<div class="outline-text-2" id="text-org69d98d7">
+<div id="outline-container-orgf1f6ebf" class="outline-2">
+<h2 id="orgf1f6ebf">Global deduction</h2>
+<div class="outline-text-2" id="text-orgf1f6ebf">
 <p>
 Attacker finds an <a href="20230911070841-encryption_algorithm.html#ID-d5db0593-2283-4d73-b904-bcd9f32717ce">algorithm</a> that is functionally equivalent to the one used in the <b>key</b>.
 This algorithm is then used to <a href="20230911070513-decryption.html#ID-e35c79e8-db3e-4c13-9ad3-1a8f4387fa60">decrypt</a> all information and messages.
 </p>
 </div>
 </div>
-
-<div id="outline-container-org77aad24" class="outline-2">
-<h2 id="org77aad24">Total break</h2>
-<div class="outline-text-2" id="text-org77aad24">
+<div id="outline-container-orgbdf0318" class="outline-2">
+<h2 id="orgbdf0318">Total break</h2>
+<div class="outline-text-2" id="text-orgbdf0318">
 <p>
 Attacker can gain the entire <b>key</b>.
 With the entire key, the attacker can <a href="20230911070513-decryption.html#ID-e35c79e8-db3e-4c13-9ad3-1a8f4387fa60">decrypt</a> all messages and information.

@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Asynchronous Programming</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,20 +243,18 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Asynchronous Programming</h1>
-
-<div id="outline-container-org6ab6a08" class="outline-2">
-<h2 id="org6ab6a08"><code>CompletableFuture</code></h2>
-<div class="outline-text-2" id="text-org6ab6a08">
+<div id="outline-container-orgba617ca" class="outline-2">
+<h2 id="orgba617ca"><code>CompletableFuture</code></h2>
+<div class="outline-text-2" id="text-orgba617ca">
 <p>
 Perform possible asynchronous (non-blocking) computation and trigger dependant computations which could also be asynchronous.
 </p>
 </div>
-
-<div id="outline-container-org0d6c310" class="outline-3">
-<h3 id="org0d6c310">Blocking Example</h3>
-<div class="outline-text-3" id="text-org0d6c310">
+<div id="outline-container-org6771ae5" class="outline-3">
+<h3 id="org6771ae5">Blocking Example</h3>
+<div class="outline-text-3" id="text-org6771ae5">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">MailService</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">MailService</span> {
     <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">send</span>() {
        LongTask.simulate();
        System.out.println(<span class="org-string">"Mail was sent"</span>);
@@ -265,20 +264,19 @@ Perform possible asynchronous (non-blocking) computation and trigger dependant c
 
 <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
         <span class="org-comment-delimiter">// </span><span class="org-comment">CompletableFuturesDemo.show();
-</span>        <span class="org-type">var</span> <span class="org-variable-name">service</span> = <span class="org-keyword">new</span> <span class="org-type">MailService</span>();
+</span>        <span class="org-keyword">var</span> <span class="org-variable-name">service</span> = <span class="org-keyword">new</span> <span class="org-type">MailService</span>();
         <span class="org-comment-delimiter">// </span><span class="org-comment">Blocking
 </span>        service.send(); <span class="org-comment-delimiter">// </span><span class="org-comment">Takes up Main thread
 </span>}
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org4b35109" class="outline-3">
-<h3 id="org4b35109">Non-blocking Example</h3>
-<div class="outline-text-3" id="text-org4b35109">
+<div id="outline-container-orgf2bc1fa" class="outline-3">
+<h3 id="orgf2bc1fa">Non-blocking Example</h3>
+<div class="outline-text-3" id="text-orgf2bc1fa">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">MailService</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">MailService</span> {
     <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">send</span>() {
        LongTask.simulate();
        System.out.println(<span class="org-string">"Mail was sent"</span>);
@@ -292,7 +290,7 @@ Perform possible asynchronous (non-blocking) computation and trigger dependant c
 
 <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
     <span class="org-comment-delimiter">// </span><span class="org-comment">CompletableFuturesDemo.show();
-</span>    <span class="org-type">var</span> <span class="org-variable-name">service</span> = <span class="org-keyword">new</span> <span class="org-type">MailService</span>();
+</span>    <span class="org-keyword">var</span> <span class="org-variable-name">service</span> = <span class="org-keyword">new</span> <span class="org-type">MailService</span>();
     <span class="org-comment-delimiter">// </span><span class="org-comment">Ran in separate thread
 </span>    service.sendAsync();
     System.out.println(<span class="org-string">"Now!"</span>);
@@ -302,7 +300,7 @@ Perform possible asynchronous (non-blocking) computation and trigger dependant c
         e.printStackTrace();
     }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>

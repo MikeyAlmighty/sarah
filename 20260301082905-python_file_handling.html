@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python File Handling</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -245,14 +246,13 @@
 <p>
 :PROPERTIES:
 </p>
-
-<div id="outline-container-org4918687" class="outline-2">
-<h2 id="org4918687">Python File Handling</h2>
-<div class="outline-text-2" id="text-org4918687">
+<div id="outline-container-org72ac815" class="outline-2">
+<h2 id="org72ac815">Python File Handling</h2>
+<div class="outline-text-2" id="text-org72ac815">
 </div>
-<div id="outline-container-org135ce12" class="outline-3">
-<h3 id="org135ce12">Overview</h3>
-<div class="outline-text-3" id="text-org135ce12">
+<div id="outline-container-org27b9215" class="outline-3">
+<h3 id="org27b9215">Overview</h3>
+<div class="outline-text-3" id="text-org27b9215">
 <p>
 <b>File handling</b> in Python allows <code>reading</code> <code>from</code> and <code>writing</code> <code>to</code> *files.
 </p>
@@ -271,25 +271,23 @@ Basic workflow:
 </ol>
 </div>
 </div>
-
-<div id="outline-container-org43a749c" class="outline-3">
-<h3 id="org43a749c">Opening a File</h3>
-<div class="outline-text-3" id="text-org43a749c">
+<div id="outline-container-org85e19e9" class="outline-3">
+<h3 id="org85e19e9">Opening a File</h3>
+<div class="outline-text-3" id="text-org85e19e9">
 </div>
-<div id="outline-container-org29d5e7c" class="outline-4">
-<h4 id="org29d5e7c">Syntax:</h4>
-<div class="outline-text-4" id="text-org29d5e7c">
+<div id="outline-container-org36ed6f3" class="outline-4">
+<h4 id="org36ed6f3">Syntax:</h4>
+<div class="outline-text-4" id="text-org36ed6f3">
 <div class="org-src-container">
-<pre class="src src-python"><span class="org-builtin">open</span>(filename, mode)
-</pre>
+<pre class="src src-python"><code><span class="org-builtin">open</span>(filename, mode)
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgc1f5606" class="outline-3">
-<h3 id="orgc1f5606">File Modes and Permissions</h3>
-<div class="outline-text-3" id="text-orgc1f5606">
+<div id="outline-container-org9fd8d97" class="outline-3">
+<h3 id="org9fd8d97">File Modes and Permissions</h3>
+<div class="outline-text-3" id="text-org9fd8d97">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -373,10 +371,9 @@ Basic workflow:
 </table>
 </div>
 </div>
-
-<div id="outline-container-org002da01" class="outline-3">
-<h3 id="org002da01">Text vs Binary Modes</h3>
-<div class="outline-text-3" id="text-org002da01">
+<div id="outline-container-orgd6af124" class="outline-3">
+<h3 id="orgd6af124">Text vs Binary Modes</h3>
+<div class="outline-text-3" id="text-orgd6af124">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -423,39 +420,36 @@ Notes:
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org1668481" class="outline-3">
-<h3 id="org1668481">Reading from a File (Manual Close)</h3>
-<div class="outline-text-3" id="text-org1668481">
+<div id="outline-container-orgdf29e72" class="outline-3">
+<h3 id="orgdf29e72">Reading from a File (Manual Close)</h3>
+<div class="outline-text-3" id="text-orgdf29e72">
 <div class="org-src-container">
-<pre class="src src-python"><span class="org-builtin">file</span> <span class="org-operator">=</span> <span class="org-builtin">open</span>(<span class="org-string">'test.txt'</span>, mode<span class="org-operator">=</span><span class="org-string">'r'</span>)
+<pre class="src src-python"><code><span class="org-variable-name">file</span> <span class="org-operator">=</span> <span class="org-builtin">open</span>(<span class="org-string">'test.txt'</span>, mode<span class="org-operator">=</span><span class="org-string">'r'</span>)
 
-<span class="org-variable-name">data</span> <span class="org-operator">=</span> <span class="org-builtin">file</span>.readline()
+<span class="org-variable-name">data</span> <span class="org-operator">=</span> file.readline()
 <span class="org-builtin">print</span>(data)
 
-<span class="org-builtin">file</span>.close()
-</pre>
+file.close()
+</code></pre>
 </div>
 </div>
-
-<div id="outline-container-orge2a5b34" class="outline-4">
-<h4 id="orge2a5b34">Note:</h4>
-<div class="outline-text-4" id="text-orge2a5b34">
+<div id="outline-container-org5c33cf3" class="outline-4">
+<h4 id="org5c33cf3">Note:</h4>
+<div class="outline-text-4" id="text-org5c33cf3">
 <ul class="org-ul">
 <li><b>Always</b> <code>close</code> files to free system resources.</li>
 </ul>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org015070b" class="outline-3">
-<h3 id="org015070b">Using a Context Manager (Recommended)</h3>
-<div class="outline-text-3" id="text-org015070b">
+<div id="outline-container-orgd3fe045" class="outline-3">
+<h3 id="orgd3fe045">Using a Context Manager (Recommended)</h3>
+<div class="outline-text-3" id="text-orgd3fe045">
 <div class="org-src-container">
-<pre class="src src-python"><span class="org-keyword">with</span> <span class="org-builtin">open</span>(<span class="org-string">'test.txt'</span>, mode<span class="org-operator">=</span><span class="org-string">'r'</span>) <span class="org-keyword">as</span> <span class="org-builtin">file</span>:
-    <span class="org-variable-name">data</span> <span class="org-operator">=</span> <span class="org-builtin">file</span>.readline()
+<pre class="src src-python"><code><span class="org-keyword">with</span> <span class="org-builtin">open</span>(<span class="org-string">'test.txt'</span>, mode<span class="org-operator">=</span><span class="org-string">'r'</span>) <span class="org-keyword">as</span> file:
+    <span class="org-variable-name">data</span> <span class="org-operator">=</span> file.readline()
     <span class="org-builtin">print</span>(data)
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -468,10 +462,9 @@ Why this is better:
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgba45d20" class="outline-3">
-<h3 id="orgba45d20">Common File Methods</h3>
-<div class="outline-text-3" id="text-orgba45d20">
+<div id="outline-container-org7e5fbc7" class="outline-3">
+<h3 id="org7e5fbc7">Common File Methods</h3>
+<div class="outline-text-3" id="text-org7e5fbc7">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -515,25 +508,23 @@ Why this is better:
 </table>
 </div>
 </div>
-
-<div id="outline-container-orgfd4379b" class="outline-3">
-<h3 id="orgfd4379b">Encoding</h3>
-<div class="outline-text-3" id="text-orgfd4379b">
+<div id="outline-container-org731d959" class="outline-3">
+<h3 id="org731d959">Encoding</h3>
+<div class="outline-text-3" id="text-org731d959">
 <p>
 Default encoding depends on system. To control it:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span class="org-keyword">with</span> <span class="org-builtin">open</span>(<span class="org-string">'test.txt'</span>, <span class="org-string">'r'</span>, encoding<span class="org-operator">=</span><span class="org-string">'utf-8'</span>) <span class="org-keyword">as</span> f:
+<pre class="src src-python"><code><span class="org-keyword">with</span> <span class="org-builtin">open</span>(<span class="org-string">'test.txt'</span>, <span class="org-string">'r'</span>, encoding<span class="org-operator">=</span><span class="org-string">'utf-8'</span>) <span class="org-keyword">as</span> f:
     <span class="org-variable-name">content</span> <span class="org-operator">=</span> f.read()
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org472bf69" class="outline-3">
-<h3 id="org472bf69">Mental Model</h3>
-<div class="outline-text-3" id="text-org472bf69">
+<div id="outline-container-org2bcc039" class="outline-3">
+<h3 id="org2bcc039">Mental Model</h3>
+<div class="outline-text-3" id="text-org2bcc039">
 <p>
 A file object is a <b>stream</b>.
 You do not grab the file — you consume it progressively like a tape head moving forward.
@@ -544,17 +535,16 @@ That’s why repeated reads return different results unless you reposition the c
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span class="org-builtin">file</span>.seek(0)  <span class="org-comment-delimiter"># </span><span class="org-comment">rewind</span>
-</pre>
+<pre class="src src-python"><code>file.seek(0)  <span class="org-comment-delimiter"># </span><span class="org-comment">rewind</span>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org369b51d" class="outline-3">
-<h3 id="org369b51d"><a href="20260301083151-python_creating_files.html#ID-f5a02386-8d5d-4001-bc73-bec36badb23c">Python Creating Files</a></h3>
+<div id="outline-container-orgc9c689b" class="outline-3">
+<h3 id="orgc9c689b"><a href="20260301083151-python_creating_files.html#ID-f5a02386-8d5d-4001-bc73-bec36badb23c">Python Creating Files</a></h3>
 </div>
-<div id="outline-container-org6640141" class="outline-3">
-<h3 id="org6640141"><a href="20260301084035-python_reading_files.html#ID-2273c697-7ac9-46f2-9734-acc34b998114">Python Reading Files</a></h3>
+<div id="outline-container-org598e40e" class="outline-3">
+<h3 id="org598e40e"><a href="20260301084035-python_reading_files.html#ID-2273c697-7ac9-46f2-9734-acc34b998114">Python Reading Files</a></h3>
 </div>
 </div>
 </div>

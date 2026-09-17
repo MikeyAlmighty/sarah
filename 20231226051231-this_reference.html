@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>.this reference</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,10 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">.this reference</h1>
-
-<div id="outline-container-orgbf9f0c6" class="outline-2">
-<h2 id="orgbf9f0c6">Java <code>this</code> Reference</h2>
-<div class="outline-text-2" id="text-orgbf9f0c6">
+<div id="outline-container-orgd36bd74" class="outline-2">
+<h2 id="orgd36bd74">Java <code>this</code> Reference</h2>
+<div class="outline-text-2" id="text-orgd36bd74">
 <ul class="org-ul">
 <li><code>this</code> refers to the <b>current (calling) object</b>.</li>
 </ul>
@@ -268,20 +268,18 @@ The <code>this</code> reference is commonly used to:
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgedddae8" class="outline-2">
-<h2 id="orgedddae8">Referencing Instance Members</h2>
-<div class="outline-text-2" id="text-orgedddae8">
+<div id="outline-container-org7ed7c0e" class="outline-2">
+<h2 id="org7ed7c0e">Referencing Instance Members</h2>
+<div class="outline-text-2" id="text-org7ed7c0e">
 <p>
 You can explicitly use <code>this</code> to reference instance variables and methods.
 </p>
 </div>
-
-<div id="outline-container-orgc6de48c" class="outline-3">
-<h3 id="orgc6de48c">Example</h3>
-<div class="outline-text-3" id="text-orgc6de48c">
+<div id="outline-container-org19772b1" class="outline-3">
+<h3 id="org19772b1">Example</h3>
+<div class="outline-text-3" id="text-org19772b1">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Circle</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Circle</span> {
 
     <span class="org-type">double</span> <span class="org-variable-name">radius</span>;
 
@@ -294,7 +292,7 @@ You can explicitly use <code>this</code> to reference instance variables and met
     }
 
 }
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -309,49 +307,45 @@ In this example:
 Often, <code>this</code> is <b>omitted</b> for brevity.
 </p>
 </div>
-
-<div id="outline-container-org2abd451" class="outline-4">
-<h4 id="org2abd451">Example without <code>this</code></h4>
-<div class="outline-text-4" id="text-org2abd451">
+<div id="outline-container-org95949da" class="outline-4">
+<h4 id="org95949da">Example without <code>this</code></h4>
+<div class="outline-text-4" id="text-org95949da">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-type">double</span> <span class="org-function-name">getArea</span>() {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-type">double</span> <span class="org-function-name">getArea</span>() {
     <span class="org-keyword">return</span> <span class="org-constant">Math</span>.PI * radius * radius;
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org106605f" class="outline-2">
-<h2 id="org106605f">Resolving Variable Shadowing</h2>
-<div class="outline-text-2" id="text-org106605f">
+<div id="outline-container-org0a9c687" class="outline-2">
+<h2 id="org0a9c687">Resolving Variable Shadowing</h2>
+<div class="outline-text-2" id="text-org0a9c687">
 <ul class="org-ul">
 <li>The <code>this</code> keyword is necessary when a method or constructor parameter has the <b>same name</b> as an instance variable.</li>
 </ul>
 </div>
-
-<div id="outline-container-org5985183" class="outline-3">
-<h3 id="org5985183">Example</h3>
-<div class="outline-text-3" id="text-org5985183">
+<div id="outline-container-org4ad0f87" class="outline-3">
+<h3 id="org4ad0f87">Example</h3>
+<div class="outline-text-3" id="text-org4ad0f87">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Circle</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Circle</span> {
 
     <span class="org-type">double</span> <span class="org-variable-name">radius</span>;
 
-    <span class="org-keyword">public</span> Circle(<span class="org-type">double</span> <span class="org-variable-name">radius</span>) {
+    <span class="org-keyword">public</span> <span class="org-function-name">Circle</span>(<span class="org-type">double</span> <span class="org-variable-name">radius</span>) {
         <span class="org-keyword">this</span>.radius = radius;
     }
 
 }
-</pre>
+</code></pre>
 </div>
 </div>
-
-<div id="outline-container-orgc02c148" class="outline-4">
-<h4 id="orgc02c148">Explanation</h4>
-<div class="outline-text-4" id="text-orgc02c148">
+<div id="outline-container-org380987e" class="outline-4">
+<h4 id="org380987e">Explanation</h4>
+<div class="outline-text-4" id="text-org380987e">
 <ul class="org-ul">
 <li>The parameter <code>radius</code> hides the <b>instance variable</b>
 <ul class="org-ul">
@@ -363,35 +357,33 @@ Often, <code>this</code> is <b>omitted</b> for brevity.
 </div>
 </div>
 </div>
-
-<div id="outline-container-org7ccbbd5" class="outline-2">
-<h2 id="org7ccbbd5">Invoking Another Constructor</h2>
-<div class="outline-text-2" id="text-org7ccbbd5">
+<div id="outline-container-org77e2a8d" class="outline-2">
+<h2 id="org77e2a8d">Invoking Another Constructor</h2>
+<div class="outline-text-2" id="text-org77e2a8d">
 <ul class="org-ul">
 <li><code>this()</code> can call another <b>constructor</b> in the <b>same</b> <code>class</code>.</li>
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Circle</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Circle</span> {
 
     <span class="org-type">double</span> <span class="org-variable-name">radius</span>;
 
-    <span class="org-keyword">public</span> Circle() {
+    <span class="org-keyword">public</span> <span class="org-function-name">Circle</span>() {
         <span class="org-keyword">this</span>(1.0);
     }
 
-    <span class="org-keyword">public</span> Circle(<span class="org-type">double</span> <span class="org-variable-name">radius</span>) {
+    <span class="org-keyword">public</span> <span class="org-function-name">Circle</span>(<span class="org-type">double</span> <span class="org-variable-name">radius</span>) {
         <span class="org-keyword">this</span>.radius = radius;
     }
 
 }
-</pre>
+</code></pre>
 </div>
 </div>
-
-<div id="outline-container-org908bd8e" class="outline-3">
-<h3 id="org908bd8e">Explanation</h3>
-<div class="outline-text-3" id="text-org908bd8e">
+<div id="outline-container-orgaddf8a3" class="outline-3">
+<h3 id="orgaddf8a3">Explanation</h3>
+<div class="outline-text-3" id="text-orgaddf8a3">
 <ul class="org-ul">
 <li><code>this(1.0)</code> calls the second constructor
 <ul class="org-ul">
@@ -401,10 +393,9 @@ Often, <code>this</code> is <b>omitted</b> for brevity.
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgf0ec7c0" class="outline-2">
-<h2 id="orgf0ec7c0">Key Points</h2>
-<div class="outline-text-2" id="text-orgf0ec7c0">
+<div id="outline-container-orgc94e143" class="outline-2">
+<h2 id="orgc94e143">Key Points</h2>
+<div class="outline-text-2" id="text-orgc94e143">
 <ul class="org-ul">
 <li><code>this</code> refers to the <b>current object</b></li>
 <li>It can reference instance variables and methods</li>

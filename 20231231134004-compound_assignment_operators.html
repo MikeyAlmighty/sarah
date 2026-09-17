@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Compound Assignment Operators</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,25 +243,24 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Compound Assignment Operators</h1>
-
-<div id="outline-container-orgd9187da" class="outline-2">
-<h2 id="orgd9187da">Compound Assignment Operators</h2>
-<div class="outline-text-2" id="text-orgd9187da">
+<div id="outline-container-org99b4c8a" class="outline-2">
+<h2 id="org99b4c8a">Compound Assignment Operators</h2>
+<div class="outline-text-2" id="text-org99b4c8a">
 <p>
 An <a href="20231231131429-assignment_operators.html#ID-32c06110-1f45-4d85-9583-74d13aaa083f">Assignment Operator</a>
 </p>
 
 
-<div id="orge9bb9f3" class="figure">
+<div id="org688512c" class="figure">
 <p><img src="./assets/compound_assignment_operators.png" alt="compound_assignment_operators.png" />
 </p>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">int</span> <span class="org-variable-name">camel</span> = 2, <span class="org-variable-name">giraffe</span> = 3;
+<pre class="src src-java"><code><span class="org-type">int</span> <span class="org-variable-name">camel</span> = 2, <span class="org-variable-name">giraffe</span> = 3;
 camel = camel * giraffe; <span class="org-comment-delimiter">// </span><span class="org-comment">Simple assignment operator
 </span>camel *= giraffe; <span class="org-comment-delimiter">// </span><span class="org-comment">Compound assignment operator</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -268,20 +268,18 @@ The LHS of the <code>compound operator</code> can be applied only to a variable 
 In this example, if <code>camel</code> were not already defined, the expression <code>camel *= giraffe</code> would not compile.
 </p>
 </div>
-
-
-<div id="outline-container-orgc6c4df8" class="outline-3">
-<h3 id="orgc6c4df8"><span class="underline">Exam Trick</span></h3>
-<div class="outline-text-3" id="text-orgc6c4df8">
+<div id="outline-container-orgbdc0e04" class="outline-3">
+<h3 id="orgbdc0e04"><span class="underline">Exam Trick</span></h3>
+<div class="outline-text-3" id="text-orgbdc0e04">
 <p>
 <code>Compound Assignment Operators</code> can also save you from having to explicitly cast a value.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">long</span> <span class="org-variable-name">goat</span> = 10;
+<pre class="src src-java"><code><span class="org-type">long</span> <span class="org-variable-name">goat</span> = 10;
 <span class="org-type">int</span> <span class="org-variable-name">sheep</span> = 5;
 sheep = sheep * goat; <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -289,10 +287,10 @@ From the <a href="20231224190739-widening_primitive_conversion.html#ID-3ef23225-
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">long</span> <span class="org-variable-name">goat</span> = 10;
+<pre class="src src-java"><code><span class="org-type">long</span> <span class="org-variable-name">goat</span> = 10;
 <span class="org-type">int</span> <span class="org-variable-name">sheep</span> = 5;
 sheep *= goat; <span class="org-comment-delimiter">// </span><span class="org-comment">Explicit cast to (int)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>

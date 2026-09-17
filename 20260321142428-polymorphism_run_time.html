@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Polymorphism (Run Time)</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,10 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Polymorphism (Run Time)</h1>
-
-<div id="outline-container-org8535d60" class="outline-2">
-<h2 id="org8535d60">Polymorphism (Run Time)</h2>
-<div class="outline-text-2" id="text-org8535d60">
+<div id="outline-container-orgde22fc2" class="outline-2">
+<h2 id="orgde22fc2">Polymorphism (Run Time)</h2>
+<div class="outline-text-2" id="text-orgde22fc2">
 <ul class="org-ul">
 <li>Achieved through <a href="20240120133450-overriding_a_method.html#ID-c67b24a4-82f7-4423-83a9-75fc1c566166">Method Overriding</a>.</li>
 </ul>
@@ -255,7 +255,7 @@ Decided at <b>runtime</b> using <a href="20260321130312-dynamic_binding.html#ID-
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">Superclass (Parent)
+<pre class="src src-java"><code><span class="org-comment-delimiter">// </span><span class="org-comment">Superclass (Parent)
 </span><span class="org-keyword">class</span> <span class="org-type">Animal</span> {
     <span class="org-comment-delimiter">// </span><span class="org-comment">Method to be overridden
 </span>    <span class="org-type">void</span> <span class="org-function-name">makeSound</span>() {
@@ -307,13 +307,12 @@ Decided at <b>runtime</b> using <a href="20260321130312-dynamic_binding.html#ID-
         myAnimal.makeSound();  <span class="org-comment-delimiter">// </span><span class="org-comment">Output: Cow moos
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 </div>
-
-<div id="outline-container-orgf055416" class="outline-3">
-<h3 id="orgf055416">Method overriding</h3>
-<div class="outline-text-3" id="text-orgf055416">
+<div id="outline-container-orgb85cf56" class="outline-3">
+<h3 id="orgb85cf56">Method overriding</h3>
+<div class="outline-text-3" id="text-orgb85cf56">
 <p>
 The <code>makeSound()</code> method is defined in the <code>Animal</code> class.
 </p>
@@ -323,33 +322,30 @@ Each <b>subclass</b> (<code>Dog</code>, <code>Cat</code>, <code>Cow</code>) <b>o
 </p>
 </div>
 </div>
-
-<div id="outline-container-org9bf8760" class="outline-3">
-<h3 id="org9bf8760"><a href="20260321130312-dynamic_binding.html#ID-a036361c-34a9-4d80-9748-2128f0b99af8">Dynamic Binding (late binding)</a></h3>
-<div class="outline-text-3" id="text-org9bf8760">
+<div id="outline-container-org3b20c3d" class="outline-3">
+<h3 id="org3b20c3d"><a href="20260321130312-dynamic_binding.html#ID-a036361c-34a9-4d80-9748-2128f0b99af8">Dynamic Binding (late binding)</a></h3>
+<div class="outline-text-3" id="text-org3b20c3d">
 <ul class="org-ul">
 <li>The <code>Animal</code> reference (<code>myAnimal</code>) is <b>assigned</b> different <code>subclass objects</code> (<code>Dog</code>, <code>Cat</code>, <code>Cow</code>).</li>
 <li>At <b>runtime</b>, Java determines the <code>actual object type</code> and calls the <b>overridden</b> method of the specific <code>subclass</code>.</li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org7cc4f32" class="outline-3">
-<h3 id="org7cc4f32">Important note</h3>
-<div class="outline-text-3" id="text-org7cc4f32">
+<div id="outline-container-org7eeacd8" class="outline-3">
+<h3 id="org7eeacd8">Important note</h3>
+<div class="outline-text-3" id="text-org7eeacd8">
 </div>
-<div id="outline-container-orge209b22" class="outline-4">
-<h4 id="orge209b22">Inheritance enables polymorphism</h4>
-<div class="outline-text-4" id="text-orge209b22">
+<div id="outline-container-org309fd65" class="outline-4">
+<h4 id="org309fd65">Inheritance enables polymorphism</h4>
+<div class="outline-text-4" id="text-org309fd65">
 <ul class="org-ul">
 <li>Without <b>inheritance</b>, <b>method</b> <b>overriding</b> (a key part of polymorphism) wouldn’t be possible.</li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org68f3473" class="outline-4">
-<h4 id="org68f3473">Polymorphism enhances inheritance</h4>
-<div class="outline-text-4" id="text-org68f3473">
+<div id="outline-container-orga1542da" class="outline-4">
+<h4 id="orga1542da">Polymorphism enhances inheritance</h4>
+<div class="outline-text-4" id="text-orga1542da">
 <ul class="org-ul">
 <li>When a <code>subclass</code> <b>overrides</b> a <code>method</code> of the <code>superclass</code>, it provides <b>specific</b> <b>behaviour</b> while maintaining the <b>inherited</b> <b>structure</b>.</li>
 </ul>

@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Obtaining Substrings</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,23 +243,21 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Obtaining Substrings</h1>
-
-<div id="outline-container-orgf2baac5" class="outline-2">
-<h2 id="orgf2baac5">Obtaining Substrings</h2>
-<div class="outline-text-2" id="text-orgf2baac5">
+<div id="outline-container-org2812eff" class="outline-2">
+<h2 id="org2812eff">Obtaining Substrings</h2>
+<div class="outline-text-2" id="text-org2812eff">
 <ul class="org-ul">
 <li>You can obtain a <b>single character</b> from a <code>string</code> using the <code>charAt</code> method.</li>
 <li>You can also obtain a <b>substring</b> from a <code>string</code> using the <code>substring</code> method.</li>
 </ul>
 </div>
-
-<div id="outline-container-org76e62ab" class="outline-3">
-<h3 id="org76e62ab">Example</h3>
-<div class="outline-text-3" id="text-org76e62ab">
+<div id="outline-container-orgcdf2e8c" class="outline-3">
+<h3 id="orgcdf2e8c">Example</h3>
+<div class="outline-text-3" id="text-orgcdf2e8c">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">String</span> <span class="org-variable-name">message</span> = <span class="org-string">"Welcome to Java"</span>;
+<pre class="src src-java"><code><span class="org-type">String</span> <span class="org-variable-name">message</span> = <span class="org-string">"Welcome to Java"</span>;
 message = message.substring(0,11) + <span class="org-string">"HTML"</span>;
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -297,21 +296,18 @@ The string message now becomes <code>Welcome to HTML</code>.
 </tbody>
 </table>
 </div>
-
-
-<div id="outline-container-org51befce" class="outline-4">
-<h4 id="org51befce">Note</h4>
-<div class="outline-text-4" id="text-org51befce">
+<div id="outline-container-org4315bcd" class="outline-4">
+<h4 id="org4315bcd">Note</h4>
+<div class="outline-text-4" id="text-org4315bcd">
 <p>
 If <code>beginIndex</code> is <code>endIndex</code>, <code>substring(beginIndex, endIndex)</code> returns an <code>empty</code> <b>string</b> with length <code>0</code>.
 If <code>beginIndex</code> <code>&gt;</code> <code>endIndex</code>, it would be a <b>runtime</b> <b>error</b>.
 </p>
 </div>
 </div>
-
-<div id="outline-container-org7921f7a" class="outline-4">
-<h4 id="org7921f7a">Finding a Character or a Substring in a String</h4>
-<div class="outline-text-4" id="text-org7921f7a">
+<div id="outline-container-org08ae8e7" class="outline-4">
+<h4 id="org08ae8e7">Finding a Character or a Substring in a String</h4>
+<div class="outline-text-4" id="text-org08ae8e7">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -380,12 +376,11 @@ If <code>beginIndex</code> <code>&gt;</code> <code>endIndex</code>, it would be 
 </tbody>
 </table>
 </div>
-
 <ul class="org-ul">
-<li><a id="orge20c732"></a>Examples<br />
-<div class="outline-text-5" id="text-orge20c732">
+<li><a id="org055e641"></a>Examples<br />
+<div class="outline-text-5" id="text-org055e641">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-string">"Welcome to Java"</span>.indexOf(<span class="org-string">'W'</span>) returns 0.
+<pre class="src src-java"><code><span class="org-string">"Welcome to Java"</span>.indexOf(<span class="org-string">'W'</span>) returns 0.
 <span class="org-string">"Welcome to Java"</span>.indexOf(<span class="org-string">'o'</span>) returns 4.
 <span class="org-string">"Welcome to Java"</span>.indexOf(<span class="org-string">'o'</span>, 5) returns 9.
 <span class="org-string">"Welcome to Java"</span>.indexOf(<span class="org-string">"come"</span>) returns 3.
@@ -397,7 +392,7 @@ If <code>beginIndex</code> <code>&gt;</code> <code>endIndex</code>, it would be 
 <span class="org-string">"Welcome to Java"</span>.lastIndexOf(<span class="org-string">"come"</span>) returns 3.
 <span class="org-string">"Welcome to Java"</span>.lastIndexOf(<span class="org-string">"Java"</span>, 5) returns &#8722;1.
 <span class="org-string">"Welcome to Java"</span>.lastIndexOf(<span class="org-string">"Java"</span>) returns 11.
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -405,15 +400,14 @@ Suppose that a <code>string s</code> contains the <b>first</b> and <b>last name<
 You can use the following code to extract the first and last name from the string:
 </p>
 </div>
-
 <ul class="org-ul">
-<li><a id="org090342b"></a>Example<br />
-<div class="outline-text-6" id="text-org090342b">
+<li><a id="org1a96c37"></a>Example<br />
+<div class="outline-text-6" id="text-org1a96c37">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">int</span> <span class="org-variable-name">k</span> = s.indexOf(<span class="org-string">' '</span>);
+<pre class="src src-java"><code><span class="org-type">int</span> <span class="org-variable-name">k</span> = s.indexOf(<span class="org-string">' '</span>);
 <span class="org-type">String</span> <span class="org-variable-name">firstName</span> = s.substring(0, k);
 <span class="org-type">String</span> <span class="org-variable-name">lastName</span> = s.substring(k + 1);
-</pre>
+</code></pre>
 </div>
 </div>
 </li>

@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>LocalDateTime</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,20 +243,18 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">LocalDateTime</h1>
-
-<div id="outline-container-org739e39a" class="outline-2">
-<h2 id="org739e39a">LocalDateTime</h2>
-<div class="outline-text-2" id="text-org739e39a">
+<div id="outline-container-org629e158" class="outline-2">
+<h2 id="org629e158">LocalDateTime</h2>
+<div class="outline-text-2" id="text-org629e158">
 <p>
 Combine <code>Dates</code> and <code>Times</code> (but <b>no</b> <code>TimeZone</code>) into one object:
 </p>
 </div>
-
-<div id="outline-container-org190088d" class="outline-4">
-<h4 id="org190088d">Signature</h4>
-<div class="outline-text-4" id="text-org190088d">
+<div id="outline-container-orge4a39c8" class="outline-4">
+<h4 id="orge4a39c8">Signature</h4>
+<div class="outline-text-4" id="text-orge4a39c8">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">LocalDateTime</span> <span class="org-function-name">of</span>(<span class="org-type">int</span> <span class="org-variable-name">year</span>, <span class="org-type">int</span> <span class="org-variable-name">month</span>,<span class="org-type">int</span> <span class="org-variable-name">dayOfMonth</span>, <span class="org-type">int</span> <span class="org-variable-name">hour</span>, <span class="org-type">int</span> <span class="org-variable-name">minute</span>)
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">LocalDateTime</span> <span class="org-function-name">of</span>(<span class="org-type">int</span> <span class="org-variable-name">year</span>, <span class="org-type">int</span> <span class="org-variable-name">month</span>,<span class="org-type">int</span> <span class="org-variable-name">dayOfMonth</span>, <span class="org-type">int</span> <span class="org-variable-name">hour</span>, <span class="org-type">int</span> <span class="org-variable-name">minute</span>)
 <span class="org-keyword">public</span> <span class="org-keyword">static</span> LocalDateTime of(<span class="org-type">int</span> <span class="org-variable-name">year</span>, <span class="org-type">int</span> <span class="org-variable-name">month</span>,<span class="org-type">int</span> <span class="org-variable-name">dayOfMonth</span>, <span class="org-type">int</span> <span class="org-variable-name">hour</span>, <span class="org-type">int</span> <span class="org-variable-name">minute</span>, <span class="org-type">int</span> <span class="org-variable-name">second</span>)
 <span class="org-keyword">public</span> <span class="org-keyword">static</span> LocalDateTime of(<span class="org-type">int</span> <span class="org-variable-name">year</span>, <span class="org-type">int</span> <span class="org-variable-name">month</span>,<span class="org-type">int</span> <span class="org-variable-name">dayOfMonth</span>, <span class="org-type">int</span> <span class="org-variable-name">hour</span>, <span class="org-type">int</span> <span class="org-variable-name">minute</span>, <span class="org-type">int</span> <span class="org-variable-name">second</span>, <span class="org-type">int</span> <span class="org-variable-name">nanos</span>)
 
@@ -266,22 +265,21 @@ Combine <code>Dates</code> and <code>Times</code> (but <b>no</b> <code>TimeZone<
 
 <span class="org-comment-delimiter">// </span><span class="org-comment">Finally, one takes an existing LocalDate and LocalTime:
 </span><span class="org-keyword">public</span> <span class="org-keyword">static</span> LocalDateTime of(<span class="org-type">LocalDate</span> <span class="org-variable-name">date</span>, LocalTime time)
-</pre>
+</code></pre>
 </div>
 </div>
-
 <ul class="org-ul">
-<li><a id="org68ea2a9"></a>Example<br />
-<div class="outline-text-5" id="text-org68ea2a9">
+<li><a id="org3d6f27e"></a>Example<br />
+<div class="outline-text-5" id="text-org3d6f27e">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">dateTime1</span> = LocalDateTime.of(2022, <span class="org-constant">Month</span>.JANUARY, 20, 6, 15, 30);
+<pre class="src src-java"><code><span class="org-keyword">var</span> <span class="org-variable-name">dateTime1</span> = LocalDateTime.of(2022, <span class="org-constant">Month</span>.JANUARY, 20, 6, 15, 30);
 <span class="org-comment-delimiter">// </span><span class="org-comment">or
-</span><span class="org-type">var</span> <span class="org-variable-name">time1</span> = LocalTime.of(6, 15);
-<span class="org-type">var</span> <span class="org-variable-name">date1</span> = LocalDate.of(2022, <span class="org-constant">Month</span>.JANUARY, 20);
+</span><span class="org-keyword">var</span> <span class="org-variable-name">time1</span> = LocalTime.of(6, 15);
+<span class="org-keyword">var</span> <span class="org-variable-name">date1</span> = LocalDate.of(2022, <span class="org-constant">Month</span>.JANUARY, 20);
 
-<span class="org-type">var</span> <span class="org-variable-name">dateTime2</span> = LocalDateTime.of(date1, time1);
+<span class="org-keyword">var</span> <span class="org-variable-name">dateTime2</span> = LocalDateTime.of(date1, time1);
 System.out.println(LocalDateTime.now()); <span class="org-comment-delimiter">// </span><span class="org-comment">2024-01-09T07:37:49.372989892</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </li>

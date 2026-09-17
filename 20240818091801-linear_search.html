@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Linear Search</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,68 +243,61 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Linear Search</h1>
-
-<div id="outline-container-org5e18856" class="outline-2">
-<h2 id="org5e18856">Linear Search</h2>
-<div class="outline-text-2" id="text-org5e18856">
+<div id="outline-container-orgf707a7a" class="outline-2">
+<h2 id="orgf707a7a">Linear Search</h2>
+<div class="outline-text-2" id="text-orgf707a7a">
 </div>
-<div id="outline-container-org96c8911" class="outline-3">
-<h3 id="org96c8911">Time Complexity:</h3>
-<div class="outline-text-3" id="text-org96c8911">
+<div id="outline-container-orgfe86ed7" class="outline-3">
+<h3 id="orgfe86ed7">Time Complexity:</h3>
+<div class="outline-text-3" id="text-orgfe86ed7">
 <ul class="org-ul">
 <li>O(n)</li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgad60d47" class="outline-3">
-<h3 id="orgad60d47">Description</h3>
-<div class="outline-text-3" id="text-orgad60d47">
+<div id="outline-container-org80758a4" class="outline-3">
+<h3 id="org80758a4">Description</h3>
+<div class="outline-text-3" id="text-org80758a4">
 <ul class="org-ul">
 <li><b>Linear search</b> (aka <b>sequential search</b>) is a straightforward <a href="20230711193225-algorithms.html#ID-db3f2baf-c51b-46bb-83d7-d6c6ee76709e">Algorithm</a> used to find a specific value within a <code>list</code> or <a href="20230711190102-array.html#ID-3135ba46-5312-4651-9e80-fecad77c479b">Array</a>. (Can be in <b>any</b> order).</li>
 </ul>
 </div>
-
-<div id="outline-container-org1843f92" class="outline-4">
-<h4 id="org1843f92">How it works:</h4>
-<div class="outline-text-4" id="text-org1843f92">
+<div id="outline-container-org92c0ac0" class="outline-4">
+<h4 id="org92c0ac0">How it works:</h4>
+<div class="outline-text-4" id="text-org92c0ac0">
 </div>
 <ul class="org-ul">
-<li><a id="org96f55cb"></a>Start at the Beginning:<br />
-<div class="outline-text-5" id="text-org96f55cb">
+<li><a id="org07b0fc7"></a>Start at the Beginning:<br />
+<div class="outline-text-5" id="text-org07b0fc7">
 <ul class="org-ul">
 <li>Begin at the <b>first</b> element of the <code>list</code> or <code>array</code>.</li>
 </ul>
 </div>
 </li>
-
-<li><a id="org577f908"></a>Compare Elements:<br />
-<div class="outline-text-5" id="text-org577f908">
+<li><a id="org5b01d30"></a>Compare Elements:<br />
+<div class="outline-text-5" id="text-org5b01d30">
 <ul class="org-ul">
 <li>Compare the <code>target value</code> (the value you're searching for) with the <code>current element</code>.</li>
 </ul>
 </div>
 </li>
-
-<li><a id="org5834d85"></a>Check for Match:<br />
-<div class="outline-text-5" id="text-org5834d85">
+<li><a id="org9a506b3"></a>Check for Match:<br />
+<div class="outline-text-5" id="text-org9a506b3">
 <ul class="org-ul">
 <li>If the <code>current element</code> matches the <code>target value</code>, the search is successful, and you can return the <b>index</b> of the <code>element</code>.</li>
 <li>If the <code>current element</code> does not match the <code>target value</code>, move to the <b>next</b> <code>element</code>.</li>
 </ul>
 </div>
 </li>
-
-<li><a id="orgeafb295"></a>Continue Until Found or End:<br />
-<div class="outline-text-5" id="text-orgeafb295">
+<li><a id="orgdc6bd8d"></a>Continue Until Found or End:<br />
+<div class="outline-text-5" id="text-orgdc6bd8d">
 <ul class="org-ul">
 <li>Repeat until: The <code>target value</code> is found, or You reach the <b>end</b> of the <code>list</code> or <code>array</code>.</li>
 </ul>
 </div>
 </li>
-
-<li><a id="orge5017d2"></a>Handle Absence:<br />
-<div class="outline-text-5" id="text-orge5017d2">
+<li><a id="orgb315b5d"></a>Handle Absence:<br />
+<div class="outline-text-5" id="text-orgb315b5d">
 <ul class="org-ul">
 <li>If you reach the <b>end</b> of the <code>array</code> without finding the <code>target value</code>, the search concludes that the value is <b>not</b> present.</li>
 </ul>
@@ -312,15 +306,14 @@
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org0dc24f4" class="outline-3">
-<h3 id="org0dc24f4">Example</h3>
-<div class="outline-text-3" id="text-org0dc24f4">
+<div id="outline-container-orgeb8cde2" class="outline-3">
+<h3 id="orgeb8cde2">Example</h3>
+<div class="outline-text-3" id="text-orgeb8cde2">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">LinearSearch</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">LinearSearch</span> {
 
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">int</span> <span class="org-function-name">linearSearch</span>(<span class="org-type">int</span>[] <span class="org-variable-name">list</span>, <span class="org-type">int</span> <span class="org-variable-name">key</span>) {
-        <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; list.<span class="org-type">length</span>; i++) {
+        <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; list.length; i++) {
 
             <span class="org-comment-delimiter">// </span><span class="org-comment">return index if found
 </span>            <span class="org-keyword">if</span> (key == list[i]) {
@@ -355,18 +348,18 @@
 
     }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgaca9ff4" class="outline-3">
-<h3 id="orgaca9ff4">Output</h3>
-<div class="outline-text-3" id="text-orgaca9ff4">
-<pre class="example">
-Element 7 found at index: 2
+<div id="outline-container-orgccdd07b" class="outline-3">
+<h3 id="orgccdd07b">Output</h3>
+<div class="outline-text-3" id="text-orgccdd07b">
+<div class="org-src-container">
+<pre class="src src-nil"><code>Element 7 found at index: 2
 Element 5 not found
-</pre>
+</code></pre>
+</div>
 </div>
 </div>
 </div>

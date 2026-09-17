@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Binary Search</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,10 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Binary Search</h1>
-
-<div id="outline-container-orgf0accc0" class="outline-2">
-<h2 id="orgf0accc0">Binary Search</h2>
-<div class="outline-text-2" id="text-orgf0accc0">
+<div id="outline-container-orga0408b9" class="outline-2">
+<h2 id="orga0408b9">Binary Search</h2>
+<div class="outline-text-2" id="text-orga0408b9">
 <ul class="org-ul">
 <li><code>Binary search</code> common search approach for a list of values.</li>
 <li><code>elements</code> in the array must already be <b>ordered</b>.
@@ -267,19 +267,17 @@ Consider the following three cases:
 <li>If the key is <b>greater</b> than the <code>middle element</code>, you need to continue to search for the key only in the <b>second</b> <b>half</b> of the <code>array</code>.</li>
 </ol>
 </div>
-
-<div id="outline-container-org4db51c7" class="outline-3">
-<h3 id="org4db51c7">Time Complexity:</h3>
-<div class="outline-text-3" id="text-org4db51c7">
+<div id="outline-container-orga5995be" class="outline-3">
+<h3 id="orga5995be">Time Complexity:</h3>
+<div class="outline-text-3" id="text-orga5995be">
 <ul class="org-ul">
 <li>O(log n)</li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgaa078cd" class="outline-3">
-<h3 id="orgaa078cd">Description</h3>
-<div class="outline-text-3" id="text-orgaa078cd">
+<div id="outline-container-orgc84eb47" class="outline-3">
+<h3 id="orgc84eb47">Description</h3>
+<div class="outline-text-3" id="text-orgc84eb47">
 <ul class="org-ul">
 <li><code>Binary search</code> is an efficient algorithm for finding an <code>item</code> from a <a href="20240107082011-array_sorting.html#ID-1a328fa4-9b9f-4856-88f3-fd490bce565b">sorted</a> list of items.</li>
 <li>It works by repeatedly <b>dividing</b> the search interval in <b>half</b>.</li>
@@ -291,12 +289,11 @@ Consider the following three cases:
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgc2bc152" class="outline-3">
-<h3 id="orgc2bc152">Example</h3>
-<div class="outline-text-3" id="text-orgc2bc152">
+<div id="outline-container-orgec745c8" class="outline-3">
+<h3 id="orgec745c8">Example</h3>
+<div class="outline-text-3" id="text-orgec745c8">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">BinarySearchExample</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">BinarySearchExample</span> {
 
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">int</span> <span class="org-function-name">binarySearch</span>(<span class="org-type">int</span>[] <span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">key</span>) {
         <span class="org-type">int</span> <span class="org-variable-name">low</span> = 0;
@@ -335,17 +332,17 @@ Consider the following three cases:
         }
     }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org151fcb6" class="outline-3">
-<h3 id="org151fcb6">Output</h3>
-<div class="outline-text-3" id="text-org151fcb6">
-<pre class="example">
-Element found at index: 3
-</pre>
+<div id="outline-container-orga538713" class="outline-3">
+<h3 id="orga538713">Output</h3>
+<div class="outline-text-3" id="text-orga538713">
+<div class="org-src-container">
+<pre class="src src-nil"><code>Element found at index: 3
+</code></pre>
+</div>
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Binary Search Trace</caption>

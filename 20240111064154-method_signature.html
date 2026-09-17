@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Method Signature</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,10 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Method Signature</h1>
-
-<div id="outline-container-org3a23f6a" class="outline-2">
-<h2 id="org3a23f6a">Method Signature</h2>
-<div class="outline-text-2" id="text-org3a23f6a">
+<div id="outline-container-org6c9f59d" class="outline-2">
+<h2 id="org6c9f59d">Method Signature</h2>
+<div class="outline-text-2" id="text-org6c9f59d">
 <p>
 Is composed of the <a href="20240111061536-method_name.html#ID-0b8acbe2-0b2b-4829-8aab-804dde49cabf">Method Name</a> and <a href="20240111063906-parameter_list.html#ID-94f7186e-22e8-4636-bc8c-a4cc040d9073">Parameter List</a>:
 </p>
@@ -260,21 +260,20 @@ Is composed of the <a href="20240111061536-method_name.html#ID-0b8acbe2-0b2b-482
 The <b>names</b> of the <code>parameters</code> in the <code>method signature</code> are <b>not</b> used as part of a <code>method signature</code>.
 </p>
 </div>
-
-<div id="outline-container-org9122f97" class="outline-3">
-<h3 id="org9122f97">Example</h3>
-<div class="outline-text-3" id="text-org9122f97">
+<div id="outline-container-orgb2bdd56" class="outline-3">
+<h3 id="orgb2bdd56">Example</h3>
+<div class="outline-text-3" id="text-orgb2bdd56">
 <p>
 Despite having <b>different</b> <code>parameter</code> names, these two methods have the same <code>signature</code> and cannot be <b>declared</b> within the same <code>class</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">Not Okay
+<pre class="src src-java"><code><span class="org-comment-delimiter">// </span><span class="org-comment">Not Okay
 </span><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Trip</span> {
     <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">visitZoo</span>(<span class="org-type">String</span> <span class="org-variable-name">name</span>, <span class="org-type">int</span> <span class="org-variable-name">waitTime</span>) {}
     <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">visitZoo</span>(<span class="org-type">String</span> <span class="org-variable-name">attraction</span>, <span class="org-type">int</span> <span class="org-variable-name">rainFall</span>) {} <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>}
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -282,12 +281,12 @@ Changing the <b>order</b> of parameter types does allow the method to compile:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">Okay
+<pre class="src src-java"><code><span class="org-comment-delimiter">// </span><span class="org-comment">Okay
 </span><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Trip</span> {
     <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">visitZoo</span>(<span class="org-type">String</span> <span class="org-variable-name">name</span>, <span class="org-type">int</span> <span class="org-variable-name">waitTime</span>) {}
     <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">visitZoo</span>(<span class="org-type">int</span> <span class="org-variable-name">rainFall</span>, <span class="org-type">String</span> <span class="org-variable-name">attraction</span>) {}
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>

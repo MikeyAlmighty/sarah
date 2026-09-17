@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-15 Tue 19:26 -->
+<!-- 2026-09-17 Thu 07:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mathematical Induction (Recurrence Relations)</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -194,6 +194,51 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
+<style>
+        body {
+          font-family: sans-serif;
+          line-height: 1.5;
+          margin: 2em;
+          background-color: #ffffff;
+          color: #111111;
+        }
+
+        /* Code block styling */
+        pre.src {
+          padding: 1em;
+          border-radius: 6px;
+          overflow-x: auto;
+          background-color: #f0f0f0;
+          color: #222222;
+          border: 1px solid #ddd;
+          font-family: monospace;
+        }
+
+        /* Syntax highlighting for Org-generated classes */
+        span.org-keyword { color: #005999; font-weight: bold; }
+        span.org-string  { color: #aa3333; }
+        span.org-comment { color: #666666; font-style: italic; }
+        span.org-type    { color: #007700; font-weight: bold; }
+        span.org-variable { color: #993399; }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            pre.src {
+                background-color: #000000;
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
+
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
+        }
+
+        ul { list-style-type: disc; padding-left: 2em; }
+      </style>
 <script>
   window.MathJax = {
     tex: {
@@ -230,31 +275,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Mathematical Induction (Recurrence Relations)</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org80b7f73">1. The problem</a></li>
-<li><a href="#org82e3b41">2. Why this example is different</a></li>
-<li><a href="#orgfc05637">3. Statement \(P(n)\)</a></li>
-<li><a href="#org2472fb5">4. Base case: \(P(1)\)</a></li>
-<li><a href="#orgf278ef4">5. Inductive hypothesis: assume \(P(k)\)</a></li>
-<li><a href="#org776957a">6. Inductive step: show \(P(k+1)\) follows</a>
-<ul>
-<li><a href="#org46515d7">6.1. Part 1 — write the target (substitute \(n=k+1\) into the formula)</a></li>
-<li><a href="#org730fd63">6.2. Part 2 — get an equation for \(a_{k+1}\) from the recurrence</a></li>
-<li><a href="#orgd978c87">6.3. Part 3 — substitute the assumption \(P(k)\)</a></li>
-<li><a href="#org8d18c99">6.4. Part 4 — algebra</a></li>
-</ul>
-</li>
-<li><a href="#org0c11fbc">7. Conclusion</a></li>
-<li><a href="#org83fd852">8. The general pattern for recurrence + induction problems</a></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org80b7f73" class="outline-2">
-<h2 id="org80b7f73"><span class="section-number-2">1.</span> The problem</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-org865cc05" class="outline-2">
+<h2 id="org865cc05">The problem</h2>
+<div class="outline-text-2" id="text-org865cc05">
 <p>
 Let \(\{a_n\}\) be the sequence defined by
 </p>
@@ -269,21 +292,21 @@ Prove by induction that \(a_n = (2n-1)^2\) for all positive integers
 </p>
 </div>
 </div>
-<div id="outline-container-org82e3b41" class="outline-2">
-<h2 id="org82e3b41"><span class="section-number-2">2.</span> Why this example is different</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-orgc18e3fc" class="outline-2">
+<h2 id="orgc18e3fc">Why this example is different</h2>
+<div class="outline-text-2" id="text-orgc18e3fc">
 <p>
 Earlier examples (sums of odd numbers, sums of integers, sums of
 powers of 2) built the link between \(P(k)\) and \(P(k+1)\) by
-<b>bracketing a sum</b> — splitting off its last term.
+<b>bracketing a sum</b> - splitting off its last term.
 </p>
 
 <p>
 Here there is no sum to bracket. Instead, <b><b>the recurrence itself
 is the bridge</b></b> between \(a_k\) and \(a_{k+1}\) — it is given directly
 in the problem and plays the same structural role bracketing played
-before: it&rsquo;s the one piece of information that connects consecutive
-terms, without which there&rsquo;d be no legal way to get from the
+before: it's the one piece of information that connects consecutive
+terms, without which there'd be no legal way to get from the
 assumption to the target.
 </p>
 
@@ -295,21 +318,21 @@ There are two separate formulas in play, doing different jobs:
 <li><b>The recurrence</b> (\(a_{n+1}=a_n+8n\)) - how the sequence is
 actually built. True by definition, given, never needs proving.</li>
 <li><b>The formula being proved</b> (\(a_n=(2n-1)^2\)) - the claim, \(P(n)\).
-Not automatically true; that&rsquo;s the whole point of the proof.</li>
+Not automatically true; that's the whole point of the proof.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgfc05637" class="outline-2">
-<h2 id="orgfc05637"><span class="section-number-2">3.</span> Statement \(P(n)\)</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-orgb0e8e87" class="outline-2">
+<h2 id="orgb0e8e87">Statement \(P(n)\)</h2>
+<div class="outline-text-2" id="text-orgb0e8e87">
 <p>
 \[P(n): \quad a_n = (2n-1)^2\]
 </p>
 </div>
 </div>
-<div id="outline-container-org2472fb5" class="outline-2">
-<h2 id="org2472fb5"><span class="section-number-2">4.</span> Base case: \(P(1)\)</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-org46f5382" class="outline-2">
+<h2 id="org46f5382">Base case: \(P(1)\)</h2>
+<div class="outline-text-2" id="text-org46f5382">
 <p>
 \[a_1 = (2(1)-1)^2 = 1^2 = 1\]
 </p>
@@ -319,21 +342,21 @@ Since \(a_1=1\) is given directly, this matches. \(P(1)\) holds.
 </p>
 </div>
 </div>
-<div id="outline-container-orgf278ef4" class="outline-2">
-<h2 id="orgf278ef4"><span class="section-number-2">5.</span> Inductive hypothesis: assume \(P(k)\)</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-org04150b4" class="outline-2">
+<h2 id="org04150b4">Inductive hypothesis: assume \(P(k)\)</h2>
+<div class="outline-text-2" id="text-org04150b4">
 <p>
 \[a_k = (2k-1)^2\]
 </p>
 </div>
 </div>
-<div id="outline-container-org776957a" class="outline-2">
-<h2 id="org776957a"><span class="section-number-2">6.</span> Inductive step: show \(P(k+1)\) follows</h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-org7134fdb" class="outline-2">
+<h2 id="org7134fdb">Inductive step: show \(P(k+1)\) follows</h2>
+<div class="outline-text-2" id="text-org7134fdb">
 </div>
-<div id="outline-container-org46515d7" class="outline-3">
-<h3 id="org46515d7"><span class="section-number-3">6.1.</span> Part 1 — write the target (substitute \(n=k+1\) into the formula)</h3>
-<div class="outline-text-3" id="text-6-1">
+<div id="outline-container-orgc77a335" class="outline-3">
+<h3 id="orgc77a335">Part 1 — write the target (substitute \(n=k+1\) into the formula)</h3>
+<div class="outline-text-3" id="text-orgc77a335">
 <p>
 Substitute into \(a_n=(2n-1)^2\): replace both occurrences of \(n\)
 (the subscript, and the one inside the bracket) with \((k+1)\):
@@ -357,9 +380,9 @@ yet.
 </p>
 </div>
 </div>
-<div id="outline-container-org730fd63" class="outline-3">
-<h3 id="org730fd63"><span class="section-number-3">6.2.</span> Part 2 — get an equation for \(a_{k+1}\) from the recurrence</h3>
-<div class="outline-text-3" id="text-6-2">
+<div id="outline-container-org737a5e3" class="outline-3">
+<h3 id="org737a5e3">Part 2 — get an equation for \(a_{k+1}\) from the recurrence</h3>
+<div class="outline-text-3" id="text-org737a5e3">
 <p>
 Recurrence: \(a_{n+1}=a_n+8n\), true for every \(n\geq 1\). To get an
 equation about \(a_{k+1}\) specifically, set \(n=k\) (since we need
@@ -375,9 +398,9 @@ This is a fact from the recurrence alone — no assumption used yet.
 </p>
 </div>
 </div>
-<div id="outline-container-orgd978c87" class="outline-3">
-<h3 id="orgd978c87"><span class="section-number-3">6.3.</span> Part 3 — substitute the assumption \(P(k)\)</h3>
-<div class="outline-text-3" id="text-6-3">
+<div id="outline-container-org0d2657a" class="outline-3">
+<h3 id="org0d2657a">Part 3 — substitute the assumption \(P(k)\)</h3>
+<div class="outline-text-3" id="text-org0d2657a">
 <p>
 \(P(k)\) says \(a_k=(2k-1)^2\). Substitute:
 </p>
@@ -387,9 +410,9 @@ This is a fact from the recurrence alone — no assumption used yet.
 </p>
 </div>
 </div>
-<div id="outline-container-org8d18c99" class="outline-3">
-<h3 id="org8d18c99"><span class="section-number-3">6.4.</span> Part 4 — algebra</h3>
-<div class="outline-text-3" id="text-6-4">
+<div id="outline-container-orgd776af7" class="outline-3">
+<h3 id="orgd776af7">Part 4 — algebra</h3>
+<div class="outline-text-3" id="text-orgd776af7">
 <p>
 Expand \((2k-1)^2 = 4k^2-4k+1\):
 </p>
@@ -413,18 +436,18 @@ This matches the target from Part 1 exactly. \(P(k+1)\) follows from
 </div>
 </div>
 </div>
-<div id="outline-container-org0c11fbc" class="outline-2">
-<h2 id="org0c11fbc"><span class="section-number-2">7.</span> Conclusion</h2>
-<div class="outline-text-2" id="text-7">
+<div id="outline-container-org941ab31" class="outline-2">
+<h2 id="org941ab31">Conclusion</h2>
+<div class="outline-text-2" id="text-org941ab31">
 <p>
 By the principle of mathematical induction, \(a_n=(2n-1)^2\) for all
 positive integers \(n\).
 </p>
 </div>
 </div>
-<div id="outline-container-org83fd852" class="outline-2">
-<h2 id="org83fd852"><span class="section-number-2">8.</span> The general pattern for recurrence + induction problems</h2>
-<div class="outline-text-2" id="text-8">
+<div id="outline-container-orgc4ccf1f" class="outline-2">
+<h2 id="orgc4ccf1f">The general pattern for recurrence + induction problems</h2>
+<div class="outline-text-2" id="text-orgc4ccf1f">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -442,12 +465,12 @@ positive integers \(n\).
 <tbody>
 <tr>
 <td class="org-right">1</td>
-<td class="org-left">Write \(P(k+1)\)&rsquo;s claim by substituting \(n=k+1\) into the formula — this is the <b>target</b>, set aside untouched</td>
+<td class="org-left">Write \(P(k+1)\)'s claim by substituting \(n=k+1\) into the formula - this is the <b>target</b>, set aside untouched</td>
 </tr>
 
 <tr>
 <td class="org-right">2</td>
-<td class="org-left">Use the recurrence, substituting \(n=k\), to get \(a_{k+1}\) in terms of \(a_k\) — this is the <b>bridge</b></td>
+<td class="org-left">Use the recurrence, substituting \(n=k\), to get \(a_{k+1}\) in terms of \(a_k\) - this is the <b>bridge</b></td>
 </tr>
 
 <tr>
@@ -463,10 +486,6 @@ positive integers \(n\).
 </table>
 </div>
 </div>
-</div>
-<div id="postamble" class="status">
-<p class="author">Author: Mikey</p>
-<p class="date">Created: 2026-09-15 Tue 19:26</p>
 </div>
 </body>
 </html>

@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Introducing Abstract Classes</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,10 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Introducing Abstract Classes</h1>
-
-<div id="outline-container-org0899990" class="outline-2">
-<h2 id="org0899990">Introducing Abstract Classes</h2>
-<div class="outline-text-2" id="text-org0899990">
+<div id="outline-container-org10b8cd2" class="outline-2">
+<h2 id="org10b8cd2">Introducing Abstract Classes</h2>
+<div class="outline-text-2" id="text-org10b8cd2">
 <p>
 An <code>abstract class</code> <b>cannot</b> be used to <b>create</b> <code>objects</code>.
 </p>
@@ -278,17 +278,16 @@ Sometimes, a <code>superclass</code> is so abstract it cannot be used to create 
 Such a class is referred to as an <b>abstract class</b>.
 </p>
 </div>
-
-<div id="outline-container-orgc8c2a53" class="outline-3">
-<h3 id="orgc8c2a53">Example</h3>
-<div class="outline-text-3" id="text-orgc8c2a53">
+<div id="outline-container-orgdd28132" class="outline-3">
+<h3 id="orgdd28132">Example</h3>
+<div class="outline-text-3" id="text-orgdd28132">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">abstract</span> <span class="org-keyword">class</span> <span class="org-type">Canine</span> {}
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">abstract</span> <span class="org-keyword">class</span> <span class="org-type">Canine</span> {}
 
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Wolf</span> <span class="org-keyword">extends</span> <span class="org-type">Canine</span> {}
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Fox</span> <span class="org-keyword">extends</span> <span class="org-type">Canine</span> {}
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Coyote</span> <span class="org-keyword">extends</span> <span class="org-type">Canine</span> {}
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -309,21 +308,20 @@ By declaring a method <code>abstract</code>, we can <b>guarantee</b> that some v
 </p>
 </div>
 </div>
-
-<div id="outline-container-orgbe73474" class="outline-3">
-<h3 id="orgbe73474">Example</h3>
-<div class="outline-text-3" id="text-orgbe73474">
+<div id="outline-container-org6c99e04" class="outline-3">
+<h3 id="org6c99e04">Example</h3>
+<div class="outline-text-3" id="text-org6c99e04">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">abstract</span> <span class="org-keyword">class</span> <span class="org-type">GeometricObjectv2</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">abstract</span> <span class="org-keyword">class</span> <span class="org-type">GeometricObjectv2</span> {
     <span class="org-keyword">private</span> <span class="org-type">String</span> <span class="org-variable-name">color</span> = <span class="org-string">"white"</span>;
     <span class="org-keyword">private</span> <span class="org-type">boolean</span> <span class="org-variable-name">filled</span>;
     <span class="org-keyword">private</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Date</span> <span class="org-variable-name">dateCreated</span>;
 
-    <span class="org-keyword">protected</span> GeometricObjectv2() {
+    <span class="org-keyword">protected</span> <span class="org-function-name">GeometricObjectv2</span>() {
         dateCreated = <span class="org-keyword">new</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Date</span>();
     }
 
-    <span class="org-keyword">protected</span> GeometricObjectv2(<span class="org-type">String</span> <span class="org-variable-name">color</span>, <span class="org-type">boolean</span> <span class="org-variable-name">filled</span>) {
+    <span class="org-keyword">protected</span> <span class="org-function-name">GeometricObjectv2</span>(<span class="org-type">String</span> <span class="org-variable-name">color</span>, <span class="org-type">boolean</span> <span class="org-variable-name">filled</span>) {
         dateCreated = <span class="org-keyword">new</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Date</span>();
         <span class="org-keyword">this</span>.color = color;
         <span class="org-keyword">this</span>.filled = filled;
@@ -362,7 +360,7 @@ By declaring a method <code>abstract</code>, we can <b>guarantee</b> that some v
 
     }
 }
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -374,7 +372,7 @@ In <a href="20230812041308-unified_model_diagram.html#ID-3ef13e32-b3fa-4c2f-9fa1
 </p>
 
 
-<div id="orgc191284" class="figure">
+<div id="orge3c1444" class="figure">
 <p><img src="./assets/abstract-geometric-object-UML.png" alt="abstract-geometric-object-UML.png" />
 </p>
 </div>
@@ -404,21 +402,20 @@ The <b>implementation</b> of <code>Circle</code> and <code>Rectangle</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Circle</span> <span class="org-keyword">extends</span> <span class="org-type">GeometricObject</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Circle</span> <span class="org-keyword">extends</span> <span class="org-type">GeometricObject</span> {
 <span class="org-comment-delimiter">// </span><span class="org-comment">Same as lines 2&#8722;47 in Listing 11.2, so omitted
 </span>}
 
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Rectangle</span> <span class="org-keyword">extends</span> <span class="org-type">GeometricObject</span> {
 <span class="org-comment-delimiter">// </span><span class="org-comment">Same as lines 2&#8722;49 in Listing 11.3, so omitted
 </span>}
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org82ad828" class="outline-3">
-<h3 id="org82ad828">Rules</h3>
-<div class="outline-text-3" id="text-org82ad828">
+<div id="outline-container-org4146c86" class="outline-3">
+<h3 id="org4146c86">Rules</h3>
+<div class="outline-text-3" id="text-org4146c86">
 <ul class="org-ul">
 <li><code>Abstract classes</code> are like regular <code>classes</code>, but you <b>cannot</b> create <code>instances</code> of <code>abstract classes</code> using the <code>new</code> operator.</li>
 
@@ -432,18 +429,16 @@ The <b>implementation</b> of <code>Circle</code> and <code>Rectangle</code>:
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org978af18" class="outline-3">
-<h3 id="org978af18">Why Abstract Methods?</h3>
-<div class="outline-text-3" id="text-org978af18">
+<div id="outline-container-orgb7cbf48" class="outline-3">
+<h3 id="orgb7cbf48">Why Abstract Methods?</h3>
+<div class="outline-text-3" id="text-orgb7cbf48">
 <p>
 You may be wondering what advantage is gained by defining the methods <code>getArea()</code> and <code>getPerimeter()</code> as abstract in the <code>GeometricObject</code> <code>class</code>.
 </p>
 </div>
-
-<div id="outline-container-org9dcc184" class="outline-4">
-<h4 id="org9dcc184">Example</h4>
-<div class="outline-text-4" id="text-org9dcc184">
+<div id="outline-container-org3dd9b19" class="outline-4">
+<h4 id="org3dd9b19">Example</h4>
+<div class="outline-text-4" id="text-org3dd9b19">
 <p>
 The code below shows the benefits of defining them in the <code>GeometricObject</code> class.
 </p>
@@ -453,7 +448,7 @@ The program creates two <code>geometric objects</code>, a <code>circle</code> an
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">TestGeometricObject</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">TestGeometricObject</span> {
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
         <span class="org-comment-delimiter">// </span><span class="org-comment">Create two geometric objects
 </span>        <span class="org-type">GeometricObject</span> <span class="org-variable-name">geoObject1</span> = <span class="org-keyword">new</span> <span class="org-type">Circle</span>(5);
@@ -479,20 +474,19 @@ The program creates two <code>geometric objects</code>, a <code>circle</code> an
         System.out.println(<span class="org-string">"The perimeter is "</span> + object.getPerimeter());
     }
 }
-</pre>
+</code></pre>
 </div>
 </div>
-
 <ul class="org-ul">
-<li><a id="org044fe40"></a>Output<br />
-<div class="outline-text-5" id="text-org044fe40">
+<li><a id="org35f4850"></a>Output<br />
+<div class="outline-text-5" id="text-org35f4850">
 <div class="org-src-container">
-<pre class="src src-java">The two objects have the same area? <span class="org-constant">false</span>
+<pre class="src src-java"><code>The two objects have the same area? <span class="org-constant">false</span>
 The area is 78.53981633974483
 The perimeter is 31.41592653589793
 The area is 15.0
 The perimeter is 16.0
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -503,9 +497,9 @@ The methods <code>getArea()</code> and <code>getPerimeter()</code> defined in th
 The statements
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">GeometricObject</span> <span class="org-variable-name">geoObject1</span> = <span class="org-keyword">new</span> <span class="org-type">Circle</span>(5);
+<pre class="src src-java"><code><span class="org-type">GeometricObject</span> <span class="org-variable-name">geoObject1</span> = <span class="org-keyword">new</span> <span class="org-type">Circle</span>(5);
 <span class="org-type">GeometricObject</span> <span class="org-variable-name">geoObject2</span> = <span class="org-keyword">new</span> <span class="org-type">Rectangle</span>(5, 3);
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -533,10 +527,8 @@ Similarly:
 </ul>
 </div>
 </li>
-
-
-<li><a id="org1420dca"></a>Note<br />
-<div class="outline-text-5" id="text-org1420dca">
+<li><a id="orge0511af"></a>Note<br />
+<div class="outline-text-5" id="text-orge0511af">
 <ul class="org-ul">
 <li>The <b>JVM</b> <b>dynamically</b> <b>determines</b> which of these <i>methods</i> to <b>invoke</b> at <b>runtime</b>, depending on the <code>actual object</code> that invokes the <i>method</i>.</li>
 <li>You could <b>not</b> define the <code>equalArea</code> method for comparing whether two <code>geometric objects</code> have the <b>same</b> <b>area</b> if the <code>getArea</code> method was <b>not</b> defined in <code>GeometricObject</code> (since <code>object1</code> and <code>object2</code> are of the <code>GeometricObject</code> type).</li>
@@ -546,21 +538,20 @@ Similarly:
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org8d483b0" class="outline-3">
-<h3 id="org8d483b0">Error</h3>
-<div class="outline-text-3" id="text-org8d483b0">
+<div id="outline-container-org4f508fa" class="outline-3">
+<h3 id="org4f508fa">Error</h3>
+<div class="outline-text-3" id="text-org4f508fa">
 <p>
 If you attempt to <b>instantiate</b> it, the <b>compiler</b> will report an <b>exception</b>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">abstract</span> <span class="org-keyword">class</span> <span class="org-type">Alligator</span> {
+<pre class="src src-java"><code><span class="org-keyword">abstract</span> <span class="org-keyword">class</span> <span class="org-type">Alligator</span> {
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>... <span class="org-variable-name">food</span>) {
-        <span class="org-type">var</span> <span class="org-variable-name">a</span> = <span class="org-keyword">new</span> <span class="org-type">Alligator</span>(); <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
+        <span class="org-keyword">var</span> <span class="org-variable-name">a</span> = <span class="org-keyword">new</span> <span class="org-type">Alligator</span>(); <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 
 <p>

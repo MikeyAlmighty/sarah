@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Local Variable Modifiers</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,10 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Local Variable Modifiers</h1>
-
-<div id="outline-container-orgb18599f" class="outline-2">
-<h2 id="orgb18599f">Local Variable Modifiers</h2>
-<div class="outline-text-2" id="text-orgb18599f">
+<div id="outline-container-org568e9ae" class="outline-2">
+<h2 id="org568e9ae">Local Variable Modifiers</h2>
+<div class="outline-text-2" id="text-org568e9ae">
 <p>
 There’s only one modifier that can be applied to a local variable: <code>final</code>
 </p>
@@ -253,66 +253,62 @@ There’s only one modifier that can be applied to a local variable: <code>final
 <li>When writing <code>methods</code>, developers may want to set a variable that <b>does not change</b> during the course of the method.</li>
 </ul>
 </div>
-
-<div id="outline-container-org3debe84" class="outline-3">
-<h3 id="org3debe84"><span class="underline">Exam Trick</span></h3>
-<div class="outline-text-3" id="text-org3debe84">
+<div id="outline-container-org8668480" class="outline-3">
+<h3 id="org8668480"><span class="underline">Exam Trick</span></h3>
+<div class="outline-text-3" id="text-org8668480">
 <p>
 As shown with the <code>rest</code> variable, we don’t <b>need</b> to assign a value when a final variable is <b>declared</b>.
 The rule is only that it <b>must be assigned</b> a value <b>before it can be used</b>.
 </p>
 </div>
-
-<div id="outline-container-orgc5a89f1" class="outline-4">
-<h4 id="orgc5a89f1">Example</h4>
-<div class="outline-text-4" id="text-orgc5a89f1">
+<div id="outline-container-orgdedb881" class="outline-4">
+<h4 id="orgdedb881">Example</h4>
+<div class="outline-text-4" id="text-orgdedb881">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">zooAnimalCheckup</span>(<span class="org-type">boolean</span> <span class="org-variable-name">isWeekend</span>) {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">zooAnimalCheckup</span>(<span class="org-type">boolean</span> <span class="org-variable-name">isWeekend</span>) {
     <span class="org-keyword">final</span> <span class="org-type">int</span> <span class="org-variable-name">rest</span>;
     <span class="org-keyword">if</span>(isWeekend) rest = 5; <span class="org-keyword">else</span> rest = 20;
     System.out.print(rest);
 
-    <span class="org-keyword">final</span> <span class="org-type">var</span> <span class="org-variable-name">giraffe</span> = <span class="org-keyword">new</span> <span class="org-type">Animal</span>();
+    <span class="org-keyword">final</span> <span class="org-keyword">var</span> <span class="org-variable-name">giraffe</span> = <span class="org-keyword">new</span> <span class="org-type">Animal</span>();
     <span class="org-keyword">final</span> <span class="org-type">int</span>[] <span class="org-variable-name">friends</span> = <span class="org-keyword">new</span> <span class="org-type">int</span>[5];
 
     rest = 10; <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>    giraffe = <span class="org-keyword">new</span> <span class="org-type">Animal</span>(); <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>    friends = <span class="org-constant">null</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>}
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgdb1dfcd" class="outline-4">
-<h4 id="orgdb1dfcd">Bad Example</h4>
-<div class="outline-text-4" id="text-orgdb1dfcd">
+<div id="outline-container-orgfd575cf" class="outline-4">
+<h4 id="orgfd575cf">Bad Example</h4>
+<div class="outline-text-4" id="text-orgfd575cf">
 <p>
 The <code>rest</code> variable might not have been assigned a value, such as if <code>isWeekend</code> is <code>false</code>.
 Since the compiler does not allow the use of local variables that <b>may not</b> have been assigned a value, the code does <b>not compile</b>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">zooAnimalCheckup</span>(<span class="org-type">boolean</span> <span class="org-variable-name">isWeekend</span>) {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">zooAnimalCheckup</span>(<span class="org-type">boolean</span> <span class="org-variable-name">isWeekend</span>) {
     <span class="org-keyword">final</span> <span class="org-type">int</span> <span class="org-variable-name">rest</span>;
     <span class="org-keyword">if</span>(isWeekend) rest = 5;
     System.out.print(rest); <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE (rest is Potentially not assigned a value)
 </span>}
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgb56a536" class="outline-4">
-<h4 id="orgb56a536">Does using the final modifier mean we can’t modify the data?</h4>
-<div class="outline-text-4" id="text-orgb56a536">
+<div id="outline-container-orgbd5ac2c" class="outline-4">
+<h4 id="orgbd5ac2c">Does using the final modifier mean we can’t modify the data?</h4>
+<div class="outline-text-4" id="text-orgbd5ac2c">
 <p>
 <b>Nope</b>.
 The <code>final</code> attribute only refers to the <code>variable reference</code>; the contents can be freely modified (assuming the object <b>isn’t immutable</b>).
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">zooAnimalCheckup</span>() {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">zooAnimalCheckup</span>() {
     <span class="org-keyword">final</span> <span class="org-type">int</span> <span class="org-variable-name">rest</span> = 5;
     <span class="org-keyword">final</span> <span class="org-type">Animal</span> <span class="org-variable-name">giraffe</span> = <span class="org-keyword">new</span> <span class="org-type">Animal</span>();
     <span class="org-keyword">final</span> <span class="org-type">int</span>[] <span class="org-variable-name">friends</span> = <span class="org-keyword">new</span> <span class="org-type">int</span>[5];
@@ -320,7 +316,7 @@ The <code>final</code> attribute only refers to the <code>variable reference</co
     giraffe.setName(<span class="org-string">"George"</span>); <span class="org-comment-delimiter">// </span><span class="org-comment">Allowed
 </span>    friends[2] = 2; <span class="org-comment-delimiter">// </span><span class="org-comment">Allowed
 </span>}
-</pre>
+</code></pre>
 </div>
 
 <p>

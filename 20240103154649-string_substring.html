@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>String.substring</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,10 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">String.substring</h1>
-
-<div id="outline-container-org58bc61c" class="outline-2">
-<h2 id="org58bc61c">.substring()</h2>
-<div class="outline-text-2" id="text-org58bc61c">
+<div id="outline-container-org5b31554" class="outline-2">
+<h2 id="org5b31554">.substring()</h2>
+<div class="outline-text-2" id="text-org5b31554">
 <p>
 The method <code>substring()</code> also looks for <code>characters in a string</code>.
 </p>
@@ -254,17 +254,16 @@ The method <code>substring()</code> also looks for <code>characters in a string<
 It <b>returns</b> parts of the <b>string</b>.
 </p>
 </div>
-
-<div id="outline-container-orgd534ea4" class="outline-4">
-<h4 id="orgd534ea4"><span class="underline">Exam Trick</span></h4>
-<div class="outline-text-4" id="text-orgd534ea4">
+<div id="outline-container-org3d52f2f" class="outline-4">
+<h4 id="org3d52f2f"><span class="underline">Exam Trick</span></h4>
+<div class="outline-text-4" id="text-org3d52f2f">
 <p>
 It helps to think of indexes a bit differently for the <code>substring</code> methods.
 Pretend the indexes are right <b>before</b> the character they would point to:
 </p>
 
 
-<div id="orge5773c2" class="figure">
+<div id="org8ce7f1b" class="figure">
 <p><img src="./assets/substring_indexing.png" alt="substring_indexing.png" />
 </p>
 </div>
@@ -288,24 +287,22 @@ This will help you remember that <code>endIndex</code> doesnâ€™t give an <b>outÂ
 </p>
 </div>
 </div>
-
-<div id="outline-container-org28fd257" class="outline-4">
-<h4 id="org28fd257">Signature</h4>
-<div class="outline-text-4" id="text-org28fd257">
+<div id="outline-container-org36545de" class="outline-4">
+<h4 id="org36545de">Signature</h4>
+<div class="outline-text-4" id="text-org36545de">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-type">String</span> <span class="org-function-name">substring</span>(<span class="org-type">int</span> <span class="org-variable-name">beginIndex</span>)
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-type">String</span> <span class="org-function-name">substring</span>(<span class="org-type">int</span> <span class="org-variable-name">beginIndex</span>)
 <span class="org-keyword">public</span> String substring(<span class="org-type">int</span> <span class="org-variable-name">beginIndex</span>, <span class="org-type">int</span> <span class="org-variable-name">endIndex</span>)
-</pre>
+</code></pre>
 </div>
 
 <p>
 There is an <code>optional</code> second parameter, which is the <b>end index</b> you want to stop at.
 </p>
 </div>
-
 <ul class="org-ul">
-<li><a id="orgb9a5e6a"></a><span class="underline">Exam Trick</span><br />
-<div class="outline-text-6" id="text-orgb9a5e6a">
+<li><a id="org9a1bcdf"></a><span class="underline">Exam Trick</span><br />
+<div class="outline-text-6" id="text-org9a1bcdf">
 <p>
 Notice we said <b>stop at</b> rather than <b>include</b>.
 </p>
@@ -316,11 +313,10 @@ This means the <code>endIndex</code> parameter is allowed to be <b>one past the 
 </div>
 </li>
 </ul>
-
-<li><a id="org0353804"></a>Example<br />
-<div class="outline-text-5" id="text-org0353804">
+<li><a id="org2ceca74"></a>Example<br />
+<div class="outline-text-5" id="text-org2ceca74">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">name</span> = <span class="org-string">"animals"</span>;
+<pre class="src src-java"><code><span class="org-keyword">var</span> <span class="org-variable-name">name</span> = <span class="org-string">"animals"</span>;
 
 System.out.println(name.substring(3)); <span class="org-comment-delimiter">// </span><span class="org-comment">mals
 </span>System.out.println(name.substring(name.indexOf(<span class="org-string">'m'</span>))); <span class="org-comment-delimiter">// </span><span class="org-comment">mals
@@ -329,7 +325,7 @@ System.out.println(name.substring(3)); <span class="org-comment-delimiter">// </
 </span>System.out.println(name.substring(3, 3)); <span class="org-comment-delimiter">// </span><span class="org-comment">empty string
 </span>System.out.println(name.substring(3, 2)); <span class="org-comment-delimiter">// </span><span class="org-comment">exception
 </span>System.out.println(name.substring(3, 8)); <span class="org-comment-delimiter">// </span><span class="org-comment">exception</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </li>

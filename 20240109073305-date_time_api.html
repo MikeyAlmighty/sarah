@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Date­Time API</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,48 +243,46 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Date­Time API</h1>
-
-<div id="outline-container-org5ebbf40" class="outline-2">
-<h2 id="org5ebbf40">Date­Time API</h2>
-<div class="outline-text-2" id="text-org5ebbf40">
+<div id="outline-container-org16a6a1f" class="outline-2">
+<h2 id="org16a6a1f">Date­Time API</h2>
+<div class="outline-text-2" id="text-org16a6a1f">
 <p>
 To use it, add this import to your program:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">time</span>.*; <span class="org-comment-delimiter">// </span><span class="org-comment">import time classes</span>
-</pre>
+<pre class="src src-java"><code><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">time</span>.*; <span class="org-comment-delimiter">// </span><span class="org-comment">import time classes</span>
+</code></pre>
 </div>
+</div>
+<div id="outline-container-orgb709df9" class="outline-3">
+<h3 id="orgb709df9">Types</h3>
+<div class="outline-text-3" id="text-orgb709df9">
+</div>
+<div id="outline-container-orge34b7b2" class="outline-4">
+<h4 id="orge34b7b2">1. <a href="20240109080216-localdate.html#ID-82317bb4-49e8-4783-aaac-d4d1ae819447">LocalDate</a></h4>
+</div>
+<div id="outline-container-org1ea9421" class="outline-4">
+<h4 id="org1ea9421">2. <a href="20240109080058-localtime.html#ID-dd1e2a29-2a02-4323-b043-9def30a388e5">LocalTime</a></h4>
+</div>
+<div id="outline-container-org163037e" class="outline-4">
+<h4 id="org163037e">3. <a href="20240109075711-localdatetime.html#ID-538ad23c-716d-409d-9846-88be3830d32a">LocalDateTime</a></h4>
+</div>
+<div id="outline-container-org947f526" class="outline-4">
+<h4 id="org947f526">4. <a href="20240109080453-zoneddatetime.html#ID-d606a825-fdcb-4746-95c0-ff693073d4ac">ZonedDateTime</a></h4>
 </div>
 
-<div id="outline-container-org5ab2d8e" class="outline-3">
-<h3 id="org5ab2d8e">Types</h3>
-<div class="outline-text-3" id="text-org5ab2d8e">
-</div>
-<div id="outline-container-orgdee0144" class="outline-4">
-<h4 id="orgdee0144">1. <a href="20240109080216-localdate.html#ID-82317bb4-49e8-4783-aaac-d4d1ae819447">LocalDate</a></h4>
-</div>
-<div id="outline-container-org5d14e5b" class="outline-4">
-<h4 id="org5d14e5b">2. <a href="20240109080058-localtime.html#ID-dd1e2a29-2a02-4323-b043-9def30a388e5">LocalTime</a></h4>
-</div>
-<div id="outline-container-org7b3b643" class="outline-4">
-<h4 id="org7b3b643">3. <a href="20240109075711-localdatetime.html#ID-538ad23c-716d-409d-9846-88be3830d32a">LocalDateTime</a></h4>
-</div>
-<div id="outline-container-org695fc32" class="outline-4">
-<h4 id="org695fc32">4. <a href="20240109080453-zoneddatetime.html#ID-d606a825-fdcb-4746-95c0-ff693073d4ac">ZonedDateTime</a></h4>
-</div>
-
-<div id="outline-container-org8bf5415" class="outline-4">
-<h4 id="org8bf5415"><span class="underline">Exam Trick</span></h4>
-<div class="outline-text-4" id="text-org8bf5415">
+<div id="outline-container-orgc1be7a3" class="outline-4">
+<h4 id="orgc1be7a3"><span class="underline">Exam Trick</span></h4>
+<div class="outline-text-4" id="text-orgc1be7a3">
 <p>
 Also, we did not use a <a href="Constructors.md.html#ID-73a0f36b-e440-486a-bd88-6ca577be3351">Constructors</a> in any of the examples.
 The <code>Date</code> and <code>Time</code> classes have <b>private constructors</b> along with <b>static methods</b> that return <b>instances</b>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">d</span> = <span class="org-keyword">new</span> <span class="org-type">LocalDate</span>(); <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE</span>
-</pre>
+<pre class="src src-java"><code><span class="org-keyword">var</span> <span class="org-variable-name">d</span> = <span class="org-keyword">new</span> <span class="org-type">LocalDate</span>(); <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE</span>
+</code></pre>
 </div>
 
 <p>
@@ -292,67 +291,63 @@ You are <b>not</b> allowed to construct a <code>Date</code> or <code>Time</code>
 </p>
 </div>
 </div>
-
-<div id="outline-container-orgddfb026" class="outline-4">
-<h4 id="orgddfb026"><span class="underline">Exam Trick</span></h4>
-<div class="outline-text-4" id="text-orgddfb026">
+<div id="outline-container-org9e1e510" class="outline-4">
+<h4 id="org9e1e510"><span class="underline">Exam Trick</span></h4>
+<div class="outline-text-4" id="text-org9e1e510">
 <p>
 Another trick is what happens when you pass <b>invalid</b> numbers to of(), for example:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">d</span> = LocalDate.of(2022, <span class="org-constant">Month</span>.JANUARY, 32) <span class="org-comment-delimiter">// </span><span class="org-comment">DateTimeException</span>
-</pre>
+<pre class="src src-java"><code><span class="org-keyword">var</span> <span class="org-variable-name">d</span> = LocalDate.of(2022, <span class="org-constant">Month</span>.JANUARY, 32) <span class="org-comment-delimiter">// </span><span class="org-comment">DateTimeException</span>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org59354c7" class="outline-3">
-<h3 id="org59354c7">Manipulating <code>Dates</code> and <code>Times</code></h3>
-<div class="outline-text-3" id="text-org59354c7">
+<div id="outline-container-orge33bd58" class="outline-3">
+<h3 id="orge33bd58">Manipulating <code>Dates</code> and <code>Times</code></h3>
+<div class="outline-text-3" id="text-orge33bd58">
 </div>
-<div id="outline-container-org208a523" class="outline-4">
-<h4 id="org208a523">1. <a href="20240110075236-adding_to_dates.html#ID-bdd64d03-3bb6-4aa4-8407-83e2829e72f6">Adding To Dates</a></h4>
-</div>
-
-<div id="outline-container-orgdc26d35" class="outline-4">
-<h4 id="orgdc26d35">2. <a href="20240110075503-subtracting_from_dates.html#ID-ff2c44a3-d3bf-4415-92d0-5f01243bbc42">Subtracting From Dates</a></h4>
+<div id="outline-container-org2625d7e" class="outline-4">
+<h4 id="org2625d7e">1. <a href="20240110075236-adding_to_dates.html#ID-bdd64d03-3bb6-4aa4-8407-83e2829e72f6">Adding To Dates</a></h4>
 </div>
 
-<div id="outline-container-org48d050c" class="outline-4">
-<h4 id="org48d050c">Date Methods</h4>
-<div class="outline-text-4" id="text-org48d050c">
+<div id="outline-container-org579ab97" class="outline-4">
+<h4 id="org579ab97">2. <a href="20240110075503-subtracting_from_dates.html#ID-ff2c44a3-d3bf-4415-92d0-5f01243bbc42">Subtracting From Dates</a></h4>
+</div>
 
-<div id="org79e415f" class="figure">
+<div id="outline-container-orgd205eb0" class="outline-4">
+<h4 id="orgd205eb0">Date Methods</h4>
+<div class="outline-text-4" id="text-orgd205eb0">
+
+<div id="org7c981db" class="figure">
 <p><img src="./assets/date_method_allowed.png" alt="date_method_allowed.png" />
 </p>
 </div>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org395440a" class="outline-3">
-<h3 id="org395440a"><a href="20240110080116-periods.html#ID-ac780a7c-43ae-4d1c-99b9-e14006e79591">Periods</a></h3>
+<div id="outline-container-orgafb601a" class="outline-3">
+<h3 id="orgafb601a"><a href="20240110080116-periods.html#ID-ac780a7c-43ae-4d1c-99b9-e14006e79591">Periods</a></h3>
 </div>
-<div id="outline-container-org5b25090" class="outline-3">
-<h3 id="org5b25090"><a href="20240111050842-durations.html#ID-72d033eb-0e33-48e7-b244-0052b66434f7">Durations</a></h3>
-<div class="outline-text-3" id="text-org5b25090">
+<div id="outline-container-org62d97c3" class="outline-3">
+<h3 id="org62d97c3"><a href="20240111050842-durations.html#ID-72d033eb-0e33-48e7-b244-0052b66434f7">Durations</a></h3>
+<div class="outline-text-3" id="text-org62d97c3">
 </div>
-<div id="outline-container-orgd282edf" class="outline-4">
-<h4 id="orgd282edf">Periods vs Durations</h4>
-<div class="outline-text-4" id="text-orgd282edf">
+<div id="outline-container-orge890ea8" class="outline-4">
+<h4 id="orge890ea8">Periods vs Durations</h4>
+<div class="outline-text-4" id="text-orge890ea8">
 
-<div id="orge83ae8d" class="figure">
+<div id="orgbadd2e5" class="figure">
 <p><img src="./assets/periods_vs_durations.png" alt="periods_vs_durations.png" />
 </p>
 </div>
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgf9fa795" class="outline-3">
-<h3 id="orgf9fa795"><a href="20240111051906-instants.html#ID-c3b63bdb-4626-410b-aaa5-ff623855e62d">Instants</a></h3>
+<div id="outline-container-orge1e2ad7" class="outline-3">
+<h3 id="orge1e2ad7"><a href="20240111051906-instants.html#ID-c3b63bdb-4626-410b-aaa5-ff623855e62d">Instants</a></h3>
 </div>
 </div>
 </div>

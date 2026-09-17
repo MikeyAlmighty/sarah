@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Redeclaring private Methods</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,10 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Redeclaring private Methods</h1>
-
-<div id="outline-container-orgfdc6f9e" class="outline-2">
-<h2 id="orgfdc6f9e">Redeclaring private Methods</h2>
-<div class="outline-text-2" id="text-orgfdc6f9e">
+<div id="outline-container-org45aa069" class="outline-2">
+<h2 id="org45aa069">Redeclaring private Methods</h2>
+<div class="outline-text-2" id="text-org45aa069">
 <p>
 In Java, you <b>can’t override</b> <code>private</code> methods since they are <b>not</b> inherited.
 </p>
@@ -258,16 +258,15 @@ Java allows you to <b>redeclare</b> a new method in the <code>child</code> class
 This method in the <code>child</code> class is a separate and independent method, unrelated to the <code>parent</code> version’s method, so none of the rules for <a href="20240120133450-overriding_a_method.html#ID-c67b24a4-82f7-4423-83a9-75fc1c566166">overriding methods</a> is invoked.
 </p>
 </div>
-
-<div id="outline-container-org11d5dea" class="outline-3">
-<h3 id="org11d5dea">Example</h3>
-<div class="outline-text-3" id="text-org11d5dea">
+<div id="outline-container-orge3d9743" class="outline-3">
+<h3 id="orge3d9743">Example</h3>
+<div class="outline-text-3" id="text-orge3d9743">
 <p>
 These two declarations <b>compile</b>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Beetle</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Beetle</span> {
     <span class="org-keyword">private</span> <span class="org-type">String</span> <span class="org-function-name">getSize</span>() {
         <span class="org-keyword">return</span> <span class="org-string">"Undefined"</span>;
     }
@@ -277,7 +276,7 @@ These two declarations <b>compile</b>:
         <span class="org-keyword">return</span> 5;
     }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>

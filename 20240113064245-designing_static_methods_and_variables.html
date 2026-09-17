@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Designing Static Methods and Variables</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,26 +243,24 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Designing Static Methods and Variables</h1>
-
-<div id="outline-container-org2f90ade" class="outline-2">
-<h2 id="org2f90ade">Designing Static Methods and Variables</h2>
-<div class="outline-text-2" id="text-org2f90ade">
+<div id="outline-container-org6c9879d" class="outline-2">
+<h2 id="org6c9879d">Designing Static Methods and Variables</h2>
+<div class="outline-text-2" id="text-org6c9879d">
 <p>
 <code>Methods</code> and <code>variables</code> declared <code>static</code> don’t require an <i>instance</i> of the <code>class</code>.
 </p>
 </div>
-
-<div id="outline-container-org89a8018" class="outline-3">
-<h3 id="org89a8018">Example</h3>
-<div class="outline-text-3" id="text-org89a8018">
+<div id="outline-container-org74f0dc9" class="outline-3">
+<h3 id="org74f0dc9">Example</h3>
+<div class="outline-text-3" id="text-org74f0dc9">
 <p>
 A common use for <code>static</code> variables is counting the number of <code>instances</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Counter</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Counter</span> {
     <span class="org-keyword">private</span> <span class="org-keyword">static</span> <span class="org-type">int</span> <span class="org-variable-name">count</span>;
-    <span class="org-keyword">public</span> Counter() { count++; }
+    <span class="org-keyword">public</span> <span class="org-function-name">Counter</span>() { count++; }
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
         <span class="org-type">Counter</span> <span class="org-variable-name">c1</span> = <span class="org-keyword">new</span> <span class="org-type">Counter</span>();
         <span class="org-type">Counter</span> <span class="org-variable-name">c2</span> = <span class="org-keyword">new</span> <span class="org-type">Counter</span>();
@@ -269,28 +268,27 @@ A common use for <code>static</code> variables is counting the number of <code>i
         System.out.println(count); <span class="org-comment-delimiter">// </span><span class="org-comment">3
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org59e2434" class="outline-3">
-<h3 id="org59e2434"><a href="20240113065406-static_variable.html#ID-90b4776a-f230-4e13-b1a1-248b48026677">Static Variables</a></h3>
+<div id="outline-container-org4ac7759" class="outline-3">
+<h3 id="org4ac7759"><a href="20240113065406-static_variable.html#ID-90b4776a-f230-4e13-b1a1-248b48026677">Static Variables</a></h3>
 </div>
-<div id="outline-container-orgadd5ac1" class="outline-3">
-<h3 id="orgadd5ac1"><a href="20240113065453-static_methods.html#ID-71f8ac46-9cca-4866-b701-8f5a7f9f7fc0">Static Methods</a></h3>
+<div id="outline-container-orgb186994" class="outline-3">
+<h3 id="orgb186994"><a href="20240113065453-static_methods.html#ID-71f8ac46-9cca-4866-b701-8f5a7f9f7fc0">Static Methods</a></h3>
 </div>
-<div id="outline-container-orga942990" class="outline-3">
-<h3 id="orga942990"><a href="20240113070607-class_vs_instance_membership.html#ID-856bbd74-4651-4dc8-92d9-c9a2d280b85f">Class VS Instance Membership</a></h3>
+<div id="outline-container-org395f330" class="outline-3">
+<h3 id="org395f330"><a href="20240113070607-class_vs_instance_membership.html#ID-856bbd74-4651-4dc8-92d9-c9a2d280b85f">Class VS Instance Membership</a></h3>
 </div>
-<div id="outline-container-orgcc093c5" class="outline-3">
-<h3 id="orgcc093c5"><a href="20240114061956-static_variable_modifiers.html#ID-9a77d925-1adb-46ac-9e18-f117a8686ca2">Static Variable Modifiers</a></h3>
+<div id="outline-container-orgda022b2" class="outline-3">
+<h3 id="orgda022b2"><a href="20240114061956-static_variable_modifiers.html#ID-9a77d925-1adb-46ac-9e18-f117a8686ca2">Static Variable Modifiers</a></h3>
 </div>
-<div id="outline-container-org1863a6e" class="outline-3">
-<h3 id="org1863a6e"><a href="20240114063138-static_initializers.html#ID-9b5e5215-73c3-412e-8a72-57dc575c1ee9">Static Initializers</a></h3>
+<div id="outline-container-org8bd7c78" class="outline-3">
+<h3 id="org8bd7c78"><a href="20240114063138-static_initializers.html#ID-9b5e5215-73c3-412e-8a72-57dc575c1ee9">Static Initializers</a></h3>
 </div>
-<div id="outline-container-orgf5fce36" class="outline-3">
-<h3 id="orgf5fce36"><a href="20240114063840-static_imports.html#ID-17f335ce-26e0-4376-afc3-2092875622f6">Static Imports</a></h3>
+<div id="outline-container-orgaee5b5e" class="outline-3">
+<h3 id="orgaee5b5e"><a href="20240114063840-static_imports.html#ID-17f335ce-26e0-4376-afc3-2092875622f6">Static Imports</a></h3>
 </div>
 </div>
 </div>

@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Binary Trees</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,10 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Binary Trees</h1>
-
-<div id="outline-container-org9e0cea5" class="outline-2">
-<h2 id="org9e0cea5">Binary Tree</h2>
-<div class="outline-text-2" id="text-org9e0cea5">
+<div id="outline-container-orga0a7896" class="outline-2">
+<h2 id="orga0a7896">Binary Tree</h2>
+<div class="outline-text-2" id="text-orga0a7896">
 <p>
 <a href="https://www.youtube.com/watch?v=fAAZixBzIAI">Binary Tree Algorithms for Technical Interviews - Full Course</a>
 </p>
@@ -264,20 +264,19 @@ Empty tree (0 Nodes), is <b>also</b> a Binary Tree.
 Node exploring can be achieved by either <a href="20230711185142-breadth_first_search.html#ID-b3d3011e-5dd0-429c-833c-962a42ad09d2">BFS</a> or <a href="20230711185212-depth_first_search.html#ID-0352da89-e0e5-41d8-bb1a-6b69d5d2cd3a">DFS</a>.
 </p>
 </div>
-
-<div id="outline-container-org6f24506" class="outline-3">
-<h3 id="org6f24506">Types Of Binary Trees</h3>
-<div class="outline-text-3" id="text-org6f24506">
+<div id="outline-container-org8fb0fc9" class="outline-3">
+<h3 id="org8fb0fc9">Types Of Binary Trees</h3>
+<div class="outline-text-3" id="text-org8fb0fc9">
 </div>
-<div id="outline-container-orgaa7456f" class="outline-4">
-<h4 id="orgaa7456f">Binary Tree vs Binary Search Tree</h4>
-<div class="outline-text-4" id="text-orgaa7456f">
+<div id="outline-container-orgb1a3a40" class="outline-4">
+<h4 id="orgb1a3a40">Binary Tree vs Binary Search Tree</h4>
+<div class="outline-text-4" id="text-orgb1a3a40">
 <p>
 <b>Binary Search Tree (BST)</b>:  For Each node its left descendants are less than or equal to the current node, which is less than the right descendants.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-comment-delimiter">// </span><span class="org-comment">A Binary Search Tree
+<pre class="src src-js"><code><span class="org-comment-delimiter">// </span><span class="org-comment">A Binary Search Tree
 </span>      8
     /  \
    4    10
@@ -290,14 +289,12 @@ Node exploring can be achieved by either <a href="20230711185142-breadth_first_s
    4    10
   /  \    \
  2    12    20
-</pre>
+</code></pre>
 </div>
 </div>
-
-
 <ul class="org-ul">
-<li><a id="org889e4e0"></a>Balanced vs Unbalanced<br />
-<div class="outline-text-5" id="text-org889e4e0">
+<li><a id="org8ecbc8f"></a>Balanced vs Unbalanced<br />
+<div class="outline-text-5" id="text-org8ecbc8f">
 <p>
 A <code>Binary Tree</code> is balanced if the difference between the <b><b>Height</b></b> of left &amp; right subtree for every node is not more thank <code>k</code> (usually <code>k=1</code>).
 </p>
@@ -307,15 +304,14 @@ A <code>Binary Tree</code> is balanced if the difference between the <b><b>Heigh
 </ul>
 </div>
 </li>
-
-<li><a id="orgfeb83dc"></a>Complete Binary Tree<br />
-<div class="outline-text-5" id="text-orgfeb83dc">
+<li><a id="orgfce24d2"></a>Complete Binary Tree<br />
+<div class="outline-text-5" id="text-orgfce24d2">
 <p>
 Every level of the tree is fully filled, except for perhaps the last level. (To the extent that the last level is filled, it is filled left to right)
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-comment-delimiter">// </span><span class="org-comment">Not a complete Binary Tree
+<pre class="src src-js"><code><span class="org-comment-delimiter">// </span><span class="org-comment">Not a complete Binary Tree
 </span>     10
     /  \
    5   20
@@ -328,21 +324,19 @@ Every level of the tree is fully filled, except for perhaps the last level. (To 
    5      20
   /  \    /
  3    7  15
-</pre>
+</code></pre>
 </div>
 </div>
 </li>
-
-
-<li><a id="orgb92a2a2"></a>Full Binary Tree<br />
-<div class="outline-text-5" id="text-orgb92a2a2">
+<li><a id="org5da7648"></a>Full Binary Tree<br />
+<div class="outline-text-5" id="text-org5da7648">
 <p>
 Every node has either <b>zero</b> or <b>two</b> children. (No node has only one child).
 We can also say a `full binary tree` is a binary tree in which all nodes <b>except</b> leaf nodes have two children.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-comment-delimiter">// </span><span class="org-comment">Not a Full Binary Tree
+<pre class="src src-js"><code><span class="org-comment-delimiter">// </span><span class="org-comment">Not a Full Binary Tree
 </span>       10
     /      \
    5        20
@@ -359,36 +353,35 @@ We can also say a `full binary tree` is a binary tree in which all nodes <b>exce
        3     7
       /  \
      9    18
-</pre>
+</code></pre>
 </div>
 </div>
 </li>
-
-<li><a id="orgb1180ae"></a>Perfect Binary Tree<br />
-<div class="outline-text-5" id="text-orgb1180ae">
+<li><a id="org9d7d89c"></a>Perfect Binary Tree<br />
+<div class="outline-text-5" id="text-org9d7d89c">
 <p>
 Is both <b>Full</b> and <b>Complete</b>. All leaf nodes will be at the same level and this level has the maximum number of nodes.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-comment-delimiter">// </span><span class="org-comment">Perfect Binary Tree
+<pre class="src src-js"><code><span class="org-comment-delimiter">// </span><span class="org-comment">Perfect Binary Tree
 </span>      10
     /    \
    5      20
   / \    /  \
  9   18  3   7
-</pre>
+</code></pre>
 </div>
 
 
 
-<div id="org4ed4fe0" class="figure">
+<div id="org7b7ad51" class="figure">
 <p><img src="./assets/typesOfBinaryTrees.png" alt="typesOfBinaryTrees.png" />
 </p>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-keyword">class</span> Node {
+<pre class="src src-js"><code><span class="org-keyword">class</span> Node {
   constructor(val){
     <span class="org-constant">this</span>.val = val
     <span class="org-constant">this</span>.left = <span class="org-constant">null</span>
@@ -557,7 +550,7 @@ console.log(recursiveTreeSum(num1)) <span class="org-comment-delimiter">// </spa
 </span>console.log(maxPathSum(num1)) <span class="org-comment-delimiter">// </span><span class="org-comment">Should be 52
 </span>
 console.log(reverseBinaryTree(a))
-</pre>
+</code></pre>
 </div>
 </div>
 </li>

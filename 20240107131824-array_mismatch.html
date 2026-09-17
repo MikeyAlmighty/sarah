@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Array mismatch</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,10 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Array mismatch</h1>
-
-<div id="outline-container-org69a0c0a" class="outline-2">
-<h2 id="org69a0c0a">.mismatch()</h2>
-<div class="outline-text-2" id="text-org69a0c0a">
+<div id="outline-container-orgd6d147d" class="outline-2">
+<h2 id="orgd6d147d">.mismatch()</h2>
+<div class="outline-text-2" id="text-orgd6d147d">
 <p>
 Now that you are familiar with <a href="20240107103646-array_comparison.html#ID-d06d8e67-0233-4275-8eaa-f0660d5b6cf1">.compare()</a>, it is time to learn about <code>mismatch()</code>.
 </p>
@@ -258,24 +258,22 @@ If the arrays are <b>equal</b>, <code>mismatch()</code> returns <code>-1</code>.
 Otherwise, it <b>returns the first index where they differ</b>.
 </p>
 </div>
-
-
-<div id="outline-container-org1530374" class="outline-3">
-<h3 id="org1530374">Example</h3>
-<div class="outline-text-3" id="text-org1530374">
+<div id="outline-container-orge66e35c" class="outline-3">
+<h3 id="orge66e35c">Example</h3>
+<div class="outline-text-3" id="text-orge66e35c">
 <div class="org-src-container">
-<pre class="src src-java">System.out.println(Arrays.mismatch(<span class="org-keyword">new</span> <span class="org-type">int</span>[] {1}, <span class="org-keyword">new</span> <span class="org-type">int</span>[] {1})); <span class="org-comment-delimiter">// </span><span class="org-comment">-1 (Arrays are the same)
+<pre class="src src-java"><code>System.out.println(Arrays.mismatch(<span class="org-keyword">new</span> <span class="org-type">int</span>[] {1}, <span class="org-keyword">new</span> <span class="org-type">int</span>[] {1})); <span class="org-comment-delimiter">// </span><span class="org-comment">-1 (Arrays are the same)
 </span>System.out.println(Arrays.mismatch(<span class="org-keyword">new</span> <span class="org-type">String</span>[] {<span class="org-string">"a"</span>}, <span class="org-keyword">new</span> <span class="org-type">String</span>[] {<span class="org-string">"A"</span>})); <span class="org-comment-delimiter">// </span><span class="org-comment">0 (Entries at element 0 are not equal)
 </span>System.out.println(Arrays.mismatch(<span class="org-keyword">new</span> <span class="org-type">int</span>[] {1, 2}, <span class="org-keyword">new</span> <span class="org-type">int</span>[] {1})); <span class="org-comment-delimiter">// </span><span class="org-comment">1
 </span><span class="org-comment-delimiter">/*</span><span class="org-comment">
     The element at index =1= is not equal.
     Or, more specifically, one array has an element at index 1, and the other does not
 </span><span class="org-comment-delimiter">*/</span>
-</pre>
+</code></pre>
 </div>
 
 
-<div id="org052c6d9" class="figure">
+<div id="org53ad988" class="figure">
 <p><img src="./assets/array_equality_vs_comparison_vs_mismatch.png" alt="array_equality_vs_comparison_vs_mismatch.png" />
 </p>
 </div>

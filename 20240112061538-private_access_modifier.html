@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Private Access Modifier</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,10 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Private Access Modifier</h1>
-
-<div id="outline-container-org1f3980e" class="outline-2">
-<h2 id="org1f3980e">Private Access Modifier</h2>
-<div class="outline-text-2" id="text-org1f3980e">
+<div id="outline-container-org18cfd82" class="outline-2">
+<h2 id="org18cfd82">Private Access Modifier</h2>
+<div class="outline-text-2" id="text-org18cfd82">
 <p>
 The <code>private</code> modifier means the method can be called only from <b>within the same class</b>.
 </p>
@@ -254,12 +254,11 @@ The <code>private</code> modifier means the method can be called only from <b>wi
 Only code in the <b>same class</b> can <code>call</code> <code>private methods</code> or <code>access</code> <code>private fields</code>.
 </p>
 </div>
-
-<div id="outline-container-orga6fda6b" class="outline-3">
-<h3 id="orga6fda6b">Example</h3>
-<div class="outline-text-3" id="text-orga6fda6b">
+<div id="outline-container-org9c338d6" class="outline-3">
+<h3 id="org9c338d6">Example</h3>
+<div class="outline-text-3" id="text-org9c338d6">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">package</span> pond.<span class="org-constant">duck</span>;
+<pre class="src src-java"><code><span class="org-keyword">package</span> pond.<span class="org-constant">duck</span>;
 
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">FatherDuck</span> {
     <span class="org-keyword">private</span> <span class="org-type">String</span> <span class="org-variable-name">noise</span> = <span class="org-string">"quack"</span>;
@@ -272,19 +271,18 @@ Only code in the <b>same class</b> can <code>call</code> <code>private methods</
 
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">BadDuckling</span> {
     <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">makeNoise</span>() {
-        <span class="org-type">var</span> <span class="org-variable-name">duck</span> = <span class="org-keyword">new</span> <span class="org-type">FatherDuck</span>();
+        <span class="org-keyword">var</span> <span class="org-variable-name">duck</span> = <span class="org-keyword">new</span> <span class="org-type">FatherDuck</span>();
         duck.quack(); <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>        System.out.print(duck.noise); <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org0aa43e3" class="outline-3">
-<h3 id="org0aa43e3"><span class="underline">Exam Trick</span></h3>
-<div class="outline-text-3" id="text-org0aa43e3">
+<div id="outline-container-org1c17693" class="outline-3">
+<h3 id="org1c17693"><span class="underline">Exam Trick</span></h3>
+<div class="outline-text-3" id="text-org1c17693">
 <p>
 In the previous example, <code>FatherDuck</code> and <code>BadDuckling</code> are in <b>separate files</b>, but what if they were declared in the same file?
 </p>

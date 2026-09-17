@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Default Constructor</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,10 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Default Constructor</h1>
-
-<div id="outline-container-org0a3d672" class="outline-2">
-<h2 id="org0a3d672">Default Constructor</h2>
-<div class="outline-text-2" id="text-org0a3d672">
+<div id="outline-container-orgd87bd78" class="outline-2">
+<h2 id="orgd87bd78">Default Constructor</h2>
+<div class="outline-text-2" id="text-orgd87bd78">
 <p>
 Every class in <code>Java</code> has a <code>constructor</code>, whether you code one or not.
 </p>
@@ -264,35 +264,33 @@ This Java­created <code>constructor</code> is called the <b>default constructor
 <li>The <code>default constructor</code> has an empty <a href="20240111063906-parameter_list.html#ID-94f7186e-22e8-4636-bc8c-a4cc040d9073">parameter list</a> and an <b>empty body</b>.</li>
 </ul>
 </div>
-
-<div id="outline-container-org9c2283a" class="outline-3">
-<h3 id="org9c2283a">Example (Compiler Created)</h3>
-<div class="outline-text-3" id="text-org9c2283a">
+<div id="outline-container-org49cd75f" class="outline-3">
+<h3 id="org49cd75f">Example (Compiler Created)</h3>
+<div class="outline-text-3" id="text-org49cd75f">
 <p>
 In the <code>Rabbit</code> class, Java sees that no constructor was coded and creates one:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Rabbit</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Rabbit</span> {
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
         <span class="org-keyword">new</span> <span class="org-type">Rabbit</span>(); <span class="org-comment-delimiter">// </span><span class="org-comment">Calls the default constructor
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-orga18e778" class="outline-3">
-<h3 id="orga18e778">Example (User Defined)</h3>
-<div class="outline-text-3" id="text-orga18e778">
+<div id="outline-container-orgcbeb2fa" class="outline-3">
+<h3 id="orgcbeb2fa">Example (User Defined)</h3>
+<div class="outline-text-3" id="text-orgcbeb2fa">
 <p>
 In the <code>Rabbit</code> class, Java sees that no constructor was coded and creates one:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Rabbit</span> {
-    <span class="org-keyword">public</span> Rabbit(){
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Rabbit</span> {
+    <span class="org-keyword">public</span> <span class="org-function-name">Rabbit</span>(){
 
     }
 
@@ -300,14 +298,13 @@ In the <code>Rabbit</code> class, Java sees that no constructor was coded and cr
         <span class="org-keyword">new</span> <span class="org-type">Rabbit</span>(); <span class="org-comment-delimiter">// </span><span class="org-comment">Calls the user-defined constructor
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-orge29d3ec" class="outline-3">
-<h3 id="orge29d3ec"><span class="underline">Exam Trick</span></h3>
-<div class="outline-text-3" id="text-orge29d3ec">
+<div id="outline-container-org383b4b8" class="outline-3">
+<h3 id="org383b4b8"><span class="underline">Exam Trick</span></h3>
+<div class="outline-text-3" id="text-org383b4b8">
 <ul class="org-ul">
 <li>For the exam, one of the most important rules you need to know is that the <code>compiler</code> <b>only</b> inserts the <code>default constructor</code> when <b>no</b> <code>constructors</code> are <b>defined</b>.</li>
 <li>Having only <b>private</b> <code>constructors</code> in a class tells the compiler <b>not to</b> provide a <code>default no­argument constructor</code>.
@@ -318,9 +315,8 @@ In the <code>Rabbit</code> class, Java sees that no constructor was coded and cr
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgbfb3c06" class="outline-3">
-<h3 id="orgbfb3c06"><a href="20240117065101-default_constructor_tips_and_tricks.html#ID-68584fc1-3dde-48e5-badb-67d43e5e875a">Default Constructor Tips and Tricks</a></h3>
+<div id="outline-container-org6ccd7ed" class="outline-3">
+<h3 id="org6ccd7ed"><a href="20240117065101-default_constructor_tips_and_tricks.html#ID-68584fc1-3dde-48e5-badb-67d43e5e875a">Default Constructor Tips and Tricks</a></h3>
 </div>
 </div>
 </div>

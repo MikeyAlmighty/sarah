@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>LocalTime</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,40 +243,37 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">LocalTime</h1>
-
-<div id="outline-container-org1c82773" class="outline-2">
-<h2 id="org1c82773">LocalTime</h2>
-<div class="outline-text-2" id="text-org1c82773">
+<div id="outline-container-org050ecb5" class="outline-2">
+<h2 id="org050ecb5">LocalTime</h2>
+<div class="outline-text-2" id="text-org050ecb5">
 <p>
 Contains just a <code>Time</code>.
 </p>
 </div>
-
-<div id="outline-container-org0db2835" class="outline-3">
-<h3 id="org0db2835">Creating a LocalTime</h3>
-<div class="outline-text-3" id="text-org0db2835">
+<div id="outline-container-org0f71e0d" class="outline-3">
+<h3 id="org0f71e0d">Creating a LocalTime</h3>
+<div class="outline-text-3" id="text-org0f71e0d">
 </div>
-<div id="outline-container-orgacf5416" class="outline-4">
-<h4 id="orgacf5416">Signature</h4>
-<div class="outline-text-4" id="text-orgacf5416">
+<div id="outline-container-org6719c53" class="outline-4">
+<h4 id="org6719c53">Signature</h4>
+<div class="outline-text-4" id="text-org6719c53">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">LocalTime</span> <span class="org-function-name">of</span>(<span class="org-type">int</span> <span class="org-variable-name">hour</span>, <span class="org-type">int</span> <span class="org-variable-name">minute</span>)
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">LocalTime</span> <span class="org-function-name">of</span>(<span class="org-type">int</span> <span class="org-variable-name">hour</span>, <span class="org-type">int</span> <span class="org-variable-name">minute</span>)
 <span class="org-keyword">public</span> <span class="org-keyword">static</span> LocalTime of(<span class="org-type">int</span> <span class="org-variable-name">hour</span>, <span class="org-type">int</span> <span class="org-variable-name">minute</span>, <span class="org-type">int</span> <span class="org-variable-name">second</span>)
 <span class="org-keyword">public</span> <span class="org-keyword">static</span> LocalTime of(<span class="org-type">int</span> <span class="org-variable-name">hour</span>, <span class="org-type">int</span> <span class="org-variable-name">minute</span>, <span class="org-type">int</span> <span class="org-variable-name">second</span>, <span class="org-type">int</span> <span class="org-variable-name">nanos</span>)
-</pre>
+</code></pre>
 </div>
 </div>
-
 <ul class="org-ul">
-<li><a id="org7fbb4c1"></a>Example<br />
-<div class="outline-text-5" id="text-org7fbb4c1">
+<li><a id="org580137e"></a>Example<br />
+<div class="outline-text-5" id="text-org580137e">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">time1</span> = LocalTime.of(6, 15); <span class="org-comment-delimiter">// </span><span class="org-comment">hour and minute
-</span><span class="org-type">var</span> <span class="org-variable-name">time2</span> = LocalTime.of(6, 15, 30); <span class="org-comment-delimiter">// </span><span class="org-comment">+ seconds
-</span><span class="org-type">var</span> <span class="org-variable-name">time3</span> = LocalTime.of(6, 15, 30, 200); <span class="org-comment-delimiter">// </span><span class="org-comment">+ nanoseconds
+<pre class="src src-java"><code><span class="org-keyword">var</span> <span class="org-variable-name">time1</span> = LocalTime.of(6, 15); <span class="org-comment-delimiter">// </span><span class="org-comment">hour and minute
+</span><span class="org-keyword">var</span> <span class="org-variable-name">time2</span> = LocalTime.of(6, 15, 30); <span class="org-comment-delimiter">// </span><span class="org-comment">+ seconds
+</span><span class="org-keyword">var</span> <span class="org-variable-name">time3</span> = LocalTime.of(6, 15, 30, 200); <span class="org-comment-delimiter">// </span><span class="org-comment">+ nanoseconds
 </span>
 System.out.println(LocalTime.now()); <span class="org-comment-delimiter">// </span><span class="org-comment">07:37:13.518825406</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </li>

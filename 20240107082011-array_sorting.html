@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Array Sorting</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,10 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Array Sorting</h1>
-
-<div id="outline-container-org75ab1b9" class="outline-2">
-<h2 id="org75ab1b9">Array Sorting</h2>
-<div class="outline-text-2" id="text-org75ab1b9">
+<div id="outline-container-org8b6bbe8" class="outline-2">
+<h2 id="org8b6bbe8">Array Sorting</h2>
+<div class="outline-text-2" id="text-org8b6bbe8">
 <ul class="org-ul">
 <li><b>Sorting</b> - like <a href="20240107100900-array_searching.html#ID-77196205-79e1-4284-bdec-cc31786e5729">searching</a> - is a common task in computer programming.
 <ul class="org-ul">
@@ -258,22 +258,21 @@
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgfbb5c40" class="outline-2">
-<h2 id="orgfbb5c40">Built-in .sort() method</h2>
-<div class="outline-text-2" id="text-orgfbb5c40">
+<div id="outline-container-orgb0d8c65" class="outline-2">
+<h2 id="orgb0d8c65">Built-in .sort() method</h2>
+<div class="outline-text-2" id="text-orgb0d8c65">
 </div>
-<div id="outline-container-orgb763d00" class="outline-3">
-<h3 id="orgb763d00">Example</h3>
-<div class="outline-text-3" id="text-orgb763d00">
+<div id="outline-container-org15de1f9" class="outline-3">
+<h3 id="org15de1f9">Example</h3>
+<div class="outline-text-3" id="text-org15de1f9">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.*; <span class="org-comment-delimiter">// </span><span class="org-comment">import whole package including Arrays
+<pre class="src src-java"><code><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.*; <span class="org-comment-delimiter">// </span><span class="org-comment">import whole package including Arrays
 </span><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Arrays</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">import just Arrays
 </span>
 <span class="org-type">int</span>[] <span class="org-variable-name">numbers</span> = { 6, 9, 1 };
 Arrays.sort(numbers);
 
-<span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; numbers.<span class="org-type">length</span>; i++)
+<span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; numbers.length; i++)
     System.out.print(numbers[i] + <span class="org-string">" "</span>);
 
 <span class="org-type">String</span>[] <span class="org-variable-name">names</span> = { <span class="org-string">"DeadPool"</span>, <span class="org-string">"BatMan"</span>, <span class="org-string">"AquaMan"</span> };
@@ -283,16 +282,15 @@ Arrays.sort(names);
 <span class="org-keyword">for</span> (<span class="org-type">String</span> <span class="org-variable-name">name</span>: names)
     System.out.println(name);
 
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org1568457" class="outline-3">
-<h3 id="org1568457">Example (Descending)</h3>
-<div class="outline-text-3" id="text-org1568457">
+<div id="outline-container-org9c8da0d" class="outline-3">
+<h3 id="org9c8da0d">Example (Descending)</h3>
+<div class="outline-text-3" id="text-org9c8da0d">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Arrays</span>;
+<pre class="src src-java"><code><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Arrays</span>;
 <span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Collections</span>;
 
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">DescendingSortExample</span> {
@@ -306,7 +304,7 @@ Arrays.sort(names);
         System.out.println(<span class="org-string">"Sorted Array in Descending Order: "</span> + Arrays.toString(numbers));
     }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>

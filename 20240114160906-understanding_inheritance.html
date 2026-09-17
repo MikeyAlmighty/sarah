@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Understanding Inheritance</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,10 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Understanding Inheritance</h1>
-
-<div id="outline-container-orge8765e4" class="outline-2">
-<h2 id="orge8765e4">Understanding Inheritance</h2>
-<div class="outline-text-2" id="text-orge8765e4">
+<div id="outline-container-org719b701" class="outline-2">
+<h2 id="org719b701">Understanding Inheritance</h2>
+<div class="outline-text-2" id="text-org719b701">
 <p>
 <b>Inheritance</b> allows one <code>class</code> to acquire the <code>properties</code> (<code>fields</code>) and <code>behaviours</code> (<code>methods</code>) of another <code>class</code>.
 </p>
@@ -254,21 +254,19 @@
 We indicate a class is a <code>subclass</code> by declaring it with the <code>extends</code> keyword
 </p>
 </div>
-
-<div id="outline-container-org37f0236" class="outline-3">
-<h3 id="org37f0236">Example</h3>
-<div class="outline-text-3" id="text-org37f0236">
+<div id="outline-container-org08ee40f" class="outline-3">
+<h3 id="org08ee40f">Example</h3>
+<div class="outline-text-3" id="text-org08ee40f">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Mammal</span> {} <span class="org-comment-delimiter">// </span><span class="org-comment">Superclass
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Mammal</span> {} <span class="org-comment-delimiter">// </span><span class="org-comment">Superclass
 </span><span class="org-keyword">public</span> <span class="org-keyword">final</span> <span class="org-keyword">class</span> <span class="org-type">Rhino</span> <span class="org-keyword">extends</span> <span class="org-type">Mammal</span> {} <span class="org-comment-delimiter">// </span><span class="org-comment">Subclass</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org754b16a" class="outline-3">
-<h3 id="org754b16a">Transitive</h3>
-<div class="outline-text-3" id="text-org754b16a">
+<div id="outline-container-org25f6d88" class="outline-3">
+<h3 id="org25f6d88">Transitive</h3>
+<div class="outline-text-3" id="text-org25f6d88">
 <p>
 One key aspect of <b>inheritance</b> is that it is <b>transitive</b>.
 </p>
@@ -291,10 +289,9 @@ We sometimes use the term <b>direct</b> <code>subclass</code> / <code>descendant
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org8f8b068" class="outline-3">
-<h3 id="org8f8b068">Access</h3>
-<div class="outline-text-3" id="text-org8f8b068">
+<div id="outline-container-orgd78c19c" class="outline-3">
+<h3 id="orgd78c19c">Access</h3>
+<div class="outline-text-3" id="text-orgd78c19c">
 <ul class="org-ul">
 <li>When one class <b>inherits</b> from a <code>parent</code> class, all <a href="20240113063742-public_access_modifier.html#ID-28127310-6300-4e4f-9935-8c2377e7de75">public</a> and <a href="20240113044720-protected_access_modifier.html#ID-2085746a-5d79-403a-a417-5a0ef14f9933">protected</a> members are <b>automatically</b> available as part of the <code>child</code> class.</li>
 <li>If the two classes are in the <b>same</b> package, then package members <b>are available</b> to the child class.</li>
@@ -302,12 +299,11 @@ We sometimes use the term <b>direct</b> <code>subclass</code> / <code>descendant
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org7cebffd" class="outline-3">
-<h3 id="org7cebffd"><a href="20240114165239-class_modifiers.html#ID-0746c442-3534-4076-b43d-0ed51abb8379">Class Modifiers</a></h3>
+<div id="outline-container-orgd5e101b" class="outline-3">
+<h3 id="orgd5e101b"><a href="20240114165239-class_modifiers.html#ID-0746c442-3534-4076-b43d-0ed51abb8379">Class Modifiers</a></h3>
 </div>
-<div id="outline-container-org117ce64" class="outline-3">
-<h3 id="org117ce64"><a href="20240114163200-inheriting_the_object_class.html#ID-fd832390-4e2b-47c7-8d11-aeaa272a22b6">Inheriting The Object class</a></h3>
+<div id="outline-container-org1201efb" class="outline-3">
+<h3 id="org1201efb"><a href="20240114163200-inheriting_the_object_class.html#ID-fd832390-4e2b-47c7-8d11-aeaa272a22b6">Inheriting The Object class</a></h3>
 </div>
 </div>
 </div>

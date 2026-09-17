@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Switch Expressions</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,10 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Switch Expressions</h1>
-
-<div id="outline-container-orgc49a16d" class="outline-2">
-<h2 id="orgc49a16d">Switch Expressions</h2>
-<div class="outline-text-2" id="text-orgc49a16d">
+<div id="outline-container-org4599122" class="outline-2">
+<h2 id="org4599122">Switch Expressions</h2>
+<div class="outline-text-2" id="text-org4599122">
 <ul class="org-ul">
 <li>Introduced in <b>Java 14</b></li>
 </ul>
@@ -254,8 +254,8 @@ A <code>switch expression</code> is a much more compact form of a <a href="20240
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">printDayOfWeek</span>(<span class="org-type">int</span> <span class="org-variable-name">day</span>) {
-    <span class="org-type">var</span> <span class="org-variable-name">result</span> = <span class="org-keyword">switch</span>(day) {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">printDayOfWeek</span>(<span class="org-type">int</span> <span class="org-variable-name">day</span>) {
+    <span class="org-keyword">var</span> <span class="org-variable-name">result</span> = <span class="org-keyword">switch</span>(day) {
         <span class="org-keyword">case</span> 0 -&gt; <span class="org-string">"Sunday"</span>;
         <span class="org-keyword">case</span> 1 -&gt; <span class="org-string">"Monday"</span>;
         <span class="org-keyword">case</span> 2 -&gt; <span class="org-string">"Tuesday"</span>;
@@ -267,27 +267,26 @@ A <code>switch expression</code> is a much more compact form of a <a href="20240
     };
     System.out.print(result);
 }
-</pre>
+</code></pre>
 </div>
 
 <p>
 Each <code>case</code> or <code>default</code> expression requires a <b>semicolon</b> (as well as the <b>assignment</b> itself).
 </p>
 </div>
-
-<div id="outline-container-org6aebb39" class="outline-3">
-<h3 id="org6aebb39">Rules</h3>
-<div class="outline-text-3" id="text-org6aebb39">
+<div id="outline-container-org268a0dd" class="outline-3">
+<h3 id="org268a0dd">Rules</h3>
+<div class="outline-text-3" id="text-org268a0dd">
 </div>
-<div id="outline-container-org9758ce1" class="outline-4">
-<h4 id="org9758ce1">1. Return consistent Data Type</h4>
-<div class="outline-text-4" id="text-org9758ce1">
+<div id="outline-container-org7916302" class="outline-4">
+<h4 id="org7916302">1. Return consistent Data Type</h4>
+<div class="outline-text-4" id="text-org7916302">
 <p>
 <b>All of the branches</b> of a <code>switch</code> expression that <b>do not</b> throw an exception must return a <code>consistent data type</code> (if the <code>switch</code> expression returns a value).
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">int</span> <span class="org-variable-name">measurement</span> = 10;
+<pre class="src src-java"><code><span class="org-type">int</span> <span class="org-variable-name">measurement</span> = 10;
 <span class="org-type">int</span> <span class="org-variable-name">size</span> = <span class="org-keyword">switch</span>(measurement) {
     <span class="org-keyword">case</span> 5 -&gt; 1;
     <span class="org-keyword">case</span> 10 -&gt; (<span class="org-type">short</span>)2;
@@ -296,22 +295,21 @@ Each <code>case</code> or <code>default</code> expression requires a <b>semicolo
 </span>    <span class="org-keyword">case</span> 40 -&gt; 4L; <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>    <span class="org-keyword">case</span> 50 -&gt; <span class="org-constant">null</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>};
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org5a40531" class="outline-4">
-<h4 id="org5a40531">2. Yielding Values</h4>
-<div class="outline-text-4" id="text-org5a40531">
+<div id="outline-container-orgcc4d65d" class="outline-4">
+<h4 id="orgcc4d65d">2. Yielding Values</h4>
+<div class="outline-text-4" id="text-orgcc4d65d">
 <p>
 If the switch expression returns a value, then every branch that <b>isn’t</b> an expression must <code>yield a value</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">int</span> <span class="org-variable-name">fish</span> = 5;
+<pre class="src src-java"><code><span class="org-type">int</span> <span class="org-variable-name">fish</span> = 5;
 <span class="org-type">int</span> <span class="org-variable-name">length</span> = 12;
-<span class="org-type">var</span> <span class="org-variable-name">name</span> = <span class="org-keyword">switch</span>(fish) {
+<span class="org-keyword">var</span> <span class="org-variable-name">name</span> = <span class="org-keyword">switch</span>(fish) {
     <span class="org-keyword">case</span> 1 -&gt; <span class="org-string">"Goldfish"</span>;
     <span class="org-keyword">case</span> 2 -&gt; { yield <span class="org-string">"Trout"</span>; }
     <span class="org-keyword">case</span> 3 -&gt; {
@@ -322,7 +320,7 @@ If the switch expression returns a value, then every branch that <b>isn’t</b> 
     }
     <span class="org-keyword">default</span> -&gt; <span class="org-string">"Swordfish"</span>;
 };
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -334,22 +332,20 @@ The <code>yield</code> keyword is equivalent to a <code>return statement</code> 
 </p>
 </div>
 </div>
-
-<div id="outline-container-org02238e9" class="outline-4">
-<h4 id="org02238e9">3. Default Branch</h4>
-<div class="outline-text-4" id="text-org02238e9">
+<div id="outline-container-orgc587f4d" class="outline-4">
+<h4 id="orgc587f4d">3. Default Branch</h4>
+<div class="outline-text-4" id="text-orgc587f4d">
 <p>
 A <code>default</code> branch is required unless <b>all</b> cases are covered or no <b>value</b> is returned.
 </p>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org2745e44" class="outline-3">
-<h3 id="org2745e44">Multiple value Case Statements</h3>
-<div class="outline-text-3" id="text-org2745e44">
+<div id="outline-container-org6896157" class="outline-3">
+<h3 id="org6896157">Multiple value Case Statements</h3>
+<div class="outline-text-3" id="text-org6896157">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">String</span> <span class="org-function-name">printSeason</span>(<span class="org-type">int</span> <span class="org-variable-name">month</span>) <span class="org-keyword">throws</span> <span class="org-type">IllegalStateException</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">String</span> <span class="org-function-name">printSeason</span>(<span class="org-type">int</span> <span class="org-variable-name">month</span>) <span class="org-keyword">throws</span> <span class="org-type">IllegalStateException</span> {
     <span class="org-keyword">return</span> <span class="org-keyword">switch</span>(month) {
         <span class="org-keyword">case</span> 1, 2, 3 -&gt; <span class="org-string">"Winter"</span>;
         <span class="org-keyword">case</span> 4, 5, 6 -&gt; <span class="org-string">"Spring"</span>;
@@ -358,14 +354,13 @@ A <code>default</code> branch is required unless <b>all</b> cases are covered or
         <span class="org-keyword">default</span> -&gt; <span class="org-keyword">throw</span> <span class="org-keyword">new</span> <span class="org-type">IllegalStateException</span>(<span class="org-string">"Unexpected value: "</span> + month);
     };
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org05a0382" class="outline-3">
-<h3 id="org05a0382"><span class="underline">Exam trick</span></h3>
-<div class="outline-text-3" id="text-org05a0382">
+<div id="outline-container-orgcb47285" class="outline-3">
+<h3 id="orgcb47285"><span class="underline">Exam trick</span></h3>
+<div class="outline-text-3" id="text-orgcb47285">
 <p>
 Unlike a regular <a href="20240102090649-switch_statements.html#ID-0526ffdf-bdb1-4f35-a65f-ef29391f84a3">switch statement</a>, a <b>switch expression</b> can be used with the <a href="20231231131429-assignment_operators.html#ID-32c06110-1f45-4d85-9583-74d13aaa083f">assignment Operator</a> and <b>requires a semicolon</b> when doing so.
 </p>
@@ -375,31 +370,29 @@ Furthermore, <code>semicolons</code> are <b>required</b> for <code>case expressi
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">name</span> = <span class="org-keyword">switch</span>(fish) {
+<pre class="src src-java"><code><span class="org-keyword">var</span> <span class="org-variable-name">name</span> = <span class="org-keyword">switch</span>(fish) {
     <span class="org-keyword">case</span> 1 -&gt; <span class="org-string">"Goldfish"</span> <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE (missing semicolon)
 </span>    <span class="org-keyword">case</span> 2 -&gt; { yield <span class="org-string">"Trout"</span>; }; <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE (extra semicolon)
 </span>} <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE (missing semicolon)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org5425ce5" class="outline-3">
-<h3 id="org5425ce5"><span class="underline">Exam trick</span></h3>
-<div class="outline-text-3" id="text-org5425ce5">
+<div id="outline-container-org3cf6aa4" class="outline-3">
+<h3 id="org3cf6aa4"><span class="underline">Exam trick</span></h3>
+<div class="outline-text-3" id="text-org3cf6aa4">
 </div>
-<div id="outline-container-orgb22b07a" class="outline-4">
-<h4 id="orgb22b07a">Does return value</h4>
-<div class="outline-text-4" id="text-orgb22b07a">
+<div id="outline-container-org3d8e035" class="outline-4">
+<h4 id="org3d8e035">Does return value</h4>
+<div class="outline-text-4" id="text-org3d8e035">
 <p>
 A <code>switch expression</code> that <code>returns a value</code> <b>must</b> handle <b>all possible</b> input values.
 </p>
 </div>
 </div>
-
-<div id="outline-container-org67cda8b" class="outline-4">
-<h4 id="org67cda8b">Does NOT return value</h4>
-<div class="outline-text-4" id="text-org67cda8b">
+<div id="outline-container-org02333dd" class="outline-4">
+<h4 id="org02333dd">Does NOT return value</h4>
+<div class="outline-text-4" id="text-org02333dd">
 <p>
 When it does <b>not</b> return a value, it is <code>optional</code>.
 </p>

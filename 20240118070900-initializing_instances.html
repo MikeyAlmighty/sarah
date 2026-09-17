@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Initializing Instances</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,10 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Initializing Instances</h1>
-
-<div id="outline-container-orgfb102c6" class="outline-2">
-<h2 id="orgfb102c6">Initializing Instances</h2>
-<div class="outline-text-2" id="text-orgfb102c6">
+<div id="outline-container-orgfd88c23" class="outline-2">
+<h2 id="orgfd88c23">Initializing Instances</h2>
+<div class="outline-text-2" id="text-orgfd88c23">
 <p>
 First, start at the <b>lowest-level</b> <code>constructor</code> where the <code>new</code> keyword is used.
 </p>
@@ -262,14 +262,13 @@ Then, progress <b>upward</b> and note the order of <code>constructors</code>.
 Finally, initialize each <code>class</code> starting with the <code>superclass</code>, processing each <code>instance initializer</code> and <code>constructor</code> in the reverse order in which it was called.
 </p>
 </div>
-
-<div id="outline-container-org1a0f40e" class="outline-3">
-<h3 id="org1a0f40e">We summarize the order of initialization for an instance as follows:</h3>
-<div class="outline-text-3" id="text-org1a0f40e">
+<div id="outline-container-org3bbe950" class="outline-3">
+<h3 id="org3bbe950">We summarize the order of initialization for an instance as follows:</h3>
+<div class="outline-text-3" id="text-org3bbe950">
 </div>
-<div id="outline-container-org14d2eed" class="outline-4">
-<h4 id="org14d2eed">Initialize Instance of <code>X</code></h4>
-<div class="outline-text-4" id="text-org14d2eed">
+<div id="outline-container-org4f9f4c7" class="outline-4">
+<h4 id="org4f9f4c7">Initialize Instance of <code>X</code></h4>
+<div class="outline-text-4" id="text-org4f9f4c7">
 <ol class="org-ol">
 <li>Initialize class <code>X</code> if it has not been previously initialized.</li>
 
@@ -283,7 +282,7 @@ Finally, initialize each <code>class</code> starting with the <code>superclass</
 </ol>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">ZooTickets</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">ZooTickets</span> {
     <span class="org-keyword">private</span> <span class="org-type">String</span> <span class="org-variable-name">name</span> = <span class="org-string">"BestZoo"</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">Line: 2
 </span>    { System.out.print(name + <span class="org-string">"-"</span>); } <span class="org-comment-delimiter">// </span><span class="org-comment">Line: 3
 </span>
@@ -291,7 +290,7 @@ Finally, initialize each <code>class</code> starting with the <code>superclass</
 </span>    <span class="org-keyword">static</span> { System.out.print(COUNT + <span class="org-string">"-"</span>); } <span class="org-comment-delimiter">// </span><span class="org-comment">Line: 5
 </span>    <span class="org-keyword">static</span> { COUNT += 10; System.out.print(COUNT + <span class="org-string">"-"</span>); } <span class="org-comment-delimiter">// </span><span class="org-comment">Line: 6
 </span>
-    <span class="org-keyword">public</span> ZooTickets() { <span class="org-comment-delimiter">// </span><span class="org-comment">Line: 8
+    <span class="org-keyword">public</span> <span class="org-function-name">ZooTickets</span>() { <span class="org-comment-delimiter">// </span><span class="org-comment">Line: 8
 </span>        System.out.print(<span class="org-string">"z-"</span>); <span class="org-comment-delimiter">// </span><span class="org-comment">Line: 9
 </span>    } <span class="org-comment-delimiter">// </span><span class="org-comment">Line: 10
 </span>
@@ -300,7 +299,7 @@ Finally, initialize each <code>class</code> starting with the <code>superclass</
 </span>    }
 }
 <span class="org-comment-delimiter">//</span><span class="org-comment">Output: ~0-10&#173;BestZoo&#173;z-~</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -325,10 +324,9 @@ Again, since no <code>superclass</code> is declared, we start with the <code>ins
 Finally, we run the constructor on <code>lines 8–10</code>, which outputs <code>z-</code>
 </p>
 </div>
-
 <ul class="org-ul">
-<li><a id="org1bf2fa4"></a><span class="underline">Exam Trick</span><br />
-<div class="outline-text-5" id="text-org1bf2fa4">
+<li><a id="org22dc1c2"></a><span class="underline">Exam Trick</span><br />
+<div class="outline-text-5" id="text-org22dc1c2">
 <ul class="org-ul">
 <li>A <code>class</code> is initialized at most once by the JVM before it is referenced or used.</li>
 

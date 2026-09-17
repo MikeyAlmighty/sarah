@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -245,23 +246,22 @@
 <h2 id="upcasting-and-downcasting">Upcasting and Downcasting</h2>
 <div class="outline-text-2" id="text-upcasting-and-downcasting">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">package</span> com.<span class="org-constant">demo</span>;
+<pre class="src src-java"><code><span class="org-keyword">package</span> com.<span class="org-constant">demo</span>;
 
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Main</span> {
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
         <span class="org-comment-delimiter">// </span><span class="org-comment">NB: TextBox extends UIControl
-</span>        <span class="org-type">var</span> <span class="org-variable-name">box1</span> = <span class="org-keyword">new</span> <span class="org-type">TextBox</span>();
+</span>        <span class="org-keyword">var</span> <span class="org-variable-name">box1</span> = <span class="org-keyword">new</span> <span class="org-type">TextBox</span>();
         show(box1); <span class="org-comment-delimiter">// </span><span class="org-comment">Get's "upcasted" to a UIControl (As all textboxes are UIControls)
 </span>    }
 
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>(<span class="org-type">UIControl</span> <span class="org-variable-name">control</span>) {
-        <span class="org-type">var</span> <span class="org-variable-name">textBox</span> = (<span class="org-type">TextBox</span>) control; <span class="org-comment-delimiter">// </span><span class="org-comment">Downcasted back to textBox
+        <span class="org-keyword">var</span> <span class="org-variable-name">textBox</span> = (<span class="org-type">TextBox</span>) control; <span class="org-comment-delimiter">// </span><span class="org-comment">Downcasted back to textBox
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 </div>
-
 <div id="outline-container-classcast-exception" class="outline-3">
 <h3 id="classcast-exception">ClassCast Exception</h3>
 <div class="outline-text-3" id="text-classcast-exception">
@@ -276,11 +276,11 @@ are TextBoxes.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">package</span> com.<span class="org-constant">demo</span>;
+<pre class="src src-java"><code><span class="org-keyword">package</span> com.<span class="org-constant">demo</span>;
 
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Main</span> {
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
-        <span class="org-type">var</span> <span class="org-variable-name">control</span> = <span class="org-keyword">new</span> <span class="org-type">UIControl</span>();
+        <span class="org-keyword">var</span> <span class="org-variable-name">control</span> = <span class="org-keyword">new</span> <span class="org-type">UIControl</span>();
         show(control); <span class="org-comment-delimiter">// </span><span class="org-comment">Get's "upcasted" to a UIControl (As all textboxes are UIControls)
 </span>    }
 
@@ -291,7 +291,7 @@ are TextBoxes.
         }
     }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>

@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Array</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,14 +243,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Array</h1>
-
-<div id="outline-container-orge2ebc38" class="outline-2">
-<h2 id="orge2ebc38">Element Insertion</h2>
-<div class="outline-text-2" id="text-orge2ebc38">
+<div id="outline-container-org73cfd10" class="outline-2">
+<h2 id="org73cfd10">Element Insertion</h2>
+<div class="outline-text-2" id="text-org73cfd10">
 </div>
-<div id="outline-container-org2d29a50" class="outline-3">
-<h3 id="org2d29a50">Overview</h3>
-<div class="outline-text-3" id="text-org2d29a50">
+<div id="outline-container-org5d592e9" class="outline-3">
+<h3 id="org5d592e9">Overview</h3>
+<div class="outline-text-3" id="text-org5d592e9">
 <ul class="org-ul">
 <li>Ordered collections of values</li>
 <li>Zero-indexed</li>
@@ -257,14 +257,13 @@
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgcf29eed" class="outline-3">
-<h3 id="orgcf29eed">Insert at End of Array</h3>
-<div class="outline-text-3" id="text-orgcf29eed">
+<div id="outline-container-org8961b2d" class="outline-3">
+<h3 id="org8961b2d">Insert at End of Array</h3>
+<div class="outline-text-3" id="text-org8961b2d">
 </div>
-<div id="outline-container-org7326d82" class="outline-4">
-<h4 id="org7326d82">push()</h4>
-<div class="outline-text-4" id="text-org7326d82">
+<div id="outline-container-org955851f" class="outline-4">
+<h4 id="org955851f">push()</h4>
+<div class="outline-text-4" id="text-org955851f">
 <ul class="org-ul">
 <li>Adds one or more elements to the end</li>
 <li>Mutates the original array</li>
@@ -272,38 +271,36 @@
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3]
+<pre class="src src-js"><code><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3]
 arr.push(4)
 <span class="org-comment-delimiter">// </span><span class="org-comment">[1, 2, 3, 4]</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org91b30bc" class="outline-4">
-<h4 id="org91b30bc">Spread (Immutable)</h4>
-<div class="outline-text-4" id="text-org91b30bc">
+<div id="outline-container-org5cf91ef" class="outline-4">
+<h4 id="org5cf91ef">Spread (Immutable)</h4>
+<div class="outline-text-4" id="text-org5cf91ef">
 <ul class="org-ul">
 <li>Creates a new array</li>
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3]
+<pre class="src src-js"><code><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3]
 <span class="org-keyword">let</span> <span class="org-variable-name">newArr</span> = [...arr, 4]
 <span class="org-comment-delimiter">// </span><span class="org-comment">[1, 2, 3, 4]</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org03b6c77" class="outline-3">
-<h3 id="org03b6c77">Insert at Beginning of Array</h3>
-<div class="outline-text-3" id="text-org03b6c77">
+<div id="outline-container-org6706d4a" class="outline-3">
+<h3 id="org6706d4a">Insert at Beginning of Array</h3>
+<div class="outline-text-3" id="text-org6706d4a">
 </div>
-<div id="outline-container-org3e5afc4" class="outline-4">
-<h4 id="org3e5afc4">unshift()</h4>
-<div class="outline-text-4" id="text-org3e5afc4">
+<div id="outline-container-org9105368" class="outline-4">
+<h4 id="org9105368">unshift()</h4>
+<div class="outline-text-4" id="text-org9105368">
 <ul class="org-ul">
 <li>Adds one or more elements to the start</li>
 <li>Mutates the original array</li>
@@ -311,44 +308,41 @@ arr.push(4)
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3]
+<pre class="src src-js"><code><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3]
 arr.unshift(0)
 <span class="org-comment-delimiter">// </span><span class="org-comment">[0, 1, 2, 3]</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org3c4b24c" class="outline-4">
-<h4 id="org3c4b24c">Spread (Immutable)</h4>
-<div class="outline-text-4" id="text-org3c4b24c">
+<div id="outline-container-org3ab044f" class="outline-4">
+<h4 id="org3ab044f">Spread (Immutable)</h4>
+<div class="outline-text-4" id="text-org3ab044f">
 <ul class="org-ul">
 <li>Creates a new array</li>
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3]
+<pre class="src src-js"><code><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3]
 <span class="org-keyword">let</span> <span class="org-variable-name">newArr</span> = [0, ...arr]
 <span class="org-comment-delimiter">// </span><span class="org-comment">[0, 1, 2, 3]</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org1dbd266" class="outline-3">
-<h3 id="org1dbd266">Performance Notes</h3>
-<div class="outline-text-3" id="text-org1dbd266">
+<div id="outline-container-orge5342b1" class="outline-3">
+<h3 id="orge5342b1">Performance Notes</h3>
+<div class="outline-text-3" id="text-orge5342b1">
 <dl class="org-dl">
 <dt>push()</dt><dd>O(1)</dd>
 <dt>unshift()</dt><dd>O(n)</dd>
 </dl>
 </div>
 </div>
-
-<div id="outline-container-org550a20d" class="outline-3">
-<h3 id="org550a20d">Notes</h3>
-<div class="outline-text-3" id="text-org550a20d">
+<div id="outline-container-orgb185202" class="outline-3">
+<h3 id="orgb185202">Notes</h3>
+<div class="outline-text-3" id="text-orgb185202">
 <ul class="org-ul">
 <li>Prefer push() for performance-sensitive code</li>
 <li>Use spread syntax for <b>immutable</b> <b>updates</b> (e.g., React state)</li>
@@ -356,14 +350,13 @@ arr.unshift(0)
 </div>
 </div>
 </div>
-
-<div id="outline-container-org3acebef" class="outline-2">
-<h2 id="org3acebef">Element Removal</h2>
-<div class="outline-text-2" id="text-org3acebef">
+<div id="outline-container-orga7d4424" class="outline-2">
+<h2 id="orga7d4424">Element Removal</h2>
+<div class="outline-text-2" id="text-orga7d4424">
 </div>
-<div id="outline-container-org0c6ebc5" class="outline-3">
-<h3 id="org0c6ebc5">Overview</h3>
-<div class="outline-text-3" id="text-org0c6ebc5">
+<div id="outline-container-org5125262" class="outline-3">
+<h3 id="org5125262">Overview</h3>
+<div class="outline-text-3" id="text-org5125262">
 <ul class="org-ul">
 <li>Arrays are mutable by default</li>
 <li>Elements can be removed from the <b>end</b>, <b>beginning</b>, or <b>middle</b></li>
@@ -371,14 +364,13 @@ arr.unshift(0)
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orge5cdf1c" class="outline-3">
-<h3 id="orge5cdf1c">Remove from End of Array</h3>
-<div class="outline-text-3" id="text-orge5cdf1c">
+<div id="outline-container-org33528c9" class="outline-3">
+<h3 id="org33528c9">Remove from End of Array</h3>
+<div class="outline-text-3" id="text-org33528c9">
 </div>
-<div id="outline-container-org5bfe7ee" class="outline-4">
-<h4 id="org5bfe7ee">pop()</h4>
-<div class="outline-text-4" id="text-org5bfe7ee">
+<div id="outline-container-org43e067a" class="outline-4">
+<h4 id="org43e067a">pop()</h4>
+<div class="outline-text-4" id="text-org43e067a">
 <ul class="org-ul">
 <li>Removes the last element</li>
 <li>Mutates the original array</li>
@@ -386,39 +378,37 @@ arr.unshift(0)
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3]
+<pre class="src src-js"><code><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3]
 <span class="org-keyword">let</span> <span class="org-variable-name">removed</span> = arr.pop()
 <span class="org-comment-delimiter">// </span><span class="org-comment">removed = 3
 </span><span class="org-comment-delimiter">// </span><span class="org-comment">arr = [1, 2]</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org9aae270" class="outline-4">
-<h4 id="org9aae270">Immutable (slice)</h4>
-<div class="outline-text-4" id="text-org9aae270">
+<div id="outline-container-orge99a418" class="outline-4">
+<h4 id="orge99a418">Immutable (slice)</h4>
+<div class="outline-text-4" id="text-orge99a418">
 <ul class="org-ul">
 <li>Creates a new array without the last element</li>
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3]
+<pre class="src src-js"><code><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3]
 <span class="org-keyword">let</span> <span class="org-variable-name">newArr</span> = arr.slice(0, -1)
 <span class="org-comment-delimiter">// </span><span class="org-comment">[1, 2]</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgef7b50c" class="outline-3">
-<h3 id="orgef7b50c">Remove from Beginning of Array</h3>
-<div class="outline-text-3" id="text-orgef7b50c">
+<div id="outline-container-org8d38b16" class="outline-3">
+<h3 id="org8d38b16">Remove from Beginning of Array</h3>
+<div class="outline-text-3" id="text-org8d38b16">
 </div>
-<div id="outline-container-org05d33c2" class="outline-4">
-<h4 id="org05d33c2">shift()</h4>
-<div class="outline-text-4" id="text-org05d33c2">
+<div id="outline-container-orge2a464c" class="outline-4">
+<h4 id="orge2a464c">shift()</h4>
+<div class="outline-text-4" id="text-orge2a464c">
 <ul class="org-ul">
 <li>Removes the first element</li>
 <li>Mutates the original array</li>
@@ -426,39 +416,37 @@ arr.unshift(0)
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3]
+<pre class="src src-js"><code><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3]
 <span class="org-keyword">let</span> <span class="org-variable-name">removed</span> = arr.shift()
 <span class="org-comment-delimiter">// </span><span class="org-comment">removed = 1
 </span><span class="org-comment-delimiter">// </span><span class="org-comment">arr = [2, 3]</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org2e77e72" class="outline-4">
-<h4 id="org2e77e72">Immutable (slice)</h4>
-<div class="outline-text-4" id="text-org2e77e72">
+<div id="outline-container-org5ca7650" class="outline-4">
+<h4 id="org5ca7650">Immutable (slice)</h4>
+<div class="outline-text-4" id="text-org5ca7650">
 <ul class="org-ul">
 <li>Creates a new array without the first element</li>
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3]
+<pre class="src src-js"><code><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3]
 <span class="org-keyword">let</span> <span class="org-variable-name">newArr</span> = arr.slice(1)
 <span class="org-comment-delimiter">// </span><span class="org-comment">[2, 3]</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgf2dff5d" class="outline-3">
-<h3 id="orgf2dff5d">Remove from Middle of Array</h3>
-<div class="outline-text-3" id="text-orgf2dff5d">
+<div id="outline-container-org407a743" class="outline-3">
+<h3 id="org407a743">Remove from Middle of Array</h3>
+<div class="outline-text-3" id="text-org407a743">
 </div>
-<div id="outline-container-org9682dcb" class="outline-4">
-<h4 id="org9682dcb">splice()</h4>
-<div class="outline-text-4" id="text-org9682dcb">
+<div id="outline-container-orgd5d7bcf" class="outline-4">
+<h4 id="orgd5d7bcf">splice()</h4>
+<div class="outline-text-4" id="text-orgd5d7bcf">
 <ul class="org-ul">
 <li>Removes elements at a specific index</li>
 <li>Mutates the original array</li>
@@ -469,7 +457,7 @@ arr.unshift(0)
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3, 4]
+<pre class="src src-js"><code><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3, 4]
 arr.splice(1, 2)
 <span class="org-comment-delimiter">// </span><span class="org-comment">arr = [1, 4]
 </span>
@@ -477,51 +465,48 @@ arr.splice(1, 2)
 </span><span class="org-keyword">const</span> <span class="org-variable-name">arr</span> = [4,23,14,55,23]
 
 console.log(arr.splice(2, 2)) <span class="org-comment-delimiter">// </span><span class="org-comment">14, 55</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org8251d18" class="outline-4">
-<h4 id="org8251d18">Immutable (filter)</h4>
-<div class="outline-text-4" id="text-org8251d18">
+<div id="outline-container-orgcfaedf2" class="outline-4">
+<h4 id="orgcfaedf2">Immutable (filter)</h4>
+<div class="outline-text-4" id="text-orgcfaedf2">
 <ul class="org-ul">
 <li>Removes elements by condition</li>
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3, 4]
+<pre class="src src-js"><code><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3, 4]
 <span class="org-keyword">let</span> <span class="org-variable-name">newArr</span> = arr.filter(x =&gt; x !== 3)
 <span class="org-comment-delimiter">// </span><span class="org-comment">[1, 2, 4]</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgd94317e" class="outline-4">
-<h4 id="orgd94317e">Immutable (slice + spread)</h4>
-<div class="outline-text-4" id="text-orgd94317e">
+<div id="outline-container-org19f3a0c" class="outline-4">
+<h4 id="org19f3a0c">Immutable (slice + spread)</h4>
+<div class="outline-text-4" id="text-org19f3a0c">
 <ul class="org-ul">
 <li>Removes element at a specific index</li>
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3, 4]
+<pre class="src src-js"><code><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3, 4]
 <span class="org-keyword">let</span> <span class="org-variable-name">index</span> = 2
 <span class="org-keyword">let</span> <span class="org-variable-name">newArr</span> = [
   ...arr.slice(0, index),
   ...arr.slice(index + 1)
 ]
 <span class="org-comment-delimiter">// </span><span class="org-comment">[1, 2, 4]</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-
-<div id="outline-container-orga9966c2" class="outline-3">
-<h3 id="orga9966c2">Performance Notes</h3>
-<div class="outline-text-3" id="text-orga9966c2">
+<div id="outline-container-org36d37d4" class="outline-3">
+<h3 id="org36d37d4">Performance Notes</h3>
+<div class="outline-text-3" id="text-org36d37d4">
 <ul class="org-ul">
 <li><code>pop()</code> → O(1)</li>
 <li><code>shift()</code> → O(n)</li>
@@ -529,10 +514,9 @@ console.log(arr.splice(2, 2)) <span class="org-comment-delimiter">// </span><spa
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org3fe40be" class="outline-3">
-<h3 id="org3fe40be">Notes</h3>
-<div class="outline-text-3" id="text-org3fe40be">
+<div id="outline-container-orga358dc1" class="outline-3">
+<h3 id="orga358dc1">Notes</h3>
+<div class="outline-text-3" id="text-orga358dc1">
 <ul class="org-ul">
 <li>Prefer <code>pop()</code> when possible for performance</li>
 <li>Use <b>immutable</b> patterns for predictable state management</li>
@@ -541,14 +525,13 @@ console.log(arr.splice(2, 2)) <span class="org-comment-delimiter">// </span><spa
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgbe6e5d1" class="outline-2">
-<h2 id="orgbe6e5d1">Sorting</h2>
-<div class="outline-text-2" id="text-orgbe6e5d1">
+<div id="outline-container-org1dbaee4" class="outline-2">
+<h2 id="org1dbaee4">Sorting</h2>
+<div class="outline-text-2" id="text-org1dbaee4">
 </div>
-<div id="outline-container-orgabf793b" class="outline-3">
-<h3 id="orgabf793b">Overview</h3>
-<div class="outline-text-3" id="text-orgabf793b">
+<div id="outline-container-org0b91e4f" class="outline-3">
+<h3 id="org0b91e4f">Overview</h3>
+<div class="outline-text-3" id="text-org0b91e4f">
 <ul class="org-ul">
 <li>Arrays can be reordered in place</li>
 <li>Default sorting behavior is lexicographic (string-based)</li>
@@ -556,10 +539,9 @@ console.log(arr.splice(2, 2)) <span class="org-comment-delimiter">// </span><spa
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org736fde4" class="outline-3">
-<h3 id="org736fde4">reverse()</h3>
-<div class="outline-text-3" id="text-org736fde4">
+<div id="outline-container-orgf726252" class="outline-3">
+<h3 id="orgf726252">reverse()</h3>
+<div class="outline-text-3" id="text-orgf726252">
 <ul class="org-ul">
 <li>Reverses the order of elements</li>
 <li>Mutates the original array</li>
@@ -567,29 +549,27 @@ console.log(arr.splice(2, 2)) <span class="org-comment-delimiter">// </span><spa
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3]
+<pre class="src src-js"><code><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3]
 arr.reverse()
 <span class="org-comment-delimiter">// </span><span class="org-comment">[3, 2, 1]</span>
-</pre>
+</code></pre>
 </div>
 </div>
-
-<div id="outline-container-orge241652" class="outline-4">
-<h4 id="orge241652">Immutable (copy + reverse)</h4>
-<div class="outline-text-4" id="text-orge241652">
+<div id="outline-container-orgf67916c" class="outline-4">
+<h4 id="orgf67916c">Immutable (copy + reverse)</h4>
+<div class="outline-text-4" id="text-orgf67916c">
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3]
+<pre class="src src-js"><code><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3]
 <span class="org-keyword">let</span> <span class="org-variable-name">newArr</span> = [...arr].reverse()
 <span class="org-comment-delimiter">// </span><span class="org-comment">[3, 2, 1]</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org331c2b0" class="outline-3">
-<h3 id="org331c2b0">sort()</h3>
-<div class="outline-text-3" id="text-org331c2b0">
+<div id="outline-container-orga885429" class="outline-3">
+<h3 id="orga885429">sort()</h3>
+<div class="outline-text-3" id="text-orga885429">
 <ul class="org-ul">
 <li>Sorts elements in place</li>
 <li>Mutates the original array</li>
@@ -598,91 +578,84 @@ arr.reverse()
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [10, 2, 1]
+<pre class="src src-js"><code><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [10, 2, 1]
 arr.sort()
 <span class="org-comment-delimiter">// </span><span class="org-comment">["1", "10", "2"]</span>
-</pre>
+</code></pre>
 </div>
 </div>
-
-<div id="outline-container-org3789286" class="outline-4">
-<h4 id="org3789286">Numeric sort (ascending)</h4>
-<div class="outline-text-4" id="text-org3789286">
+<div id="outline-container-org67a4bcd" class="outline-4">
+<h4 id="org67a4bcd">Numeric sort (ascending)</h4>
+<div class="outline-text-4" id="text-org67a4bcd">
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [10, 2, 1]
+<pre class="src src-js"><code><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [10, 2, 1]
 arr.sort((a, b) =&gt; a - b)
 <span class="org-comment-delimiter">// </span><span class="org-comment">[1, 2, 10]</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org8edc0d6" class="outline-4">
-<h4 id="org8edc0d6">Numeric sort (descending)</h4>
-<div class="outline-text-4" id="text-org8edc0d6">
+<div id="outline-container-org2f54a7a" class="outline-4">
+<h4 id="org2f54a7a">Numeric sort (descending)</h4>
+<div class="outline-text-4" id="text-org2f54a7a">
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [10, 2, 1]
+<pre class="src src-js"><code><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [10, 2, 1]
 arr.sort((a, b) =&gt; b - a)
 <span class="org-comment-delimiter">// </span><span class="org-comment">[10, 2, 1]</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org56d0058" class="outline-4">
-<h4 id="org56d0058">String sort</h4>
-<div class="outline-text-4" id="text-org56d0058">
+<div id="outline-container-orgf556b02" class="outline-4">
+<h4 id="orgf556b02">String sort</h4>
+<div class="outline-text-4" id="text-orgf556b02">
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [<span class="org-string">"banana"</span>, <span class="org-string">"apple"</span>, <span class="org-string">"cherry"</span>]
+<pre class="src src-js"><code><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [<span class="org-string">"banana"</span>, <span class="org-string">"apple"</span>, <span class="org-string">"cherry"</span>]
 arr.sort()
 <span class="org-comment-delimiter">// </span><span class="org-comment">["apple", "banana", "cherry"]</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org7b7d9c1" class="outline-4">
-<h4 id="org7b7d9c1">Immutable (copy + sort)</h4>
-<div class="outline-text-4" id="text-org7b7d9c1">
+<div id="outline-container-org166772a" class="outline-4">
+<h4 id="org166772a">Immutable (copy + sort)</h4>
+<div class="outline-text-4" id="text-org166772a">
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [3, 1, 2]
+<pre class="src src-js"><code><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [3, 1, 2]
 <span class="org-keyword">let</span> <span class="org-variable-name">newArr</span> = [...arr].sort((a, b) =&gt; a - b)
 <span class="org-comment-delimiter">// </span><span class="org-comment">[1, 2, 3]</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org0918d07" class="outline-3">
-<h3 id="org0918d07">Performance Notes</h3>
-<div class="outline-text-3" id="text-org0918d07">
+<div id="outline-container-org1102ac6" class="outline-3">
+<h3 id="org1102ac6">Performance Notes</h3>
+<div class="outline-text-3" id="text-org1102ac6">
 <ul class="org-ul">
 <li>reverse() → O(n)</li>
 <li>sort() → O(n log n)</li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgb8a5195" class="outline-3">
-<h3 id="orgb8a5195">Notes</h3>
-<div class="outline-text-3" id="text-orgb8a5195">
+<div id="outline-container-orgbea03ef" class="outline-3">
+<h3 id="orgbea03ef">Notes</h3>
+<div class="outline-text-3" id="text-orgbea03ef">
 <ul class="org-ul">
 <li>Always provide a compare function for numeric sorting</li>
-<li>Use copies (`[&#x2026;arr]`) to avoid mutating original data</li>
+<li>Use copies (`[&hellip;arr]`) to avoid mutating original data</li>
 <li>Common in UI ordering and data normalization</li>
 </ul>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org40acf68" class="outline-2">
-<h2 id="org40acf68">Iterators</h2>
-<div class="outline-text-2" id="text-org40acf68">
+<div id="outline-container-orgf04769b" class="outline-2">
+<h2 id="orgf04769b">Iterators</h2>
+<div class="outline-text-2" id="text-orgf04769b">
 </div>
-<div id="outline-container-org3737c1e" class="outline-3">
-<h3 id="org3737c1e">Overview</h3>
-<div class="outline-text-3" id="text-org3737c1e">
+<div id="outline-container-orgcb36291" class="outline-3">
+<h3 id="orgcb36291">Overview</h3>
+<div class="outline-text-3" id="text-orgcb36291">
 <ul class="org-ul">
 <li>Iterator methods process array elements sequentially</li>
 <li>Does not change array length</li>
@@ -692,10 +665,9 @@ arr.sort()
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org9b5e928" class="outline-3">
-<h3 id="org9b5e928">forEach()</h3>
-<div class="outline-text-3" id="text-org9b5e928">
+<div id="outline-container-orgefb7d5d" class="outline-3">
+<h3 id="orgefb7d5d">forEach()</h3>
+<div class="outline-text-3" id="text-orgefb7d5d">
 <ul class="org-ul">
 <li>Executes a function for each element</li>
 <li>Does not return a value (returns undefined)</li>
@@ -703,30 +675,29 @@ arr.sort()
 <li>Used for side effects (logging, mutations, I/O)</li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3]
+<pre class="src src-js"><code><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3]
 arr.forEach(x =&gt; {
   console.log(x)
 })
-</pre>
+</code></pre>
 </div>
 
 <ul class="org-ul">
 <li>Example: mutating external state</li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">sum</span> = 0
+<pre class="src src-js"><code><span class="org-keyword">let</span> <span class="org-variable-name">sum</span> = 0
 arr.forEach(x =&gt; {
   sum += x
 })
 <span class="org-comment-delimiter">// </span><span class="org-comment">sum = 6</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org29178cc" class="outline-3">
-<h3 id="org29178cc">map()</h3>
-<div class="outline-text-3" id="text-org29178cc">
+<div id="outline-container-org1cb5a5d" class="outline-3">
+<h3 id="org1cb5a5d">map()</h3>
+<div class="outline-text-3" id="text-org1cb5a5d">
 <ul class="org-ul">
 <li>Transforms each element</li>
 <li>Returns a <b>new</b> array of the same length</li>
@@ -735,26 +706,25 @@ arr.forEach(x =&gt; {
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3]
+<pre class="src src-js"><code><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3]
 <span class="org-keyword">let</span> <span class="org-variable-name">doubled</span> = arr.map(x =&gt; x * 2)
 <span class="org-comment-delimiter">// </span><span class="org-comment">[2, 4, 6]</span>
-</pre>
+</code></pre>
 </div>
 
 <ul class="org-ul">
 <li>Mapping to objects</li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">users</span> = [<span class="org-string">"alice"</span>, <span class="org-string">"bob"</span>]
+<pre class="src src-js"><code><span class="org-keyword">let</span> <span class="org-variable-name">users</span> = [<span class="org-string">"alice"</span>, <span class="org-string">"bob"</span>]
 <span class="org-keyword">let</span> <span class="org-variable-name">result</span> = users.map(name =&gt; ({ name }))
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org9076893" class="outline-3">
-<h3 id="org9076893">filter()</h3>
-<div class="outline-text-3" id="text-org9076893">
+<div id="outline-container-org13cc3e8" class="outline-3">
+<h3 id="org13cc3e8">filter()</h3>
+<div class="outline-text-3" id="text-org13cc3e8">
 <ul class="org-ul">
 <li>Selects elements based on a condition</li>
 <li>Returns a new array (length ≤ original)</li>
@@ -763,31 +733,29 @@ arr.forEach(x =&gt; {
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3, 4]
+<pre class="src src-js"><code><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3, 4]
 <span class="org-keyword">let</span> <span class="org-variable-name">evens</span> = arr.filter(x =&gt; x % 2 === 0)
 <span class="org-comment-delimiter">// </span><span class="org-comment">[2, 4]</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org47c0f45" class="outline-3">
-<h3 id="org47c0f45">Chaining Example</h3>
-<div class="outline-text-3" id="text-org47c0f45">
+<div id="outline-container-org8714f06" class="outline-3">
+<h3 id="org8714f06">Chaining Example</h3>
+<div class="outline-text-3" id="text-org8714f06">
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3, 4, 5]
+<pre class="src src-js"><code><span class="org-keyword">let</span> <span class="org-variable-name">arr</span> = [1, 2, 3, 4, 5]
 <span class="org-keyword">let</span> <span class="org-variable-name">result</span> = arr
   .filter(x =&gt; x % 2 !== 0)
   .map(x =&gt; x * 10)
 <span class="org-comment-delimiter">// </span><span class="org-comment">[10, 30, 50]</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org773d249" class="outline-3">
-<h3 id="org773d249">Performance Notes</h3>
-<div class="outline-text-3" id="text-org773d249">
+<div id="outline-container-orgddf88b2" class="outline-3">
+<h3 id="orgddf88b2">Performance Notes</h3>
+<div class="outline-text-3" id="text-orgddf88b2">
 <ul class="org-ul">
 <li>forEach() → O(n)</li>
 <li>map() → O(n)</li>
@@ -795,10 +763,9 @@ arr.forEach(x =&gt; {
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org2db9445" class="outline-3">
-<h3 id="org2db9445">Notes</h3>
-<div class="outline-text-3" id="text-org2db9445">
+<div id="outline-container-org0589461" class="outline-3">
+<h3 id="org0589461">Notes</h3>
+<div class="outline-text-3" id="text-org0589461">
 <ul class="org-ul">
 <li>Use <code>forEach()</code> for side effects only</li>
 <li>Prefer <code>map()</code> for transformation</li>
@@ -808,14 +775,13 @@ arr.forEach(x =&gt; {
 </div>
 </div>
 </div>
-
-<div id="outline-container-org9c58ce2" class="outline-2">
-<h2 id="org9c58ce2">Two-Dimensional Array Iteration</h2>
-<div class="outline-text-2" id="text-org9c58ce2">
+<div id="outline-container-org423f8b9" class="outline-2">
+<h2 id="org423f8b9">Two-Dimensional Array Iteration</h2>
+<div class="outline-text-2" id="text-org423f8b9">
 </div>
-<div id="outline-container-org9ca7b9c" class="outline-3">
-<h3 id="org9ca7b9c">Overview</h3>
-<div class="outline-text-3" id="text-org9ca7b9c">
+<div id="outline-container-org3fd5565" class="outline-3">
+<h3 id="org3fd5565">Overview</h3>
+<div class="outline-text-3" id="text-org3fd5565">
 <ul class="org-ul">
 <li>A <b>two-dimensional</b> array is an array of arrays</li>
 <li>Often represents grids, matrices, or tables</li>
@@ -824,10 +790,9 @@ arr.forEach(x =&gt; {
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org6f478df" class="outline-3">
-<h3 id="org6f478df">Row-wise Iteration</h3>
-<div class="outline-text-3" id="text-org6f478df">
+<div id="outline-container-org4a9c75d" class="outline-3">
+<h3 id="org4a9c75d">Row-wise Iteration</h3>
+<div class="outline-text-3" id="text-org4a9c75d">
 <ul class="org-ul">
 <li>Traverse rows first, then columns</li>
 <li>Most common iteration pattern</li>
@@ -835,7 +800,7 @@ arr.forEach(x =&gt; {
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">matrix</span> = [
+<pre class="src src-js"><code><span class="org-keyword">let</span> <span class="org-variable-name">matrix</span> = [
   [1, 2, 3],
   [4, 5, 6],
   [7, 8, 9]
@@ -846,26 +811,25 @@ arr.forEach(x =&gt; {
     console.log(matrix[row][col])
   }
 }
-</pre>
+</code></pre>
 </div>
 
 <ul class="org-ul">
 <li>Using forEach</li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-js">matrix.forEach(row =&gt; {
+<pre class="src src-js"><code>matrix.forEach(row =&gt; {
   row.forEach(value =&gt; {
     console.log(value)
   })
 })
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-orge46bf86" class="outline-3">
-<h3 id="orge46bf86">Column-wise Iteration</h3>
-<div class="outline-text-3" id="text-orge46bf86">
+<div id="outline-container-org813b8a2" class="outline-3">
+<h3 id="org813b8a2">Column-wise Iteration</h3>
+<div class="outline-text-3" id="text-org813b8a2">
 <ul class="org-ul">
 <li>Traverse columns first, then rows</li>
 <li>Useful for column-based processing</li>
@@ -873,7 +837,7 @@ arr.forEach(x =&gt; {
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">rows</span> = matrix.length
+<pre class="src src-js"><code><span class="org-keyword">let</span> <span class="org-variable-name">rows</span> = matrix.length
 <span class="org-keyword">let</span> <span class="org-variable-name">cols</span> = matrix[0].length
 
 <span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">col</span> = 0; col &lt; cols; col++) {
@@ -881,30 +845,28 @@ arr.forEach(x =&gt; {
     console.log(matrix[row][col])
   }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org692a7fb" class="outline-3">
-<h3 id="org692a7fb">Column-wise with forEach</h3>
-<div class="outline-text-3" id="text-org692a7fb">
+<div id="outline-container-org9f4d95f" class="outline-3">
+<h3 id="org9f4d95f">Column-wise with forEach</h3>
+<div class="outline-text-3" id="text-org9f4d95f">
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">cols</span> = matrix[0].length
+<pre class="src src-js"><code><span class="org-keyword">let</span> <span class="org-variable-name">cols</span> = matrix[0].length
 
 <span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">col</span> = 0; col &lt; cols; col++) {
   matrix.forEach(row =&gt; {
     console.log(row[col])
   })
 })
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-orge64c01f" class="outline-3">
-<h3 id="orge64c01f">Notes</h3>
-<div class="outline-text-3" id="text-orge64c01f">
+<div id="outline-container-org2c73761" class="outline-3">
+<h3 id="org2c73761">Notes</h3>
+<div class="outline-text-3" id="text-org2c73761">
 <ul class="org-ul">
 <li>Row-wise is cache-friendly and most common</li>
 <li>Column-wise requires consistent row lengths</li>

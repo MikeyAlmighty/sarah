@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Bubble Sort</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,10 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Bubble Sort</h1>
-
-<div id="outline-container-orgae3c50f" class="outline-2">
-<h2 id="orgae3c50f">Bubble Sort</h2>
-<div class="outline-text-2" id="text-orgae3c50f">
+<div id="outline-container-org8b8b114" class="outline-2">
+<h2 id="org8b8b114">Bubble Sort</h2>
+<div class="outline-text-2" id="text-org8b8b114">
 <p>
 Largest item <b>"bubbles up"</b> to correct position
 </p>
@@ -258,12 +258,11 @@ Largest item <b>"bubbles up"</b> to correct position
 Each <b>outer</b> <b>loop</b> shrinks the unsorted window from the right.
 </p>
 </div>
-
-<div id="outline-container-orga58c36d" class="outline-3">
-<h3 id="orga58c36d">JavaScript</h3>
-<div class="outline-text-3" id="text-orga58c36d">
+<div id="outline-container-org9f2dd3c" class="outline-3">
+<h3 id="org9f2dd3c">JavaScript</h3>
+<div class="outline-text-3" id="text-org9f2dd3c">
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-keyword">const</span> <span class="org-variable-name">bubbleSort</span> = (array) =&gt; {
+<pre class="src src-js"><code><span class="org-keyword">const</span> <span class="org-variable-name">bubbleSort</span> = (array) =&gt; {
   <span class="org-keyword">const</span> <span class="org-variable-name">arr</span> = array.slice() <span class="org-comment-delimiter">// </span><span class="org-comment">Create shallow copy of array to avoid mutation (Pure Function)
 </span>  <span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">i</span> = 0; i &lt; arr.length - 1; i++) {
     <span class="org-keyword">for</span> (<span class="org-keyword">let</span> <span class="org-variable-name">j</span> = 0; j &lt; arr.length - 1 - i; j++) {
@@ -279,14 +278,13 @@ Each <b>outer</b> <b>loop</b> shrinks the unsorted window from the right.
 
 <span class="org-keyword">const</span> <span class="org-variable-name">array</span> = [2, 19, 4, 25, 6, 520]
 console.log(bubbleSort(array))
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org0d3ccf6" class="outline-3">
-<h3 id="org0d3ccf6">Java</h3>
-<div class="outline-text-3" id="text-org0d3ccf6">
+<div id="outline-container-orge93e02e" class="outline-3">
+<h3 id="orge93e02e">Java</h3>
+<div class="outline-text-3" id="text-orge93e02e">
 <ul class="org-ul">
 <li><code>j end</code> = <code>numbers.length - i - 1</code></li>
 <li><code>j max index</code> is the last j where <code>j + 1</code> is still valid</li>
@@ -294,11 +292,11 @@ console.log(bubbleSort(array))
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">sort</span>(<span class="org-type">double</span> <span class="org-variable-name">num1</span>, <span class="org-type">double</span> <span class="org-variable-name">num2</span>, <span class="org-type">double</span> <span class="org-variable-name">num3</span>, <span class="org-type">double</span> <span class="org-variable-name">num4</span>) {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">sort</span>(<span class="org-type">double</span> <span class="org-variable-name">num1</span>, <span class="org-type">double</span> <span class="org-variable-name">num2</span>, <span class="org-type">double</span> <span class="org-variable-name">num3</span>, <span class="org-type">double</span> <span class="org-variable-name">num4</span>) {
     <span class="org-type">double</span>[] <span class="org-variable-name">numbers</span> = {num1, num2, num3, num4};
 
-    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; numbers.<span class="org-type">length</span> - 1; i++) {
-        <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">j</span> = 0; j &lt; numbers.<span class="org-type">length</span> - i - 1; j++) {
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; numbers.length - 1; i++) {
+        <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">j</span> = 0; j &lt; numbers.length - i - 1; j++) {
             <span class="org-keyword">if</span> (numbers[j] &gt; numbers[j + 1]) {
                 <span class="org-type">int</span> <span class="org-variable-name">temp</span> = (<span class="org-type">int</span>) numbers[j];
                 numbers[j] = numbers[j + 1];
@@ -313,7 +311,7 @@ console.log(bubbleSort(array))
     sort(23.0, 69.0, 11, 2);
 }
 <span class="org-comment-delimiter">// </span><span class="org-comment">[11.0, 23.0, 69.0, 2.0]</span>
-</pre>
+</code></pre>
 </div>
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">

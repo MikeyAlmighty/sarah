@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Declaring Variables</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,10 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Declaring Variables</h1>
-
-<div id="outline-container-org69a4150" class="outline-2">
-<h2 id="org69a4150">Declaring Variables</h2>
-<div class="outline-text-2" id="text-org69a4150">
+<div id="outline-container-org7be1225" class="outline-2">
+<h2 id="org7be1225">Declaring Variables</h2>
+<div class="outline-text-2" id="text-org7be1225">
 <p>
 To use a variable, you declare it by telling the <a href="20260119071529-java_compiler.html#ID-601d1a17-6f03-4138-9fef-1553f38794b8">Java Compiler</a> its <b>name</b> as well as what <b>type</b> <b>of</b> <b>data</b> it can store.
 </p>
@@ -262,10 +262,9 @@ The syntax for declaring a variable is:
 <code>datatype variableName = value;</code>
 </p>
 </div>
-
-<div id="outline-container-orgf8a3e58" class="outline-3">
-<h3 id="orgf8a3e58">Legal Identifiers</h3>
-<div class="outline-text-3" id="text-orgf8a3e58">
+<div id="outline-container-orgd514c75" class="outline-3">
+<h3 id="orgd514c75">Legal Identifiers</h3>
+<div class="outline-text-3" id="text-orgd514c75">
 <ul class="org-ul">
 <li>Identifiers <b>must</b> begin with a <code>letter</code>, a <code>currency symbol($, ¥, € etc.)</code>, or a <code>_</code> symbol.</li>
 <li>Identifiers <b>can</b> include numbers but <b>not</b> start with them.</li>
@@ -275,7 +274,7 @@ The syntax for declaring a variable is:
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">OK
+<pre class="src src-java"><code><span class="org-comment-delimiter">// </span><span class="org-comment">OK
 </span><span class="org-type">int</span> <span class="org-variable-name">count</span>;
 <span class="org-type">double</span> <span class="org-variable-name">radius</span>;
 <span class="org-type">double</span> <span class="org-variable-name">interestRate</span>;
@@ -284,29 +283,27 @@ The syntax for declaring a variable is:
 <span class="org-type">boolean</span> <span class="org-variable-name">_alsoOK1d3ntifi3r</span>;
 <span class="org-type">char</span> <span class="org-variable-name">__SStillOkbutKnotsonice$</span>;
 
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org1477d41" class="outline-3">
-<h3 id="org1477d41">Illegal identifiers</h3>
-<div class="outline-text-3" id="text-org1477d41">
+<div id="outline-container-orgd2bba34" class="outline-3">
+<h3 id="orgd2bba34">Illegal identifiers</h3>
+<div class="outline-text-3" id="text-orgd2bba34">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">NOT OK
+<pre class="src src-java"><code><span class="org-comment-delimiter">// </span><span class="org-comment">NOT OK
 </span><span class="org-type">int</span> 3DPointClass; <span class="org-comment-delimiter">// </span><span class="org-comment">identifiers cannot begin with a number
 </span><span class="org-type">byte</span> <span class="org-variable-name">hollywood</span>@vine; <span class="org-comment-delimiter">// </span><span class="org-comment">@ is not a letter, digit, $ or _
 </span>String *$coffee; <span class="org-comment-delimiter">// </span><span class="org-comment">* is not a letter, digit, $ or _
 </span><span class="org-type">double</span> <span class="org-keyword">public</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">public is a reserved word
 </span><span class="org-type">short</span> <span class="org-variable-name">_</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">a single underscore is not allowed</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org054ad98" class="outline-3">
-<h3 id="org054ad98">Multiple Variable Declaration</h3>
-<div class="outline-text-3" id="text-org054ad98">
+<div id="outline-container-orgab2b797" class="outline-3">
+<h3 id="orgab2b797">Multiple Variable Declaration</h3>
+<div class="outline-text-3" id="text-orgab2b797">
 <p>
 If variables are of the <b>same</b> <b>type</b>, they can be declared together, as follows:
 <code>datatype variable1, variable2, ..., variablen;</code>
@@ -327,53 +324,49 @@ You can also initialize <b>any</b> or <b>all</b> of those values inline.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">Multiple Variable Declaration and Initialization
+<pre class="src src-java"><code><span class="org-comment-delimiter">// </span><span class="org-comment">Multiple Variable Declaration and Initialization
 </span><span class="org-type">void</span> <span class="org-function-name">sandFence</span>() {
     <span class="org-type">String</span> <span class="org-variable-name">s1</span>, <span class="org-variable-name">s2</span>;
     <span class="org-type">String</span> <span class="org-variable-name">s3</span> = <span class="org-string">"yes"</span>, <span class="org-variable-name">s4</span> = <span class="org-string">"no"</span>;
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
+<div id="outline-container-orgdf2add4" class="outline-3">
+<h3 id="orgdf2add4"><a href="20260120073939-named_constants.html#ID-471c84bb-2961-4ce0-a20d-6bd1709deb37">Named Constants</a></h3>
+</div>
+<div id="outline-container-org76fe212" class="outline-3">
+<h3 id="org76fe212"><a href="20260121200012-expressions.html#ID-4e53badb-68c3-433f-b3ef-b3546c24b263">Expressions</a></h3>
+</div>
+</div>
+<div id="outline-container-org80108b2" class="outline-2">
+<h2 id="org80108b2">Default Values</h2>
+<div class="outline-text-2" id="text-org80108b2">
 
-<div id="outline-container-org7e6423a" class="outline-3">
-<h3 id="org7e6423a"><a href="20260120073939-named_constants.html#ID-471c84bb-2961-4ce0-a20d-6bd1709deb37">Named Constants</a></h3>
-</div>
-<div id="outline-container-orgcb77efc" class="outline-3">
-<h3 id="orgcb77efc"><a href="20260121200012-expressions.html#ID-4e53badb-68c3-433f-b3ef-b3546c24b263">Expressions</a></h3>
-</div>
-</div>
-
-<div id="outline-container-org1286038" class="outline-2">
-<h2 id="org1286038">Default Values</h2>
-<div class="outline-text-2" id="text-org1286038">
-
-<div id="org85a4b01" class="figure">
+<div id="orgd8cdc3a" class="figure">
 <p><img src="./assets/default_values.png" alt="default_values.png" />
 </p>
 </div>
 </div>
-
-<div id="outline-container-org9088eb6" class="outline-3">
-<h3 id="org9088eb6"><a href="20231230160710-local_variable_type_inference.html#ID-10016631-2c29-434f-b5c5-2e2cba7d7c76">Local Variable Type Inference</a></h3>
+<div id="outline-container-org046f5be" class="outline-3">
+<h3 id="org046f5be"><a href="20231230160710-local_variable_type_inference.html#ID-10016631-2c29-434f-b5c5-2e2cba7d7c76">Local Variable Type Inference</a></h3>
 </div>
 </div>
-
-<div id="outline-container-orgb6efa7b" class="outline-2">
-<h2 id="orgb6efa7b"><a href="20231225185442-flagging_uninitialized_variables.html#ID-e1c39b97-642d-4d2e-8fba-19dd150e0c67">Flagging Uninitialized Variables</a></h2>
+<div id="outline-container-orgfd57bc6" class="outline-2">
+<h2 id="orgfd57bc6"><a href="20231225185442-flagging_uninitialized_variables.html#ID-e1c39b97-642d-4d2e-8fba-19dd150e0c67">Flagging Uninitialized Variables</a></h2>
 </div>
-<div id="outline-container-org5728cb2" class="outline-2">
-<h2 id="org5728cb2"><a href="20231225185849-variable_lifetimes.html#ID-77742466-5106-4aba-9a33-343d5e732a44">Variable Lifetimes</a></h2>
+<div id="outline-container-org72ee4f5" class="outline-2">
+<h2 id="org72ee4f5"><a href="20231225185849-variable_lifetimes.html#ID-77742466-5106-4aba-9a33-343d5e732a44">Variable Lifetimes</a></h2>
 </div>
-<div id="outline-container-org38fb3cf" class="outline-2">
-<h2 id="org38fb3cf"><a href="20231226051231-this_reference.html#ID-b691522c-6f33-4e1d-96e2-88233ea5dcb4">.this reference</a></h2>
+<div id="outline-container-org03a30ad" class="outline-2">
+<h2 id="org03a30ad"><a href="20231226051231-this_reference.html#ID-b691522c-6f33-4e1d-96e2-88233ea5dcb4">.this reference</a></h2>
 </div>
-<div id="outline-container-orga627d62" class="outline-2">
-<h2 id="orga627d62"><a href="20231226052415-method_overloading.html#ID-28b95eeb-be70-4b92-b599-aa95d6d9b5d7">Method Overloading</a></h2>
+<div id="outline-container-orge3cf9b8" class="outline-2">
+<h2 id="orge3cf9b8"><a href="20231226052415-method_overloading.html#ID-28b95eeb-be70-4b92-b599-aa95d6d9b5d7">Method Overloading</a></h2>
 </div>
-<div id="outline-container-org2e4469c" class="outline-2">
-<h2 id="org2e4469c"><a href="Constructors.md.html#ID-73a0f36b-e440-486a-bd88-6ca577be3351">Constructors</a></h2>
+<div id="outline-container-org0a611f0" class="outline-2">
+<h2 id="org0a611f0"><a href="Constructors.md.html#ID-73a0f36b-e440-486a-bd88-6ca577be3351">Constructors</a></h2>
 </div>
 </div>
 </body>

@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python List</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,131 +243,122 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Python List</h1>
-
-<div id="outline-container-org290d015" class="outline-2">
-<h2 id="org290d015">Python List</h2>
-<div class="outline-text-2" id="text-org290d015">
+<div id="outline-container-orgfd641fb" class="outline-2">
+<h2 id="orgfd641fb">Python List</h2>
+<div class="outline-text-2" id="text-orgfd641fb">
 <ul class="org-ul">
 <li>Mutable</li>
 </ul>
 </div>
-
-<div id="outline-container-orgd773bd3" class="outline-3">
-<h3 id="orgd773bd3">Basic Example</h3>
-<div class="outline-text-3" id="text-orgd773bd3">
+<div id="outline-container-org2f1de42" class="outline-3">
+<h3 id="org2f1de42">Basic Example</h3>
+<div class="outline-text-3" id="text-org2f1de42">
 <div class="org-src-container">
-<pre class="src src-python"><span class="org-variable-name">lst</span> <span class="org-operator">=</span> [1, 69, 420, 100, 99]
+<pre class="src src-python"><code><span class="org-variable-name">lst</span> <span class="org-operator">=</span> [1, 69, 420, 100, 99]
 
 <span class="org-builtin">print</span>(<span class="org-operator">*</span>lst)  <span class="org-comment-delimiter"># </span><span class="org-comment">1 69 420 100 99</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org2a344f8" class="outline-3">
-<h3 id="org2a344f8">Insertion</h3>
-<div class="outline-text-3" id="text-org2a344f8">
+<div id="outline-container-org047d4a4" class="outline-3">
+<h3 id="org047d4a4">Insertion</h3>
+<div class="outline-text-3" id="text-org047d4a4">
 </div>
-<div id="outline-container-orgc650f09" class="outline-4">
-<h4 id="orgc650f09">insert()</h4>
-<div class="outline-text-4" id="text-orgc650f09">
+<div id="outline-container-org508639e" class="outline-4">
+<h4 id="org508639e">insert()</h4>
+<div class="outline-text-4" id="text-org508639e">
 <p>
 Insert element at a <b>specific</b> <b>index</b>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python">lst.insert(<span class="org-builtin">len</span>(lst), 15)
+<pre class="src src-python"><code>lst.insert(<span class="org-builtin">len</span>(lst), 15)
 
 <span class="org-builtin">print</span>(<span class="org-operator">*</span>lst)  <span class="org-comment-delimiter"># </span><span class="org-comment">1 69 420 100 99 15</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org7fc11d3" class="outline-4">
-<h4 id="org7fc11d3">append()</h4>
-<div class="outline-text-4" id="text-org7fc11d3">
+<div id="outline-container-org2441447" class="outline-4">
+<h4 id="org2441447">append()</h4>
+<div class="outline-text-4" id="text-org2441447">
 <p>
 Add a <b>single</b> element to the <b>end</b>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python">lst.append(6)
+<pre class="src src-python"><code>lst.append(6)
 
 <span class="org-builtin">print</span>(<span class="org-operator">*</span>lst)  <span class="org-comment-delimiter"># </span><span class="org-comment">1 69 420 100 99 15 6</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgdfccb11" class="outline-4">
-<h4 id="orgdfccb11">extend()</h4>
-<div class="outline-text-4" id="text-orgdfccb11">
+<div id="outline-container-orgbebbd48" class="outline-4">
+<h4 id="orgbebbd48">extend()</h4>
+<div class="outline-text-4" id="text-orgbebbd48">
 <p>
 Add <b>multiple</b> <b>elements</b> to the <b>end</b>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python">lst.extend([7, 8, 9])
+<pre class="src src-python"><code>lst.extend([7, 8, 9])
 
 <span class="org-builtin">print</span>(<span class="org-operator">*</span>lst)  <span class="org-comment-delimiter"># </span><span class="org-comment">1 69 420 100 99 15 6 7 8 9</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org3e54b43" class="outline-3">
-<h3 id="org3e54b43">Removal</h3>
-<div class="outline-text-3" id="text-org3e54b43">
+<div id="outline-container-org793a115" class="outline-3">
+<h3 id="org793a115">Removal</h3>
+<div class="outline-text-3" id="text-org793a115">
 </div>
-<div id="outline-container-orgc3726d4" class="outline-4">
-<h4 id="orgc3726d4">pop()</h4>
-<div class="outline-text-4" id="text-orgc3726d4">
+<div id="outline-container-org2470bb4" class="outline-4">
+<h4 id="org2470bb4">pop()</h4>
+<div class="outline-text-4" id="text-org2470bb4">
 <p>
 <b>Remove</b> <b>element</b> at a <b>given</b> <b>index</b>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python">lst.pop(3)
+<pre class="src src-python"><code>lst.pop(3)
 
 <span class="org-builtin">print</span>(<span class="org-operator">*</span>lst)
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-orga1554cd" class="outline-4">
-<h4 id="orga1554cd">del</h4>
-<div class="outline-text-4" id="text-orga1554cd">
+<div id="outline-container-orgf32bc17" class="outline-4">
+<h4 id="orgf32bc17">del</h4>
+<div class="outline-text-4" id="text-orgf32bc17">
 <p>
 <b>Delete</b> <b>element</b> by <b>index</b>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span class="org-keyword">del</span> lst[0]
+<pre class="src src-python"><code><span class="org-keyword">del</span> lst[0]
 
 <span class="org-builtin">print</span>(<span class="org-operator">*</span>lst)
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgf9cce78" class="outline-3">
-<h3 id="orgf9cce78">Iteration</h3>
-<div class="outline-text-3" id="text-orgf9cce78">
+<div id="outline-container-org0766fd0" class="outline-3">
+<h3 id="org0766fd0">Iteration</h3>
+<div class="outline-text-3" id="text-org0766fd0">
 <div class="org-src-container">
-<pre class="src src-python"><span class="org-keyword">for</span> x <span class="org-keyword">in</span> lst:
+<pre class="src src-python"><code><span class="org-keyword">for</span> x <span class="org-keyword">in</span> lst:
     <span class="org-builtin">print</span>(<span class="org-string">"Value"</span>, x)
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgbaf0846" class="outline-3">
-<h3 id="orgbaf0846">Notes</h3>
-<div class="outline-text-3" id="text-orgbaf0846">
+<div id="outline-container-orga36fa79" class="outline-3">
+<h3 id="orga36fa79">Notes</h3>
+<div class="outline-text-3" id="text-orga36fa79">
 <ul class="org-ul">
 <li>Lists in Python are <b>ordered</b> and <b>mutable</b>.</li>
 <li><code>insert()</code> is O(n)</li>

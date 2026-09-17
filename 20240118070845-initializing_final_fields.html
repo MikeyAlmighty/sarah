@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Initializing final Fields</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,19 +243,18 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Initializing final Fields</h1>
-
-<div id="outline-container-org10d512f" class="outline-2">
-<h2 id="org10d512f">Initializing final Fields</h2>
-<div class="outline-text-2" id="text-org10d512f">
+<div id="outline-container-org35d8ede" class="outline-2">
+<h2 id="org35d8ede">Initializing final Fields</h2>
+<div class="outline-text-2" id="text-org35d8ede">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">MouseHouse</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">MouseHouse</span> {
     <span class="org-keyword">private</span> <span class="org-keyword">final</span> <span class="org-type">int</span> <span class="org-variable-name">volume</span>;
     <span class="org-keyword">private</span> <span class="org-keyword">final</span> <span class="org-type">String</span> <span class="org-variable-name">name</span> = <span class="org-string">"The Mouse House"</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">Declaration assignment
 </span>    {
         volume = 10; <span class="org-comment-delimiter">// </span><span class="org-comment">Instance Initializer assignment
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -262,27 +262,25 @@ Unlike <code>static</code> class members, though, <code>final instance</code> fi
 The <code>constructor</code> is part of the <b>initialization</b> process, so it is allowed to assign <code>final instance variables</code>.
 </p>
 </div>
-
-
-<div id="outline-container-org17f72cd" class="outline-3">
-<h3 id="org17f72cd"><span class="underline">Exam Trick</span></h3>
-<div class="outline-text-3" id="text-org17f72cd">
+<div id="outline-container-org1a4d356" class="outline-3">
+<h3 id="org1a4d356"><span class="underline">Exam Trick</span></h3>
+<div class="outline-text-3" id="text-org1a4d356">
 <p>
 By the time the <code>constructor</code> completes, all <code>final instance variables</code> <b>must be assigned</b> a value <b>exactly once</b>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">MouseHouse</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">MouseHouse</span> {
     <span class="org-keyword">private</span> <span class="org-keyword">final</span> <span class="org-type">int</span> <span class="org-variable-name">volume</span>;
     <span class="org-keyword">private</span> <span class="org-keyword">final</span> <span class="org-type">String</span> <span class="org-variable-name">name</span>;
-    <span class="org-keyword">public</span> MouseHouse() {
+    <span class="org-keyword">public</span> <span class="org-function-name">MouseHouse</span>() {
         <span class="org-keyword">this</span>.name = <span class="org-string">"Empty House"</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">Constructor assignment
 </span>    }
     {
         volume = 10; <span class="org-comment-delimiter">// </span><span class="org-comment">Instance initializer assignment
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 
 <ul class="org-ul">
@@ -298,7 +296,7 @@ Failure to do so will result in a <b>compiler error</b> on the line that declare
 
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">MouseHouse</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">MouseHouse</span> {
     <span class="org-keyword">private</span> <span class="org-keyword">final</span> <span class="org-type">int</span> <span class="org-variable-name">volume</span>;
     <span class="org-keyword">private</span> <span class="org-keyword">final</span> <span class="org-type">String</span> <span class="org-variable-name">type</span>;
 
@@ -306,21 +304,20 @@ Failure to do so will result in a <b>compiler error</b> on the line that declare
         <span class="org-keyword">this</span>.volume = 10;
     }
 
-    <span class="org-keyword">public</span> MouseHouse(String type) {
+    <span class="org-keyword">public</span> <span class="org-function-name">MouseHouse</span>(<span class="org-type">String</span> <span class="org-variable-name">type</span>) {
         <span class="org-keyword">this</span>.type = type;
     }
 
-    <span class="org-keyword">public</span> MouseHouse() { <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
+    <span class="org-keyword">public</span> <span class="org-function-name">MouseHouse</span>() { <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>        <span class="org-keyword">this</span>.volume = 2; <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 </div>
-
-<div id="outline-container-orgb16333a" class="outline-4">
-<h4 id="orgb16333a"><span class="underline">Exam Trick</span></h4>
-<div class="outline-text-4" id="text-orgb16333a">
+<div id="outline-container-org38259ff" class="outline-4">
+<h4 id="org38259ff"><span class="underline">Exam Trick</span></h4>
+<div class="outline-text-4" id="text-org38259ff">
 <p>
 On the exam, be wary of any instance variables marked <code>final</code>.
 </p>

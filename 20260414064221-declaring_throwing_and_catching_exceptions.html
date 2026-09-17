@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Declaring, Throwing and Catching Exceptions</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,10 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Declaring, Throwing and Catching Exceptions</h1>
-
-<div id="outline-container-orgf11c631" class="outline-2">
-<h2 id="orgf11c631">Declaring, Throwing and Catching Exceptions</h2>
-<div class="outline-text-2" id="text-orgf11c631">
+<div id="outline-container-org38f0b97" class="outline-2">
+<h2 id="org38f0b97">Declaring, Throwing and Catching Exceptions</h2>
+<div class="outline-text-2" id="text-org38f0b97">
 <p>
 A <i>handler</i> for an <b>exception</b> is found by propagating the <b>exception</b> backward through a <b>chain</b> of <code>method calls</code>, starting from the current <code>method</code>.
 </p>
@@ -260,15 +260,14 @@ Java’s <b>exception-handling</b> model is based on <i>three operations</i>:
 </ul>
 
 
-<div id="org15c9427" class="figure">
+<div id="orgd6cdb3f" class="figure">
 <p><img src="./assets/java-exception-handling.png" alt="java-exception-handling.png" />
 </p>
 </div>
 </div>
-
-<div id="outline-container-orgc32c9a5" class="outline-3">
-<h3 id="orgc32c9a5">Declaring Exceptions</h3>
-<div class="outline-text-3" id="text-orgc32c9a5">
+<div id="outline-container-orge672710" class="outline-3">
+<h3 id="orge672710">Declaring Exceptions</h3>
+<div class="outline-text-3" id="text-orge672710">
 <p>
 In Java, the statement currently being <b>executed</b> belongs to a <code>method</code>.
 </p>
@@ -297,13 +296,12 @@ However, all other exceptions <b>thrown</b> by the method must be <i>explicitly<
 To declare an exception in a method, use the <code>throws</code> keyword in the <b>method header</b>.
 </p>
 </div>
-
-<div id="outline-container-org9357d6c" class="outline-4">
-<h4 id="org9357d6c">Example</h4>
-<div class="outline-text-4" id="text-org9357d6c">
+<div id="outline-container-org5251e9a" class="outline-4">
+<h4 id="org5251e9a">Example</h4>
+<div class="outline-text-4" id="text-org5251e9a">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">myMethod</span>() <span class="org-keyword">throws</span> <span class="org-type">IOException</span>
-</pre>
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">myMethod</span>() <span class="org-keyword">throws</span> <span class="org-type">IOException</span>
+</code></pre>
 </div>
 
 <p>
@@ -315,14 +313,13 @@ If the method might throw <b>multiple exceptions</b>, add a <i>list</i> of the <
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">myMethod</span>() <span class="org-keyword">throws</span> <span class="org-type">Exception1</span>, <span class="org-type">Exception2</span>, ..., ExceptionN
-</pre>
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">myMethod</span>() <span class="org-keyword">throws</span> <span class="org-type">Exception1</span>, <span class="org-type">Exception2</span>, ..., ExceptionN
+</code></pre>
 </div>
 </div>
-
 <ul class="org-ul">
-<li><a id="org55d4b3b"></a>Note<br />
-<div class="outline-text-5" id="text-org55d4b3b">
+<li><a id="org567ef17"></a>Note<br />
+<div class="outline-text-5" id="text-org567ef17">
 <p>
 If a <code>method</code> does <b>not</b> declare <b>exceptions</b> in the <code>superclass</code>, you <b>cannot</b> <i>override</i> it to declare <b>exceptions</b> in the <code>subclass</code>.
 </p>
@@ -331,10 +328,9 @@ If a <code>method</code> does <b>not</b> declare <b>exceptions</b> in the <code>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org12416f7" class="outline-3">
-<h3 id="org12416f7">Throwing Exceptions</h3>
-<div class="outline-text-3" id="text-org12416f7">
+<div id="outline-container-orgbec0a03" class="outline-3">
+<h3 id="orgbec0a03">Throwing Exceptions</h3>
+<div class="outline-text-3" id="text-orgbec0a03">
 <p>
 A program that <b>detects</b> an <b>error</b> can create an instance of an appropriate <code>exception</code> type and <i>throw</i> it.
 </p>
@@ -343,10 +339,9 @@ A program that <b>detects</b> an <b>error</b> can create an instance of an appro
 This is <i>known</i> as <b>throwing an exception</b>.
 </p>
 </div>
-
-<div id="outline-container-org1717c36" class="outline-4">
-<h4 id="org1717c36">Example</h4>
-<div class="outline-text-4" id="text-org1717c36">
+<div id="outline-container-orgc954622" class="outline-4">
+<h4 id="orgc954622">Example</h4>
+<div class="outline-text-4" id="text-orgc954622">
 <p>
 Suppose the program detects that an argument passed to the method violates the method contract (e.g., the argument must be nonnegative, but a negative argument is passed).
 </p>
@@ -356,9 +351,9 @@ The program <i>can</i> create an <code>instance</code> of <code>IllegalArgumentE
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">IllegalArgumentException</span> <span class="org-variable-name">ex</span> = <span class="org-keyword">new</span> <span class="org-type">IllegalArgumentException</span>(<span class="org-string">"Wrong Argument"</span>);
+<pre class="src src-java"><code><span class="org-type">IllegalArgumentException</span> <span class="org-variable-name">ex</span> = <span class="org-keyword">new</span> <span class="org-type">IllegalArgumentException</span>(<span class="org-string">"Wrong Argument"</span>);
 <span class="org-keyword">throw</span> ex;
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -366,15 +361,14 @@ OR
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">throw</span> <span class="org-keyword">new</span> <span class="org-type">IllegalArgumentException</span>(<span class="org-string">"Wrong Argument"</span>);
-</pre>
+<pre class="src src-java"><code><span class="org-keyword">throw</span> <span class="org-keyword">new</span> <span class="org-type">IllegalArgumentException</span>(<span class="org-string">"Wrong Argument"</span>);
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org6e35525" class="outline-4">
-<h4 id="org6e35525">Note</h4>
-<div class="outline-text-4" id="text-org6e35525">
+<div id="outline-container-org66154d0" class="outline-4">
+<h4 id="org66154d0">Note</h4>
+<div class="outline-text-4" id="text-org66154d0">
 <p>
 <code>IllegalArgumentException</code> is an <b>exception</b> <code>class</code> in the <code>Java API</code>.
 </p>
@@ -393,20 +387,18 @@ Message can be <i>obtained</i> by invoking <code>getMessage()</code> from an <co
 </div>
 </div>
 </div>
-
-<div id="outline-container-org908ac9e" class="outline-3">
-<h3 id="org908ac9e">Catching Exceptions</h3>
-<div class="outline-text-3" id="text-org908ac9e">
+<div id="outline-container-orgb35735c" class="outline-3">
+<h3 id="orgb35735c">Catching Exceptions</h3>
+<div class="outline-text-3" id="text-orgb35735c">
 <p>
 When an exception is <i>thrown</i>, it can be <i>caught</i> and handled in a <code>try-catch block</code>
 </p>
 </div>
-
-<div id="outline-container-org1c424f2" class="outline-4">
-<h4 id="org1c424f2">Example</h4>
-<div class="outline-text-4" id="text-org1c424f2">
+<div id="outline-container-org850ab92" class="outline-4">
+<h4 id="org850ab92">Example</h4>
+<div class="outline-text-4" id="text-org850ab92">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">try</span> {
+<pre class="src src-java"><code><span class="org-keyword">try</span> {
     <span class="org-comment-delimiter">// </span><span class="org-comment">Statements that may throw exceptions
 </span>} <span class="org-keyword">catch</span> (Exception1 exVar1) {
     <span class="org-comment-delimiter">// </span><span class="org-comment">handler for excpetion1;
@@ -417,7 +409,7 @@ When an exception is <i>thrown</i>, it can be <i>caught</i> and handled in a <co
 </span> <span class="org-keyword">catch</span> (ExceptionN exVarN) {
     <span class="org-comment-delimiter">// </span><span class="org-comment">handler for excpetionN;
 </span>}
-</pre>
+</code></pre>
 </div>
 
 <p>

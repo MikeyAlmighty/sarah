@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Interface Inheritance</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,10 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Interface Inheritance</h1>
-
-<div id="outline-container-org9a84a8e" class="outline-2">
-<h2 id="org9a84a8e">Interface Inheritance</h2>
-<div class="outline-text-2" id="text-org9a84a8e">
+<div id="outline-container-orgf579fae" class="outline-2">
+<h2 id="orgf579fae">Interface Inheritance</h2>
+<div class="outline-text-2" id="text-orgf579fae">
 <p>
 In Java, an <code>interface</code> can inherit from <b>one</b> or <b>more</b> <b>interfaces</b> using the <code>extends</code> <a href="20231224102648-java_keywords.html#ID-5f2b572a-ec31-49de-ba13-95b0c5edb4c0">Keyword</a>.
 </p>
@@ -255,12 +255,11 @@ Unlike classes, interfaces support <b>multiple inheritance</b>.
 </p>
 </div>
 </div>
-
-<div id="outline-container-orgf127850" class="outline-2">
-<h2 id="orgf127850">Syntax</h2>
-<div class="outline-text-2" id="text-orgf127850">
+<div id="outline-container-orgf62ed03" class="outline-2">
+<h2 id="orgf62ed03">Syntax</h2>
+<div class="outline-text-2" id="text-orgf62ed03">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">interface</span> <span class="org-type">A</span> {
+<pre class="src src-java"><code><span class="org-keyword">interface</span> <span class="org-type">A</span> {
     <span class="org-type">void</span> <span class="org-function-name">methodA</span>();
 }
 
@@ -271,7 +270,7 @@ Unlike classes, interfaces support <b>multiple inheritance</b>.
 <span class="org-keyword">interface</span> <span class="org-type">C</span> <span class="org-keyword">extends</span> <span class="org-type">A</span>, <span class="org-type">B</span> {
     <span class="org-type">void</span> <span class="org-function-name">methodC</span>();
 }
-</pre>
+</code></pre>
 </div>
 
 <ul class="org-ul">
@@ -280,12 +279,11 @@ Unlike classes, interfaces support <b>multiple inheritance</b>.
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org232e9cc" class="outline-2">
-<h2 id="org232e9cc">Example</h2>
-<div class="outline-text-2" id="text-org232e9cc">
+<div id="outline-container-org30a6caf" class="outline-2">
+<h2 id="org30a6caf">Example</h2>
+<div class="outline-text-2" id="text-org30a6caf">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">interface</span> <span class="org-type">Animal</span> {
+<pre class="src src-java"><code><span class="org-keyword">interface</span> <span class="org-type">Animal</span> {
     <span class="org-type">void</span> <span class="org-function-name">makeSound</span>();
 }
 
@@ -311,14 +309,13 @@ Unlike classes, interfaces support <b>multiple inheritance</b>.
         System.out.println(<span class="org-string">"Guarding"</span>);
     }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org4dfc033" class="outline-2">
-<h2 id="org4dfc033">Key Rules</h2>
-<div class="outline-text-2" id="text-org4dfc033">
+<div id="outline-container-org56033c0" class="outline-2">
+<h2 id="org56033c0">Key Rules</h2>
+<div class="outline-text-2" id="text-org56033c0">
 <ul class="org-ul">
 <li><b>Interfaces</b> use <code>extends</code> to <b>inherit</b> from <b>other</b> <code>interfaces</code></li>
 <li>A class uses <code>implements</code> to <b>implement</b> <b>interfaces</b></li>
@@ -329,16 +326,15 @@ Unlike classes, interfaces support <b>multiple inheritance</b>.
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgb3f89a9" class="outline-2">
-<h2 id="orgb3f89a9">Default Method Conflict</h2>
-<div class="outline-text-2" id="text-orgb3f89a9">
+<div id="outline-container-orgedb1dd0" class="outline-2">
+<h2 id="orgedb1dd0">Default Method Conflict</h2>
+<div class="outline-text-2" id="text-orgedb1dd0">
 <p>
 If two interfaces provide the same default method, the implementing class must resolve it:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">interface</span> <span class="org-type">A</span> {
+<pre class="src src-java"><code><span class="org-keyword">interface</span> <span class="org-type">A</span> {
     <span class="org-keyword">default</span> <span class="org-type">void</span> <span class="org-function-name">hello</span>() {
         System.out.println(<span class="org-string">"Hello from A"</span>);
     }
@@ -356,14 +352,13 @@ If two interfaces provide the same default method, the implementing class must r
         A.<span class="org-keyword">super</span>.hello(); <span class="org-comment-delimiter">// </span><span class="org-comment">resolve conflict
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org48ab8c6" class="outline-2">
-<h2 id="org48ab8c6">Key Idea</h2>
-<div class="outline-text-2" id="text-org48ab8c6">
+<div id="outline-container-org26e7b8f" class="outline-2">
+<h2 id="org26e7b8f">Key Idea</h2>
+<div class="outline-text-2" id="text-org26e7b8f">
 <p>
 An <b>interface</b> can combine <b>multiple</b> <b>behaviors</b>, forming a flexible <code>inheritance hierarchy</code> without the limitations of <b>class inheritance</b>.
 </p>

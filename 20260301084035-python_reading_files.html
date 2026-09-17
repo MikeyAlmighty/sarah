@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python Reading Files</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,23 +243,21 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Python Reading Files</h1>
-
-<div id="outline-container-org5d10da0" class="outline-2">
-<h2 id="org5d10da0">Python Reading Files</h2>
-<div class="outline-text-2" id="text-org5d10da0">
+<div id="outline-container-org634c0dc" class="outline-2">
+<h2 id="org634c0dc">Python Reading Files</h2>
+<div class="outline-text-2" id="text-org634c0dc">
 </div>
-<div id="outline-container-orgc327bbb" class="outline-3">
-<h3 id="orgc327bbb">Overview</h3>
-<div class="outline-text-3" id="text-orgc327bbb">
+<div id="outline-container-orgcf72dc7" class="outline-3">
+<h3 id="orgcf72dc7">Overview</h3>
+<div class="outline-text-3" id="text-orgcf72dc7">
 <p>
 Reading files in Python means consuming data from a file stream provided by the operating system.
 A file object maintains an internal <code>cursor</code> that <b>advances</b> as data is <b>read</b>.
 </p>
 </div>
-
-<div id="outline-container-org13eb35d" class="outline-4">
-<h4 id="org13eb35d">Key idea:</h4>
-<div class="outline-text-4" id="text-org13eb35d">
+<div id="outline-container-org69fdc9f" class="outline-4">
+<h4 id="org69fdc9f">Key idea:</h4>
+<div class="outline-text-4" id="text-org69fdc9f">
 <p>
 Reading changes the cursor position.
 Once content is consumed, subsequent reads return less (or nothing) unless the cursor is reset.
@@ -266,10 +265,9 @@ Once content is consumed, subsequent reads return less (or nothing) unless the c
 </div>
 </div>
 </div>
-
-<div id="outline-container-org1a22679" class="outline-3">
-<h3 id="org1a22679">Reading Methods</h3>
-<div class="outline-text-3" id="text-org1a22679">
+<div id="outline-container-orgfe0e1ee" class="outline-3">
+<h3 id="orgfe0e1ee">Reading Methods</h3>
+<div class="outline-text-3" id="text-orgfe0e1ee">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -315,20 +313,19 @@ Once content is consumed, subsequent reads return less (or nothing) unless the c
 </table>
 </div>
 </div>
-
-<div id="outline-container-orgdc9526d" class="outline-3">
-<h3 id="orgdc9526d">Reading Using Context Manager</h3>
-<div class="outline-text-3" id="text-orgdc9526d">
+<div id="outline-container-org9deeba4" class="outline-3">
+<h3 id="org9deeba4">Reading Using Context Manager</h3>
+<div class="outline-text-3" id="text-org9deeba4">
 <div class="org-src-container">
-<pre class="src src-python"><span class="org-keyword">try</span>:
-    <span class="org-keyword">with</span> <span class="org-builtin">open</span>(<span class="org-string">'sample.txt'</span>, mode<span class="org-operator">=</span><span class="org-string">'r'</span>) <span class="org-keyword">as</span> <span class="org-builtin">file</span>:
-        <span class="org-builtin">print</span>(<span class="org-builtin">file</span>.read())
-        <span class="org-builtin">print</span>(<span class="org-builtin">file</span>.read(10))      <span class="org-comment-delimiter"># </span><span class="org-comment">First 10 characters from current position
-</span>        <span class="org-builtin">print</span>(<span class="org-builtin">file</span>.readline())    <span class="org-comment-delimiter"># </span><span class="org-comment">Next line
-</span>        <span class="org-builtin">print</span>(<span class="org-builtin">file</span>.readlines())   <span class="org-comment-delimiter"># </span><span class="org-comment">Remaining lines as list
+<pre class="src src-python"><code><span class="org-keyword">try</span>:
+    <span class="org-keyword">with</span> <span class="org-builtin">open</span>(<span class="org-string">'sample.txt'</span>, mode<span class="org-operator">=</span><span class="org-string">'r'</span>) <span class="org-keyword">as</span> file:
+        <span class="org-builtin">print</span>(file.read())
+        <span class="org-builtin">print</span>(file.read(10))      <span class="org-comment-delimiter"># </span><span class="org-comment">First 10 characters from current position
+</span>        <span class="org-builtin">print</span>(file.readline())    <span class="org-comment-delimiter"># </span><span class="org-comment">Next line
+</span>        <span class="org-builtin">print</span>(file.readlines())   <span class="org-comment-delimiter"># </span><span class="org-comment">Remaining lines as list
 </span><span class="org-keyword">except</span> <span class="org-type">Exception</span> <span class="org-keyword">as</span> e:
     <span class="org-builtin">print</span>(<span class="org-string">"ERROR"</span>, e)
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -340,10 +337,9 @@ Important behavior:
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgf262b9d" class="outline-3">
-<h3 id="orgf262b9d">Iterating Through a File</h3>
-<div class="outline-text-3" id="text-orgf262b9d">
+<div id="outline-container-orgc03d735" class="outline-3">
+<h3 id="orgc03d735">Iterating Through a File</h3>
+<div class="outline-text-3" id="text-orgc03d735">
 <p>
 A file object is iterable.
 </p>
@@ -353,13 +349,13 @@ Iteration reads one line at a time efficiently.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span class="org-keyword">try</span>:
-    <span class="org-keyword">with</span> <span class="org-builtin">open</span>(<span class="org-string">'sample.txt'</span>, mode<span class="org-operator">=</span><span class="org-string">'r'</span>) <span class="org-keyword">as</span> <span class="org-builtin">file</span>:
-        <span class="org-keyword">for</span> x <span class="org-keyword">in</span> <span class="org-builtin">file</span>:
+<pre class="src src-python"><code><span class="org-keyword">try</span>:
+    <span class="org-keyword">with</span> <span class="org-builtin">open</span>(<span class="org-string">'sample.txt'</span>, mode<span class="org-operator">=</span><span class="org-string">'r'</span>) <span class="org-keyword">as</span> file:
+        <span class="org-keyword">for</span> x <span class="org-keyword">in</span> file:
             <span class="org-builtin">print</span>(x)
 <span class="org-keyword">except</span> <span class="org-type">Exception</span> <span class="org-keyword">as</span> e:
     <span class="org-builtin">print</span>(<span class="org-string">"ERROR"</span>, e)
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -372,17 +368,16 @@ Why iteration is powerful:
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org02456b9" class="outline-3">
-<h3 id="org02456b9">Resetting the Cursor</h3>
-<div class="outline-text-3" id="text-org02456b9">
+<div id="outline-container-org1fc51e8" class="outline-3">
+<h3 id="org1fc51e8">Resetting the Cursor</h3>
+<div class="outline-text-3" id="text-org1fc51e8">
 <p>
 To read again from the beginning:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span class="org-builtin">file</span>.seek(0)
-</pre>
+<pre class="src src-python"><code>file.seek(0)
+</code></pre>
 </div>
 
 <p>
@@ -390,10 +385,9 @@ The argument represents byte position from the start.
 </p>
 </div>
 </div>
-
-<div id="outline-container-org4a7aa4a" class="outline-3">
-<h3 id="org4a7aa4a">Text vs Binary Reading</h3>
-<div class="outline-text-3" id="text-org4a7aa4a">
+<div id="outline-container-orgfc0b4ae" class="outline-3">
+<h3 id="orgfc0b4ae">Text vs Binary Reading</h3>
+<div class="outline-text-3" id="text-orgfc0b4ae">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -432,10 +426,9 @@ Text mode decodes bytes using an <a href="20260116075812-encoding_scheme.html#ID
 </p>
 </div>
 </div>
-
-<div id="outline-container-org9ae9e0d" class="outline-3">
-<h3 id="org9ae9e0d">Error Handling Strategy</h3>
-<div class="outline-text-3" id="text-org9ae9e0d">
+<div id="outline-container-org9b069f7" class="outline-3">
+<h3 id="org9b069f7">Error Handling Strategy</h3>
+<div class="outline-text-3" id="text-org9b069f7">
 <p>
 Generic exception handling catches:
 </p>
@@ -451,10 +444,9 @@ More specific exceptions can be used for precise control.
 </p>
 </div>
 </div>
-
-<div id="outline-container-org1e7e447" class="outline-3">
-<h3 id="org1e7e447">Conceptual Model</h3>
-<div class="outline-text-3" id="text-org1e7e447">
+<div id="outline-container-org8e771fa" class="outline-3">
+<h3 id="org8e771fa">Conceptual Model</h3>
+<div class="outline-text-3" id="text-org8e771fa">
 <p>
 <b>Reading</b> a file is not copying a container — it is advancing through a <b>stream</b>.
 Imagine a sliding window over a sequence of bytes.

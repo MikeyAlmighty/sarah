@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Inheritance Chain</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,10 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Inheritance Chain</h1>
-
-<div id="outline-container-org59e0380" class="outline-2">
-<h2 id="org59e0380">Inheritance Chain</h2>
-<div class="outline-text-2" id="text-org59e0380">
+<div id="outline-container-org77c5813" class="outline-2">
+<h2 id="org77c5813">Inheritance Chain</h2>
+<div class="outline-text-2" id="text-org77c5813">
 <p>
 An <code>inheritance chain</code> is the sequence of classes formed through <a href="20240114160906-understanding_inheritance.html#ID-5e09bcf0-2de5-4b84-a9ed-b3654bf0df40">inheritance</a>, where each <code>class</code> <b>extends</b> another <code>class</code>.
 </p>
@@ -254,9 +254,10 @@ An <code>inheritance chain</code> is the sequence of classes formed through <a h
 Example:
 </p>
 
-<pre class="example">
-Person → Employee → Faculty
-</pre>
+<div class="org-src-container">
+<pre class="src src-nil"><code>Person → Employee → Faculty
+</code></pre>
+</div>
 
 <p>
 Here:
@@ -267,10 +268,9 @@ Here:
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org84b0b37" class="outline-2">
-<h2 id="org84b0b37">Key Idea</h2>
-<div class="outline-text-2" id="text-org84b0b37">
+<div id="outline-container-org713a4f1" class="outline-2">
+<h2 id="org713a4f1">Key Idea</h2>
+<div class="outline-text-2" id="text-org713a4f1">
 <p>
 When an <code>object</code> of a <code>subclass</code> is created, Java initializes all classes in the <code>inheritance chain</code> from the <b>top (root)</b> to the <b>bottom (subclass)</b>.
 </p>
@@ -280,45 +280,44 @@ This ensures that all inherited <b>data</b> and <b>behavior</b> are properly <co
 </p>
 </div>
 </div>
-
-<div id="outline-container-orgb7a1bd7" class="outline-2">
-<h2 id="orgb7a1bd7">Constructor Execution Order</h2>
-<div class="outline-text-2" id="text-orgb7a1bd7">
+<div id="outline-container-org62ec9df" class="outline-2">
+<h2 id="org62ec9df">Constructor Execution Order</h2>
+<div class="outline-text-2" id="text-org62ec9df">
 <p>
 Constructors are executed in the following order:
 </p>
 
-<pre class="example">
-1. Top-level superclass constructor
+<div class="org-src-container">
+<pre class="src src-nil"><code>1. Top-level superclass constructor
 2. Next superclass constructor
 3. ...
 4. Subclass constructor
-</pre>
+</code></pre>
+</div>
 
 <p>
 This process is called <a href="20260315145631-constructor_chaining.html#ID-55699fdc-5fdc-4c94-b8d7-7b4c230ad0c5">Constructor Chaining</a>.
 </p>
 </div>
 </div>
-
-<div id="outline-container-org064db69" class="outline-2">
-<h2 id="org064db69">Example</h2>
-<div class="outline-text-2" id="text-org064db69">
+<div id="outline-container-org27040b4" class="outline-2">
+<h2 id="org27040b4">Example</h2>
+<div class="outline-text-2" id="text-org27040b4">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">class</span> <span class="org-type">Person</span> {
-    <span class="org-keyword">public</span> Person() {
+<pre class="src src-java"><code><span class="org-keyword">class</span> <span class="org-type">Person</span> {
+    <span class="org-keyword">public</span> <span class="org-function-name">Person</span>() {
         System.out.println(<span class="org-string">"Person constructor"</span>);
     }
 }
 
 <span class="org-keyword">class</span> <span class="org-type">Employee</span> <span class="org-keyword">extends</span> <span class="org-type">Person</span> {
-    <span class="org-keyword">public</span> Employee() {
+    <span class="org-keyword">public</span> <span class="org-function-name">Employee</span>() {
         System.out.println(<span class="org-string">"Employee constructor"</span>);
     }
 }
 
 <span class="org-keyword">class</span> <span class="org-type">Faculty</span> <span class="org-keyword">extends</span> <span class="org-type">Employee</span> {
-    <span class="org-keyword">public</span> Faculty() {
+    <span class="org-keyword">public</span> <span class="org-function-name">Faculty</span>() {
         System.out.println(<span class="org-string">"Faculty constructor"</span>);
     }
 
@@ -326,25 +325,24 @@ This process is called <a href="20260315145631-constructor_chaining.html#ID-5569
         <span class="org-keyword">new</span> <span class="org-type">Faculty</span>();
     }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org87d35e1" class="outline-2">
-<h2 id="org87d35e1">Output</h2>
-<div class="outline-text-2" id="text-org87d35e1">
-<pre class="example">
-Person constructor
+<div id="outline-container-orga2318d9" class="outline-2">
+<h2 id="orga2318d9">Output</h2>
+<div class="outline-text-2" id="text-orga2318d9">
+<div class="org-src-container">
+<pre class="src src-nil"><code>Person constructor
 Employee constructor
 Faculty constructor
-</pre>
+</code></pre>
 </div>
 </div>
-
-<div id="outline-container-orgafe942b" class="outline-2">
-<h2 id="orgafe942b">Explanation</h2>
-<div class="outline-text-2" id="text-orgafe942b">
+</div>
+<div id="outline-container-org3e951b3" class="outline-2">
+<h2 id="org3e951b3">Explanation</h2>
+<div class="outline-text-2" id="text-org3e951b3">
 <ol class="org-ol">
 <li><code>Faculty()</code> is called</li>
 <li>Java first calls <code>Employee()</code></li>
@@ -354,10 +352,9 @@ Faculty constructor
 </ol>
 </div>
 </div>
-
-<div id="outline-container-org04d7483" class="outline-2">
-<h2 id="org04d7483">Important Rules</h2>
-<div class="outline-text-2" id="text-org04d7483">
+<div id="outline-container-orgd48ca37" class="outline-2">
+<h2 id="orgd48ca37">Important Rules</h2>
+<div class="outline-text-2" id="text-orgd48ca37">
 <ul class="org-ul">
 <li>Every class (except <code>Object</code>) has a <code>superclass</code>.</li>
 <li>Java automatically inserts <code>super()</code> if not specified.</li>
@@ -366,10 +363,9 @@ Faculty constructor
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org85f1516" class="outline-2">
-<h2 id="org85f1516">Why It Matters</h2>
-<div class="outline-text-2" id="text-org85f1516">
+<div id="outline-container-org0f94e9a" class="outline-2">
+<h2 id="org0f94e9a">Why It Matters</h2>
+<div class="outline-text-2" id="text-org0f94e9a">
 <ul class="org-ul">
 <li>Ensures proper <b>initialization</b> of <code>inherited fields.</code></li>
 <li>Maintains consistent object state.</li>

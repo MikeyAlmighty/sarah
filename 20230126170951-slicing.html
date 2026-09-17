@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Slicing</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -243,35 +244,35 @@
 <div id="content" class="content">
 <h1 class="title">Slicing</h1>
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
-    <span class="org-type">var</span> <span class="org-variable-name">stream</span> = Stream.of(
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+    <span class="org-keyword">var</span> <span class="org-variable-name">stream</span> = Stream.of(
         <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"Deadpool 1"</span>, 15),
         <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"Deadpool 2"</span>, 5),
         <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"Deadpool 3"</span>, 25)
         );
 
 }
-</pre>
+</code></pre>
 </div>
 
 <ul class="org-ul">
 <li>limit</li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-java">stream
+<pre class="src src-java"><code>stream
     .limit(2)
     .forEach(movie -&gt; System.out.println(movie.getTitle())); <span class="org-comment-delimiter">// </span><span class="org-comment">Deadpool1, Deadpool2</span>
-</pre>
+</code></pre>
 </div>
 
 <ul class="org-ul">
 <li>skip</li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-java">stream
+<pre class="src src-java"><code>stream
     .skip(2)
     .forEach(movie -&gt; System.out.println(movie.getTitle())); <span class="org-comment-delimiter">// </span><span class="org-comment">Deadpool3</span>
-</pre>
+</code></pre>
 </div>
 
 <ul class="org-ul">
@@ -279,9 +280,9 @@
 takeWhile
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
     <span class="org-type">Predicate</span>&lt;<span class="org-type">Movie</span>&gt; <span class="org-variable-name">highestRated</span> = movie -&gt; movie.getLikes() &lt; 26;
-    <span class="org-type">var</span> <span class="org-variable-name">stream</span> = Stream.of(
+    <span class="org-keyword">var</span> <span class="org-variable-name">stream</span> = Stream.of(
             <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"Deadpool 1"</span>, 15),
             <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"Deadpool 2"</span>, 5),
             <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"Deadpool 3"</span>, 25),
@@ -292,16 +293,16 @@ takeWhile
             .takeWhile(highestRated)
             .forEach(movie -&gt; System.out.println(movie.getTitle())); <span class="org-comment-delimiter">// </span><span class="org-comment">Deadpool 1 Deadpool 2 Deadpool 3
 </span>}
-</pre>
+</code></pre>
 </div></li>
 
 <li><p>
 dropWhile
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
     <span class="org-type">Predicate</span>&lt;<span class="org-type">Movie</span>&gt; <span class="org-variable-name">highestRated</span> = movie -&gt; movie.getLikes() &lt; 25;
-    <span class="org-type">var</span> <span class="org-variable-name">stream</span> = Stream.of(
+    <span class="org-keyword">var</span> <span class="org-variable-name">stream</span> = Stream.of(
             <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"Deadpool 1"</span>, 15),
             <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"Deadpool 2"</span>, 5),
             <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"Deadpool 3"</span>, 25),
@@ -312,7 +313,7 @@ dropWhile
             .dropWhile(highestRated)
             .forEach(movie -&gt; System.out.println(movie.getTitle())); <span class="org-comment-delimiter">// </span><span class="org-comment">Deadpool 3 Shrek 1 Shrek 2
 </span>}
-</pre>
+</code></pre>
 </div></li>
 </ul>
 </div>

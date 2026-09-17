@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Instance Variable Modifiers</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,40 +243,36 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Instance Variable Modifiers</h1>
-
-<div id="outline-container-org9d3ac85" class="outline-2">
-<h2 id="org9d3ac85">Instance Variable Modifiers</h2>
-<div class="outline-text-2" id="text-org9d3ac85">
+<div id="outline-container-orga4f5d61" class="outline-2">
+<h2 id="orga4f5d61">Instance Variable Modifiers</h2>
+<div class="outline-text-2" id="text-orga4f5d61">
 <p>
 Same as <a href="20240111060109-access_modifiers.html#ID-0d43fdee-5463-4f66-8b65-ae9a7b4b74e2">Method Access Modifiers</a>
 </p>
 </div>
-
-<div id="outline-container-orgdc204bc" class="outline-3">
-<h3 id="orgdc204bc">Optional Specifiers for Instance Variables</h3>
-<div class="outline-text-3" id="text-orgdc204bc">
+<div id="outline-container-org0634811" class="outline-3">
+<h3 id="org0634811">Optional Specifiers for Instance Variables</h3>
+<div class="outline-text-3" id="text-org0634811">
 <p>
 Instance variables can also use <code>optional specifiers</code>:
 </p>
 
 
-<div id="orgcf5a265" class="figure">
+<div id="orgc4dd593" class="figure">
 <p><img src="./assets/instance_variable_optional_specifiers.png" alt="instance_variable_optional_specifiers.png" />
 </p>
 </div>
 </div>
-
-<div id="outline-container-org91c488e" class="outline-4">
-<h4 id="org91c488e">final</h4>
-<div class="outline-text-4" id="text-org91c488e">
+<div id="outline-container-orgcf97cf2" class="outline-4">
+<h4 id="orgcf97cf2">final</h4>
+<div class="outline-text-4" id="text-orgcf97cf2">
 <p>
 If an instance variable is marked <code>final</code>, then it must be <b>assigned</b> a value when it is <b>declared</b> or when the <b>object is instantiated</b>.
 </p>
 </div>
-
 <ul class="org-ul">
-<li><a id="org1303875"></a>Example<br />
-<div class="outline-text-5" id="text-org1303875">
+<li><a id="org402e481"></a>Example<br />
+<div class="outline-text-5" id="text-org402e481">
 <p>
 The <code>age</code> variable is given a value when it is declared, while the <code>fishEaten</code> variable is assigned a value in an <code>instance initializer</code>.
 The <code>name</code> variable is given a value in the <code>no-argument constructor</code>.
@@ -286,24 +283,23 @@ Failing to initialize an instance variable (or assigning a value more than once)
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">PolarBear</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">PolarBear</span> {
     <span class="org-keyword">final</span> <span class="org-type">int</span> <span class="org-variable-name">age</span> = 10;
     <span class="org-keyword">final</span> <span class="org-type">int</span> <span class="org-variable-name">fishEaten</span>;
     <span class="org-keyword">final</span> <span class="org-type">String</span> <span class="org-variable-name">name</span>;
 
     { fishEaten = 10; }
 
-    <span class="org-keyword">public</span> PolarBear() {
+    <span class="org-keyword">public</span> <span class="org-function-name">PolarBear</span>() {
         name = <span class="org-string">"Robert"</span>;
     }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </li>
-
-<li><a id="org29e1d83"></a><span class="underline">Exam Trick</span><br />
-<div class="outline-text-5" id="text-org29e1d83">
+<li><a id="org3f979ca"></a><span class="underline">Exam Trick</span><br />
+<div class="outline-text-5" id="text-org3f979ca">
 <p>
 In <a href="20231229153446-1_building_blocks.html#ID-34f737cd-7010-42aa-9f37-5136eb75a44e">1. Building blocks</a>, we show that <code>instance variables</code> receive <b>default</b> values based on their <code>type</code> when not set.
 For example, <code>int</code> receives a default value of <code>0</code>, while an <code>object reference</code> receives a default value of <code>null</code>.

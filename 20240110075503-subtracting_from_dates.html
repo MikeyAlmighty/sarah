@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Subtracting From Dates</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,10 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Subtracting From Dates</h1>
-
-<div id="outline-container-orgaa0a2be" class="outline-2">
-<h2 id="orgaa0a2be">Subtracting From Dates</h2>
-<div class="outline-text-2" id="text-orgaa0a2be">
+<div id="outline-container-org3e70a0a" class="outline-2">
+<h2 id="org3e70a0a">Subtracting From Dates</h2>
+<div class="outline-text-2" id="text-org3e70a0a">
 <p>
 The <code>Date</code> and <code>Time</code> classes are immutable.
 </p>
@@ -255,9 +255,9 @@ Remember to assign the results of these methods to a <code>reference variable</c
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">date</span> = LocalDate.of(2024, <span class="org-constant">Month</span>.JANUARY, 20);
-<span class="org-type">var</span> <span class="org-variable-name">time</span> = LocalTime.of(5, 15);
-<span class="org-type">var</span> <span class="org-variable-name">dateTime</span> = LocalDateTime.of(date, time);
+<pre class="src src-java"><code><span class="org-keyword">var</span> <span class="org-variable-name">date</span> = LocalDate.of(2024, <span class="org-constant">Month</span>.JANUARY, 20);
+<span class="org-keyword">var</span> <span class="org-variable-name">time</span> = LocalTime.of(5, 15);
+<span class="org-keyword">var</span> <span class="org-variable-name">dateTime</span> = LocalDateTime.of(date, time);
 
 System.out.println(dateTime); <span class="org-comment-delimiter">// </span><span class="org-comment">2024&#8211;01&#8211;20T05:15
 </span>
@@ -269,30 +269,28 @@ System.out.println(dateTime); <span class="org-comment-delimiter">// </span><spa
 </span>
 dateTime = dateTime.minusSeconds(30);
 System.out.println(dateTime); <span class="org-comment-delimiter">// </span><span class="org-comment">2024&#8211;01&#8211;18T19:14:30</span>
-</pre>
+</code></pre>
 </div>
 </div>
-
-<div id="outline-container-org015054a" class="outline-3">
-<h3 id="org015054a">Method Chaining</h3>
-<div class="outline-text-3" id="text-org015054a">
+<div id="outline-container-org43752ce" class="outline-3">
+<h3 id="org43752ce">Method Chaining</h3>
+<div class="outline-text-3" id="text-org43752ce">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">date</span> = LocalDate.of(2024, <span class="org-constant">Month</span>.JANUARY, 20);
-<span class="org-type">var</span> <span class="org-variable-name">time</span> = LocalTime.of(5, 15);
+<pre class="src src-java"><code><span class="org-keyword">var</span> <span class="org-variable-name">date</span> = LocalDate.of(2024, <span class="org-constant">Month</span>.JANUARY, 20);
+<span class="org-keyword">var</span> <span class="org-variable-name">time</span> = LocalTime.of(5, 15);
 
-<span class="org-type">var</span> <span class="org-variable-name">dateTime</span> = LocalDateTime.of(date, time)
+<span class="org-keyword">var</span> <span class="org-variable-name">dateTime</span> = LocalDateTime.of(date, time)
                   .minusDays(1).minusHours(10).minusSeconds(30);
-</pre>
+</code></pre>
 </div>
 </div>
-
-<div id="outline-container-org54785c8" class="outline-4">
-<h4 id="org54785c8"><span class="underline">Exam Trick</span></h4>
-<div class="outline-text-4" id="text-org54785c8">
+<div id="outline-container-org355985f" class="outline-4">
+<h4 id="org355985f"><span class="underline">Exam Trick</span></h4>
+<div class="outline-text-4" id="text-org355985f">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">date</span> = LocalDate.of(2024, <span class="org-constant">Month</span>.JANUARY, 20);
+<pre class="src src-java"><code><span class="org-keyword">var</span> <span class="org-variable-name">date</span> = LocalDate.of(2024, <span class="org-constant">Month</span>.JANUARY, 20);
 date = date.miusMinutes(1); <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE</span>
-</pre>
+</code></pre>
 </div>
 
 <p>

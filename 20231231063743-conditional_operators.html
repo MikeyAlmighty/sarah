@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Conditional Operators</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,16 +243,15 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Conditional Operators</h1>
-
-<div id="outline-container-org521223e" class="outline-2">
-<h2 id="org521223e">Conditional Operators (aka short-circuit operators)</h2>
-<div class="outline-text-2" id="text-org521223e">
+<div id="outline-container-org76b105b" class="outline-2">
+<h2 id="org76b105b">Conditional Operators (aka short-circuit operators)</h2>
+<div class="outline-text-2" id="text-org76b105b">
 <p>
 A <a href="20231231060610-binary_operators.html#ID-9bcf2aef-060a-4011-98b5-cb949a9f7d1a">Binary Operator</a>
 </p>
 
 
-<div id="org8de4e48" class="figure">
+<div id="org4221e48" class="figure">
 <p><img src="./assets/conditional_operators.png" alt="conditional_operators.png" />
 </p>
 </div>
@@ -261,20 +261,19 @@ Identical to the <a href="20240101093326-logical_operators.html#ID-e5c59266-2989
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">int</span> <span class="org-variable-name">hour</span> = 10;
+<pre class="src src-java"><code><span class="org-type">int</span> <span class="org-variable-name">hour</span> = 10;
 <span class="org-type">boolean</span> <span class="org-variable-name">zooOpen</span> = <span class="org-constant">true</span> || (hour &lt; 4);
 System.out.println(zooOpen); <span class="org-comment-delimiter">// </span><span class="org-comment">true</span>
-</pre>
+</code></pre>
 </div>
+</div>
+<div id="outline-container-org3bc31b7" class="outline-3">
+<h3 id="org3bc31b7"><a href="20240101085507-ternary_operators.html#ID-4fb44335-373d-438c-b873-d648a962c2f7">Ternary Operators</a></h3>
 </div>
 
-<div id="outline-container-org8313358" class="outline-3">
-<h3 id="org8313358"><a href="20240101085507-ternary_operators.html#ID-4fb44335-373d-438c-b873-d648a962c2f7">Ternary Operators</a></h3>
-</div>
-
-<div id="outline-container-org23366ac" class="outline-3">
-<h3 id="org23366ac">Avoiding a <code>NullPointerException</code></h3>
-<div class="outline-text-3" id="text-org23366ac">
+<div id="outline-container-org7543cd2" class="outline-3">
+<h3 id="org7543cd2">Avoiding a <code>NullPointerException</code></h3>
+<div class="outline-text-3" id="text-org7543cd2">
 <p>
 A more common example of where <code>conditional operators</code> are used is checking for <code>null</code> objects before performing an operation.
 </p>
@@ -283,34 +282,32 @@ A more common example of where <code>conditional operators</code> are used is ch
 In the following example, if <code>duck</code> is <code>null</code>, the program will throw a <code>NullPointerException</code> at <b>runtime</b>:
 </p>
 </div>
-
-<div id="outline-container-orgb585abf" class="outline-4">
-<h4 id="orgb585abf">Example</h4>
-<div class="outline-text-4" id="text-orgb585abf">
+<div id="outline-container-org5c9b192" class="outline-4">
+<h4 id="org5c9b192">Example</h4>
+<div class="outline-text-4" id="text-org5c9b192">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">if</span>(duck != <span class="org-constant">null</span> &amp; duck.getAge() &lt; 5) { <span class="org-comment-delimiter">// </span><span class="org-comment">Could throw a NullPointerException
+<pre class="src src-java"><code><span class="org-keyword">if</span>(duck != <span class="org-constant">null</span> &amp; duck.getAge() &lt; 5) { <span class="org-comment-delimiter">// </span><span class="org-comment">Could throw a NullPointerException
 </span><span class="org-comment-delimiter">// </span><span class="org-comment">Do something
 </span>}
-</pre>
+</code></pre>
 </div>
 
 <p>
 The issue is that the logical <code>AND (&amp;)</code> operator evaluates <b>both</b> sides of the expression
 </p>
 </div>
-
 <ul class="org-ul">
-<li><a id="org5a9b7f8"></a>Example<br />
-<div class="outline-text-5" id="text-org5a9b7f8">
+<li><a id="org857b45a"></a>Example<br />
+<div class="outline-text-5" id="text-org857b45a">
 <p>
 Does not throw a <code>NullPointerException</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">if</span>(duck != <span class="org-constant">null</span> &amp;&amp; duck.getAge()&lt;5) {
+<pre class="src src-java"><code><span class="org-keyword">if</span>(duck != <span class="org-constant">null</span> &amp;&amp; duck.getAge()&lt;5) {
 <span class="org-comment-delimiter">// </span><span class="org-comment">Do something
 </span>}
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -320,10 +317,9 @@ In the example above, if <code>duck</code> <b>is</b> <code>null</code>, the cond
 </li>
 </ul>
 </div>
-
-<div id="outline-container-org9d6a2b3" class="outline-4">
-<h4 id="org9d6a2b3"><span class="underline">Exam Trick</span></h4>
-<div class="outline-text-4" id="text-org9d6a2b3">
+<div id="outline-container-org7b12bd0" class="outline-4">
+<h4 id="org7b12bd0"><span class="underline">Exam Trick</span></h4>
+<div class="outline-text-4" id="text-org7b12bd0">
 <p>
 Be wary of <b>short-circuit</b> behavior on the exam, as questions are known to <b>alter</b> a variable on the <code>RHS</code> of the expression that may never be reached.
 </p>
@@ -332,15 +328,14 @@ Be wary of <b>short-circuit</b> behavior on the exam, as questions are known to 
 <li>This is referred to as an <code>unperformed side effect</code>.</li>
 </ul>
 </div>
-
 <ul class="org-ul">
-<li><a id="orgbbe2b8d"></a>Example<br />
-<div class="outline-text-5" id="text-orgbbe2b8d">
+<li><a id="org9ea467c"></a>Example<br />
+<div class="outline-text-5" id="text-org9ea467c">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">int</span> <span class="org-variable-name">rabbit</span> = 6;
+<pre class="src src-java"><code><span class="org-type">int</span> <span class="org-variable-name">rabbit</span> = 6;
 <span class="org-type">boolean</span> <span class="org-variable-name">bunny</span> = (rabbit &gt;= 6) || (++rabbit &lt;= 7);
 System.out.println(rabbit); <span class="org-comment-delimiter">// </span><span class="org-comment">6</span>
-</pre>
+</code></pre>
 </div>
 
 <p>

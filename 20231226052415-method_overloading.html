@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Method Overloading</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,10 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Method Overloading</h1>
-
-<div id="outline-container-org32ff682" class="outline-2">
-<h2 id="org32ff682">Method Overloading</h2>
-<div class="outline-text-2" id="text-org32ff682">
+<div id="outline-container-orga900c21" class="outline-2">
+<h2 id="orga900c21">Method Overloading</h2>
+<div class="outline-text-2" id="text-orga900c21">
 <p>
 Each method has a <b>signature</b>, which comprises the <code>name</code> of the method plus the <code>types</code> and order of the <code>parameters</code> in the formal <a href="20240111063906-parameter_list.html#ID-94f7186e-22e8-4636-bc8c-a4cc040d9073">parameter list</a>.
 </p>
@@ -266,12 +266,11 @@ Because <b>overloaded</b> methods have the same <code>name</code>, their <code>p
 At <code>compile time</code>, the <b>right implementation</b> of an <code>overloaded</code> method is chosen, based on the <code>signature</code> of the method call.
 </p>
 </div>
-
-<div id="outline-container-org47dbb70" class="outline-3">
-<h3 id="org47dbb70">Example</h3>
-<div class="outline-text-3" id="text-org47dbb70">
+<div id="outline-container-orgc04aa65" class="outline-3">
+<h3 id="orgc04aa65">Example</h3>
+<div class="outline-text-3" id="text-orgc04aa65">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">void</span> <span class="org-function-name">methodA</span>(<span class="org-type">int</span> <span class="org-variable-name">a</span>, <span class="org-type">double</span> <span class="org-variable-name">b</span>) { <span class="org-comment-delimiter">/* </span><span class="org-comment">...</span><span class="org-comment-delimiter"> */</span> } <span class="org-comment-delimiter">// </span><span class="org-comment">(1)
+<pre class="src src-java"><code><span class="org-type">void</span> <span class="org-function-name">methodA</span>(<span class="org-type">int</span> <span class="org-variable-name">a</span>, <span class="org-type">double</span> <span class="org-variable-name">b</span>) { <span class="org-comment-delimiter">/* </span><span class="org-comment">...</span><span class="org-comment-delimiter"> */</span> } <span class="org-comment-delimiter">// </span><span class="org-comment">(1)
 </span><span class="org-type">int</span> <span class="org-function-name">methodA</span>(<span class="org-type">int</span> <span class="org-variable-name">a</span>) { <span class="org-keyword">return</span> a; } <span class="org-comment-delimiter">// </span><span class="org-comment">(2)
 </span><span class="org-type">int</span> <span class="org-function-name">methodA</span>() { <span class="org-keyword">return</span> 1; } <span class="org-comment-delimiter">// </span><span class="org-comment">(3)
 </span><span class="org-type">long</span> <span class="org-function-name">methodA</span>(<span class="org-type">double</span> <span class="org-variable-name">a</span>, <span class="org-type">int</span> <span class="org-variable-name">b</span>) { <span class="org-keyword">return</span> b; } <span class="org-comment-delimiter">// </span><span class="org-comment">(4)
@@ -285,35 +284,33 @@ At <code>compile time</code>, the <b>right implementation</b> of an <code>overlo
 <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">float</span> min(<span class="org-type">float</span> <span class="org-variable-name">a</span>, <span class="org-type">float</span> <span class="org-variable-name">b</span>)
 <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">int</span> min(<span class="org-type">int</span> <span class="org-variable-name">a</span>, <span class="org-type">int</span> <span class="org-variable-name">b</span>)
 <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">long</span> min(<span class="org-type">long</span> <span class="org-variable-name">a</span>, <span class="org-type">long</span> <span class="org-variable-name">b</span>)
-</pre>
+</code></pre>
 </div>
 
 <p>
 In the implementation, changing <b>just</b> the <code>return type</code> (as shown at <code>(1)</code> and <code>(2)</code> in the preceding example) is <b>not enough</b> to <b>overload</b> a <code>method</code> and will be flagged as a <b>compile-time</b> <b>error</b>.
 </p>
 </div>
-
-<div id="outline-container-orgfc74aaa" class="outline-4">
-<h4 id="orgfc74aaa">Example</h4>
-<div class="outline-text-4" id="text-orgfc74aaa">
+<div id="outline-container-org22b0929" class="outline-4">
+<h4 id="org22b0929">Example</h4>
+<div class="outline-text-4" id="text-org22b0929">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">int</span> <span class="org-function-name">halfIt</span>(<span class="org-type">int</span> <span class="org-variable-name">a</span>) { <span class="org-keyword">return</span> a/2; } <span class="org-comment-delimiter">// </span><span class="org-comment">(1)
+<pre class="src src-java"><code><span class="org-type">int</span> <span class="org-function-name">halfIt</span>(<span class="org-type">int</span> <span class="org-variable-name">a</span>) { <span class="org-keyword">return</span> a/2; } <span class="org-comment-delimiter">// </span><span class="org-comment">(1)
 </span><span class="org-type">double</span> <span class="org-function-name">halfIt</span>(<span class="org-type">int</span> <span class="org-variable-name">a</span>) { <span class="org-keyword">return</span> a/2.0; } <span class="org-comment-delimiter">// </span><span class="org-comment">(2) Not OK</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org2d3f024" class="outline-3">
-<h3 id="org2d3f024">Reference Types</h3>
-<div class="outline-text-3" id="text-org2d3f024">
+<div id="outline-container-orga0bed8f" class="outline-3">
+<h3 id="orga0bed8f">Reference Types</h3>
+<div class="outline-text-3" id="text-orga0bed8f">
 </div>
-<div id="outline-container-org620389e" class="outline-4">
-<h4 id="org620389e">Example</h4>
-<div class="outline-text-4" id="text-org620389e">
+<div id="outline-container-orge615062" class="outline-4">
+<h4 id="orge615062">Example</h4>
+<div class="outline-text-4" id="text-orge615062">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Pelican</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Pelican</span> {
     <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">fly</span>(<span class="org-type">String</span> <span class="org-variable-name">s</span>) {
         System.out.print(<span class="org-string">"string"</span>);
     }
@@ -321,22 +318,21 @@ In the implementation, changing <b>just</b> the <code>return type</code> (as sho
         System.out.print(<span class="org-string">"object"</span>);
     }
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
-        <span class="org-type">var</span> <span class="org-variable-name">p</span> = <span class="org-keyword">new</span> <span class="org-type">Pelican</span>();
+        <span class="org-keyword">var</span> <span class="org-variable-name">p</span> = <span class="org-keyword">new</span> <span class="org-type">Pelican</span>();
         p.fly(<span class="org-string">"test"</span>); <span class="org-comment-delimiter">// </span><span class="org-comment">string
 </span>        System.out.print(<span class="org-string">"-"</span>); <span class="org-comment-delimiter">// </span><span class="org-comment">-
 </span>        p.fly(56); <span class="org-comment-delimiter">// </span><span class="org-comment">object
 </span>        <span class="org-comment-delimiter">// </span><span class="org-comment">string-object
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgef0c12c" class="outline-3">
-<h3 id="orgef0c12c">Primitive Types</h3>
-<div class="outline-text-3" id="text-orgef0c12c">
+<div id="outline-container-orgdef712b" class="outline-3">
+<h3 id="orgdef712b">Primitive Types</h3>
+<div class="outline-text-3" id="text-orgdef712b">
 <p>
 The answer is <code>int­long</code>.
 </p>
@@ -346,12 +342,11 @@ The first call passes an <code>int</code> and sees an exact match.
 The second call passes a <code>long</code> and also sees an exact match.
 </p>
 </div>
-
-<div id="outline-container-org573a13e" class="outline-4">
-<h4 id="org573a13e">Example</h4>
-<div class="outline-text-4" id="text-org573a13e">
+<div id="outline-container-org1dda26b" class="outline-4">
+<h4 id="org1dda26b">Example</h4>
+<div class="outline-text-4" id="text-org1dda26b">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Ostrich</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Ostrich</span> {
     <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">fly</span>(<span class="org-type">int</span> <span class="org-variable-name">i</span>) {
         System.out.print(<span class="org-string">"int"</span>);
     }
@@ -359,20 +354,19 @@ The second call passes a <code>long</code> and also sees an exact match.
         System.out.print(<span class="org-string">"long"</span>);
     }
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
-        <span class="org-type">var</span> <span class="org-variable-name">p</span> = <span class="org-keyword">new</span> <span class="org-type">Ostrich</span>();
+        <span class="org-keyword">var</span> <span class="org-variable-name">p</span> = <span class="org-keyword">new</span> <span class="org-type">Ostrich</span>();
         p.fly(123); <span class="org-comment-delimiter">// </span><span class="org-comment">int
 </span>        System.out.print(<span class="org-string">"-"</span>); <span class="org-comment-delimiter">// </span><span class="org-comment">-
 </span>        p.fly(123L); <span class="org-comment-delimiter">// </span><span class="org-comment">long
 </span>        <span class="org-comment-delimiter">// </span><span class="org-comment">int-long
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 </div>
-
 <ul class="org-ul">
-<li><a id="orgdf01811"></a><span class="underline">Exam Trick</span><br />
-<div class="outline-text-5" id="text-orgdf01811">
+<li><a id="org33281a5"></a><span class="underline">Exam Trick</span><br />
+<div class="outline-text-5" id="text-org33281a5">
 <p>
 If we comment out the overloaded method with the <code>int</code> parameter list, the output becomes <code>long­long</code>.
 </p>
@@ -389,30 +383,27 @@ Java has no problem calling a <b>larger</b> primitive.
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org4d9e9d1" class="outline-3">
-<h3 id="org4d9e9d1">Autoboxing</h3>
-<div class="outline-text-3" id="text-org4d9e9d1">
+<div id="outline-container-orgb6427f2" class="outline-3">
+<h3 id="orgb6427f2">Autoboxing</h3>
+<div class="outline-text-3" id="text-orgb6427f2">
 <ul class="org-ul">
 <li>The following <code>method</code> <b>overloads</b> are <b>valid</b>.</li>
 </ul>
 </div>
-
-<div id="outline-container-org024adaa" class="outline-4">
-<h4 id="org024adaa">Example</h4>
-<div class="outline-text-4" id="text-org024adaa">
+<div id="outline-container-org262add0" class="outline-4">
+<h4 id="org262add0">Example</h4>
+<div class="outline-text-4" id="text-org262add0">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Kiwi</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Kiwi</span> {
     <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">fly</span>(<span class="org-type">int</span> <span class="org-variable-name">numMiles</span>) {}
     <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">fly</span>(<span class="org-type">Integer</span> <span class="org-variable-name">numMiles</span>) {}
 }
-</pre>
+</code></pre>
 </div>
 </div>
-
 <ul class="org-ul">
-<li><a id="org33dca9b"></a><span class="underline">Exam Trick</span><br />
-<div class="outline-text-5" id="text-org33dca9b">
+<li><a id="org33627a2"></a><span class="underline">Exam Trick</span><br />
+<div class="outline-text-5" id="text-org33627a2">
 <ul class="org-ul">
 <li>Java tries to use the most specific <a href="20240111063906-parameter_list.html#ID-94f7186e-22e8-4636-bc8c-a4cc040d9073">parameter list</a> it can find.</li>
 <li>This is <b>true</b> for <a href="20231225083210-java_boxing.html#ID-2af44b3c-ac25-4fc8-a372-20adc491f7f5">autoboxing</a> as well as other matching types.</li>

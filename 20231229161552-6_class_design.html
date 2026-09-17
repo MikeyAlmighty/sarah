@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>6. Class Design</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,18 +243,17 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">6. Class Design</h1>
-
-<div id="outline-container-org1fc5240" class="outline-2">
-<h2 id="org1fc5240">Chapter 6. Class Design</h2>
-<div class="outline-text-2" id="text-org1fc5240">
+<div id="outline-container-org3e424a5" class="outline-2">
+<h2 id="org3e424a5">Chapter 6. Class Design</h2>
+<div class="outline-text-2" id="text-org3e424a5">
 </div>
-<div id="outline-container-org16886df" class="outline-3">
-<h3 id="org16886df">Exam Objectives</h3>
-<div class="outline-text-3" id="text-org16886df">
+<div id="outline-container-orge97c239" class="outline-3">
+<h3 id="orge97c239">Exam Objectives</h3>
+<div class="outline-text-3" id="text-orge97c239">
 </div>
-<div id="outline-container-orgd627d16" class="outline-4">
-<h4 id="orgd627d16">Utilizing Java Object­Oriented Approach</h4>
-<div class="outline-text-4" id="text-orgd627d16">
+<div id="outline-container-org31255d6" class="outline-4">
+<h4 id="org31255d6">Utilizing Java Object­Oriented Approach</h4>
+<div class="outline-text-4" id="text-org31255d6">
 <ul class="org-ul">
 <li>Create <code>classes</code> and <code>records</code>, and define and use <code>instance</code> and <a href="20240113065406-static_variable.html#ID-90b4776a-f230-4e13-b1a1-248b48026677">Static Variables</a> and <a href="20240113065453-static_methods.html#ID-71f8ac46-9cca-4866-b701-8f5a7f9f7fc0">Static Methods</a>, <code>constructors</code>, and <code>instance</code> and <a href="20240114063138-static_initializers.html#ID-9b5e5215-73c3-412e-8a72-57dc575c1ee9">Static Initializers</a>.</li>
 
@@ -265,33 +265,32 @@ Perform type <a href="20231224190739-widening_primitive_conversion.html#ID-3ef23
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgc47e898" class="outline-3">
-<h3 id="orgc47e898">1. <a href="20240114160906-understanding_inheritance.html#ID-5e09bcf0-2de5-4b84-a9ed-b3654bf0df40">Understanding Inheritance</a></h3>
+<div id="outline-container-orgeda68ab" class="outline-3">
+<h3 id="orgeda68ab">1. <a href="20240114160906-understanding_inheritance.html#ID-5e09bcf0-2de5-4b84-a9ed-b3654bf0df40">Understanding Inheritance</a></h3>
 </div>
 
-<div id="outline-container-orgcf1f18e" class="outline-3">
-<h3 id="orgcf1f18e">2. <a href="20240114160923-creating_classes.html#ID-ffe80d3b-b8d3-44b1-b628-aff04d5eccb8">Creating Classes</a></h3>
+<div id="outline-container-org9843956" class="outline-3">
+<h3 id="org9843956">2. <a href="20240114160923-creating_classes.html#ID-ffe80d3b-b8d3-44b1-b628-aff04d5eccb8">Creating Classes</a></h3>
 </div>
 
-<div id="outline-container-org83ded65" class="outline-3">
-<h3 id="org83ded65">3. <a href="20240114161002-declaring_constructors.html#ID-f3a17739-2afe-4abe-84c3-778419d52cb8">Declaring Constructors</a></h3>
+<div id="outline-container-org5f97965" class="outline-3">
+<h3 id="org5f97965">3. <a href="20240114161002-declaring_constructors.html#ID-f3a17739-2afe-4abe-84c3-778419d52cb8">Declaring Constructors</a></h3>
 </div>
 
-<div id="outline-container-orgeb4399c" class="outline-3">
-<h3 id="orgeb4399c">4. <a href="20240114161012-initializing_objects.html#ID-116932af-887c-42c9-901e-e986ea92780b">Initializing Objects</a></h3>
+<div id="outline-container-orga51d568" class="outline-3">
+<h3 id="orga51d568">4. <a href="20240114161012-initializing_objects.html#ID-116932af-887c-42c9-901e-e986ea92780b">Initializing Objects</a></h3>
 </div>
 
-<div id="outline-container-org329bf36" class="outline-3">
-<h3 id="org329bf36">5. <a href="20240114161022-inheriting_members.html#ID-c4b6638f-ff45-43bb-9b49-c9333746ff33">Inheriting Members</a></h3>
+<div id="outline-container-org3deb6e6" class="outline-3">
+<h3 id="org3deb6e6">5. <a href="20240114161022-inheriting_members.html#ID-c4b6638f-ff45-43bb-9b49-c9333746ff33">Inheriting Members</a></h3>
 </div>
 
-<div id="outline-container-orgec29a1f" class="outline-3">
-<h3 id="orgec29a1f">6. <a href="20240114162721-abstract_classes.html#ID-3893ce2e-cd85-4914-ba26-d7c7c732eb02">Abstract Classes</a></h3>
+<div id="outline-container-org51719f5" class="outline-3">
+<h3 id="org51719f5">6. <a href="20240114162721-abstract_classes.html#ID-3893ce2e-cd85-4914-ba26-d7c7c732eb02">Abstract Classes</a></h3>
 </div>
 
-<div id="outline-container-org3ea1911" class="outline-3">
-<h3 id="org3ea1911">7. <a href="20240114161043-creating_immutable_objects.html#ID-e8eac75b-e98b-4e15-b3b0-58a56e6b1d85">Creating Immutable Objects</a></h3>
+<div id="outline-container-org2ff50dd" class="outline-3">
+<h3 id="org2ff50dd">7. <a href="20240114161043-creating_immutable_objects.html#ID-e8eac75b-e98b-4e15-b3b0-58a56e6b1d85">Creating Immutable Objects</a></h3>
 </div>
 </div>
 </div>

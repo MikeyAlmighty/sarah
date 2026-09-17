@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Recursion</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,10 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Recursion</h1>
-
-<div id="outline-container-org507de7f" class="outline-2">
-<h2 id="org507de7f">Recursion</h2>
-<div class="outline-text-2" id="text-org507de7f">
+<div id="outline-container-orgbfed495" class="outline-2">
+<h2 id="orgbfed495">Recursion</h2>
+<div class="outline-text-2" id="text-orgbfed495">
 <p>
 <b>Recursion</b> is a technique where a <code>method</code> calls <b>itself</b> to solve a problem.
 </p>
@@ -254,12 +254,11 @@
 A recursive method breaks a problem into <b>smaller</b> <b>subproblems</b>, each of which is UsolvedU by calling the same method again until a <code>base condition</code> is met.
 </p>
 </div>
-
-<div id="outline-container-org8a98ecb" class="outline-3">
-<h3 id="org8a98ecb">Example</h3>
-<div class="outline-text-3" id="text-org8a98ecb">
+<div id="outline-container-orgfa87c8a" class="outline-3">
+<h3 id="orgfa87c8a">Example</h3>
+<div class="outline-text-3" id="text-orgfa87c8a">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Recursion</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Recursion</span> {
     <span class="org-comment-delimiter">// </span><span class="org-comment">Recursive method to calculate factorial
 </span>    <span class="org-type">int</span> <span class="org-function-name">factorial</span>(<span class="org-type">int</span> <span class="org-variable-name">n</span>)    {
         <span class="org-keyword">if</span> (n == 1) { <span class="org-comment-delimiter">// </span><span class="org-comment">Base case
@@ -274,20 +273,19 @@ A recursive method breaks a problem into <b>smaller</b> <b>subproblems</b>, each
         System.out.println(<span class="org-string">"Factorial of 5: "</span> + obj.factorial(5));
     }
 }
-</pre>
+</code></pre>
 </div>
 </div>
-
-<div id="outline-container-orga798225" class="outline-4">
-<h4 id="orga798225">Execution flow</h4>
-<div class="outline-text-4" id="text-orga798225">
+<div id="outline-container-org1348ac8" class="outline-4">
+<h4 id="org1348ac8">Execution flow</h4>
+<div class="outline-text-4" id="text-org1348ac8">
 <div class="org-src-container">
-<pre class="src src-java">factorial(5) &#8594; 5 * factorial(4) 
+<pre class="src src-java"><code>factorial(5) &#8594; 5 * factorial(4) 
 factorial(4) &#8594; 4 * factorial(3) 
 factorial(3) &#8594; 3 * factorial(2) 
 factorial(2) &#8594; 2 * factorial(1) 
 Base <span class="org-keyword">case</span>: factorial(1) &#8594; 1 
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -296,10 +294,9 @@ Final result: <code>5 * 4 * 3 * 2 * 1 = 120</code>
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgc213289" class="outline-3">
-<h3 id="orgc213289">Advantages of Recursion</h3>
-<div class="outline-text-3" id="text-orgc213289">
+<div id="outline-container-org2405b4e" class="outline-3">
+<h3 id="org2405b4e">Advantages of Recursion</h3>
+<div class="outline-text-3" id="text-org2405b4e">
 <ul class="org-ul">
 <li>Simplifies <b>complex</b> <b>problems</b> (e.g. trees, graphs, backtracking).</li>
 <li>Reduces code length by removing loops.</li>
@@ -307,10 +304,9 @@ Final result: <code>5 * 4 * 3 * 2 * 1 = 120</code>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org5f2ee3a" class="outline-3">
-<h3 id="org5f2ee3a">Disadvantages of Recursion</h3>
-<div class="outline-text-3" id="text-org5f2ee3a">
+<div id="outline-container-org6ac9285" class="outline-3">
+<h3 id="org6ac9285">Disadvantages of Recursion</h3>
+<div class="outline-text-3" id="text-org6ac9285">
 <ul class="org-ul">
 <li>Consumes <b>more memory</b> (stores function calls in stack).</li>
 <li><b>Slower</b> than loops due to function call overhead.</li>

@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Calling Parent Constructors with super()</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,10 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Calling Parent Constructors with super()</h1>
-
-<div id="outline-container-orgfb117bb" class="outline-2">
-<h2 id="orgfb117bb">Calling Parent Constructors with super()</h2>
-<div class="outline-text-2" id="text-orgfb117bb">
+<div id="outline-container-org6d6787c" class="outline-2">
+<h2 id="org6d6787c">Calling Parent Constructors with super()</h2>
+<div class="outline-text-2" id="text-org6d6787c">
 <p>
 The first statement of every constructor is a call to a <b>parent</b> constructor using <code>super()</code> or <b>another</b> constructor in the class using <a href="20240114181242-calling_overloaded_constructors_with_this.html#ID-6d0ddb05-83c3-4a23-bf52-9fab2633bd99">this()</a>.
 </p>
@@ -262,14 +262,13 @@ Unlike <b>properties</b> and <b>methods</b>, the <b>constructors</b> of a <code>
 They can only be <b>invoked</b> from the <b>constructors</b> of the <code>subclasses</code> using the keyword <code>super</code>.
 </p>
 </div>
-
-<div id="outline-container-orgbf9855b" class="outline-3">
-<h3 id="orgbf9855b">Syntax</h3>
-<div class="outline-text-3" id="text-orgbf9855b">
+<div id="outline-container-org817f1de" class="outline-3">
+<h3 id="org817f1de">Syntax</h3>
+<div class="outline-text-3" id="text-org817f1de">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">super</span>();
+<pre class="src src-java"><code><span class="org-keyword">super</span>();
 <span class="org-keyword">super</span>(arguments);
-</pre>
+</code></pre>
 </div>
 
 <ul class="org-ul">
@@ -277,100 +276,94 @@ They can only be <b>invoked</b> from the <b>constructors</b> of the <code>subcla
 <li><code>super(arguments)</code> invokes the <code>superclass</code> <b>constructor</b> that matches the arguments.</li>
 </ul>
 </div>
-
-<div id="outline-container-org61e348b" class="outline-4">
-<h4 id="org61e348b">Note</h4>
-<div class="outline-text-4" id="text-org61e348b">
+<div id="outline-container-org95fe409" class="outline-4">
+<h4 id="org95fe409">Note</h4>
+<div class="outline-text-4" id="text-org95fe409">
 <p>
 <code>super()</code> or <code>super(arguments)</code> <b>must</b> be the <b>first</b> statement of the <code>subclass’s</code> <b>constructor</b>; this is the <i>only way</i> to explicitly invoke a <code>superclass</code> <b>constructor</b>.
 </p>
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgf4317ee" class="outline-3">
-<h3 id="orgf4317ee">Example</h3>
-<div class="outline-text-3" id="text-orgf4317ee">
+<div id="outline-container-org98b6135" class="outline-3">
+<h3 id="org98b6135">Example</h3>
+<div class="outline-text-3" id="text-org98b6135">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Animal</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Animal</span> {
     <span class="org-keyword">private</span> <span class="org-type">int</span> <span class="org-variable-name">age</span>;
 
-    <span class="org-keyword">public</span> Animal(<span class="org-type">int</span> <span class="org-variable-name">age</span>) {
+    <span class="org-keyword">public</span> <span class="org-function-name">Animal</span>(<span class="org-type">int</span> <span class="org-variable-name">age</span>) {
         <span class="org-keyword">super</span>(); <span class="org-comment-delimiter">// </span><span class="org-comment">Refers to constructor in java.lang.Object
 </span>        <span class="org-keyword">this</span>.age = age;
     }
 }
-</pre>
+</code></pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Zebra</span> <span class="org-keyword">extends</span> <span class="org-type">Animal</span> {
-    <span class="org-keyword">public</span> Zebra(<span class="org-type">int</span> <span class="org-variable-name">age</span>) {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Zebra</span> <span class="org-keyword">extends</span> <span class="org-type">Animal</span> {
+    <span class="org-keyword">public</span> <span class="org-function-name">Zebra</span>(<span class="org-type">int</span> <span class="org-variable-name">age</span>) {
         <span class="org-keyword">super</span>(age); <span class="org-comment-delimiter">// </span><span class="org-comment">Refers to constructor in Animal
 </span>    }
-    <span class="org-keyword">public</span> Zebra() {
+    <span class="org-keyword">public</span> <span class="org-function-name">Zebra</span>() {
         <span class="org-keyword">this</span>(4); <span class="org-comment-delimiter">// </span><span class="org-comment">Refers to constructor in Zebra with ~int~ argument
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org909872d" class="outline-3">
-<h3 id="org909872d"><span class="underline">Exam Trick</span></h3>
-<div class="outline-text-3" id="text-org909872d">
+<div id="outline-container-orgffe51f3" class="outline-3">
+<h3 id="orgffe51f3"><span class="underline">Exam Trick</span></h3>
+<div class="outline-text-3" id="text-orgffe51f3">
 <p>
 Like calling <a href="20240114181242-calling_overloaded_constructors_with_this.html#ID-6d0ddb05-83c3-4a23-bf52-9fab2633bd99">this()</a>, calling <code>super()</code> can only be used as the <b>first</b> statement of the <b>constructor</b>.
 </p>
 </div>
-
-<div id="outline-container-org26ea55d" class="outline-4">
-<h4 id="org26ea55d">Example (Non callable)</h4>
-<div class="outline-text-4" id="text-org26ea55d">
+<div id="outline-container-orgea8ea71" class="outline-4">
+<h4 id="orgea8ea71">Example (Non callable)</h4>
+<div class="outline-text-4" id="text-orgea8ea71">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Zoo</span> {
-    <span class="org-keyword">public</span> Zoo() {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Zoo</span> {
+    <span class="org-keyword">public</span> <span class="org-function-name">Zoo</span>() {
         System.out.println(<span class="org-string">"Zoo created"</span>);
         <span class="org-keyword">super</span>(); <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>    }
 }
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Zoo</span> {
-    <span class="org-keyword">public</span> Zoo() {
+    <span class="org-keyword">public</span> <span class="org-function-name">Zoo</span>() {
         <span class="org-keyword">super</span>();
         System.out.println(<span class="org-string">"Zoo created"</span>);
         <span class="org-keyword">super</span>(); <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org96b291e" class="outline-3">
-<h3 id="org96b291e">Overloaded Parent Constructors</h3>
-<div class="outline-text-3" id="text-org96b291e">
+<div id="outline-container-org7fb35d8" class="outline-3">
+<h3 id="org7fb35d8">Overloaded Parent Constructors</h3>
+<div class="outline-text-3" id="text-org7fb35d8">
 <ul class="org-ul">
 <li>If the <code>parent class</code> has more than one <code>constructor</code>, the <code>child class</code> may use any valid <code>parent</code> <code>constructor</code> in its definition.</li>
 </ul>
 </div>
-
-<div id="outline-container-org03f45f8" class="outline-4">
-<h4 id="org03f45f8">Example</h4>
-<div class="outline-text-4" id="text-org03f45f8">
+<div id="outline-container-orga6a222a" class="outline-4">
+<h4 id="orga6a222a">Example</h4>
+<div class="outline-text-4" id="text-orga6a222a">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Animal</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Animal</span> {
     <span class="org-keyword">private</span> <span class="org-type">int</span> <span class="org-variable-name">age</span>;
     <span class="org-keyword">private</span> <span class="org-type">String</span> <span class="org-variable-name">name</span>;
 
-    <span class="org-keyword">public</span> Animal(<span class="org-type">int</span> <span class="org-variable-name">age</span>, String name) { <span class="org-comment-delimiter">// </span><span class="org-comment">First Constructor
+    <span class="org-keyword">public</span> <span class="org-function-name">Animal</span>(<span class="org-type">int</span> <span class="org-variable-name">age</span>, <span class="org-type">String</span> <span class="org-variable-name">name</span>) { <span class="org-comment-delimiter">// </span><span class="org-comment">First Constructor
 </span>        <span class="org-keyword">super</span>();
         <span class="org-keyword">this</span>.age = age;
         <span class="org-keyword">this</span>.name = name;
     }
 
-    <span class="org-keyword">public</span> Animal(<span class="org-type">int</span> <span class="org-variable-name">age</span>) { <span class="org-comment-delimiter">// </span><span class="org-comment">Second Constructor
+    <span class="org-keyword">public</span> <span class="org-function-name">Animal</span>(<span class="org-type">int</span> <span class="org-variable-name">age</span>) { <span class="org-comment-delimiter">// </span><span class="org-comment">Second Constructor
 </span>        <span class="org-keyword">super</span>();
         <span class="org-keyword">this</span>.age = age;
         <span class="org-keyword">this</span>.name = <span class="org-constant">null</span>;
@@ -378,22 +371,20 @@ Like calling <a href="20240114181242-calling_overloaded_constructors_with_this.h
 }
 
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Gorilla</span> <span class="org-keyword">extends</span> <span class="org-type">Animal</span> {
-    <span class="org-keyword">public</span> Gorilla(<span class="org-type">int</span> <span class="org-variable-name">age</span>) {
+    <span class="org-keyword">public</span> <span class="org-function-name">Gorilla</span>(<span class="org-type">int</span> <span class="org-variable-name">age</span>) {
         <span class="org-keyword">super</span>(age,<span class="org-string">"Gorilla"</span>); <span class="org-comment-delimiter">// </span><span class="org-comment">Calls the first Animal constructor
 </span>    }
-    <span class="org-keyword">public</span> Gorilla() {
+    <span class="org-keyword">public</span> <span class="org-function-name">Gorilla</span>() {
         <span class="org-keyword">super</span>(5); <span class="org-comment-delimiter">// </span><span class="org-comment">Calls the second Animal constructor
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-
-<div id="outline-container-org9682209" class="outline-4">
-<h4 id="org9682209"><span class="underline">Exam Trick</span></h4>
-<div class="outline-text-4" id="text-org9682209">
+<div id="outline-container-orgba586e6" class="outline-4">
+<h4 id="orgba586e6"><span class="underline">Exam Trick</span></h4>
+<div class="outline-text-4" id="text-orgba586e6">
 <p>
 The <a href="20231224095703-javac.html#ID-d5b4004d-b5db-48a2-8e85-09359ca61a42">javac</a> automatically inserts a call to the <b>no­argument</b> <code>constructor</code> <code>super()</code> if you do <b>not</b> explicitly call <code>this()</code> or <code>super()</code> as the first line of a constructor.
 </p>
@@ -402,89 +393,84 @@ The <a href="20231224095703-javac.html#ID-d5b4004d-b5db-48a2-8e85-09359ca61a42">
 <li>The following three <code>class</code> and <code>constructor</code> definitions are equivalent, because the <b>compiler</b> will automatically convert them all to the last example.</li>
 </ul>
 </div>
-
 <ul class="org-ul">
-<li><a id="orgdcd9d79"></a>Example<br />
-<div class="outline-text-5" id="text-orgdcd9d79">
+<li><a id="org8dfd3ee"></a>Example<br />
+<div class="outline-text-5" id="text-org8dfd3ee">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Donkey</span> {}
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Donkey</span> {}
 
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Donkey</span> {
-    <span class="org-keyword">public</span> Donkey() {}
+    <span class="org-keyword">public</span> <span class="org-function-name">Donkey</span>() {}
 }
 
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Donkey</span> {
-    <span class="org-keyword">public</span> Donkey() {
+    <span class="org-keyword">public</span> <span class="org-function-name">Donkey</span>() {
         <span class="org-keyword">super</span>();
     }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </li>
 </ul>
 </div>
-
-<div id="outline-container-org715448e" class="outline-4">
-<h4 id="org715448e">Syntax Error When Calling a Superclass Constructor by Name</h4>
-<div class="outline-text-4" id="text-org715448e">
+<div id="outline-container-orgb7c32f6" class="outline-4">
+<h4 id="orgb7c32f6">Syntax Error When Calling a Superclass Constructor by Name</h4>
+<div class="outline-text-4" id="text-orgb7c32f6">
 <ul class="org-ul">
 <li>Invoking a <code>superclass</code> <b>constructor's</b> name directly inside a <code>subclass</code> causes a <b>syntax error</b>.</li>
 <li>In <code>Java</code>, <b>constructors</b> are <b>not inherited</b> and <b>cannot</b> be called like <i>normal methods</i>. (The keyword <code>super</code> <b>must</b> be used!)</li>
 </ul>
 </div>
-
 <ul class="org-ul">
-<li><a id="orgce773aa"></a>Invalid Call<br />
-<div class="outline-text-5" id="text-orgce773aa">
+<li><a id="org5512b32"></a>Invalid Call<br />
+<div class="outline-text-5" id="text-org5512b32">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">class</span> <span class="org-type">GeometricObject</span> {
-    <span class="org-keyword">public</span> GeometricObject(<span class="org-type">String</span> <span class="org-variable-name">color</span>, <span class="org-type">boolean</span> <span class="org-variable-name">filled</span>) {
+<pre class="src src-java"><code><span class="org-keyword">class</span> <span class="org-type">GeometricObject</span> {
+    <span class="org-keyword">public</span> <span class="org-function-name">GeometricObject</span>(<span class="org-type">String</span> <span class="org-variable-name">color</span>, <span class="org-type">boolean</span> <span class="org-variable-name">filled</span>) {
         System.out.println(<span class="org-string">"GeometricObject constructor called"</span>);
     }
 }
 
 <span class="org-keyword">class</span> <span class="org-type">Circle</span> <span class="org-keyword">extends</span> <span class="org-type">GeometricObject</span> {
 
-    <span class="org-keyword">public</span> Circle(<span class="org-type">double</span> <span class="org-variable-name">radius</span>, <span class="org-type">String</span> <span class="org-variable-name">color</span>, <span class="org-type">boolean</span> <span class="org-variable-name">filled</span>) {
+    <span class="org-keyword">public</span> <span class="org-function-name">Circle</span>(<span class="org-type">double</span> <span class="org-variable-name">radius</span>, <span class="org-type">String</span> <span class="org-variable-name">color</span>, <span class="org-type">boolean</span> <span class="org-variable-name">filled</span>) {
 
         <span class="org-comment-delimiter">// </span><span class="org-comment">Incorrect: calling superclass constructor by name
 </span>        GeometricObject(color, filled); <span class="org-comment-delimiter">// </span><span class="org-comment">Syntax error
 </span>
     }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </li>
-
-<li><a id="org7be7475"></a>Valid Call<br />
-<div class="outline-text-5" id="text-org7be7475">
+<li><a id="org7815032"></a>Valid Call<br />
+<div class="outline-text-5" id="text-org7815032">
 <p>
 The correct way to invoke the <code>superclass</code> constructor is with <code>super(...)</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">class</span> <span class="org-type">Circle</span> <span class="org-keyword">extends</span> <span class="org-type">GeometricObject</span> {
+<pre class="src src-java"><code><span class="org-keyword">class</span> <span class="org-type">Circle</span> <span class="org-keyword">extends</span> <span class="org-type">GeometricObject</span> {
 
-    <span class="org-keyword">public</span> Circle(<span class="org-type">double</span> <span class="org-variable-name">radius</span>, <span class="org-type">String</span> <span class="org-variable-name">color</span>, <span class="org-type">boolean</span> <span class="org-variable-name">filled</span>) {
+    <span class="org-keyword">public</span> <span class="org-function-name">Circle</span>(<span class="org-type">double</span> <span class="org-variable-name">radius</span>, <span class="org-type">String</span> <span class="org-variable-name">color</span>, <span class="org-type">boolean</span> <span class="org-variable-name">filled</span>) {
         <span class="org-keyword">super</span>(color, filled); <span class="org-comment-delimiter">// </span><span class="org-comment">Correct
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org9171b90" class="outline-3">
-<h3 id="org9171b90">See also</h3>
-<div class="outline-text-3" id="text-org9171b90">
+<div id="outline-container-orgbd8892a" class="outline-3">
+<h3 id="orgbd8892a">See also</h3>
+<div class="outline-text-3" id="text-orgbd8892a">
 </div>
-<div id="outline-container-org8591fd6" class="outline-4">
-<h4 id="org8591fd6"><a href="20260315145631-constructor_chaining.html#ID-55699fdc-5fdc-4c94-b8d7-7b4c230ad0c5">Constructor Chaining</a></h4>
+<div id="outline-container-org2ea2db0" class="outline-4">
+<h4 id="org2ea2db0"><a href="20260315145631-constructor_chaining.html#ID-55699fdc-5fdc-4c94-b8d7-7b4c230ad0c5">Constructor Chaining</a></h4>
 </div>
 </div>
 </div>

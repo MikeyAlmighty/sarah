@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Package Access Modifier</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,10 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Package Access Modifier</h1>
-
-<div id="outline-container-orgd3b061f" class="outline-2">
-<h2 id="orgd3b061f">Package Access Modifier</h2>
-<div class="outline-text-2" id="text-orgd3b061f">
+<div id="outline-container-org258955b" class="outline-2">
+<h2 id="org258955b">Package Access Modifier</h2>
+<div class="outline-text-2" id="text-org258955b">
 <p>
 With <code>package access</code>, the method can be called only from a <code>class</code> in the <b>same package</b>.
 This one is tricky because there is <b>no</b> keyword.
@@ -259,12 +259,11 @@ You simply <b>omit</b> the <code>access modifier</code>:
 <li><code>Package access</code> is sometimes referred to as <code>package-private</code> or <code>default access</code>.</li>
 </ul>
 </div>
-
-<div id="outline-container-org3093788" class="outline-3">
-<h3 id="org3093788">Example</h3>
-<div class="outline-text-3" id="text-org3093788">
+<div id="outline-container-org3e0c56f" class="outline-3">
+<h3 id="org3e0c56f">Example</h3>
+<div class="outline-text-3" id="text-org3e0c56f">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">package</span> pond.<span class="org-constant">duck</span>;
+<pre class="src src-java"><code><span class="org-keyword">package</span> pond.<span class="org-constant">duck</span>;
 
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">MotherDuck</span> {
     <span class="org-type">String</span> <span class="org-variable-name">noise</span> = <span class="org-string">"quack"</span>;
@@ -278,13 +277,13 @@ You simply <b>omit</b> the <code>access modifier</code>:
 
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">GoodDuckling</span> {
     <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">makeNoise</span>() {
-        <span class="org-type">var</span> <span class="org-variable-name">duck</span> = <span class="org-keyword">new</span> <span class="org-type">MotherDuck</span>();
+        <span class="org-keyword">var</span> <span class="org-variable-name">duck</span> = <span class="org-keyword">new</span> <span class="org-type">MotherDuck</span>();
 
         duck.quack(); <span class="org-comment-delimiter">// </span><span class="org-comment">package access is ok
 </span>        System.out.print(duck.noise); <span class="org-comment-delimiter">// </span><span class="org-comment">package access is ok
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -295,24 +294,23 @@ Notice that all the <code>classes</code> covered so far are in the <b>same packa
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org6ecd1b5" class="outline-3">
-<h3 id="org6ecd1b5">Negative Example</h3>
-<div class="outline-text-3" id="text-org6ecd1b5">
+<div id="outline-container-org8150ae1" class="outline-3">
+<h3 id="org8150ae1">Negative Example</h3>
+<div class="outline-text-3" id="text-org8150ae1">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">package</span> pond.<span class="org-constant">swan</span>;
+<pre class="src src-java"><code><span class="org-keyword">package</span> pond.<span class="org-constant">swan</span>;
 
 <span class="org-comment-delimiter">// </span><span class="org-comment">import another package
 </span><span class="org-keyword">import</span> <span class="org-constant">pond</span>.<span class="org-constant">duck</span>.<span class="org-type">MotherDuck</span>;
 
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">BadCygnet</span> {
     <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">makeNoise</span>() {
-        <span class="org-type">var</span> <span class="org-variable-name">duck</span> = <span class="org-keyword">new</span> <span class="org-type">MotherDuck</span>();
+        <span class="org-keyword">var</span> <span class="org-variable-name">duck</span> = <span class="org-keyword">new</span> <span class="org-type">MotherDuck</span>();
         duck.quack(); <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>        System.out.print(duck.noise); <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 
 <ul class="org-ul">
@@ -320,10 +318,9 @@ Notice that all the <code>classes</code> covered so far are in the <b>same packa
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orge62643c" class="outline-3">
-<h3 id="orge62643c">Note</h3>
-<div class="outline-text-3" id="text-orge62643c">
+<div id="outline-container-org96a3e14" class="outline-3">
+<h3 id="org96a3e14">Note</h3>
+<div class="outline-text-3" id="text-org96a3e14">
 <ul class="org-ul">
 <li>When there is <b>no</b> access modifier on a member, only <code>classes</code> in the <b>same package</b> can <b>access</b> the member.</li>
 </ul>

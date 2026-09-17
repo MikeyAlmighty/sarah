@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-28 Thu 19:45 -->
+<!-- 2026-09-17 Thu 07:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Break statement</title>
 <meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,32 +243,29 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Break statement</h1>
-
-<div id="outline-container-org75d1b9c" class="outline-2">
-<h2 id="org75d1b9c">Break statement</h2>
-<div class="outline-text-2" id="text-org75d1b9c">
+<div id="outline-container-org62ed373" class="outline-2">
+<h2 id="org62ed373">Break statement</h2>
+<div class="outline-text-2" id="text-org62ed373">
 <p>
 As you saw when working with <a href="20240102090649-switch_statements.html#ID-0526ffdf-bdb1-4f35-a65f-ef29391f84a3">Switch statements</a>, a <code>break</code> statement transfers the <b>flow of control</b> out to the <b>enclosing statement</b>.
 </p>
 </div>
-
-<div id="outline-container-org460b683" class="outline-3">
-<h3 id="org460b683">Syntax</h3>
-<div class="outline-text-3" id="text-org460b683">
+<div id="outline-container-org777244a" class="outline-3">
+<h3 id="org777244a">Syntax</h3>
+<div class="outline-text-3" id="text-org777244a">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-constant">optionalLabel</span>: <span class="org-keyword">while</span>(booleanExpression) {
+<pre class="src src-java"><code><span class="org-constant">optionalLabel</span>: <span class="org-keyword">while</span>(booleanExpression) {
     <span class="org-comment-delimiter">// </span><span class="org-comment">Body
 </span>    <span class="org-comment-delimiter">// </span><span class="org-comment">Somewhere in the loop
 </span>    <span class="org-keyword">break</span> <span class="org-constant">optionalLabel</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">Semicolon required
 </span>}
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org84114dc" class="outline-3">
-<h3 id="org84114dc">Example</h3>
-<div class="outline-text-3" id="text-org84114dc">
+<div id="outline-container-org859db7a" class="outline-3">
+<h3 id="org859db7a">Example</h3>
+<div class="outline-text-3" id="text-org859db7a">
 <p>
 Without a <code>label</code> (optional) parameter, the <code>break</code> statement will <b>terminate the nearest inner loop</b> it is currently in the process of executing.
 </p>
@@ -277,14 +275,14 @@ Without a <code>label</code> (optional) parameter, the <code>break</code> statem
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">FindInMatrix</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">FindInMatrix</span> {
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
         <span class="org-type">int</span>[][] <span class="org-variable-name">list</span> = {{ 1, 13 },{ 5, 2 },{ 2, 2 }};
         <span class="org-type">int</span> <span class="org-variable-name">searchValue</span> = 2;
         <span class="org-type">int</span> <span class="org-variable-name">positionX</span> = -1;
         <span class="org-type">int</span> <span class="org-variable-name">positionY</span> = -1;
-        <span class="org-constant">PARENT_LOOP</span>: <span class="org-keyword">for</span>(<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; list.<span class="org-type">length</span>; i++) {
-            <span class="org-keyword">for</span>(<span class="org-type">int</span> <span class="org-variable-name">j</span>=0; j &lt; <span class="org-type">list</span>[i].length; j++) {
+        <span class="org-constant">PARENT_LOOP</span>: <span class="org-keyword">for</span>(<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; list.length; i++) {
+            <span class="org-keyword">for</span>(<span class="org-type">int</span> <span class="org-variable-name">j</span>=0; j &lt; list[i].length; j++) {
                 <span class="org-keyword">if</span>(list[i][j] == searchValue) {
                     positionX = i;
                     positionY = j;
@@ -299,13 +297,12 @@ Without a <code>label</code> (optional) parameter, the <code>break</code> statem
         }
     }
 }
-</pre>
+</code></pre>
 </div>
 </div>
-
-<div id="outline-container-orge40896d" class="outline-4">
-<h4 id="orge40896d">Note</h4>
-<div class="outline-text-4" id="text-orge40896d">
+<div id="outline-container-org181dc64" class="outline-4">
+<h4 id="org181dc64">Note</h4>
+<div class="outline-text-4" id="text-org181dc64">
 <ul class="org-ul">
 <li>See also comparison to <a href="20240103083129-continue_statement.html#ID-251497c8-f590-45c0-b74b-0426a45062d0">Continue Statement</a></li>
 </ul>
