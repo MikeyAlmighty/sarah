@@ -1,0 +1,31 @@
+:PROPERTIES:
+:ID:       24c9a751-0b87-47b4-b22a-d81844f8351a
+:END:
+#+title: Minimal Counterexample / Infinite Descent
+
+* Minimal Counterexample / Infinite Descent
+
+** Idea
+
+A proof technique for showing *no* object with some "bad" property exists — closely related to [[id:8b1e8e5b-d981-41e0-93a7-eded048cd150][Mathematical Induction]], but framed as a [[id:c9b24884-e730-45da-bb3a-1ff7396e4645][Mathematical Contradiction]].
+** The pattern
+
+1. *Assume* a counterexample exists (something with the bad property).
+2. Among all counterexamples, take the *smallest* one (by some well-defined measure —
+   usually a positive integer, since positive integers can't decrease forever).
+3. Show that this smallest counterexample can be used to construct an *even smaller*
+   counterexample.
+4. Contradiction — you already said it was the smallest. So no counterexample exists.
+
+** Why it works
+
+Relies on the fact that there's no infinite strictly-decreasing sequence of positive
+integers. If a "smaller bad example" always exists, you could keep descending forever —
+impossible. Hence step 3 breaking that is enough to kill the assumption in step 1.
+
+** Relation to induction
+
+Minimal counterexample and (strong) induction are two sides of the same coin — both rest
+on the well-ordering of the positive integers. Induction builds *up* from a base case;
+minimal counterexample / descent works *down* from an assumed counterexample. Often
+either can be used for the same theorem — pick whichever reads more naturally.
