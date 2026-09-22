@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-21 Mon 08:05 -->
+<!-- 2026-09-22 Tue 08:06 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>TCP Segment</title>
@@ -246,13 +246,13 @@
 <p>
 Made up of:
 </p>
-<div id="outline-container-orgc6db558" class="outline-2">
-<h2 id="orgc6db558">Header</h2>
-<div class="outline-text-2" id="text-orgc6db558">
+<div id="outline-container-orge71cb34" class="outline-2">
+<h2 id="orge71cb34">Header</h2>
+<div class="outline-text-2" id="text-orge71cb34">
 </div>
-<div id="outline-container-orgf3f081f" class="outline-3">
-<h3 id="orgf3f081f">Source port</h3>
-<div class="outline-text-3" id="text-orgf3f081f">
+<div id="outline-container-org4976e66" class="outline-3">
+<h3 id="org4976e66">Source port</h3>
+<div class="outline-text-3" id="text-org4976e66">
 <p>
 <b>16-bits</b>
 </p>
@@ -263,18 +263,18 @@ Required to keep lots of outgoing connections separate.
 </p>
 </div>
 </div>
-<div id="outline-container-org4549b91" class="outline-3">
-<h3 id="org4549b91">Destination port</h3>
-<div class="outline-text-3" id="text-org4549b91">
+<div id="outline-container-org1449ad4" class="outline-3">
+<h3 id="org1449ad4">Destination port</h3>
+<div class="outline-text-3" id="text-org1449ad4">
 <p>
 <b>16-bits</b>
 The port of the service the traffic is intended for.
 </p>
 </div>
 </div>
-<div id="outline-container-org6713a2a" class="outline-3">
-<h3 id="org6713a2a">Sequence number.</h3>
-<div class="outline-text-3" id="text-org6713a2a">
+<div id="outline-container-org64b9bcc" class="outline-3">
+<h3 id="org64b9bcc">Sequence number.</h3>
+<div class="outline-text-3" id="text-org64b9bcc">
 <p>
 <b>32-bits</b>
 Used to keep track of where in a sequence of <a href="20230819080017-transmission_control_protocol_tcp.html#ID-690db04e-097b-4e6c-8e78-92e353fc49da">TCP</a> segments this one is expected to be.
@@ -285,79 +285,79 @@ An <a href="20230821055442-ethernet_frame.html#ID-73b06fc5-e631-40ad-828f-741dd8
 </p>
 </div>
 </div>
-<div id="outline-container-org686f70e" class="outline-3">
-<h3 id="org686f70e">Acknowledgement number.</h3>
-<div class="outline-text-3" id="text-org686f70e">
+<div id="outline-container-org83ce4ad" class="outline-3">
+<h3 id="org83ce4ad">Acknowledgement number.</h3>
+<div class="outline-text-3" id="text-org83ce4ad">
 <p>
 <b>32-bits</b>
 Number of the next expected segment.
 </p>
 </div>
 </div>
-<div id="outline-container-org0acf449" class="outline-3">
-<h3 id="org0acf449">Data offset Field</h3>
-<div class="outline-text-3" id="text-org0acf449">
+<div id="outline-container-org984c3b0" class="outline-3">
+<h3 id="org984c3b0">Data offset Field</h3>
+<div class="outline-text-3" id="text-org984c3b0">
 <p>
 <b>4-bit</b>
 Communicates how long the <a href="20230819080017-transmission_control_protocol_tcp.html#ID-690db04e-097b-4e6c-8e78-92e353fc49da">TCP</a> header for this segment is.
 </p>
 </div>
 </div>
-<div id="outline-container-orgeb31639" class="outline-3">
-<h3 id="orgeb31639">Control Flags</h3>
-<div class="outline-text-3" id="text-orgeb31639">
+<div id="outline-container-org93e8ea5" class="outline-3">
+<h3 id="org93e8ea5">Control Flags</h3>
+<div class="outline-text-3" id="text-org93e8ea5">
 <p>
 <b>6-bits</b>
 Reserved for the six <a href="20230822074622-tcp_control_flags.html#ID-b70de003-f81d-4b98-8158-46a9bb7e2039">TCP Control Flags</a>
 </p>
 </div>
 </div>
-<div id="outline-container-orgd75c7b5" class="outline-3">
-<h3 id="orgd75c7b5">TCP Window</h3>
-<div class="outline-text-3" id="text-orgd75c7b5">
+<div id="outline-container-org4ee6da2" class="outline-3">
+<h3 id="org4ee6da2">TCP Window</h3>
+<div class="outline-text-3" id="text-org4ee6da2">
 <p>
 A TCP window specifies the range of sequence numbers that might be sent before an acknowledgment is required.
 </p>
 </div>
 </div>
-<div id="outline-container-orgd956211" class="outline-3">
-<h3 id="orgd956211">Checksum</h3>
-<div class="outline-text-3" id="text-orgd956211">
+<div id="outline-container-org9514871" class="outline-3">
+<h3 id="org9514871">Checksum</h3>
+<div class="outline-text-3" id="text-org9514871">
 <p>
 <b>16-bits</b>
 Once all of this segment has been ingested by recipient, the checksum is calculated across the entire segment and is compared with the checksum in the header to make sure that there was no data lost or corruption along the way.
 </p>
 </div>
 </div>
-<div id="outline-container-org21fbee0" class="outline-3">
-<h3 id="org21fbee0">Urgent Pointer</h3>
-<div class="outline-text-3" id="text-org21fbee0">
+<div id="outline-container-org95dd8bb" class="outline-3">
+<h3 id="org95dd8bb">Urgent Pointer</h3>
+<div class="outline-text-3" id="text-org95dd8bb">
 <p>
 <b>16-bits</b>
 Used in conjuction with one of the TCP control flags to point out particular segments that might be more important than others.
 </p>
 </div>
 </div>
-<div id="outline-container-orgd24fb88" class="outline-3">
-<h3 id="orgd24fb88">Options Pointer</h3>
-<div class="outline-text-3" id="text-orgd24fb88">
+<div id="outline-container-orgb0dd755" class="outline-3">
+<h3 id="orgb0dd755">Options Pointer</h3>
+<div class="outline-text-3" id="text-orgb0dd755">
 <p>
 Sometimes used for more complicated flow control protocols.
 </p>
 </div>
 </div>
-<div id="outline-container-org486584e" class="outline-3">
-<h3 id="org486584e">Padding</h3>
-<div class="outline-text-3" id="text-org486584e">
+<div id="outline-container-org0aeb90e" class="outline-3">
+<h3 id="org0aeb90e">Padding</h3>
+<div class="outline-text-3" id="text-org0aeb90e">
 <p>
 Sequence of zeros to ensure that the data payload section begins at the expected location.
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org1d56449" class="outline-2">
-<h2 id="org1d56449">Payload</h2>
-<div class="outline-text-2" id="text-org1d56449">
+<div id="outline-container-org9362396" class="outline-2">
+<h2 id="org9362396">Payload</h2>
+<div class="outline-text-2" id="text-org9362396">
 <p>
 Contents of data application wants to send to each other
 </p>

@@ -1,0 +1,74 @@
+:PROPERTIES:
+:ID:       87751934-629b-447a-ae20-9d9049f05954
+:END:
+#+title: Pitfalls of Mathematical Induction
+
+* Pitfalls of Mathematical Induction
+
+** Overview
+
+To prove a statement by induction you must carry out *all* of the following steps:
+
+- State $P(n)$.
+- Show that $P(1)$ is ~true~ (base case).
+- Do the inductive step: show that if $P(k)$ is ~true~ then $P(k+1)$
+  is ~true~.
+
+Skipping any one of these can produce a ~false~ "proof."
+The three examples below each omit exactly one step.
+
+** Pitfall 1: only proving the base case
+
+It does not suffice to prove only that $P(1)$ is true.
+
+- Let $P(n)$ be the statement $n^2 = n$.
+- $P(1)$ is true.
+- But $P(n)$ only holds for $n = 0$ or $n = 1$, and is false for
+  $n \geq 2$.
+
+/Missing step: the inductive step./
+
+** Pitfall 2: only proving the inductive step
+
+It does not suffice to prove only that $P(k) \implies P(k+1)$.
+
+- Let $P(n)$ be the statement $n + 1 = n$.
+- Assume $P(k)$ holds, i.e. $k + 1 = k$. Adding $1$ to both sides
+  gives $k + 2 = k + 1$, i.e. $P(k+1)$.
+- So the inductive step goes through vacuously, but $P(1)$ is
+  false, so induction never gets started.
+
+/Missing step: the base case./ (Here it's vacuous since no $P(k)$
+is ever actually true.)
+
+** Pitfall 3: inductive step only valid for some $k$
+
+A more subtle error: proving $P(k) \implies P(k+1)$ but only for
+some values of $k$ (e.g. $k \geq 2$), while implicitly claiming it
+for all $k$.
+
+- Let $P(n)$ be: any $n$ students taking the same exam score the
+  same mark.
+- $P(1)$ is clearly true.
+- *"Proof" of inductive step:* Assume $P(k)$. Take a group of
+  $k+1$ candidates. Let $A, B$ be two particular candidates and
+  $C$ the remaining $k - 1$ students.
+  - $A \cup C$ is a group of $k$ students, so by $P(k)$ they all
+    share a mark.
+  - $B \cup C$ is likewise a group of $k$ students sharing a mark.
+  - Since $C$ is common to both, $A$, $B$, and $C$ all share the
+    same mark, so $P(k+1)$ holds.
+- *The flaw:* this argument requires $C$ to be non-empty so that
+  the two groups' marks are forced to agree. $C$ has $k - 1$
+  students, so when $k = 1$, $C$ is empty and the argument breaks
+  down. We have really only shown $P(k) \implies P(k+1)$ for
+  $k \geq 2$ — there is no valid link from $P(1)$ to $P(2)$, and
+  $P(2)$ is false.
+
+** Takeaway
+
+When writing an [[id:8b1e8e5b-d981-41e0-93a7-eded048cd150][Induction Proof]], explicitly check:
+
+1. Does the *base case* really hold?
+2. Does the *inductive step* hold for *every* relevant $k$ (not just large $k$), and does it actually use $P(k)$ correctly?
+3. Does the chain from the base case actually connect to the *inductive step* (no implicit non-emptiness / edge-case assumptions)?

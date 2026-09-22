@@ -1,0 +1,125 @@
+:PROPERTIES:
+:ID:       544e6c47-de51-4e38-a173-c8d69265c3d5
+:END:
+#+title: More Induction Proof Worked Examples
+
+* More Induction Proof Worked Examples
+
+** Example 1: bounded sequence $a_n \leq 2$
+
+*** Statement
+
+Let $\{a_n\}$ be the sequence defined by $a_1 = 1$ and
+$$a_{n+1} = \sqrt{2 + a_n}, \quad n \geq 1.$$
+Prove by induction that $a_n \leq 2$ for all positive integers $n$.
+
+*** Setup
+
+Let $P(n)$ be the statement: $a_n \leq 2$.
+
+*** Base case
+
+$a_1 = 1$, and $1 \leq 2$, so $P(1)$ is true.
+
+*** Inductive hypothesis
+
+Assume $P(k)$ holds, i.e. $a_k \leq 2$.
+
+*** Target
+
+Show $P(k+1)$, i.e. $a_{k+1} \leq 2$.
+
+*** Proof of target
+
+Starting from the hypothesis:
+$$a_k \leq 2$$
+
+Add $2$ to both sides (to match the $2 + a_k$ under the root in
+the recurrence):
+$$a_k + 2 \leq 4$$
+
+Take the square root of both sides:
+$$\sqrt{2 + a_k} \leq \sqrt{4} = 2$$
+
+But $\sqrt{2 + a_k} = a_{k+1}$ by the recurrence, so:
+$$a_{k+1} \leq 2$$
+
+This is exactly the target, so $P(k+1)$ is true.
+
+*** Conclusion
+
+By induction, $a_n \leq 2$ for all positive integers $n$. $\blacksquare$
+
+*** Method note
+
+Identify the *target* ($a_{k+1} \leq 2$) right after stating the inductive hypothesis, before doing any algebra.
+
+Then work forward from the hypothesis, applying only order-preserving operations (adding a constant, taking square roots of nonnegative quantities), steering the expression until it matches the shape
+needed to invoke the recurrence and land on the target.
+
+** Example 2: $2^n < n!$ for $n \geq 4$
+
+*** Note on factorials
+
+$n!$ means $n \times (n-1) \times \cdots \times 2 \times 1$. By
+convention $0! = 1$. E.g. $4! = 24$, $7! = 5040$.
+
+*** Statement
+
+Prove by induction that $2^n < n!$ for $n \geq 4$.
+
+*** Setup
+
+Let $P(n)$ be the statement: $2^n < n!$.
+
+*** Base case
+
+$P(4)$: check $2^4 < 4!$.
+$$16 < 24$$
+True, so $P(4)$ holds.
+
+*** Inductive hypothesis
+
+Assume $k \geq 4$ and $P(k)$ holds, i.e. $2^k < k!$.
+
+*** Target
+
+Show $P(k+1)$, i.e. $2^{k+1} < (k+1)!$.
+
+*** Proof of target
+
+Rewrite the left side of the target using exponent rules (always
+true, no inequality involved yet):
+$$2^{k+1} = 2 \times 2^k$$
+
+Now bring in the hypothesis $2^k < k!$. Multiply *both sides* by
+$2$:
+$$2 \times 2^k < 2 \times k!$$
+
+The left side is exactly $2^{k+1}$ (from the rewrite above), so:
+$$2^{k+1} < 2(k!)$$
+
+That's one link in the chain.
+
+To reach the target we still need to connect $2(k!)$ to $(k+1)!$. Write $(k+1)! = (k+1) \times k!$.
+
+Since $k \geq 4$, we have $k + 1 \geq 5 > 2$, so:
+$$2(k!) < (k+1)(k!) = (k+1)!$$
+
+Chaining the two links together:
+$$2^{k+1} < 2(k!) < (k+1)!$$
+
+so $2^{k+1} < (k+1)!$ — exactly the target, so $P(k+1)$ is true.
+
+*** Conclusion
+
+By induction, $2^n < n!$ for all $n \geq 4$. $\blacksquare$
+
+*** Method note
+
+Two-link chain: first rewrite the target's LHS so the hypothesis
+can be applied directly (via a *true, non-inequality* algebraic
+identity — $2^{k+1} = 2 \times 2^k$); then bridge the resulting
+expression ($2(k!)$) to the target's RHS ($(k+1)!$) using the
+constraint on $k$ (here $k \geq 4$ is what makes $k+1 > 2$, which
+is what the second link needs).
