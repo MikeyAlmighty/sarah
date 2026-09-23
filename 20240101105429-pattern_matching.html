@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-22 Tue 08:06 -->
+<!-- 2026-09-23 Wed 06:49 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Pattern Matching</title>
@@ -243,9 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Pattern Matching</h1>
-<div id="outline-container-orgf893111" class="outline-2">
-<h2 id="orgf893111">Pattern Matching</h2>
-<div class="outline-text-2" id="text-orgf893111">
+<div id="outline-container-orge0f44e9" class="outline-2">
+<h2 id="orge0f44e9">Pattern Matching</h2>
+<div class="outline-text-2" id="text-orge0f44e9">
 <ul class="org-ul">
 <li>Introduced in <b>Java 16</b></li>
 </ul>
@@ -255,9 +255,9 @@ Is a technique of <b>controlling</b> <code>program flow</code> that only execute
 It is used in conjunction with <a href="20240101124425-if_else_statement.html#ID-17d8331e-1c9e-485e-9c45-b70bb2951275">if Statements</a> statements for greater program control.
 </p>
 </div>
-<div id="outline-container-org1c2d00e" class="outline-3">
-<h3 id="org1c2d00e">Legacy (pre 16)</h3>
-<div class="outline-text-3" id="text-org1c2d00e">
+<div id="outline-container-org3ca2346" class="outline-3">
+<h3 id="org3ca2346">Legacy (pre 16)</h3>
+<div class="outline-text-3" id="text-org3ca2346">
 <p>
 Consider the following code that takes a <code>Number</code> instance and compares it with the value <code>5</code>:
 </p>
@@ -282,9 +282,9 @@ Code that <b>first checks if a variable is of a particular type</b> and then <b>
 </p>
 </div>
 </div>
-<div id="outline-container-org090a6d6" class="outline-3">
-<h3 id="org090a6d6">Patter Variables (Java 16)</h3>
-<div class="outline-text-3" id="text-org090a6d6">
+<div id="outline-container-org2cc2a9f" class="outline-3">
+<h3 id="org2cc2a9f">Patter Variables (Java 16)</h3>
+<div class="outline-text-3" id="text-org2cc2a9f">
 <div class="org-src-container">
 <pre class="src src-java"><code><span class="org-type">void</span> <span class="org-function-name">compareIntegers</span>(<span class="org-type">Number</span> <span class="org-variable-name">number</span>) {
     <span class="org-keyword">if</span>(number <span class="org-keyword">instanceof</span> Integer data) {
@@ -299,9 +299,9 @@ The variable <code>data</code> in this example is referred to as the <code>patte
 Notice that this code also avoids any potential <code>ClassCastException</code> because the <a href="20231224190739-widening_primitive_conversion.html#ID-3ef23225-ae37-428e-8ad3-5d7728f59478">cast</a> operation is executed only if the implicit <code>instanceof</code> operator returns <b>true</b>.
 </p>
 </div>
-<div id="outline-container-org9378329" class="outline-4">
-<h4 id="org9378329">Reassigning Pattern Variables</h4>
-<div class="outline-text-4" id="text-org9378329">
+<div id="outline-container-org6c78deb" class="outline-4">
+<h4 id="org6c78deb">Reassigning Pattern Variables</h4>
+<div class="outline-text-4" id="text-org6c78deb">
 <p>
 While possible, it is a bad practice to <b>reassign</b> a <code>pattern variable</code> since doing so can lead to ambiguity about what <b>is and is not in scope</b>:
 </p>
@@ -325,9 +325,9 @@ The reassignment can be <b>prevented</b> with a <code>final</code> modifier, but
 </div>
 </div>
 </div>
-<div id="outline-container-orgb8e1805" class="outline-3">
-<h3 id="orgb8e1805">Pattern Variables and Expressions</h3>
-<div class="outline-text-3" id="text-orgb8e1805">
+<div id="outline-container-org2932f03" class="outline-3">
+<h3 id="org2932f03">Pattern Variables and Expressions</h3>
+<div class="outline-text-3" id="text-org2932f03">
 <p>
 <code>Pattern matching</code> includes expressions that can be used to filter data out, such as in the following example:
 </p>
@@ -346,9 +346,9 @@ Notice that we’re using the <code>pattern variable</code> in an expression in 
 </p>
 </div>
 </div>
-<div id="outline-container-orge74951f" class="outline-3">
-<h3 id="orge74951f">Subtypes</h3>
-<div class="outline-text-3" id="text-orge74951f">
+<div id="outline-container-orgc05a8f5" class="outline-3">
+<h3 id="orgc05a8f5">Subtypes</h3>
+<div class="outline-text-3" id="text-orgc05a8f5">
 <p>
 The <code>type</code> of the <b>pattern variable</b> must be a <b>subtype</b> of the variable on the <code>LHS</code> of the expression.
 </p>
@@ -365,17 +365,17 @@ While the second line compiles, the last line does not compile because <code>pat
 </p>
 </div>
 </div>
-<div id="outline-container-org44be5eb" class="outline-3">
-<h3 id="org44be5eb">Flow Scoping</h3>
-<div class="outline-text-3" id="text-org44be5eb">
+<div id="outline-container-org14ebb09" class="outline-3">
+<h3 id="org14ebb09">Flow Scoping</h3>
+<div class="outline-text-3" id="text-org14ebb09">
 <p>
 The compiler applies <code>flow scoping</code> when working with <b>pattern matching</b>.
 <code>Flow scoping</code> means the variable is <b>only in scope</b> when the compiler can <b>definitively</b> determine its type.
 </p>
 </div>
-<div id="outline-container-org7fe0277" class="outline-4">
-<h4 id="org7fe0277"><span class="underline">Exam trick</span></h4>
-<div class="outline-text-4" id="text-org7fe0277">
+<div id="outline-container-orgec8b1f9" class="outline-4">
+<h4 id="orgec8b1f9"><span class="underline">Exam trick</span></h4>
+<div class="outline-text-4" id="text-orgec8b1f9">
 <p>
 It might surprise you to learn this code does compile:
 </p>
