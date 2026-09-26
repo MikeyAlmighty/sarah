@@ -1,0 +1,39 @@
+:PROPERTIES:
+:ID:       ab8b4cf3-afc0-4b57-abe8-b4c224a43b8e
+:END:
+#+title: Tower of Hanoi Induction Proof
+
+* Tower of Hanoi Induction Proof
+** Recursion
+
+$$T(n) = 2T(n-1) + 1, \quad T(1) = 1$$
+
+Closed form to prove: $T(n) = 2^n - 1$
+
+** Proof by Induction
+
+*** Step 1: Base case
+$n = 1$:
+
+$$T(1) = 2^1 - 1 = 1 \checkmark$$
+
+*** Step 2: Inductive hypothesis
+
+Assume $T(k) = 2^k - 1$
+
+*Target:* show that $T(k+1) = 2^{k+1} - 1$
+
+*** Step 3: Inductive step
+
+$$T(k+1) = 2T(k) + 1$$
+
+$$= 2(2^k - 1) + 1$$
+
+$$= 2 \cdot 2^k - 2 + 1$$
+
+$$= 2^{k+1} - 1$$
+
+So $T(k+1) = 2^{k+1} - 1$, as required.
+
+*** Conclusion
+By induction, $T(n) = 2^n - 1$ for all $n \geq 1$.
