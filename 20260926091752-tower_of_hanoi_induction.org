@@ -1,0 +1,41 @@
+:PROPERTIES:
+:ID:       e124c361-5929-495f-911c-886eb82891cd
+:END:
+#+title: Tower of Hanoi Induction
+
+* Tower of Hanoi Induction
+
+** Problem
+Let $T(n)$ be the minimum number of moves to solve Tower of Hanoi with $n$ discs.
+
+- $T(1) = 1$
+- $T(2) = 3$
+- Recurrence: move $n-1$ discs to auxiliary peg ($T(n-1)$), move largest disc ($1$), move $n-1$ discs from auxiliary to destination ($T(n-1)$)
+
+$$T(n) = 2T(n-1) + 1$$
+
+Closed form: $T(n) = 2^n - 1$
+
+** Proof of Correctness (by Induction)
+
+*** Base case
+$n = 1$: one disc, move directly source → destination. Satisfies the rules. ✓
+
+*** Inductive hypothesis
+Assume the recursive solution correctly moves $k$ discs from source to destination for $n = k$.
+
+*** Inductive step
+Show it holds for $n = k + 1$:
+
+1. Move top $k$ discs source → auxiliary (valid by IH)
+2. Move disc $k+1$ source → destination (valid: it's the largest, nothing on top of it, destination clear of smaller discs)
+3. Move $k$ discs auxiliary → destination (valid by IH)
+
+Each sub-step follows the rules, so the full move sequence for $k+1$ discs is valid.
+
+*** Conclusion
+By induction, the recursive solution is correct for all $n \geq 1$.
+
+** Why this matters
+
+This is a standard example of using induction not just to prove a *formula* (like $2^n - 1$) but to verify the *correctness of an algorithm* - i.e., that a recursive procedure actually produces a valid solution satisfying all constraints, for every input size.
