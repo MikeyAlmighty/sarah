@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-23 Wed 06:49 -->
+<!-- 2026-09-25 Fri 08:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Adding Constructors, fields and methods to Enums</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -243,22 +242,22 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Adding Constructors, fields and methods to Enums</h1>
-<div id="outline-container-org8e69a29" class="outline-2">
-<h2 id="org8e69a29">Adding Constructors, fields and methods to Enums</h2>
-<div class="outline-text-2" id="text-org8e69a29">
+<div id="outline-container-org49674ad" class="outline-2">
+<h2 id="org49674ad">Adding Constructors, fields and methods to Enums</h2>
+<div class="outline-text-2" id="text-org49674ad">
 <p>
 While a <a href="20240126053557-creating_simple_enums.html#ID-44a16f84-0d2c-4f42-8f51-d24f8985e648">simple enum</a> is composed of just a list of values, we can define a <b>complex</b> enum with additional elements.
 </p>
 </div>
-<div id="outline-container-orgc75901e" class="outline-3">
-<h3 id="orgc75901e">Example</h3>
-<div class="outline-text-3" id="text-orgc75901e">
+<div id="outline-container-orgf318dd4" class="outline-3">
+<h3 id="orgf318dd4">Example</h3>
+<div class="outline-text-3" id="text-orgf318dd4">
 <p>
 Let’s say our zoo wants to keep track of traffic patterns to determine which seasons get the most visitors.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">enum</span> <span class="org-type">Season</span>{
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">enum</span> <span class="org-type">Season</span>{
     <span class="org-function-name">WINTER</span>(<span class="org-string">"Low"</span>), <span class="org-function-name">SPRING</span>(<span class="org-string">"High"</span>), <span class="org-function-name">SUMMER</span>(<span class="org-string">"Medium"</span>), <span class="org-function-name">Fall</span>(<span class="org-string">"Low"</span>);
 
     <span class="org-keyword">private</span> <span class="org-keyword">final</span> <span class="org-type">String</span> <span class="org-variable-name">humidity</span>;
@@ -272,7 +271,7 @@ Let’s say our zoo wants to keep track of traffic patterns to determine which s
     }
 }
 
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -309,9 +308,9 @@ The parentheses on <code>line 2</code> are are constructor calls, but <b>without
 </p>
 </div>
 </div>
-<div id="outline-container-orgac35b63" class="outline-3">
-<h3 id="orgac35b63">Example</h3>
-<div class="outline-text-3" id="text-orgac35b63">
+<div id="outline-container-orgadd2385" class="outline-3">
+<h3 id="orgadd2385">Example</h3>
+<div class="outline-text-3" id="text-orgadd2385">
 <p>
 The first time we ask for any of the enum values, Java constructs <b>all</b> of the enum values.
 After that, Java just returns the <b>already</b> constructed <code>enum values</code>.
@@ -322,7 +321,7 @@ Given that explanation, you can see why this calls the constructor <b>only once<
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">enum</span> <span class="org-type">OnlyOne</span> {
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">enum</span> <span class="org-type">OnlyOne</span> {
     <span class="org-function-name">ONCE</span>(<span class="org-constant">true</span>);
     <span class="org-keyword">private</span> OnlyOne(<span class="org-type">boolean</span> <span class="org-variable-name">b</span>) {
         System.out.print(<span class="org-string">"constructing,"</span>);
@@ -336,7 +335,7 @@ Given that explanation, you can see why this calls the constructor <b>only once<
 </span>        System.out.print(<span class="org-string">"end"</span>);
     }
 }
-</code></pre>
+</pre>
 </div>
 
 
@@ -345,11 +344,11 @@ This class prints the following: <code>begin,constructing,end</code>
 </p>
 </div>
 </div>
-<div id="outline-container-org7e176ee" class="outline-3">
-<h3 id="org7e176ee">Defining different methods for each Enum</h3>
-<div class="outline-text-3" id="text-org7e176ee">
+<div id="outline-container-org9460e0c" class="outline-3">
+<h3 id="org9460e0c">Defining different methods for each Enum</h3>
+<div class="outline-text-3" id="text-org9460e0c">
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">enum</span> <span class="org-type">Season</span> {
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">enum</span> <span class="org-type">Season</span> {
     <span class="org-variable-name">WINTER</span> {
         <span class="org-keyword">public</span> <span class="org-type">String</span> <span class="org-function-name">getHours</span>() { <span class="org-keyword">return</span> <span class="org-string">"10am-3pm"</span>; }
     },
@@ -363,18 +362,18 @@ This class prints the following: <code>begin,constructing,end</code>
         <span class="org-keyword">public</span> <span class="org-type">String</span> <span class="org-function-name">getHours</span>() { <span class="org-keyword">return</span> <span class="org-string">"9am-5pm"</span>; }
     };
     <span class="org-keyword">public</span> <span class="org-keyword">abstract</span> <span class="org-type">String</span> <span class="org-function-name">getHours</span>();
-</code></pre>
+</pre>
 </div>
 </div>
-<div id="outline-container-org464cbd6" class="outline-4">
-<h4 id="org464cbd6"><span class="underline">Exam Trick</span></h4>
-<div class="outline-text-4" id="text-org464cbd6">
+<div id="outline-container-org9be2e88" class="outline-4">
+<h4 id="org9be2e88"><span class="underline">Exam Trick</span></h4>
+<div class="outline-text-4" id="text-org9be2e88">
 <p>
 An enum can even implement an <code>interface</code>, as this just requires <b>overriding</b> the abstract methods:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">interface</span> <span class="org-type">Weather</span> { <span class="org-type">int</span> <span class="org-function-name">getAverageTemperature</span>(); }
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">interface</span> <span class="org-type">Weather</span> { <span class="org-type">int</span> <span class="org-function-name">getAverageTemperature</span>(); }
 
 <span class="org-keyword">public</span> <span class="org-keyword">enum</span> <span class="org-type">Season</span> <span class="org-keyword">implements</span> <span class="org-type">Weather</span> {
     <span class="org-variable-name">WINTER</span>,
@@ -390,7 +389,7 @@ An enum can even implement an <code>interface</code>, as this just requires <b>o
         <span class="org-keyword">return</span> 30;
     }
 }
-</code></pre>
+</pre>
 </div>
 </div>
 </div>

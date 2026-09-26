@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-23 Wed 06:49 -->
+<!-- 2026-09-25 Fri 08:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Synchronization</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -243,11 +242,11 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Synchronization</h1>
-<div id="outline-container-orgb4b48c4" class="outline-3">
-<h3 id="orgb4b48c4">Using <code>Locks</code></h3>
-<div class="outline-text-3" id="text-orgb4b48c4">
+<div id="outline-container-org1cca023" class="outline-3">
+<h3 id="org1cca023">Using <code>Locks</code></h3>
+<div class="outline-text-3" id="text-org1cca023">
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-constant">concurrent</span>.<span class="org-constant">locks</span>.<span class="org-type">Lock</span>;
+<pre class="src src-java"><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-constant">concurrent</span>.<span class="org-constant">locks</span>.<span class="org-type">Lock</span>;
 <span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-constant">concurrent</span>.<span class="org-constant">locks</span>.<span class="org-type">ReentrantLock</span>;
 
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">DownloadStatus</span> {
@@ -267,7 +266,7 @@
         }
     }
 }
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -275,7 +274,7 @@ or
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">DownloadStatus</span> {
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">DownloadStatus</span> {
    <span class="org-keyword">private</span> <span class="org-type">int</span> <span class="org-variable-name">totalBytes</span>;
    <span class="org-keyword">private</span> <span class="org-type">int</span> <span class="org-variable-name">totalFiles</span>;
 
@@ -331,7 +330,7 @@ or
         }
     }
 }
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -344,17 +343,17 @@ But be aware as this can cause:
 </p>
 </div>
 </div>
-<div id="outline-container-orga56219b" class="outline-2">
-<h2 id="orga56219b">We can mark fields as <code>volatile</code></h2>
-<div class="outline-text-2" id="text-orga56219b">
+<div id="outline-container-org6897885" class="outline-2">
+<h2 id="org6897885">We can mark fields as <code>volatile</code></h2>
+<div class="outline-text-2" id="text-org6897885">
 <p>
 Ensures changes to an object are visible across threads
 This notifies the JVM to not rely on storing value in CPU cache Write directly to Main memory)
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">private</span> <span class="org-keyword">volatile</span> <span class="org-type">boolean</span> <span class="org-variable-name">isDone</span>;
-</code></pre>
+<pre class="src src-java"><span class="org-keyword">private</span> <span class="org-keyword">volatile</span> <span class="org-type">boolean</span> <span class="org-variable-name">isDone</span>;
+</pre>
 </div>
 
 <p>

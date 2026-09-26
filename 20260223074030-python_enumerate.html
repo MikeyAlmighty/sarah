@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-23 Wed 06:49 -->
+<!-- 2026-09-25 Fri 08:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python enumerate</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -243,13 +242,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Python enumerate</h1>
-<div id="outline-container-org6fbe681" class="outline-2">
-<h2 id="org6fbe681">Python enumerate</h2>
-<div class="outline-text-2" id="text-org6fbe681">
+<div id="outline-container-orgd48d9e3" class="outline-2">
+<h2 id="orgd48d9e3">Python enumerate</h2>
+<div class="outline-text-2" id="text-orgd48d9e3">
 </div>
-<div id="outline-container-orgf38330a" class="outline-3">
-<h3 id="orgf38330a">Overview</h3>
-<div class="outline-text-3" id="text-orgf38330a">
+<div id="outline-container-orgbd28cb3" class="outline-3">
+<h3 id="orgbd28cb3">Overview</h3>
+<div class="outline-text-3" id="text-orgbd28cb3">
 <p>
 The <code>enumerate()</code> function allows you to loop over an iterable while automatically keeping track of the index.
 </p>
@@ -259,25 +258,25 @@ This is preferred over manually incrementing a counter.
 </p>
 </div>
 </div>
-<div id="outline-container-org2e118fa" class="outline-3">
-<h3 id="org2e118fa">Basic Syntax</h3>
-<div class="outline-text-3" id="text-org2e118fa">
+<div id="outline-container-orgbe031ba" class="outline-3">
+<h3 id="orgbe031ba">Basic Syntax</h3>
+<div class="outline-text-3" id="text-orgbe031ba">
 <div class="org-src-container">
-<pre class="src src-python"><code><span class="org-keyword">for</span> index, value <span class="org-keyword">in</span> <span class="org-builtin">enumerate</span>(iterable):
+<pre class="src src-python"><span class="org-keyword">for</span> index, value <span class="org-keyword">in</span> <span class="org-builtin">enumerate</span>(iterable):
 <span class="org-comment-delimiter"># </span><span class="org-comment">code block</span>
-</code></pre>
+</pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgfa0454a" class="outline-3">
-<h3 id="orgfa0454a">Example 1: Basic Usage</h3>
-<div class="outline-text-3" id="text-orgfa0454a">
+<div id="outline-container-org2ba5e56" class="outline-3">
+<h3 id="org2ba5e56">Example 1: Basic Usage</h3>
+<div class="outline-text-3" id="text-org2ba5e56">
 <div class="org-src-container">
-<pre class="src src-python"><code><span class="org-variable-name">fruits</span> <span class="org-operator">=</span> [<span class="org-string">"apple"</span>, <span class="org-string">"banana"</span>, <span class="org-string">"cherry"</span>]
+<pre class="src src-python"><span class="org-variable-name">fruits</span> <span class="org-operator">=</span> [<span class="org-string">"apple"</span>, <span class="org-string">"banana"</span>, <span class="org-string">"cherry"</span>]
 
 <span class="org-keyword">for</span> index, fruit <span class="org-keyword">in</span> <span class="org-builtin">enumerate</span>(fruits):
 <span class="org-builtin">print</span>(index, fruit)
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -288,9 +287,9 @@ Output:
 </p>
 </div>
 </div>
-<div id="outline-container-orgfba22f7" class="outline-3">
-<h3 id="orgfba22f7">Starting Index at Custom Value</h3>
-<div class="outline-text-3" id="text-orgfba22f7">
+<div id="outline-container-org743d84e" class="outline-3">
+<h3 id="org743d84e">Starting Index at Custom Value</h3>
+<div class="outline-text-3" id="text-org743d84e">
 <p>
 By default, indexing starts at 0.
 </p>
@@ -300,9 +299,9 @@ You can change it:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><code><span class="org-keyword">for</span> index, fruit <span class="org-keyword">in</span> <span class="org-builtin">enumerate</span>(fruits, start<span class="org-operator">=</span>1):
+<pre class="src src-python"><span class="org-keyword">for</span> index, fruit <span class="org-keyword">in</span> <span class="org-builtin">enumerate</span>(fruits, start<span class="org-operator">=</span>1):
 <span class="org-builtin">print</span>(index, fruit)
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -313,17 +312,17 @@ Output:
 </p>
 </div>
 </div>
-<div id="outline-container-org4e3faaf" class="outline-3">
-<h3 id="org4e3faaf">Equivalent Without enumerate (Not Recommended)</h3>
-<div class="outline-text-3" id="text-org4e3faaf">
+<div id="outline-container-org5386a42" class="outline-3">
+<h3 id="org5386a42">Equivalent Without enumerate (Not Recommended)</h3>
+<div class="outline-text-3" id="text-org5386a42">
 <div class="org-src-container">
-<pre class="src src-python"><code><span class="org-variable-name">fruits</span> <span class="org-operator">=</span> [<span class="org-string">"apple"</span>, <span class="org-string">"banana"</span>, <span class="org-string">"cherry"</span>]
+<pre class="src src-python"><span class="org-variable-name">fruits</span> <span class="org-operator">=</span> [<span class="org-string">"apple"</span>, <span class="org-string">"banana"</span>, <span class="org-string">"cherry"</span>]
 
 <span class="org-variable-name">i</span> <span class="org-operator">=</span> 0
 <span class="org-keyword">for</span> fruit <span class="org-keyword">in</span> fruits:
 <span class="org-builtin">print</span>(i, fruit)
 <span class="org-variable-name">i</span> <span class="org-operator">+=</span> 1
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -337,9 +336,9 @@ Why enumerate is Better:
 </ul>
 </div>
 </div>
-<div id="outline-container-org1dca992" class="outline-3">
-<h3 id="org1dca992">When to Use enumerate</h3>
-<div class="outline-text-3" id="text-org1dca992">
+<div id="outline-container-org9baa1c9" class="outline-3">
+<h3 id="org9baa1c9">When to Use enumerate</h3>
+<div class="outline-text-3" id="text-org9baa1c9">
 <p>
 Use <code>enumerate()</code> when:
 </p>

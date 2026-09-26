@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-23 Wed 06:49 -->
+<!-- 2026-09-25 Fri 08:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Static Interface Method</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -243,13 +242,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Static Interface Method</h1>
-<div id="outline-container-orgb75dcdb" class="outline-2">
-<h2 id="orgb75dcdb">Static Interface Method</h2>
-<div class="outline-text-2" id="text-orgb75dcdb">
+<div id="outline-container-org6dc1e74" class="outline-2">
+<h2 id="org6dc1e74">Static Interface Method</h2>
+<div class="outline-text-2" id="text-org6dc1e74">
 </div>
-<div id="outline-container-orgef108da" class="outline-3">
-<h3 id="orgef108da">Static Interface Method Definition Rules</h3>
-<div class="outline-text-3" id="text-orgef108da">
+<div id="outline-container-org179b641" class="outline-3">
+<h3 id="org179b641">Static Interface Method Definition Rules</h3>
+<div class="outline-text-3" id="text-org179b641">
 <ol class="org-ol">
 <li>A <code>static method</code> must be marked with the <code>static</code> keyword <b>and</b> include a <code>method body</code>.</li>
 <li>A <code>static method</code> without an access modifier is <b>implicitly</b> <code>public</code>.</li>
@@ -257,16 +256,16 @@
 <li>A <code>static method</code> is not inherited and cannot be accessed in a <code>class</code> implementing the <code>interface</code> without a <b>reference</b> to the <code>interface</code> name.</li>
 </ol>
 </div>
-<div id="outline-container-org456d472" class="outline-4">
-<h4 id="org456d472">Example</h4>
-<div class="outline-text-4" id="text-org456d472">
+<div id="outline-container-orgf417895" class="outline-4">
+<h4 id="orgf417895">Example</h4>
+<div class="outline-text-4" id="text-orgf417895">
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">interface</span> <span class="org-type">Hop</span> {
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">interface</span> <span class="org-type">Hop</span> {
     <span class="org-keyword">static</span> <span class="org-type">int</span> <span class="org-function-name">getJumpHeight</span>() {
         <span class="org-keyword">return</span> 8;
     }
 }
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -279,12 +278,12 @@ In other words, it can be accessed <b>without</b> an instance of a <code>class</
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Skip</span> {
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Skip</span> {
     <span class="org-keyword">public</span> <span class="org-type">int</span> <span class="org-function-name">skip</span>() {
         <span class="org-keyword">return</span> Hop.getJumpHeight();
     }
 }
-</code></pre>
+</pre>
 </div>
 </div>
 </div>

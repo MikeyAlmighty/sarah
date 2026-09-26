@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-23 Wed 06:49 -->
+<!-- 2026-09-25 Fri 08:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Java Boxing</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -246,17 +245,17 @@
 <p>
 <code>Boxing</code> and <code>unboxing</code> conversions allow interoperability between <a href="20231230083124-primitive_types.html#ID-46582863-7f97-448d-bbc7-f7da4c1e7574">Primitive Type</a> values and their representation as objects of the <code>wrapper types</code>
 </p>
-<div id="outline-container-orgaf74093" class="outline-2">
-<h2 id="orgaf74093">Boxing</h2>
-<div class="outline-text-2" id="text-orgaf74093">
+<div id="outline-container-org00fecad" class="outline-2">
+<h2 id="org00fecad">Boxing</h2>
+<div class="outline-text-2" id="text-org00fecad">
 <p>
 <b>Boxing (aka autoboxing)</b> conversion <b>converts</b> the value of a <code>primitive</code> type to a corresponding value of its <code>Wrapper type</code>.
 </p>
 </div>
 </div>
-<div id="outline-container-org411a17d" class="outline-2">
-<h2 id="org411a17d">Unboxing</h2>
-<div class="outline-text-2" id="text-org411a17d">
+<div id="outline-container-orgf290e8c" class="outline-2">
+<h2 id="orgf290e8c">Unboxing</h2>
+<div class="outline-text-2" id="text-orgf290e8c">
 <p>
 <b>Unboxing</b> conversion converts the value of a <code>wrapper</code> type to a value of its corresponding <code>primitive</code> type.
 </p>
@@ -266,14 +265,14 @@ Both <b>boxing</b> and <b>unboxing</b> conversion are applied <b>implicitly</b> 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java" id="org3f1ab8d"><code><span class="org-comment-delimiter">// </span><span class="org-comment">Boxing
+<pre class="src src-java" id="org894ceae"><span class="org-comment-delimiter">// </span><span class="org-comment">Boxing
 </span><span class="org-type">Integer</span> <span class="org-variable-name">iRef</span> = 10;  <span class="org-comment-delimiter">// </span><span class="org-comment">(1) Implicit boxing: Integer &lt;----- int
 </span><span class="org-type">Double</span> <span class="org-variable-name">dRef</span> = Double.valueOf(3.14); <span class="org-comment-delimiter">// </span><span class="org-comment">(2) Explicit boxing: Double &lt;----- double
 </span>
 <span class="org-comment-delimiter">// </span><span class="org-comment">Unboxing
 </span><span class="org-type">int</span> <span class="org-variable-name">i</span> = iRef; <span class="org-comment-delimiter">// </span><span class="org-comment">(3) Implicit unboxing: int &lt;----- Integer
 </span><span class="org-type">double</span> <span class="org-variable-name">d</span> = dRef.doubleValue(); <span class="org-comment-delimiter">// </span><span class="org-comment">(4) Explicit unboxing: double &lt;----- Double</span>
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -292,9 +291,9 @@ Note that <b>both</b> <code>boxing</code> and <code>unboxing</code> are done <b>
 <li>Use an <code>Integral wrapper</code> object as an <code>integral primitive value</code> in an arithmetic expression.</li>
 </ul>
 </div>
-<div id="outline-container-org456f770" class="outline-3">
-<h3 id="org456f770">Note</h3>
-<div class="outline-text-3" id="text-org456f770">
+<div id="outline-container-orgef44cb4" class="outline-3">
+<h3 id="orgef44cb4">Note</h3>
+<div class="outline-text-3" id="text-orgef44cb4">
 <ul class="org-ul">
 <li><b>Unboxing</b> a <code>wrapper</code> reference that has the <code>null</code> value <b>results in a</b> <code>NullPointer-Exception</code>.</li>
 </ul>

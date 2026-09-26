@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-23 Wed 06:49 -->
+<!-- 2026-09-25 Fri 08:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Nominal vs Structural Typing</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -243,22 +242,22 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Nominal vs Structural Typing</h1>
-<div id="outline-container-org5f8cac0" class="outline-2">
-<h2 id="org5f8cac0">Nominal Typing</h2>
-<div class="outline-text-2" id="text-org5f8cac0">
+<div id="outline-container-orgf4acb8c" class="outline-2">
+<h2 id="orgf4acb8c">Nominal Typing</h2>
+<div class="outline-text-2" id="text-orgf4acb8c">
 <p>
 (Java, C++ etc.)
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">class</span> <span class="org-type">Foo</span> {
+<pre class="src src-java"><span class="org-keyword">class</span> <span class="org-type">Foo</span> {
   <span class="org-keyword">public</span> <span class="org-type">int</span> <span class="org-variable-name">x</span>;
 }
 <span class="org-keyword">class</span> <span class="org-type">Blah</span> {
   <span class="org-keyword">public</span> <span class="org-type">int</span> <span class="org-variable-name">x</span>;
 }
 
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -281,15 +280,15 @@ TypeScript considers types to be compatible if they have the same structure—he
 </p>
 </div>
 </div>
-<div id="outline-container-org1b3f72b" class="outline-2">
-<h2 id="org1b3f72b">Structural Typing</h2>
-<div class="outline-text-2" id="text-org1b3f72b">
+<div id="outline-container-orgbb77959" class="outline-2">
+<h2 id="orgbb77959">Structural Typing</h2>
+<div class="outline-text-2" id="text-orgbb77959">
 <p>
 So, the following runs without error (In TS):
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js"><code><span class="org-keyword">class</span> Foo {
+<pre class="src src-js"><span class="org-keyword">class</span> Foo {
   x: number = 0;
 }
 <span class="org-keyword">class</span> Blah {
@@ -297,7 +296,7 @@ So, the following runs without error (In TS):
 }
 <span class="org-keyword">let</span> <span class="org-variable-name">f</span>: Foo = <span class="org-keyword">new</span> <span class="org-type">Blah</span>();
 <span class="org-keyword">let</span> <span class="org-variable-name">b</span>: Blah = <span class="org-keyword">new</span> <span class="org-type">Foo</span>();
-</code></pre>
+</pre>
 </div>
 </div>
 </div>

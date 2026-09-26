@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-23 Wed 06:49 -->
+<!-- 2026-09-25 Fri 08:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Writing Final Methods</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -243,9 +242,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Writing Final Methods</h1>
-<div id="outline-container-org046b6f6" class="outline-2">
-<h2 id="org046b6f6">Writing Final Methods</h2>
-<div class="outline-text-2" id="text-org046b6f6">
+<div id="outline-container-org4369584" class="outline-2">
+<h2 id="org4369584">Writing Final Methods</h2>
+<div class="outline-text-2" id="text-org4369584">
 <p>
 <code>final</code> methods <b>cannot</b> be <a href="20240120133450-overriding_a_method.html#ID-c67b24a4-82f7-4423-83a9-75fc1c566166">overriden</a>.
 By marking a method <code>final</code>, you forbid a <code>child</code> class from replacing this method.
@@ -259,9 +258,9 @@ This rule is in place both when you <a href="20240120133450-overriding_a_method.
 In other words, you <b>cannot</b> <a href="20240120133516-hiding_static_methods.html#ID-19ea09af-1aa5-4247-b608-13333950e8c0">hiding a static method</a> in a <code>child</code> class if it is marked <code>final</code> in the <code>parent</code> class.
 </p>
 </div>
-<div id="outline-container-org1debc5d" class="outline-3">
-<h3 id="org1debc5d">Example</h3>
-<div class="outline-text-3" id="text-org1debc5d">
+<div id="outline-container-org49d85be" class="outline-3">
+<h3 id="org49d85be">Example</h3>
+<div class="outline-text-3" id="text-org49d85be">
 <p>
 In this example, the instance method <code>hasFeathers()</code> is marked as <code>final</code> in the <code>parent</code> class <code>Bird</code>, so the <code>child</code> class <code>Penguin</code> <b>cannot</b> override the <code>parent</code> method, resulting in
 a <b>compiler error</b>.
@@ -288,7 +287,7 @@ In that case, the <code>private</code> methods would be <b>redeclared</b>, <b>no
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Bird</span> {
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Bird</span> {
     <span class="org-keyword">public</span> <span class="org-keyword">final</span> <span class="org-type">boolean</span> <span class="org-function-name">hasFeathers</span>() {
         <span class="org-keyword">return</span> <span class="org-constant">true</span>;
     }
@@ -301,7 +300,7 @@ In that case, the <code>private</code> methods would be <b>redeclared</b>, <b>no
     }
     <span class="org-keyword">public</span> <span class="org-keyword">final</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">flyAway</span>() {} <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>}
-</code></pre>
+</pre>
 </div>
 </div>
 </div>

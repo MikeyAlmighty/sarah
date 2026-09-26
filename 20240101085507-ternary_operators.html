@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-23 Wed 06:49 -->
+<!-- 2026-09-25 Fri 08:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ternary Operators</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -243,9 +242,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Ternary Operators</h1>
-<div id="outline-container-org8134aa9" class="outline-2">
-<h2 id="org8134aa9">Ternary Operators</h2>
-<div class="outline-text-2" id="text-org8134aa9">
+<div id="outline-container-orgdbd65ed" class="outline-2">
+<h2 id="orgdbd65ed">Ternary Operators</h2>
+<div class="outline-text-2" id="text-orgdbd65ed">
 <ul class="org-ul">
 <li><a href="20231231063743-conditional_operators.html#ID-a29b45cb-d2f6-49fd-90c7-4c8f1b8e898a">Conditional Operator</a></li>
 </ul>
@@ -255,11 +254,11 @@ It is notable in that it is the only operator that takes <b>three</b> operands.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-comment-delimiter">// </span><span class="org-comment">booleanExpression ? expression1 : expression2
+<pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">booleanExpression ? expression1 : expression2
 </span><span class="org-type">int</span> <span class="org-variable-name">owl</span> = 5;
 <span class="org-type">int</span> <span class="org-variable-name">food</span> = owl &lt; 2 ? 3 : 4;
 System.out.println(food); <span class="org-comment-delimiter">// </span><span class="org-comment">4</span>
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -267,10 +266,10 @@ For the exam, you should know that there is <b>no</b> requirement that <code>sec
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-type">int</span> <span class="org-variable-name">stripes</span> = 7;
+<pre class="src src-java"><span class="org-type">int</span> <span class="org-variable-name">stripes</span> = 7;
 System.out.print((stripes &gt; 5) ? 21 : <span class="org-string">"Zebra"</span>);
 <span class="org-type">int</span> <span class="org-variable-name">animal</span> = (stripes &lt; 9) ? 3 : <span class="org-string">"Horse"</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE</span>
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -285,19 +284,19 @@ Both expressions evaluate similar boolean values and return an <code>int</code> 
 On the other hand, the compiler does know that <code>"Horse"</code> is of the <b>wrong</b> data type and cannot be assigned to an <code>int</code>; therefore, it does not allow the code to be compiled.
 </p>
 </div>
-<div id="outline-container-org9c7505a" class="outline-3">
-<h3 id="org9c7505a">Unperformed Side Effects</h3>
-<div class="outline-text-3" id="text-org9c7505a">
+<div id="outline-container-orgbe687a3" class="outline-3">
+<h3 id="orgbe687a3">Unperformed Side Effects</h3>
+<div class="outline-text-3" id="text-orgbe687a3">
 </div>
-<div id="outline-container-org0993f29" class="outline-4">
-<h4 id="org0993f29">Example</h4>
-<div class="outline-text-4" id="text-org0993f29">
+<div id="outline-container-orgf65a538" class="outline-4">
+<h4 id="orgf65a538">Example</h4>
+<div class="outline-text-4" id="text-orgf65a538">
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-type">int</span> <span class="org-variable-name">sheep</span> = 1;
+<pre class="src src-java"><span class="org-type">int</span> <span class="org-variable-name">sheep</span> = 1;
 <span class="org-type">int</span> <span class="org-variable-name">zzz</span> = 1;
 <span class="org-type">int</span> <span class="org-variable-name">sleep</span> = zzz &lt; 10 ? sheep++ : zzz++;
 System.out.print(sheep + <span class="org-string">","</span> + zzz); <span class="org-comment-delimiter">// </span><span class="org-comment">2,1</span>
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -309,14 +308,14 @@ Contrast the preceding example with the following modification:
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="orgfcfec00"></a>Example<br />
-<div class="outline-text-5" id="text-orgfcfec00">
+<li><a id="orge559d73"></a>Example<br />
+<div class="outline-text-5" id="text-orge559d73">
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-type">int</span> <span class="org-variable-name">sheep</span> = 1;
+<pre class="src src-java"><span class="org-type">int</span> <span class="org-variable-name">sheep</span> = 1;
 <span class="org-type">int</span> <span class="org-variable-name">zzz</span> = 1;
 <span class="org-type">int</span> <span class="org-variable-name">sleep</span> = sheep &gt;= 10 ? sheep++ : zzz++;
 System.out.print(sheep + <span class="org-string">","</span> + zzz); <span class="org-comment-delimiter">// </span><span class="org-comment">1,2</span>
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -326,20 +325,20 @@ The <code>LHS</code> boolean expression evaluates to <b>false</b>, only <code>zz
 </li>
 </ul>
 </div>
-<div id="outline-container-org7d5dca5" class="outline-4">
-<h4 id="org7d5dca5">Embedded Conditional Expressions</h4>
-<div class="outline-text-4" id="text-org7d5dca5">
+<div id="outline-container-org6ed3deb" class="outline-4">
+<h4 id="org6ed3deb">Embedded Conditional Expressions</h4>
+<div class="outline-text-4" id="text-org6ed3deb">
 </div>
 <ul class="org-ul">
-<li><a id="org29eb06d"></a>Example<br />
-<div class="outline-text-5" id="text-org29eb06d">
+<li><a id="orge2f1942"></a>Example<br />
+<div class="outline-text-5" id="text-orge2f1942">
 <p>
 The following code assigns <code>1</code>, <code>0</code>, or <code>−1</code> to status if <code>n1 &gt; n1</code>, <code>n1 ~==</code> <code>n2</code>, or <code>n1 &lt; n2</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><code>status = n1 &gt; n2? 1: (n1 == n2? 0: &#8722;1);
-</code></pre>
+<pre class="src src-java">status = n1 &gt; n2? 1: (n1 == n2? 0: &#8722;1);
+</pre>
 </div>
 </div>
 </li>

@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-23 Wed 06:49 -->
+<!-- 2026-09-25 Fri 08:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Reading Data from the Web</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -243,9 +242,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Reading Data from the Web</h1>
-<div id="outline-container-org02ac13c" class="outline-2">
-<h2 id="org02ac13c">Reading Data from the Web</h2>
-<div class="outline-text-2" id="text-org02ac13c">
+<div id="outline-container-org0432e5f" class="outline-2">
+<h2 id="org0432e5f">Reading Data from the Web</h2>
+<div class="outline-text-2" id="text-org0432e5f">
 <p>
 Just like you can <b>read</b> from a file on your computer, you can <b>read</b> from a file on the <code>Web</code>. (If you know the <a href="20230819080412-uniform_resource_locator_url.html#ID-7f6ccd08-47a2-4528-966d-3e08b8b40755">URL</a>)
 </p>
@@ -255,20 +254,20 @@ Just like you can <b>read</b> from a file on your computer, you can <b>read</b> 
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">public</span> URL(String spec) <span class="org-keyword">throws</span> <span class="org-type">MalformedURLException</span>
-</code></pre>
+<pre class="src src-java"><span class="org-keyword">public</span> URL(String spec) <span class="org-keyword">throws</span> <span class="org-type">MalformedURLException</span>
+</pre>
 </div>
 </div>
-<div id="outline-container-orgdf1011f" class="outline-3">
-<h3 id="orgdf1011f">Example</h3>
-<div class="outline-text-3" id="text-orgdf1011f">
+<div id="outline-container-orgd0fd30e" class="outline-3">
+<h3 id="orgd0fd30e">Example</h3>
+<div class="outline-text-3" id="text-orgd0fd30e">
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">try</span> {
+<pre class="src src-java"><span class="org-keyword">try</span> {
     <span class="org-type">URL</span> <span class="org-variable-name">url</span> = <span class="org-keyword">new</span> <span class="org-type">URL</span>(<span class="org-string">"http://www.google.com/index.html"</span>);
 } <span class="org-keyword">catch</span> (MalformedURLException ex) {
     ex.printStackTrace();
 }
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -279,20 +278,20 @@ A <code>MalformedURLException</code> is <b>thrown</b> if the URL string has a <b
 For example, the URL string <a href="http:www.google.com/index.html">http:www.google.com/index.html</a> would cause a <code>MalformedURLException</code> <b>runtime error</b> because two slashes (<code>//</code>) are <b>required</b> after the colon (<code>:</code>).
 </p>
 </div>
-<div id="outline-container-org56a8a98" class="outline-4">
-<h4 id="org56a8a98">Note</h4>
-<div class="outline-text-4" id="text-org56a8a98">
+<div id="outline-container-orga95f483" class="outline-4">
+<h4 id="orga95f483">Note</h4>
+<div class="outline-text-4" id="text-orga95f483">
 <ul class="org-ul">
 <li>The <code>http://</code> prefix is <b>required</b> for the URL class to recognize a valid URL.</li>
 <li>You can use the <code>openStream()</code> method defined in the URL class to open an input stream and use this stream to create a Scanner object as follows</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orga8f250c" class="outline-4">
-<h4 id="orga8f250c">Example</h4>
-<div class="outline-text-4" id="text-orga8f250c">
+<div id="outline-container-org37f566d" class="outline-4">
+<h4 id="org37f566d">Example</h4>
+<div class="outline-text-4" id="text-org37f566d">
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Scanner</span>;
+<pre class="src src-java"><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Scanner</span>;
 
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">ReadFileFromURL</span> {
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
@@ -318,7 +317,7 @@ For example, the URL string <a href="http:www.google.com/index.html">http:www.go
         }
     }
 }
-</code></pre>
+</pre>
 </div>
 
 <ul class="org-ul">

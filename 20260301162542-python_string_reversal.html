@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-23 Wed 06:49 -->
+<!-- 2026-09-25 Fri 08:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python String Reversal</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -243,32 +242,32 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Python String Reversal</h1>
-<div id="outline-container-orga0232c2" class="outline-2">
-<h2 id="orga0232c2">Python String Reversal</h2>
-<div class="outline-text-2" id="text-orga0232c2">
+<div id="outline-container-org385daf6" class="outline-2">
+<h2 id="org385daf6">Python String Reversal</h2>
+<div class="outline-text-2" id="text-org385daf6">
 </div>
-<div id="outline-container-orgee55d9f" class="outline-3">
-<h3 id="orgee55d9f">Overview</h3>
-<div class="outline-text-3" id="text-orgee55d9f">
+<div id="outline-container-org835ca7d" class="outline-3">
+<h3 id="org835ca7d">Overview</h3>
+<div class="outline-text-3" id="text-org835ca7d">
 <p>
 Reversing a string means producing a new string with the characters in <b>opposite</b> <b>order</b>.
 </p>
 </div>
 </div>
-<div id="outline-container-orgccfa4d6" class="outline-3">
-<h3 id="orgccfa4d6">Method 1: <a href="20260301162807-python_extended_slice.html#ID-036fc75b-5a25-45f6-a697-82ac0753ac43">Python Extended Slice</a></h3>
-<div class="outline-text-3" id="text-orgccfa4d6">
+<div id="outline-container-orgcaf541f" class="outline-3">
+<h3 id="orgcaf541f">Method 1: <a href="20260301162807-python_extended_slice.html#ID-036fc75b-5a25-45f6-a697-82ac0753ac43">Python Extended Slice</a></h3>
+<div class="outline-text-3" id="text-orgcaf541f">
 <p>
 Python’s extended slice syntax allows reversing a string concisely.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><code><span class="org-variable-name">trial</span> <span class="org-operator">=</span> <span class="org-string">"reversal"</span>
+<pre class="src src-python"><span class="org-variable-name">trial</span> <span class="org-operator">=</span> <span class="org-string">"reversal"</span>
 
 <span class="org-comment-delimiter"># </span><span class="org-comment">Right-to-left traversal using step=-1
 </span><span class="org-variable-name">new_trial</span> <span class="org-operator">=</span> trial[::<span class="org-operator">-</span>1]
 <span class="org-builtin">print</span>(new_trial)  <span class="org-comment-delimiter"># </span><span class="org-comment">'lasrever'</span>
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -280,15 +279,15 @@ Notes:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgba61f98" class="outline-3">
-<h3 id="orgba61f98">Method 2: Recursion</h3>
-<div class="outline-text-3" id="text-orgba61f98">
+<div id="outline-container-orgf59c1f4" class="outline-3">
+<h3 id="orgf59c1f4">Method 2: Recursion</h3>
+<div class="outline-text-3" id="text-orgf59c1f4">
 <p>
 Recursion solves the problem by repeatedly reversing the rest of the string and appending the first character at the end.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><code><span class="org-keyword">def</span> <span class="org-function-name">string_reverse</span>(s):
+<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">string_reverse</span>(s):
     <span class="org-keyword">if</span> <span class="org-builtin">len</span>(s) <span class="org-operator">==</span> 0:
         <span class="org-keyword">return</span> s
     <span class="org-keyword">else</span>:
@@ -297,7 +296,7 @@ Recursion solves the problem by repeatedly reversing the rest of the string and 
 <span class="org-variable-name">s</span> <span class="org-operator">=</span> <span class="org-string">"reversal"</span>
 <span class="org-variable-name">reverse</span> <span class="org-operator">=</span> string_reverse(s)
 <span class="org-builtin">print</span>(reverse)  <span class="org-comment-delimiter"># </span><span class="org-comment">'lasrever'</span>
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -310,9 +309,9 @@ Notes:
 </ul>
 </div>
 </div>
-<div id="outline-container-orga1c041f" class="outline-3">
-<h3 id="orga1c041f">Comparison</h3>
-<div class="outline-text-3" id="text-orga1c041f">
+<div id="outline-container-orgb2a1bdc" class="outline-3">
+<h3 id="orgb2a1bdc">Comparison</h3>
+<div class="outline-text-3" id="text-orgb2a1bdc">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -351,9 +350,9 @@ Notes:
 </table>
 </div>
 </div>
-<div id="outline-container-org337fc71" class="outline-3">
-<h3 id="org337fc71">Conceptual Model</h3>
-<div class="outline-text-3" id="text-org337fc71">
+<div id="outline-container-orgb98701e" class="outline-3">
+<h3 id="orgb98701e">Conceptual Model</h3>
+<div class="outline-text-3" id="text-orgb98701e">
 <ul class="org-ul">
 <li>Extended slice is like reading a sentence backward from a printed line.</li>
 <li>Recursion is like peeling the string character by character, then rebuilding it from the inside out — a mental exercise in <b>decomposition</b>.</li>

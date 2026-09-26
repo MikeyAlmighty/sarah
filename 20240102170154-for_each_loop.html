@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-23 Wed 06:49 -->
+<!-- 2026-09-25 Fri 08:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>For Each Loop</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -243,9 +242,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">For Each Loop</h1>
-<div id="outline-container-orgf45e47e" class="outline-2">
-<h2 id="orgf45e47e">For Each Loop (Enhanced)</h2>
-<div class="outline-text-2" id="text-orgf45e47e">
+<div id="outline-container-orgabe8585" class="outline-2">
+<h2 id="orgabe8585">For Each Loop (Enhanced)</h2>
+<div class="outline-text-2" id="text-orgabe8585">
 <p>
 The <code>for­each</code> loop declaration is composed of an <code>initialization</code> section and an <code>object</code> to be <b>iterated</b> over.
 </p>
@@ -259,10 +258,10 @@ The <code>RHS</code> of the <b>for­each</b> loop must be one of the following:
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">for</span> (<span class="org-type">datatype</span> <span class="org-variable-name">instance</span>: collection) {
+<pre class="src src-java"><span class="org-keyword">for</span> (<span class="org-type">datatype</span> <span class="org-variable-name">instance</span>: collection) {
     <span class="org-comment-delimiter">//</span><span class="org-comment">Body
 </span>}
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -273,26 +272,26 @@ The <code>LHS</code> of the <code>for-each</code> loop must include a <code>decl
 On each iteration of the loop, the <code>named</code> variable on the <code>LHS</code> of the statement is <b>assigned</b> a new value from the array or collection on the <code>RHS</code>.
 </p>
 </div>
-<div id="outline-container-org9adf001" class="outline-3">
-<h3 id="org9adf001">Example</h3>
-<div class="outline-text-3" id="text-org9adf001">
+<div id="outline-container-org7cefff8" class="outline-3">
+<h3 id="org7cefff8">Example</h3>
+<div class="outline-text-3" id="text-org7cefff8">
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-type">String</span>[] <span class="org-variable-name">fruits</span> = { <span class="org-string">"Apple"</span>, <span class="org-string">"Mango"</span>, <span class="org-string">"Orange"</span> };
+<pre class="src src-java"><span class="org-type">String</span>[] <span class="org-variable-name">fruits</span> = { <span class="org-string">"Apple"</span>, <span class="org-string">"Mango"</span>, <span class="org-string">"Orange"</span> };
 
 <span class="org-keyword">for</span> (<span class="org-type">String</span> <span class="org-variable-name">fruit</span>: fruits) {
   System.out.println(fruit);
 }
-</code></pre>
+</pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org3bbdda6" class="outline-3">
-<h3 id="org3bbdda6">Does not compile</h3>
-<div class="outline-text-3" id="text-org3bbdda6">
+<div id="outline-container-org2fe16e4" class="outline-3">
+<h3 id="org2fe16e4">Does not compile</h3>
+<div class="outline-text-3" id="text-org2fe16e4">
 </div>
-<div id="outline-container-orgc86b2ba" class="outline-4">
-<h4 id="orgc86b2ba">Example 1</h4>
-<div class="outline-text-4" id="text-orgc86b2ba">
+<div id="outline-container-orgd175bc5" class="outline-4">
+<h4 id="orgd175bc5">Example 1</h4>
+<div class="outline-text-4" id="text-orgd175bc5">
 <p>
 This first <b>for­each</b> loop does <b>not compile</b> because <code>String</code> cannot be used on the <code>RHS</code> of the statement.
 </p>
@@ -302,25 +301,25 @@ While a <code>String</code> may represent a list of <b>characters</b>, it has to
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-type">String</span> <span class="org-variable-name">birds</span> = <span class="org-string">"Jay"</span>;
+<pre class="src src-java"><span class="org-type">String</span> <span class="org-variable-name">birds</span> = <span class="org-string">"Jay"</span>;
 <span class="org-keyword">for</span>(<span class="org-type">String</span> <span class="org-variable-name">bird</span> : birds) <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>    System.out.print(bird + <span class="org-string">" "</span>);
-</code></pre>
+</pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org53e5f4c" class="outline-4">
-<h4 id="org53e5f4c">Example 2</h4>
-<div class="outline-text-4" id="text-org53e5f4c">
+<div id="outline-container-orga31cf8f" class="outline-4">
+<h4 id="orga31cf8f">Example 2</h4>
+<div class="outline-text-4" id="text-orga31cf8f">
 <p>
 Does <b>not compile</b> because the loop <code>type</code> on the <code>LHS</code> of the statement is <code>int</code> and doesn’t match the expected type of <code>String</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-type">String</span>[] <span class="org-variable-name">sloths</span> = <span class="org-keyword">new</span> <span class="org-type">String</span>[3];
+<pre class="src src-java"><span class="org-type">String</span>[] <span class="org-variable-name">sloths</span> = <span class="org-keyword">new</span> <span class="org-type">String</span>[3];
 <span class="org-keyword">for</span>(<span class="org-type">int</span> <span class="org-variable-name">sloth</span> : sloths) <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>    System.out.print(sloth + <span class="org-string">" "</span>);
-</code></pre>
+</pre>
 </div>
 </div>
 </div>

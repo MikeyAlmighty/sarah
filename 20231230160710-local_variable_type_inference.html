@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-23 Wed 06:49 -->
+<!-- 2026-09-25 Fri 08:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Local Variable Type Inference</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -243,40 +242,40 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Local Variable Type Inference</h1>
-<div id="outline-container-orgcf3d046" class="outline-2">
-<h2 id="orgcf3d046">Local Variable Type Inference</h2>
-<div class="outline-text-2" id="text-orgcf3d046">
+<div id="outline-container-org81738a0" class="outline-2">
+<h2 id="org81738a0">Local Variable Type Inference</h2>
+<div class="outline-text-2" id="text-org81738a0">
 <p>
 You have the option of using the <a href="20231224102648-java_keywords.html#ID-5f2b572a-ec31-49de-ba13-95b0c5edb4c0">keyword</a> <code>var</code> instead of the type when declaring local variables under certain conditions.
 <b>Local variable type inference</b> works with <code>local variables</code> and <b>not</b> <code>instance variables</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Zoo</span> {
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Zoo</span> {
     <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">whatTypeAmI</span>() {
-        <span class="org-keyword">var</span> <span class="org-variable-name">name</span> = <span class="org-string">"Hello"</span>;
-        <span class="org-keyword">var</span> <span class="org-variable-name">size</span> = 7;
+        <span class="org-type">var</span> <span class="org-variable-name">name</span> = <span class="org-string">"Hello"</span>;
+        <span class="org-type">var</span> <span class="org-variable-name">size</span> = 7;
     }
 }
-</code></pre>
+</pre>
 </div>
 
 <p>
 The compiler looks at the code on the line of the declaration and uses it to <code>infer</code> the type.
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-comment-delimiter">// </span><span class="org-comment">Invalid assignment using var type inference
+<pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">Invalid assignment using var type inference
 </span><span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">reassignment</span>() {
-    <span class="org-keyword">var</span> <span class="org-variable-name">number</span> = 7;
+    <span class="org-type">var</span> <span class="org-variable-name">number</span> = 7;
     number = 4;
     number = <span class="org-string">"five"</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>}
 
 <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">twoTypes</span>() {
-    <span class="org-type">int</span> <span class="org-variable-name">a</span>, <span class="org-keyword">var</span> <span class="org-variable-name">b</span> = 3; <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
-</span>    <span class="org-keyword">var</span> <span class="org-variable-name">n</span> = <span class="org-constant">null</span>;<span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
+    <span class="org-type">int</span> <span class="org-variable-name">a</span>, <span class="org-variable-name">var</span> b = 3; <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
+</span>    <span class="org-type">var</span> <span class="org-variable-name">n</span> = <span class="org-constant">null</span>;<span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>}
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -287,12 +286,12 @@ The compiler looks at the code on the line of the declaration and uses it to <co
 This code does <b>not</b> compile. Remember that for <code>local variable type inference</code>, the compiler looks <b>only</b> at the line with the declaration.
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-comment-delimiter">/*</span><span class="org-comment">
+<pre class="src src-java"><span class="org-comment-delimiter">/*</span><span class="org-comment">
 </span><span class="org-comment-delimiter">*/</span>
 <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">doesNotCompile</span>(<span class="org-type">boolean</span> <span class="org-variable-name">check</span>) {
-    <span class="org-keyword">var</span> <span class="org-variable-name">question</span>;
+    <span class="org-type">var</span> <span class="org-variable-name">question</span>;
     question = 1;
-    <span class="org-keyword">var</span> <span class="org-variable-name">answer</span>;
+    <span class="org-type">var</span> <span class="org-variable-name">answer</span>;
     <span class="org-keyword">if</span> (check) {
         answer = 2;
     } <span class="org-keyword">else</span> {
@@ -300,12 +299,12 @@ This code does <b>not</b> compile. Remember that for <code>local variable type i
     }
     System.out.println(answer);
 }
-</code></pre>
+</pre>
 </div>
 </div>
-<div id="outline-container-orgfdc32a2" class="outline-3">
-<h3 id="orgfdc32a2"><span class="underline">Exam Trick</span></h3>
-<div class="outline-text-3" id="text-orgfdc32a2">
+<div id="outline-container-orge3082d6" class="outline-3">
+<h3 id="orge3082d6"><span class="underline">Exam Trick</span></h3>
+<div class="outline-text-3" id="text-orge3082d6">
 <p>
 In this example, <code>a</code> and <code>b</code> are method parameters.
 These are <b>not</b> local variables. Be on the lookout for <code>var</code> used with <b>constructors</b>, <b>method parameters</b>, or <b>instance variables</b>.
@@ -313,10 +312,10 @@ Using <code>var</code> in one of these places is a good exam trick to see if you
 Remember that var is <b>only</b> used for <code>local variable type inference</code>!
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-type">int</span> <span class="org-function-name">addition</span>(<span class="org-keyword">var</span> <span class="org-variable-name">a</span>, <span class="org-keyword">var</span> <span class="org-variable-name">b</span>) { <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-type">int</span> <span class="org-function-name">addition</span>(<span class="org-type">var</span> <span class="org-variable-name">a</span>, <span class="org-type">var</span> <span class="org-variable-name">b</span>) { <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>    <span class="org-keyword">return</span> a + b;
 }
-</code></pre>
+</pre>
 </div>
 </div>
 </div>

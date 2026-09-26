@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-23 Wed 06:49 -->
+<!-- 2026-09-25 Fri 08:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Hiding Variables</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -243,9 +242,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Hiding Variables</h1>
-<div id="outline-container-org2c07550" class="outline-2">
-<h2 id="org2c07550">Hiding Variables</h2>
-<div class="outline-text-2" id="text-org2c07550">
+<div id="outline-container-orga96d0a6" class="outline-2">
+<h2 id="orga96d0a6">Hiding Variables</h2>
+<div class="outline-text-2" id="text-orga96d0a6">
 <p>
 Java <b>doesn’t</b> allow variables to be <a href="20240120133450-overriding_a_method.html#ID-c67b24a4-82f7-4423-83a9-75fc1c566166">overriden</a>.
 </p>
@@ -270,11 +269,11 @@ As when hiding a <a href="20240120133516-hiding_static_methods.html#ID-19ea09af-
 Let’s take a look at a hidden variable:
 </p>
 </div>
-<div id="outline-container-orgc89bc8d" class="outline-3">
-<h3 id="orgc89bc8d">Example</h3>
-<div class="outline-text-3" id="text-orgc89bc8d">
+<div id="outline-container-org7dd159d" class="outline-3">
+<h3 id="org7dd159d">Example</h3>
+<div class="outline-text-3" id="text-org7dd159d">
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">class</span> <span class="org-type">Carnivore</span> {
+<pre class="src src-java"><span class="org-keyword">class</span> <span class="org-type">Carnivore</span> {
     <span class="org-keyword">protected</span> <span class="org-type">boolean</span> <span class="org-variable-name">hasFur</span> = <span class="org-constant">false</span>;
 }
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Meerkat</span> <span class="org-keyword">extends</span> <span class="org-type">Carnivore</span> {
@@ -286,7 +285,7 @@ Let’s take a look at a hidden variable:
     System.out.println(m.hasFur); <span class="org-comment-delimiter">// </span><span class="org-comment">true
 </span>    System.out.println(c.hasFur); <span class="org-comment-delimiter">// </span><span class="org-comment">false
 </span>}
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -301,9 +300,9 @@ Even though only <b>one</b> object is created by the <code>main()</code> method,
 The output changes depending on the reference variable used.
 </p>
 </div>
-<div id="outline-container-orgc1cd1a0" class="outline-4">
-<h4 id="orgc1cd1a0"><span class="underline">Exam Trick</span></h4>
-<div class="outline-text-4" id="text-orgc1cd1a0">
+<div id="outline-container-org7c5aa2b" class="outline-4">
+<h4 id="org7c5aa2b"><span class="underline">Exam Trick</span></h4>
+<div class="outline-text-4" id="text-org7c5aa2b">
 <p>
 For now, you just need to know that <a href="20240120133450-overriding_a_method.html#ID-c67b24a4-82f7-4423-83a9-75fc1c566166">overriding a method</a> replaces the <code>parent</code> method on all reference variables (other than <code>super</code>), whereas hiding a method or <a href="20240120133531-hiding_variables.html#ID-a6c7507b-e399-48a8-a8af-7f29fd05eaad">variables</a> replaces the member only if a <code>child</code> reference type is used.
 </p>

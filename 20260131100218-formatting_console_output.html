@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-23 Wed 06:49 -->
+<!-- 2026-09-25 Fri 08:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Formatting Console Output</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -243,19 +242,19 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Formatting Console Output</h1>
-<div id="outline-container-orgb19119a" class="outline-2">
-<h2 id="orgb19119a">Formatting Console Output</h2>
-<div class="outline-text-2" id="text-orgb19119a">
+<div id="outline-container-orgb42bf50" class="outline-2">
+<h2 id="orgb42bf50">Formatting Console Output</h2>
+<div class="outline-text-2" id="text-orgb42bf50">
 <ul class="org-ul">
 <li><code>System.out.printf()</code></li>
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-type">double</span> <span class="org-variable-name">amount</span> = 12618.98;
+<pre class="src src-java"><span class="org-type">double</span> <span class="org-variable-name">amount</span> = 12618.98;
 <span class="org-type">double</span> <span class="org-variable-name">interestRate</span> = 0.0013;
 <span class="org-type">double</span> <span class="org-variable-name">interest</span> = amount * interestRate;
 System.out.printf(<span class="org-string">"Interest is $%4.2f"</span>, interest);
-</code></pre>
+</pre>
 </div>
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -323,9 +322,9 @@ System.out.printf(<span class="org-string">"Interest is $%4.2f"</span>, interest
 </tbody>
 </table>
 </div>
-<div id="outline-container-org7f6768d" class="outline-3">
-<h3 id="org7f6768d">Precision / Width</h3>
-<div class="outline-text-3" id="text-org7f6768d">
+<div id="outline-container-org4874c9b" class="outline-3">
+<h3 id="org4874c9b">Precision / Width</h3>
+<div class="outline-text-3" id="text-org4874c9b">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -357,7 +356,7 @@ System.out.printf(<span class="org-string">"Interest is $%4.2f"</span>, interest
 </tr>
 
 <tr>
-<td class="org-left">&nbsp;</td>
+<td class="org-left">&#xa0;</td>
 <td class="org-left">If digits &gt; 5, width is automatically increased.</td>
 </tr>
 
@@ -367,7 +366,7 @@ System.out.printf(<span class="org-string">"Interest is $%4.2f"</span>, interest
 </tr>
 
 <tr>
-<td class="org-left">&nbsp;</td>
+<td class="org-left">&#xa0;</td>
 <td class="org-left">Pads with spaces on the left if needed; width auto-expands if necessary.</td>
 </tr>
 
@@ -377,7 +376,7 @@ System.out.printf(<span class="org-string">"Interest is $%4.2f"</span>, interest
 </tr>
 
 <tr>
-<td class="org-left">&nbsp;</td>
+<td class="org-left">&#xa0;</td>
 <td class="org-left">2 digits after the decimal point. Pads with spaces if needed.</td>
 </tr>
 
@@ -387,15 +386,15 @@ System.out.printf(<span class="org-string">"Interest is $%4.2f"</span>, interest
 </tr>
 
 <tr>
-<td class="org-left">&nbsp;</td>
+<td class="org-left">&#xa0;</td>
 <td class="org-left">width auto-expands if longer.</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="outline-container-org699acfa" class="outline-4">
-<h4 id="org699acfa">Note</h4>
-<div class="outline-text-4" id="text-org699acfa">
+<div id="outline-container-orgdfeeade" class="outline-4">
+<h4 id="orgdfeeade">Note</h4>
+<div class="outline-text-4" id="text-orgdfeeade">
 <p>
 The <code>%</code> sign denotes a <b>format</b> <b>specifier</b>.
 </p>
@@ -405,8 +404,8 @@ To output a literal <code>%</code> in the <code>format</code> <code>string</code
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><code>System.out.printf(<span class="org-string">"%.2f%%\n"</span>, 75.234);
-</code></pre>
+<pre class="src src-java">System.out.printf(<span class="org-string">"%.2f%%\n"</span>, 75.234);
+</pre>
 </div>
 
 <p>

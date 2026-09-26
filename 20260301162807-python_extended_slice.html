@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-23 Wed 06:49 -->
+<!-- 2026-09-25 Fri 08:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python Extended Slice</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -243,13 +242,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Python Extended Slice</h1>
-<div id="outline-container-orgd89efde" class="outline-2">
-<h2 id="orgd89efde">Python Extended Slice</h2>
-<div class="outline-text-2" id="text-orgd89efde">
+<div id="outline-container-orgf2fbaee" class="outline-2">
+<h2 id="orgf2fbaee">Python Extended Slice</h2>
+<div class="outline-text-2" id="text-orgf2fbaee">
 </div>
-<div id="outline-container-org1655c10" class="outline-3">
-<h3 id="org1655c10">Overview</h3>
-<div class="outline-text-3" id="text-org1655c10">
+<div id="outline-container-orgfd072be" class="outline-3">
+<h3 id="orgfd072be">Overview</h3>
+<div class="outline-text-3" id="text-orgfd072be">
 <p>
 Python sequences (<code>strings</code>, <code>lists</code>, <code>tuples</code>) support <b>extended slicing</b>, which allows extraction of elements with a specific <code>start</code>, <code>stop</code>, and <code>step</code>.
 </p>
@@ -258,8 +257,8 @@ Python sequences (<code>strings</code>, <code>lists</code>, <code>tuples</code>)
 Syntax:
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><code>sequence[start:stop:step]
-</code></pre>
+<pre class="src src-python">sequence[start:stop:step]
+</pre>
 </div>
 
 <ul class="org-ul">
@@ -269,11 +268,11 @@ Syntax:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf9799cb" class="outline-3">
-<h3 id="orgf9799cb">Examples with Strings</h3>
-<div class="outline-text-3" id="text-orgf9799cb">
+<div id="outline-container-orgea1d56a" class="outline-3">
+<h3 id="orgea1d56a">Examples with Strings</h3>
+<div class="outline-text-3" id="text-orgea1d56a">
 <div class="org-src-container">
-<pre class="src src-python"><code><span class="org-variable-name">text</span> <span class="org-operator">=</span> <span class="org-string">"Hello, World!"</span>
+<pre class="src src-python"><span class="org-variable-name">text</span> <span class="org-operator">=</span> <span class="org-string">"Hello, World!"</span>
 
 <span class="org-comment-delimiter"># </span><span class="org-comment">Basic slice
 </span><span class="org-builtin">print</span>(text[0:5])       <span class="org-comment-delimiter"># </span><span class="org-comment">'Hello'
@@ -286,15 +285,15 @@ Syntax:
 </span>
 <span class="org-comment-delimiter"># </span><span class="org-comment">Negative step with partial slice
 </span><span class="org-builtin">print</span>(text[5:0:<span class="org-operator">-</span>1])    <span class="org-comment-delimiter"># </span><span class="org-comment">',oll'</span>
-</code></pre>
+</pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgdc29f7b" class="outline-3">
-<h3 id="orgdc29f7b">Examples with Lists</h3>
-<div class="outline-text-3" id="text-orgdc29f7b">
+<div id="outline-container-orga5a3aaa" class="outline-3">
+<h3 id="orga5a3aaa">Examples with Lists</h3>
+<div class="outline-text-3" id="text-orga5a3aaa">
 <div class="org-src-container">
-<pre class="src src-python"><code><span class="org-variable-name">numbers</span> <span class="org-operator">=</span> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+<pre class="src src-python"><span class="org-variable-name">numbers</span> <span class="org-operator">=</span> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 <span class="org-comment-delimiter"># </span><span class="org-comment">Every second element
 </span><span class="org-builtin">print</span>(numbers[::2])    <span class="org-comment-delimiter"># </span><span class="org-comment">[0, 2, 4, 6, 8]
@@ -304,13 +303,13 @@ Syntax:
 </span>
 <span class="org-comment-delimiter"># </span><span class="org-comment">Slice with start and stop
 </span><span class="org-builtin">print</span>(numbers[2:8:3])  <span class="org-comment-delimiter"># </span><span class="org-comment">[2, 5]</span>
-</code></pre>
+</pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org71fef2f" class="outline-3">
-<h3 id="org71fef2f">Notes</h3>
-<div class="outline-text-3" id="text-org71fef2f">
+<div id="outline-container-org36c749c" class="outline-3">
+<h3 id="org36c749c">Notes</h3>
+<div class="outline-text-3" id="text-org36c749c">
 <ul class="org-ul">
 <li>Omitting <code>start</code> → <b>defaults</b> to <b>beginning</b> of <code>sequence</code></li>
 <li>Omitting <code>stop</code> → <b>defaults</b> to <b>end</b> of <code>sequence</code></li>
@@ -320,9 +319,9 @@ Syntax:
 </ul>
 </div>
 </div>
-<div id="outline-container-org69ec90b" class="outline-3">
-<h3 id="org69ec90b">Mental Model</h3>
-<div class="outline-text-3" id="text-org69ec90b">
+<div id="outline-container-orgd52bf07" class="outline-3">
+<h3 id="orgd52bf07">Mental Model</h3>
+<div class="outline-text-3" id="text-orgd52bf07">
 <p>
 Think of a sequence as a conveyor belt of items.
 </p>

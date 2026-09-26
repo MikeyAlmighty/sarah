@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-23 Wed 06:49 -->
+<!-- 2026-09-25 Fri 08:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Creating a Concrete Class</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -243,9 +242,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Creating a Concrete Class</h1>
-<div id="outline-container-orge4d0c31" class="outline-2">
-<h2 id="orge4d0c31">Creating a Concrete Class</h2>
-<div class="outline-text-2" id="text-orge4d0c31">
+<div id="outline-container-org0a88700" class="outline-2">
+<h2 id="org0a88700">Creating a Concrete Class</h2>
+<div class="outline-text-2" id="text-org0a88700">
 <p>
 An <a href="20240120172514-introducing_abstract_classes.html#ID-a1091361-fe51-4d9a-97dc-1178bc14226e">abstract classe</a> becomes usable when it is extended by a <b>concrete</b> <code>subclass</code>.
 </p>
@@ -267,15 +266,15 @@ An <code>abstract class</code> can extend a <code>non-abstract class</code> and 
 Anytime a <b>concrete</b> <code>class</code> is extending an <code>abstract class</code>, it must <code>implement</code> <b>all</b> of the methods that are <b>inherited</b> as <code>abstract</code>.
 </p>
 </div>
-<div id="outline-container-org863fe03" class="outline-3">
-<h3 id="org863fe03">Example</h3>
-<div class="outline-text-3" id="text-org863fe03">
+<div id="outline-container-org73c1b65" class="outline-3">
+<h3 id="org73c1b65">Example</h3>
+<div class="outline-text-3" id="text-org73c1b65">
 <p>
 Let’s illustrate this with a set of inherited classes:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">abstract</span> <span class="org-keyword">class</span> <span class="org-type">Mammal</span> {
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">abstract</span> <span class="org-keyword">class</span> <span class="org-type">Mammal</span> {
     <span class="org-keyword">abstract</span> <span class="org-type">void</span> <span class="org-function-name">showHorn</span>();
     <span class="org-keyword">abstract</span> <span class="org-type">void</span> <span class="org-function-name">eatLeaf</span>();
 }
@@ -287,7 +286,7 @@ Let’s illustrate this with a set of inherited classes:
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">BlackRhino</span> <span class="org-keyword">extends</span> <span class="org-type">Rhino</span> {
     <span class="org-type">void</span> <span class="org-function-name">eatLeaf</span>() {} <span class="org-comment-delimiter">// </span><span class="org-comment">Inherited from Mammal
 </span>}
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -315,15 +314,15 @@ The three classes in this example are <b>correctly defined and compile</b>.
 </p>
 </div>
 </div>
-<div id="outline-container-org1b2e16e" class="outline-3">
-<h3 id="org1b2e16e">Example</h3>
-<div class="outline-text-3" id="text-org1b2e16e">
+<div id="outline-container-org1e3f06d" class="outline-3">
+<h3 id="org1e3f06d">Example</h3>
+<div class="outline-text-3" id="text-org1e3f06d">
 <p>
 The following <b>concrete</b> class <code>Lion</code> <b>inherits</b> two abstract methods, <code>getName()</code> and <code>roar()</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">abstract</span> <span class="org-keyword">class</span> <span class="org-type">Animal</span> {
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">abstract</span> <span class="org-keyword">class</span> <span class="org-type">Animal</span> {
     <span class="org-keyword">abstract</span> <span class="org-type">String</span> <span class="org-function-name">getName</span>();
 }
 
@@ -339,7 +338,7 @@ The following <b>concrete</b> class <code>Lion</code> <b>inherits</b> two abstra
         System.out.println(<span class="org-string">"The Lion lets out a loud ROAR!"</span>);
     }
 }
-</code></pre>
+</pre>
 </div>
 
 <p>

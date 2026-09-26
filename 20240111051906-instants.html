@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-23 Wed 06:49 -->
+<!-- 2026-09-25 Fri 08:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Instants</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -243,34 +242,34 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Instants</h1>
-<div id="outline-container-orgee4026d" class="outline-2">
-<h2 id="orgee4026d">Instants</h2>
-<div class="outline-text-2" id="text-orgee4026d">
+<div id="outline-container-org5a7fc4b" class="outline-2">
+<h2 id="org5a7fc4b">Instants</h2>
+<div class="outline-text-2" id="text-org5a7fc4b">
 <p>
 The <code>Instant</code> class represents a <b>specific moment in time in the GMT time zone</b>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">var</span> <span class="org-variable-name">now</span> = Instant.now();
+<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">now</span> = Instant.now();
 <span class="org-comment-delimiter">// </span><span class="org-comment">do something time consuming
-</span><span class="org-keyword">var</span> <span class="org-variable-name">later</span> = Instant.now();
-<span class="org-keyword">var</span> <span class="org-variable-name">duration</span> = Duration.between(now, later);
+</span><span class="org-type">var</span> <span class="org-variable-name">later</span> = Instant.now();
+<span class="org-type">var</span> <span class="org-variable-name">duration</span> = Duration.between(now, later);
 System.out.println(duration.toMillis()); <span class="org-comment-delimiter">// </span><span class="org-comment">Returns number milliseconds</span>
-</code></pre>
+</pre>
 </div>
 
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">var</span> <span class="org-variable-name">date</span> = LocalDate.of(2022, 5, 25);
-<span class="org-keyword">var</span> <span class="org-variable-name">time</span> = LocalTime.of(11, 55, 00);
-<span class="org-keyword">var</span> <span class="org-variable-name">zone</span> = ZoneId.of(<span class="org-string">"US/Eastern"</span>);
-<span class="org-keyword">var</span> <span class="org-variable-name">zonedDateTime</span> = ZonedDateTime.of(date, time, zone);
+<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">date</span> = LocalDate.of(2022, 5, 25);
+<span class="org-type">var</span> <span class="org-variable-name">time</span> = LocalTime.of(11, 55, 00);
+<span class="org-type">var</span> <span class="org-variable-name">zone</span> = ZoneId.of(<span class="org-string">"US/Eastern"</span>);
+<span class="org-type">var</span> <span class="org-variable-name">zonedDateTime</span> = ZonedDateTime.of(date, time, zone);
 
-<span class="org-keyword">var</span> <span class="org-variable-name">instant</span> = zonedDateTime.toInstant(); <span class="org-comment-delimiter">// </span><span class="org-comment">2022&#8211;05&#8211;25T15:55:00Z
+<span class="org-type">var</span> <span class="org-variable-name">instant</span> = zonedDateTime.toInstant(); <span class="org-comment-delimiter">// </span><span class="org-comment">2022&#8211;05&#8211;25T15:55:00Z
 </span>
 System.out.println(zonedDateTime); <span class="org-comment-delimiter">// </span><span class="org-comment">2022&#8211;05&#8211;25T11:55&#8211;04:00[US/Eastern]
 </span>System.out.println(instant); <span class="org-comment-delimiter">// </span><span class="org-comment">202&#8211;05&#8211;25T15:55:00Z</span>
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -282,9 +281,9 @@ The <a href="20240109080453-zoneddatetime.html#ID-d606a825-fdcb-4746-95c0-ff6930
 The <code>Instant</code> gets rid of the time zone and turns it into an Instant of time in <code>GMT</code>.
 </p>
 </div>
-<div id="outline-container-org585b3e4" class="outline-3">
-<h3 id="org585b3e4"><span class="underline">Exam Trick</span></h3>
-<div class="outline-text-3" id="text-org585b3e4">
+<div id="outline-container-orga98a779" class="outline-3">
+<h3 id="orga98a779"><span class="underline">Exam Trick</span></h3>
+<div class="outline-text-3" id="text-orga98a779">
 <p>
 You <b>cannot</b> convert a <a href="20240109075711-localdatetime.html#ID-538ad23c-716d-409d-9846-88be3830d32a">LocalDateTime</a> to an <code>Instant</code>.
 Remember that an <code>Instant</code> is a <b>point in time</b>.

@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-23 Wed 06:49 -->
+<!-- 2026-09-25 Fri 08:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Differences between Interfaces and Abstract Classes</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -243,9 +242,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Differences between Interfaces and Abstract Classes</h1>
-<div id="outline-container-org63a8fb3" class="outline-2">
-<h2 id="org63a8fb3">Differences between Interfaces and Abstract Classes</h2>
-<div class="outline-text-2" id="text-org63a8fb3">
+<div id="outline-container-org74ffe87" class="outline-2">
+<h2 id="org74ffe87">Differences between Interfaces and Abstract Classes</h2>
+<div class="outline-text-2" id="text-org74ffe87">
 <p>
 Even though <a href="20240114162721-abstract_classes.html#ID-3893ce2e-cd85-4914-ba26-d7c7c732eb02">abstract classes</a> and <a href="20240124071359-implementing_interfaces.html#ID-e1fb40df-c0b5-4c10-9704-39bac087c227">interfaces</a> are both considered <code>abstract types</code>, only <code>interfaces</code> make use of <a href="20240125070115-inserting_implicit_modifiers.html#ID-11cb5831-7123-44df-a020-cfd8f6646645">implicit modifiers</a>.
 </p>
@@ -254,12 +253,12 @@ Even though <a href="20240114162721-abstract_classes.html#ID-3893ce2e-cd85-4914-
 Java allows only <b>single inheritance</b> for class <code>extension</code>, but allows <b>multiple extensions</b> for <code>interfaces</code>.
 </p>
 </div>
-<div id="outline-container-org7e40953" class="outline-3">
-<h3 id="org7e40953">Example</h3>
-<div class="outline-text-3" id="text-org7e40953">
+<div id="outline-container-org8a97c08" class="outline-3">
+<h3 id="org8a97c08">Example</h3>
+<div class="outline-text-3" id="text-org8a97c08">
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">NewClass</span> <span class="org-keyword">extends</span> <span class="org-type">BaseClass</span> <span class="org-keyword">implements</span> <span class="org-type">Interface1</span>, ... , InterfaceN {...}
-</code></pre>
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">NewClass</span> <span class="org-keyword">extends</span> <span class="org-type">BaseClass</span> <span class="org-keyword">implements</span> <span class="org-type">Interface1</span>, ... , InterfaceN {...}
+</pre>
 </div>
 
 <p>
@@ -275,10 +274,10 @@ For example, <code>NewInterface</code> in the following code is a <b>subinterfac
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">interface</span> <span class="org-type">NewInterface</span> <span class="org-keyword">extends</span> <span class="org-type">Interface1</span>, ... , InterfaceN {
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">interface</span> <span class="org-type">NewInterface</span> <span class="org-keyword">extends</span> <span class="org-type">Interface1</span>, ... , InterfaceN {
     <span class="org-comment-delimiter">// </span><span class="org-comment">constants and abstract methods
 </span>}
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -386,18 +385,18 @@ You can use an <code>interface</code> as a <b>data type</b> and cast a variable 
 </table>
 </div>
 </div>
-<div id="outline-container-org0632275" class="outline-3">
-<h3 id="org0632275">Summary</h3>
-<div class="outline-text-3" id="text-org0632275">
+<div id="outline-container-org6dc5820" class="outline-3">
+<h3 id="org6dc5820">Summary</h3>
+<div class="outline-text-3" id="text-org6dc5820">
 <p>
 <code>Abstract classes</code> are best when you need shared <b>state</b> and <b>implementation</b>.
 <code>Interfaces</code> are best for <b>defining</b> <b>capabilities</b> across <b>unrelated</b> <code>classes</code>.
 </p>
 </div>
 </div>
-<div id="outline-container-org90a2d7b" class="outline-3">
-<h3 id="org90a2d7b">Which to use</h3>
-<div class="outline-text-3" id="text-org90a2d7b">
+<div id="outline-container-org15d05de" class="outline-3">
+<h3 id="org15d05de">Which to use</h3>
+<div class="outline-text-3" id="text-org15d05de">
 <p>
 In general, a strong <b>"is-a"</b> relationship that clearly describes a <i>parent-child</i> relationship should be <b>modelled</b> using <code>classes</code>.
 </p>
@@ -439,9 +438,9 @@ Then you can use the <code>interface</code> or the <code>abstract class</code>, 
 </p>
 </div>
 </div>
-<div id="outline-container-org7d7117c" class="outline-3">
-<h3 id="org7d7117c">Example</h3>
-<div class="outline-text-3" id="text-org7d7117c">
+<div id="outline-container-org85294d5" class="outline-3">
+<h3 id="org85294d5">Example</h3>
+<div class="outline-text-3" id="text-org85294d5">
 <p>
 Both of these method definitions are <i>considered</i> <code>abstract</code>.
 </p>
@@ -455,14 +454,14 @@ Whereas the method in the <code>Poodle</code> interface will compile <b>with or 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">abstract</span> <span class="org-keyword">class</span> <span class="org-type">Husky</span> { <span class="org-comment-delimiter">// </span><span class="org-comment">abstract required in class declaration
+<pre class="src src-java"><span class="org-keyword">abstract</span> <span class="org-keyword">class</span> <span class="org-type">Husky</span> { <span class="org-comment-delimiter">// </span><span class="org-comment">abstract required in class declaration
 </span>    <span class="org-keyword">abstract</span> <span class="org-type">void</span> <span class="org-function-name">play</span>(); <span class="org-comment-delimiter">// </span><span class="org-comment">abstract required in method declaration
 </span>}
 
 <span class="org-keyword">interface</span> <span class="org-type">Poodle</span> { <span class="org-comment-delimiter">// </span><span class="org-comment">abstract optional in interface declaration
 </span>    <span class="org-type">void</span> <span class="org-function-name">play</span>(); <span class="org-comment-delimiter">// </span><span class="org-comment">abstract optional in method declaration
 </span>}
-</code></pre>
+</pre>
 </div>
 </div>
 </div>

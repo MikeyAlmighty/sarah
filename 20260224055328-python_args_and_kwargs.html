@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-23 Wed 06:49 -->
+<!-- 2026-09-25 Fri 08:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python args and kwargs</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -243,19 +242,19 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Python args and kwargs</h1>
-<div id="outline-container-orge2f1968" class="outline-2">
-<h2 id="orge2f1968">Python *args and **kwargs</h2>
-<div class="outline-text-2" id="text-orge2f1968">
+<div id="outline-container-orgef32643" class="outline-2">
+<h2 id="orgef32643">Python *args and **kwargs</h2>
+<div class="outline-text-2" id="text-orgef32643">
 </div>
-<div id="outline-container-orgdc39ca0" class="outline-3">
-<h3 id="orgdc39ca0">Basic Positional Arguments</h3>
-<div class="outline-text-3" id="text-orgdc39ca0">
+<div id="outline-container-orgba63f23" class="outline-3">
+<h3 id="orgba63f23">Basic Positional Arguments</h3>
+<div class="outline-text-3" id="text-orgba63f23">
 <div class="org-src-container">
-<pre class="src src-python"><code><span class="org-keyword">def</span> <span class="org-function-name">sum_of</span>(a, b):
+<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">sum_of</span>(a, b):
     <span class="org-keyword">return</span> a <span class="org-operator">+</span> b
 
 <span class="org-builtin">print</span>(sum_of(4, 5))  <span class="org-comment-delimiter"># </span><span class="org-comment">9</span>
-</code></pre>
+</pre>
 </div>
 
 <ul class="org-ul">
@@ -264,23 +263,23 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-org2451cd2" class="outline-3">
-<h3 id="org2451cd2">*args (Variable Positional Arguments)</h3>
-<div class="outline-text-3" id="text-org2451cd2">
+<div id="outline-container-org8cab162" class="outline-3">
+<h3 id="org8cab162">*args (Variable Positional Arguments)</h3>
+<div class="outline-text-3" id="text-org8cab162">
 <p>
 Allows a function to accept any number of positional arguments.
 Collected into a <code>tuple</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><code><span class="org-keyword">def</span> <span class="org-function-name">sum_of_args</span>(<span class="org-operator">*</span>args):
+<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">sum_of_args</span>(<span class="org-operator">*</span>args):
     <span class="org-variable-name">total</span> <span class="org-operator">=</span> 0
     <span class="org-keyword">for</span> x <span class="org-keyword">in</span> args:
         <span class="org-variable-name">total</span> <span class="org-operator">+=</span> x
     <span class="org-keyword">return</span> total
 
 <span class="org-builtin">print</span>(sum_of_args(4, 5, 6, 7))  <span class="org-comment-delimiter"># </span><span class="org-comment">22</span>
-</code></pre>
+</pre>
 </div>
 
 <ul class="org-ul">
@@ -290,23 +289,23 @@ Collected into a <code>tuple</code>.
 </ul>
 </div>
 </div>
-<div id="outline-container-org3973cb8" class="outline-3">
-<h3 id="org3973cb8">**kwargs (Variable Keyword Arguments)</h3>
-<div class="outline-text-3" id="text-org3973cb8">
+<div id="outline-container-org51dc248" class="outline-3">
+<h3 id="org51dc248">**kwargs (Variable Keyword Arguments)</h3>
+<div class="outline-text-3" id="text-org51dc248">
 <p>
 Allows a function to accept <b>any</b> number of <b>keyword</b> <b>arguments</b>.
 Collected into a <code>dictionary</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><code><span class="org-keyword">def</span> <span class="org-function-name">sum_of_kwargs</span>(<span class="org-operator">**</span>kwargs):
+<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">sum_of_kwargs</span>(<span class="org-operator">**</span>kwargs):
     <span class="org-variable-name">total</span> <span class="org-operator">=</span> 0
     <span class="org-keyword">for</span> k, v <span class="org-keyword">in</span> kwargs.items():
         <span class="org-variable-name">total</span> <span class="org-operator">+=</span> v
     <span class="org-keyword">return</span> <span class="org-builtin">round</span>(total, 2)
 
 <span class="org-builtin">print</span>(sum_of_kwargs(coffee<span class="org-operator">=</span>2.99, cake<span class="org-operator">=</span>4.99, juice<span class="org-operator">=</span>2.99))  <span class="org-comment-delimiter"># </span><span class="org-comment">10.97</span>
-</code></pre>
+</pre>
 </div>
 
 <ul class="org-ul">
@@ -316,15 +315,15 @@ Collected into a <code>dictionary</code>.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb417516" class="outline-3">
-<h3 id="orgb417516">Combining *args and **kwargs</h3>
-<div class="outline-text-3" id="text-orgb417516">
+<div id="outline-container-orgea58457" class="outline-3">
+<h3 id="orgea58457">Combining *args and **kwargs</h3>
+<div class="outline-text-3" id="text-orgea58457">
 <div class="org-src-container">
-<pre class="src src-python"><code><span class="org-keyword">def</span> <span class="org-function-name">example</span>(a, <span class="org-operator">*</span>args, <span class="org-operator">**</span>kwargs):
+<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">example</span>(a, <span class="org-operator">*</span>args, <span class="org-operator">**</span>kwargs):
     <span class="org-builtin">print</span>(<span class="org-string">"a:"</span>, a)
     <span class="org-builtin">print</span>(<span class="org-string">"args:"</span>, args)
     <span class="org-builtin">print</span>(<span class="org-string">"kwargs:"</span>, kwargs)
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -337,9 +336,9 @@ Order must be:
 </ol>
 </div>
 </div>
-<div id="outline-container-org4426f81" class="outline-3">
-<h3 id="org4426f81">Notes</h3>
-<div class="outline-text-3" id="text-org4426f81">
+<div id="outline-container-orgaff342f" class="outline-3">
+<h3 id="orgaff342f">Notes</h3>
+<div class="outline-text-3" id="text-orgaff342f">
 <ul class="org-ul">
 <li><code>*</code> unpacks positional arguments.</li>
 <li><code>**</code> unpacks keyword arguments.</li>

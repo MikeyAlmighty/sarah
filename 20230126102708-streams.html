@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-23 Wed 06:49 -->
+<!-- 2026-09-25 Fri 08:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Streams</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -248,7 +247,7 @@ Process Collection of data
 </p>
 
 
-<div id="org459a618" class="figure">
+<div id="org491433a" class="figure">
 <p><img src="./assets/Streams.png" alt="Streams.png" />
 </p>
 </div>
@@ -261,39 +260,39 @@ Creating a stream
 From a collection
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><code> <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+<pre class="src src-java"> <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
     <span class="org-type">List</span>&lt;<span class="org-type">Movie</span>&gt; <span class="org-variable-name">movies</span> = List.of(
         <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"Deadpool"</span>, 20),
         <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"Deadpool 2"</span>, 15),
         <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"Deadpool 3"</span>, 10)
     );
 
-    <span class="org-keyword">var</span> <span class="org-variable-name">count2</span> = movies.stream()
+    <span class="org-type">var</span> <span class="org-variable-name">count2</span> = movies.stream()
         .filter(movie -&gt; movie.getLikes() &gt; 10)
         .count();
 
         System.out.println(count2);
 }
-</code></pre>
+</pre>
 </div></li>
 
 <li>From an array</li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
     <span class="org-type">int</span>[] <span class="org-variable-name">numbers</span> = { 3, 1, 6};
     Arrays.stream(numbers)
             .forEach(n -&gt; System.out.println(n));
 }
-</code></pre>
+</pre>
 </div>
 
 <ul class="org-ul">
 <li>From arbitrary number of objects</li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-java"><code>Stream.of(1, 2, 3, 4);
-</code></pre>
+<pre class="src src-java">Stream.of(1, 2, 3, 4);
+</pre>
 </div>
 
 <ul class="org-ul">
@@ -302,10 +301,10 @@ infinite/finite streams
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">var</span> <span class="org-variable-name">stream</span> = Stream.generate(() -&gt; Math.random());
+<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">stream</span> = Stream.generate(() -&gt; Math.random());
 stream.forEach(n -&gt; System.out.println(n));
 <span class="org-comment-delimiter">// </span><span class="org-comment">stream.limit(3).forEach(n -&gt; System.out.println(n)); // limit of 3</span>
-</code></pre>
+</pre>
 </div></li>
 </ul>
 
@@ -314,13 +313,13 @@ OR
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
-    <span class="org-keyword">var</span> <span class="org-variable-name">stream</span> = Stream.iterate(1, n -&gt; n + 1);
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+    <span class="org-type">var</span> <span class="org-variable-name">stream</span> = Stream.iterate(1, n -&gt; n + 1);
     stream
     .limit(3)
     .forEach(item -&gt; System.out.println(item));
 }
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -342,8 +341,8 @@ VS
 One can use <code>.peek</code> at any point to "peek" at the stream <b>without</b> termintating
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
-        <span class="org-keyword">var</span> <span class="org-variable-name">movieStream</span> = Stream.of(
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+        <span class="org-type">var</span> <span class="org-variable-name">movieStream</span> = Stream.of(
                 <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"b"</span>, 15),
                 <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"a"</span>, 5),
                 <span class="org-keyword">new</span> <span class="org-type">Movie</span>(<span class="org-string">"d"</span>, 15),
@@ -358,19 +357,19 @@ One can use <code>.peek</code> at any point to "peek" at the stream <b>without</
             .peek(movieTitle -&gt; System.out.println(<span class="org-string">"map: "</span> + movieTitle))
             .forEach(System.out::println);
 }
-</code></pre>
+</pre>
 </div>
-<div id="outline-container-orge06ec04" class="outline-2">
-<h2 id="orge06ec04">Primitive Streams</h2>
-<div class="outline-text-2" id="text-orge06ec04">
+<div id="outline-container-org20343f4" class="outline-2">
+<h2 id="org20343f4">Primitive Streams</h2>
+<div class="outline-text-2" id="text-org20343f4">
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
     IntStream.range(0, 5)
             .forEach(System.out::println); <span class="org-comment-delimiter">// </span><span class="org-comment">0 -&gt; 4
 </span>    IntStream.rangeClosed(0, 5)
                 .forEach(System.out::println); <span class="org-comment-delimiter">// </span><span class="org-comment">0 -&gt; 5
 </span>}
-</code></pre>
+</pre>
 </div>
 </div>
 </div>

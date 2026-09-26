@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-23 Wed 06:49 -->
+<!-- 2026-09-25 Fri 08:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Inheriting an Interface</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -243,15 +242,15 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Inheriting an Interface</h1>
-<div id="outline-container-org9e911ad" class="outline-2">
-<h2 id="org9e911ad">Inheriting an Interface</h2>
-<div class="outline-text-2" id="text-org9e911ad">
+<div id="outline-container-orge37e716" class="outline-2">
+<h2 id="orge37e716">Inheriting an Interface</h2>
+<div class="outline-text-2" id="text-orge37e716">
 <p>
 Like an <a href="20240114162721-abstract_classes.html#ID-3893ce2e-cd85-4914-ba26-d7c7c732eb02">abstract class</a>, when a <code>concrete</code> class <b>inherits</b> an <code>interface</code>, all of the <i>inherited</i> <code>abstract methods</code> <b>must</b> <b>be</b> <b>implemented</b>.
 </p>
 
 
-<div id="orgd5da8a4" class="figure">
+<div id="orgeb10dbc" class="figure">
 <p><img src="./assets/interface_inheritance.png" alt="interface_inheritance.png" />
 </p>
 </div>
@@ -266,11 +265,11 @@ The concrete <code>Swan</code> class inherits <b>four</b> abstract methods that 
 <li><code>swim()</code></li>
 </ol>
 </div>
-<div id="outline-container-orgf525ad6" class="outline-3">
-<h3 id="orgf525ad6">Example</h3>
-<div class="outline-text-3" id="text-orgf525ad6">
+<div id="outline-container-org0a642ad" class="outline-3">
+<h3 id="org0a642ad">Example</h3>
+<div class="outline-text-3" id="text-org0a642ad">
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">interface</span> <span class="org-type">HasTail</span> {
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">interface</span> <span class="org-type">HasTail</span> {
     <span class="org-keyword">public</span> <span class="org-type">int</span> <span class="org-function-name">getTailLength</span>();
 }
 
@@ -285,7 +284,7 @@ The concrete <code>Swan</code> class inherits <b>four</b> abstract methods that 
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">CommonSeal</span> <span class="org-keyword">extends</span> <span class="org-type">HarborSeal</span> { <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>
 } 
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -294,9 +293,9 @@ The concrete <code>CommonSeal</code> class, though, <b>must override all inherit
 </p>
 </div>
 </div>
-<div id="outline-container-org2544af6" class="outline-3">
-<h3 id="org2544af6">Mixing Class and Interface Keywords</h3>
-<div class="outline-text-3" id="text-org2544af6">
+<div id="outline-container-orga9533f7" class="outline-3">
+<h3 id="orga9533f7">Mixing Class and Interface Keywords</h3>
+<div class="outline-text-3" id="text-orga9533f7">
 <p>
 The exam creators are fond of questions that mix <code>class</code> and <code>interface</code> terminology.
 </p>
@@ -310,9 +309,9 @@ The exam creators are fond of questions that mix <code>class</code> and <code>in
 The following examples illustrate these principles:
 </p>
 </div>
-<div id="outline-container-orgc27e526" class="outline-4">
-<h4 id="orgc27e526"><span class="underline">Exam Trick</span></h4>
-<div class="outline-text-4" id="text-orgc27e526">
+<div id="outline-container-org893eb68" class="outline-4">
+<h4 id="org893eb68"><span class="underline">Exam Trick</span></h4>
+<div class="outline-text-4" id="text-org893eb68">
 <p>
 The <code>first</code> example shows a class trying to <b>extend</b> an <code>interface</code> and doesn’t compile.
 </p>
@@ -326,29 +325,29 @@ The <code>second</code> example shows an <code>interface</code> trying to <b>ext
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">interface</span> <span class="org-type">CanRun</span> {}
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">interface</span> <span class="org-type">CanRun</span> {}
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Cheetah</span> <span class="org-keyword">extends</span> <span class="org-type">CanRun</span> {} <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Hyena</span> {}
 <span class="org-keyword">public</span> <span class="org-keyword">interface</span> <span class="org-type">HasFur</span> <span class="org-keyword">extends</span> <span class="org-type">Hyena</span> {} <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE</span>
-</code></pre>
+</pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgd63191b" class="outline-3">
-<h3 id="orgd63191b">Inheriting Duplicate Abstract Methods</h3>
-<div class="outline-text-3" id="text-orgd63191b">
+<div id="outline-container-org980202c" class="outline-3">
+<h3 id="org980202c">Inheriting Duplicate Abstract Methods</h3>
+<div class="outline-text-3" id="text-org980202c">
 </div>
-<div id="outline-container-orgbfd5861" class="outline-4">
-<h4 id="orgbfd5861">Example</h4>
-<div class="outline-text-4" id="text-orgbfd5861">
+<div id="outline-container-orgedbcd2d" class="outline-4">
+<h4 id="orgedbcd2d">Example</h4>
+<div class="outline-text-4" id="text-orgedbcd2d">
 <p>
 Java supports inheriting two <code>abstract methods</code> that have <code>compatible</code> method declarations.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">abstract</span> <span class="org-keyword">interface</span> <span class="org-type">Herbivore</span> {
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">abstract</span> <span class="org-keyword">interface</span> <span class="org-type">Herbivore</span> {
     <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">eatPlants</span>();
 }
 
@@ -361,20 +360,20 @@ Java supports inheriting two <code>abstract methods</code> that have <code>compa
         System.out.println(<span class="org-string">"Eating plants"</span>);
     }
 }
-</code></pre>
+</pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orge342314" class="outline-4">
-<h4 id="orge342314">Example</h4>
-<div class="outline-text-4" id="text-orge342314">
+<div id="outline-container-orgd22edd9" class="outline-4">
+<h4 id="orgd22edd9">Example</h4>
+<div class="outline-text-4" id="text-orgd22edd9">
 <p>
 By <code>compatible</code>, we mean a method can be written that properly <b>overrides</b> both inherited methods:
 For example, by using <a href="20240120134129-covariant_return_types.html#ID-6da516df-94e4-4b63-a787-0bddd7e6c6ca">Covariant Return Types</a> that you learned about in <a href="20231229161552-6_class_design.html#ID-3b599fc1-41c5-4aeb-93eb-2a4657545202">6. Class Design</a>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">abstract</span> <span class="org-keyword">interface</span> <span class="org-type">Herbivore</span> {
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">abstract</span> <span class="org-keyword">interface</span> <span class="org-type">Herbivore</span> {
     <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">eatPlants</span>();
 }
 
@@ -385,7 +384,7 @@ For example, by using <a href="20240120134129-covariant_return_types.html#ID-6da
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Tiger</span> <span class="org-keyword">implements</span> <span class="org-type">Herbivore</span>, <span class="org-type">Omnivore</span> { <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>...
 }
-</code></pre>
+</pre>
 </div>
 
 <p>

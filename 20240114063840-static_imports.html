@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-23 Wed 06:49 -->
+<!-- 2026-09-25 Fri 08:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Static Imports</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -243,9 +242,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Static Imports</h1>
-<div id="outline-container-org87edf68" class="outline-2">
-<h2 id="org87edf68">Static Imports</h2>
-<div class="outline-text-2" id="text-org87edf68">
+<div id="outline-container-orga09745e" class="outline-2">
+<h2 id="orga09745e">Static Imports</h2>
+<div class="outline-text-2" id="text-orga09745e">
 <p>
 <b>Regular imports</b> are for importing <code>classes</code>, while <b>static imports</b> are for importing <code>static</code> members of <code>classes</code> like <b>variables</b> and <b>methods</b>.
 </p>
@@ -260,11 +259,11 @@ The idea is that you shouldn’t have to specify where <b>each</b> <code>static<
 An example of when <code>static imports</code> shine is when you are referring to a lot of constants in another <code>class</code>.
 </p>
 </div>
-<div id="outline-container-orgfcc2c3e" class="outline-3">
-<h3 id="orgfcc2c3e">Example (Regular Import)</h3>
-<div class="outline-text-3" id="text-orgfcc2c3e">
+<div id="outline-container-org29b366b" class="outline-3">
+<h3 id="org29b366b">Example (Regular Import)</h3>
+<div class="outline-text-3" id="text-org29b366b">
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">List</span>;
+<pre class="src src-java"><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">List</span>;
 <span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Arrays</span>;
 
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Imports</span> {
@@ -272,20 +271,20 @@ An example of when <code>static imports</code> shine is when you are referring t
         <span class="org-type">List</span>&lt;<span class="org-type">String</span>&gt; <span class="org-variable-name">list</span> = Arrays.asList(<span class="org-string">"one"</span>, <span class="org-string">"two"</span>);
     }
 }
-</code></pre>
+</pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org3d139b3" class="outline-3">
-<h3 id="org3d139b3">Example (Static Import)</h3>
-<div class="outline-text-3" id="text-org3d139b3">
+<div id="outline-container-org20f18e7" class="outline-3">
+<h3 id="org20f18e7">Example (Static Import)</h3>
+<div class="outline-text-3" id="text-org20f18e7">
 <p>
 In this example, we are specifically importing the <code>asList</code> method.
 This means that any time we refer to <code>asList</code> in the <code>class</code>, it will call <code>Arrays.asList()</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">List</span>;
+<pre class="src src-java"><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">List</span>;
 <span class="org-keyword">import</span> <span class="org-keyword">static</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.Arrays.<span class="org-type">asList</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">static import
 </span>
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">ZooParking</span> {
@@ -293,14 +292,14 @@ This means that any time we refer to <code>asList</code> in the <code>class</cod
         <span class="org-type">List</span>&lt;<span class="org-type">String</span>&gt; <span class="org-variable-name">list</span> = asList(<span class="org-string">"one"</span>, <span class="org-string">"two"</span>); <span class="org-comment-delimiter">// </span><span class="org-comment">No Arrays. prefix
 </span>    }
 }
-</code></pre>
+</pre>
 </div>
 </div>
-<div id="outline-container-org2b715bc" class="outline-4">
-<h4 id="org2b715bc">Negative Example</h4>
-<div class="outline-text-4" id="text-org2b715bc">
+<div id="outline-container-orgde51e91" class="outline-4">
+<h4 id="orgde51e91">Negative Example</h4>
+<div class="outline-text-4" id="text-orgde51e91">
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">import</span> <span class="org-keyword">static</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Arrays</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE (Tries to use a static import to import a class)
+<pre class="src src-java"><span class="org-keyword">import</span> <span class="org-keyword">static</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Arrays</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE (Tries to use a static import to import a class)
 </span><span class="org-keyword">import</span> <span class="org-keyword">static</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.Arrays.<span class="org-type">asList</span>;
 <span class="org-keyword">static</span> <span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-constant">Arrays</span>.*; <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>
@@ -309,13 +308,13 @@ This means that any time we refer to <code>asList</code> in the <code>class</cod
         Arrays.asList(<span class="org-string">"one"</span>); <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE (Should just be asList("One");)
 </span>    }
 }
-</code></pre>
+</pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgdf6666e" class="outline-4">
-<h4 id="orgdf6666e"><span class="underline">Exam Trick</span></h4>
-<div class="outline-text-4" id="text-orgdf6666e">
+<div id="outline-container-orgf639aad" class="outline-4">
+<h4 id="orgf639aad"><span class="underline">Exam Trick</span></h4>
+<div class="outline-text-4" id="text-orgf639aad">
 <p>
 In <a href="20231229153446-1_building_blocks.html#ID-34f737cd-7010-42aa-9f37-5136eb75a44e">1. Building blocks</a>, you learned that importing <b>two</b> <code>classes</code> with the same name gives a <b>compiler error</b>.
 This is <b>true</b> of <code>static</code> imports as well.
@@ -329,9 +328,9 @@ The compiler will complain if you try to explicitly do a <code>static import</co
 Here’s an example:
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">import</span> <span class="org-keyword">static</span> <span class="org-constant">zoo</span>.<span class="org-constant">A</span>.<span class="org-type">TYPE</span>;
+<pre class="src src-java"><span class="org-keyword">import</span> <span class="org-keyword">static</span> <span class="org-constant">zoo</span>.<span class="org-constant">A</span>.<span class="org-type">TYPE</span>;
 <span class="org-keyword">import</span> <span class="org-keyword">static</span> <span class="org-constant">zoo</span>.<span class="org-constant">B</span>.<span class="org-type">TYPE</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE</span>
-</code></pre>
+</pre>
 </div>
 
 <p>

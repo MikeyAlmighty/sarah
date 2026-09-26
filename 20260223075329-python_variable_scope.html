@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-23 Wed 06:49 -->
+<!-- 2026-09-25 Fri 08:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python Variable Scope</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -243,9 +242,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Python Variable Scope</h1>
-<div id="outline-container-org6ee1ee9" class="outline-2">
-<h2 id="org6ee1ee9">Python Scope Levels (LEGB)</h2>
-<div class="outline-text-2" id="text-org6ee1ee9">
+<div id="outline-container-org4c2f20f" class="outline-2">
+<h2 id="org4c2f20f">Python Scope Levels (LEGB)</h2>
+<div class="outline-text-2" id="text-org4c2f20f">
 <p>
 <b>LEGB</b> is a rule used by Python to resolve variable names.  
 It stands for:
@@ -263,20 +262,20 @@ Python searches for variables in this order.
 </p>
 </div>
 </div>
-<div id="outline-container-orgc2af26c" class="outline-2">
-<h2 id="orgc2af26c">1. Local Scope (L)</h2>
-<div class="outline-text-2" id="text-orgc2af26c">
+<div id="outline-container-org99a8b94" class="outline-2">
+<h2 id="org99a8b94">1. Local Scope (L)</h2>
+<div class="outline-text-2" id="text-org99a8b94">
 <p>
 The local scope refers to variables defined inside a function.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><code><span class="org-keyword">def</span> <span class="org-function-name">greet</span>():
+<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">greet</span>():
     <span class="org-variable-name">message</span> <span class="org-operator">=</span> <span class="org-string">"Hello"</span>
     <span class="org-builtin">print</span>(message)
 
 greet()
-</code></pre>
+</pre>
 </div>
 
 <ul class="org-ul">
@@ -289,15 +288,15 @@ Local scope has the <b>highest</b> priority.
 </p>
 </div>
 </div>
-<div id="outline-container-orgc5c0c0e" class="outline-2">
-<h2 id="orgc5c0c0e">2. Enclosing Scope (E)</h2>
-<div class="outline-text-2" id="text-orgc5c0c0e">
+<div id="outline-container-org070b5d4" class="outline-2">
+<h2 id="org070b5d4">2. Enclosing Scope (E)</h2>
+<div class="outline-text-2" id="text-org070b5d4">
 <p>
 The enclosing scope exists in nested functions (a function inside another function).
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><code><span class="org-keyword">def</span> <span class="org-function-name">outer</span>():
+<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">outer</span>():
     <span class="org-variable-name">x</span> <span class="org-operator">=</span> <span class="org-string">"outer value"</span>
 
     <span class="org-keyword">def</span> <span class="org-function-name">inner</span>():
@@ -306,7 +305,7 @@ The enclosing scope exists in nested functions (a function inside another functi
     inner()
 
 outer()
-</code></pre>
+</pre>
 </div>
 
 <ul class="org-ul">
@@ -320,7 +319,7 @@ You can modify enclosing variables using <code>nonlocal</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><code><span class="org-keyword">def</span> <span class="org-function-name">outer</span>():
+<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">outer</span>():
     <span class="org-variable-name">x</span> <span class="org-operator">=</span> 10
 
     <span class="org-keyword">def</span> <span class="org-function-name">inner</span>():
@@ -331,25 +330,25 @@ You can modify enclosing variables using <code>nonlocal</code>:
     <span class="org-builtin">print</span>(x)  <span class="org-comment-delimiter"># </span><span class="org-comment">15
 </span>
 outer()
-</code></pre>
+</pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org89aae51" class="outline-2">
-<h2 id="org89aae51">3. Global Scope (G)</h2>
-<div class="outline-text-2" id="text-org89aae51">
+<div id="outline-container-orgac0c58c" class="outline-2">
+<h2 id="orgac0c58c">3. Global Scope (G)</h2>
+<div class="outline-text-2" id="text-orgac0c58c">
 <p>
 The global scope refers to variables defined at the <b>top</b> level of a <b>file</b>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><code><span class="org-variable-name">x</span> <span class="org-operator">=</span> 100
+<pre class="src src-python"><span class="org-variable-name">x</span> <span class="org-operator">=</span> 100
 
 <span class="org-keyword">def</span> <span class="org-function-name">show</span>():
     <span class="org-builtin">print</span>(x)
 
 show()
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -357,7 +356,7 @@ To modify a global variable inside a function, use <code>global</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><code><span class="org-variable-name">x</span> <span class="org-operator">=</span> 100
+<pre class="src src-python"><span class="org-variable-name">x</span> <span class="org-operator">=</span> 100
 
 <span class="org-keyword">def</span> <span class="org-function-name">change</span>():
     <span class="org-keyword">global</span> x
@@ -365,13 +364,13 @@ To modify a global variable inside a function, use <code>global</code>:
 
 change()
 <span class="org-builtin">print</span>(x)  <span class="org-comment-delimiter"># </span><span class="org-comment">200</span>
-</code></pre>
+</pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org1c73be0" class="outline-2">
-<h2 id="org1c73be0">4. Built-in Scope (B)</h2>
-<div class="outline-text-2" id="text-org1c73be0">
+<div id="outline-container-org2ec91d9" class="outline-2">
+<h2 id="org2ec91d9">4. Built-in Scope (B)</h2>
+<div class="outline-text-2" id="text-org2ec91d9">
 <p>
 The <b>built-in</b> scope contains names that are always available in Python.
 </p>
@@ -392,8 +391,8 @@ These come from Python’s built-in namespace.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><code><span class="org-builtin">print</span>(<span class="org-builtin">len</span>(<span class="org-string">"hello"</span>))  <span class="org-comment-delimiter"># </span><span class="org-comment">5</span>
-</code></pre>
+<pre class="src src-python"><span class="org-builtin">print</span>(<span class="org-builtin">len</span>(<span class="org-string">"hello"</span>))  <span class="org-comment-delimiter"># </span><span class="org-comment">5</span>
+</pre>
 </div>
 
 <p>
@@ -401,15 +400,15 @@ You can inspect built-ins:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><code><span class="org-keyword">import</span> builtins
+<pre class="src src-python"><span class="org-keyword">import</span> builtins
 <span class="org-builtin">print</span>(<span class="org-builtin">dir</span>(builtins))
-</code></pre>
+</pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org7497b15" class="outline-2">
-<h2 id="org7497b15">Name Resolution Order</h2>
-<div class="outline-text-2" id="text-org7497b15">
+<div id="outline-container-org44ccdb1" class="outline-2">
+<h2 id="org44ccdb1">Name Resolution Order</h2>
+<div class="outline-text-2" id="text-org44ccdb1">
 <p>
 When Python encounters a variable, it searches in this order:
 </p>
@@ -429,20 +428,20 @@ If the name is not found after checking all four levels:
 </ul>
 </div>
 </div>
-<div id="outline-container-org8637147" class="outline-2">
-<h2 id="org8637147">Common Pitfalls</h2>
-<div class="outline-text-2" id="text-org8637147">
+<div id="outline-container-orga816079" class="outline-2">
+<h2 id="orga816079">Common Pitfalls</h2>
+<div class="outline-text-2" id="text-orga816079">
 <p>
 <b>UnboundLocalError</b>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><code><span class="org-variable-name">x</span> <span class="org-operator">=</span> 10
+<pre class="src src-python"><span class="org-variable-name">x</span> <span class="org-operator">=</span> 10
 
 <span class="org-keyword">def</span> <span class="org-function-name">func</span>():
     <span class="org-builtin">print</span>(x)  <span class="org-comment-delimiter"># </span><span class="org-comment">Error!
 </span>    <span class="org-variable-name">x</span> <span class="org-operator">=</span> 5
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -454,9 +453,9 @@ Python treats <code>x</code> as local because it is <b>assigned</b> inside <code
 </p>
 </div>
 </div>
-<div id="outline-container-org8d21427" class="outline-2">
-<h2 id="org8d21427">Quick Mental Model</h2>
-<div class="outline-text-2" id="text-org8d21427">
+<div id="outline-container-org0739d75" class="outline-2">
+<h2 id="org0739d75">Quick Mental Model</h2>
+<div class="outline-text-2" id="text-org0739d75">
 <p>
 Think:
 </p>

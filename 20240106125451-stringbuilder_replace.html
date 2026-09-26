@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-23 Wed 06:49 -->
+<!-- 2026-09-25 Fri 08:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>StringBuilder.replace</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -243,21 +242,21 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">StringBuilder.replace</h1>
-<div id="outline-container-org0acb5f1" class="outline-2">
-<h2 id="org0acb5f1"><code>.replace()</code></h2>
-<div class="outline-text-2" id="text-org0acb5f1">
+<div id="outline-container-org3485606" class="outline-2">
+<h2 id="org3485606"><code>.replace()</code></h2>
+<div class="outline-text-2" id="text-org3485606">
 </div>
-<div id="outline-container-org38c1e01" class="outline-3">
-<h3 id="org38c1e01">Signature</h3>
-<div class="outline-text-3" id="text-org38c1e01">
+<div id="outline-container-org6fc3a67" class="outline-3">
+<h3 id="org6fc3a67">Signature</h3>
+<div class="outline-text-3" id="text-org6fc3a67">
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-type">StringBuilder</span> <span class="org-function-name">replace</span>(<span class="org-type">int</span> <span class="org-variable-name">startIndex</span>, <span class="org-type">int</span> <span class="org-variable-name">endIndex</span>, <span class="org-type">String</span> <span class="org-variable-name">newString</span>)
-</code></pre>
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-type">StringBuilder</span> <span class="org-function-name">replace</span>(<span class="org-type">int</span> <span class="org-variable-name">startIndex</span>, <span class="org-type">int</span> <span class="org-variable-name">endIndex</span>, <span class="org-type">String</span> <span class="org-variable-name">newString</span>)
+</pre>
 </div>
 </div>
-<div id="outline-container-org8b92732" class="outline-4">
-<h4 id="org8b92732">Example</h4>
-<div class="outline-text-4" id="text-org8b92732">
+<div id="outline-container-orge8377f0" class="outline-4">
+<h4 id="orge8377f0">Example</h4>
+<div class="outline-text-4" id="text-orge8377f0">
 <p>
 First, Java deletes the characters starting with index <code>3</code> and ending right before index <code>6</code>.
 This gives us <code>pig dirty</code>.
@@ -272,15 +271,15 @@ In this example, the number of characters removed and inserted are the same. (Ho
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">var</span> <span class="org-variable-name">builder</span> = <span class="org-keyword">new</span> <span class="org-type">StringBuilder</span>(<span class="org-string">"pigeon dirty"</span>);
+<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">builder</span> = <span class="org-keyword">new</span> <span class="org-type">StringBuilder</span>(<span class="org-string">"pigeon dirty"</span>);
 builder.replace(3, 6, <span class="org-string">"sty"</span>);
 System.out.println(builder); <span class="org-comment-delimiter">// </span><span class="org-comment">pigsty dirty</span>
-</code></pre>
+</pre>
 </div>
 </div>
 <ul class="org-ul">
-<li><a id="orge8a196e"></a><span class="underline">Exam Trick</span><br />
-<div class="outline-text-5" id="text-orge8a196e">
+<li><a id="org90cc460"></a><span class="underline">Exam Trick</span><br />
+<div class="outline-text-5" id="text-org90cc460">
 <p>
 The below code prints <code>"pig"</code>.
 </p>
@@ -295,10 +294,10 @@ That means <b>only the first three characters remain</b>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">var</span> <span class="org-variable-name">builder</span> = <span class="org-keyword">new</span> <span class="org-type">StringBuilder</span>(<span class="org-string">"pigeon dirty"</span>);
+<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">builder</span> = <span class="org-keyword">new</span> <span class="org-type">StringBuilder</span>(<span class="org-string">"pigeon dirty"</span>);
 builder.replace(3, 100, <span class="org-string">""</span>);
 System.out.println(builder); <span class="org-comment-delimiter">// </span><span class="org-comment">pig</span>
-</code></pre>
+</pre>
 </div>
 </div>
 </li>

@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-23 Wed 06:49 -->
+<!-- 2026-09-25 Fri 08:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Generics</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -249,14 +248,14 @@
 <p>
 #+auto<sub>tangle</sub> t
 </p>
-<div id="outline-container-orgf009947" class="outline-2">
-<h2 id="orgf009947">Example</h2>
-<div class="outline-text-2" id="text-orgf009947">
+<div id="outline-container-org72650dc" class="outline-2">
+<h2 id="org72650dc">Example</h2>
+<div class="outline-text-2" id="text-org72650dc">
 <p>
 <code>GenericList.java</code>
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">GenericList</span>&lt;<span class="org-type">T</span>&gt; {
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">GenericList</span>&lt;<span class="org-type">T</span>&gt; {
     <span class="org-keyword">private</span> <span class="org-type">T</span>[] <span class="org-variable-name">items</span> = (<span class="org-type">T</span>[]) <span class="org-keyword">new</span> <span class="org-type">Object</span>[10];
     <span class="org-keyword">private</span> <span class="org-type">int</span> <span class="org-variable-name">count</span>;
 
@@ -268,26 +267,26 @@
         <span class="org-keyword">return</span> items[index];
     }
 }
-</code></pre>
+</pre>
 </div>
 
 <p>
 <code>Main.java</code>
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Main</span> {
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Main</span> {
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
-       <span class="org-keyword">var</span> <span class="org-variable-name">stringList</span> = <span class="org-keyword">new</span> <span class="org-type">GenericList</span>&lt;<span class="org-type">String</span>&gt;();
+       <span class="org-type">var</span> <span class="org-variable-name">stringList</span> = <span class="org-keyword">new</span> <span class="org-type">GenericList</span>&lt;<span class="org-type">String</span>&gt;();
        stringList.add(<span class="org-string">"DeadPool"</span>);
        stringList.add(<span class="org-string">"Batman"</span>);
        System.out.println(stringList.get(1));
-       <span class="org-keyword">var</span> <span class="org-variable-name">numList</span> = <span class="org-keyword">new</span> <span class="org-type">GenericList</span>&lt;<span class="org-type">Integer</span>&gt;();
+       <span class="org-type">var</span> <span class="org-variable-name">numList</span> = <span class="org-keyword">new</span> <span class="org-type">GenericList</span>&lt;<span class="org-type">Integer</span>&gt;();
        numList.add(69);
        numList.add(420);
        System.out.println(numList.get(0));
     }
 }
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -295,9 +294,9 @@ OR
 </p>
 </div>
 </div>
-<div id="outline-container-org37e118f" class="outline-2">
-<h2 id="org37e118f">Autoboxing</h2>
-<div class="outline-text-2" id="text-org37e118f">
+<div id="outline-container-orgaae0fdc" class="outline-2">
+<h2 id="orgaae0fdc">Autoboxing</h2>
+<div class="outline-text-2" id="text-orgaae0fdc">
 <p>
 Automatic conversion that the Java compiler makes between the <code>primitive types</code> and their corresponding object <code>wrapper classes</code>.
 </p>
@@ -309,28 +308,28 @@ Java compiler puts integer value inside a <code>box</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
   <span class="org-type">GenericList</span>&lt;<span class="org-type">String</span>&gt; <span class="org-variable-name">stringList</span> = <span class="org-keyword">new</span> <span class="org-type">GenericList</span>&lt;&gt;(); <span class="org-comment-delimiter">// </span><span class="org-comment">No need for unnecessary second Wrapper reference &lt;String&gt;
 </span>  <span class="org-type">GenericList</span>&lt;<span class="org-type">Integer</span>&gt; <span class="org-variable-name">numList</span> = <span class="org-keyword">new</span> <span class="org-type">GenericList</span>&lt;&gt;();
   numList.add(1); <span class="org-comment-delimiter">// </span><span class="org-comment">Boxing
-</span>  <span class="org-keyword">var</span> <span class="org-variable-name">number</span> = numList.get(0); <span class="org-comment-delimiter">// </span><span class="org-comment">Unboxing
+</span>  <span class="org-type">var</span> <span class="org-variable-name">number</span> = numList.get(0); <span class="org-comment-delimiter">// </span><span class="org-comment">Unboxing
 </span>}
-</code></pre>
+</pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orge138195" class="outline-2">
-<h2 id="orge138195">Unboxing</h2>
-<div class="outline-text-2" id="text-orge138195">
+<div id="outline-container-org279a714" class="outline-2">
+<h2 id="org279a714">Unboxing</h2>
+<div class="outline-text-2" id="text-org279a714">
 <p>
 Converts Wrapper reference into integer
 <code>var number = numList.get(0);</code> Returns an `Instance` of the Integer class stored in a primitive Integer (Extracts value which is  stored in that Integer object).
 </p>
 </div>
 </div>
-<div id="outline-container-orgf927470" class="outline-2">
-<h2 id="orgf927470">Constraints</h2>
-<div class="outline-text-2" id="text-orgf927470">
+<div id="outline-container-orga54ce3d" class="outline-2">
+<h2 id="orga54ce3d">Constraints</h2>
+<div class="outline-text-2" id="text-orga54ce3d">
 <p>
 Here we are constraining our Generic Class to only allow instances of <code>Number</code> (String won't work)
 </p>
@@ -340,7 +339,7 @@ Note: <code>&lt;T extends Number&gt;</code> is called a <b>Bounded Type paramate
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-comment-delimiter">// </span><span class="org-comment">GenericList.java
+<pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">GenericList.java
 </span><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">GenericList</span>&lt;<span class="org-type">T</span> <span class="org-keyword">extends</span> <span class="org-type">Number</span>&gt; {
     <span class="org-keyword">private</span> <span class="org-type">T</span>[] <span class="org-variable-name">items</span> = (<span class="org-type">T</span>[]) <span class="org-keyword">new</span> <span class="org-type">Object</span>[10];
     <span class="org-keyword">private</span> <span class="org-type">int</span> <span class="org-variable-name">count</span>;
@@ -358,11 +357,11 @@ Note: <code>&lt;T extends Number&gt;</code> is called a <b>Bounded Type paramate
     <span class="org-type">GenericList</span>&lt;<span class="org-type">String</span>&gt; <span class="org-variable-name">stringList</span> = <span class="org-keyword">new</span> <span class="org-type">GenericList</span>&lt;&gt;(); <span class="org-comment-delimiter">// </span><span class="org-comment">Compilation Error
 </span>    <span class="org-type">GenericList</span>&lt;<span class="org-type">Integer</span>&gt; <span class="org-variable-name">numList</span> = <span class="org-keyword">new</span> <span class="org-type">GenericList</span>&lt;&gt;();  <span class="org-comment-delimiter">// </span><span class="org-comment">Okay
 </span>}
-</code></pre>
+</pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">GenericList</span>&lt;<span class="org-type">T</span> <span class="org-keyword">extends</span> <span class="org-type">Comparable</span> &amp; <span class="org-type">Cloneable</span>&gt; {
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">GenericList</span>&lt;<span class="org-type">T</span> <span class="org-keyword">extends</span> <span class="org-type">Comparable</span> &amp; <span class="org-type">Cloneable</span>&gt; {
     <span class="org-keyword">private</span> <span class="org-type">T</span>[] <span class="org-variable-name">items</span> = (<span class="org-type">T</span>[]) <span class="org-keyword">new</span> <span class="org-type">Object</span>[10];
     <span class="org-keyword">private</span> <span class="org-type">int</span> <span class="org-variable-name">count</span>;
 
@@ -374,13 +373,13 @@ Note: <code>&lt;T extends Number&gt;</code> is called a <b>Bounded Type paramate
         <span class="org-keyword">return</span> items[index];
     }
 }
-</code></pre>
+</pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgc9e2238" class="outline-2">
-<h2 id="orgc9e2238">Type Erasue</h2>
-<div class="outline-text-2" id="text-orgc9e2238">
+<div id="outline-container-orgb111cdb" class="outline-2">
+<h2 id="orgb111cdb">Type Erasue</h2>
+<div class="outline-text-2" id="text-orgb111cdb">
 <p>
 When we have multiple interface constraints,  i.e.: <code>GenericList&lt;T extends Comparable &amp; Cloneable&gt;</code> , Java Compiler will take the <b>Left Most</b>  (in this case <code>Comparable</code>) Type to replace all <code>T</code> (Erases all type paramaters and replaces with Class/Interface pending on constraints).
 If there are no constraints, all (generic) <code>T</code> will be replaced by <code>Object</code> class.
@@ -400,16 +399,16 @@ See <a href="20230125085040-comparable_interface.html#ID-978e88bf-bfac-4a29-a851
 </p>
 </div>
 </div>
-<div id="outline-container-orgb110b14" class="outline-2">
-<h2 id="orgb110b14"><a href="20230125085439-generic_methods.html#ID-da34a311-c25d-4d96-accf-60b35cf11cb7">Generic Methods</a></h2>
+<div id="outline-container-org2a1bb11" class="outline-2">
+<h2 id="org2a1bb11"><a href="20230125085439-generic_methods.html#ID-da34a311-c25d-4d96-accf-60b35cf11cb7">Generic Methods</a></h2>
 </div>
 
-<div id="outline-container-org813d8e1" class="outline-2">
-<h2 id="org813d8e1"><a href="20230125090226-multiple_type_paramters.html#ID-80ca3273-689f-425e-8fbb-b60fa157368b">Multiple Type Paramters</a></h2>
+<div id="outline-container-orgb5693a3" class="outline-2">
+<h2 id="orgb5693a3"><a href="20230125090226-multiple_type_paramters.html#ID-80ca3273-689f-425e-8fbb-b60fa157368b">Multiple Type Paramters</a></h2>
 </div>
 
-<div id="outline-container-org65ea502" class="outline-2">
-<h2 id="org65ea502"><a href="20230125091828-generic_wildcards.html#ID-ffe1e06a-8d8c-4e7f-87ce-c017aec04fd2">Generic Wildcards</a></h2>
+<div id="outline-container-org6d03b7c" class="outline-2">
+<h2 id="org6d03b7c"><a href="20230125091828-generic_wildcards.html#ID-ffe1e06a-8d8c-4e7f-87ce-c017aec04fd2">Generic Wildcards</a></h2>
 </div>
 </div>
 </body>

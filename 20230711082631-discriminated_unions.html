@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-23 Wed 06:49 -->
+<!-- 2026-09-25 Fri 08:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Discriminated Unions</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -243,9 +242,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Discriminated Unions</h1>
-<div id="outline-container-org05af074" class="outline-2">
-<h2 id="org05af074">Discriminated Unions</h2>
-<div class="outline-text-2" id="text-org05af074">
+<div id="outline-container-org548d000" class="outline-2">
+<h2 id="org548d000">Discriminated Unions</h2>
+<div class="outline-text-2" id="text-org548d000">
 <p>
 <a href="https://css-tricks.com/typescript-discriminated-unions/">TS Discriminated Unions</a>
 </p>
@@ -254,7 +253,7 @@
 Given the following interfaces:
 </p>
 <div class="org-src-container">
-<pre class="src src-js"><code><span class="org-keyword">interface</span> Cat {
+<pre class="src src-js"><span class="org-keyword">interface</span> Cat {
   weight: number;
   whiskers: number;
 }
@@ -265,7 +264,7 @@ Given the following interfaces:
 }
 
 <span class="org-keyword">let</span> <span class="org-variable-name">animal</span>: Dog | Cat;
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -278,7 +277,7 @@ See [Nominal vs Structural Typing](./Nominal%20vs%20Structural%20Typing.md)
 
 
 <div class="org-src-container">
-<pre class="src src-js"><code><span class="org-keyword">interface</span> Cat_1 {
+<pre class="src src-js"><span class="org-keyword">interface</span> Cat_1 {
   weight: number;
   whiskers: number;
   ANIMAL_TYPE: <span class="org-string">"CAT"</span>;
@@ -289,21 +288,21 @@ See [Nominal vs Structural Typing](./Nominal%20vs%20Structural%20Typing.md)
   friendly: <span class="org-type">boolean</span>;
   ANIMAL_TYPE: <span class="org-string">"DOG"</span>;
 }
-</code></pre>
+</pre>
 </div>
 
 <p>
 And now our check becomes a bit more reliable:
 </p>
 <div class="org-src-container">
-<pre class="src src-js"><code><span class="org-keyword">let</span> <span class="org-variable-name">animal_1</span> : Dog_1 | Cat_1 = {} as any;
+<pre class="src src-js"><span class="org-keyword">let</span> <span class="org-variable-name">animal_1</span> : Dog_1 | Cat_1 = {} as any;
 
 <span class="org-keyword">if</span> (animal_1.ANIMAL_TYPE === <span class="org-string">"DOG"</span>) {
   console.log(animal_1.friendly);
 } <span class="org-keyword">else</span> {
   console.log(animal_1.whiskers);
 }
-</code></pre>
+</pre>
 </div>
 </div>
 </div>
