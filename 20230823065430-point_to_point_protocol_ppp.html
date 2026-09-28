@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-26 Sat 10:06 -->
+<!-- 2026-09-28 Mon 08:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Point-to Point Protocol (PPP)</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -257,49 +258,49 @@ PPP is strictly point-to-point, so frames can only go to the intended destinatio
 <p>
 PPP is designed to link devices, so the endpoints do not need to be the same vendor to work.
 </p>
-<div id="outline-container-orge502f19" class="outline-2">
-<h2 id="orge502f19">Configuration</h2>
-<div class="outline-text-2" id="text-orge502f19">
+<div id="outline-container-orge3b5ddc" class="outline-2">
+<h2 id="orge3b5ddc">Configuration</h2>
+<div class="outline-text-2" id="text-orge3b5ddc">
 </div>
-<div id="outline-container-org3ca9fce" class="outline-3">
-<h3 id="org3ca9fce">Multilink</h3>
-<div class="outline-text-3" id="text-org3ca9fce">
+<div id="outline-container-orgad1d411" class="outline-3">
+<h3 id="orgad1d411">Multilink</h3>
+<div class="outline-text-3" id="text-orgad1d411">
 <p>
 spreading traffic across multiple distinct PPP connections.
 </p>
 </div>
 </div>
-<div id="outline-container-orgbd64655" class="outline-3">
-<h3 id="orgbd64655">Compression</h3>
-<div class="outline-text-3" id="text-orgbd64655">
+<div id="outline-container-org7d6012c" class="outline-3">
+<h3 id="org7d6012c">Compression</h3>
+<div class="outline-text-3" id="text-org7d6012c">
 <p>
 increases throughput by reducing the amount of data in the frame.
 </p>
 </div>
 </div>
-<div id="outline-container-org3b5eceb" class="outline-3">
-<h3 id="org3b5eceb">Authentication</h3>
-<div class="outline-text-3" id="text-org3b5eceb">
+<div id="outline-container-orgf0428df" class="outline-3">
+<h3 id="orgf0428df">Authentication</h3>
+<div class="outline-text-3" id="text-orgf0428df">
 <p>
 occurs when connected devices exchange authentication messages using one of two methods:
 </p>
 </div>
 </div>
-<div id="outline-container-org2847236" class="outline-3">
-<h3 id="org2847236"><a href="20230823070315-password_authentication_protocol_pap.html#ID-a8d5b07d-23ae-4384-8a67-75a14e05bd65">Password Authentication Protocol (PAP)</a></h3>
+<div id="outline-container-org76ec255" class="outline-3">
+<h3 id="org76ec255"><a href="20230823070315-password_authentication_protocol_pap.html#ID-a8d5b07d-23ae-4384-8a67-75a14e05bd65">Password Authentication Protocol (PAP)</a></h3>
 </div>
 
-<div id="outline-container-org3bcf272" class="outline-3">
-<h3 id="org3bcf272"><a href="20230823070913-challenge_handshake_authentication_protocol_chap.html#ID-a4033b5f-7afd-4fb7-ac05-1ebf5d21e9fe">Challenge Handshake Authentication Protocol (CHAP)</a></h3>
+<div id="outline-container-org52199c5" class="outline-3">
+<h3 id="org52199c5"><a href="20230823070913-challenge_handshake_authentication_protocol_chap.html#ID-a4033b5f-7afd-4fb7-ac05-1ebf5d21e9fe">Challenge Handshake Authentication Protocol (CHAP)</a></h3>
 </div>
 
-<div id="outline-container-org3ec791d" class="outline-3">
-<h3 id="org3ec791d">Error detection includes Frame Check Sequence (FCS) and looped link detection.</h3>
-<div class="outline-text-3" id="text-org3ec791d">
+<div id="outline-container-org95e88aa" class="outline-3">
+<h3 id="org95e88aa">Error detection includes Frame Check Sequence (FCS) and looped link detection.</h3>
+<div class="outline-text-3" id="text-org95e88aa">
 </div>
-<div id="outline-container-org9e7552a" class="outline-4">
-<h4 id="org9e7552a">Frame Check Sequence (FCS)</h4>
-<div class="outline-text-4" id="text-org9e7552a">
+<div id="outline-container-orgb6cd907" class="outline-4">
+<h4 id="orgb6cd907">Frame Check Sequence (FCS)</h4>
+<div class="outline-text-4" id="text-orgb6cd907">
 <p>
 A number included in the frame calculated over:
 </p>
@@ -316,9 +317,9 @@ Used to determine if there has been data loss during transmission.
 </p>
 </div>
 </div>
-<div id="outline-container-org702166c" class="outline-4">
-<h4 id="org702166c">Looped link detection</h4>
-<div class="outline-text-4" id="text-org702166c">
+<div id="outline-container-orgc2d863f" class="outline-4">
+<h4 id="orgc2d863f">Looped link detection</h4>
+<div class="outline-text-4" id="text-orgc2d863f">
 <p>
 PPP detects looped links using magic numbers.
 </p>

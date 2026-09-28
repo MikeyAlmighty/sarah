@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-26 Sat 10:07 -->
+<!-- 2026-09-28 Mon 08:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Accessing a Static Variable or Method</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,9 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Accessing a Static Variable or Method</h1>
-<div id="outline-container-org1e69f04" class="outline-2">
-<h2 id="org1e69f04">Accessing a Static Variable or Method</h2>
-<div class="outline-text-2" id="text-org1e69f04">
+<div id="outline-container-orgb1dbd3b" class="outline-2">
+<h2 id="orgb1dbd3b">Accessing a Static Variable or Method</h2>
+<div class="outline-text-2" id="text-orgb1dbd3b">
 <p>
 Accessing a <code>static</code> member is easy.
 </p>
@@ -253,30 +254,30 @@ Accessing a <code>static</code> member is easy.
 You just put the <code>Class</code> name before the <code>method</code> or <code>variable</code>
 </p>
 </div>
-<div id="outline-container-orge19da56" class="outline-3">
-<h3 id="orge19da56">Example</h3>
-<div class="outline-text-3" id="text-orge19da56">
+<div id="outline-container-org6562c4b" class="outline-3">
+<h3 id="org6562c4b">Example</h3>
+<div class="outline-text-3" id="text-org6562c4b">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Snake</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Snake</span> {
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">long</span> <span class="org-variable-name">hiss</span> = 2;
 }
 System.out.println(Snake.hiss); <span class="org-comment-delimiter">// </span><span class="org-comment">2</span>
-</pre>
+</code></pre>
 </div>
 </div>
-<div id="outline-container-orgf1d6bf7" class="outline-4">
-<h4 id="orgf1d6bf7"><span class="underline">Exam Trick</span></h4>
-<div class="outline-text-4" id="text-orgf1d6bf7">
+<div id="outline-container-org32b6187" class="outline-4">
+<h4 id="org32b6187"><span class="underline">Exam Trick</span></h4>
+<div class="outline-text-4" id="text-org32b6187">
 <p>
 Java doesn’t care that <code>s</code> happens to be <code>null</code>. Since we are looking for a <code>static</code> variable, it doesn’t matter:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">Snake</span> <span class="org-variable-name">s</span> = <span class="org-keyword">new</span> <span class="org-type">Snake</span>();
+<pre class="src src-java"><code><span class="org-type">Snake</span> <span class="org-variable-name">s</span> = <span class="org-keyword">new</span> <span class="org-type">Snake</span>();
 System.out.println(s.hiss); <span class="org-comment-delimiter">// </span><span class="org-comment">s is a Snake
 </span>s = <span class="org-constant">null</span>;
 System.out.println(s.hiss); <span class="org-comment-delimiter">// </span><span class="org-comment">s is still a Snake</span>
-</pre>
+</code></pre>
 </div>
 
 <p>

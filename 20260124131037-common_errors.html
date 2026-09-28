@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-26 Sat 10:07 -->
+<!-- 2026-09-28 Mon 08:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Common Errors</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,13 +243,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Common Errors</h1>
-<div id="outline-container-org0529131" class="outline-2">
-<h2 id="org0529131">Common Errors</h2>
-<div class="outline-text-2" id="text-org0529131">
+<div id="outline-container-org569a23a" class="outline-2">
+<h2 id="org569a23a">Common Errors</h2>
+<div class="outline-text-2" id="text-org569a23a">
 </div>
-<div id="outline-container-org255f0fd" class="outline-3">
-<h3 id="org255f0fd">1: Undeclared/Uninitialised variables and unused variables</h3>
-<div class="outline-text-3" id="text-org255f0fd">
+<div id="outline-container-org7c794a9" class="outline-3">
+<h3 id="org7c794a9">1: Undeclared/Uninitialised variables and unused variables</h3>
+<div class="outline-text-3" id="text-org7c794a9">
 <p>
 Forgetting to <b>declare</b> or <b>initialise</b> variables can cause <code>compilation</code> errors or <code>unexpected</code> <code>behaviour</code>.
 </p>
@@ -271,9 +272,9 @@ This code will fail to <b>compile</b> because the variables <code>interestratelo
 </p>
 </div>
 </div>
-<div id="outline-container-org869b050" class="outline-3">
-<h3 id="org869b050">2: Integer overflow</h3>
-<div class="outline-text-3" id="text-org869b050">
+<div id="outline-container-org0acdf38" class="outline-3">
+<h3 id="org0acdf38">2: Integer overflow</h3>
+<div class="outline-text-3" id="text-org0acdf38">
 <p>
 <b>Integer</b> <b>overflow</b> occurs when a calculation exceeds the <code>storage</code> limit of an <code>integer</code> type, leading to incorrect results.
 </p>
@@ -287,9 +288,9 @@ This error can be critical in applications that require high precision, such as 
 </p>
 </div>
 </div>
-<div id="outline-container-org0f3644e" class="outline-3">
-<h3 id="org0f3644e">3: Round-off errors</h3>
-<div class="outline-text-3" id="text-org0f3644e">
+<div id="outline-container-orgd356c29" class="outline-3">
+<h3 id="orgd356c29">3: Round-off errors</h3>
+<div class="outline-text-3" id="text-orgd356c29">
 <p>
 It is important to understand why <code>round-off</code> <b>errors</b> occur to ensure that you use the <b>correct</b> <b>data</b> <b>type</b> when performing calculations that require a high degree of precision.
 </p>
@@ -308,9 +309,9 @@ These errors are common in scientific and financial institutions and can lead to
 </p>
 </div>
 </div>
-<div id="outline-container-orgbd4f3f0" class="outline-3">
-<h3 id="orgbd4f3f0">4: Unintended integer division</h3>
-<div class="outline-text-3" id="text-orgbd4f3f0">
+<div id="outline-container-org8ca7c0a" class="outline-3">
+<h3 id="org8ca7c0a">4: Unintended integer division</h3>
+<div class="outline-text-3" id="text-org8ca7c0a">
 <p>
 Dividing <code>integers</code> results in an <code>integer</code> value, <b>truncating</b> the <code>decimal</code> part.
 </p>
@@ -320,9 +321,9 @@ This often leads to incorrect results if <a href="20260121194347-floating_point_
 </p>
 </div>
 </div>
-<div id="outline-container-org5d291bd" class="outline-3">
-<h3 id="org5d291bd">5: Redundant input objects</h3>
-<div class="outline-text-3" id="text-org5d291bd">
+<div id="outline-container-org04b8b3c" class="outline-3">
+<h3 id="org04b8b3c">5: Redundant input objects</h3>
+<div class="outline-text-3" id="text-org04b8b3c">
 <p>
 Creating multiple redundant input objects (e.g. <code>Scanner</code>) for the same input source can cause unexpected behaviour, such as input skipping or errors.
 </p>
@@ -332,7 +333,7 @@ It also wastes resources and reduces program efficiency.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">RedundantInputObject</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">RedundantInputObject</span> {
   <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
     <span class="org-type">Scanner</span> <span class="org-variable-name">input</span> = <span class="org-keyword">new</span> <span class="org-type">Scanner</span>(System.in);
     System.out.print(<span class="org-string">"Enter an integer: "</span>);
@@ -344,7 +345,7 @@ It also wastes resources and reduces program efficiency.
   }
 }
 
-</pre>
+</code></pre>
 </div>
 </div>
 </div>

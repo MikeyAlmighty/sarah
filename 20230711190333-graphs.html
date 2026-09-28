@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-26 Sat 10:06 -->
+<!-- 2026-09-28 Mon 08:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Graphs</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,9 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Graphs</h1>
-<div id="outline-container-org950bb19" class="outline-2">
-<h2 id="org950bb19">Graphs</h2>
-<div class="outline-text-2" id="text-org950bb19">
+<div id="outline-container-org19d380f" class="outline-2">
+<h2 id="org19d380f">Graphs</h2>
+<div class="outline-text-2" id="text-org19d380f">
 <p>
 <a href="https://www.youtube.com/watch?v=tWVWeAqZ0WU">Graph Algorithms for Technical Interviews - Full Course</a>
 </p>
@@ -257,31 +258,31 @@ Contains <code>nodes</code> (or vertex) + <code>edges</code>
 Neighbor node = Node accessible through an edge
 </p>
 </div>
-<div id="outline-container-org6aa5bc9" class="outline-3">
-<h3 id="org6aa5bc9">Directed Graphs</h3>
-<div class="outline-text-3" id="text-org6aa5bc9">
+<div id="outline-container-org04abdbd" class="outline-3">
+<h3 id="org04abdbd">Directed Graphs</h3>
+<div class="outline-text-3" id="text-org04abdbd">
 <p>
 Flows in one direction
 </p>
 </div>
 </div>
-<div id="outline-container-orgb95d1e9" class="outline-3">
-<h3 id="orgb95d1e9">Undirected</h3>
-<div class="outline-text-3" id="text-orgb95d1e9">
+<div id="outline-container-orgc5fb0e4" class="outline-3">
+<h3 id="orgc5fb0e4">Undirected</h3>
+<div class="outline-text-3" id="text-orgc5fb0e4">
 <p>
 Flow goes both ways (bidirectional)
 </p>
 </div>
 </div>
-<div id="outline-container-org02ba595" class="outline-3">
-<h3 id="org02ba595">Adjacency list</h3>
-<div class="outline-text-3" id="text-org02ba595">
+<div id="outline-container-orgeccaa23" class="outline-3">
+<h3 id="orgeccaa23">Adjacency list</h3>
+<div class="outline-text-3" id="text-orgeccaa23">
 <p>
 Used to represent a graph in a programmatical way:
 </p>
 
 
-<div id="org2c6f1f9" class="figure">
+<div id="org109f452" class="figure">
 <p><img src="./assets/graphAdjacencyList.png" alt="graphAdjacencyList.png" />
 </p>
 </div>
@@ -293,7 +294,7 @@ Key = Node, values = Neighbor nodes
 </p>
 
 
-<div id="org5d835ac" class="figure">
+<div id="org3847282" class="figure">
 <p><img src="./assets/Graph_BFS_vs_DFS.png" alt="Graph_BFS_vs_DFS.png" />
 </p>
 </div>
@@ -305,7 +306,7 @@ Key = Node, values = Neighbor nodes
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-keyword">const</span> <span class="org-variable-name">graph</span> = {
+<pre class="src src-js"><code><span class="org-keyword">const</span> <span class="org-variable-name">graph</span> = {
   a: [<span class="org-string">'c'</span>, <span class="org-string">'b'</span>],
   b: [<span class="org-string">'d'</span>],
   c: [<span class="org-string">'e'</span>],
@@ -597,29 +598,29 @@ console.log(islandCount(earthGraph)) <span class="org-comment-delimiter">// </sp
 }
 
 console.log(minIsland(earthGraph)) <span class="org-comment-delimiter">// </span><span class="org-comment">Should return 2</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org18f186e" class="outline-3">
-<h3 id="org18f186e">Acyclic</h3>
-<div class="outline-text-3" id="text-org18f186e">
+<div id="outline-container-org8c1ff8a" class="outline-3">
+<h3 id="org8c1ff8a">Acyclic</h3>
+<div class="outline-text-3" id="text-org8c1ff8a">
 <p>
 No cycles
 </p>
 </div>
 </div>
-<div id="outline-container-org6d8f798" class="outline-3">
-<h3 id="org6d8f798">Cyclic</h3>
-<div class="outline-text-3" id="text-org6d8f798">
+<div id="outline-container-orgeaeaba8" class="outline-3">
+<h3 id="orgeaeaba8">Cyclic</h3>
+<div class="outline-text-3" id="text-orgeaeaba8">
 <p>
 Can travel back to a previous node
 </p>
 </div>
 </div>
-<div id="outline-container-orgd472dbc" class="outline-3">
-<h3 id="orgd472dbc">Complexity</h3>
-<div class="outline-text-3" id="text-orgd472dbc">
+<div id="outline-container-orge3a8368" class="outline-3">
+<h3 id="orge3a8368">Complexity</h3>
+<div class="outline-text-3" id="text-orge3a8368">
 <p>
 Traversal:
 n = # nodes

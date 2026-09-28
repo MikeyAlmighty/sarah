@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-26 Sat 10:06 -->
+<!-- 2026-09-28 Mon 08:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exceptions</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,38 +243,38 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Exceptions</h1>
-<div id="outline-container-orgc3094b3" class="outline-2">
-<h2 id="orgc3094b3">Types of Exceptions</h2>
-<div class="outline-text-2" id="text-orgc3094b3">
+<div id="outline-container-org6c69a34" class="outline-2">
+<h2 id="org6c69a34">Types of Exceptions</h2>
+<div class="outline-text-2" id="text-org6c69a34">
 </div>
-<div id="outline-container-orgae2dce3" class="outline-3">
-<h3 id="orgae2dce3">Checked</h3>
-<div class="outline-text-3" id="text-orgae2dce3">
+<div id="outline-container-orgb990adb" class="outline-3">
+<h3 id="orgb990adb">Checked</h3>
+<div class="outline-text-3" id="text-orgb990adb">
 <p>
 (Compile time) Developer should anticipate and handle errors
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">reader</span> = <span class="org-keyword">new</span> <span class="org-type">FileReader</span>(<span class="org-string">"file.txt"</span>); <span class="org-comment-delimiter">// </span><span class="org-comment">Throws: FileNotFoundException</span>
-</pre>
+<pre class="src src-java"><code><span class="org-keyword">var</span> <span class="org-variable-name">reader</span> = <span class="org-keyword">new</span> <span class="org-type">FileReader</span>(<span class="org-string">"file.txt"</span>); <span class="org-comment-delimiter">// </span><span class="org-comment">Throws: FileNotFoundException</span>
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orga9a450b" class="outline-3">
-<h3 id="orga9a450b">Unchecked</h3>
-<div class="outline-text-3" id="text-orga9a450b">
+<div id="outline-container-orge430f41" class="outline-3">
+<h3 id="orge430f41">Unchecked</h3>
+<div class="outline-text-3" id="text-orge430f41">
 <p>
 (Run time) <code>NullPointerException</code>
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>(){
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>(){
     sayHello(<span class="org-constant">null</span>);
 }
 
 <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">sayHello</span>(<span class="org-type">String</span> <span class="org-variable-name">name</span>) {
     System.out.println(name.toUpperCase());
 }
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -283,18 +284,18 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orgd2424d9" class="outline-3">
-<h3 id="orgd2424d9">Errors</h3>
-<div class="outline-text-3" id="text-orgd2424d9">
+<div id="outline-container-orga75fe83" class="outline-3">
+<h3 id="orga75fe83">Errors</h3>
+<div class="outline-text-3" id="text-orga75fe83">
 <p>
 <code>StackOverflowError</code>
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org361e542" class="outline-2">
-<h2 id="org361e542">Hierarchy</h2>
-<div class="outline-text-2" id="text-org361e542">
+<div id="outline-container-orga518ed7" class="outline-2">
+<h2 id="orga518ed7">Hierarchy</h2>
+<div class="outline-text-2" id="text-orga518ed7">
 <p>
                         Throwable
   Exception(checked)                  Error
@@ -302,77 +303,77 @@ RuntimeException(unchecked)
 </p>
 </div>
 </div>
-<div id="outline-container-org0b551f3" class="outline-2">
-<h2 id="org0b551f3">Catching Exceptions</h2>
-<div class="outline-text-2" id="text-org0b551f3">
+<div id="outline-container-org37e75e6" class="outline-2">
+<h2 id="org37e75e6">Catching Exceptions</h2>
+<div class="outline-text-2" id="text-org37e75e6">
 </div>
-<div id="outline-container-orgbd2c067" class="outline-3">
-<h3 id="orgbd2c067">Single</h3>
-<div class="outline-text-3" id="text-orgbd2c067">
+<div id="outline-container-orgc362fc9" class="outline-3">
+<h3 id="orgc362fc9">Single</h3>
+<div class="outline-text-3" id="text-orgc362fc9">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">try</span> {
-    <span class="org-type">var</span> <span class="org-variable-name">reader</span> = <span class="org-keyword">new</span> <span class="org-type">FileReader</span>(<span class="org-string">"file.txt"</span>);
+<pre class="src src-java"><code><span class="org-keyword">try</span> {
+    <span class="org-keyword">var</span> <span class="org-variable-name">reader</span> = <span class="org-keyword">new</span> <span class="org-type">FileReader</span>(<span class="org-string">"file.txt"</span>);
 } <span class="org-keyword">catch</span> (FileNotFoundException e) {
     e.printStackTrace();
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgdecfcc2" class="outline-3">
-<h3 id="orgdecfcc2">Multiple</h3>
-<div class="outline-text-3" id="text-orgdecfcc2">
+<div id="outline-container-org027372d" class="outline-3">
+<h3 id="org027372d">Multiple</h3>
+<div class="outline-text-3" id="text-org027372d">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">try</span> {
-    <span class="org-type">var</span> <span class="org-variable-name">reader</span> = <span class="org-keyword">new</span> <span class="org-type">FileReader</span>(<span class="org-string">"file.txt"</span>);
-    <span class="org-type">var</span> <span class="org-variable-name">value</span> = reader.read();
+<pre class="src src-java"><code><span class="org-keyword">try</span> {
+    <span class="org-keyword">var</span> <span class="org-variable-name">reader</span> = <span class="org-keyword">new</span> <span class="org-type">FileReader</span>(<span class="org-string">"file.txt"</span>);
+    <span class="org-keyword">var</span> <span class="org-variable-name">value</span> = reader.read();
 } <span class="org-keyword">catch</span> (FileNotFoundException e) {
     e.printStackTrace();
 } <span class="org-keyword">catch</span> (IOException e) {
     e.printStackTrace();
 }
-</pre>
+</code></pre>
 </div>
 
 <p>
 Note: (<code>FileNotFoundException</code> is derived from <code>IOException</code>) so we can catch both Exceptions in this case, i.e.:
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">try</span> {
-    <span class="org-type">var</span> <span class="org-variable-name">reader</span> = <span class="org-keyword">new</span> <span class="org-type">FileReader</span>(<span class="org-string">"file.txt"</span>);
-    <span class="org-type">var</span> <span class="org-variable-name">value</span> = reader.read();
+<pre class="src src-java"><code><span class="org-keyword">try</span> {
+    <span class="org-keyword">var</span> <span class="org-variable-name">reader</span> = <span class="org-keyword">new</span> <span class="org-type">FileReader</span>(<span class="org-string">"file.txt"</span>);
+    <span class="org-keyword">var</span> <span class="org-variable-name">value</span> = reader.read();
 } <span class="org-keyword">catch</span> (IOException e) {
     e.printStackTrace();
 }
-</pre>
+</code></pre>
 </div>
 
 <p>
 Use <code>|</code> to inline exceptions, i.e:
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">try</span> {
-    <span class="org-type">var</span> <span class="org-variable-name">reader</span> = <span class="org-keyword">new</span> <span class="org-type">FileReader</span>(<span class="org-string">"file.txt"</span>);
-    <span class="org-type">var</span> <span class="org-variable-name">value</span> = reader.read();
+<pre class="src src-java"><code><span class="org-keyword">try</span> {
+    <span class="org-keyword">var</span> <span class="org-variable-name">reader</span> = <span class="org-keyword">new</span> <span class="org-type">FileReader</span>(<span class="org-string">"file.txt"</span>);
+    <span class="org-keyword">var</span> <span class="org-variable-name">value</span> = reader.read();
     <span class="org-keyword">new</span> <span class="org-type">SimpleDateFormat</span>().parse(<span class="org-string">""</span>);
 } <span class="org-keyword">catch</span> (IOException | ParseException e) {
     e.printStackTrace();
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgbdc8910" class="outline-3">
-<h3 id="orgbdc8910">Finally</h3>
-<div class="outline-text-3" id="text-orgbdc8910">
+<div id="outline-container-org619e42d" class="outline-3">
+<h3 id="org619e42d">Finally</h3>
+<div class="outline-text-3" id="text-org619e42d">
 <p>
 Used to release external resources (File handles, network connections, DB Connections etc.)
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">FileReader</span> <span class="org-variable-name">reader</span> = <span class="org-constant">null</span>;
+<pre class="src src-java"><code><span class="org-type">FileReader</span> <span class="org-variable-name">reader</span> = <span class="org-constant">null</span>;
 <span class="org-keyword">try</span> {
     reader = <span class="org-keyword">new</span> <span class="org-type">FileReader</span>(<span class="org-string">"file.txt"</span>);
-    <span class="org-type">var</span> <span class="org-variable-name">value</span> = reader.read();
+    <span class="org-keyword">var</span> <span class="org-variable-name">value</span> = reader.read();
 } <span class="org-keyword">catch</span> (IOException e) {
     e.printStackTrace();
 } <span class="org-keyword">finally</span> {
@@ -384,7 +385,7 @@ Used to release external resources (File handles, network connections, DB Connec
         }
     }
 }
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -392,76 +393,76 @@ Used to release external resources (File handles, network connections, DB Connec
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">try</span> (<span class="org-type">var</span> <span class="org-variable-name">reader</span> = <span class="org-keyword">new</span> <span class="org-type">FileReader</span>(<span class="org-string">"file.txt"</span>)){
-    <span class="org-type">var</span> <span class="org-variable-name">value</span> = reader.read();
+<pre class="src src-java"><code><span class="org-keyword">try</span> (<span class="org-keyword">var</span> <span class="org-variable-name">reader</span> = <span class="org-keyword">new</span> <span class="org-type">FileReader</span>(<span class="org-string">"file.txt"</span>)){
+    <span class="org-keyword">var</span> <span class="org-variable-name">value</span> = reader.read();
 } <span class="org-keyword">catch</span> (IOException e) {
     e.printStackTrace();
 }
 <span class="org-comment-delimiter">// </span><span class="org-comment">OR
 </span><span class="org-keyword">try</span> (
-    <span class="org-type">var</span> <span class="org-variable-name">reader</span> = <span class="org-keyword">new</span> <span class="org-type">FileReader</span>(<span class="org-string">"file.txt"</span>);
-    <span class="org-type">var</span> <span class="org-variable-name">writer</span> = <span class="org-keyword">new</span> <span class="org-type">FileWriter</span>(<span class="org-string">"somefile.txt"</span>);
+    <span class="org-keyword">var</span> <span class="org-variable-name">reader</span> = <span class="org-keyword">new</span> <span class="org-type">FileReader</span>(<span class="org-string">"file.txt"</span>);
+    <span class="org-keyword">var</span> <span class="org-variable-name">writer</span> = <span class="org-keyword">new</span> <span class="org-type">FileWriter</span>(<span class="org-string">"somefile.txt"</span>);
 ){
-    <span class="org-type">var</span> <span class="org-variable-name">value</span> = reader.read();
+    <span class="org-keyword">var</span> <span class="org-variable-name">value</span> = reader.read();
 } <span class="org-keyword">catch</span> (IOException e) {
     e.printStackTrace();
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orga78e507" class="outline-2">
-<h2 id="orga78e507">Throwing Exceptions</h2>
-<div class="outline-text-2" id="text-orga78e507">
+<div id="outline-container-orgaf72eac" class="outline-2">
+<h2 id="orgaf72eac">Throwing Exceptions</h2>
+<div class="outline-text-2" id="text-orgaf72eac">
 <p>
 Defensive programming: (Good for library or framework) Or Input from user
 </p>
 </div>
-<div id="outline-container-org8436c06" class="outline-3">
-<h3 id="org8436c06">Unchecked Exception example</h3>
-<div class="outline-text-3" id="text-org8436c06">
+<div id="outline-container-org36ac648" class="outline-3">
+<h3 id="org36ac648">Unchecked Exception example</h3>
+<div class="outline-text-3" id="text-org36ac648">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">deposit</span>(<span class="org-type">float</span> <span class="org-variable-name">value</span>) {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">deposit</span>(<span class="org-type">float</span> <span class="org-variable-name">value</span>) {
  <span class="org-keyword">if</span>(value &lt;= 0) <span class="org-keyword">throw</span> <span class="org-keyword">new</span> <span class="org-type">IllegalArgumentException</span>();
  System.out.println(<span class="org-string">"Deposited: "</span> + value);
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org00b9c22" class="outline-3">
-<h3 id="org00b9c22">Checked Exception example</h3>
-<div class="outline-text-3" id="text-org00b9c22">
+<div id="outline-container-org7c80074" class="outline-3">
+<h3 id="org7c80074">Checked Exception example</h3>
+<div class="outline-text-3" id="text-org7c80074">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">deposit</span>(<span class="org-type">float</span> <span class="org-variable-name">value</span>) <span class="org-keyword">throws</span> <span class="org-type">IOException</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">deposit</span>(<span class="org-type">float</span> <span class="org-variable-name">value</span>) <span class="org-keyword">throws</span> <span class="org-type">IOException</span> {
   <span class="org-keyword">if</span> (value &lt;= 0) <span class="org-keyword">throw</span> <span class="org-keyword">new</span> <span class="org-type">IOException</span>();
   System.out.println(<span class="org-string">"Deposited: "</span> + value);
 }
-</pre>
+</code></pre>
 </div>
 
 <p>
 Then we handle it where used:
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
-    <span class="org-type">var</span> <span class="org-variable-name">account</span> = <span class="org-keyword">new</span> <span class="org-type">Account</span>();
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
+    <span class="org-keyword">var</span> <span class="org-variable-name">account</span> = <span class="org-keyword">new</span> <span class="org-type">Account</span>();
     <span class="org-keyword">try</span> {
         account.deposit(-10);
     } <span class="org-keyword">catch</span> (IOException e) {
         e.printStackTrace();
     }
 }
-</pre>
+</code></pre>
 </div>
 
 <p>
 Re throwing error:
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) <span class="org-keyword">throws</span> <span class="org-type">IOException</span> {
-    <span class="org-type">var</span> <span class="org-variable-name">account</span> = <span class="org-keyword">new</span> <span class="org-type">Account</span>();
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) <span class="org-keyword">throws</span> <span class="org-type">IOException</span> {
+    <span class="org-keyword">var</span> <span class="org-variable-name">account</span> = <span class="org-keyword">new</span> <span class="org-type">Account</span>();
     <span class="org-keyword">try</span> {
         account.deposit(-10);
     } <span class="org-keyword">catch</span> (Throwable e) { <span class="org-comment-delimiter">// </span><span class="org-comment">or (Exception e)
@@ -469,19 +470,19 @@ Re throwing error:
         <span class="org-keyword">throw</span> e;
     }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org0264a39" class="outline-2">
-<h2 id="org0264a39">Custom Exceptions</h2>
-<div class="outline-text-2" id="text-org0264a39">
+<div id="outline-container-org868c88c" class="outline-2">
+<h2 id="org868c88c">Custom Exceptions</h2>
+<div class="outline-text-2" id="text-org868c88c">
 <p>
 <code>InsufficientFundsException.java</code>
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">InsufficientFundsException</span> <span class="org-keyword">extends</span> <span class="org-type">Exception</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">InsufficientFundsException</span> <span class="org-keyword">extends</span> <span class="org-type">Exception</span> {
     <span class="org-keyword">public</span> <span class="org-function-name">InsufficientFundsException</span>(){
         <span class="org-keyword">super</span>(<span class="org-string">"Insufficient Funds in your account"</span>);
     }
@@ -489,14 +490,14 @@ Re throwing error:
         <span class="org-keyword">super</span>(message);
     }
 }
-</pre>
+</code></pre>
 </div>
 
 <p>
 <code>Account.java</code>
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Account</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Account</span> {
    <span class="org-keyword">private</span> <span class="org-type">float</span> <span class="org-variable-name">balance</span>;
    <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">deposit</span>(<span class="org-type">float</span> <span class="org-variable-name">value</span>) <span class="org-keyword">throws</span> <span class="org-type">IOException</span> {
     <span class="org-keyword">if</span> (value &lt;= 0) <span class="org-keyword">throw</span> <span class="org-keyword">new</span> <span class="org-type">IOException</span>();
@@ -506,16 +507,16 @@ Re throwing error:
         <span class="org-keyword">if</span> (value &gt; balance) <span class="org-keyword">throw</span> <span class="org-keyword">new</span> <span class="org-type">InsufficientFundsException</span>(); <span class="org-comment-delimiter">// </span><span class="org-comment">OR with a provided message throw new InsufficientFundsException("Poor Twat");
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 
 <p>
 <code>ExceptionsDemo.java</code>
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">ExceptionsDemo</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">ExceptionsDemo</span> {
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">show</span>() {
-        <span class="org-type">var</span> <span class="org-variable-name">account</span> = <span class="org-keyword">new</span> <span class="org-type">Account</span>();
+        <span class="org-keyword">var</span> <span class="org-variable-name">account</span> = <span class="org-keyword">new</span> <span class="org-type">Account</span>();
         <span class="org-keyword">try</span> {
             account.withdraw(10);
         } <span class="org-keyword">catch</span> (InsufficientFundsException e) {
@@ -523,12 +524,12 @@ Re throwing error:
 </span>        }
     }
 }
-</pre>
+</code></pre>
 </div>
 </div>
-<div id="outline-container-org123582b" class="outline-3">
-<h3 id="org123582b">Chaining Exceptions</h3>
-<div class="outline-text-3" id="text-org123582b">
+<div id="outline-container-org1ff3f44" class="outline-3">
+<h3 id="org1ff3f44">Chaining Exceptions</h3>
+<div class="outline-text-3" id="text-org1ff3f44">
 <p>
 Used a lot for libraries/framework code.
 </p>
@@ -538,44 +539,44 @@ I.e. We can say <code>InsufficientFundsException</code> is derived from <code>Ac
 <code>AccountException.java</code>
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">AccountException</span> <span class="org-keyword">extends</span> <span class="org-type">Exception</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">AccountException</span> <span class="org-keyword">extends</span> <span class="org-type">Exception</span> {
     <span class="org-keyword">public</span> <span class="org-function-name">AccountException</span>(<span class="org-type">Exception</span> <span class="org-variable-name">cause</span>){
         <span class="org-keyword">super</span>(cause);
     }
 }
-</pre>
+</code></pre>
 </div>
 
 <p>
 <code>Account.java</code>
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Account</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Account</span> {
    <span class="org-keyword">private</span> <span class="org-type">float</span> <span class="org-variable-name">balance</span>;
     <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">withdraw</span>(<span class="org-type">float</span> <span class="org-variable-name">value</span>) <span class="org-keyword">throws</span> <span class="org-type">AccountException</span> {
         <span class="org-keyword">if</span> (value &gt; balance)
           <span class="org-keyword">throw</span> <span class="org-keyword">new</span> <span class="org-type">AccountException</span>(<span class="org-keyword">new</span> <span class="org-type">InsufficientFundsException</span>()); <span class="org-comment-delimiter">// </span><span class="org-comment">InsufficientFundsException
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 
 <p>
 Results in a nice stack trace when caught:
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-constant">com</span>.<span class="org-constant">exceptions</span>.<span class="org-constant">AccountException</span>: <span class="org-constant">com</span>.<span class="org-constant">exceptions</span>.<span class="org-constant">InsufficientFundsException</span>: Insufficient Funds in your account
+<pre class="src src-java"><code><span class="org-constant">com</span>.<span class="org-constant">exceptions</span>.<span class="org-constant">AccountException</span>: <span class="org-constant">com</span>.<span class="org-constant">exceptions</span>.<span class="org-constant">InsufficientFundsException</span>: Insufficient Funds in your account
         <span class="org-type">at</span> <span class="org-constant">com</span>.<span class="org-constant">demo</span>.Account.withdraw(Account.java:16)
         at <span class="org-constant">com</span>.<span class="org-constant">exceptions</span>.ExceptionsDemo.show(ExceptionsDemo.java:9)
         at <span class="org-constant">com</span>.<span class="org-constant">demo</span>.Main.main(Main.java:8)
 Caused by: <span class="org-constant">com</span>.<span class="org-constant">exceptions</span>.InsufficientFundsException: Insufficient Funds in your account
-</pre>
+</code></pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-java">e.initCause();
-<span class="org-type">var</span> <span class="org-variable-name">cause</span> = e.getCause();
-</pre>
+<pre class="src src-java"><code>e.initCause();
+<span class="org-keyword">var</span> <span class="org-variable-name">cause</span> = e.getCause();
+</code></pre>
 </div>
 </div>
 </div>

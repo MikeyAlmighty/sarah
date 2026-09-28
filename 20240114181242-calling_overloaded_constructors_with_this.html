@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-26 Sat 10:06 -->
+<!-- 2026-09-28 Mon 08:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Calling overloaded Constructors with this()</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,16 +243,16 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Calling overloaded Constructors with this()</h1>
-<div id="outline-container-org23ce90c" class="outline-2">
-<h2 id="org23ce90c">Calling overloaded Constructors with this()</h2>
-<div class="outline-text-2" id="text-org23ce90c">
+<div id="outline-container-org0979596" class="outline-2">
+<h2 id="org0979596">Calling overloaded Constructors with this()</h2>
+<div class="outline-text-2" id="text-org0979596">
 <p>
 Since a <code>class</code> can contain <b>multiple overloaded</b> <code>constructors</code>, these <code>constructors</code> can actually call one another!
 </p>
 </div>
-<div id="outline-container-org3283f3d" class="outline-3">
-<h3 id="org3283f3d">Example</h3>
-<div class="outline-text-3" id="text-org3283f3d">
+<div id="outline-container-org5b9fae7" class="outline-3">
+<h3 id="org5b9fae7">Example</h3>
+<div class="outline-text-3" id="text-org5b9fae7">
 <ul class="org-ul">
 <li>One of the constructors takes a single <code>int</code> parameter.</li>
 <li>The other takes an <code>int</code> and a <code>String</code>.
@@ -273,7 +274,7 @@ For example, imagine that we have five variables being set like <code>this.weigh
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Hamster</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Hamster</span> {
     <span class="org-keyword">private</span> <span class="org-type">String</span> <span class="org-variable-name">color</span>;
     <span class="org-keyword">private</span> <span class="org-type">int</span> <span class="org-variable-name">weight</span>;
 
@@ -287,12 +288,12 @@ For example, imagine that we have five variables being set like <code>this.weigh
         color = <span class="org-string">"brown"</span>;
     }
 }
-</pre>
+</code></pre>
 </div>
 </div>
-<div id="outline-container-orgb43c97d" class="outline-4">
-<h4 id="orgb43c97d">Solution</h4>
-<div class="outline-text-4" id="text-orgb43c97d">
+<div id="outline-container-org24c66e3" class="outline-4">
+<h4 id="org24c66e3">Solution</h4>
+<div class="outline-text-4" id="text-org24c66e3">
 <p>
 What we really want is for the <b>first</b> <code>constructor</code> to <b>call</b> the <b>second</b> <code>constructor</code> with two parameters.
 </p>
@@ -302,7 +303,7 @@ When <code>this()</code> is used <b>with parentheses</b>, Java calls <b>another 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Hamster</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Hamster</span> {
     <span class="org-keyword">private</span> <span class="org-type">String</span> <span class="org-variable-name">color</span>;
     <span class="org-keyword">private</span> <span class="org-type">int</span> <span class="org-variable-name">weight</span>;
 
@@ -315,13 +316,13 @@ When <code>this()</code> is used <b>with parentheses</b>, Java calls <b>another 
         <span class="org-keyword">this</span>(weight, <span class="org-string">"brown"</span>);
     }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org9846ca8" class="outline-4">
-<h4 id="org9846ca8"><span class="underline">Exam Trick</span></h4>
-<div class="outline-text-4" id="text-org9846ca8">
+<div id="outline-container-org8696029" class="outline-4">
+<h4 id="org8696029"><span class="underline">Exam Trick</span></h4>
+<div class="outline-text-4" id="text-org8696029">
 <ul class="org-ul">
 <li>Calling <code>this()</code> has one special rule you need to know.
 <ul class="org-ul">
@@ -332,36 +333,36 @@ When <code>this()</code> is used <b>with parentheses</b>, Java calls <b>another 
 </ul>
 </div>
 <ul class="org-ul">
-<li><a id="orgc8aa0b1"></a>Example<br />
-<div class="outline-text-5" id="text-orgc8aa0b1">
+<li><a id="org62634b6"></a>Example<br />
+<div class="outline-text-5" id="text-org62634b6">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> Hamster(<span class="org-type">int</span> <span class="org-variable-name">weight</span>) {
+<pre class="src src-java"><code><span class="org-keyword">public</span> Hamster(<span class="org-type">int</span> <span class="org-variable-name">weight</span>) {
     System.out.println(<span class="org-string">"chew"</span>);
     <span class="org-comment-delimiter">// </span><span class="org-comment">Set weight and default color
 </span>    <span class="org-keyword">this</span>(weight, <span class="org-string">"brown"</span>); <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>}
-</pre>
+</code></pre>
 </div>
 </div>
 </li>
 </ul>
 </div>
-<div id="outline-container-org0ccaab7" class="outline-4">
-<h4 id="org0ccaab7">Infinite Cycle (Cyclic)</h4>
-<div class="outline-text-4" id="text-org0ccaab7">
+<div id="outline-container-orgee569c9" class="outline-4">
+<h4 id="orgee569c9">Infinite Cycle (Cyclic)</h4>
+<div class="outline-text-4" id="text-orgee569c9">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Gopher</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Gopher</span> {
     <span class="org-keyword">public</span> <span class="org-function-name">Gopher</span>(<span class="org-type">int</span> <span class="org-variable-name">dugHoles</span>) {
         <span class="org-keyword">this</span>(5); <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgd936727" class="outline-4">
-<h4 id="orgd936727">Rules</h4>
-<div class="outline-text-4" id="text-orgd936727">
+<div id="outline-container-org909a994" class="outline-4">
+<h4 id="org909a994">Rules</h4>
+<div class="outline-text-4" id="text-org909a994">
 <ul class="org-ul">
 <li>A <code>class</code> can contain <b>many</b> overloaded constructors, provided the signature for each is <b>distinct</b>.</li>
 <li>The compiler inserts a <b>default</b> no­argument <code>constructor</code> if no <code>constructors</code> are declared.</li>

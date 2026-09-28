@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-26 Sat 10:07 -->
+<!-- 2026-09-28 Mon 08:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Passing Arrays as Arguments</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,9 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Passing Arrays as Arguments</h1>
-<div id="outline-container-org25103ae" class="outline-2">
-<h2 id="org25103ae">Passing Arrays as Arguments</h2>
-<div class="outline-text-2" id="text-org25103ae">
+<div id="outline-container-orgd9375ed" class="outline-2">
+<h2 id="orgd9375ed">Passing Arrays as Arguments</h2>
+<div class="outline-text-2" id="text-orgd9375ed">
 <p>
 In <code>Java</code>, when an <b>array</b> is <b>passed</b> to a <code>method</code>, the argument value is the <b>reference to the array</b>, not a copy of the array itself.
 </p>
@@ -253,9 +254,9 @@ In <code>Java</code>, when an <b>array</b> is <b>passed</b> to a <code>method</c
 This behavior is often described as <b>pass-by-sharing</b>.
 </p>
 </div>
-<div id="outline-container-org687fa1b" class="outline-3">
-<h3 id="org687fa1b">Semantically:</h3>
-<div class="outline-text-3" id="text-org687fa1b">
+<div id="outline-container-org03f3359" class="outline-3">
+<h3 id="org03f3359">Semantically:</h3>
+<div class="outline-text-3" id="text-org03f3359">
 <ul class="org-ul">
 <li>The method receives a <code>reference</code> to the <b>same array object</b>.</li>
 <li>Both the <code>caller</code> and the <code>method</code> refer to the <b>same memory location</b>.</li>
@@ -263,9 +264,9 @@ This behavior is often described as <b>pass-by-sharing</b>.
 </ul>
 </div>
 </div>
-<div id="outline-container-org187952b" class="outline-3">
-<h3 id="org187952b">Important points:</h3>
-<div class="outline-text-3" id="text-org187952b">
+<div id="outline-container-org8f62ff4" class="outline-3">
+<h3 id="org8f62ff4">Important points:</h3>
+<div class="outline-text-3" id="text-org8f62ff4">
 <ul class="org-ul">
 <li>The <b>reference value</b> is <i>passed</i> by value.</li>
 <li>The <code>array</code> <b>object</b> itself is <i>shared</i> between the <b>caller</b> and the <b>method</b>.</li>
@@ -274,11 +275,11 @@ This behavior is often described as <b>pass-by-sharing</b>.
 </div>
 </div>
 </div>
-<div id="outline-container-org2f9278a" class="outline-2">
-<h2 id="org2f9278a">Example</h2>
-<div class="outline-text-2" id="text-org2f9278a">
+<div id="outline-container-org790cde1" class="outline-2">
+<h2 id="org790cde1">Example</h2>
+<div class="outline-text-2" id="text-org790cde1">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">ArrayArgumentExample</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">ArrayArgumentExample</span> {
 
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">modifyArray</span>(<span class="org-type">int</span>[] <span class="org-variable-name">arr</span>) {
         arr[0] = 99;  <span class="org-comment-delimiter">// </span><span class="org-comment">modify the first element
@@ -295,22 +296,22 @@ This behavior is often described as <b>pass-by-sharing</b>.
         System.out.println(<span class="org-string">"After method call: "</span> + numbers[0]);
     }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org262109d" class="outline-2">
-<h2 id="org262109d">Output</h2>
-<div class="outline-text-2" id="text-org262109d">
+<div id="outline-container-orgb16bc4d" class="outline-2">
+<h2 id="orgb16bc4d">Output</h2>
+<div class="outline-text-2" id="text-orgb16bc4d">
 <div class="org-src-container">
-<pre class="src src-nil">Before method call: 1
+<pre class="src src-nil"><code>Before method call: 1
 After method call: 99
-</pre>
+</code></pre>
 </div>
 </div>
-<div id="outline-container-org13ed420" class="outline-3">
-<h3 id="org13ed420">Explanation</h3>
-<div class="outline-text-3" id="text-org13ed420">
+<div id="outline-container-org056f261" class="outline-3">
+<h3 id="org056f261">Explanation</h3>
+<div class="outline-text-3" id="text-org056f261">
 <ol class="org-ol">
 <li>The variable <code>numbers</code> holds a <b>reference</b> to an <b>array</b>.</li>
 <li>When <code>modifyArray(numbers)</code> is called, the <b>reference value</b> is <i>passed</i>.</li>
@@ -324,9 +325,9 @@ Thus, the modification is visible outside the method.
 </div>
 </div>
 </div>
-<div id="outline-container-org480c8cf" class="outline-2">
-<h2 id="org480c8cf">Key Idea</h2>
-<div class="outline-text-2" id="text-org480c8cf">
+<div id="outline-container-org39ecb52" class="outline-2">
+<h2 id="org39ecb52">Key Idea</h2>
+<div class="outline-text-2" id="text-org39ecb52">
 <ul class="org-ul">
 <li>Java does <b>not</b> <i>copy</i> arrays when passing them to methods.</li>
 <li>Instead, the <code>method</code> receives a <b>reference</b>.</li>

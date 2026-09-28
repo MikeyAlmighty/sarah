@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-26 Sat 10:07 -->
+<!-- 2026-09-28 Mon 08:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Implementing an Interface</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,9 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Implementing an Interface</h1>
-<div id="outline-container-org7e0037f" class="outline-2">
-<h2 id="org7e0037f">Implementing an Interface</h2>
-<div class="outline-text-2" id="text-org7e0037f">
+<div id="outline-container-org43e2f7b" class="outline-2">
+<h2 id="org43e2f7b">Implementing an Interface</h2>
+<div class="outline-text-2" id="text-org43e2f7b">
 <p>
 To implement an interface, a <code>class</code> <b>must</b> provide <b>implementations</b> for all the <b>methods</b> declared in the <code>interface</code>.
 </p>
@@ -265,11 +266,11 @@ The relationship <b>between</b> the <code>class</code> and the <code>interface</
 <li>Since <b>interface inheritance</b> and <b>class inheritance</b> are essentially the same, we will simply refer to both as <a href="20240114160906-understanding_inheritance.html#ID-5e09bcf0-2de5-4b84-a9ed-b3654bf0df40">Inheritance</a>.</li>
 </ul>
 </div>
-<div id="outline-container-orgccf20ed" class="outline-3">
-<h3 id="orgccf20ed">Example</h3>
-<div class="outline-text-3" id="text-orgccf20ed">
+<div id="outline-container-org67c6e35" class="outline-3">
+<h3 id="org67c6e35">Example</h3>
+<div class="outline-text-3" id="text-org67c6e35">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">interface</span> <span class="org-type">Edible</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">interface</span> <span class="org-type">Edible</span> {
     <span class="org-comment-delimiter">// </span><span class="org-comment">Describe how to eat
 </span>    <span class="org-keyword">public</span> <span class="org-keyword">abstract</span> <span class="org-type">String</span> <span class="org-function-name">howToEat</span>();
 }
@@ -339,18 +340,18 @@ The relationship <b>between</b> the <code>class</code> and the <code>interface</
         <span class="org-keyword">return</span> <span class="org-string">"Orange: Make orange juice"</span>;
     }
 }
-</pre>
+</code></pre>
 </div>
 </div>
-<div id="outline-container-org38bc1ee" class="outline-4">
-<h4 id="org38bc1ee">Output</h4>
-<div class="outline-text-4" id="text-org38bc1ee">
+<div id="outline-container-orgdc3f23f" class="outline-4">
+<h4 id="orgdc3f23f">Output</h4>
+<div class="outline-text-4" id="text-orgdc3f23f">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-constant">Tiger</span>: <span class="org-type">RROOAARR</span>
+<pre class="src src-java"><code><span class="org-constant">Tiger</span>: <span class="org-type">RROOAARR</span>
 <span class="org-variable-name">Chicken</span>: Fry it
 Chicken: cock-a-doodle-doo
 Apple: Make apple cider
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -406,34 +407,34 @@ In essence, the <b>Edible</b> <code>interface</code> defines common behavior for
 </div>
 </div>
 </div>
-<div id="outline-container-org538de4b" class="outline-3">
-<h3 id="org538de4b">Note</h3>
-<div class="outline-text-3" id="text-org538de4b">
+<div id="outline-container-orge538043" class="outline-3">
+<h3 id="orge538043">Note</h3>
+<div class="outline-text-3" id="text-orge538043">
 <p>
 The modifiers <code>public static final</code> on <b>data</b> <b>fields</b> and the <b>modifiers</b> <code>public abstract</code> on <b>methods</b> can be <b>omitted</b> in an <b>interface</b>.
 </p>
 </div>
-<div id="outline-container-org03504bc" class="outline-4">
-<h4 id="org03504bc">Example</h4>
-<div class="outline-text-4" id="text-org03504bc">
+<div id="outline-container-orgb8b4aed" class="outline-4">
+<h4 id="orgb8b4aed">Example</h4>
+<div class="outline-text-4" id="text-orgb8b4aed">
 <p>
 The following <b>interface definitions</b> are <b>equivalent</b>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">interface</span> <span class="org-type">T</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">interface</span> <span class="org-type">T</span> {
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-keyword">final</span> <span class="org-type">int</span> <span class="org-variable-name">K</span> = 1;
     <span class="org-keyword">public</span> <span class="org-keyword">abstract</span> <span class="org-type">void</span> <span class="org-function-name">p</span>();
 }
-</pre>
+</code></pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">interface</span> <span class="org-type">T</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">interface</span> <span class="org-type">T</span> {
     <span class="org-type">int</span> <span class="org-variable-name">K</span> = 1;
     <span class="org-type">void</span> <span class="org-function-name">p</span>();
 }
-</pre>
+</code></pre>
 </div>
 
 <ul class="org-ul">

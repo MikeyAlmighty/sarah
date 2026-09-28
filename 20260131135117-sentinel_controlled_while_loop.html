@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-26 Sat 10:06 -->
+<!-- 2026-09-28 Mon 08:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Sentinel-Controlled While Loop</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,9 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Sentinel-Controlled While Loop</h1>
-<div id="outline-container-org313bef7" class="outline-2">
-<h2 id="org313bef7">Sentinel-Controlled While Loop</h2>
-<div class="outline-text-2" id="text-org313bef7">
+<div id="outline-container-org6a903a9" class="outline-2">
+<h2 id="org6a903a9">Sentinel-Controlled While Loop</h2>
+<div class="outline-text-2" id="text-org6a903a9">
 <p>
 A <b>sentinel-controlled while loop</b> repeatedly reads input and processes it until a special value (<code>sentinel</code>) is encountered.
 </p>
@@ -253,39 +254,39 @@ A <b>sentinel-controlled while loop</b> repeatedly reads input and processes it 
 It signals <b>termination</b>.
 </p>
 </div>
-<div id="outline-container-org284da9f" class="outline-3">
-<h3 id="org284da9f"><b>Key idea</b></h3>
-<div class="outline-text-3" id="text-org284da9f">
+<div id="outline-container-orgddcc515" class="outline-3">
+<h3 id="orgddcc515"><b>Key idea</b></h3>
+<div class="outline-text-3" id="text-orgddcc515">
 <ul class="org-ul">
 <li>The <code>loop</code> continues <b>while</b> the input is not equal to the <code>sentinel</code>.</li>
 <li>When the <code>sentinel</code> is read, the loop <b>stops</b>.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org715b9af" class="outline-3">
-<h3 id="org715b9af"><b>When to use</b></h3>
-<div class="outline-text-3" id="text-org715b9af">
+<div id="outline-container-org06c83b8" class="outline-3">
+<h3 id="org06c83b8"><b>When to use</b></h3>
+<div class="outline-text-3" id="text-org06c83b8">
 <ul class="org-ul">
 <li>You don’t know in advance how many data items will be processed.</li>
 <li>You read input until a special termination value (<b>sentinel</b>) is reached.</li>
 </ul>
 </div>
-<div id="outline-container-org95de7f9" class="outline-4">
-<h4 id="org95de7f9"><b>Typical structure</b></h4>
-<div class="outline-text-4" id="text-org95de7f9">
+<div id="outline-container-org2bd4451" class="outline-4">
+<h4 id="org2bd4451"><b>Typical structure</b></h4>
+<div class="outline-text-4" id="text-org2bd4451">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">Scanner</span> <span class="org-variable-name">in</span> = <span class="org-keyword">new</span> <span class="org-type">Scanner</span>(System.in);
+<pre class="src src-java"><code><span class="org-type">Scanner</span> <span class="org-variable-name">in</span> = <span class="org-keyword">new</span> <span class="org-type">Scanner</span>(System.in);
 <span class="org-type">int</span> <span class="org-variable-name">value</span> = in.nextInt();        <span class="org-comment-delimiter">// </span><span class="org-comment">read initial input
 </span><span class="org-keyword">while</span> (value != SENTINEL) {      <span class="org-comment-delimiter">// </span><span class="org-comment">check sentinel
 </span>    <span class="org-comment-delimiter">// </span><span class="org-comment">process value
 </span>    value = in.nextInt();        <span class="org-comment-delimiter">// </span><span class="org-comment">read next
 </span>}
-</pre>
+</code></pre>
 </div>
 </div>
 <ul class="org-ul">
-<li><a id="orgb057ec8"></a><b>Example: Sum positive integers until '–1' is entered</b><br />
-<div class="outline-text-5" id="text-orgb057ec8">
+<li><a id="org10179aa"></a><b>Example: Sum positive integers until '–1' is entered</b><br />
+<div class="outline-text-5" id="text-org10179aa">
 <p>
 In this example, the sentinel value is <code>–1</code>.
 </p>
@@ -295,7 +296,7 @@ Valid input values are <b>non</b>-<b>negative</b> <code>integers</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Scanner</span>;
+<pre class="src src-java"><code><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Scanner</span>;
 
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">SentinelExample</span> {
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
@@ -317,7 +318,7 @@ Valid input values are <b>non</b>-<b>negative</b> <code>integers</code>.
         scanner.close();
     }
 }
-</pre>
+</code></pre>
 </div>
 
 <p>

@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-26 Sat 10:07 -->
+<!-- 2026-09-28 Mon 08:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>String.strip</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,28 +243,28 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">String.strip</h1>
-<div id="outline-container-org95c0a2c" class="outline-2">
-<h2 id="org95c0a2c"><code>String.strip()</code></h2>
-<div class="outline-text-2" id="text-org95c0a2c">
+<div id="outline-container-org35ff2ec" class="outline-2">
+<h2 id="org35ff2ec"><code>String.strip()</code></h2>
+<div class="outline-text-2" id="text-org35ff2ec">
 <ul class="org-ul">
 <li>The <code>stripLeading()</code> method removes <code>whitespace</code> from the <b>beginning</b> of the <code>String</code> and <b>leaves it at the end</b>.</li>
 
 <li>The <code>stripTrailing()</code> method does removes <code>whitespace</code> from the <b>end</b> of the <code>String</code> and <b>leaves it at the beginning</b>.</li>
 </ul>
 </div>
-<div id="outline-container-org6249fb0" class="outline-3">
-<h3 id="org6249fb0">Signature</h3>
-<div class="outline-text-3" id="text-org6249fb0">
+<div id="outline-container-org6266217" class="outline-3">
+<h3 id="org6266217">Signature</h3>
+<div class="outline-text-3" id="text-org6266217">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-type">String</span> <span class="org-function-name">strip</span>()
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-type">String</span> <span class="org-function-name">strip</span>()
 <span class="org-keyword">public</span> String stripLeading()
 <span class="org-keyword">public</span> String stripTrailing()
-</pre>
+</code></pre>
 </div>
 </div>
 <ul class="org-ul">
-<li><a id="org1ae4706"></a><span class="underline">Exam Trick</span><br />
-<div class="outline-text-5" id="text-org1ae4706">
+<li><a id="orga1c7d8b"></a><span class="underline">Exam Trick</span><br />
+<div class="outline-text-5" id="text-orga1c7d8b">
 <p>
 Supports <b>Unicode</b>
 </p>
@@ -275,23 +276,23 @@ But if you want to test the difference, one of the <b>Unicode whitespace charact
 </div>
 </li>
 </ul>
-<div id="outline-container-orgb56b0e7" class="outline-4">
-<h4 id="orgb56b0e7">Example</h4>
-<div class="outline-text-4" id="text-orgb56b0e7">
+<div id="outline-container-orgc797af8" class="outline-4">
+<h4 id="orgc797af8">Example</h4>
+<div class="outline-text-4" id="text-orgc797af8">
 <div class="org-src-container">
-<pre class="src src-java">System.out.println(<span class="org-string">"abc"</span>.strip()); <span class="org-comment-delimiter">// </span><span class="org-comment">abc
+<pre class="src src-java"><code>System.out.println(<span class="org-string">"abc"</span>.strip()); <span class="org-comment-delimiter">// </span><span class="org-comment">abc
 </span>System.out.println(<span class="org-string">"\t    a b c\n"</span>.strip()); <span class="org-comment-delimiter">// </span><span class="org-comment">a b c
 </span>
 <span class="org-type">String</span> <span class="org-variable-name">text</span> = <span class="org-string">" abc\t "</span>;
 System.out.println(text.strip().length()); <span class="org-comment-delimiter">// </span><span class="org-comment">3
 </span>System.out.println(text.stripLeading().length()); <span class="org-comment-delimiter">// </span><span class="org-comment">5
 </span>System.out.println(text.stripTrailing().length());<span class="org-comment-delimiter">// </span><span class="org-comment">4</span>
-</pre>
+</code></pre>
 </div>
 </div>
 <ul class="org-ul">
-<li><a id="orgdf92b86"></a><span class="underline">Exam Trick</span><br />
-<div class="outline-text-5" id="text-orgdf92b86">
+<li><a id="org8c4a931"></a><span class="underline">Exam Trick</span><br />
+<div class="outline-text-5" id="text-org8c4a931">
 <p>
 Remember that <code>\t</code> is a <b>single character</b>.
 </p>
