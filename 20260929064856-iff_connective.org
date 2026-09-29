@@ -1,0 +1,51 @@
+:PROPERTIES:
+:ID:       1669b6bc-818a-4ffa-a1ef-6e731927644b
+:END:
+#+title: IFF Connective
+
+* IFF Connective
+
+- aka *Biconditional*
+
+** Definition
+The connective *iff* (written $p \leftrightarrow q$ or $p \iff q$) is a *binary connective*.
+
+It reads "$p$ if and only if $q$" or "$p$ is equivalent to $q$".
+
+The compound statement is ~true~ when $p$ and $q$ have the /same/ truth value (both ~true~ or both ~false~).
+
+** Truth table
+
+| $p$ | $q$ | $p \leftrightarrow q$ |
+|-----+-----+-----------------------|
+| T   | T   | T                     |
+| T   | F   | F                     |
+| F   | T   | F                     |
+| F   | F   | T                     |
+
+** Example: not(p iff q)
+
+Add a column for the negation of the whole statement (the brackets matter):
+
+| $p$ | $q$ | $p \leftrightarrow q$ | $\lnot(p \leftrightarrow q)$ |
+|-----+-----+-----------------------+------------------------------|
+| T   | T   | T                     | F                            |
+| T   | F   | F                     | T                            |
+| F   | T   | F                     | T                            |
+| F   | F   | T                     | F                            |
+
+Dropping the intermediate column gives the table for $\lnot(p \leftrightarrow q)$, which is *exactly the same* as the table for [[id:791af3eb-ea5c-4458-85c8-9e7c93edf32f][XOR]].
+
+- Hence $\lnot(p \leftrightarrow q) \equiv p \oplus q$.
+- $\lnot p \leftrightarrow q$ (no brackets) means something different: "not $p$ is equivalent to $q$".
+
+** Terminology
+
+- *Logically equivalent*: two compound statements that give the /same/ truth values for the same truth values of $p$ and $q$.
+
+In PL they "mean the same thing".
+
+** Notes
+
+- Commutative: $p \leftrightarrow q \equiv q \leftrightarrow p$.
+- =iff= is the opposite of =xor=: ~true~ when the inputs *agree*, whereas =xor= is ~true~ when they *differ*.
