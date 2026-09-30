@@ -1,0 +1,57 @@
+:PROPERTIES:
+:ID:       e239547b-f5cb-46e7-b322-5104d6d9b702
+:END:
+#+title: The Satisfiability Problem (SAT)
+
+
+* The Satisfiability Problem (SAT)
+
+** Overview
+
+SAT is an important problem in both theoretical computer science and mathematics.
+
+Stating it requires some terminology first.
+
+** Satisfiable
+
+- A wff $A$ built from atoms $p_1, \dots, p_n$ is *satisfiable* if some assignment of truth values to its atoms makes $A$ true.
+- Example: $(p \lor q) \land \neg r$ is satisfiable, since it is true when $p=T$, $q=T$, $r=F$.
+- To show a wff is *satisfiable*, *one satisfying assignment* is enough.
+
+The full truth table is not always needed.
+
+** Jointly satisfiable
+
+- wffs $A_1, \dots, A_n$ are *(jointly) satisfiable* if one truth assignment makes all of them true simultaneously.
+- Example: $(p \to q) \lor r$ and $(p \lor q) \land \neg r$ are jointly satisfiable, since $p=T$, $q=T$, $r=F$ makes both true.
+
+** Tautology
+
+If a wff is always true no matter what the truth values of its atoms, we say that it is a *[[id:869bd8ab-6a39-46d9-b51e-b3defd2a81c1][tautology]]*.
+
+- Notation: $\models A$ (the symbol $\models$ is the *semantic turnstile*).
+- Example: $(p \to q) \lor \neg q$ is true in all 4 rows of its truth table.
+- Showing a tautology requires the *entire* truth table (all $2^n$ rows).
+
+** Contradiction
+
+- A wff that is *always false*.
+- Notation: $A \models$ (contradictions sit on the *left* of the turnstile).
+- Example: $\neg(p \to (p \lor q))$ is false in all 4 rows.
+
+** Satisfy / falsify
+
+- A truth assignment that makes a wff true *satisfies* it.
+- Otherwise it *falsifies* it.
+
+** The satisfiability problem
+
+- *SAT:* given a wff in PL, decide whether some truth assignment to its atoms makes the wff true.
+- A program that solves SAT is a *SAT solver*.
+
+** Key points
+
+- Satisfiable: true in *at least one* row.
+- Tautology: true in *every* row.
+- Contradiction: true in *no* row (i.e. not satisfiable).
+- Brute force means checking up to $2^n$ rows, see [[id:aecd0da0-a9f6-4f5e-9983-6cebd0298eaf][Rules for Constructing Statements in PL]] for wff structure.

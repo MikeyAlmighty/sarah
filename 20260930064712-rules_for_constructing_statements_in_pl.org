@@ -1,0 +1,61 @@
+:PROPERTIES:
+:ID:       aecd0da0-a9f6-4f5e-9983-6cebd0298eaf
+:END:
+#+title: Rules for Constructing Statements in PL
+
+* Rules for Constructing Statements in PL
+
+** Overview
+
+Not every sequence of [[id:1658d69f-1ee5-4ddd-bda3-f38cf1ab6d7f][Atoms]] and [[id:347dfbd0-6fb3-4cb9-ac7f-30efd593e008][Connectives]] is grammatically correct.
+
+Grammatically correct statements in PL are [[id:29ce4b76-3cfc-46ee-9ed9-74c2f91da633][Well-Formed Formulae (WFF)]].
+
+** Terminology
+
+- A WFF that is *not* an [[id:1658d69f-1ee5-4ddd-bda3-f38cf1ab6d7f][atom]] is said to be a *Compound statement*.
+
+** Rules for wff
+
+- *Rule 1:* All atoms are wff.
+- *Rule 2:* If $X$ and $Y$ are wff, then so are:
+  - $(\neg X)$
+  - $(X \land Y)$
+  - $(X \lor Y)$
+  - $(X \oplus Y)$
+  - $(X \leftrightarrow Y)$
+  - $(X \to Y)$
+- *Rule 3:* All wff are built by applying Rules 1 and 2 a *finite* number of times.
+
+** Example: building a WFF
+
+Show that $(\neg((p \lor q) \land r))$ is a WFF.
+
+1. *Step 1:* $p, q, r$ are WFF (Rule 1). By Rule 2, $(p \lor q)$ is a WFF.
+2. *Step 2:* $(p \lor q)$ and $r$ are WFF, so $((p \lor q) \land r)$ is a WFF (Rule 2).
+3. *Step 3:* $((p \lor q) \land r)$ is a WFF, so $(\neg((p \lor q) \land r))$ is a WFF (Rule 2).
+
+** Bracket conventions
+
+- Brackets during step-by-step construction guarantee correct interpretation.
+- *Outer brackets are omitted* in this course:
+  $(\neg((p \lor q) \land r))$ is written $\neg((p \lor q) \land r)$.
+- Brackets around $\neg$ may be omitted *only if* this causes no ambiguity:
+  - $\neg p \lor q$ means $(\neg p) \lor q$
+  - $\neg p \to (q \lor r)$ means $((\neg p) \to (q \lor r))$, which differs from $\neg((p \to q) \lor r)$
+
+** Size of a truth table
+- Let $n$ be the number of atoms in a WFF.
+- Each atom has 2 possible truth values (~T~ or ~F~).
+- Atoms are assigned values independently, so the number of combinations is $2^n$.
+- A truth table therefore has $2^n$ rows (excluding the header).
+- Adding one atom *doubles* the number of rows.
+  - $n=1$: 2 rows
+  - $n=2$: 4 rows
+  - $n=3$: 8 rows
+
+** Key points
+
+- Rule 3 is the closure rule: nothing is a WFF unless built by Rules 1 and 2.
+- $\neg$ binds tightest when brackets are dropped.
+- Check WFF-ness by decomposing from the outermost connective inward.
