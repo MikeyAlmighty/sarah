@@ -18,12 +18,24 @@ Stating it requires some terminology first.
 - Example: $(p \lor q) \land \neg r$ is satisfiable, since it is true when $p=T$, $q=T$, $r=F$.
 - To show a wff is *satisfiable*, *one satisfying assignment* is enough.
 
+| $p$ | $q$ | $r$ | $(p \lor q) \land \neg r$ |
+|-----+-----+-----+---------------------------|
+| T   | T   | F   | T                         |
+
 The full truth table is not always needed.
 
 ** Jointly satisfiable
 
 - wffs $A_1, \dots, A_n$ are *(jointly) satisfiable* if one truth assignment makes all of them true simultaneously.
 - Example: $(p \to q) \lor r$ and $(p \lor q) \land \neg r$ are jointly satisfiable, since $p=T$, $q=T$, $r=F$ makes both true.
+
+| $p$ | $q$ | $r$ | $(p \lor q) \land \neg r$ |
+|-----+-----+-----+---------------------------|
+| T   | T   | F   | T                         |
+
+| $p$ | $q$ | $r$ | $p \to q$ | $(p \to q) \lor r$ |
+|-----+-----+-----+-----------+--------------------|
+| T   | T   | F   | T         | T                  |
 
 ** Tautology
 
@@ -33,11 +45,25 @@ If a wff is always true no matter what the truth values of its atoms, we say tha
 - Example: $(p \to q) \lor \neg q$ is true in all 4 rows of its truth table.
 - Showing a tautology requires the *entire* truth table (all $2^n$ rows).
 
+| $p$ | $q$ | $p \to q$ | $\neg q$ | $(p \to q) \lor \neg q$ |
+|-----+-----+-----------+----------+-------------------------|
+| T   | T   | T         | F        | T                       |
+| T   | F   | F         | T        | T                       |
+| F   | T   | T         | F        | T                       |
+| F   | F   | T         | T        | T                       |
+
 ** Contradiction
 
 - A wff that is *always false*.
 - Notation: $A \models$ (contradictions sit on the *left* of the turnstile).
 - Example: $\neg(p \to (p \lor q))$ is false in all 4 rows.
+
+| $p$ | $q$ | $\neg(p \to (p \lor q))$ |
+|-----+-----+--------------------------|
+| T   | T   | F                        |
+| T   | F   | F                        |
+| F   | T   | F                        |
+| F   | F   | F                        |
 
 ** Satisfy / falsify
 
@@ -54,4 +80,3 @@ If a wff is always true no matter what the truth values of its atoms, we say tha
 - Satisfiable: true in *at least one* row.
 - Tautology: true in *every* row.
 - Contradiction: true in *no* row (i.e. not satisfiable).
-- Brute force means checking up to $2^n$ rows, see [[id:aecd0da0-a9f6-4f5e-9983-6cebd0298eaf][Rules for Constructing Statements in PL]] for wff structure.

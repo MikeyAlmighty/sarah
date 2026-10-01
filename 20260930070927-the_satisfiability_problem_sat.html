@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-30 Wed 07:34 -->
+<!-- 2026-10-01 Thu 08:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Satisfiability Problem (SAT)</title>
@@ -275,13 +275,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">The Satisfiability Problem (SAT)</h1>
-<div id="outline-container-orgf4a1584" class="outline-2">
-<h2 id="orgf4a1584">The Satisfiability Problem (SAT)</h2>
-<div class="outline-text-2" id="text-orgf4a1584">
+<div id="outline-container-org074f865" class="outline-2">
+<h2 id="org074f865">The Satisfiability Problem (SAT)</h2>
+<div class="outline-text-2" id="text-org074f865">
 </div>
-<div id="outline-container-orgf21f0e2" class="outline-3">
-<h3 id="orgf21f0e2">Overview</h3>
-<div class="outline-text-3" id="text-orgf21f0e2">
+<div id="outline-container-orgc70df37" class="outline-3">
+<h3 id="orgc70df37">Overview</h3>
+<div class="outline-text-3" id="text-orgc70df37">
 <p>
 SAT is an important problem in both theoretical computer science and mathematics.
 </p>
@@ -291,32 +291,126 @@ Stating it requires some terminology first.
 </p>
 </div>
 </div>
-<div id="outline-container-orga1a104e" class="outline-3">
-<h3 id="orga1a104e">Satisfiable</h3>
-<div class="outline-text-3" id="text-orga1a104e">
+<div id="outline-container-orge802f92" class="outline-3">
+<h3 id="orge802f92">Satisfiable</h3>
+<div class="outline-text-3" id="text-orge802f92">
 <ul class="org-ul">
 <li>A wff \(A\) built from atoms \(p_1, \dots, p_n\) is <b>satisfiable</b> if some assignment of truth values to its atoms makes \(A\) true.</li>
 <li>Example: \((p \lor q) \land \neg r\) is satisfiable, since it is true when \(p=T\), \(q=T\), \(r=F\).</li>
 <li>To show a wff is <b>satisfiable</b>, <b>one satisfying assignment</b> is enough.</li>
 </ul>
 
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">\(p\)</th>
+<th scope="col" class="org-left">\(q\)</th>
+<th scope="col" class="org-left">\(r\)</th>
+<th scope="col" class="org-left">\((p \lor q) \land \neg r\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">T</td>
+<td class="org-left">T</td>
+<td class="org-left">F</td>
+<td class="org-left">T</td>
+</tr>
+</tbody>
+</table>
+
 <p>
 The full truth table is not always needed.
 </p>
 </div>
 </div>
-<div id="outline-container-org87eb18b" class="outline-3">
-<h3 id="org87eb18b">Jointly satisfiable</h3>
-<div class="outline-text-3" id="text-org87eb18b">
+<div id="outline-container-org7cf8e34" class="outline-3">
+<h3 id="org7cf8e34">Jointly satisfiable</h3>
+<div class="outline-text-3" id="text-org7cf8e34">
 <ul class="org-ul">
 <li>wffs \(A_1, \dots, A_n\) are <b>(jointly) satisfiable</b> if one truth assignment makes all of them true simultaneously.</li>
 <li>Example: \((p \to q) \lor r\) and \((p \lor q) \land \neg r\) are jointly satisfiable, since \(p=T\), \(q=T\), \(r=F\) makes both true.</li>
 </ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">\(p\)</th>
+<th scope="col" class="org-left">\(q\)</th>
+<th scope="col" class="org-left">\(r\)</th>
+<th scope="col" class="org-left">\((p \lor q) \land \neg r\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">T</td>
+<td class="org-left">T</td>
+<td class="org-left">F</td>
+<td class="org-left">T</td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">\(p\)</th>
+<th scope="col" class="org-left">\(q\)</th>
+<th scope="col" class="org-left">\(r\)</th>
+<th scope="col" class="org-left">\(p \to q\)</th>
+<th scope="col" class="org-left">\((p \to q) \lor r\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">T</td>
+<td class="org-left">T</td>
+<td class="org-left">F</td>
+<td class="org-left">T</td>
+<td class="org-left">T</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-<div id="outline-container-org3b75b3b" class="outline-3">
-<h3 id="org3b75b3b">Tautology</h3>
-<div class="outline-text-3" id="text-org3b75b3b">
+<div id="outline-container-org234d4e2" class="outline-3">
+<h3 id="org234d4e2">Tautology</h3>
+<div class="outline-text-3" id="text-org234d4e2">
 <p>
 If a wff is always true no matter what the truth values of its atoms, we say that it is a <b><a href="20260930071323-tautology.html#ID-869bd8ab-6a39-46d9-b51e-b3defd2a81c1">tautology</a></b>.
 </p>
@@ -326,44 +420,145 @@ If a wff is always true no matter what the truth values of its atoms, we say tha
 <li>Example: \((p \to q) \lor \neg q\) is true in all 4 rows of its truth table.</li>
 <li>Showing a tautology requires the <b>entire</b> truth table (all \(2^n\) rows).</li>
 </ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">\(p\)</th>
+<th scope="col" class="org-left">\(q\)</th>
+<th scope="col" class="org-left">\(p \to q\)</th>
+<th scope="col" class="org-left">\(\neg q\)</th>
+<th scope="col" class="org-left">\((p \to q) \lor \neg q\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">T</td>
+<td class="org-left">T</td>
+<td class="org-left">T</td>
+<td class="org-left">F</td>
+<td class="org-left">T</td>
+</tr>
+
+<tr>
+<td class="org-left">T</td>
+<td class="org-left">F</td>
+<td class="org-left">F</td>
+<td class="org-left">T</td>
+<td class="org-left">T</td>
+</tr>
+
+<tr>
+<td class="org-left">F</td>
+<td class="org-left">T</td>
+<td class="org-left">T</td>
+<td class="org-left">F</td>
+<td class="org-left">T</td>
+</tr>
+
+<tr>
+<td class="org-left">F</td>
+<td class="org-left">F</td>
+<td class="org-left">T</td>
+<td class="org-left">T</td>
+<td class="org-left">T</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-<div id="outline-container-orgfbd4178" class="outline-3">
-<h3 id="orgfbd4178">Contradiction</h3>
-<div class="outline-text-3" id="text-orgfbd4178">
+<div id="outline-container-org4640dfc" class="outline-3">
+<h3 id="org4640dfc">Contradiction</h3>
+<div class="outline-text-3" id="text-org4640dfc">
 <ul class="org-ul">
 <li>A wff that is <b>always false</b>.</li>
 <li>Notation: \(A \models\) (contradictions sit on the <b>left</b> of the turnstile).</li>
 <li>Example: \(\neg(p \to (p \lor q))\) is false in all 4 rows.</li>
 </ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">\(p\)</th>
+<th scope="col" class="org-left">\(q\)</th>
+<th scope="col" class="org-left">\(\neg(p \to (p \lor q))\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">T</td>
+<td class="org-left">T</td>
+<td class="org-left">F</td>
+</tr>
+
+<tr>
+<td class="org-left">T</td>
+<td class="org-left">F</td>
+<td class="org-left">F</td>
+</tr>
+
+<tr>
+<td class="org-left">F</td>
+<td class="org-left">T</td>
+<td class="org-left">F</td>
+</tr>
+
+<tr>
+<td class="org-left">F</td>
+<td class="org-left">F</td>
+<td class="org-left">F</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-<div id="outline-container-org4e1b6a3" class="outline-3">
-<h3 id="org4e1b6a3">Satisfy / falsify</h3>
-<div class="outline-text-3" id="text-org4e1b6a3">
+<div id="outline-container-org0017303" class="outline-3">
+<h3 id="org0017303">Satisfy / falsify</h3>
+<div class="outline-text-3" id="text-org0017303">
 <ul class="org-ul">
 <li>A truth assignment that makes a wff true <b>satisfies</b> it.</li>
 <li>Otherwise it <b>falsifies</b> it.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org63627ce" class="outline-3">
-<h3 id="org63627ce">The satisfiability problem</h3>
-<div class="outline-text-3" id="text-org63627ce">
+<div id="outline-container-orgcd231b9" class="outline-3">
+<h3 id="orgcd231b9">The satisfiability problem</h3>
+<div class="outline-text-3" id="text-orgcd231b9">
 <ul class="org-ul">
 <li><b>SAT:</b> given a wff in PL, decide whether some truth assignment to its atoms makes the wff true.</li>
 <li>A program that solves SAT is a <b>SAT solver</b>.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org2b489ee" class="outline-3">
-<h3 id="org2b489ee">Key points</h3>
-<div class="outline-text-3" id="text-org2b489ee">
+<div id="outline-container-org4a5bf5f" class="outline-3">
+<h3 id="org4a5bf5f">Key points</h3>
+<div class="outline-text-3" id="text-org4a5bf5f">
 <ul class="org-ul">
 <li>Satisfiable: true in <b>at least one</b> row.</li>
 <li>Tautology: true in <b>every</b> row.</li>
 <li>Contradiction: true in <b>no</b> row (i.e. not satisfiable).</li>
-<li>Brute force means checking up to \(2^n\) rows, see <a href="20260930064712-rules_for_constructing_statements_in_pl.html#ID-aecd0da0-a9f6-4f5e-9983-6cebd0298eaf">Rules for Constructing Statements in PL</a> for wff structure.</li>
 </ul>
 </div>
 </div>
