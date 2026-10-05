@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       c0706ef0-7934-4e17-b4ce-e16ff3f4d38a
+:END:
+#+title: Logical Equivalance and Tautologies
+
+* Logical Equivalance and Tautologies
+
+** Idea
+So far, [[id:6154da29-5742-4917-8eb7-63d279178435][Definition of Logical Equivalence]] was proved by showing that the truth tables of \(A\) and \(B\) are the same.
+
+The proposition below gives an alternative strategy using tautologies (see [[id:0da5b793-c029-4ade-8875-cbd7a53aaf55][Logical Constants t and f]]).
+
+** Proposition 4.1
+
+Let \(A\) and \(B\) be wff.
+
+Then \[ A \equiv B \iff\ \models A \leftrightarrow B \]
+
+That is, \(A \equiv B\) can be proved by showing that \(A \leftrightarrow B\) is a tautology.
+
+*** Interpretation
+
+\(\models A \leftrightarrow B\) says that either \(A\) and \(B\) are both true, or \(A\) and \(B\) are both false. We can never have one true and the other false.
+
+** Example 3 (revisited)
+
+The truth table proves \(\models (p \to q) \leftrightarrow (\neg p \lor q)\), and hence, by Proposition 4.1, \(p \to q \equiv \neg p \lor q\).
+
+| p | q | p → q | ¬p ∨ q | (p → q) ↔ (¬p ∨ q) |
+|---+---+-------+--------+--------------------|
+| T | T | T     | T      | T                  |
+| T | F | F     | F      | T                  |
+| F | T | T     | T      | T                  |
+| F | F | T     | T      | T                  |
+
+The last column is all T, so it follows that \(p \to q \equiv \neg p \lor q\).

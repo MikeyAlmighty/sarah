@@ -1,0 +1,103 @@
+:PROPERTIES:
+:ID:       6154da29-5742-4917-8eb7-63d279178435
+:END:
+#+title: Definition of Logical Equivalence
+
+* Definition of Logical Equivalence
+
+Let \(A\) and \(B\) be wff.
+
+*Definition 4.1.* If \(A\) and \(B\) have the same truth tables, then \(A\) is *logically equivalent* to \(B\), written \(A \equiv B\).
+
+Two different-looking statements with the same truth table have the same logical meaning.
+
+** Example 1: Biconditional
+
+\(p \leftrightarrow q \equiv (p \to q) \land (q \to p)\)
+
+| p | q | p ↔ q |
+|---+---+-------|
+| T | T | T     |
+| T | F | F     |
+| F | T | F     |
+| F | F | T     |
+
+| p | q | p → q | q → p | (p → q) ∧ (q → p) |
+|---+---+-------+-------+-------------------|
+| T | T | T     | T     | T                 |
+| T | F | F     | T     | F                 |
+| F | T | T     | F     | F                 |
+| F | F | T     | T     | T                 |
+
+Same truth tables, so \(p \leftrightarrow q \equiv (p \to q) \land (q \to p)\).
+
+** Example 2: Exclusive or
+
+\(p \oplus q \equiv (p \lor q) \land \neg(p \land q)\)
+
+| p | q | p ⊕ q |
+|---+---+-------|
+| T | T | F     |
+| T | F | T     |
+| F | T | T     |
+| F | F | F     |
+
+| p | q | p ∨ q | p ∧ q | ¬(p ∧ q) | (p ∨ q) ∧ ¬(p ∧ q) |
+|---+---+-------+-------+----------+--------------------|
+| T | T | T     | T     | F        | F                  |
+| T | F | T     | F     | T        | T                  |
+| F | T | T     | F     | T        | T                  |
+| F | F | F     | F     | T        | F                  |
+
+Same truth tables, so \(p \oplus q \equiv (p \lor q) \land \neg(p \land q)\).
+
+** Example 3: Conditional
+
+\(p \to q \equiv \neg p \lor q\)
+
+| p | q | p → q |
+|---+---+-------|
+| T | T | T     |
+| T | F | F     |
+| F | T | T     |
+| F | F | T     |
+
+| p | q | ¬p | ¬p ∨ q |
+|---+---+----+--------|
+| T | T | F  | T      |
+| T | F | F  | F      |
+| F | T | T  | T      |
+| F | F | T  | T      |
+
+Same truth tables, so \(p \to q \equiv \neg p \lor q\).
+
+*** Discussion
+Examples 1-3 show that statements using \(\leftrightarrow\), \(\to\), and \(\oplus\) are logically equivalent to statements using only \(\neg\), \(\land\), and \(\lor\).
+
+So we can always write a wff using only \(\neg, \land, \lor\) that is equivalent to one containing \(\leftrightarrow, \to, \oplus\), although it may be /longer/.
+
+** Example 4: Different number of atoms
+
+\(p \equiv p \land (q \lor \neg q)\)
+
+#+begin_quote
+*Note:* It doesn't matter that \(p\) and \(p \land (q \lor \neg q)\) have a different number of atoms.
+
+Build a truth table for each statement over the assignments to /both/ \(p\) and \(q\).
+#+end_quote
+
+| p | q | p |
+|---+---+---|
+| T | T | T |
+| T | F | T |
+| F | T | F |
+| F | F | F |
+
+| p | q | p ∧ (q ∨ ¬q) |
+|---+---+--------------|
+| T | T | T            |
+| T | F | T            |
+| F | T | F            |
+| F | F | F            |
+
+Same truth tables, so \(p \equiv p \land (q \lor \neg q)\).
