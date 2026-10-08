@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-05 Mon 08:23 -->
+<!-- 2026-10-08 Thu 07:39 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Important Logical Equivalences</title>
@@ -275,13 +275,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Important Logical Equivalences</h1>
-<div id="outline-container-org255ff19" class="outline-2">
-<h2 id="org255ff19">Important Logical Equivalences</h2>
-<div class="outline-text-2" id="text-org255ff19">
+<div id="outline-container-org801d35e" class="outline-2">
+<h2 id="org801d35e">Important Logical Equivalences</h2>
+<div class="outline-text-2" id="text-org801d35e">
 </div>
-<div id="outline-container-orge9d2aab" class="outline-3">
-<h3 id="orge9d2aab">Idea</h3>
-<div class="outline-text-3" id="text-orge9d2aab">
+<div id="outline-container-org5493746" class="outline-3">
+<h3 id="org5493746">Idea</h3>
+<div class="outline-text-3" id="text-org5493746">
 <p>
 Some logical equivalences are useful for reducing a wff to a simpler but logically equivalent wff.
 </p>
@@ -291,9 +291,9 @@ All of them can be proved using truth tables.
 </p>
 </div>
 </div>
-<div id="outline-container-orgc960c63" class="outline-3">
-<h3 id="orgc960c63">Theorem 4.1</h3>
-<div class="outline-text-3" id="text-orgc960c63">
+<div id="outline-container-org2016b1a" class="outline-3">
+<h3 id="org2016b1a">Theorem 4.1</h3>
+<div class="outline-text-3" id="text-org2016b1a">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -347,9 +347,9 @@ All of them can be proved using truth tables.
 </table>
 </div>
 </div>
-<div id="outline-container-org80303c9" class="outline-3">
-<h3 id="org80303c9">Important consequences of Theorem 4.1</h3>
-<div class="outline-text-3" id="text-org80303c9">
+<div id="outline-container-orgd293b38" class="outline-3">
+<h3 id="orgd293b38">Important consequences of Theorem 4.1</h3>
+<div class="outline-text-3" id="text-orgd293b38">
 <ul class="org-ul">
 <li><b>Idempotence:</b> \(p \land p \equiv p\) and \(p \lor p \equiv p\) mean we can "simplify" expressions that have "repetitions" of atoms.</li>
 <li><b>Associativity:</b> \((p \land q) \land r \equiv p \land (q \land r)\) means we can write simply \(p \land q \land r\) without ambiguity, since both bracketings give the same truth table. Similarly, we can write \(p \lor q \lor r\) without worrying about omitting brackets.</li>
@@ -357,6 +357,176 @@ All of them can be proved using truth tables.
 <li><b>Exclusive or:</b> commutativity and associativity also hold for \(\oplus\):
 \[ p \oplus q \equiv q \oplus p \qquad\text{and}\qquad p \oplus (q \oplus r) \equiv (p \oplus q) \oplus r. \]</li>
 </ul>
+</div>
+</div>
+<div id="outline-container-orgdfb3fe1" class="outline-3">
+<h3 id="orgdfb3fe1">Example</h3>
+<div class="outline-text-3" id="text-orgdfb3fe1">
+<p>
+Using commutativity, associativity, and idempotence we can show
+</p>
+</div>
+<div id="outline-container-org0709b8d" class="outline-4">
+<h4 id="org0709b8d">Claim</h4>
+<div class="outline-text-4" id="text-org0709b8d">
+<p>
+\[ p \land q \land r \land p \land r \land q \equiv p \land q \land r \]
+</p>
+</div>
+</div>
+<div id="outline-container-org75e856b" class="outline-4">
+<h4 id="org75e856b">Laws used</h4>
+<div class="outline-text-4" id="text-org75e856b">
+<dl class="org-dl">
+<dt>Commutativity</dt><dd>\( a \land b \equiv b \land a \)</dd>
+<dt>Associativity</dt><dd>\( (a \land b) \land c \equiv a \land (b \land c) \)</dd>
+<dt>Idempotence</dt><dd>\( a \land a \equiv a \)</dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-org74438eb" class="outline-4">
+<h4 id="org74438eb">Derivation</h4>
+<div class="outline-text-4" id="text-org74438eb">
+<ol class="org-ol">
+<li>Regroup (<b>commutativity</b> + <b>associativity</b>), so duplicates sit together:
+\[ p \land q \land r \land p \land r \land q \equiv (p \land p) \land (q \land q) \land (r \land r) \]</li>
+<li>Collapse each pair (<b>idempotence</b>):
+\[ (p \land p) \land (q \land q) \land (r \land r) \equiv p \land q \land r \]</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org08aa010" class="outline-4">
+<h4 id="org08aa010">Intuition</h4>
+<div class="outline-text-4" id="text-org08aa010">
+<p>
+A <b>conjunction</b> is <code>true</code> only if every <b>conjunct</b> is <code>true</code>.
+</p>
+
+<p>
+Repeating a <b>conjunct</b> adds no new requirement, so duplicates are redundant.
+</p>
+</div>
+</div>
+<div id="outline-container-org13d40d6" class="outline-4">
+<h4 id="org13d40d6">Notes</h4>
+<div class="outline-text-4" id="text-org13d40d6">
+<ul class="org-ul">
+<li><b>Associativity</b> is why parentheses can be dropped in a chain of \( \land \).</li>
+<li>The dual holds for \( \lor \): \( a \lor a \equiv a \).</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb9efa1d" class="outline-3">
+<h3 id="orgb9efa1d">Warning: these laws do not carry over to other connectives</h3>
+<div class="outline-text-3" id="text-orgb9efa1d">
+<p>
+<b>Commutativity</b> and <b>associativity</b> hold for \( \lor \), \( \land \), \( \oplus \), but <b>not</b> for \( \to \).
+</p>
+</div>
+</div>
+<div id="outline-container-org95a62ee" class="outline-3">
+<h3 id="org95a62ee">Example 2: \( \to \) is not commutative</h3>
+<div class="outline-text-3" id="text-org95a62ee">
+<p>
+\[ p \to q \not\equiv q \to p \]
+</p>
+
+<p>
+Counterexample: \( p = T,\ q = F \)
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">p</th>
+<th scope="col" class="org-left">q</th>
+<th scope="col" class="org-left">p → q</th>
+<th scope="col" class="org-left">q → p</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">T</td>
+<td class="org-left">F</td>
+<td class="org-left">F</td>
+<td class="org-left">T</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<i>Same inputs, different truth values</i>.
+</p>
+</div>
+</div>
+<div id="outline-container-orgb5ab666" class="outline-3">
+<h3 id="orgb5ab666">Example 3: \( \to \) is not associative</h3>
+<div class="outline-text-3" id="text-orgb5ab666">
+<p>
+\[ (p \to q) \to r \not\equiv p \to (q \to r) \]
+</p>
+
+<p>
+Counterexample: \( p = q = r = F \)
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">p</th>
+<th scope="col" class="org-left">q</th>
+<th scope="col" class="org-left">r</th>
+<th scope="col" class="org-left">(p → q) → r</th>
+<th scope="col" class="org-left">p → (q → r)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">F</td>
+<td class="org-left">F</td>
+<td class="org-left">F</td>
+<td class="org-left">F</td>
+<td class="org-left">T</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<i>Same inputs, different truth values</i>.
+</p>
+</div>
+</div>
+<div id="outline-container-org4cb11a5" class="outline-3">
+<h3 id="org4cb11a5">Takeaway</h3>
+<div class="outline-text-3" id="text-org4cb11a5">
+<p>
+To refute an equivalence, a single row where the two sides differ is enough.
+</p>
 </div>
 </div>
 </div>

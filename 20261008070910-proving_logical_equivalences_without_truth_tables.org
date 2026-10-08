@@ -1,0 +1,64 @@
+:PROPERTIES:
+:ID:       422d4df1-c3af-4f6e-8117-89941a3d237e
+:END:
+#+title: Proving Logical Equivalences Without Truth Tables
+
+
+* Proving Logical Equivalences Without Truth Tables
+
+** Idea
+
+Transform one [[id:29ce4b76-3cfc-46ee-9ed9-74c2f91da633][WFF]] into the other by repeatedly replacing components with *logically equivalent* ones.
+
+Every step needs a stated reason (a known equivalence), so the chain is a "legal" proof.
+
+** Key equivalence (★)
+
+\[ p \to q \equiv \lnot p \lor q \]
+Used to eliminate \( \to \), so the standard laws (*De Morgan*, *distributivity*, ...) can be applied.
+
+** Toolbox
+
+- *Commutativity*, *associativity*, *distributivity* (Theorem 4.1)
+- *De Morgan*: \( \lnot(a \lor b) \equiv \lnot a \land \lnot b \)
+- *Double negation*: \( \lnot\lnot a \equiv a \)
+- *Complement*: \( \lnot q \lor q \equiv \mathbf{t} \)
+- *Identity*: \( a \land \mathbf{t} \equiv a \)
+
+** Strategy
+
+1. Start from the left-hand side.
+2. Rewrite \( \to \) using (★).
+3. Apply *De Morgan*, *double negation*, *distributivity*, etc.
+4. Stop when you reach the right-hand side.
+5. Write a reason beside every line.
+
+** Example 1
+
+Show \( (p \to q) \land (p \to r) \equiv p \to (q \land r) \).
+
+\begin{align*}
+(p \to q) \land (p \to r) &\equiv (\lnot p \lor q) \land (\lnot p \lor r) && \text{by } (\star) \\
+&\equiv \lnot p \lor (q \land r) && \text{by distributivity} \\
+&\equiv p \to (q \land r) && \text{by } (\star)
+\end{align*}
+
+** Example 2
+
+Show \( (p \to q) \to q \equiv p \lor q \).
+
+\begin{align*}
+(p \to q) \to q &\equiv \lnot(p \to q) \lor q && \text{by } (\star) \\
+&\equiv \lnot(\lnot p \lor q) \lor q && \text{by } (\star) \\
+&\equiv (\lnot\lnot p \land \lnot q) \lor q && \text{by De Morgan} \\
+&\equiv (p \land \lnot q) \lor q && \text{by double negation} \\
+&\equiv (p \lor q) \land (\lnot q \lor q) && \text{by distributivity} \\
+&\equiv (p \lor q) \land \mathbf{t} && \text{since } \lnot q \lor q \equiv \mathbf{t} \\
+&\equiv p \lor q && \text{by identity}
+\end{align*}
+
+** Notes
+
+- Eliminating \( \to \) first is the usual opening move.
+- *Distributivity* works in both directions: it can factor /out/ (Example 1) or /expand/ (Example 2).
+- Related: [[id:66167d78-0c48-4bc9-a986-83dfb813869a][Implies is not Commutative or Associative]] so never /reorder/ or /regroup/ *implications* freely.

@@ -30,3 +30,62 @@ All of them can be proved using truth tables.
 - *Commutativity:* the order in which we carry out a sequence of conjunctions does not matter. Similarly for a sequence of disjunctions.
 - *Exclusive or:* commutativity and associativity also hold for \(\oplus\):
   \[ p \oplus q \equiv q \oplus p \qquad\text{and}\qquad p \oplus (q \oplus r) \equiv (p \oplus q) \oplus r. \]
+
+** Example
+
+Using commutativity, associativity, and idempotence we can show
+
+*** Claim
+\[ p \land q \land r \land p \land r \land q \equiv p \land q \land r \]
+
+*** Laws used
+- Commutativity :: \( a \land b \equiv b \land a \)
+- Associativity :: \( (a \land b) \land c \equiv a \land (b \land c) \)
+- Idempotence :: \( a \land a \equiv a \)
+
+*** Derivation
+1. Regroup (*commutativity* + *associativity*), so duplicates sit together:
+   \[ p \land q \land r \land p \land r \land q \equiv (p \land p) \land (q \land q) \land (r \land r) \]
+2. Collapse each pair (*idempotence*):
+   \[ (p \land p) \land (q \land q) \land (r \land r) \equiv p \land q \land r \]
+
+*** Intuition
+A *conjunction* is ~true~ only if every *conjunct* is ~true~.
+
+Repeating a *conjunct* adds no new requirement, so duplicates are redundant.
+
+*** Notes
+- *Associativity* is why parentheses can be dropped in a chain of \( \land \).
+- The dual holds for \( \lor \): \( a \lor a \equiv a \).
+
+** Warning: these laws do not carry over to other connectives
+
+*Commutativity* and *associativity* hold for \( \lor \), \( \land \), \( \oplus \), but *not* for \( \to \).
+
+** Example 2: \( \to \) is not commutative
+
+\[ p \to q \not\equiv q \to p \]
+
+Counterexample: \( p = T,\ q = F \)
+
+| p | q | p → q | q → p |
+|---+---+-------+-------|
+| T | F | F     | T     |
+
+/Same inputs, different truth values/.
+
+** Example 3: \( \to \) is not associative
+
+\[ (p \to q) \to r \not\equiv p \to (q \to r) \]
+
+Counterexample: \( p = q = r = F \)
+
+| p | q | r | (p → q) → r | p → (q → r) |
+|---+---+---+-------------+-------------|
+| F | F | F | F           | T           |
+
+/Same inputs, different truth values/.
+
+** Takeaway
+
+To refute an equivalence, a single row where the two sides differ is enough.
