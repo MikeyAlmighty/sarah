@@ -1,0 +1,84 @@
+:PROPERTIES:
+:ID:       24cbbc6b-858b-4e55-963e-66fedd470bca
+:END:
+#+title: Logical Equivalence Cheat Sheet
+
+* Logical Equivalence Cheat Sheet
+
+Notation:
+- *T = true (tautology)*
+- *F = false (contradiction)*
+
+Use these to prove equivalences without truth tables.
+
+* Implication
+
+- p → q ≡ ¬p ∨ q  (the "(*)" rule)
+- p → F ≡ ¬p
+
+* Complement
+
+- p ∨ ¬p ≡ T
+- ¬p ∨ p ≡ T
+- p ∧ ¬p ≡ F
+
+* Identity
+
+- p ∨ F ≡ p
+- p ∧ T ≡ p
+
+* Domination
+
+- p ∨ T ≡ T
+- p ∧ F ≡ F
+
+* Double negation
+
+- ¬¬p ≡ p
+
+* Idempotence
+
+- p ∧ p ≡ p
+- p ∨ p ≡ p
+
+* Associativity
+
+- (p ∧ q) ∧ r ≡ p ∧ (q ∧ r)
+- (p ∨ q) ∨ r ≡ p ∨ (q ∨ r)
+
+* Commutativity
+
+- p ∧ q ≡ q ∧ p
+- p ∨ q ≡ q ∨ p
+
+* Distributivity
+
+- p ∧ (q ∨ r) ≡ (p ∧ q) ∨ (p ∧ r)
+- p ∨ (q ∧ r) ≡ (p ∨ q) ∧ (p ∨ r)
+
+Factoring pattern: pull out the shared piece, and the operator that was between the brackets moves inside.
+- (q ∨ A) ∧ (q ∨ B) ≡ q ∨ (A ∧ B)
+- (q ∧ A) ∨ (q ∧ B) ≡ q ∧ (A ∨ B)
+
+* De Morgan's laws
+
+- ¬(p ∧ q) ≡ ¬p ∨ ¬q
+- ¬(p ∨ q) ≡ ¬p ∧ ¬q
+
+* Absorption
+
+- p ∨ (p ∧ q) ≡ p
+- p ∧ (p ∨ q) ≡ p
+
+* Worked example
+
+Prove (p → q) ∧ (p ∨ q) ≡ q
+
+| Step                    | Justification   |
+|-------------------------+-----------------|
+| (p → q) ∧ (p ∨ q)       |                 |
+| ≡ (¬p ∨ q) ∧ (p ∨ q)    | implication     |
+| ≡ (q ∨ ¬p) ∧ (q ∨ p)    | commutativity   |
+| ≡ q ∨ (¬p ∧ p)          | distributivity  |
+| ≡ q ∨ F                 | complement      |
+| ≡ q                     | identity        |

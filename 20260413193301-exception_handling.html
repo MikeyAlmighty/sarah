@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-08 Thu 07:39 -->
+<!-- 2026-10-10 Sat 10:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exception Handling</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -243,9 +242,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Exception Handling</h1>
-<div id="outline-container-orgb42a72f" class="outline-2">
-<h2 id="orgb42a72f">Exception Handling</h2>
-<div class="outline-text-2" id="text-orgb42a72f">
+<div id="outline-container-org45c899a" class="outline-2">
+<h2 id="org45c899a">Exception Handling</h2>
+<div class="outline-text-2" id="text-org45c899a">
 <p>
 <b>Exception</b>: an event that occurs during the execution of a program and disrupts its normal flow.
 </p>
@@ -255,26 +254,26 @@
 <li>The <b>caller</b> of the <code>method</code> can <b>catch</b> and <i>handle</i> the <b>exception</b>.</li>
 </ul>
 </div>
-<div id="outline-container-orgd235619" class="outline-3">
-<h3 id="orgd235619">Syntax</h3>
-<div class="outline-text-3" id="text-orgd235619">
+<div id="outline-container-org92b56c5" class="outline-3">
+<h3 id="org92b56c5">Syntax</h3>
+<div class="outline-text-3" id="text-org92b56c5">
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">try</span> {
+<pre class="src src-java"><span class="org-keyword">try</span> {
     <span class="org-comment-delimiter">// </span><span class="org-comment">Code to run
 </span>    <span class="org-comment-delimiter">// </span><span class="org-comment">Code that may throw an exception
 </span>}
 <span class="org-keyword">catch</span> (Type ex) {
     <span class="org-comment-delimiter">// </span><span class="org-comment">Handle exception
 </span>}
-</code></pre>
+</pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgd814c67" class="outline-3">
-<h3 id="orgd814c67">Example</h3>
-<div class="outline-text-3" id="text-orgd814c67">
+<div id="outline-container-orga0d88df" class="outline-3">
+<h3 id="orga0d88df">Example</h3>
+<div class="outline-text-3" id="text-orga0d88df">
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Scanner</span>;
+<pre class="src src-java"><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Scanner</span>;
 
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">QuotientWithException</span> {
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">int</span> <span class="org-function-name">quotient</span>(<span class="org-type">int</span> <span class="org-variable-name">number1</span>, <span class="org-type">int</span> <span class="org-variable-name">number2</span>) {
@@ -303,25 +302,25 @@
         System.out.println(<span class="org-string">"Execution continues ..."</span>);
     }
 }
-</code></pre>
+</pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orga9f182a" class="outline-2">
-<h2 id="orga9f182a">Exception Handling with throw, try, and catch</h2>
-<div class="outline-text-2" id="text-orga9f182a">
+<div id="outline-container-orgcf4fc6f" class="outline-2">
+<h2 id="orgcf4fc6f">Exception Handling with throw, try, and catch</h2>
+<div class="outline-text-2" id="text-orgcf4fc6f">
 </div>
-<div id="outline-container-orge90690b" class="outline-3">
-<h3 id="orge90690b">Key Concepts</h3>
-<div class="outline-text-3" id="text-orge90690b">
+<div id="outline-container-org3311497" class="outline-3">
+<h3 id="org3311497">Key Concepts</h3>
+<div class="outline-text-3" id="text-org3311497">
 <p>
 <b>- An *exception</b> is an object representing an <i>error</i> or <i>abnormal condition</i>.
 </p>
 </div>
-<div id="outline-container-org9567eb3" class="outline-4">
-<h4 id="org9567eb3">Example:</h4>
-<div class="outline-text-4" id="text-org9567eb3">
+<div id="outline-container-org093b4e4" class="outline-4">
+<h4 id="org093b4e4">Example:</h4>
+<div class="outline-text-4" id="text-org093b4e4">
 <p>
 <code>new ArithmeticException("Divisor cannot be zero")</code>
 </p>
@@ -333,9 +332,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgb07f95f" class="outline-3">
-<h3 id="orgb07f95f">Throwing an Exception</h3>
-<div class="outline-text-3" id="text-orgb07f95f">
+<div id="outline-container-org5689231" class="outline-3">
+<h3 id="org5689231">Throwing an Exception</h3>
+<div class="outline-text-3" id="text-org5689231">
 <p>
 The <code>throw</code> statement is used to <b>signal</b> that an <code>error</code> has occurred.
 <b>“Throwing an exception”</b> means passing this <b>exception</b> object to another part of the program.
@@ -346,9 +345,9 @@ This interrupts the normal flow of execution.
 </p>
 </div>
 </div>
-<div id="outline-container-orgf65c044" class="outline-3">
-<h3 id="orgf65c044">Try-Catch Flow</h3>
-<div class="outline-text-3" id="text-orgf65c044">
+<div id="outline-container-org2c0ceee" class="outline-3">
+<h3 id="org2c0ceee">Try-Catch Flow</h3>
+<div class="outline-text-3" id="text-org2c0ceee">
 <ul class="org-ul">
 <li>Code that may cause an exception is placed inside a <code>try</code> block.</li>
 </ul>
@@ -369,9 +368,9 @@ The <code>catch</code> block handles the exception.
 <b>After handling, execution continues *after</b> the <code>catch</code> block (not back to where the exception occurred).
 </p>
 </div>
-<div id="outline-container-org5c3f8a7" class="outline-4">
-<h4 id="org5c3f8a7">Catch Block Parameter</h4>
-<div class="outline-text-4" id="text-org5c3f8a7">
+<div id="outline-container-org04b9a0f" class="outline-4">
+<h4 id="org04b9a0f">Catch Block Parameter</h4>
+<div class="outline-text-4" id="text-org04b9a0f">
 <p>
 Syntax: <code>catch (ArithmeticException ex)</code>
 </p>
@@ -384,9 +383,9 @@ Syntax: <code>catch (ArithmeticException ex)</code>
 </div>
 </div>
 </div>
-<div id="outline-container-org8570f60" class="outline-3">
-<h3 id="org8570f60">Exception Propagation</h3>
-<div class="outline-text-3" id="text-org8570f60">
+<div id="outline-container-org3705514" class="outline-3">
+<h3 id="org3705514">Exception Propagation</h3>
+<div class="outline-text-3" id="text-org3705514">
 <p>
 A method can:
 </p>
@@ -397,18 +396,18 @@ A method can:
 </div>
 </div>
 </div>
-<div id="outline-container-org3d11ede" class="outline-2">
-<h2 id="org3d11ede">Example:</h2>
-<div class="outline-text-2" id="text-org3d11ede">
+<div id="outline-container-org0f46074" class="outline-2">
+<h2 id="org0f46074">Example:</h2>
+<div class="outline-text-2" id="text-org0f46074">
 <ul class="org-ul">
 <li><code>main</code> calls <code>quotient</code></li>
 <li>If <code>quotient</code> fails → it <b>throws</b> an <code>exception</code></li>
 <li><code>main</code> <b>catches</b> and <b>handles</b> it</li>
 </ul>
 </div>
-<div id="outline-container-orgff7122f" class="outline-3">
-<h3 id="orgff7122f">Why This Matters</h3>
-<div class="outline-text-3" id="text-orgff7122f">
+<div id="outline-container-org3c49cff" class="outline-3">
+<h3 id="org3c49cff">Why This Matters</h3>
+<div class="outline-text-3" id="text-org3c49cff">
 <ul class="org-ul">
 <li>Separates error handling from normal logic</li>
 <li>Allows lower-level methods (e.g., libraries) to <b>defer</b> handling</li>
@@ -416,9 +415,9 @@ A method can:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgce5cb2e" class="outline-3">
-<h3 id="orgce5cb2e">Key Insight</h3>
-<div class="outline-text-3" id="text-orgce5cb2e">
+<div id="outline-container-org471ca16" class="outline-3">
+<h3 id="org471ca16">Key Insight</h3>
+<div class="outline-text-3" id="text-org471ca16">
 <ul class="org-ul">
 <li><b>Without</b> <code>exception handling</code>: <code>Methods</code> must handle <i>errors</i> themselves (or terminate the program).</li>
 <li><b>With</b> <code>exception handling</code>: <i>Errors</i> can be <b>propagated</b> upward.</li>

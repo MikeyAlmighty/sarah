@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-08 Thu 07:39 -->
+<!-- 2026-10-10 Sat 10:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>PPP Frames</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -243,54 +242,54 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">PPP Frames</h1>
-<div id="outline-container-org42c6bdb" class="outline-2">
-<h2 id="org42c6bdb">Flag</h2>
-<div class="outline-text-2" id="text-org42c6bdb">
+<div id="outline-container-orgec9c94a" class="outline-2">
+<h2 id="orgec9c94a">Flag</h2>
+<div class="outline-text-2" id="text-orgec9c94a">
 <p>
 <b>1 Byte</b>
 A single byte and lets the receiver know this is the beginning of the frame. Depending on the encapsulation, there may or may not be a start flag or an end flag.
 </p>
 </div>
 </div>
-<div id="outline-container-orge3d8740" class="outline-2">
-<h2 id="orge3d8740">Address</h2>
-<div class="outline-text-2" id="text-orge3d8740">
+<div id="outline-container-org3b9f391" class="outline-2">
+<h2 id="org3b9f391">Address</h2>
+<div class="outline-text-2" id="text-org3b9f391">
 <p>
 <b>1 Byte</b>
 Contains the broadcast address.
 </p>
 </div>
 </div>
-<div id="outline-container-org53e4f6a" class="outline-2">
-<h2 id="org53e4f6a">Control</h2>
-<div class="outline-text-2" id="text-org53e4f6a">
+<div id="outline-container-orge74ef11" class="outline-2">
+<h2 id="orge74ef11">Control</h2>
+<div class="outline-text-2" id="text-orge74ef11">
 <p>
 <b>1 Byte</b>
 A single byte required for various purposes but also allows a connectionless data link.
 </p>
 </div>
 </div>
-<div id="outline-container-orgf41d332" class="outline-2">
-<h2 id="orgf41d332">Protocol</h2>
-<div class="outline-text-2" id="text-orgf41d332">
+<div id="outline-container-org3a8d785" class="outline-2">
+<h2 id="org3a8d785">Protocol</h2>
+<div class="outline-text-2" id="text-org3a8d785">
 <p>
 <b>1 - 3 Bytes</b>
 Varies from one to three bytes which identify the network protocol of the datagram.
 </p>
 </div>
 </div>
-<div id="outline-container-orgb871802" class="outline-2">
-<h2 id="orgb871802">Data</h2>
-<div class="outline-text-2" id="text-orgb871802">
+<div id="outline-container-orgc66c900" class="outline-2">
+<h2 id="orgc66c900">Data</h2>
+<div class="outline-text-2" id="text-orgc66c900">
 <p>
 <b>limit of 1500 bytes per frame</b>
 Where the information you need to transmit is stored
 </p>
 </div>
 </div>
-<div id="outline-container-org371c390" class="outline-2">
-<h2 id="org371c390">Frame check sequence (FCS)</h2>
-<div class="outline-text-2" id="text-org371c390">
+<div id="outline-container-orgd8aa3c1" class="outline-2">
+<h2 id="orgd8aa3c1">Frame check sequence (FCS)</h2>
+<div class="outline-text-2" id="text-orgd8aa3c1">
 <p>
 <b>2 or 4 bytes</b>
 Used to verify data is intact upon receipt at the endpoint.

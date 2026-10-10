@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-08 Thu 07:39 -->
+<!-- 2026-10-10 Sat 10:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>try-with-resources</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -243,9 +242,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">try-with-resources</h1>
-<div id="outline-container-org2195c66" class="outline-2">
-<h2 id="org2195c66">try-with-resources</h2>
-<div class="outline-text-2" id="text-org2195c66">
+<div id="outline-container-orgef53661" class="outline-2">
+<h2 id="orgef53661">try-with-resources</h2>
+<div class="outline-text-2" id="text-orgef53661">
 <p>
 Programmers often forget to <b>close</b> the file
 </p>
@@ -255,17 +254,17 @@ Programmers often forget to <b>close</b> the file
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">try</span> (declare and create resources) {
+<pre class="src src-java"><span class="org-keyword">try</span> (declare and create resources) {
     Use the resource to process the file
 }
-</code></pre>
+</pre>
 </div>
 </div>
-<div id="outline-container-org1665080" class="outline-3">
-<h3 id="org1665080">Example</h3>
-<div class="outline-text-3" id="text-org1665080">
+<div id="outline-container-org61c42b6" class="outline-3">
+<h3 id="org61c42b6">Example</h3>
+<div class="outline-text-3" id="text-org61c42b6">
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">WriteDataWithAutoClose</span> {
+<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">WriteDataWithAutoClose</span> {
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) <span class="org-keyword">throws</span> <span class="org-type">Exception</span> {
         <span class="org-constant">java</span>.<span class="org-constant">io</span>.<span class="org-type">File</span> <span class="org-variable-name">file</span> = <span class="org-keyword">new</span> <span class="org-constant">java</span>.<span class="org-constant">io</span>.<span class="org-type">File</span>(<span class="org-string">"scores.txt"</span>);
         <span class="org-keyword">if</span> (file.exists()) {
@@ -285,7 +284,7 @@ Programmers often forget to <b>close</b> the file
         }
     }
 }
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -302,9 +301,9 @@ A <b>resource</b> is <b>declared and created</b> in the parentheses following th
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb4c3ccc" class="outline-3">
-<h3 id="orgb4c3ccc">Summary</h3>
-<div class="outline-text-3" id="text-orgb4c3ccc">
+<div id="outline-container-orgcc8cd09" class="outline-3">
+<h3 id="orgcc8cd09">Summary</h3>
+<div class="outline-text-3" id="text-orgcc8cd09">
 <ul class="org-ul">
 <li>After the block is <b>finished</b>, the resource’s <code>close()</code> method is <b>automatically</b> invoked to close the resource.</li>
 <li><b>Avoid errors</b> and makes the <b>code simpler</b>.</li>

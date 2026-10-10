@@ -1,0 +1,56 @@
+:PROPERTIES:
+:ID:       cb0838be-4c4c-45d2-81fb-5d534ef676c2
+:END:
+#+title: Worked Examples of Proving Logical Equivalences
+
+* Worked Examples of Proving Logical Equivalences
+
+Method: start from the LHS and rewrite one law at a time until it equals the RHS.
+
+Every line needs a justification.
+
+* 1. (p → q) ∧ (p ∨ q) ≡ q
+
+| Step                    | Justification   |
+|-------------------------+-----------------|
+| (p → q) ∧ (p ∨ q)       |                 |
+| ≡ (¬p ∨ q) ∧ (p ∨ q)    | (*)             |
+| ≡ (q ∨ ¬p) ∧ (q ∨ p)    | commutativity   |
+| ≡ q ∨ (¬p ∧ p)          | distributivity  |
+| ≡ q ∨ F                 | complement      |
+| ≡ q                     | identity        |
+
+Key idea: factor out the shared q. The operator that was between the brackets (∧) moves inside the new bracket.
+
+* 2. (p ∧ q) → r ≡ (p → r) ∨ (q → r)
+
+| Step                         | Justification                          |
+|------------------------------+----------------------------------------|
+| (p ∧ q) → r                  |                                        |
+| ≡ ¬(p ∧ q) ∨ r               | (*)                                    |
+| ≡ (¬p ∨ ¬q) ∨ r              | De Morgan                              |
+| ≡ (¬p ∨ ¬q) ∨ (r ∨ r)        | idempotence                            |
+| ≡ (r ∨ ¬p) ∨ (r ∨ ¬q)        | associativity and commutativity        |
+| ≡ (¬p ∨ r) ∨ (¬q ∨ r)        | commutativity                          |
+| ≡ (p → r) ∨ (q → r)          | (*)                                    |
+
+Gotcha: the duplication of r is idempotence, not distributivity. There is no ∧ in the expression, so nothing to distribute over.
+
+* 3. p → (q ∨ r) ≡ (p → q) ∨ (p → r)
+
+| Step                         | Justification                   |
+|------------------------------+---------------------------------|
+| p → (q ∨ r)                  |                                 |
+| ≡ ¬p ∨ (q ∨ r)               | (*)                             |
+| ≡ (¬p ∨ ¬p) ∨ (q ∨ r)        | idempotence                     |
+| ≡ (¬p ∨ q) ∨ (¬p ∨ r)        | associativity and commutativity |
+| ≡ (p → q) ∨ (p → r)          | (*)                             |
+
+* Takeaways
+
+- Look at the target (RHS) first.
+  - If a term appears in both brackets but only once in your line, duplicate it with *idempotence*.
+- *Duplicate* using the connective you want in the target (∨ here), so the line stays a chain of ∨s and regrouping is free.
+- Regrouping = *associativity (move brackets)* plus *commutativity (swap order)* (Name both).
+- *Distributivity* needs both ∧ and ∨ in the expression.
+- (*) can be applied left to right (expand an implication) or right to left (fold ¬A ∨ B back into A → B).

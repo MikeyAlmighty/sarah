@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-08 Thu 07:39 -->
+<!-- 2026-10-10 Sat 10:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Using Enums in Switch Statements</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -243,19 +242,19 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Using Enums in Switch Statements</h1>
-<div id="outline-container-orgfa37f81" class="outline-2">
-<h2 id="orgfa37f81">Using Enums in Switch Statements</h2>
-<div class="outline-text-2" id="text-orgfa37f81">
+<div id="outline-container-orgee039bb" class="outline-2">
+<h2 id="orgee039bb">Using Enums in Switch Statements</h2>
+<div class="outline-text-2" id="text-orgee039bb">
 </div>
-<div id="outline-container-org89c6593" class="outline-3">
-<h3 id="org89c6593">Example</h3>
-<div class="outline-text-3" id="text-org89c6593">
+<div id="outline-container-org4217abf" class="outline-3">
+<h3 id="org4217abf">Example</h3>
+<div class="outline-text-3" id="text-org4217abf">
 <p>
 The code prints <code>"Time for the pool!"</code> since it matches <code>SUMMER</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-type">Season</span> <span class="org-variable-name">summer</span> = <span class="org-constant">Season</span>.SUMMER;
+<pre class="src src-java"><span class="org-type">Season</span> <span class="org-variable-name">summer</span> = <span class="org-constant">Season</span>.SUMMER;
 <span class="org-keyword">switch</span>(summer) {
     <span class="org-keyword">case</span> WINTER:
         System.out.print(<span class="org-string">"Get out the sled!"</span>);
@@ -266,7 +265,7 @@ The code prints <code>"Time for the pool!"</code> since it matches <code>SUMMER<
     <span class="org-keyword">default</span>:
         System.out.print(<span class="org-string">"Is it summer yet?"</span>);
 }
-</code></pre>
+</pre>
 </div>
 
 <p>
@@ -274,28 +273,28 @@ In each <code>case</code> statement, we just typed the value of the enum rather 
 After all, the compiler already knows that the only possible matches can be <b>enum values</b>.
 </p>
 </div>
-<div id="outline-container-org74442d3" class="outline-4">
-<h4 id="org74442d3"><span class="underline">Exam Trick</span></h4>
-<div class="outline-text-4" id="text-org74442d3">
+<div id="outline-container-orgab33c03" class="outline-4">
+<h4 id="orgab33c03"><span class="underline">Exam Trick</span></h4>
+<div class="outline-text-4" id="text-orgab33c03">
 <p>
 You <b>can’t</b> compare <code>enums</code> with <code>int</code> values, you cannot use them in a switch statement with <code>int</code> values.
 On the exam, pay special attention when working with enums that they are used only as enums.
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="org22740bc"></a>Example<br />
-<div class="outline-text-5" id="text-org22740bc">
+<li><a id="org8304a38"></a>Example<br />
+<div class="outline-text-5" id="text-org8304a38">
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-type">Season</span> <span class="org-variable-name">summer</span> = <span class="org-constant">Season</span>.SUMMER;
+<pre class="src src-java"><span class="org-type">Season</span> <span class="org-variable-name">summer</span> = <span class="org-constant">Season</span>.SUMMER;
 
-<span class="org-keyword">var</span> <span class="org-variable-name">message</span> = <span class="org-keyword">switch</span>(summer) {
+<span class="org-type">var</span> <span class="org-variable-name">message</span> = <span class="org-keyword">switch</span>(summer) {
     <span class="org-keyword">case</span> <span class="org-constant">Season</span>.WINTER -&gt; <span class="org-string">"Get out the sled!"</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>    <span class="org-keyword">case</span> 0 -&gt; <span class="org-string">"Time for the pool!"</span>;  <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>    <span class="org-keyword">default</span> -&gt; <span class="org-string">"Is it summer yet?"</span>;
 };
 
 System.out.print(message);
-</code></pre>
+</pre>
 </div>
 </div>
 </li>
