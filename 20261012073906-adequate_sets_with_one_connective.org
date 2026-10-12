@@ -1,0 +1,54 @@
+:PROPERTIES:
+:ID:       60cfa20f-1ef7-498b-88ef-92a2bf833b53
+:END:
+#+title: Adequate Sets With One Connective
+
+* Adequate Sets With One Connective
+
+** Question
+
+Is there an *adequate set* containing only /one/ *connective*?
+- Yes, but we need two new *connectives*: [[id:5378dcd2-0f92-4714-8a07-c83f4c4cf08b][NOR]] and [[id:613e95dc-54f9-4e2a-8c23-6a24c380709c][NAND]].
+
+** Proposition 4.4
+
+1. \(\downarrow\) is *adequate* on its own.
+2. \(\mid\) is *adequate* on its own.
+
+** Proof (of 1)
+
+Start from the *adequate set* \(\{\neg, \land\}\) (Proposition 4.3).
+
+It suffices to show \(\neg p\) and \(p \land q\) are equivalent to wffs using only \(\downarrow\).
+
+*** Negation
+
+By *idempotence*, then *De Morgan*:
+\[ \neg p \equiv \neg p \land \neg p \equiv \neg(p \lor p) \equiv p \downarrow p \]
+
+*** Conjunction
+
+By *double negation*, *De Morgan*, and \(\neg p \equiv p \downarrow p\):
+\[ p \land q \equiv \neg\neg p \land \neg\neg q \equiv \neg(\neg p \lor \neg q) \equiv (\neg p) \downarrow (\neg q) \equiv (p \downarrow p) \downarrow (q \downarrow q) \]
+
+Anything expressible with \(\neg, \land\) can therefore be expressed using only \(\downarrow\), so \(\downarrow\) is adequate on its own. \(\blacksquare\)
+
+The second statement is proved analogously.
+
+** Example
+
+Find a *wff* using only ~nor~ that is equivalent to \(p \to q\).
+
+\begin{align*}
+p \to q
+&\equiv \neg p \lor q && \text{earlier example} \\
+&\equiv \neg(\neg(\neg p \lor q)) && \text{double negation} \\
+&\equiv \neg(\neg p \downarrow q) && \text{definition of } \downarrow \\
+&\equiv \neg((p \downarrow p) \downarrow q) && \neg p \equiv p \downarrow p \\
+&\equiv ((p \downarrow p) \downarrow q) \downarrow ((p \downarrow p) \downarrow q) && \neg x \equiv x \downarrow x
+\end{align*}
+
+** Notes
+
+- Strategy: take a known *adequate set* (\(\neg, \land\)) and express each of its *connectives* using the new one.
+- Key trick: \(\neg p \equiv p \downarrow p\) (*idempotence* + *De Morgan*).

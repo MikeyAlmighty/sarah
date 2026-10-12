@@ -1,0 +1,37 @@
+:PROPERTIES:
+:ID:       f0e20431-0a2a-44e7-a952-5ef5e5053bdc
+:END:
+#+title: Adequate Connectives Cheat Sheet
+
+* NAND (p | q ≡ ¬(p ∧ q)) cheat sheet
+
+** Core constructions
+
+| Operator | NAND-only form  | Why               |
+|----------+-----------------+-------------------|
+| ¬p       | p ∣ p            | p ∧ p ≡ p         |
+| p ∧ q    | (p ∣ q) ∣ (p ∣ q) | negate the NAND   |
+| p ∨ q    | (p ∣ p) ∣ (q ∣ q) | De Morgan         |
+| p → q    | p ∣ (q ∣ q)      | p → q ≡ ¬(p ∧ ¬q) |
+** Method
+
+1. Rewrite the *wff* using only ¬ and ∧ (or ¬ and ∨)
+2. Replace ¬x with x | x
+3. Replace x ∧ y with (x | y) | (x | y)
+4. Check with a truth table
+
+** Identities to know
+
+- Double negation: ¬¬p ≡ p
+- De Morgan: ¬(p ∧ q) ≡ ¬p ∨ ¬q,  ¬(p ∨ q) ≡ ¬p ∧ ¬q
+- Idempotence: p ∧ p ≡ p,  p ∨ p ≡ p
+- Implication: p → q ≡ ¬p ∨ q
+
+** NOR (p ↓ q ≡ ¬(p ∨ q)) is the dual
+- ¬p ≡ p ↓ p
+- p ∨ q ≡ (p ↓ q) ↓ (p ↓ q)
+- p ∧ q ≡ (p ↓ p) ↓ (q ↓ q)
+
+** Key fact
+
+[[id:613e95dc-54f9-4e2a-8c23-6a24c380709c][NAND]] and [[id:5378dcd2-0f92-4714-8a07-c83f4c4cf08b][NOR]] are each functionally complete: /any/ *connective* can be built from either alone.

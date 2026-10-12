@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-10 Sat 10:02 -->
+<!-- 2026-10-12 Mon 08:20 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python Creating Files</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,13 +243,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Python Creating Files</h1>
-<div id="outline-container-org17533c1" class="outline-2">
-<h2 id="org17533c1">Python Creating Files</h2>
-<div class="outline-text-2" id="text-org17533c1">
+<div id="outline-container-orge8762ca" class="outline-2">
+<h2 id="orge8762ca">Python Creating Files</h2>
+<div class="outline-text-2" id="text-orge8762ca">
 </div>
-<div id="outline-container-org87c3034" class="outline-3">
-<h3 id="org87c3034">Overview</h3>
-<div class="outline-text-3" id="text-org87c3034">
+<div id="outline-container-org6dc5ec2" class="outline-3">
+<h3 id="org6dc5ec2">Overview</h3>
+<div class="outline-text-3" id="text-org6dc5ec2">
 <p>
 Python can create files automatically when opening them in certain modes.
 If the file does not exist, Python asks the operating system to create it before writing.
@@ -264,24 +265,24 @@ Creation typically happens with:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgfed5945" class="outline-3">
-<h3 id="orgfed5945">Creating and Writing to a New File</h3>
-<div class="outline-text-3" id="text-orgfed5945">
+<div id="outline-container-org8b80e03" class="outline-3">
+<h3 id="org8b80e03">Creating and Writing to a New File</h3>
+<div class="outline-text-3" id="text-org8b80e03">
 <p>
 Using <code>write</code> modes that create the file if missing:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span class="org-keyword">try</span>:
-    <span class="org-keyword">with</span> <span class="org-builtin">open</span>(<span class="org-string">'new_file.txt'</span>, mode<span class="org-operator">=</span><span class="org-string">"w"</span>) <span class="org-keyword">as</span> <span class="org-builtin">file</span>:
-        <span class="org-builtin">file</span>.write(<span class="org-string">"This is a new file created!</span><span class="org-constant">\n</span><span class="org-string">"</span>)  <span class="org-comment-delimiter"># </span><span class="org-comment">Single line
-</span>        <span class="org-builtin">file</span>.writelines([
+<pre class="src src-python"><code><span class="org-keyword">try</span>:
+    <span class="org-keyword">with</span> <span class="org-builtin">open</span>(<span class="org-string">'new_file.txt'</span>, mode<span class="org-operator">=</span><span class="org-string">"w"</span>) <span class="org-keyword">as</span> file:
+        file.write(<span class="org-string">"This is a new file created!</span><span class="org-constant">\n</span><span class="org-string">"</span>)  <span class="org-comment-delimiter"># </span><span class="org-comment">Single line
+</span>        file.writelines([
             <span class="org-string">"This is a line!</span><span class="org-constant">\n</span><span class="org-string">"</span>,
             <span class="org-string">"This is another Line!"</span>
         ])  <span class="org-comment-delimiter"># </span><span class="org-comment">Multiple lines
 </span><span class="org-keyword">except</span> <span class="org-type">FileNotFoundError</span> <span class="org-keyword">as</span> e:
     <span class="org-builtin">print</span>(<span class="org-string">"ERROR"</span>, e)
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -294,25 +295,25 @@ Behavior of <code>w</code> mode:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgbb98594" class="outline-3">
-<h3 id="orgbb98594">Creating and Appending to a File</h3>
-<div class="outline-text-3" id="text-orgbb98594">
+<div id="outline-container-orge02aab3" class="outline-3">
+<h3 id="orge02aab3">Creating and Appending to a File</h3>
+<div class="outline-text-3" id="text-orge02aab3">
 <p>
 <code>Append</code> mode <b>preserves</b> existing content and adds new data to the end.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span class="org-keyword">try</span>:
-    <span class="org-keyword">with</span> <span class="org-builtin">open</span>(<span class="org-string">'new_file_appending.txt'</span>, mode<span class="org-operator">=</span><span class="org-string">"a"</span>) <span class="org-keyword">as</span> <span class="org-builtin">file</span>:
-        <span class="org-builtin">file</span>.write(<span class="org-string">"</span><span class="org-constant">\n</span><span class="org-string">This is a new file created!</span><span class="org-constant">\n</span><span class="org-string">"</span>)
-        <span class="org-builtin">file</span>.writelines([
+<pre class="src src-python"><code><span class="org-keyword">try</span>:
+    <span class="org-keyword">with</span> <span class="org-builtin">open</span>(<span class="org-string">'new_file_appending.txt'</span>, mode<span class="org-operator">=</span><span class="org-string">"a"</span>) <span class="org-keyword">as</span> file:
+        file.write(<span class="org-string">"</span><span class="org-constant">\n</span><span class="org-string">This is a new file created!</span><span class="org-constant">\n</span><span class="org-string">"</span>)
+        file.writelines([
             <span class="org-string">"This is a line!</span><span class="org-constant">\n</span><span class="org-string">"</span>,
             <span class="org-string">"This is another Line!</span><span class="org-constant">\n</span><span class="org-string">"</span>
         ])
-        <span class="org-builtin">file</span>.write(<span class="org-string">"This is yet another line!</span><span class="org-constant">\n</span><span class="org-string">"</span>)
+        file.write(<span class="org-string">"This is yet another line!</span><span class="org-constant">\n</span><span class="org-string">"</span>)
 <span class="org-keyword">except</span> <span class="org-type">FileNotFoundError</span> <span class="org-keyword">as</span> e:
     <span class="org-builtin">print</span>(<span class="org-string">"ERROR"</span>, e)
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -325,9 +326,9 @@ Behavior of <code>a</code> mode:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgbf6d52a" class="outline-3">
-<h3 id="orgbf6d52a">write() vs writelines()</h3>
-<div class="outline-text-3" id="text-orgbf6d52a">
+<div id="outline-container-org434a902" class="outline-3">
+<h3 id="org434a902">write() vs writelines()</h3>
+<div class="outline-text-3" id="text-org434a902">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -365,9 +366,9 @@ Behavior of <code>a</code> mode:
 </tbody>
 </table>
 </div>
-<div id="outline-container-org4df42ce" class="outline-4">
-<h4 id="org4df42ce">Note:</h4>
-<div class="outline-text-4" id="text-org4df42ce">
+<div id="outline-container-org1e567a3" class="outline-4">
+<h4 id="org1e567a3">Note:</h4>
+<div class="outline-text-4" id="text-org1e567a3">
 <p>
 <code>writelines()</code> does not insert newline characters.
 Each string must contain <code>\n</code> if line breaks are desired.
@@ -375,9 +376,9 @@ Each string must contain <code>\n</code> if line breaks are desired.
 </div>
 </div>
 </div>
-<div id="outline-container-orgc2ba209" class="outline-3">
-<h3 id="orgc2ba209">Why Use try/except?</h3>
-<div class="outline-text-3" id="text-orgc2ba209">
+<div id="outline-container-org7b77403" class="outline-3">
+<h3 id="org7b77403">Why Use try/except?</h3>
+<div class="outline-text-3" id="text-org7b77403">
 <p>
 File creation can fail when:
 </p>
@@ -392,17 +393,17 @@ Exception handling prevents program crashes and allows graceful recovery.
 </p>
 </div>
 </div>
-<div id="outline-container-org8fc9f2e" class="outline-3">
-<h3 id="org8fc9f2e">Safer Creation Mode</h3>
-<div class="outline-text-3" id="text-org8fc9f2e">
+<div id="outline-container-org442d3e4" class="outline-3">
+<h3 id="org442d3e4">Safer Creation Mode</h3>
+<div class="outline-text-3" id="text-org442d3e4">
 <p>
 To ensure a file is created only if it does NOT exist:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span class="org-keyword">with</span> <span class="org-builtin">open</span>(<span class="org-string">"unique_file.txt"</span>, <span class="org-string">"x"</span>) <span class="org-keyword">as</span> f:
+<pre class="src src-python"><code><span class="org-keyword">with</span> <span class="org-builtin">open</span>(<span class="org-string">"unique_file.txt"</span>, <span class="org-string">"x"</span>) <span class="org-keyword">as</span> f:
     f.write(<span class="org-string">"Created safely"</span>)
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -410,9 +411,9 @@ This raises <code>FileExistsError</code> if the file already exists.
 </p>
 </div>
 </div>
-<div id="outline-container-org116b415" class="outline-3">
-<h3 id="org116b415">Conceptual Model</h3>
-<div class="outline-text-3" id="text-org116b415">
+<div id="outline-container-org2ffe479" class="outline-3">
+<h3 id="org2ffe479">Conceptual Model</h3>
+<div class="outline-text-3" id="text-org2ffe479">
 <p>
 <b>Creating</b> a file in Python is not “making a thing” — it is requesting the operating system to <b>allocate</b> a named stream of bytes.
 The name lives in a directory table; the content lives in disk blocks somewhere else entirely.

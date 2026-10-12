@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-10-12 Mon 08:20 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Adequate Connectives</title>
+<meta name="author" content="Michael Leibbrandt" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<style>
+        body {
+          font-family: sans-serif;
+          line-height: 1.5;
+          margin: 2em;
+          background-color: #ffffff;
+          color: #111111;
+        }
+
+        /* Code block styling */
+        pre.src {
+          padding: 1em;
+          border-radius: 6px;
+          overflow-x: auto;
+          background-color: #f0f0f0;
+          color: #222222;
+          border: 1px solid #ddd;
+          font-family: monospace;
+        }
+
+        /* Syntax highlighting for Org-generated classes */
+        span.org-keyword { color: #005999; font-weight: bold; }
+        span.org-string  { color: #aa3333; }
+        span.org-comment { color: #666666; font-style: italic; }
+        span.org-type    { color: #007700; font-weight: bold; }
+        span.org-variable { color: #993399; }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            pre.src {
+                background-color: #000000;
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
+
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
+        }
+
+        ul { list-style-type: disc; padding-left: 2em; }
+      </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Adequate Connectives</h1>
+<div id="outline-container-org1351d0c" class="outline-2">
+<h2 id="org1351d0c">Adequate Connectives</h2>
+<div class="outline-text-2" id="text-org1351d0c">
+</div>
+<div id="outline-container-org42e76b4" class="outline-3">
+<h3 id="org42e76b4">Idea</h3>
+<div class="outline-text-3" id="text-org42e76b4">
+<p>
+Programming languages often only have <code>not</code>, <code>or</code>, and <code>and</code>.
+</p>
+<ul class="org-ul">
+<li>These suffice to express <b>every wff in PL</b>, i.e. they are <b>functionally complete</b>.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgdfb6dad" class="outline-3">
+<h3 id="orgdfb6dad">Definition 4.2 (Adequate set)</h3>
+<div class="outline-text-3" id="text-orgdfb6dad">
+<p>
+A set of connectives is <b>adequate</b> if <i>every</i> <b>wff</b> is <b>logically equivalent</b> to a <b>wff</b> that uses <i>only</i> <b>connectives</b> from that <b>set</b>.
+</p>
+</div>
+</div>
+<div id="outline-container-orge03a253" class="outline-3">
+<h3 id="orge03a253">Proposition 4.2</h3>
+<div class="outline-text-3" id="text-orge03a253">
+<p>
+Every <b>wff</b> in PL is logically equivalent to one that uses only \(\neg, \lor, \land\).
+</p>
+
+<p>
+So \(\{\neg, \lor, \land\}\) is an adequate set.
+</p>
+</div>
+</div>
+<div id="outline-container-org302fa16" class="outline-3">
+<h3 id="org302fa16">Proof (eliminate one connective per step)</h3>
+<div class="outline-text-3" id="text-org302fa16">
+</div>
+<div id="outline-container-org55810b4" class="outline-4">
+<h4 id="org55810b4">Step 1: remove \(\to\)</h4>
+<div class="outline-text-4" id="text-org55810b4">
+<p>
+From Example 3:
+\[ p \to q \equiv \neg p \lor q \quad (*) \]
+Any <b>wff</b> \(A \to B\) is equivalent to \(\neg A \lor B\), so \(\to\) can be dropped. Remaining: \(\neg, \land, \lor, \leftrightarrow, \oplus\).
+</p>
+</div>
+</div>
+<div id="outline-container-org28cd573" class="outline-4">
+<h4 id="org28cd573">Step 2: remove \(\oplus\)</h4>
+<div class="outline-text-4" id="text-org28cd573">
+<p>
+From Example 2:
+\[ p \oplus q \equiv (p \lor q) \land \neg(p \land q) \quad (**) \]
+Any <b>wff</b> \(A \oplus B\) is equivalent to \((A \lor B) \land \neg(A \land B)\), so \(\oplus\) can be dropped. Remaining: \(\neg, \land, \lor, \leftrightarrow\).
+</p>
+</div>
+</div>
+<div id="outline-container-org638a41c" class="outline-4">
+<h4 id="org638a41c">Step 3: remove \(\leftrightarrow\)</h4>
+<div class="outline-text-4" id="text-org638a41c">
+<p>
+From Example 1:
+\[ p \leftrightarrow q \equiv (p \to q) \land (q \to p) \]
+Combine with \((\ast)\):
+\[ p \leftrightarrow q \equiv (p \to q) \land (q \to p) \equiv (\neg p \lor q) \land (\neg q \lor p) \quad (\ast\ast\ast) \]
+</p>
+
+
+<p>
+Any <b>wff</b> \(A \leftrightarrow B\) is equivalent to \((\neg A \lor B) \land (\neg B \lor A)\), so \(\leftrightarrow\) can be dropped.
+</p>
+
+<p>
+Remaining: \(\neg, \land, \lor\). \(\blacksquare\)
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org051186a" class="outline-3">
+<h3 id="org051186a">Notes</h3>
+<div class="outline-text-3" id="text-org051186a">
+<ul class="org-ul">
+<li>Order matters: Step 3 uses (*) to get rid of the \(\to\) that Example 1 introduces.</li>
+<li>The equivalences hold for any <b>wffs</b> \(A, B\), not just atoms \(p, q\), since the substitution preserves equivalence.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org89aeb78" class="outline-3">
+<h3 id="org89aeb78">Example</h3>
+<div class="outline-text-3" id="text-org89aeb78">
+<p>
+Find a <b>wff</b> equivalent to \((p \leftrightarrow q) \to (p \oplus q)\) using only \(\neg, \lor, \land\).
+</p>
+
+\begin{align*}
+(p \leftrightarrow q) \to (p \oplus q)
+&\equiv \neg(p \leftrightarrow q) \lor (p \oplus q) && \text{by } (\ast) \\
+&\equiv \neg((\neg p \lor q) \land (\neg q \lor p)) \lor ((p \lor q) \land \neg(p \land q)) && \text{by } (\ast\ast) \text{ and } (\ast\ast\ast) \\
+&\equiv ((p \land \neg q) \lor (q \land \neg p)) \lor ((p \lor q) \land (\neg p \lor \neg q)) && \text{by De Morgan}
+\end{align*}
+
+<ul class="org-ul">
+<li>Eliminate \(\to\) first, then \(\leftrightarrow\) and \(\oplus\), same order as the proof of <b>Proposition 4.2</b>.</li>
+<li><b>De Morgan</b> is applied to the negated \(\leftrightarrow\) part and to \(\neg(p \land q)\).</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfa0bb5d" class="outline-3">
+<h3 id="orgfa0bb5d">Remark</h3>
+<div class="outline-text-3" id="text-orgfa0bb5d">
+<p>
+<b>Proposition 4.2</b> says everything in PL <i>can</i> be expressed with only \(\neg, \lor, \land\).
+</p>
+
+<p>
+But converting a <b>wff</b> to that form can give an unwieldy expression that is hard to read or interpret (see the Example above).
+</p>
+
+<ul class="org-ul">
+<li>This is why PL is introduced with "redundant" <b>connectives</b>: they are not necessary, but they are convenient to work with.</li>
+<li>The main interest of the results is that it is <i>possible</i> to express everything logically using just \(\neg, \lor, \land\).</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

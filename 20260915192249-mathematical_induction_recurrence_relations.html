@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-10 Sat 10:02 -->
+<!-- 2026-10-12 Mon 08:20 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mathematical Induction (Recurrence Relations)</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -274,9 +275,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Mathematical Induction (Recurrence Relations)</h1>
-<div id="outline-container-org1c59c7a" class="outline-2">
-<h2 id="org1c59c7a">The problem</h2>
-<div class="outline-text-2" id="text-org1c59c7a">
+<div id="outline-container-org74bbc61" class="outline-2">
+<h2 id="org74bbc61">The problem</h2>
+<div class="outline-text-2" id="text-org74bbc61">
 <p>
 Let \(\{a_n\}\) be the sequence defined by
 </p>
@@ -291,9 +292,9 @@ Prove by induction that \(a_n = (2n-1)^2\) for all positive integers
 </p>
 </div>
 </div>
-<div id="outline-container-orgfb9d65d" class="outline-2">
-<h2 id="orgfb9d65d">Why this example is different</h2>
-<div class="outline-text-2" id="text-orgfb9d65d">
+<div id="outline-container-orgdd5d368" class="outline-2">
+<h2 id="orgdd5d368">Why this example is different</h2>
+<div class="outline-text-2" id="text-orgdd5d368">
 <p>
 Earlier examples (sums of odd numbers, sums of integers, sums of
 powers of 2) built the link between \(P(k)\) and \(P(k+1)\) by
@@ -321,17 +322,17 @@ Not automatically true; that's the whole point of the proof.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org7131209" class="outline-2">
-<h2 id="org7131209">Statement \(P(n)\)</h2>
-<div class="outline-text-2" id="text-org7131209">
+<div id="outline-container-org5f5698b" class="outline-2">
+<h2 id="org5f5698b">Statement \(P(n)\)</h2>
+<div class="outline-text-2" id="text-org5f5698b">
 <p>
 \[P(n): \quad a_n = (2n-1)^2\]
 </p>
 </div>
 </div>
-<div id="outline-container-org07dc34e" class="outline-2">
-<h2 id="org07dc34e">Base case: \(P(1)\)</h2>
-<div class="outline-text-2" id="text-org07dc34e">
+<div id="outline-container-org4a21839" class="outline-2">
+<h2 id="org4a21839">Base case: \(P(1)\)</h2>
+<div class="outline-text-2" id="text-org4a21839">
 <p>
 \[a_1 = (2(1)-1)^2 = 1^2 = 1\]
 </p>
@@ -341,21 +342,21 @@ Since \(a_1=1\) is given directly, this matches. \(P(1)\) holds.
 </p>
 </div>
 </div>
-<div id="outline-container-org0b424ce" class="outline-2">
-<h2 id="org0b424ce">Inductive hypothesis: assume \(P(k)\)</h2>
-<div class="outline-text-2" id="text-org0b424ce">
+<div id="outline-container-org55fa2cb" class="outline-2">
+<h2 id="org55fa2cb">Inductive hypothesis: assume \(P(k)\)</h2>
+<div class="outline-text-2" id="text-org55fa2cb">
 <p>
 \[a_k = (2k-1)^2\]
 </p>
 </div>
 </div>
-<div id="outline-container-org11158fb" class="outline-2">
-<h2 id="org11158fb">Inductive step: show \(P(k+1)\) follows</h2>
-<div class="outline-text-2" id="text-org11158fb">
+<div id="outline-container-org99e2a66" class="outline-2">
+<h2 id="org99e2a66">Inductive step: show \(P(k+1)\) follows</h2>
+<div class="outline-text-2" id="text-org99e2a66">
 </div>
-<div id="outline-container-orgf76a2b3" class="outline-3">
-<h3 id="orgf76a2b3">Part 1 — write the target (substitute \(n=k+1\) into the formula)</h3>
-<div class="outline-text-3" id="text-orgf76a2b3">
+<div id="outline-container-orga482a25" class="outline-3">
+<h3 id="orga482a25">Part 1 — write the target (substitute \(n=k+1\) into the formula)</h3>
+<div class="outline-text-3" id="text-orga482a25">
 <p>
 Substitute into \(a_n=(2n-1)^2\): replace both occurrences of \(n\)
 (the subscript, and the one inside the bracket) with \((k+1)\):
@@ -379,9 +380,9 @@ yet.
 </p>
 </div>
 </div>
-<div id="outline-container-org119098e" class="outline-3">
-<h3 id="org119098e">Part 2 — get an equation for \(a_{k+1}\) from the recurrence</h3>
-<div class="outline-text-3" id="text-org119098e">
+<div id="outline-container-org1be9eb2" class="outline-3">
+<h3 id="org1be9eb2">Part 2 — get an equation for \(a_{k+1}\) from the recurrence</h3>
+<div class="outline-text-3" id="text-org1be9eb2">
 <p>
 Recurrence: \(a_{n+1}=a_n+8n\), true for every \(n\geq 1\). To get an
 equation about \(a_{k+1}\) specifically, set \(n=k\) (since we need
@@ -397,9 +398,9 @@ This is a fact from the recurrence alone — no assumption used yet.
 </p>
 </div>
 </div>
-<div id="outline-container-orgf95b54e" class="outline-3">
-<h3 id="orgf95b54e">Part 3 — substitute the assumption \(P(k)\)</h3>
-<div class="outline-text-3" id="text-orgf95b54e">
+<div id="outline-container-orga6d0655" class="outline-3">
+<h3 id="orga6d0655">Part 3 — substitute the assumption \(P(k)\)</h3>
+<div class="outline-text-3" id="text-orga6d0655">
 <p>
 \(P(k)\) says \(a_k=(2k-1)^2\). Substitute:
 </p>
@@ -409,9 +410,9 @@ This is a fact from the recurrence alone — no assumption used yet.
 </p>
 </div>
 </div>
-<div id="outline-container-orge068984" class="outline-3">
-<h3 id="orge068984">Part 4 — algebra</h3>
-<div class="outline-text-3" id="text-orge068984">
+<div id="outline-container-orgea1e858" class="outline-3">
+<h3 id="orgea1e858">Part 4 — algebra</h3>
+<div class="outline-text-3" id="text-orgea1e858">
 <p>
 Expand \((2k-1)^2 = 4k^2-4k+1\):
 </p>
@@ -435,18 +436,18 @@ This matches the target from Part 1 exactly. \(P(k+1)\) follows from
 </div>
 </div>
 </div>
-<div id="outline-container-org4c945c0" class="outline-2">
-<h2 id="org4c945c0">Conclusion</h2>
-<div class="outline-text-2" id="text-org4c945c0">
+<div id="outline-container-org05aa64e" class="outline-2">
+<h2 id="org05aa64e">Conclusion</h2>
+<div class="outline-text-2" id="text-org05aa64e">
 <p>
 By the principle of mathematical induction, \(a_n=(2n-1)^2\) for all
 positive integers \(n\).
 </p>
 </div>
 </div>
-<div id="outline-container-org6766d6d" class="outline-2">
-<h2 id="org6766d6d">The general pattern for recurrence + induction problems</h2>
-<div class="outline-text-2" id="text-org6766d6d">
+<div id="outline-container-org1a86101" class="outline-2">
+<h2 id="org1a86101">The general pattern for recurrence + induction problems</h2>
+<div class="outline-text-2" id="text-org1a86101">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 

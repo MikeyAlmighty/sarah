@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-10 Sat 10:02 -->
+<!-- 2026-10-12 Mon 08:20 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Protected Access Modifier</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,9 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Protected Access Modifier</h1>
-<div id="outline-container-orgc1ae4f6" class="outline-2">
-<h2 id="orgc1ae4f6">Protected Access Modifier</h2>
-<div class="outline-text-2" id="text-orgc1ae4f6">
+<div id="outline-container-orgb343ac7" class="outline-2">
+<h2 id="orgb343ac7">Protected Access Modifier</h2>
+<div class="outline-text-2" id="text-orgb343ac7">
 <p>
 The <code>protected</code> modifier means the method can be called only from a class in the <b>same</b> <code>package</code> or a <code>subclass</code>.
 </p>
@@ -258,9 +259,9 @@ The <code>protected</code> modifier means the method can be called only from a c
 For now, we cover the simplest possible use of a <code>subclass</code>.
 </p>
 </div>
-<div id="outline-container-orgbc3597a" class="outline-3">
-<h3 id="orgbc3597a">Simple Example</h3>
-<div class="outline-text-3" id="text-orgbc3597a">
+<div id="outline-container-org562a4c2" class="outline-3">
+<h3 id="org562a4c2">Simple Example</h3>
+<div class="outline-text-3" id="text-org562a4c2">
 <p>
 In the following example, the <code>ClownFish (subClass)</code> of the <code>Fish (parentClass)</code>, using the <code>extends</code> keyword to connect them:
 </p>
@@ -271,9 +272,9 @@ By <code>extending</code> a <code>class</code>, the <code>subclass</code> gains 
 
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Fish</span> {}
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Fish</span> {}
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">ClownFish</span> <span class="org-keyword">extends</span> <span class="org-type">Fish</span> {}
-</pre>
+</code></pre>
 </div>
 
 
@@ -282,11 +283,11 @@ If the two classes are in the same package, then the subclass also gains access 
 </p>
 </div>
 </div>
-<div id="outline-container-org9fc7a55" class="outline-3">
-<h3 id="org9fc7a55">Example</h3>
-<div class="outline-text-3" id="text-org9fc7a55">
+<div id="outline-container-orgd210991" class="outline-3">
+<h3 id="orgd210991">Example</h3>
+<div class="outline-text-3" id="text-orgd210991">
 <div class="org-src-container">
-<pre class="src src-java">
+<pre class="src src-java"><code>
 <span class="org-comment-delimiter">// </span><span class="org-comment">Parent Class
 </span><span class="org-keyword">package</span> pond.<span class="org-constant">shore</span>;
 
@@ -311,7 +312,7 @@ If the two classes are in the same package, then the subclass also gains access 
         <span class="org-keyword">new</span> <span class="org-type">Gosling</span>().swim();
     }
 }
-</pre>
+</code></pre>
 </div>
 
 <ul class="org-ul">
@@ -339,7 +340,7 @@ Remember that <code>protected</code> also gives us access to everything that <a 
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">package</span> pond.<span class="org-constant">shore</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">Same package as Bird
+<pre class="src src-java"><code><span class="org-keyword">package</span> pond.<span class="org-constant">shore</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">Same package as Bird
 </span>
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">BirdWatcher</span> {
     <span class="org-keyword">public</span> <span class="org-type">void</span> <span class="org-function-name">watchBird</span>() {
@@ -348,7 +349,7 @@ Remember that <code>protected</code> also gives us access to everything that <a 
 </span>        System.out.print(bird.text); <span class="org-comment-delimiter">// </span><span class="org-comment">protected access is ok
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -356,15 +357,15 @@ Since <code>Bird</code> and <code>BirdWatcher</code> are in the <b>same package<
 </p>
 </div>
 </div>
-<div id="outline-container-org2facf52" class="outline-3">
-<h3 id="org2facf52">Negative Example</h3>
-<div class="outline-text-3" id="text-org2facf52">
+<div id="outline-container-orgd3a23bd" class="outline-3">
+<h3 id="orgd3a23bd">Negative Example</h3>
+<div class="outline-text-3" id="text-orgd3a23bd">
 <p>
 <code>BirdWatcherFromAfar</code> is <b>not in the same package</b> as <code>Bird</code>, and it <b>doesn’t</b> inherit from <code>Bird</code> therefore it <b>cannot</b> access the members from <code>Bird</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">package</span> pond.<span class="org-constant">inland</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">Different package than Bird
+<pre class="src src-java"><code><span class="org-keyword">package</span> pond.<span class="org-constant">inland</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">Different package than Bird
 </span>
 <span class="org-keyword">import</span> <span class="org-constant">pond</span>.<span class="org-constant">shore</span>.<span class="org-type">Bird</span>;
 
@@ -375,14 +376,14 @@ Since <code>Bird</code> and <code>BirdWatcher</code> are in the <b>same package<
 </span>        System.out.print(bird.text); <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 </div>
-<div id="outline-container-org6362e2d" class="outline-4">
-<h4 id="org6362e2d"><span class="underline">Exam Trick</span></h4>
-<div class="outline-text-4" id="text-org6362e2d">
+<div id="outline-container-orgb841bf1" class="outline-4">
+<h4 id="orgb841bf1"><span class="underline">Exam Trick</span></h4>
+<div class="outline-text-4" id="text-orgb841bf1">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">package</span> pond.<span class="org-constant">swan</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">Different package than Bird
+<pre class="src src-java"><code><span class="org-keyword">package</span> pond.<span class="org-constant">swan</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">Different package than Bird
 </span>
 <span class="org-keyword">import</span> <span class="org-constant">pond</span>.<span class="org-constant">shore</span>.<span class="org-type">Bird</span>;
 
@@ -405,7 +406,7 @@ Since <code>Bird</code> and <code>BirdWatcher</code> are in the <b>same package<
 </span>        System.out.print(other.text); <span class="org-comment-delimiter">// </span><span class="org-comment">LINE 16: DOES NOT COMPILE
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -413,15 +414,15 @@ Since <code>Bird</code> and <code>BirdWatcher</code> are in the <b>same package<
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="org12b19f6"></a>Inheritance<br />
-<div class="outline-text-6" id="text-org12b19f6">
+<li><a id="org97df3c5"></a>Inheritance<br />
+<div class="outline-text-6" id="text-org97df3c5">
 <ul class="org-ul">
 <li><code>Lines 5 and 6</code> refer to <b>protected</b> members via <i>inheriting</i> them.</li>
 </ul>
 </div>
 </li>
-<li><a id="org2d4c73e"></a>Instantiation<br />
-<div class="outline-text-6" id="text-org2d4c73e">
+<li><a id="org4d2278e"></a>Instantiation<br />
+<div class="outline-text-6" id="text-org4d2278e">
 <p>
 <code>Lines 10 and 11</code> also successfully use <b>protected</b> members of <code>Bird</code>.
 </p>
@@ -440,8 +441,8 @@ The <code>Swan</code> class is allowed to use <b>protected</b> members of <code>
 </p>
 </div>
 </li>
-<li><a id="orgb643c93"></a>Failed Compilation<br />
-<div class="outline-text-6" id="text-orgb643c93">
+<li><a id="orgac6a193"></a>Failed Compilation<br />
+<div class="outline-text-6" id="text-orgac6a193">
 <p>
 <code>Lines 15 and 16</code> do <b>not</b> compile.
 </p>
@@ -481,8 +482,8 @@ The code just happens to be in the <code>Swan</code> class.
 </div>
 </li>
 </ul>
-<li><a id="orgce2cdb7"></a>Rules<br />
-<div class="outline-text-5" id="text-orgce2cdb7">
+<li><a id="orge8de2c0"></a>Rules<br />
+<div class="outline-text-5" id="text-orge8de2c0">
 <p>
 The <b>protected</b> rules apply under two scenarios:
 </p>

@@ -1,0 +1,75 @@
+:PROPERTIES:
+:ID:       ef50162e-9514-4a64-9119-b933b9d4c588
+:END:
+#+title: Adequate Connectives
+
+
+* Adequate Connectives
+
+** Idea
+
+Programming languages often only have ~not~, ~or~, and ~and~.
+- These suffice to express *every wff in PL*, i.e. they are *functionally complete*.
+
+** Definition 4.2 (Adequate set)
+
+A set of connectives is *adequate* if /every/ *wff* is *logically equivalent* to a *wff* that uses /only/ *connectives* from that *set*.
+
+** Proposition 4.2
+
+Every *wff* in PL is logically equivalent to one that uses only \(\neg, \lor, \land\).
+
+So \(\{\neg, \lor, \land\}\) is an adequate set.
+
+** Proof (eliminate one connective per step)
+
+*** Step 1: remove \(\to\)
+
+From Example 3:
+\[ p \to q \equiv \neg p \lor q \quad (*) \]
+Any *wff* \(A \to B\) is equivalent to \(\neg A \lor B\), so \(\to\) can be dropped. Remaining: \(\neg, \land, \lor, \leftrightarrow, \oplus\).
+
+*** Step 2: remove \(\oplus\)
+
+From Example 2:
+\[ p \oplus q \equiv (p \lor q) \land \neg(p \land q) \quad (**) \]
+Any *wff* \(A \oplus B\) is equivalent to \((A \lor B) \land \neg(A \land B)\), so \(\oplus\) can be dropped. Remaining: \(\neg, \land, \lor, \leftrightarrow\).
+
+*** Step 3: remove \(\leftrightarrow\)
+
+From Example 1:
+\[ p \leftrightarrow q \equiv (p \to q) \land (q \to p) \]
+Combine with \((\ast)\):
+\[ p \leftrightarrow q \equiv (p \to q) \land (q \to p) \equiv (\neg p \lor q) \land (\neg q \lor p) \quad (\ast\ast\ast) \]
+
+
+Any *wff* \(A \leftrightarrow B\) is equivalent to \((\neg A \lor B) \land (\neg B \lor A)\), so \(\leftrightarrow\) can be dropped.
+
+Remaining: \(\neg, \land, \lor\). \(\blacksquare\)
+
+** Notes
+
+- Order matters: Step 3 uses (*) to get rid of the \(\to\) that Example 1 introduces.
+- The equivalences hold for any *wffs* \(A, B\), not just atoms \(p, q\), since the substitution preserves equivalence.
+
+** Example
+
+Find a *wff* equivalent to \((p \leftrightarrow q) \to (p \oplus q)\) using only \(\neg, \lor, \land\).
+
+\begin{align*}
+(p \leftrightarrow q) \to (p \oplus q)
+&\equiv \neg(p \leftrightarrow q) \lor (p \oplus q) && \text{by } (\ast) \\
+&\equiv \neg((\neg p \lor q) \land (\neg q \lor p)) \lor ((p \lor q) \land \neg(p \land q)) && \text{by } (\ast\ast) \text{ and } (\ast\ast\ast) \\
+&\equiv ((p \land \neg q) \lor (q \land \neg p)) \lor ((p \lor q) \land (\neg p \lor \neg q)) && \text{by De Morgan}
+\end{align*}
+
+- Eliminate \(\to\) first, then \(\leftrightarrow\) and \(\oplus\), same order as the proof of *Proposition 4.2*.
+- *De Morgan* is applied to the negated \(\leftrightarrow\) part and to \(\neg(p \land q)\).
+
+** Remark
+*Proposition 4.2* says everything in PL /can/ be expressed with only \(\neg, \lor, \land\).
+
+But converting a *wff* to that form can give an unwieldy expression that is hard to read or interpret (see the Example above).
+
+- This is why PL is introduced with "redundant" *connectives*: they are not necessary, but they are convenient to work with.
+- The main interest of the results is that it is /possible/ to express everything logically using just \(\neg, \lor, \land\).
