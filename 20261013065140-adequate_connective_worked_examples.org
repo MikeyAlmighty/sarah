@@ -1,0 +1,101 @@
+:PROPERTIES:
+:ID:       9af4fc61-683b-446c-a400-af5bba087434
+:END:
+#+title: Adequate Connective Worked Examples
+
+* Adequate Connective Worked Examples
+
+** Definitions used
+
+- *NAND*: p | q ≡ ¬(p ∧ q)
+- *NOR*: p ↓ q ≡ ¬(p ∨ q)
+- Negation trick: ¬x ≡ x | x and ¬x ≡ x ↓ x
+- Adequate set: a set of connectives that can express every wff
+
+** Exercise 1: p ∧ q using NAND only
+
+#+begin_example
+p ∧ q ≡ ¬(¬(p ∧ q))      double negation
+      ≡ ¬(p | q)         definition of |
+      ≡ (p | q) | (p | q)   since ¬x ≡ x | x
+#+end_example
+
+** Exercise 2: p → q using NAND only
+
+#+begin_example
+p → q ≡ ¬p ∨ q           since x → y ≡ ¬x ∨ y
+      ≡ ¬(p ∧ ¬q)        De Morgan
+      ≡ p | ¬q           definition of |
+      ≡ p | (q | q)      since ¬x ≡ x | x
+#+end_example
+
+** Exercise 3: p ∨ q using NOR only
+
+#+begin_example
+p ∨ q ≡ ¬(¬(p ∨ q))      double negation
+      ≡ ¬(p ↓ q)         definition of ↓
+      ≡ (p ↓ q) ↓ (p ↓ q)   since ¬x ≡ x ↓ x
+#+end_example
+
+** Exercise 4: {¬, →} is adequate
+
+- Known: {∨, ¬} is adequate.
+- Since p → q ≡ ¬p ∨ q, we get p ∨ q ≡ ¬p → q.
+- So any ∨ can be replaced by ¬ and →, hence {¬, →} is adequate.
+
+** Exercise 5: properties of a single adequate connective *
+
+Let * be a binary connective that is adequate on its own.
+
+*** 1. T * T = F
+
+- Suppose T * T = T. Then any wff using only the atom p, *, and brackets is true whenever p is true.
+- So no such wff can have the truth table p=T → F (e.g. ¬p), contradicting adequacy.
+- Hence T * T = F.
+
+*** 2. F * F = T
+
+- Same argument: if F * F = F, any wff in one atom p is false whenever p is false.
+- Then no wff can have the table p=F → T (e.g. ¬p), contradicting adequacy.
+- Hence F * F = T.
+
+*** 3. Excluding the remaining tables
+
+Fixing T*T = F and F*F = T leaves T*F and F*T free, giving four tables:
+- NAND: T*F = T, F*T = T
+- NOR: T*F = F, F*T = F
+- Two others, shown below.
+
+Left: p * q ≡ ¬p
+| p | q | p * q |
+|---+---+-------|
+| T | T | F     |
+| T | F | F     |
+| F | T | T     |
+| F | F | T     |
+
+Right: p * q ≡ ¬q
+| p | q | p * q |
+|---+---+-------|
+| T | T | F     |
+| T | F | T     |
+| F | T | F     |
+| F | F | T     |
+
+Left case (p * q ≡ ¬p). With one atom p:
+- p * p = ¬p
+- p * ¬p = ¬p
+- ¬p * p = p
+- ¬p * ¬p = p
+So every wff in p and * simplifies to p or ¬p. The tables (T→T, F→T) and (T→F, F→F) (constant true / constant false) are unreachable, so * is not adequate.
+
+Right case (p * q ≡ ¬q) follows by symmetry.
+
+*** Takeaway
+
+Only *NAND* and *NOR* can be adequate alone.
+
+** Patterns
+- Wrap in ¬¬, so one ¬ pairs with ∧ (or ∨) to form NAND (or NOR), and the other becomes x | x (or x ↓ x).
+- If the wff has →, first rewrite as ¬p ∨ q, then use De Morgan to reach ¬(… ∧ …).
+- To show adequacy, express a known adequate set ({∧, ¬} or {∨, ¬}) using the new set.

@@ -1,0 +1,118 @@
+:PROPERTIES:
+:ID:       e156a6dd-1ad0-4b2b-bf5f-8fbdda60e01c
+:END:
+#+title: Constructing Truth Trees
+
+* Constructing Truth Trees
+
+** Overview
+
+*Truth tables* blow up computationally (complex wff, many atoms).
+
+The *Truth Tree Algorithm* answers questions about wff much more efficiently, and in particular finds *all* ~truth~ assignments that make a wff ~true~.
+
+- Approach is "*divide and conquer*"; the *tree* is a =data structure=.
+  - Also known as *(semantic) tableaux*.
+
+** Construction for a wff \(A\)
+
+1. Place \(A\) at the root.
+2. Apply rules according to the shape of \(A\):
+   - *Conjunction*: components go along the trunk (no branching)
+   - *Disjunction*: two branches
+3. Repeat on the smaller components until only literals remain.
+
+*** The nine possible shapes
+
+| \(X \wedge Y\)          | \(X \vee Y\)                  | \(X \to Y\)        |
+| \(X \leftrightarrow Y\) | \(\neg(X \wedge Y)\)          | \(\neg(X \vee Y)\) |
+| \(\neg(X \to Y)\)       | \(\neg(X \leftrightarrow Y)\) | \(\neg\neg X\)     |
+
+- Note: \(X \oplus Y \equiv \neg(X \leftrightarrow Y)\), so any wff with \(\oplus\) can be converted into one of these shapes.
+
+** \(\alpha\)-rules (non-branching)
+
+\(\alpha\) is satisfied precisely when both \(\alpha_1\) and \(\alpha_2\) are. Place them directly below \(\alpha\) on the same branch.
+
+| \(\alpha\)         | \(\alpha_1\) | \(\alpha_2\) |
+|--------------------+--------------+--------------|
+| \(X \wedge Y\)     | \(X\)        | \(Y\)        |
+| \(\neg(X \vee Y)\) | \(\neg X\)   | \(\neg Y\)   |
+| \(\neg(X \to Y)\)  | \(X\)        | \(\neg Y\)   |
+| \(\neg\neg X\)     | \(X\)        | (none)       |
+
+*** \(\alpha\)-rule trees
+
+#+begin_example
+   X ∧ Y          ¬(X ∨ Y)         ¬(X → Y)          ¬¬X
+     |               |                |                |
+     X              ¬X                X                X
+     |               |                |
+     Y              ¬Y               ¬Y
+#+end_example
+
+** \(\beta\)-rules (branching)
+
+\(\beta\) is satisfied precisely when \(\beta_1\) *or* \(\beta_2\) is. Left branch \(\beta_1\), right branch \(\beta_2\).
+
+| \(\beta\)                     | \(\beta_1\) (left)  | \(\beta_2\) (right)      |
+|-------------------------------+---------------------+--------------------------|
+| \(X \vee Y\)                  | \(X\)               | \(Y\)                    |
+| \(\neg(X \wedge Y)\)          | \(\neg X\)          | \(\neg Y\)               |
+| \(X \to Y\)                   | \(\neg X\)          | \(Y\)                    |
+| \(X \leftrightarrow Y\)       | \(X \wedge Y\)      | \(\neg X \wedge \neg Y\) |
+| \(\neg(X \leftrightarrow Y)\) | \(X \wedge \neg Y\) | \(\neg X \wedge Y\)      |
+
+*** \(\beta\)-rule trees
+
+#+begin_example
+    X ∨ Y            ¬(X ∧ Y)           X → Y
+    /   \             /    \            /   \
+   X     Y          ¬X      ¬Y        ¬X     Y
+#+end_example
+
+#+begin_example
+     X ↔ Y              ¬(X ↔ Y)
+     /   \               /    \
+    X     ¬X            X      ¬X
+    |      |            |      |
+    Y     ¬Y           ¬Y      Y
+#+end_example
+
+** Bookkeeping
+
+- Tick (✓) a wff once its occurrence has been used.
+- Be systematic: work left to right.
+- The tree is *finished* when no further rules apply.
+
+** Example
+
+Find all truth assignments making \(A = \neg p \to (q \wedge r)\) true.
+
+1. Root: \(\neg p \to (q \wedge r)\)
+2. \(\beta\)-rule for \(\to\): branches \(\neg(\neg p)\) | \(q \wedge r\). Tick the root.
+3. Double negation on the left: \(\neg(\neg p)\) → \(p\). Tick.
+4. \(\wedge\) on the right: \(q \wedge r\) → \(q\), then \(r\) down the branch. Tick.
+
+#+begin_example
+      ¬p → (q ∧ r) ✓
+        /        \
+ ✓ ¬(¬p)       q ∧ r ✓
+      |           |
+      p           q
+                  |
+                  r
+#+end_example
+
+No more rules apply, so the tree is finished. Each open branch gives a set of literals that must be true:
+- branch 1: \(p\)
+- branch 2: \(q, r\)
+
+So \(A\) is true precisely when \(p\) is true, or \(q\) and \(r\) are both true:
+\[ A \equiv p \vee (q \wedge r) \]
+This carries exactly the same information as the rows of the truth table of \(A\) that output \(T\).
+
+** Key takeaways
+
+- \(\alpha\) = "and" (stack), \(\beta\) = "or" (split).
+- Each branch of a finished tree is a (partial) assignment satisfying the root; the tree as a whole is the disjunction of its branches.
