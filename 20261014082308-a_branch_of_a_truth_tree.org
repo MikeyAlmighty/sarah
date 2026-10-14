@@ -1,0 +1,79 @@
+:PROPERTIES:
+:ID:       33c01d52-9777-4c3e-86cb-6a2f9895088f
+:END:
+#+title: A Branch of a Truth Tree
+
+* A Branch of a Truth Tree
+
+** Overview
+
+Use a truth tree for a wff \(A\) to decide whether it is *satisfiable* and, if so, which ~truth~ assignments make \(A\) ~true~.
+
+First we need the notion of a *branch*.
+
+- *Definition 4.4.* A *branch* of a tree is a path that starts at the *root* and ends at a *leaf*.
+
+** Example
+
+This tree has *three* branches, one for each path from the *root* to a *leaf*:
+
+#+begin_example
+      root
+      /  \
+  leaf1  vertex
+         /    \
+     leaf2    leaf3
+#+end_example
+
+- ~root~ → ~leaf1~
+- ~root~ → ~vertex~ → ~leaf2~
+- ~root~ → ~vertex~ → ~leaf3~
+
+There is only *one* path from a *leaf* to the *root*, so *leaves* and *branches* are in ~one-to-one~ correspondence.
+
+This makes it easy to identify /all/ *branches*.
+
+** Open and closed branches
+
+Once the tree for \(A\) is built, decide which branches are *open* and which are *closed*.
+
+- *Definition 4.5.*
+  - A branch is *closed* if an atom and its negation occur on the /same branch/.
+  - A branch is *open* if it is *not closed*.
+
+*** Open vs closed: example
+
+Tree for \((p \vee q) \wedge \neg p\):
+
+#+begin_example
+     (p ∨ q) ∧ ¬p ✓
+           |
+        p ∨ q ✓
+           |
+          ¬p
+         /   \
+        p     q
+        ✗     ○
+     closed  open
+#+end_example
+
+- Left branch: root → \(p \vee q\) → \(\neg p\) → \(p\). Contains \(p\) and \(\neg p\), so it is *closed* (✗).
+- Right branch: root → \(p \vee q\) → \(\neg p\) → \(q\). No atom and its negation, so it is *open* (○).
+- Open branch literals \(\neg p, q\) give the satisfying assignment \(p = F,\ q = T\).
+- *Order* and *depth* don't matter:
+  - an *atom* and *its negation* /anywhere/ on the *same* branch *close* it!
+
+** Strategy for finding satisfying assignments
+
+For every *open* branch of the tree for \(A\), set all the literals along that branch to be =true=.
+
+This gives a truth assignment that satisfies \(A\).
+
+- Note: ignore *closed* branches.
+  - A *closed* branch contains an atom and its negation, and both *cannot* be =true=.
+
+** Remarks
+
+- For each open branch of the tree of \(A\) there is one truth assignment that satisfies \(A\).
+- If *all* branches of the tree for \(A\) are closed, then \(A\) is a *contradiction*.
+- To show \(A\) is a *tautology*, it is enough to show \(\neg A\) is a *contradiction*, i.e. all branches of the tree for \(\neg A\) are closed.

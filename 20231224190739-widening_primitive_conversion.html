@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-13 Tue 08:58 -->
+<!-- 2026-10-14 Wed 09:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Widening Primitive Conversion (aka Casting)</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -243,11 +242,11 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Widening Primitive Conversion (aka Casting)</h1>
-<div id="outline-container-org206b137" class="outline-2">
-<h2 id="org206b137">Widening Primitive Conversion (aka Casting)</h2>
-<div class="outline-text-2" id="text-org206b137">
+<div id="outline-container-orge431755" class="outline-2">
+<h2 id="orge431755">Widening Primitive Conversion (aka Casting)</h2>
+<div class="outline-text-2" id="text-orge431755">
 
-<div id="org732a94d" class="figure">
+<div id="org0a7f304" class="figure">
 <p><img src="./assets/widening_primitive_conversions.png" alt="widening_primitive_conversions.png" />
 </p>
 </div>
@@ -257,20 +256,20 @@ The conversions shown are <b>transitive</b>.
 (For example, an <code>int</code> can be directly converted to a <code>double</code> without first having to convert it to a <code>long</code> and a <code>float</code>.)
 </p>
 </div>
-<div id="outline-container-org233db88" class="outline-3">
-<h3 id="org233db88"><a href="Casting.md.html#ID-7a913830-843c-4872-9365-e5f2f59808a9">Implicit Casting</a></h3>
+<div id="outline-container-orgcfcf31f" class="outline-3">
+<h3 id="orgcfcf31f"><a href="Casting.md.html#ID-7a913830-843c-4872-9365-e5f2f59808a9">Implicit Casting</a></h3>
 </div>
-<div id="outline-container-org621066c" class="outline-3">
-<h3 id="org621066c"><a href="20260117123959-explicit_casting.html#ID-05d4557c-1aca-4936-8c98-0a285d5eb61d">Explicit Casting</a></h3>
+<div id="outline-container-org6560249" class="outline-3">
+<h3 id="org6560249"><a href="20260117123959-explicit_casting.html#ID-05d4557c-1aca-4936-8c98-0a285d5eb61d">Explicit Casting</a></h3>
 </div>
 </div>
-<div id="outline-container-orga7f872a" class="outline-2">
-<h2 id="orga7f872a"><span class="underline">Exam Trick</span></h2>
-<div class="outline-text-2" id="text-orga7f872a">
+<div id="outline-container-orge4b9d1e" class="outline-2">
+<h2 id="orge4b9d1e"><span class="underline">Exam Trick</span></h2>
+<div class="outline-text-2" id="text-orge4b9d1e">
 </div>
-<div id="outline-container-org69e5d2b" class="outline-3">
-<h3 id="org69e5d2b">Casting Values vs. Variables</h3>
-<div class="outline-text-3" id="text-org69e5d2b">
+<div id="outline-container-orgbbc373f" class="outline-3">
+<h3 id="orgbbc373f">Casting Values vs. Variables</h3>
+<div class="outline-text-3" id="text-orgbbc373f">
 <p>
 The second statement does <b>not</b> compile because <code>hat</code> is a <b>variable</b>, <b>not</b> a value, and both operands are <code>automatically</code> promoted to <code>int</code>.
 When working with <code>values</code>, the compiler <b>had enough information to determine the writer’s intent</b>.
@@ -282,10 +281,10 @@ The third expression does not compile because <code>700</code> triggers an overf
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-type">byte</span> <span class="org-variable-name">hat</span> = 1;
+<pre class="src src-java"><span class="org-type">byte</span> <span class="org-variable-name">hat</span> = 1;
 <span class="org-type">short</span> <span class="org-variable-name">boots</span> = 2 + hat; <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span><span class="org-type">byte</span> <span class="org-variable-name">gloves</span> = 7 * 100; <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE</span>
-</code></pre>
+</pre>
 </div>
 </div>
 </div>

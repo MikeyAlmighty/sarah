@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-13 Tue 08:57 -->
+<!-- 2026-10-14 Wed 09:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Tower of Hanoi Induction</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -275,13 +274,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Tower of Hanoi Induction</h1>
-<div id="outline-container-orgfc0ad93" class="outline-2">
-<h2 id="orgfc0ad93">Tower of Hanoi Induction</h2>
-<div class="outline-text-2" id="text-orgfc0ad93">
+<div id="outline-container-org526cda6" class="outline-2">
+<h2 id="org526cda6">Tower of Hanoi Induction</h2>
+<div class="outline-text-2" id="text-org526cda6">
 </div>
-<div id="outline-container-org6beedb1" class="outline-3">
-<h3 id="org6beedb1">Problem</h3>
-<div class="outline-text-3" id="text-org6beedb1">
+<div id="outline-container-org20fb17a" class="outline-3">
+<h3 id="org20fb17a">Problem</h3>
+<div class="outline-text-3" id="text-org20fb17a">
 <p>
 Let \(T(n)\) be the minimum number of moves to solve Tower of Hanoi with \(n\) discs.
 </p>
@@ -301,29 +300,29 @@ Closed form: \(T(n) = 2^n - 1\)
 </p>
 </div>
 </div>
-<div id="outline-container-org4406a59" class="outline-3">
-<h3 id="org4406a59">Proof of Correctness (by Induction)</h3>
-<div class="outline-text-3" id="text-org4406a59">
+<div id="outline-container-org1c21bfe" class="outline-3">
+<h3 id="org1c21bfe">Proof of Correctness (by Induction)</h3>
+<div class="outline-text-3" id="text-org1c21bfe">
 </div>
-<div id="outline-container-org19432c9" class="outline-4">
-<h4 id="org19432c9">Base case</h4>
-<div class="outline-text-4" id="text-org19432c9">
+<div id="outline-container-orgcfda9b8" class="outline-4">
+<h4 id="orgcfda9b8">Base case</h4>
+<div class="outline-text-4" id="text-orgcfda9b8">
 <p>
 \(n = 1\): one disc, move directly source → destination. Satisfies the rules. ✓
 </p>
 </div>
 </div>
-<div id="outline-container-orgabcc580" class="outline-4">
-<h4 id="orgabcc580">Inductive hypothesis</h4>
-<div class="outline-text-4" id="text-orgabcc580">
+<div id="outline-container-orge490ceb" class="outline-4">
+<h4 id="orge490ceb">Inductive hypothesis</h4>
+<div class="outline-text-4" id="text-orge490ceb">
 <p>
 Assume the recursive solution correctly moves \(k\) discs from source to destination for \(n = k\).
 </p>
 </div>
 </div>
-<div id="outline-container-org63aadaa" class="outline-4">
-<h4 id="org63aadaa">Inductive step</h4>
-<div class="outline-text-4" id="text-org63aadaa">
+<div id="outline-container-org86d9b54" class="outline-4">
+<h4 id="org86d9b54">Inductive step</h4>
+<div class="outline-text-4" id="text-org86d9b54">
 <p>
 Show it holds for \(n = k + 1\):
 </p>
@@ -339,26 +338,26 @@ Each sub-step follows the rules, so the full move sequence for \(k+1\) discs is 
 </p>
 </div>
 </div>
-<div id="outline-container-org8cba783" class="outline-4">
-<h4 id="org8cba783">Conclusion</h4>
-<div class="outline-text-4" id="text-org8cba783">
+<div id="outline-container-org00cc782" class="outline-4">
+<h4 id="org00cc782">Conclusion</h4>
+<div class="outline-text-4" id="text-org00cc782">
 <p>
 By induction, the recursive solution is correct for all \(n \geq 1\).
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orge7650cd" class="outline-3">
-<h3 id="orge7650cd">Why this matters</h3>
-<div class="outline-text-3" id="text-orge7650cd">
+<div id="outline-container-org7df8e24" class="outline-3">
+<h3 id="org7df8e24">Why this matters</h3>
+<div class="outline-text-3" id="text-org7df8e24">
 <p>
 This is a standard example of using induction not just to prove a <b>formula</b> (like \(2^n - 1\)) but to verify the <b>correctness of an algorithm</b> - i.e., that a recursive procedure actually produces a valid solution satisfying all constraints, for every input size.
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org1006682" class="outline-2">
-<h2 id="org1006682"><a href="20260926095544-tower_of_hanoi_induction_proof.html#ID-ab8b4cf3-afc0-4b57-abe8-b4c224a43b8e">Tower of Hanoi Induction Proof</a></h2>
+<div id="outline-container-org2693447" class="outline-2">
+<h2 id="org2693447"><a href="20260926095544-tower_of_hanoi_induction_proof.html#ID-ab8b4cf3-afc0-4b57-abe8-b4c224a43b8e">Tower of Hanoi Induction Proof</a></h2>
 </div>
 </div>
 </body>

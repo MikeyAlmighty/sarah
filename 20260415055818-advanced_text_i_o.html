@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-13 Tue 08:57 -->
+<!-- 2026-10-14 Wed 09:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Advanced Text I/O</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -243,13 +242,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Advanced Text I/O</h1>
-<div id="outline-container-org30cd384" class="outline-2">
-<h2 id="org30cd384">Advanced Text I/O</h2>
-<div class="outline-text-2" id="text-org30cd384">
+<div id="outline-container-orgfe69ce0" class="outline-2">
+<h2 id="orgfe69ce0">Advanced Text I/O</h2>
+<div class="outline-text-2" id="text-orgfe69ce0">
 </div>
-<div id="outline-container-org8607668" class="outline-3">
-<h3 id="org8607668">Large Files</h3>
-<div class="outline-text-3" id="text-org8607668">
+<div id="outline-container-org535544b" class="outline-3">
+<h3 id="org535544b">Large Files</h3>
+<div class="outline-text-3" id="text-org535544b">
 <ul class="org-ul">
 <li><code>java.nio.file</code>:
 <ul class="org-ul">
@@ -258,9 +257,9 @@
 </ul></li>
 </ul>
 </div>
-<div id="outline-container-org446ad81" class="outline-4">
-<h4 id="org446ad81">Example: Read</h4>
-<div class="outline-text-4" id="text-org446ad81">
+<div id="outline-container-orge74f6a9" class="outline-4">
+<h4 id="orge74f6a9">Example: Read</h4>
+<div class="outline-text-4" id="text-orge74f6a9">
 <p>
 <code>Files.lines()</code> reads a file <b>line by line</b> as a <b>stream</b>.
 </p>
@@ -270,7 +269,7 @@
 
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">io</span>.<span class="org-type">IOException</span>;
+<pre class="src src-java"><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">io</span>.<span class="org-type">IOException</span>;
 <span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">nio</span>.<span class="org-constant">file</span>.<span class="org-type">Files</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">nio
 </span><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">nio</span>.<span class="org-constant">file</span>.<span class="org-type">Path</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">nio
 </span><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-constant">stream</span>.<span class="org-type">Stream</span>;
@@ -288,13 +287,13 @@
         }
     }
 }
-</code></pre>
+</pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgb0a5ecc" class="outline-4">
-<h4 id="orgb0a5ecc">Example: Write</h4>
-<div class="outline-text-4" id="text-orgb0a5ecc">
+<div id="outline-container-org659d026" class="outline-4">
+<h4 id="org659d026">Example: Write</h4>
+<div class="outline-text-4" id="text-org659d026">
 <p>
 <code>Files.write()</code> Writing multiple lines efficiently.
 </p>
@@ -303,7 +302,7 @@
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-java"><code><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">io</span>.<span class="org-type">IOException</span>;
+<pre class="src src-java"><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">io</span>.<span class="org-type">IOException</span>;
 <span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">nio</span>.<span class="org-constant">file</span>.<span class="org-type">Files</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">nio
 </span><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">nio</span>.<span class="org-constant">file</span>.<span class="org-type">Path</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">nio
 </span><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">nio</span>.<span class="org-constant">file</span>.<span class="org-type">StandardOpenOption</span>; <span class="org-comment-delimiter">//</span><span class="org-comment">nio
@@ -323,7 +322,7 @@
         }
     }
 }
-</code></pre>
+</pre>
 </div>
 </div>
 </div>

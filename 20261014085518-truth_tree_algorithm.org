@@ -1,0 +1,42 @@
+:PROPERTIES:
+:ID:       a1535dc0-815b-41e5-b287-f6fbaba539a0
+:END:
+#+title: Truth Tree Algorithm
+
+* Truth Tree Algorithm
+
+** Input
+
+A wff \(X\).
+
+** Procedure
+
+1. Place \(X\) at the root of the truth tree.
+2. Depending on its shape, apply either an \(\alpha\)-rule or a \(\beta\)-rule.
+3. Place a ✓ against \(X\) to show it has been *used*.
+
+Now repeat the following:
+
+- *Close* any branch that contains an atom and its negation by placing a ✗ beneath the *leaf* defining that *branch*.
+- If *all* branches are closed, *stop*: the tree is *finished and closed*.
+- If not all *branches* are *closed* but the tree contains /only/ *literals* or used wff, *stop*: the tree is *finished and open*.
+- Otherwise the tree is /not/ finished:
+  - choose an unused wff \(Y\) which is *not* a literal;
+  - for each *open* branch containing \(Y\), append the effect of the appropriate \(\alpha\)- or \(\beta\)-rule for \(Y\) to the *leaf* of that *branch*.
+
+** Output
+
+- Finished and *closed*: \(X\) is a *contradiction*.
+- Finished and *open*: \(X\) is *satisfiable*.
+  - To find all assignments making \(X\) ~true~:
+    - For each open branch, assign \(T\) to all *literals* in that *branch*.
+  - *Atoms* missing from a *branch* may be assigned ~truth~ values arbitrarily.
+
+** Applications of truth trees
+
+The algorithm can be used to:
+
+- Determine whether a wff \(A\) is *satisfiable* and, if so, find truth assignments that satisfy \(A\).
+- Determine whether a wff \(A\) is a *contradiction* or a *tautology*.
+  - *Contradiction*: tree for \(A\) is finished and closed.
+  - *Tautology*: tree for \(\neg A\) is finished and closed.

@@ -1,0 +1,48 @@
+:PROPERTIES:
+:ID:       8d815474-b27e-4ff3-8ce0-fcf0116ad443
+:END:
+#+title: The Truth Tree Algorithm in Practice
+
+* The Truth Tree Algorithm In Practice
+
+** Overview
+
+Rather than build the /whole/ tree with the \(\alpha\)- and \(\beta\)-rules and /then/ decide which branches are *open* or *closed*, decide *as we build the tree*.
+
+** Close branches early
+
+- It is enough to "grow" *open* branches only.
+- As soon as an *atom* and *its negation* appear on a branch (even if the branch is not complete yet), the branch is *closed*.
+- Stop adding edges and vertices to that branch (dead end)
+- This saves a little computation time.
+
+** Prioritise \(\alpha\)-rules over \(\beta\)-rules
+
+- If both rules could be applied and the order doesn't matter, apply the \(\alpha\)-rule first.
+- Reason: an \(\alpha\)-rule does not branch, so the tree stays smaller.
+
+** Example
+
+Tree for \((p \vee q) \wedge \neg p\):
+
+#+begin_example
+     (p ∨ q) ∧ ¬p ✓
+           |
+        p ∨ q ✓
+           |
+          ¬p
+         /   \
+        p     q
+        ✗     ○
+     closed  open
+#+end_example
+
+- The \(\wedge\) (\(\alpha\)) is applied first, putting \(\neg p\) on the trunk.
+- The \(\vee\) (\(\beta\)) then splits into \(p\) and \(q\).
+- The left branch has \(p\) and \(\neg p\), so it is *closed* immediately and gets no further growth.
+
+** Convention
+
+Close branches as we build the tree whenever we detect an *atom* and *its negation* on a branch.
+
+- [[id:a1535dc0-815b-41e5-b287-f6fbaba539a0][Truth Tree Algorithm]]
