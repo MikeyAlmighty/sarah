@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-14 Wed 09:02 -->
+<!-- 2026-10-14 Wed 09:16 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Type Conversions</title>
@@ -249,29 +249,29 @@ Some type conversions must be <b>explicitly</b> stated in the program, while oth
 <p>
 Type conversions can be checked at <b>compile time</b> to guarantee their validity at <b>runtime</b>, while others will require an extra check at <b>runtime</b>.
 </p>
-<div id="outline-container-orgb382cb7" class="outline-2">
-<h2 id="orgb382cb7">1. Widening and Narrowing Primitive Conversions</h2>
-<div class="outline-text-2" id="text-orgb382cb7">
+<div id="outline-container-orgcc79080" class="outline-2">
+<h2 id="orgcc79080">1. Widening and Narrowing Primitive Conversions</h2>
+<div class="outline-text-2" id="text-orgcc79080">
 </div>
-<div id="outline-container-org0c562d5" class="outline-3">
-<h3 id="org0c562d5">Widening Primitive Conversion</h3>
-<div class="outline-text-3" id="text-org0c562d5">
+<div id="outline-container-org18c378d" class="outline-3">
+<h3 id="org18c378d">Widening Primitive Conversion</h3>
+<div class="outline-text-3" id="text-org18c378d">
 <p>
 For the <a href="20231230083124-primitive_types.html#ID-46582863-7f97-448d-bbc7-f7da4c1e7574">Primitive Types</a>, the value of a <b>narrower</b> data type can be converted to a value of a <b>wider</b> data type.
 This is called a <a href="20231224190739-widening_primitive_conversion.html#ID-3ef23225-ae37-428e-8ad3-5d7728f59478">Widening Primitive Conversion</a>
 </p>
 </div>
 </div>
-<div id="outline-container-org9d6e282" class="outline-3">
-<h3 id="org9d6e282">Narrowing Primitive Conversion</h3>
-<div class="outline-text-3" id="text-org9d6e282">
+<div id="outline-container-orgcaf8d48" class="outline-3">
+<h3 id="orgcaf8d48">Narrowing Primitive Conversion</h3>
+<div class="outline-text-3" id="text-orgcaf8d48">
 <p>
 Converting from a wider primitive type to a narrower primitive type is called a <a href="20231224191025-narrowing_primitive_conversion.html#ID-84dfb549-8f9a-4fc7-8fc0-6a20ca7bc0cc">Narrowing Primitive Conversion</a>
 </p>
 </div>
-<div id="outline-container-org3f8a1ed" class="outline-4">
-<h4 id="org3f8a1ed">Char Narrowing</h4>
-<div class="outline-text-4" id="text-org3f8a1ed">
+<div id="outline-container-orgb5df432" class="outline-4">
+<h4 id="orgb5df432">Char Narrowing</h4>
+<div class="outline-text-4" id="text-orgb5df432">
 <p>
 Note that all conversions between <code>char</code> and the two <a href="20231224104049-integer_data_types.html#ID-2483364b-73d3-4169-92b9-1fea473a9b01">Integer Data Types</a> <code>byte</code> and <code>short</code> are considered <a href="20231224191025-narrowing_primitive_conversion.html#ID-84dfb549-8f9a-4fc7-8fc0-6a20ca7bc0cc">Narrowing Primitive Conversion</a>.
 The reason is that the conversions between the <b>unsigned</b> type <code>char</code> and the <b>signed</b> types <code>byte</code> and <code>short</code> can result in a loss of information.
@@ -287,9 +287,9 @@ These <code>narrowing conversions</code> are done in two steps:
 </div>
 </div>
 </div>
-<div id="outline-container-orgb22c25a" class="outline-3">
-<h3 id="orgb22c25a">Legality</h3>
-<div class="outline-text-3" id="text-orgb22c25a">
+<div id="outline-container-org1668702" class="outline-3">
+<h3 id="org1668702">Legality</h3>
+<div class="outline-text-3" id="text-org1668702">
 <p>
 It is <b>legal</b> to use a cast for a <code>widening conversion</code>.
 </p>
@@ -304,22 +304,22 @@ Regardless of any loss of <code>magnitude</code> or <code>precision</code>, wide
 </div>
 </div>
 </div>
-<div id="outline-container-org5aeb77b" class="outline-2">
-<h2 id="org5aeb77b">2. Widening and Narrowing Reference Conversions</h2>
-<div class="outline-text-2" id="text-org5aeb77b">
+<div id="outline-container-orgcdaf2ea" class="outline-2">
+<h2 id="orgcdaf2ea">2. Widening and Narrowing Reference Conversions</h2>
+<div class="outline-text-2" id="text-orgcdaf2ea">
 </div>
-<div id="outline-container-orgecf141b" class="outline-3">
-<h3 id="orgecf141b"><a href="20231224192017-widening_reference_conversion.html#ID-37010aa8-20aa-40df-8e91-82c5f6476993">Widening Reference Conversion</a></h3>
-<div class="outline-text-3" id="text-orgecf141b">
+<div id="outline-container-org1554f06" class="outline-3">
+<h3 id="org1554f06"><a href="20231224192017-widening_reference_conversion.html#ID-37010aa8-20aa-40df-8e91-82c5f6476993">Widening Reference Conversion</a></h3>
+<div class="outline-text-3" id="text-org1554f06">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-type">Object</span> <span class="org-variable-name">obj</span> = <span class="org-string">"Upcast Me"</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">Widening - Implicit</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org31dccc9" class="outline-3">
-<h3 id="org31dccc9"><a href="20231224192115-narrowing_reference_conversion.html#ID-58a81c47-6038-42ad-ba01-eb85e293884e">Narrowing Reference Conversion</a></h3>
-<div class="outline-text-3" id="text-org31dccc9">
+<div id="outline-container-orgf61b517" class="outline-3">
+<h3 id="orgf61b517"><a href="20231224192115-narrowing_reference_conversion.html#ID-58a81c47-6038-42ad-ba01-eb85e293884e">Narrowing Reference Conversion</a></h3>
+<div class="outline-text-3" id="text-orgf61b517">
 <div class="org-src-container">
 <pre class="src src-java"><span class="org-type">String</span> <span class="org-variable-name">casted</span> = (<span class="org-type">String</span>) obj; <span class="org-comment-delimiter">// </span><span class="org-comment">Narrowing - requires cast</span>
 </pre>
@@ -331,9 +331,9 @@ A <code>subtype</code> is a <b>narrower</b> type than its <code>supertype</code>
 </p>
 </div>
 </div>
-<div id="outline-container-org12cc8d4" class="outline-3">
-<h3 id="org12cc8d4">Legality</h3>
-<div class="outline-text-3" id="text-org12cc8d4">
+<div id="outline-container-org45e237f" class="outline-3">
+<h3 id="org45e237f">Legality</h3>
+<div class="outline-text-3" id="text-org45e237f">
 <p>
 <a href="20231224095703-javac.html#ID-d5b4004d-b5db-48a2-8e85-09359ca61a42">javac</a> will <b>reject</b> casts that are <b>not</b> legal or will issue an <b>unchecked warning</b> under certain circumstances if type-safety cannot be guaranteed.
 </p>
@@ -348,32 +348,32 @@ This is <b>not</b> the case for <code>narrowing</code> reference conversions, wh
 </div>
 </div>
 </div>
-<div id="outline-container-orgb741257" class="outline-2">
-<h2 id="orgb741257">Boxing and Unboxing</h2>
-<div class="outline-text-2" id="text-orgb741257">
+<div id="outline-container-orga3e39b5" class="outline-2">
+<h2 id="orga3e39b5">Boxing and Unboxing</h2>
+<div class="outline-text-2" id="text-orga3e39b5">
 </div>
-<div id="outline-container-orgd5815cc" class="outline-3">
-<h3 id="orgd5815cc"><a href="20231225083210-java_boxing.html#ID-2af44b3c-ac25-4fc8-a372-20adc491f7f5">Boxing</a></h3>
+<div id="outline-container-orgb3075a1" class="outline-3">
+<h3 id="orgb3075a1"><a href="20231225083210-java_boxing.html#ID-2af44b3c-ac25-4fc8-a372-20adc491f7f5">Boxing</a></h3>
 </div>
-<div id="outline-container-org90c9374" class="outline-3">
-<h3 id="org90c9374"><a href="20231225083210-java_boxing.html#ID-2af44b3c-ac25-4fc8-a372-20adc491f7f5">Unboxing</a></h3>
+<div id="outline-container-org60d585f" class="outline-3">
+<h3 id="org60d585f"><a href="20231225083210-java_boxing.html#ID-2af44b3c-ac25-4fc8-a372-20adc491f7f5">Unboxing</a></h3>
 </div>
 </div>
-<div id="outline-container-org77c9105" class="outline-2">
-<h2 id="org77c9105">Conversion Contexts</h2>
-<div class="outline-text-2" id="text-org77c9105">
+<div id="outline-container-org94426a3" class="outline-2">
+<h2 id="org94426a3">Conversion Contexts</h2>
+<div class="outline-text-2" id="text-org94426a3">
 
-<div id="orgfcbd1ed" class="figure">
+<div id="orgc80b8ae" class="figure">
 <p><img src="./assets/type_conversion_contexts.png" alt="type_conversion_contexts.png" />
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org02ef1e5" class="outline-2">
-<h2 id="org02ef1e5"><a href="20231225085930-unary_numeric_promotion.html#ID-1247d537-67ad-4888-a0b5-b965774d2fe7">Unary Numeric Promotion</a></h2>
+<div id="outline-container-orgb0e9489" class="outline-2">
+<h2 id="orgb0e9489"><a href="20231225085930-unary_numeric_promotion.html#ID-1247d537-67ad-4888-a0b5-b965774d2fe7">Unary Numeric Promotion</a></h2>
 </div>
-<div id="outline-container-org464dfaf" class="outline-2">
-<h2 id="org464dfaf"><a href="20231225090023-binary_numeric_promotion.html#ID-be91e553-3d67-4440-ab4e-e18e77b5c48a">Binary Numeric Promotion</a></h2>
+<div id="outline-container-org60e3645" class="outline-2">
+<h2 id="org60e3645"><a href="20231225090023-binary_numeric_promotion.html#ID-be91e553-3d67-4440-ab4e-e18e77b5c48a">Binary Numeric Promotion</a></h2>
 </div>
 </div>
 </body>

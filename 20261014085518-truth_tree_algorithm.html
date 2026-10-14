@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-14 Wed 09:02 -->
+<!-- 2026-10-14 Wed 09:16 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Truth Tree Algorithm</title>
@@ -274,21 +274,21 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Truth Tree Algorithm</h1>
-<div id="outline-container-org0f2d01c" class="outline-2">
-<h2 id="org0f2d01c">Truth Tree Algorithm</h2>
-<div class="outline-text-2" id="text-org0f2d01c">
+<div id="outline-container-orgc607b9c" class="outline-2">
+<h2 id="orgc607b9c">Truth Tree Algorithm</h2>
+<div class="outline-text-2" id="text-orgc607b9c">
 </div>
-<div id="outline-container-org0490777" class="outline-3">
-<h3 id="org0490777">Input</h3>
-<div class="outline-text-3" id="text-org0490777">
+<div id="outline-container-org63c8174" class="outline-3">
+<h3 id="org63c8174">Input</h3>
+<div class="outline-text-3" id="text-org63c8174">
 <p>
 A wff \(X\).
 </p>
 </div>
 </div>
-<div id="outline-container-org26f752a" class="outline-3">
-<h3 id="org26f752a">Procedure</h3>
-<div class="outline-text-3" id="text-org26f752a">
+<div id="outline-container-org1fbd7b1" class="outline-3">
+<h3 id="org1fbd7b1">Procedure</h3>
+<div class="outline-text-3" id="text-org1fbd7b1">
 <ol class="org-ol">
 <li>Place \(X\) at the root of the truth tree.</li>
 <li>Depending on its shape, apply either an \(\alpha\)-rule or a \(\beta\)-rule.</li>
@@ -311,9 +311,9 @@ Now repeat the following:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf02ff35" class="outline-3">
-<h3 id="orgf02ff35">Output</h3>
-<div class="outline-text-3" id="text-orgf02ff35">
+<div id="outline-container-orgb57097a" class="outline-3">
+<h3 id="orgb57097a">Output</h3>
+<div class="outline-text-3" id="text-orgb57097a">
 <ul class="org-ul">
 <li>Finished and <b>closed</b>: \(X\) is a <b>contradiction</b>.</li>
 <li>Finished and <b>open</b>: \(X\) is <b>satisfiable</b>.
@@ -327,9 +327,9 @@ Now repeat the following:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgab91595" class="outline-3">
-<h3 id="orgab91595">Applications of truth trees</h3>
-<div class="outline-text-3" id="text-orgab91595">
+<div id="outline-container-org4cbc42a" class="outline-3">
+<h3 id="org4cbc42a">Applications of truth trees</h3>
+<div class="outline-text-3" id="text-org4cbc42a">
 <p>
 The algorithm can be used to:
 </p>
@@ -342,6 +342,82 @@ The algorithm can be used to:
 <li><b>Tautology</b>: tree for \(\neg A\) is finished and closed.</li>
 </ul></li>
 </ul>
+</div>
+</div>
+<div id="outline-container-orgbff601a" class="outline-3">
+<h3 id="orgbff601a">Example</h3>
+<div class="outline-text-3" id="text-orgbff601a">
+<p>
+Is \(A \equiv \neg((p \vee q) \to (p \wedge q))\) satisfiable? If so, find the satisfying assignments.
+</p>
+
+<pre class="example" id="orgc02cc23">
+¬((p ∨ q) → (p ∧ q)) ✓
+          |
+      p ∨ q ✓
+          |
+     ¬(p ∧ q) ✓
+     /         \
+    p           q
+  /   \       /   \
+¬p    ¬q    ¬p    ¬q
+ ✗    open  open   ✗
+</pre>
+
+<ol class="org-ol">
+<li>Root: \(\neg((p \vee q) \to (p \wedge q))\) is of the form \(\neg(X \to Y)\), an \(\alpha\)-rule giving \(p \vee q\) and \(\neg(p \wedge q)\) on the <b>trunk</b>. Tick the root.</li>
+<li>Apply the \(\beta\)-rule to \(p \vee q\): <b>branches</b> \(p\) | \(q\). Tick it.</li>
+<li>Apply the \(\beta\)-rule to \(\neg(p \wedge q)\) on each <b>branch</b>: \(\neg p\) | \(\neg q\). Tick it.</li>
+<li>Close <b>branches</b> with a clash:
+<ul class="org-ul">
+<li>\(p, \neg p\): closed ✗</li>
+<li>\(q, \neg q\): closed ✗</li>
+</ul></li>
+<li>Two <b>branches</b> stay <b>open</b> and every wff is used or a <b>literal</b>, so <b>stop</b>:
+<ul class="org-ul">
+<li>the tree is <b>finished and open</b>.</li>
+</ul></li>
+</ol>
+
+<p>
+<b>Output</b>: \(A\) is <b>satisfiable</b>.
+</p>
+
+<p>
+Assign \(T\) to the <b>literals</b> on each <b>open branch</b>:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">open branch</th>
+<th scope="col" class="org-left">\(p\)</th>
+<th scope="col" class="org-left">\(q\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">\(p, \neg q\)</td>
+<td class="org-left">T</td>
+<td class="org-left">F</td>
+</tr>
+
+<tr>
+<td class="org-left">\(\neg p, q\)</td>
+<td class="org-left">F</td>
+<td class="org-left">T</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>

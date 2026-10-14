@@ -40,3 +40,38 @@ The algorithm can be used to:
 - Determine whether a wff \(A\) is a *contradiction* or a *tautology*.
   - *Contradiction*: tree for \(A\) is finished and closed.
   - *Tautology*: tree for \(\neg A\) is finished and closed.
+
+** Example
+
+Is \(A \equiv \neg((p \vee q) \to (p \wedge q))\) satisfiable? If so, find the satisfying assignments.
+
+#+begin_example
+         ¬((p ∨ q) → (p ∧ q)) ✓
+                   |
+               p ∨ q ✓
+                   |
+              ¬(p ∧ q) ✓
+              /         \
+             p           q
+           /   \       /   \
+         ¬p    ¬q    ¬p    ¬q
+          ✗    open  open   ✗
+#+end_example
+
+1. Root: \(\neg((p \vee q) \to (p \wedge q))\) is of the form \(\neg(X \to Y)\), an \(\alpha\)-rule giving \(p \vee q\) and \(\neg(p \wedge q)\) on the *trunk*. Tick the root.
+2. Apply the \(\beta\)-rule to \(p \vee q\): *branches* \(p\) | \(q\). Tick it.
+3. Apply the \(\beta\)-rule to \(\neg(p \wedge q)\) on each *branch*: \(\neg p\) | \(\neg q\). Tick it.
+4. Close *branches* with a clash:
+   - \(p, \neg p\): closed ✗
+   - \(q, \neg q\): closed ✗
+5. Two *branches* stay *open* and every wff is used or a *literal*, so *stop*:
+   - the tree is *finished and open*.
+
+*Output*: \(A\) is *satisfiable*.
+
+Assign \(T\) to the *literals* on each *open branch*:
+
+| open branch | \(p\) | \(q\) |
+|-------------+-------+-------|
+| \(p, \neg q\)  | T     | F     |
+| \(\neg p, q\)  | F     | T     |
