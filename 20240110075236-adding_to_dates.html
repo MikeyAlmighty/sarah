@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-14 Wed 09:16 -->
+<!-- 2026-10-16 Fri 08:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Adding To Dates</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,9 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Adding To Dates</h1>
-<div id="outline-container-org61d86a4" class="outline-2">
-<h2 id="org61d86a4">Adding To Dates</h2>
-<div class="outline-text-2" id="text-org61d86a4">
+<div id="outline-container-orgaadca05" class="outline-2">
+<h2 id="orgaadca05">Adding To Dates</h2>
+<div class="outline-text-2" id="text-orgaadca05">
 <p>
 The <code>Date</code> and <code>Time</code> classes are immutable.
 </p>
@@ -253,11 +254,11 @@ The <code>Date</code> and <code>Time</code> classes are immutable.
 Remember to assign the results of these methods to a <code>reference variable</code> so they are not lost.
 </p>
 </div>
-<div id="outline-container-orge5d6a23" class="outline-3">
-<h3 id="orge5d6a23">Example</h3>
-<div class="outline-text-3" id="text-orge5d6a23">
+<div id="outline-container-orgbdb8657" class="outline-3">
+<h3 id="orgbdb8657">Example</h3>
+<div class="outline-text-3" id="text-orgbdb8657">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">date</span> = LocalDate.of(2022, <span class="org-constant">Month</span>.JANUARY, 20);
+<pre class="src src-java"><code><span class="org-keyword">var</span> <span class="org-variable-name">date</span> = LocalDate.of(2022, <span class="org-constant">Month</span>.JANUARY, 20);
 
 System.out.println(date); <span class="org-comment-delimiter">// </span><span class="org-comment">2022&#8211;01&#8211;20
 </span>
@@ -272,16 +273,16 @@ System.out.println(date); <span class="org-comment-delimiter">// </span><span cl
 </span>
 date = date.plusYears(5);
 System.out.println(date); <span class="org-comment-delimiter">// </span><span class="org-comment">2027&#8211;02&#8211;28</span>
-</pre>
+</code></pre>
 </div>
 </div>
-<div id="outline-container-orgba90e85" class="outline-4">
-<h4 id="orgba90e85"><span class="underline">Exam Trick</span></h4>
-<div class="outline-text-4" id="text-orgba90e85">
+<div id="outline-container-org29ad1e4" class="outline-4">
+<h4 id="org29ad1e4"><span class="underline">Exam Trick</span></h4>
+<div class="outline-text-4" id="text-org29ad1e4">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">var</span> <span class="org-variable-name">date</span> = LocalDate.of(2024, <span class="org-constant">Month</span>.JANUARY, 20);
+<pre class="src src-java"><code><span class="org-keyword">var</span> <span class="org-variable-name">date</span> = LocalDate.of(2024, <span class="org-constant">Month</span>.JANUARY, 20);
 date = date.plusMinutes(1); <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE</span>
-</pre>
+</code></pre>
 </div>
 
 <p>

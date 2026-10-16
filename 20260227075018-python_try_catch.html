@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-14 Wed 09:16 -->
+<!-- 2026-10-16 Fri 08:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python Try/Catch</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,13 +243,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Python Try/Catch</h1>
-<div id="outline-container-org9994924" class="outline-2">
-<h2 id="org9994924">Python Try/Catch</h2>
-<div class="outline-text-2" id="text-org9994924">
+<div id="outline-container-orgdc68b82" class="outline-2">
+<h2 id="orgdc68b82">Python Try/Catch</h2>
+<div class="outline-text-2" id="text-orgdc68b82">
 </div>
-<div id="outline-container-org22850ce" class="outline-3">
-<h3 id="org22850ce">Overview</h3>
-<div class="outline-text-3" id="text-org22850ce">
+<div id="outline-container-org1f0f7b3" class="outline-3">
+<h3 id="org1f0f7b3">Overview</h3>
+<div class="outline-text-3" id="text-org1f0f7b3">
 <p>
 Python uses <b>try</b> and <b>except</b> blocks to handle <b>runtime</b> <b>errors</b> (<b>exceptions</b>) without crashing the program.
 </p>
@@ -258,21 +259,21 @@ Basic structure:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span class="org-keyword">try</span>:
+<pre class="src src-python"><code><span class="org-keyword">try</span>:
     <span class="org-comment-delimiter"># </span><span class="org-comment">code that may raise an exception
 </span><span class="org-keyword">except</span> SomeException:
     <span class="org-comment-delimiter"># </span><span class="org-comment">handle specific exception
 </span><span class="org-keyword">except</span> <span class="org-type">Exception</span>:
     <span class="org-comment-delimiter"># </span><span class="org-comment">handle any other exception</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org63c672f" class="outline-3">
-<h3 id="org63c672f">Example: Handling Division Errors</h3>
-<div class="outline-text-3" id="text-org63c672f">
+<div id="outline-container-orgbbf28db" class="outline-3">
+<h3 id="orgbbf28db">Example: Handling Division Errors</h3>
+<div class="outline-text-3" id="text-orgbbf28db">
 <div class="org-src-container">
-<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">divide_by</span>(a, b):
+<pre class="src src-python"><code><span class="org-keyword">def</span> <span class="org-function-name">divide_by</span>(a, b):
     <span class="org-keyword">return</span> a <span class="org-operator">/</span> b
 
 <span class="org-keyword">try</span>:
@@ -281,13 +282,13 @@ Basic structure:
     <span class="org-builtin">print</span>(e, <span class="org-string">'We cannot divide by zero'</span>)
 <span class="org-keyword">except</span> <span class="org-type">Exception</span> <span class="org-keyword">as</span> e:
     <span class="org-builtin">print</span>(e, <span class="org-string">'Something went wrong'</span>)
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org5c2fd74" class="outline-3">
-<h3 id="org5c2fd74">How It Works</h3>
-<div class="outline-text-3" id="text-org5c2fd74">
+<div id="outline-container-org4320ee3" class="outline-3">
+<h3 id="org4320ee3">How It Works</h3>
+<div class="outline-text-3" id="text-org4320ee3">
 <ol class="org-ol">
 <li><code>divide_by(40, 0)</code> raises a <code>ZeroDivisionError</code>.</li>
 <li>Python immediately exits the <code>try</code> block.</li>
@@ -297,9 +298,9 @@ Basic structure:
 </ol>
 </div>
 </div>
-<div id="outline-container-org9dc9c10" class="outline-3">
-<h3 id="org9dc9c10">Why Order Matters</h3>
-<div class="outline-text-3" id="text-org9dc9c10">
+<div id="outline-container-org92a94cc" class="outline-3">
+<h3 id="org92a94cc">Why Order Matters</h3>
+<div class="outline-text-3" id="text-org92a94cc">
 <p>
 Exception blocks are checked <code>top to bottom</code>.
 </p>
@@ -309,9 +310,9 @@ More specific exceptions must come before more general ones:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span class="org-keyword">except</span> <span class="org-type">ZeroDivisionError</span>:
+<pre class="src src-python"><code><span class="org-keyword">except</span> <span class="org-type">ZeroDivisionError</span>:
 <span class="org-keyword">except</span> <span class="org-type">Exception</span>:  <span class="org-comment-delimiter"># </span><span class="org-comment">broader &#8212; catches almost everything</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -319,50 +320,50 @@ If <code>Exception</code> came first, <code>ZeroDivisionError</code> would never
 </p>
 </div>
 </div>
-<div id="outline-container-org3fb0393" class="outline-3">
-<h3 id="org3fb0393">Optional Clauses</h3>
-<div class="outline-text-3" id="text-org3fb0393">
+<div id="outline-container-orgb69edfb" class="outline-3">
+<h3 id="orgb69edfb">Optional Clauses</h3>
+<div class="outline-text-3" id="text-orgb69edfb">
 </div>
-<div id="outline-container-org88af0d0" class="outline-4">
-<h4 id="org88af0d0">else</h4>
-<div class="outline-text-4" id="text-org88af0d0">
+<div id="outline-container-org72926d4" class="outline-4">
+<h4 id="org72926d4">else</h4>
+<div class="outline-text-4" id="text-org72926d4">
 <p>
 Runs if NO exception occurs.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span class="org-keyword">try</span>:
+<pre class="src src-python"><code><span class="org-keyword">try</span>:
     <span class="org-variable-name">result</span> <span class="org-operator">=</span> divide_by(10, 2)
 <span class="org-keyword">except</span> <span class="org-type">ZeroDivisionError</span>:
     <span class="org-builtin">print</span>(<span class="org-string">"Cannot divide by zero"</span>)
 <span class="org-keyword">else</span>:
     <span class="org-builtin">print</span>(<span class="org-string">"Result:"</span>, result)
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org76a7c65" class="outline-4">
-<h4 id="org76a7c65">finally</h4>
-<div class="outline-text-4" id="text-org76a7c65">
+<div id="outline-container-orge3f1d8d" class="outline-4">
+<h4 id="orge3f1d8d">finally</h4>
+<div class="outline-text-4" id="text-orge3f1d8d">
 <p>
 Always runs (cleanup code, closing files, etc.).
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span class="org-keyword">try</span>:
+<pre class="src src-python"><code><span class="org-keyword">try</span>:
     <span class="org-variable-name">result</span> <span class="org-operator">=</span> divide_by(10, 2)
 <span class="org-keyword">except</span> <span class="org-type">ZeroDivisionError</span>:
     <span class="org-builtin">print</span>(<span class="org-string">"Cannot divide by zero"</span>)
 <span class="org-keyword">finally</span>:
     <span class="org-builtin">print</span>(<span class="org-string">"Done."</span>)
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org645d0fd" class="outline-3">
-<h3 id="org645d0fd">Best Practices</h3>
-<div class="outline-text-3" id="text-org645d0fd">
+<div id="outline-container-org031bd55" class="outline-3">
+<h3 id="org031bd55">Best Practices</h3>
+<div class="outline-text-3" id="text-org031bd55">
 <ul class="org-ul">
 <li>Catch specific <b>exceptions</b> whenever possible.</li>
 <li>Avoid bare <code>except:</code> (it catches <b>everything</b>, including <b>system-exiting exceptions</b>).</li>
@@ -371,9 +372,9 @@ Always runs (cleanup code, closing files, etc.).
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd106675" class="outline-3">
-<h3 id="orgd106675">Related Concepts</h3>
-<div class="outline-text-3" id="text-orgd106675">
+<div id="outline-container-org2264a1a" class="outline-3">
+<h3 id="org2264a1a">Related Concepts</h3>
+<div class="outline-text-3" id="text-org2264a1a">
 <ul class="org-ul">
 <li>Raising exceptions: <code>raise ValueError("Invalid input")</code></li>
 <li>Creating custom exceptions (class MyError(Exception))</li>

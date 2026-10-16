@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-14 Wed 09:16 -->
+<!-- 2026-10-16 Fri 08:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Logarithmic Time</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,34 +243,34 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Logarithmic Time</h1>
-<div id="outline-container-org1f0b319" class="outline-2">
-<h2 id="org1f0b319">Logarithmic Time O(log n)</h2>
-<div class="outline-text-2" id="text-org1f0b319">
+<div id="outline-container-orgc254a48" class="outline-2">
+<h2 id="orgc254a48">Logarithmic Time O(log n)</h2>
+<div class="outline-text-2" id="text-orgc254a48">
 </div>
-<div id="outline-container-org4c94c0d" class="outline-3">
-<h3 id="org4c94c0d">Recursive function:</h3>
-<div class="outline-text-3" id="text-org4c94c0d">
+<div id="outline-container-org0680377" class="outline-3">
+<h3 id="org0680377">Recursive function:</h3>
+<div class="outline-text-3" id="text-org0680377">
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-keyword">const</span> <span class="org-variable-name">logFunc</span> = (n: number): number =&gt; {
+<pre class="src src-js"><code><span class="org-keyword">const</span> <span class="org-variable-name">logFunc</span> = (n: number): number =&gt; {
   <span class="org-keyword">if</span> (n === 1) <span class="org-keyword">return</span> 1
   <span class="org-keyword">return</span> logFunc( Math.floor(n/2))
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org468e981" class="outline-3">
-<h3 id="org468e981">Non Recursive function can also have Logarithmic time:</h3>
-<div class="outline-text-3" id="text-org468e981">
+<div id="outline-container-org847f3ef" class="outline-3">
+<h3 id="org847f3ef">Non Recursive function can also have Logarithmic time:</h3>
+<div class="outline-text-3" id="text-org847f3ef">
 <div class="org-src-container">
-<pre class="src src-js"><span class="org-keyword">const</span> <span class="org-variable-name">logFunc</span> = (n: number) =&gt; {
+<pre class="src src-js"><code><span class="org-keyword">const</span> <span class="org-variable-name">logFunc</span> = (n: number) =&gt; {
   <span class="org-keyword">while</span> (n &gt; 1){
     n = Math.floor(n/2)
   }
   <span class="org-keyword">return</span>
 }
 
-</pre>
+</code></pre>
 </div>
 
 

@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-14 Wed 09:16 -->
+<!-- 2026-10-16 Fri 08:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Dynamic Binding</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,9 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Dynamic Binding</h1>
-<div id="outline-container-org8253f35" class="outline-2">
-<h2 id="org8253f35">Dynamic Binding (AKA Dynamic Method Dispatch / Late Binding)</h2>
-<div class="outline-text-2" id="text-org8253f35">
+<div id="outline-container-org823ea84" class="outline-2">
+<h2 id="org823ea84">Dynamic Binding (AKA Dynamic Method Dispatch / Late Binding)</h2>
+<div class="outline-text-2" id="text-org823ea84">
 <ul class="org-ul">
 <li>In Java, <b>runtime polymorphism</b> relies on <b>dynamic binding</b>.</li>
 <li>When you invoke an <b>overridden</b> method on an <code>object reference</code>, Java binds the call to the correct method based on the object's actual class (not the reference type) during runtime.</li>
@@ -262,11 +263,11 @@ This allows the <b>same</b> <code>method</code> to <b>behave</b> <b>differently<
 We are going to use the <code>Animal</code> <b>class</b> <b>hierarchy</b> to properly demonstrate <b>dynamic</b> <b>binding</b> and <b>polymorphism</b>.
 </p>
 </div>
-<div id="outline-container-orga036c8a" class="outline-3">
-<h3 id="orga036c8a">Example</h3>
-<div class="outline-text-3" id="text-orga036c8a">
+<div id="outline-container-org023cd67" class="outline-3">
+<h3 id="org023cd67">Example</h3>
+<div class="outline-text-3" id="text-org023cd67">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">Superclass (Parent)
+<pre class="src src-java"><code><span class="org-comment-delimiter">// </span><span class="org-comment">Superclass (Parent)
 </span><span class="org-keyword">class</span> <span class="org-type">Animal</span> {
     <span class="org-comment-delimiter">// </span><span class="org-comment">Method to be overridden
 </span>    <span class="org-type">void</span> <span class="org-function-name">makeSound</span>() {
@@ -305,28 +306,28 @@ We are going to use the <code>Animal</code> <b>class</b> <b>hierarchy</b> to pro
 </span>    }
 }
 
-</pre>
+</code></pre>
 </div>
 </div>
-<div id="outline-container-org05ef184" class="outline-4">
-<h4 id="org05ef184">Superclass (Animal)</h4>
-<div class="outline-text-4" id="text-org05ef184">
+<div id="outline-container-org828995e" class="outline-4">
+<h4 id="org828995e">Superclass (Animal)</h4>
+<div class="outline-text-4" id="text-org828995e">
 <p>
 Contains the <code>makeSound()</code> method.
 </p>
 </div>
 </div>
-<div id="outline-container-orgecc1905" class="outline-4">
-<h4 id="orgecc1905">Subclasses (Dog, Cat)</h4>
-<div class="outline-text-4" id="text-orgecc1905">
+<div id="outline-container-orgb104eb3" class="outline-4">
+<h4 id="orgb104eb3">Subclasses (Dog, Cat)</h4>
+<div class="outline-text-4" id="text-orgb104eb3">
 <p>
 Both <b>override</b> the <code>makeSound()</code> method to provide specific implementations.
 </p>
 </div>
 </div>
-<div id="outline-container-orgcf410d2" class="outline-4">
-<h4 id="orgcf410d2">Dynamic binding</h4>
-<div class="outline-text-4" id="text-orgcf410d2">
+<div id="outline-container-org170535f" class="outline-4">
+<h4 id="org170535f">Dynamic binding</h4>
+<div class="outline-text-4" id="text-org170535f">
 <ul class="org-ul">
 <li>In the <code>main method</code>, we use an <code>Animal</code> <b>reference</b> to hold a <code>Dog</code> or <code>Cat</code> object.</li>
 <li>At <b>runtime</b>, the JVM resolves the method call (<code>makeSound()</code>) based on the <code>actual type</code> of the object (either <code>Dog</code> or <code>Cat</code>), even though the <b>reference</b> <b>type</b> is <code>Animal</code>.</li>
@@ -337,8 +338,8 @@ Both <b>override</b> the <code>makeSound()</code> method to provide specific imp
 </ul>
 </div>
 <ul class="org-ul">
-<li><a id="org468a5f9"></a><a href="20260321142428-polymorphism_run_time.html#ID-16577748-cab3-4067-a6ee-c92fb65fa48f">Polymorphism (Run Time)</a><br />
-<div class="outline-text-5" id="text-org468a5f9">
+<li><a id="org1386a1b"></a><a href="20260321142428-polymorphism_run_time.html#ID-16577748-cab3-4067-a6ee-c92fb65fa48f">Polymorphism (Run Time)</a><br />
+<div class="outline-text-5" id="text-org1386a1b">
 <ul class="org-ul">
 <li>The <code>reference variable</code> <code>myAnimal</code> can point to both <code>Dog</code> and <code>Cat</code>, and Java will invoke the <b>correct</b> <code>method</code> (<code>Dog</code> <b>barks</b> or <code>Cat</code> <b>meows</b>) based on the <code>actual object type</code> at <b>runtime</b>.</li>
 </ul>
@@ -347,24 +348,24 @@ Both <b>override</b> the <code>makeSound()</code> method to provide specific imp
 </ul>
 </div>
 </div>
-<div id="outline-container-org3ed2f5f" class="outline-3">
-<h3 id="org3ed2f5f">Core Idea (Simplified)</h3>
-<div class="outline-text-3" id="text-org3ed2f5f">
+<div id="outline-container-org8c07770" class="outline-3">
+<h3 id="org8c07770">Core Idea (Simplified)</h3>
+<div class="outline-text-3" id="text-org8c07770">
 <ul class="org-ul">
 <li><b>Java</b> decides which <code>method</code> signature is valid at <b>compile time</b>, but decides which <code>implementation</code> to run at <b>runtime</b>.</li>
 <li><b>Dynamic Binding</b> = <b>runtime</b> decision.</li>
 </ul>
 </div>
-<div id="outline-container-org346b359" class="outline-4">
-<h4 id="org346b359">Two Key Concepts</h4>
-<div class="outline-text-4" id="text-org346b359">
+<div id="outline-container-org8b6aa3e" class="outline-4">
+<h4 id="org8b6aa3e">Two Key Concepts</h4>
+<div class="outline-text-4" id="text-org8b6aa3e">
 </div>
 <ul class="org-ul">
-<li><a id="org4c79ee7"></a>Declared Type (<b>compile-time</b>)<br />
-<div class="outline-text-5" id="text-org4c79ee7">
+<li><a id="orgee6a46e"></a>Declared Type (<b>compile-time</b>)<br />
+<div class="outline-text-5" id="text-orgee6a46e">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">Animal</span> <span class="org-variable-name">myAnimal</span>;
-</pre>
+<pre class="src src-java"><code><span class="org-type">Animal</span> <span class="org-variable-name">myAnimal</span>;
+</code></pre>
 </div>
 
 <ul class="org-ul">
@@ -374,11 +375,11 @@ Both <b>override</b> the <code>makeSound()</code> method to provide specific imp
 </ul>
 </div>
 </li>
-<li><a id="org4cc4af8"></a>Actual Type (<b>runtime</b>)<br />
-<div class="outline-text-5" id="text-org4cc4af8">
+<li><a id="org8548f54"></a>Actual Type (<b>runtime</b>)<br />
+<div class="outline-text-5" id="text-org8548f54">
 <div class="org-src-container">
-<pre class="src src-java">myAnimal = <span class="org-keyword">new</span> <span class="org-type">Dog</span>();   <span class="org-comment-delimiter">// </span><span class="org-comment">or new Cat();</span>
-</pre>
+<pre class="src src-java"><code>myAnimal = <span class="org-keyword">new</span> <span class="org-type">Dog</span>();   <span class="org-comment-delimiter">// </span><span class="org-comment">or new Cat();</span>
+</code></pre>
 </div>
 
 <ul class="org-ul">
@@ -388,31 +389,31 @@ Both <b>override</b> the <code>makeSound()</code> method to provide specific imp
 </ul>
 </div>
 </li>
-<li><a id="orgb55349d"></a>Examples:<br />
-<div class="outline-text-5" id="text-orgb55349d">
+<li><a id="orgcc7bb0b"></a>Examples:<br />
+<div class="outline-text-5" id="text-orgcc7bb0b">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">Animal</span> <span class="org-variable-name">myAnimal</span> = <span class="org-keyword">new</span> <span class="org-type">Dog</span>();
+<pre class="src src-java"><code><span class="org-type">Animal</span> <span class="org-variable-name">myAnimal</span> = <span class="org-keyword">new</span> <span class="org-type">Dog</span>();
 myAnimal.makeSound();   <span class="org-comment-delimiter">// </span><span class="org-comment">Dog barks
 </span>
 myAnimal = <span class="org-keyword">new</span> <span class="org-type">Cat</span>();
 myAnimal.makeSound();   <span class="org-comment-delimiter">// </span><span class="org-comment">Cat meows</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </li>
 </ul>
 </div>
-<div id="outline-container-org4f409cd" class="outline-4">
-<h4 id="org4f409cd">The Rule You Must Remember</h4>
-<div class="outline-text-4" id="text-org4f409cd">
+<div id="outline-container-org353149d" class="outline-4">
+<h4 id="org353149d">The Rule You Must Remember</h4>
+<div class="outline-text-4" id="text-org353149d">
 <p>
 <b>Method implementation</b> is chosen based on the <code>Actual Type</code> (<b>runtime</b>).
 </p>
 </div>
 </div>
-<div id="outline-container-org327d6ad" class="outline-4">
-<h4 id="org327d6ad">Exam</h4>
-<div class="outline-text-4" id="text-org327d6ad">
+<div id="outline-container-org46fa83b" class="outline-4">
+<h4 id="org46fa83b">Exam</h4>
+<div class="outline-text-4" id="text-org46fa83b">
 <p>
 <b>Dynamic binding</b> does <b>NOT</b> apply to <code>static methods</code>.
 </p>

@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-14 Wed 09:16 -->
+<!-- 2026-10-16 Fri 08:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Preventing Extending and Overriding</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,17 +243,17 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Preventing Extending and Overriding</h1>
-<div id="outline-container-org943bf88" class="outline-2">
-<h2 id="org943bf88">Preventing Extending and Overriding</h2>
-<div class="outline-text-2" id="text-org943bf88">
+<div id="outline-container-org147a7da" class="outline-2">
+<h2 id="org147a7da">Preventing Extending and Overriding</h2>
+<div class="outline-text-2" id="text-org147a7da">
 <ul class="org-ul">
 <li>Neither a <code>final class</code> nor a <code>final method</code> can be <b>extended</b>.</li>
 <li>A <code>final data field</code> is a <b>constant</b>.</li>
 </ul>
 </div>
-<div id="outline-container-orgde0c7ea" class="outline-3">
-<h3 id="orgde0c7ea">Description</h3>
-<div class="outline-text-3" id="text-orgde0c7ea">
+<div id="outline-container-orged6ffe1" class="outline-3">
+<h3 id="orged6ffe1">Description</h3>
+<div class="outline-text-3" id="text-orged6ffe1">
 <ul class="org-ul">
 <li>You may occasionally want to prevent <code>classes</code> from being <b>extended</b>.
 <ul class="org-ul">
@@ -262,18 +263,18 @@
 <li>The <code>Math</code>, <code>String</code>, <code>StringBuilder</code>, and <code>StringBuffer</code> classes, and all <b>wrapper</b> <b>classes</b> for <a href="types.md.html#ID-b8a89d64-e78d-4b77-9bbd-bdb837a751c0">Primitive Data types</a> are also <code>final</code> <code>classes</code>.</li>
 </ul>
 </div>
-<div id="outline-container-orgbaf03b9" class="outline-4">
-<h4 id="orgbaf03b9">Example</h4>
-<div class="outline-text-4" id="text-orgbaf03b9">
+<div id="outline-container-orgfed3df6" class="outline-4">
+<h4 id="orgfed3df6">Example</h4>
+<div class="outline-text-4" id="text-orgfed3df6">
 <ul class="org-ul">
 <li>The following <code>class</code> <code>A</code> is <b>final</b> and <b>cannot</b> be <b>extended</b>.</li>
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">final</span> <span class="org-keyword">class</span> <span class="org-type">A</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">final</span> <span class="org-keyword">class</span> <span class="org-type">A</span> {
     <span class="org-comment-delimiter">// </span><span class="org-comment">Data fields, constructors, and methods omitted
 </span>}
-</pre>
+</code></pre>
 </div>
 
 <ul class="org-ul">
@@ -284,28 +285,28 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-org44236e5" class="outline-4">
-<h4 id="org44236e5">Example</h4>
-<div class="outline-text-4" id="text-org44236e5">
+<div id="outline-container-org431f27a" class="outline-4">
+<h4 id="org431f27a">Example</h4>
+<div class="outline-text-4" id="text-org431f27a">
 <ul class="org-ul">
 <li>The following <code>method</code> <code>m</code> is <b>final</b> and <b>cannot</b> be <b>overridden</b>:</li>
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Test</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Test</span> {
     <span class="org-comment-delimiter">// </span><span class="org-comment">Data fields, constructors, and methods omitted
 </span>    <span class="org-keyword">public</span> <span class="org-keyword">final</span> <span class="org-type">void</span> <span class="org-function-name">m</span>() {
         <span class="org-comment-delimiter">// </span><span class="org-comment">Do something
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgd457e02" class="outline-3">
-<h3 id="orgd457e02">Note</h3>
-<div class="outline-text-3" id="text-orgd457e02">
+<div id="outline-container-orgdb81547" class="outline-3">
+<h3 id="orgdb81547">Note</h3>
+<div class="outline-text-3" id="text-orgdb81547">
 <p>
 The <a href="20240111060525-optional_specifiers.html#ID-78bf41e5-259a-4c97-8df7-1685989e3d8c">optional Specifiers</a> <code>public</code>, <code>protected</code>, <code>private</code>, <code>static</code>, <code>abstract</code>, and <code>final</code> are used on <code>classes</code> and <code>class members</code> (<b>data</b> and <b>methods</b>), except that the <code>final</code> modifier can also be used on <b>local</b> <b>variables</b> in a <code>method</code>.
 </p>
@@ -314,9 +315,9 @@ The <a href="20240111060525-optional_specifiers.html#ID-78bf41e5-259a-4c97-8df7-
 <li>A <code>final</code> <b>local variable</b> is a <b>constant</b> inside a <code>method</code>.</li>
 </ul>
 </div>
-<div id="outline-container-org7dd7967" class="outline-4">
-<h4 id="org7dd7967">We can use final to:</h4>
-<div class="outline-text-4" id="text-org7dd7967">
+<div id="outline-container-org12bc3ee" class="outline-4">
+<h4 id="org12bc3ee">We can use final to:</h4>
+<div class="outline-text-4" id="text-org12bc3ee">
 <ul class="org-ul">
 <li>Prevent <b>inheritance</b>:
 <ul class="org-ul">
@@ -334,15 +335,15 @@ The <a href="20240111060525-optional_specifiers.html#ID-78bf41e5-259a-4c97-8df7-
 </div>
 </div>
 </div>
-<div id="outline-container-org3bf69ec" class="outline-3">
-<h3 id="org3bf69ec">Error</h3>
-<div class="outline-text-3" id="text-org3bf69ec">
+<div id="outline-container-org095e9c2" class="outline-3">
+<h3 id="org095e9c2">Error</h3>
+<div class="outline-text-3" id="text-org095e9c2">
 <p>
 If you try to <b>extend</b> a <code>final</code> <code>class</code>, the <b>compiler</b> will throw an <b>error</b>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">final</span> <span class="org-keyword">class</span> <span class="org-type">Animal</span> {
+<pre class="src src-java"><code><span class="org-keyword">final</span> <span class="org-keyword">class</span> <span class="org-type">Animal</span> {
     <span class="org-type">void</span> <span class="org-function-name">makeSound</span>() {
         System.out.println(<span class="org-string">"Animal makes a sound"</span>);
     }
@@ -354,21 +355,21 @@ If you try to <b>extend</b> a <code>final</code> <code>class</code>, the <b>comp
         System.out.println(<span class="org-string">"Dog barks"</span>);
     }
 }
-</pre>
+</code></pre>
 </div>
 </div>
-<div id="outline-container-org5c2219c" class="outline-4">
-<h4 id="org5c2219c">Preventing inheritance and overriding with 'final' together</h4>
-<div class="outline-text-4" id="text-org5c2219c">
+<div id="outline-container-orgbac4c22" class="outline-4">
+<h4 id="orgbac4c22">Preventing inheritance and overriding with 'final' together</h4>
+<div class="outline-text-4" id="text-orgbac4c22">
 <p>
 You can use <code>final</code> for both the <code>class</code> and its <code>methods</code> to fully lock down the class from any <b>subclassing</b> or <a href="20240120133450-overriding_a_method.html#ID-c67b24a4-82f7-4423-83a9-75fc1c566166">Method Overriding</a>:
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="orgfb216d8"></a>Example<br />
-<div class="outline-text-5" id="text-orgfb216d8">
+<li><a id="orgd0beb00"></a>Example<br />
+<div class="outline-text-5" id="text-orgd0beb00">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">final</span> <span class="org-keyword">class</span> <span class="org-type">Animal</span> {
+<pre class="src src-java"><code><span class="org-keyword">final</span> <span class="org-keyword">class</span> <span class="org-type">Animal</span> {
     <span class="org-comment-delimiter">// </span><span class="org-comment">Final method: cannot be overridden in subclasses
 </span>    <span class="org-keyword">final</span> <span class="org-type">void</span> <span class="org-function-name">makeSound</span>() {
         System.out.println(<span class="org-string">"Animal makes a sound"</span>);
@@ -389,7 +390,7 @@ You can use <code>final</code> for both the <code>class</code> and its <code>met
         animal.makeSound();
     }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </li>

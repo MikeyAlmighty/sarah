@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-14 Wed 09:16 -->
+<!-- 2026-10-16 Fri 08:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Comparable Interface</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,9 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Comparable Interface</h1>
-<div id="outline-container-orgced45d6" class="outline-2">
-<h2 id="orgced45d6">Comparable Interface</h2>
-<div class="outline-text-2" id="text-orgced45d6">
+<div id="outline-container-org3322a8a" class="outline-2">
+<h2 id="org3322a8a">Comparable Interface</h2>
+<div class="outline-text-2" id="text-org3322a8a">
 <ul class="org-ul">
 <li>The <code>Comparable interface</code> defines the <code>compareTo</code> method for <b>comparing</b> <b>objects</b>.</li>
 </ul>
@@ -261,21 +262,21 @@ In order to accomplish this, the <b>two</b> <code>objects</code> must be <b>comp
 Java provides the <code>Comparable interface</code> for this purpose.
 </p>
 </div>
-<div id="outline-container-orged063f0" class="outline-3">
-<h3 id="orged063f0">Syntax</h3>
-<div class="outline-text-3" id="text-orged063f0">
+<div id="outline-container-orge048740" class="outline-3">
+<h3 id="orge048740">Syntax</h3>
+<div class="outline-text-3" id="text-orge048740">
 <p>
 The <b>interface</b> is <i>defined</i> as follows:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">Interface for comparing objects, defined in java.lang
+<pre class="src src-java"><code><span class="org-comment-delimiter">// </span><span class="org-comment">Interface for comparing objects, defined in java.lang
 </span><span class="org-keyword">package</span> java.<span class="org-constant">lang</span>;
 
 <span class="org-keyword">public</span> <span class="org-keyword">interface</span> <span class="org-type">Comparable</span>&lt;<span class="org-type">E</span>&gt; {
     <span class="org-keyword">public</span> <span class="org-type">int</span> <span class="org-function-name">compareTo</span>(<span class="org-type">E</span> <span class="org-variable-name">o</span>);
 }
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -303,15 +304,15 @@ Many classes in the Java library implement <code>Comparable</code> to define a n
 The classes <code>Byte, Short, Integer, Long, Float, Double, Character, BigInteger, BigDecimal, Calendar, String, and Date</code> all <b>implement</b> the <code>Comparable interface</code>.
 </p>
 </div>
-<div id="outline-container-org4c961b6" class="outline-4">
-<h4 id="org4c961b6">Example</h4>
-<div class="outline-text-4" id="text-org4c961b6">
+<div id="outline-container-orga31b726" class="outline-4">
+<h4 id="orga31b726">Example</h4>
+<div class="outline-text-4" id="text-orga31b726">
 <p>
 For example, the <code>Integer, BigInteger, String, and Date</code> classes are <i>defined</i> as follows in the <b>Java API</b>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">final</span> <span class="org-keyword">class</span> <span class="org-type">Integer</span> <span class="org-keyword">extends</span> <span class="org-type">Number</span>
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">final</span> <span class="org-keyword">class</span> <span class="org-type">Integer</span> <span class="org-keyword">extends</span> <span class="org-type">Number</span>
     <span class="org-keyword">implements</span> <span class="org-type">Comparable</span>&lt;<span class="org-type">Integer</span>&gt; {
         <span class="org-comment-delimiter">// </span><span class="org-comment">class body omitted
 </span>        <span class="org-c-annotation">@override</span>
@@ -319,11 +320,11 @@ For example, the <code>Integer, BigInteger, String, and Date</code> classes are 
             <span class="org-comment-delimiter">// </span><span class="org-comment">Implementation mitted
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">final</span> <span class="org-keyword">class</span> <span class="org-type">BigInteger</span> <span class="org-keyword">extends</span> <span class="org-type">Number</span>
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">final</span> <span class="org-keyword">class</span> <span class="org-type">BigInteger</span> <span class="org-keyword">extends</span> <span class="org-type">Number</span>
     <span class="org-keyword">implements</span> <span class="org-type">Comparable</span>&lt;<span class="org-type">BigInteger</span>&gt; {
         <span class="org-comment-delimiter">// </span><span class="org-comment">class body omitted
 </span>        <span class="org-c-annotation">@override</span>
@@ -331,11 +332,11 @@ For example, the <code>Integer, BigInteger, String, and Date</code> classes are 
             <span class="org-comment-delimiter">// </span><span class="org-comment">Implementation mitted
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">final</span> <span class="org-keyword">class</span> <span class="org-type">String</span> <span class="org-keyword">extends</span> <span class="org-type">Object</span>
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">final</span> <span class="org-keyword">class</span> <span class="org-type">String</span> <span class="org-keyword">extends</span> <span class="org-type">Object</span>
     <span class="org-keyword">implements</span> <span class="org-type">Comparable</span>&lt;<span class="org-type">String</span>&gt; {
         <span class="org-comment-delimiter">// </span><span class="org-comment">class body omitted
 </span>        <span class="org-c-annotation">@override</span>
@@ -343,11 +344,11 @@ For example, the <code>Integer, BigInteger, String, and Date</code> classes are 
             <span class="org-comment-delimiter">// </span><span class="org-comment">Implementation mitted
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">final</span> <span class="org-keyword">class</span> <span class="org-type">Date</span> <span class="org-keyword">extends</span> <span class="org-type">Object</span>
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">final</span> <span class="org-keyword">class</span> <span class="org-type">Date</span> <span class="org-keyword">extends</span> <span class="org-type">Object</span>
     <span class="org-keyword">implements</span> <span class="org-type">Comparable</span>&lt;<span class="org-type">Date</span>&gt; {
         <span class="org-comment-delimiter">// </span><span class="org-comment">class body omitted
 </span>        <span class="org-c-annotation">@override</span>
@@ -355,7 +356,7 @@ For example, the <code>Integer, BigInteger, String, and Date</code> classes are 
             <span class="org-comment-delimiter">// </span><span class="org-comment">Implementation mitted
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -367,38 +368,38 @@ You can use the <code>compareTo</code> method to <b>compare</b> two <code>number
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="org4df751a"></a>Example<br />
-<div class="outline-text-5" id="text-org4df751a">
+<li><a id="org6e9081b"></a>Example<br />
+<div class="outline-text-5" id="text-org6e9081b">
 <p>
 For example, the following code:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">System.out.println(Integer.valueOf(3).compareTo(5));
+<pre class="src src-java"><code>System.out.println(Integer.valueOf(3).compareTo(5));
 System.out.println(<span class="org-string">"ABC"</span>.compareTo(<span class="org-string">"ABC"</span>));
 
 <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Date</span> <span class="org-variable-name">date1</span> = <span class="org-keyword">new</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Date</span>(2013, 1, 1);
 <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Date</span> <span class="org-variable-name">date2</span> = <span class="org-keyword">new</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Date</span>(2012, 1, 1);
 
 System.out.println(date1.compareTo(date2));
-</pre>
+</code></pre>
 </div>
 </div>
 <ul class="org-ul">
-<li><a id="org82a0fa8"></a>Output<br />
-<div class="outline-text-6" id="text-org82a0fa8">
+<li><a id="org709667c"></a>Output<br />
+<div class="outline-text-6" id="text-org709667c">
 <div class="org-src-container">
-<pre class="src src-java">&#8722;1 <span class="org-comment-delimiter">// </span><span class="org-comment">Displays a negative value since 3 is less than 5.
+<pre class="src src-java"><code>&#8722;1 <span class="org-comment-delimiter">// </span><span class="org-comment">Displays a negative value since 3 is less than 5.
 </span>0 <span class="org-comment-delimiter">// </span><span class="org-comment">Displays zero since ABC is equal to ABC
 </span>1 <span class="org-comment-delimiter">// </span><span class="org-comment">Displays a positive value since date1 is greater than date2</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </li>
 </ul>
 </li>
-<li><a id="org43bcfc7"></a>Example<br />
-<div class="outline-text-5" id="text-org43bcfc7">
+<li><a id="orgd4271af"></a>Example<br />
+<div class="outline-text-5" id="text-orgd4271af">
 <p>
 Let <code>n</code> be an <code>Integer object</code>, s be a <code>String object</code>, and d be a <code>Date object</code>.
 </p>
@@ -408,7 +409,7 @@ All the following expressions are <b>true</b>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">n <span class="org-keyword">instanceof</span> Integer
+<pre class="src src-java"><code>n <span class="org-keyword">instanceof</span> Integer
 n <span class="org-keyword">instanceof</span> Object
 n <span class="org-keyword">instanceof</span> Comparable
 
@@ -419,7 +420,7 @@ s <span class="org-keyword">instanceof</span> Comparable
 d <span class="org-keyword">instanceof</span> Date
 d <span class="org-keyword">instanceof</span> Object
 d <span class="org-keyword">instanceof</span> Comparable
-</pre>
+</code></pre>
 </div>
 
 <p>

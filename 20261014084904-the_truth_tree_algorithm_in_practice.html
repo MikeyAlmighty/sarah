@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-14 Wed 09:16 -->
+<!-- 2026-10-16 Fri 08:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Truth Tree Algorithm in Practice</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -274,21 +275,21 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">The Truth Tree Algorithm in Practice</h1>
-<div id="outline-container-org06714ab" class="outline-2">
-<h2 id="org06714ab">The Truth Tree Algorithm In Practice</h2>
-<div class="outline-text-2" id="text-org06714ab">
+<div id="outline-container-orga51fba4" class="outline-2">
+<h2 id="orga51fba4">The Truth Tree Algorithm In Practice</h2>
+<div class="outline-text-2" id="text-orga51fba4">
 </div>
-<div id="outline-container-org58168f9" class="outline-3">
-<h3 id="org58168f9">Overview</h3>
-<div class="outline-text-3" id="text-org58168f9">
+<div id="outline-container-org8e175b0" class="outline-3">
+<h3 id="org8e175b0">Overview</h3>
+<div class="outline-text-3" id="text-org8e175b0">
 <p>
 Rather than build the <i>whole</i> tree with the \(\alpha\)- and \(\beta\)-rules and <i>then</i> decide which branches are <b>open</b> or <b>closed</b>, decide <b>as we build the tree</b>.
 </p>
 </div>
 </div>
-<div id="outline-container-org0a598dd" class="outline-3">
-<h3 id="org0a598dd">Close branches early</h3>
-<div class="outline-text-3" id="text-org0a598dd">
+<div id="outline-container-org3fe39de" class="outline-3">
+<h3 id="org3fe39de">Close branches early</h3>
+<div class="outline-text-3" id="text-org3fe39de">
 <ul class="org-ul">
 <li>It is enough to "grow" <b>open</b> branches only.</li>
 <li>As soon as an <b>atom</b> and <b>its negation</b> appear on a branch (even if the branch is not complete yet), the branch is <b>closed</b>.</li>
@@ -297,23 +298,23 @@ Rather than build the <i>whole</i> tree with the \(\alpha\)- and \(\beta\)-rules
 </ul>
 </div>
 </div>
-<div id="outline-container-org8848b8d" class="outline-3">
-<h3 id="org8848b8d">Prioritise \(\alpha\)-rules over \(\beta\)-rules</h3>
-<div class="outline-text-3" id="text-org8848b8d">
+<div id="outline-container-org25274b0" class="outline-3">
+<h3 id="org25274b0">Prioritise \(\alpha\)-rules over \(\beta\)-rules</h3>
+<div class="outline-text-3" id="text-org25274b0">
 <ul class="org-ul">
 <li>If both rules could be applied and the order doesn't matter, apply the \(\alpha\)-rule first.</li>
 <li>Reason: an \(\alpha\)-rule does not branch, so the tree stays smaller.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc76e753" class="outline-3">
-<h3 id="orgc76e753">Example</h3>
-<div class="outline-text-3" id="text-orgc76e753">
+<div id="outline-container-org0028ddf" class="outline-3">
+<h3 id="org0028ddf">Example</h3>
+<div class="outline-text-3" id="text-org0028ddf">
 <p>
 Tree for \((p \vee q) \wedge \neg p\):
 </p>
 
-<pre class="example" id="org0f54699">
+<pre class="example" id="org1e20982">
 (p ∨ q) ∧ ¬p ✓
       |
    p ∨ q ✓
@@ -332,9 +333,9 @@ closed  open
 </ul>
 </div>
 </div>
-<div id="outline-container-orga5baba3" class="outline-3">
-<h3 id="orga5baba3">Convention</h3>
-<div class="outline-text-3" id="text-orga5baba3">
+<div id="outline-container-org240d909" class="outline-3">
+<h3 id="org240d909">Convention</h3>
+<div class="outline-text-3" id="text-org240d909">
 <p>
 Close branches as we build the tree whenever we detect an <b>atom</b> and <b>its negation</b> on a branch.
 </p>

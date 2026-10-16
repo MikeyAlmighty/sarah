@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-14 Wed 09:16 -->
+<!-- 2026-10-16 Fri 08:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Adequate Connectives</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -274,13 +275,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Adequate Connectives</h1>
-<div id="outline-container-orgdcd436c" class="outline-2">
-<h2 id="orgdcd436c">Adequate Connectives</h2>
-<div class="outline-text-2" id="text-orgdcd436c">
+<div id="outline-container-org897476e" class="outline-2">
+<h2 id="org897476e">Adequate Connectives</h2>
+<div class="outline-text-2" id="text-org897476e">
 </div>
-<div id="outline-container-org3bfcf29" class="outline-3">
-<h3 id="org3bfcf29">Idea</h3>
-<div class="outline-text-3" id="text-org3bfcf29">
+<div id="outline-container-orgaec95f6" class="outline-3">
+<h3 id="orgaec95f6">Idea</h3>
+<div class="outline-text-3" id="text-orgaec95f6">
 <p>
 Programming languages often only have <code>not</code>, <code>or</code>, and <code>and</code>.
 </p>
@@ -289,17 +290,17 @@ Programming languages often only have <code>not</code>, <code>or</code>, and <co
 </ul>
 </div>
 </div>
-<div id="outline-container-org730dbec" class="outline-3">
-<h3 id="org730dbec">Definition 4.2 (Adequate set)</h3>
-<div class="outline-text-3" id="text-org730dbec">
+<div id="outline-container-org0208740" class="outline-3">
+<h3 id="org0208740">Definition 4.2 (Adequate set)</h3>
+<div class="outline-text-3" id="text-org0208740">
 <p>
 A set of connectives is <b>adequate</b> if <i>every</i> <b>wff</b> is <b>logically equivalent</b> to a <b>wff</b> that uses <i>only</i> <b>connectives</b> from that <b>set</b>.
 </p>
 </div>
 </div>
-<div id="outline-container-org819c614" class="outline-3">
-<h3 id="org819c614">Proposition 4.2</h3>
-<div class="outline-text-3" id="text-org819c614">
+<div id="outline-container-org30a366d" class="outline-3">
+<h3 id="org30a366d">Proposition 4.2</h3>
+<div class="outline-text-3" id="text-org30a366d">
 <p>
 Every <b>wff</b> in PL is logically equivalent to one that uses only \(\neg, \lor, \land\).
 </p>
@@ -309,13 +310,13 @@ So \(\{\neg, \lor, \land\}\) is an adequate set.
 </p>
 </div>
 </div>
-<div id="outline-container-orgaa99dd4" class="outline-3">
-<h3 id="orgaa99dd4">Proof (eliminate one connective per step)</h3>
-<div class="outline-text-3" id="text-orgaa99dd4">
+<div id="outline-container-org7ab7de1" class="outline-3">
+<h3 id="org7ab7de1">Proof (eliminate one connective per step)</h3>
+<div class="outline-text-3" id="text-org7ab7de1">
 </div>
-<div id="outline-container-orgbe3215e" class="outline-4">
-<h4 id="orgbe3215e">Step 1: remove \(\to\)</h4>
-<div class="outline-text-4" id="text-orgbe3215e">
+<div id="outline-container-orgf1d5298" class="outline-4">
+<h4 id="orgf1d5298">Step 1: remove \(\to\)</h4>
+<div class="outline-text-4" id="text-orgf1d5298">
 <p>
 From Example 3:
 \[ p \to q \equiv \neg p \lor q \quad (*) \]
@@ -323,9 +324,9 @@ Any <b>wff</b> \(A \to B\) is equivalent to \(\neg A \lor B\), so \(\to\) can be
 </p>
 </div>
 </div>
-<div id="outline-container-org2248f1e" class="outline-4">
-<h4 id="org2248f1e">Step 2: remove \(\oplus\)</h4>
-<div class="outline-text-4" id="text-org2248f1e">
+<div id="outline-container-orgd2e74b6" class="outline-4">
+<h4 id="orgd2e74b6">Step 2: remove \(\oplus\)</h4>
+<div class="outline-text-4" id="text-orgd2e74b6">
 <p>
 From Example 2:
 \[ p \oplus q \equiv (p \lor q) \land \neg(p \land q) \quad (**) \]
@@ -333,9 +334,9 @@ Any <b>wff</b> \(A \oplus B\) is equivalent to \((A \lor B) \land \neg(A \land B
 </p>
 </div>
 </div>
-<div id="outline-container-org1c809f6" class="outline-4">
-<h4 id="org1c809f6">Step 3: remove \(\leftrightarrow\)</h4>
-<div class="outline-text-4" id="text-org1c809f6">
+<div id="outline-container-org6d13dfb" class="outline-4">
+<h4 id="org6d13dfb">Step 3: remove \(\leftrightarrow\)</h4>
+<div class="outline-text-4" id="text-org6d13dfb">
 <p>
 From Example 1:
 \[ p \leftrightarrow q \equiv (p \to q) \land (q \to p) \]
@@ -354,18 +355,18 @@ Remaining: \(\neg, \land, \lor\). \(\blacksquare\)
 </div>
 </div>
 </div>
-<div id="outline-container-org2ded525" class="outline-3">
-<h3 id="org2ded525">Notes</h3>
-<div class="outline-text-3" id="text-org2ded525">
+<div id="outline-container-org1857326" class="outline-3">
+<h3 id="org1857326">Notes</h3>
+<div class="outline-text-3" id="text-org1857326">
 <ul class="org-ul">
 <li>Order matters: Step 3 uses (*) to get rid of the \(\to\) that Example 1 introduces.</li>
 <li>The equivalences hold for any <b>wffs</b> \(A, B\), not just atoms \(p, q\), since the substitution preserves equivalence.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd6a3191" class="outline-3">
-<h3 id="orgd6a3191">Example</h3>
-<div class="outline-text-3" id="text-orgd6a3191">
+<div id="outline-container-orgfa66f91" class="outline-3">
+<h3 id="orgfa66f91">Example</h3>
+<div class="outline-text-3" id="text-orgfa66f91">
 <p>
 Find a <b>wff</b> equivalent to \((p \leftrightarrow q) \to (p \oplus q)\) using only \(\neg, \lor, \land\).
 </p>
@@ -383,9 +384,9 @@ Find a <b>wff</b> equivalent to \((p \leftrightarrow q) \to (p \oplus q)\) using
 </ul>
 </div>
 </div>
-<div id="outline-container-org510b3c1" class="outline-3">
-<h3 id="org510b3c1">Remark</h3>
-<div class="outline-text-3" id="text-org510b3c1">
+<div id="outline-container-org0cec567" class="outline-3">
+<h3 id="org0cec567">Remark</h3>
+<div class="outline-text-3" id="text-org0cec567">
 <p>
 <b>Proposition 4.2</b> says everything in PL <i>can</i> be expressed with only \(\neg, \lor, \land\).
 </p>

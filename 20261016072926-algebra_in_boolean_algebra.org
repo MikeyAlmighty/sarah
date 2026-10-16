@@ -1,0 +1,39 @@
+:PROPERTIES:
+:ID:       58de4c05-6345-4092-8f3d-15cd17f76484
+:END:
+#+title: Algebra in Boolean Algebra
+
+* Algebra in Boolean Algebra
+
+** Idea
+
+*Boolean algebra* is similar to, but also different from, the kind of algebra you learnt at school.
+
+Just how different is illustrated by the following results that will be ~true~ in /all/ *Boolean algebras* because they are proved from the *Boolean algebra axioms*.
+
+** Proposition 5.1
+
+Let $B$ be a Boolean algebra and let $a, b \in B$.
+
+| # | Identity                                                      | Name                                   |
+|---+---------------------------------------------------------------+----------------------------------------|
+| 1 | $a^2 = a \cdot a = a$                                         | *Idempotence*                          |
+| 2 | $a + a = a$                                                   | *Idempotence*                          |
+| 3 | $a \cdot 0 = 0$                                               | $0$ is the *zero* for *multiplication* |
+| 4 | $1 + a = 1$                                                   | $1$ is the *zero* for *addition*       |
+| 5 | $a = a + a \cdot b$                                           | *Absorption law*                       |
+| 6 | $a + b = a + \overline{a} \cdot b = a + b \cdot \overline{a}$ | *Difference law*                       |
+
+Not all proved in the text; only #1 is shown, a few more are left as exercises.
+
+** Proof of idempotence of multiplication (#1)
+
+\begin{align*}
+a &= a \cdot 1                      && \text{(B6)} \\
+  &= a \cdot (a + \overline{a})     && \text{(B9)} \\
+  &= a \cdot a + a \cdot \overline{a} && \text{(B7)} \\
+  &= a^2 + 0                        && \text{(B10)} \\
+  &= a^2                            && \text{(B3)}
+\end{align*}
+
+Pattern: insert $1$ as $a + \overline{a}$, distribute, kill the complement term with B10.

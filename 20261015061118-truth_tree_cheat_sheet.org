@@ -1,0 +1,77 @@
+:PROPERTIES:
+:ID:       16fce724-47f5-42b8-98c7-bf7a254991c7
+:END:
+#+title: Truth Tree Cheat Sheet
+* Truth Tree Cheat Sheet
+
+** Quick idea
+
+- \(\alpha\) = "and": *non-branching*, stack both parts down the same branch.
+- \(\beta\) = "or": *branching*, split into left and right branches.
+- \(X \oplus Y \equiv \neg(X \leftrightarrow Y)\): rewrite first, then use the rules.
+
+** \(\alpha\)-rules (4, stack)
+
+| \(\alpha\)                 | \(\alpha_1\)           | \(\alpha_2\)           |
+|----------------------------+------------------------+------------------------|
+| \(X \wedge Y\)             | \(X\)                  | \(Y\)                  |
+| \(\neg(X \vee Y)\)         | \(\neg X\)             | \(\neg Y\)             |
+| \(\neg(X \to Y)\)          | \(X\)                  | \(\neg Y\)             |
+| \(\neg\neg X\)             | \(X\)                  | (none)                 |
+
+#+begin_example
+   X ∧ Y          ¬(X ∨ Y)         ¬(X → Y)          ¬¬X
+     |               |                |                |
+     X              ¬X                X                X
+     |               |                |
+     Y              ¬Y               ¬Y
+#+end_example
+
+** \(\beta\)-rules (5, split)
+
+| \(\beta\)                             | \(\beta_1\) (left)          | \(\beta_2\) (right)              |
+|---------------------------------------+-----------------------------+----------------------------------|
+| \(X \vee Y\)                          | \(X\)                       | \(Y\)                            |
+| \(\neg(X \wedge Y)\)                  | \(\neg X\)                  | \(\neg Y\)                       |
+| \(X \to Y\)                           | \(\neg X\)                  | \(Y\)                            |
+| \(X \leftrightarrow Y\)               | \(X \wedge Y\)              | \(\neg X \wedge \neg Y\)         |
+| \(\neg(X \leftrightarrow Y)\)         | \(X \wedge \neg Y\)         | \(\neg X \wedge Y\)              |
+
+#+begin_example
+    X ∨ Y            ¬(X ∧ Y)           X → Y
+    /   \             /    \            /   \
+   X     Y          ¬X      ¬Y        ¬X     Y
+
+     X ↔ Y              ¬(X ↔ Y)
+     /   \               /    \
+    X     ¬X            X      ¬X
+    |      |            |      |
+    Y     ¬Y           ¬Y      Y
+#+end_example
+
+** Rules of the game
+
+- Tick (✓) a wff once used; work left to right.
+- Close a branch (✗) as soon as an atom and its negation appear on it.
+- Prioritise \(\alpha\)-rules over \(\beta\)-rules (no branching).
+- Stop when every branch is closed, or only literals / used wff remain.
+
+** Reading the result
+
+- All branches closed: \(X\) is a *contradiction*.
+- Some branch open: \(X\) is *satisfiable*. Set the literals on each open branch to \(T\); missing atoms are free.
+- Tautology: tree for \(\neg A\) is finished and closed.
+
+** Tautology check
+
+To show \(A\) is a *tautology*, show \(\neg A\) is a *contradiction*:
+
+1. Put \(\neg A\) at the *root* and build the tree.
+2. Every branch *closed*: nothing makes \(\neg A\) ~true~, so nothing makes \(A\) ~false~. \(A\) is a *tautology*.
+3. Some branch *open*: \(A\) is *not* a tautology.
+   1. The *open* branch gives a counterexample (an assignment making \(A\) ~false~).
+
+4. The tree for \(A\) itself can't prove this: *open* branches only show \(A\) is /satisfiable/.
+5. Example: \(p \vee \neg p\).
+   1. The tree for \(\neg(p \vee \neg p)\) has \(\neg p\) and \(\neg\neg p\) on the trunk, then \(p\), which clashes with \(\neg p\).
+   2. The branch closes, so it is a *tautology*.

@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-14 Wed 09:16 -->
+<!-- 2026-10-16 Fri 08:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Proving Logical Equivalences Without Truth Tables</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -274,13 +275,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Proving Logical Equivalences Without Truth Tables</h1>
-<div id="outline-container-org918c6df" class="outline-2">
-<h2 id="org918c6df">Proving Logical Equivalences Without Truth Tables</h2>
-<div class="outline-text-2" id="text-org918c6df">
+<div id="outline-container-org0beb3bb" class="outline-2">
+<h2 id="org0beb3bb">Proving Logical Equivalences Without Truth Tables</h2>
+<div class="outline-text-2" id="text-org0beb3bb">
 </div>
-<div id="outline-container-org15192e8" class="outline-3">
-<h3 id="org15192e8">Idea</h3>
-<div class="outline-text-3" id="text-org15192e8">
+<div id="outline-container-org2202f53" class="outline-3">
+<h3 id="org2202f53">Idea</h3>
+<div class="outline-text-3" id="text-org2202f53">
 <p>
 Transform one <a href="20260930065009-well_formed_formulae_wff.html#ID-29ce4b76-3cfc-46ee-9ed9-74c2f91da633">WFF</a> into the other by repeatedly replacing components with <b>logically equivalent</b> ones.
 </p>
@@ -290,18 +291,18 @@ Every step needs a stated reason (a known equivalence), so the chain is a "legal
 </p>
 </div>
 </div>
-<div id="outline-container-org3bf0382" class="outline-3">
-<h3 id="org3bf0382">Key equivalence (★)</h3>
-<div class="outline-text-3" id="text-org3bf0382">
+<div id="outline-container-org4685650" class="outline-3">
+<h3 id="org4685650">Key equivalence (★)</h3>
+<div class="outline-text-3" id="text-org4685650">
 <p>
 \[ p \to q \equiv \lnot p \lor q \]
-Used to eliminate \( \to \), so the standard laws (<b>De Morgan</b>, <b>distributivity</b>, &#x2026;) can be applied.
+Used to eliminate \( \to \), so the standard laws (<b>De Morgan</b>, <b>distributivity</b>, &hellip;) can be applied.
 </p>
 </div>
 </div>
-<div id="outline-container-org6a949e4" class="outline-3">
-<h3 id="org6a949e4">Toolbox</h3>
-<div class="outline-text-3" id="text-org6a949e4">
+<div id="outline-container-orgf3737a1" class="outline-3">
+<h3 id="orgf3737a1">Toolbox</h3>
+<div class="outline-text-3" id="text-orgf3737a1">
 <ul class="org-ul">
 <li><b>Commutativity</b>, <b>associativity</b>, <b>distributivity</b> (Theorem 4.1)</li>
 <li><b>De Morgan</b>: \( \lnot(a \lor b) \equiv \lnot a \land \lnot b \)</li>
@@ -311,9 +312,9 @@ Used to eliminate \( \to \), so the standard laws (<b>De Morgan</b>, <b>distribu
 </ul>
 </div>
 </div>
-<div id="outline-container-org273800d" class="outline-3">
-<h3 id="org273800d">Strategy</h3>
-<div class="outline-text-3" id="text-org273800d">
+<div id="outline-container-org3c72894" class="outline-3">
+<h3 id="org3c72894">Strategy</h3>
+<div class="outline-text-3" id="text-org3c72894">
 <ol class="org-ol">
 <li>Start from the left-hand side.</li>
 <li>Rewrite \( \to \) using (★).</li>
@@ -323,9 +324,9 @@ Used to eliminate \( \to \), so the standard laws (<b>De Morgan</b>, <b>distribu
 </ol>
 </div>
 </div>
-<div id="outline-container-org31ade8b" class="outline-3">
-<h3 id="org31ade8b">Example 1</h3>
-<div class="outline-text-3" id="text-org31ade8b">
+<div id="outline-container-orgd7b8757" class="outline-3">
+<h3 id="orgd7b8757">Example 1</h3>
+<div class="outline-text-3" id="text-orgd7b8757">
 <p>
 Show \( (p \to q) \land (p \to r) \equiv p \to (q \land r) \).
 </p>
@@ -337,9 +338,9 @@ Show \( (p \to q) \land (p \to r) \equiv p \to (q \land r) \).
 \end{align*}
 </div>
 </div>
-<div id="outline-container-orgb1ad299" class="outline-3">
-<h3 id="orgb1ad299">Example 2</h3>
-<div class="outline-text-3" id="text-orgb1ad299">
+<div id="outline-container-org7045cfd" class="outline-3">
+<h3 id="org7045cfd">Example 2</h3>
+<div class="outline-text-3" id="text-org7045cfd">
 <p>
 Show \( (p \to q) \to q \equiv p \lor q \).
 </p>
@@ -355,9 +356,9 @@ Show \( (p \to q) \to q \equiv p \lor q \).
 \end{align*}
 </div>
 </div>
-<div id="outline-container-org85667e3" class="outline-3">
-<h3 id="org85667e3">Notes</h3>
-<div class="outline-text-3" id="text-org85667e3">
+<div id="outline-container-org71b4b11" class="outline-3">
+<h3 id="org71b4b11">Notes</h3>
+<div class="outline-text-3" id="text-org71b4b11">
 <ul class="org-ul">
 <li>Eliminating \( \to \) first is the usual opening move.</li>
 <li><b>Distributivity</b> works in both directions: it can factor <i>out</i> (Example 1) or <i>expand</i> (Example 2).</li>

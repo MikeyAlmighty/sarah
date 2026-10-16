@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-14 Wed 09:16 -->
+<!-- 2026-10-16 Fri 08:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ethernet Frame</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -251,30 +252,30 @@ Almost all sections of an <code>Ethernet frame</code> are mandatory, and most of
 </p>
 
 
-<div id="orgd2107fa" class="figure">
+<div id="org6207326" class="figure">
 <p><img src="./assets/EthernetFrame.png" alt="EthernetFrame.png" />
 </p>
 </div>
-<div id="outline-container-orgba49b16" class="outline-2">
-<h2 id="orgba49b16">1. <a href="20230821060209-preamble.html#ID-37a5b76a-684c-4e08-aece-823a980b6798">Preamble</a> (7 + 1 Byte)</h2>
+<div id="outline-container-orga657c37" class="outline-2">
+<h2 id="orga657c37">1. <a href="20230821060209-preamble.html#ID-37a5b76a-684c-4e08-aece-823a980b6798">Preamble</a> (7 + 1 Byte)</h2>
 </div>
-<div id="outline-container-org13528c7" class="outline-2">
-<h2 id="org13528c7">2. <a href="20230821060647-destination_address.html#ID-91c04786-4639-48b5-aa47-7f409a0f777d">Destination Address</a> (6 Bytes)</h2>
+<div id="outline-container-org5f8f3a7" class="outline-2">
+<h2 id="org5f8f3a7">2. <a href="20230821060647-destination_address.html#ID-91c04786-4639-48b5-aa47-7f409a0f777d">Destination Address</a> (6 Bytes)</h2>
 </div>
-<div id="outline-container-org761740a" class="outline-2">
-<h2 id="org761740a">3. <a href="20230821061008-source_address.html#ID-7c10dafa-8f93-455c-a49f-a7ad391971ec">Source Address</a> (6 Bytes)</h2>
+<div id="outline-container-orgd2d3bed" class="outline-2">
+<h2 id="orgd2d3bed">3. <a href="20230821061008-source_address.html#ID-7c10dafa-8f93-455c-a49f-a7ad391971ec">Source Address</a> (6 Bytes)</h2>
 </div>
-<div id="outline-container-org894e215" class="outline-2">
-<h2 id="org894e215">4. <a href="20230821061252-ether_type.html#ID-c9f3f2fa-cf2b-401e-a25e-56f334868ea3">Ether Type</a> (2 Bytes)</h2>
+<div id="outline-container-org5acb85f" class="outline-2">
+<h2 id="org5acb85f">4. <a href="20230821061252-ether_type.html#ID-c9f3f2fa-cf2b-401e-a25e-56f334868ea3">Ether Type</a> (2 Bytes)</h2>
 </div>
-<div id="outline-container-orgc59b898" class="outline-2">
-<h2 id="orgc59b898">4. (Alternatively) <a href="20230821061404-vlan_header.html#ID-6324e476-df5c-4919-b766-c0b50e480a20">VLAN Header</a>  (4 Btytes)</h2>
+<div id="outline-container-org72a44d7" class="outline-2">
+<h2 id="org72a44d7">4. (Alternatively) <a href="20230821061404-vlan_header.html#ID-6324e476-df5c-4919-b766-c0b50e480a20">VLAN Header</a>  (4 Btytes)</h2>
 </div>
-<div id="outline-container-orga2ee9b2" class="outline-2">
-<h2 id="orga2ee9b2">5. <a href="20230821061703-payload.html#ID-a078af54-3a0d-4144-8878-025f18b61941">Payload</a></h2>
+<div id="outline-container-orge776fab" class="outline-2">
+<h2 id="orge776fab">5. <a href="20230821061703-payload.html#ID-a078af54-3a0d-4144-8878-025f18b61941">Payload</a></h2>
 </div>
-<div id="outline-container-orgdd19f4d" class="outline-2">
-<h2 id="orgdd19f4d">6. <a href="20230821061840-frame_check_sequence.html#ID-38851cb0-bf78-43b8-b28e-17bcbb7d6555">FCS</a></h2>
+<div id="outline-container-orgd7dcb47" class="outline-2">
+<h2 id="orgd7dcb47">6. <a href="20230821061840-frame_check_sequence.html#ID-38851cb0-bf78-43b8-b28e-17bcbb7d6555">FCS</a></h2>
 </div>
 </div>
 </body>
