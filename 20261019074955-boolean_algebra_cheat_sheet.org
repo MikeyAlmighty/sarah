@@ -1,0 +1,49 @@
+:PROPERTIES:
+:ID:       96a905f4-fcd1-4b7d-ad02-e67efa252486
+:END:
+#+title: Boolean Algebra Cheat Sheet
+
+* Boolean Algebra Cheat Sheet
+
+** Structure
+
+A Boolean algebra is $(B, +, \cdot, \overline{\ \ }, 0, 1)$: a set $B$, binary $+$ and $\cdot$, unary complement, and special elements $0, 1$.
+
+** Axioms
+
+*** Addition
+
+| B1 | $(x+y)+z = x+(y+z)$ | associativity |
+| B2 | $x+y = y+x$         | commutativity |
+| B3 | $x+0 = x$           | identity      |
+
+*** Multiplication
+
+| B4 | $(x\cdot y)\cdot z = x\cdot(y\cdot z)$ | associativity |
+| B5 | $x\cdot y = y\cdot x$                  | commutativity |
+| B6 | $x\cdot 1 = x$                         | identity      |
+
+*** Distributivity
+
+| B7 | $x\cdot(y+z) = x\cdot y + x\cdot z$ | $\cdot$ over $+$ |
+| B8 | $x+(y\cdot z) = (x+y)\cdot(x+z)$    | $+$ over $\cdot$ |
+
+*** Complement
+
+| B9  | $x + \overline{x} = 1$     |   |
+| B10 | $x \cdot \overline{x} = 0$ |   |
+
+** Derived results (Prop 5.1)
+
+| 1 | $a\cdot a = a$                    | idempotence      |
+| 2 | $a + a = a$                       | idempotence      |
+| 3 | $a\cdot 0 = 0$                    | zero for $\cdot$ |
+| 4 | $1 + a = 1$                       | zero for $+$     |
+| 5 | $a = a + a\cdot b$                | absorption       |
+| 6 | $a + b = a + \overline{a}\cdot b$ | difference       |
+
+** Proof patterns
+
+- Insert an *identity*: $a = a\cdot 1$, then rewrite $1$ as $a+\overline{a}$ (=B9=) or $1+b$ (=#4=).
+- *Distribute* (=B7=), then kill terms with =B10= and =B3=.
+- Dual: swap $+ \leftrightarrow \cdot$ and $0 \leftrightarrow 1$ (=B3/B6=, =B7/B8=, =B9/B10=).

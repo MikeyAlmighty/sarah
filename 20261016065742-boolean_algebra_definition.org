@@ -7,9 +7,11 @@
 
 ** Idea
 
-A *Boolean algebra* abstracts [[id:dc24ea52-d78b-4974-9768-5199afb26eee][Propositional Logic (PL)]].
+*Boolean algebras* can be seen as an abstraction of [[id:dc24ea52-d78b-4974-9768-5199afb26eee][Propositional Logic]].
 
-The *generality* lets it also cover *set theory* and *digital circuit design*.
+The strength of an abstraction is in its [[id:d678599e-84f8-40ec-968c-dbae50a6247a][Generality]].
+
+The [[id:d678599e-84f8-40ec-968c-dbae50a6247a][Generality]] lets it also cover *set theory* and *digital circuit design*.
 
 ** Formal definition
 
@@ -18,37 +20,17 @@ A *Boolean algebra* is a tuple
 \[ (B, +, \cdot, \bar{\ }, 0, 1) \]
 
 - $B$ :: set carrying the structure
-- $+$, $\cdot$ :: *binary operations* (addition, multiplication; usually write $ab$ for $a \cdot b$)
+- $+$, $\cdot$ :: *binary operations* (addition, multiplication; usually we write $ab$ for $a \cdot b$)
 - $a \mapsto \overline{a}$ :: *unary* operation (*complementation*)
 - $0, 1$ :: two /special/ elements of $B$
 
 ** Axioms
 
-*** Addition alone
-
-| B1 | $(x+y)+z = x+(y+z)$ | associativity |
-| B2 | $x+y = y+x$         | commutativity |
-| B3 | $x+0 = x$           | identity      |
-
-*** Multiplication alone
-
-| B4 | $(x\cdot y)\cdot z = x\cdot(y\cdot z)$ | associativity |
-| B5 | $x\cdot y = y\cdot x$                  | commutativity |
-| B6 | $x\cdot 1 = x$                         | identity      |
-
-*** Interaction (distributivity)
-
-| B7 | $x\cdot(y+z) = x\cdot y + x\cdot z$ | familiar from school algebra      |
-| B8 | $x+(y\cdot z) = (x+y)\cdot(x+z)$    | odd-looking: + distributes over · |
-
-*** Complementation
-
-| B9  | $x + \overline{x} = 1$     |
-| B10 | $x \cdot \overline{x} = 0$ |
+- [[id:b5b93bff-868e-491b-947d-067062c4cc94][Boolean Algebra Axioms]]
 
 ** Notes
 
-- ~B1~ and ~B4~ mean *sums* and *products* can be written without brackets.
+- ~B1~ and ~B4~ mean *sums* and *products* can be written /without/ brackets.
 - ~B8~ has no analogue in ordinary number arithmetic; it is the main surprise.
 - Axioms come in pairs that swap $+ \leftrightarrow \cdot$ and $0 \leftrightarrow 1$ (~B3/B6~, ~B7/B8~, ~B9/B10~).
 - Motivating instances: *propositional logic*, *sets*, *circuits*.
@@ -75,11 +57,11 @@ $\mathbb{B} = \{0, 1\}$, with operations given by the truth tables of $\neg$, $\
 
 *** Example 2: The Lindenbaum algebra
 
-The Boolean algebra associated with PL:
-- Roughly, PL with $\equiv$ replaced by $=$.
+The 8Boolean algebra* associated with *PL*:
+- Roughly, *PL* with $\equiv$ replaced by $=$.
 
-- $B$ :: set of equivalence wff $[A]$, where $[A]$ is the set of all wffs logically equivalent to $A$
-- Each subset $[A]$ is one element of $B$
+- $B$ :: set of equivalence *wff* $[A]$, where $[A]$ is the set of all *wffs* logically equivalent to $A$
+- Each *subset* $[A]$ is *one element* of $B$
 
 | Boolean algebra   | PL             |
 |-------------------+----------------|
@@ -97,4 +79,3 @@ The Boolean algebra associated with PL:
 $B$ is the *power set* of a set $X$ (all subsets of $X$).
 
 Not defined yet in the course: set theory comes later.
-- Guess to check later: $+ = \cup$, $\cdot = \cap$, complement = set complement, $0 = \emptyset$, $1 = X$.
