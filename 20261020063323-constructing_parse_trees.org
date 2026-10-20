@@ -1,0 +1,103 @@
+:PROPERTIES:
+:ID:       82cff7fb-4957-4c80-89a1-c70c805d8ac2
+:END:
+#+title: Constructing Parse Trees
+
+* Constructing Parse Trees
+
+** Idea
+
+A *parse tree* is built step by step, mirroring how a *wff* is built by the *rules* for *wff*.
+
+Each rule for *wff* has a /matching construction/ on *trees*.
+
+A *parse tree* represents a *wff* without brackets.
+
+** Construction rules
+
+*** Fact 1: atoms (analogue of [[id:29ce4b76-3cfc-46ee-9ed9-74c2f91da633][WFF Rule 1]])
+
+The parse tree of an atom $p$ is a single vertex labelled $p$.
+
+#+begin_example
+(p)
+#+end_example
+
+*** Fact 2: binary connectives (analogue of [[id:29ce4b76-3cfc-46ee-9ed9-74c2f91da633][WFF Rule 2]])
+
+Let $X$, $Y$ be *wff* with *parse trees* $T_X$, $T_Y$, and let $*$ be any of the /five/ *binary connectives*.
+
+Join the *roots* of $T_X$ and $T_Y$ to a new *vertex* labelled $*$.
+
+The new *vertex* is the *root* of the *tree* for $X * Y$.
+
+#+begin_example
+     (*)
+    /   \
+ (T_X) (T_Y)
+#+end_example
+
+Example: tree for $p \vee q$
+
+#+begin_example
+   (∨)
+   /  \
+ (p)  (q)
+#+end_example
+
+*** Fact 3: negation
+
+Attach the *root* of $T_X$ to a new *vertex* labelled $\neg$.
+
+The new *vertex* is the *root* of the *tree* for $\neg X$.
+
+#+begin_example
+ (¬)
+  |
+ (T_X)
+#+end_example
+
+** Example 1: build the tree for $\neg(p \vee q) \vee r$
+
+Follow the order in which the wff is built.
+
+1. Form $p \vee q$ (Fact 2).
+2. Form $\neg(p \vee q)$ by putting a new $\neg$ *vertex* above the $\vee$ *root* (Fact 3).
+3. Form $\neg(p \vee q) \vee r$ by joining that *tree* and the *tree* for $r$ under a new $\vee$ *root* (Fact 2).
+
+#+begin_example
+       (∨)
+       /  \
+    (¬)   (r)
+     |
+    (∨)
+    /  \
+  (p)  (q)
+#+end_example
+
+** Example 2: read a wff off a tree
+
+Read the *tree* *from the bottom up*, forming the *wff* as you move up.
+
+#+begin_example
+ (¬)
+  |
+ (¬)
+  |
+ (↔)
+ /   \
+(→)  (p)
+/ \
+(p)(p)
+#+end_example
+
+Bottom up:
+1. $p \to p$ (the $\to$ *vertex*)
+2. $(p \to p) \leftrightarrow p$ (the $\leftrightarrow$ *vertex*)
+3. $\neg((p \to p) \leftrightarrow p)$, then $\neg\neg((p \to p) \leftrightarrow p)$
+
+** Notes
+
+- Building the *tree* and reading it off are inverse processes: build by /following/ the [[id:29ce4b76-3cfc-46ee-9ed9-74c2f91da633][WFF Rules]], read by *reversing* them.
+- *Binary connectives* give /two/ children, $\neg$ gives /one/, *atoms* are *leaves*.
+- *Order of construction* fixes the structure, which is why /no brackets/ are needed.

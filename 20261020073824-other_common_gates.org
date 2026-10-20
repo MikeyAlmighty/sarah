@@ -1,0 +1,76 @@
+:PROPERTIES:
+:ID:       ae55f37e-3d25-4f50-b6f4-290e11661a10
+:END:
+#+title: Other Common Gates
+
+* Other Common Gates
+
+Two further [[id:650c84d1-3222-477e-9dd7-d130ba9a2bc7][gates]] you are likely to encounter:
+- *nor-gate*
+- *nand-gate*
+
+#+begin_export html
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="g-and" d="M0 0H25A22 22 0 0 1 25 44H0Z"/>
+    <path id="g-or" d="M0 0Q23 0 47 22Q23 44 0 44Q14 22 0 0Z"/>
+    <circle id="g-bubble" r="4"/>
+  </defs>
+</svg>
+#+end_export
+
+** Nor-gate
+#+begin_export html
+<svg viewBox="0 0 190 64" width="230" fill="none" stroke="currentColor" stroke-width="1.5">
+  <use href="#g-or" x="40" y="10"/>
+  <use href="#g-bubble" x="91" y="32"/>
+  <path d="M20 21H46M20 43H46M95 32H115"/>
+  <g fill="currentColor" stroke="none" font-size="13" font-style="italic">
+    <text x="6" y="25">x</text><text x="6" y="47">y</text>
+    <text x="120" y="36">x nor y</text>
+  </g>
+</svg>
+#+end_export
+
+*** Input/output table:
+
+| x | y | x nor y |
+|---+---+---------|
+| 1 | 1 |       0 |
+| 1 | 0 |       0 |
+| 0 | 1 |       0 |
+| 0 | 0 |       1 |
+
+The *Boolean algebra* version of the *PL* connective *nor*.
+
+** Nand-gate
+
+#+begin_export html
+<svg viewBox="0 0 190 64" width="230" fill="none" stroke="currentColor" stroke-width="1.5">
+  <use href="#g-and" x="40" y="10"/>
+  <use href="#g-bubble" x="71" y="32"/>
+  <path d="M20 21H40M20 43H40M75 32H95"/>
+  <g fill="currentColor" stroke="none" font-size="13" font-style="italic">
+    <text x="6" y="25">x</text><text x="6" y="47">y</text>
+    <text x="100" y="36">x nand y</text>
+  </g>
+</svg>
+#+end_export
+
+*** Input/output table:
+
+| x | y | x nand y |
+|---+---+----------|
+| 1 | 1 |        0 |
+| 1 | 0 |        1 |
+| 0 | 1 |        1 |
+| 0 | 0 |        1 |
+
+The *Boolean algebra* version of the *PL* connective *nand*.
+
+** Theorem 5.2: Nor-gates and nand-gates
+
+The Boolean algebra version of Proposition 4.4.
+
+1. Every *Boolean function* \(f : \mathbb{B}^m \to \mathbb{B}\) can be constructed from only *nor-gates*.
+2. Every *Boolean function* \(f : \mathbb{B}^m \to \mathbb{B}\) can be constructed from only *nand-gates*.

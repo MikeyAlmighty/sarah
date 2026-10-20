@@ -1,0 +1,125 @@
+:PROPERTIES:
+:ID:       0846b3fb-dd72-4993-a510-1c41ac3814f2
+:END:
+#+title: Fundamental Theorem of Circuit Design
+
+* Fundamental Theorem of Circuit Design
+
+** Overview
+
+- Builds on [[id:650c84d1-3222-477e-9dd7-d130ba9a2bc7][Gates]] and [[id:01f17744-3362-48dc-bc58-3e00ca664b35][Circuits]].
+
+#+begin_export html
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="g-and" d="M0 0H25A22 22 0 0 1 25 44H0Z"/>
+    <path id="g-or" d="M0 0Q23 0 47 22Q23 44 0 44Q14 22 0 0Z"/>
+    <g id="g-not"><path d="M0 0V30L30 15Z"/><circle cx="34" cy="15" r="4"/></g>
+    <g id="g-xor"><path d="M0 0Q23 0 47 22Q23 44 0 44Q14 22 0 0Z"/><path d="M-7 0Q7 22 -7 44"/></g>
+  </defs>
+</svg>
+#+end_export
+
+** Theorem 5.1 (functional theorem of circuit design)
+
+Every *Boolean function* \(f : \mathbb{B}^m \to \mathbb{B}\) can be constructed from:
+- *and-gates*
+- *or-gates*
+- and *not-gates*
+
+Related to the adequateness of \(\wedge\), \(\vee\) and \(\neg\).
+
+** Example 1: building a Function from a Table
+
+- Input/output table:
+
+| x | y | z | f(x,y,z) |
+|---+---+---+----------|
+| 1 | 1 | 1 |        0 |
+| 1 | 1 | 0 |        0 |
+| 1 | 0 | 1 |        0 |
+| 1 | 0 | 0 |        1 |
+| 0 | 1 | 1 |        0 |
+| 0 | 1 | 0 |        1 |
+| 0 | 0 | 1 |        1 |
+| 0 | 0 | 0 |        0 |
+
+Algorithm (analogous to constructing a *wff* in *PL* to match a *truth function*):
+1. Identify the rows with /output/ 1 (rows 4, 6, 7).
+2. For each, build a term that matches that /input/:
+   - row 4, /input/ \((1,0,0)\): \(x \cdot \overline{y} \cdot \overline{z}\)
+   - row 6, /input/ \((0,1,0)\): \(\overline{x} \cdot y \cdot \overline{z}\)
+   - row 7, /input/ \((0,0,1)\): \(\overline{x} \cdot \overline{y} \cdot z\)
+3. Sum the terms:
+
+\[ f(x,y,z) = x \cdot \overline{y} \cdot \overline{z} + \overline{x} \cdot y \cdot \overline{z} + \overline{x} \cdot \overline{y} \cdot z \]
+
+- We could attempt to simplify this expression. (Matters when converting to a *circuit*)
+
+** Example 2: xor
+
+The table
+
+| x | y | x ⊕ y |
+|---+---+-------|
+| 1 | 1 |     0 |
+| 1 | 0 |     1 |
+| 0 | 1 |     1 |
+| 0 | 0 |     0 |
+
+Defines *exclusive or* (*xor*).
+
+We have
+
+\[ x \oplus y = \overline{x} \cdot y + x \cdot \overline{y} \]
+
+(the algorithm in *Example 1* can be used to see this).
+
+*** Parse tree
+
+The expression can be described by a *parse tree*, as with *wffs*:
+- *root*: \(+\)
+- left *child*: \(\cdot\) with children \(\neg\) (over \(x\)) and \(y\)
+- right *child*: \(\cdot\) with children \(x\) and \(\neg\) (over \(y\))
+
+*** Parse tree to circuit
+
+The conversion needs two further *circuit elements*:
+- *Fanout*: one /input/, branching into copies of it.
+  - In the *parse tree* \(x\) occurs twice and \(y\) occurs twice, so we need one fanout on \(x\) and one on \(y\), each with two outward edges.
+- *Interchange*: lets wires cross without otherwise interacting.
+
+Then replace the Boolean symbols by the corresponding gates and rotate the diagram 90 degrees clockwise so inputs come in from the left and the output emerges on the right.
+
+#+begin_export html
+<svg viewBox="0 0 340 190" width="420" fill="none" stroke="currentColor" stroke-width="1.5">
+  <use href="#g-not" x="70" y="20"/>
+  <use href="#g-and" x="130" y="24"/>
+  <use href="#g-not" x="70" y="148"/>
+  <use href="#g-and" x="130" y="130"/>
+  <use href="#g-or" x="210" y="70"/>
+  <path d="M20 85H120V141H130M50 85V35H70M108 35H130"/>
+  <path d="M20 125H115V57H130M50 125V163H70M108 163H130"/>
+  <path d="M177 46H190V81H210M177 152H200V103H210M257 92H280"/>
+  <g fill="currentColor" stroke="none" font-size="13" font-style="italic">
+    <circle cx="50" cy="85" r="2.5"/><circle cx="50" cy="125" r="2.5"/>
+    <text x="4" y="89">x</text><text x="4" y="129">y</text>
+    <text x="284" y="96" font-style="normal">x ⊕ y</text>
+  </g>
+</svg>
+#+end_export
+
+*** xor-gate
+
+For later examples the *xor* circuit is abbreviated by a single symbol, the *xor-gate*.
+
+#+begin_export html
+<svg viewBox="0 0 170 64" width="200" fill="none" stroke="currentColor" stroke-width="1.5">
+  <use href="#g-xor" x="40" y="10"/>
+  <path d="M20 21H46M20 43H46M87 32H110"/>
+  <g fill="currentColor" stroke="none" font-size="13" font-style="italic">
+    <text x="6" y="25">x</text><text x="6" y="47">y</text>
+    <text x="114" y="36" font-style="normal">x ⊕ y</text>
+  </g>
+</svg>
+#+end_export

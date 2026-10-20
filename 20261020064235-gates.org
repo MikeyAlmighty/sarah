@@ -1,0 +1,104 @@
+:PROPERTIES:
+:ID:       650c84d1-3222-477e-9dd7-d130ba9a2bc7
+:END:
+#+title: Gates
+
+* Gates
+
+** Overview
+
+*Computer circuit* is a physical object consisting of the following powered by electricity:
+- Transistors
+- Resistors
+- Capacitors
+
+We study *mathematical models* that are *idealisations* of such *circuits*.
+
+Computers use *binary logic* two values of some physical property (e.g. voltage), modelled by the two elements of the *Boolean algebra* \(\mathbb{B}\).
+
+- *Boolean variables*: letters such as \(x, y, z\) with \(x, y, z \in \mathbb{B}\).
+
+** Circuits
+
+- *Combinational circuits*: no internal memory. To a first approximation, just Boolean functions \(f : \mathbb{B}^m \to \mathbb{B}^n\).
+- *Sequential circuits*: have internal memory.
+
+** How gates build circuits
+
+Let \(C\) be a *combinational circuit* with \(m\) /input/ wires and \(n\) /output/ wires.
+
+It can be viewed as \(n\) *circuits* \(C_1, \dots, C_n\), each with \(m\) /inputs/ and 1 /output/.
+
+- \(C_i\) describes how the \(i\)th /output/ of \(C\) behaves.
+- The \(n\) *circuits* can be combined into one (possibly very inefficiently) using *fanout*.
+- So it is enough to study circuits with \(m\) /inputs/ and 1 /output/, i.e. a *rule*, a *Boolean function* \(f : \mathbb{B}^m \to \mathbb{B}\).
+- \(\mathbb{B}^m\) has \(2^m\) possible /inputs/.
+- Such functions are described by an *input/output table*.
+
+*** Example:
+
+| x | y | z | f(x,y,z) |
+|---+---+---+----------|
+| 1 | 1 | 1 |        0 |
+| 1 | 1 | 0 |        0 |
+| 1 | 0 | 1 |        0 |
+| 1 | 0 | 0 |        1 |
+| 0 | 1 | 1 |        0 |
+| 0 | 1 | 0 |        1 |
+| 0 | 0 | 1 |        1 |
+| 0 | 0 | 0 |        0 |
+
+*** Goal
+
+Show that any such Boolean function can be constructed from simpler Boolean functions called *gates*.
+
+We begin with the three basic ones.
+
+** Basic gates
+
+- *and-gate*: \(\mathbb{B}^2 \to \mathbb{B}\), \((x, y) \mapsto x \cdot y\)
+- *or-gate*: \(\mathbb{B}^2 \to \mathbb{B}\), \((x, y) \mapsto x + y\)
+- *not-gate*: \(\mathbb{B} \to \mathbb{B}\), \(x \mapsto \bar{x}\)
+
+#+begin_export html
+<div style="display:flex; gap:2rem; flex-wrap:wrap; align-items:flex-end;">
+
+<figure style="margin:0; text-align:center;">
+  <svg viewBox="0 0 120 60" width="150" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M0 20H25M0 40H25M72 30H100"/>
+    <path d="M25 8H50A22 22 0 0 1 50 52H25Z"/>
+    <g fill="currentColor" stroke="none" font-size="11" font-style="italic">
+      <text x="2" y="16">x</text><text x="2" y="54">y</text>
+      <text x="104" y="34">x·y</text>
+    </g>
+  </svg>
+  <figcaption>and-gate</figcaption>
+</figure>
+
+<figure style="margin:0; text-align:center;">
+  <svg viewBox="0 0 120 60" width="150" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M0 20H27M0 40H27M72 30H100"/>
+    <path d="M22 8Q45 8 72 30Q45 52 22 52Q36 30 22 8Z"/>
+    <g fill="currentColor" stroke="none" font-size="11" font-style="italic">
+      <text x="2" y="16">x</text><text x="2" y="54">y</text>
+      <text x="104" y="34">x+y</text>
+    </g>
+  </svg>
+  <figcaption>or-gate</figcaption>
+</figure>
+
+<figure style="margin:0; text-align:center;">
+  <svg viewBox="0 0 120 60" width="150" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M0 30H25M73 30H100"/>
+    <path d="M25 8L25 52L65 30Z"/>
+    <circle cx="69" cy="30" r="4"/>
+    <g fill="currentColor" stroke="none" font-size="11" font-style="italic">
+      <text x="2" y="24">x</text>
+      <text x="104" y="34">x̄</text>
+    </g>
+  </svg>
+  <figcaption>not-gate</figcaption>
+</figure>
+
+</div>
+#+end_export

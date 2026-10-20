@@ -1,0 +1,73 @@
+:PROPERTIES:
+:ID:       01f17744-3362-48dc-bc58-3e00ca664b35
+:END:
+#+title: Circuits
+
+* Circuits
+
+** Overview
+
+Diagrams built from [[id:650c84d1-3222-477e-9dd7-d130ba9a2bc7][Gates]] are called *circuits*.
+
+They show how *Boolean functions* can be computed.
+
+Mathematical *circuits* can be turned into /physical/ ones by building *gates* from simpler elements called *transistors*, which operate like electronic switches.
+
+#+begin_export html
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="g-and" d="M0 0H25A22 22 0 0 1 25 44H0Z"/>
+    <path id="g-or"  d="M0 0Q23 0 47 22Q23 44 0 44Q14 22 0 0Z"/>
+  </defs>
+</svg>
+#+end_export
+
+** Example 1
+
+Here is a simple circuit computing \((x \cdot y) + z\).
+
+#+begin_export html
+<svg viewBox="0 0 300 100" width="300" fill="none" stroke="currentColor" stroke-width="1.5">
+  <use href="#g-and" x="60" y="10"/>
+  <use href="#g-or" x="140" y="50"/>
+  <path d="M20 21H60M20 43H60M107 32H125V61H145M20 83H145M187 72H205"/>
+  <g fill="currentColor" stroke="none" font-size="13" font-style="italic">
+    <text x="4" y="25">x</text><text x="4" y="47">y</text><text x="4" y="87">z</text>
+    <text x="210" y="76" font-style="normal">(x·y)+z</text>
+  </g>
+</svg>
+#+end_export
+
+** Example 2
+
+Because of the associativity of \(\cdot\), the circuit
+
+#+begin_export html
+<svg viewBox="0 0 300 100" width="300" fill="none" stroke="currentColor" stroke-width="1.5">
+  <use href="#g-and" x="60" y="10"/>
+  <use href="#g-and" x="140" y="50"/>
+  <path d="M20 21H60M20 43H60M107 32H125V61H140M20 83H140M187 72H205"/>
+  <g fill="currentColor" stroke="none" font-size="13" font-style="italic">
+    <text x="4" y="25">x</text><text x="4" y="47">y</text><text x="4" y="87">z</text>
+    <text x="210" y="76" font-style="normal">(x·y)·z</text>
+  </g>
+</svg>
+#+end_export
+
+and the circuit
+
+#+begin_export html
+<svg viewBox="0 0 300 100" width="300" fill="none" stroke="currentColor" stroke-width="1.5">
+  <use href="#g-and" x="140" y="10"/>
+  <use href="#g-and" x="60" y="50"/>
+  <path d="M20 21H140M20 61H60M20 83H60M107 72H125V43H140M187 32H205"/>
+  <g fill="currentColor" stroke="none" font-size="13" font-style="italic">
+    <text x="4" y="25">x</text><text x="4" y="65">y</text><text x="4" y="87">z</text>
+    <text x="210" y="36" font-style="normal">x·(y·z)</text>
+  </g>
+</svg>
+#+end_export
+
+compute the /same/ function.
+
+- Similar comments apply to the operation \(+\).

@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-10-20 Tue 08:25 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fundamental Theorem of Circuit Design</title>
+<meta name="author" content="Michael Leibbrandt" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<style>
+        body {
+          font-family: sans-serif;
+          line-height: 1.5;
+          margin: 2em;
+          background-color: #ffffff;
+          color: #111111;
+        }
+
+        /* Code block styling */
+        pre.src {
+          padding: 1em;
+          border-radius: 6px;
+          overflow-x: auto;
+          background-color: #f0f0f0;
+          color: #222222;
+          border: 1px solid #ddd;
+          font-family: monospace;
+        }
+
+        /* Syntax highlighting for Org-generated classes */
+        span.org-keyword { color: #005999; font-weight: bold; }
+        span.org-string  { color: #aa3333; }
+        span.org-comment { color: #666666; font-style: italic; }
+        span.org-type    { color: #007700; font-weight: bold; }
+        span.org-variable { color: #993399; }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            pre.src {
+                background-color: #000000;
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
+
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
+        }
+
+        ul { list-style-type: disc; padding-left: 2em; }
+      </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Fundamental Theorem of Circuit Design</h1>
+<div id="outline-container-org55407bb" class="outline-2">
+<h2 id="org55407bb">Fundamental Theorem of Circuit Design</h2>
+<div class="outline-text-2" id="text-org55407bb">
+</div>
+<div id="outline-container-orgc7cb55a" class="outline-3">
+<h3 id="orgc7cb55a">Overview</h3>
+<div class="outline-text-3" id="text-orgc7cb55a">
+<ul class="org-ul">
+<li>Builds on <a href="20261020064235-gates.html#ID-650c84d1-3222-477e-9dd7-d130ba9a2bc7">Gates</a> and <a href="20261020071550-circuits.html#ID-01f17744-3362-48dc-bc58-3e00ca664b35">Circuits</a>.</li>
+</ul>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="g-and" d="M0 0H25A22 22 0 0 1 25 44H0Z"/>
+    <path id="g-or" d="M0 0Q23 0 47 22Q23 44 0 44Q14 22 0 0Z"/>
+    <g id="g-not"><path d="M0 0V30L30 15Z"/><circle cx="34" cy="15" r="4"/></g>
+    <g id="g-xor"><path d="M0 0Q23 0 47 22Q23 44 0 44Q14 22 0 0Z"/><path d="M-7 0Q7 22 -7 44"/></g>
+  </defs>
+</svg>
+</div>
+</div>
+<div id="outline-container-orgdac1f9b" class="outline-3">
+<h3 id="orgdac1f9b">Theorem 5.1 (functional theorem of circuit design)</h3>
+<div class="outline-text-3" id="text-orgdac1f9b">
+<p>
+Every <b>Boolean function</b> \(f : \mathbb{B}^m \to \mathbb{B}\) can be constructed from:
+</p>
+<ul class="org-ul">
+<li><b>and-gates</b></li>
+<li><b>or-gates</b></li>
+<li>and <b>not-gates</b></li>
+</ul>
+
+<p>
+Related to the adequateness of \(\wedge\), \(\vee\) and \(\neg\).
+</p>
+</div>
+</div>
+<div id="outline-container-org1a948b9" class="outline-3">
+<h3 id="org1a948b9">Example 1: building a Function from a Table</h3>
+<div class="outline-text-3" id="text-org1a948b9">
+<ul class="org-ul">
+<li>Input/output table:</li>
+</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">x</th>
+<th scope="col" class="org-right">y</th>
+<th scope="col" class="org-right">z</th>
+<th scope="col" class="org-right">f(x,y,z)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Algorithm (analogous to constructing a <b>wff</b> in <b>PL</b> to match a <b>truth function</b>):
+</p>
+<ol class="org-ol">
+<li>Identify the rows with <i>output</i> 1 (rows 4, 6, 7).</li>
+<li>For each, build a term that matches that <i>input</i>:
+<ul class="org-ul">
+<li>row 4, <i>input</i> \((1,0,0)\): \(x \cdot \overline{y} \cdot \overline{z}\)</li>
+<li>row 6, <i>input</i> \((0,1,0)\): \(\overline{x} \cdot y \cdot \overline{z}\)</li>
+<li>row 7, <i>input</i> \((0,0,1)\): \(\overline{x} \cdot \overline{y} \cdot z\)</li>
+</ul></li>
+<li>Sum the terms:</li>
+</ol>
+
+<p>
+\[ f(x,y,z) = x \cdot \overline{y} \cdot \overline{z} + \overline{x} \cdot y \cdot \overline{z} + \overline{x} \cdot \overline{y} \cdot z \]
+</p>
+
+<ul class="org-ul">
+<li>We could attempt to simplify this expression. (Matters when converting to a <b>circuit</b>)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org53b31f2" class="outline-3">
+<h3 id="org53b31f2">Example 2: xor</h3>
+<div class="outline-text-3" id="text-org53b31f2">
+<p>
+The table
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">x</th>
+<th scope="col" class="org-right">y</th>
+<th scope="col" class="org-right">x ⊕ y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Defines <b>exclusive or</b> (<b>xor</b>).
+</p>
+
+<p>
+We have
+</p>
+
+<p>
+\[ x \oplus y = \overline{x} \cdot y + x \cdot \overline{y} \]
+</p>
+
+<p>
+(the algorithm in <b>Example 1</b> can be used to see this).
+</p>
+</div>
+<div id="outline-container-org9515250" class="outline-4">
+<h4 id="org9515250">Parse tree</h4>
+<div class="outline-text-4" id="text-org9515250">
+<p>
+The expression can be described by a <b>parse tree</b>, as with <b>wffs</b>:
+</p>
+<ul class="org-ul">
+<li><b>root</b>: \(+\)</li>
+<li>left <b>child</b>: \(\cdot\) with children \(\neg\) (over \(x\)) and \(y\)</li>
+<li>right <b>child</b>: \(\cdot\) with children \(x\) and \(\neg\) (over \(y\))</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org97aadb2" class="outline-4">
+<h4 id="org97aadb2">Parse tree to circuit</h4>
+<div class="outline-text-4" id="text-org97aadb2">
+<p>
+The conversion needs two further <b>circuit elements</b>:
+</p>
+<ul class="org-ul">
+<li><b>Fanout</b>: one <i>input</i>, branching into copies of it.
+<ul class="org-ul">
+<li>In the <b>parse tree</b> \(x\) occurs twice and \(y\) occurs twice, so we need one fanout on \(x\) and one on \(y\), each with two outward edges.</li>
+</ul></li>
+<li><b>Interchange</b>: lets wires cross without otherwise interacting.</li>
+</ul>
+
+<p>
+Then replace the Boolean symbols by the corresponding gates and rotate the diagram 90 degrees clockwise so inputs come in from the left and the output emerges on the right.
+</p>
+
+<svg viewBox="0 0 340 190" width="420" fill="none" stroke="currentColor" stroke-width="1.5">
+  <use href="#g-not" x="70" y="20"/>
+  <use href="#g-and" x="130" y="24"/>
+  <use href="#g-not" x="70" y="148"/>
+  <use href="#g-and" x="130" y="130"/>
+  <use href="#g-or" x="210" y="70"/>
+  <path d="M20 85H120V141H130M50 85V35H70M108 35H130"/>
+  <path d="M20 125H115V57H130M50 125V163H70M108 163H130"/>
+  <path d="M177 46H190V81H210M177 152H200V103H210M257 92H280"/>
+  <g fill="currentColor" stroke="none" font-size="13" font-style="italic">
+    <circle cx="50" cy="85" r="2.5"/><circle cx="50" cy="125" r="2.5"/>
+    <text x="4" y="89">x</text><text x="4" y="129">y</text>
+    <text x="284" y="96" font-style="normal">x ⊕ y</text>
+  </g>
+</svg>
+</div>
+</div>
+<div id="outline-container-org38b7654" class="outline-4">
+<h4 id="org38b7654">xor-gate</h4>
+<div class="outline-text-4" id="text-org38b7654">
+<p>
+For later examples the <b>xor</b> circuit is abbreviated by a single symbol, the <b>xor-gate</b>.
+</p>
+
+<svg viewBox="0 0 170 64" width="200" fill="none" stroke="currentColor" stroke-width="1.5">
+  <use href="#g-xor" x="40" y="10"/>
+  <path d="M20 21H46M20 43H46M87 32H110"/>
+  <g fill="currentColor" stroke="none" font-size="13" font-style="italic">
+    <text x="6" y="25">x</text><text x="6" y="47">y</text>
+    <text x="114" y="36" font-style="normal">x ⊕ y</text>
+  </g>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
