@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-21 Wed 08:22 -->
+<!-- 2026-10-25 Sun 12:09 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>A Branch of a Truth Tree</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -275,13 +274,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">A Branch of a Truth Tree</h1>
-<div id="outline-container-orgbb7fa7e" class="outline-2">
-<h2 id="orgbb7fa7e">A Branch of a Truth Tree</h2>
-<div class="outline-text-2" id="text-orgbb7fa7e">
+<div id="outline-container-org7996218" class="outline-2">
+<h2 id="org7996218">A Branch of a Truth Tree</h2>
+<div class="outline-text-2" id="text-org7996218">
 </div>
-<div id="outline-container-orgc0b1041" class="outline-3">
-<h3 id="orgc0b1041">Overview</h3>
-<div class="outline-text-3" id="text-orgc0b1041">
+<div id="outline-container-org15f40cd" class="outline-3">
+<h3 id="org15f40cd">Overview</h3>
+<div class="outline-text-3" id="text-org15f40cd">
 <p>
 Use a truth tree for a wff \(A\) to decide whether it is <b>satisfiable</b> and, if so, which <code>truth</code> assignments make \(A\) <code>true</code>.
 </p>
@@ -295,14 +294,14 @@ First we need the notion of a <b>branch</b>.
 </ul>
 </div>
 </div>
-<div id="outline-container-orge06845d" class="outline-3">
-<h3 id="orge06845d">Example</h3>
-<div class="outline-text-3" id="text-orge06845d">
+<div id="outline-container-org0198730" class="outline-3">
+<h3 id="org0198730">Example</h3>
+<div class="outline-text-3" id="text-org0198730">
 <p>
 This tree has <b>three</b> branches, one for each path from the <b>root</b> to a <b>leaf</b>:
 </p>
 
-<pre class="example" id="orgf106ef6">
+<pre class="example" id="org318cdba">
     root
     /  \
 leaf1  vertex
@@ -325,9 +324,9 @@ This makes it easy to identify <i>all</i> <b>branches</b>.
 </p>
 </div>
 </div>
-<div id="outline-container-orge368f09" class="outline-3">
-<h3 id="orge368f09">Open and closed branches</h3>
-<div class="outline-text-3" id="text-orge368f09">
+<div id="outline-container-org2973330" class="outline-3">
+<h3 id="org2973330">Open and closed branches</h3>
+<div class="outline-text-3" id="text-org2973330">
 <p>
 Once the tree for \(A\) is built, decide which branches are <b>open</b> and which are <b>closed</b>.
 </p>
@@ -340,14 +339,14 @@ Once the tree for \(A\) is built, decide which branches are <b>open</b> and whic
 </ul></li>
 </ul>
 </div>
-<div id="outline-container-org8195319" class="outline-4">
-<h4 id="org8195319">Open vs closed: example</h4>
-<div class="outline-text-4" id="text-org8195319">
+<div id="outline-container-orgf6ccb12" class="outline-4">
+<h4 id="orgf6ccb12">Open vs closed: example</h4>
+<div class="outline-text-4" id="text-orgf6ccb12">
 <p>
 Tree for \((p \vee q) \wedge \neg p\):
 </p>
 
-<pre class="example" id="org81460c5">
+<pre class="example" id="org8b9e8f2">
 (p ∨ q) ∧ ¬p ✓
       |
    p ∨ q ✓
@@ -371,9 +370,9 @@ closed  open
 </div>
 </div>
 </div>
-<div id="outline-container-org5bcfb1c" class="outline-3">
-<h3 id="org5bcfb1c">Strategy for finding satisfying assignments</h3>
-<div class="outline-text-3" id="text-org5bcfb1c">
+<div id="outline-container-org0e7682f" class="outline-3">
+<h3 id="org0e7682f">Strategy for finding satisfying assignments</h3>
+<div class="outline-text-3" id="text-org0e7682f">
 <p>
 For every <b>open</b> branch of the tree for \(A\), set all the literals along that branch to be <code>true</code>.
 </p>
@@ -390,9 +389,9 @@ This gives a truth assignment that satisfies \(A\).
 </ul>
 </div>
 </div>
-<div id="outline-container-orgdb5f729" class="outline-3">
-<h3 id="orgdb5f729">Remarks</h3>
-<div class="outline-text-3" id="text-orgdb5f729">
+<div id="outline-container-org795e26c" class="outline-3">
+<h3 id="org795e26c">Remarks</h3>
+<div class="outline-text-3" id="text-org795e26c">
 <ul class="org-ul">
 <li>For each open branch of the tree of \(A\) there is one truth assignment that satisfies \(A\).</li>
 <li>If <b>all</b> branches of the tree for \(A\) are closed, then \(A\) is a <b>contradiction</b>.</li>

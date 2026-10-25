@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-21 Wed 08:22 -->
+<!-- 2026-10-25 Sun 12:09 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>TCP Socket States</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -243,60 +242,60 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">TCP Socket States</h1>
-<div id="outline-container-org9d54931" class="outline-2">
-<h2 id="org9d54931">LISTEN</h2>
-<div class="outline-text-2" id="text-org9d54931">
+<div id="outline-container-orgb6712ec" class="outline-2">
+<h2 id="orgb6712ec">LISTEN</h2>
+<div class="outline-text-2" id="text-orgb6712ec">
 <p>
 TCP socket is ready and listening for incoming connections.
 (Server-side only)
 </p>
 </div>
 </div>
-<div id="outline-container-orge2bd6cb" class="outline-2">
-<h2 id="orge2bd6cb">SYN<sub>SENT</sub></h2>
-<div class="outline-text-2" id="text-orge2bd6cb">
+<div id="outline-container-org6160588" class="outline-2">
+<h2 id="org6160588">SYN<sub>SENT</sub></h2>
+<div class="outline-text-2" id="text-org6160588">
 <p>
 A synchronization request has been sent, but the connection hasn't been established yet.
 (Client-side only)
 </p>
 </div>
 </div>
-<div id="outline-container-org71511c0" class="outline-2">
-<h2 id="org71511c0">SYN<sub>RECEIVED</sub></h2>
-<div class="outline-text-2" id="text-org71511c0">
+<div id="outline-container-org2a1b3d1" class="outline-2">
+<h2 id="org2a1b3d1">SYN<sub>RECEIVED</sub></h2>
+<div class="outline-text-2" id="text-org2a1b3d1">
 <p>
 This means that a socket previously in a <code>LISTEN</code> state has received a <code>synchronization</code> request and sent a <code>SYN/ACK</code> back, but it hasn't received the final <code>ACK</code> from the client yet.
 (Server-side only)
 </p>
 </div>
 </div>
-<div id="outline-container-org78c5bad" class="outline-2">
-<h2 id="org78c5bad">ESTABLISHED</h2>
-<div class="outline-text-2" id="text-org78c5bad">
+<div id="outline-container-org4c1af33" class="outline-2">
+<h2 id="org4c1af33">ESTABLISHED</h2>
+<div class="outline-text-2" id="text-org4c1af33">
 <p>
 TCP connection is in working order and both sides are <b>free to send each</b> other data.
 </p>
 </div>
 </div>
-<div id="outline-container-orgd5c4743" class="outline-2">
-<h2 id="orgd5c4743">FIN<sub>WAIT</sub></h2>
-<div class="outline-text-2" id="text-orgd5c4743">
+<div id="outline-container-org1ec595d" class="outline-2">
+<h2 id="org1ec595d">FIN<sub>WAIT</sub></h2>
+<div class="outline-text-2" id="text-org1ec595d">
 <p>
 This means that a <code>FIN</code> has been sent but the corresponding <code>ACK</code> from the other end hasn't been received yet.
 </p>
 </div>
 </div>
-<div id="outline-container-org185363e" class="outline-2">
-<h2 id="org185363e">CLOSE<sub>WAIT</sub></h2>
-<div class="outline-text-2" id="text-org185363e">
+<div id="outline-container-org8bec9b3" class="outline-2">
+<h2 id="org8bec9b3">CLOSE<sub>WAIT</sub></h2>
+<div class="outline-text-2" id="text-org8bec9b3">
 <p>
 This means that the connection has been closed at the TCP layer, but that the application that opened the socket hasn't released its hold on the socket yet.
 </p>
 </div>
 </div>
-<div id="outline-container-org560a397" class="outline-2">
-<h2 id="org560a397">CLOSED</h2>
-<div class="outline-text-2" id="text-org560a397">
+<div id="outline-container-org77467a5" class="outline-2">
+<h2 id="org77467a5">CLOSED</h2>
+<div class="outline-text-2" id="text-org77467a5">
 <p>
 This means that the connection has been fully terminated and that no further communication is possible.
 </p>
