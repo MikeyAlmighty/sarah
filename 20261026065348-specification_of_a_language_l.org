@@ -1,0 +1,70 @@
+:PROPERTIES:
+:ID:       5904e548-3d77-45eb-ab85-5ea3cba90838
+:END:
+#+title: Specification of a Language L
+
+* Specification of a Language L
+
+** Overview
+
+Once *predicates*, *variables*, *constants* and *quantifiers* are defined, we can specify the ingredients of a ~FOL~ \(L\).
+
+** Ingredients of a first-order language \(L\)
+
+- *Constants*: \(a, b, c, \dots\) (or \(a_1, a_2, a_3, \dots\)).
+  - May be /infinite/ or /finite/ in number (including zero).
+
+- *Variables*: \(x_1, x_2, x_3, \dots\), usually written \(x, y, z, \dots\).
+
+- *Predicate symbols*: a non-empty list of letters \(A, B, C, \dots\), each with an associated *arity* \(n \geq 1\) (a /finite/ natural number).
+  - If \(A\) has arity \(n\), then \(A\) is an *\(n\)-place predicate symbol*.
+  - *Note:* \(A(x)\) means \(A\) is *one-place*; \(A(x, y)\) means *two-place*; \(A(x_1, x_2, \dots, x_n)\) means \(n\)-place.
+
+- *PL connectives*: \(\neg, \wedge, \vee, \rightarrow, \leftrightarrow, \oplus\).
+- *Quantifiers*: \((\forall x_1), (\forall x_2), \dots\) and \((\exists x_1), (\exists x_2), \dots\), though usually written \((\forall x), (\forall y), \dots\) and \((\exists x), (\exists y), \dots\).
+
+*** Terms
+
+A *constant* or *variable* is called a *term*.
+
+** Formulae in FOL
+
+Defined iteratively, much like *wff* in ~PL~.
+
+*** Building blocks:
+
+- *atomic formulae* (analogous to atoms in ~PL~)
+- *Connectives* from ~PL~.
+- *Quantifiers* \(\forall\) and \(\exists\)
+
+** Rules for constructing formulae
+
+- *(F1)* *All atomic formulae are formulae*.
+- *(F2)* If \(X\) and \(Y\) are formulae, so too are:
+  - \((\neg X)\), \((X \wedge Y)\), \((X \vee Y)\), \((X \rightarrow Y)\), \((X \leftrightarrow Y)\), \((X \oplus Y)\)
+  - \((\forall x)X\) for any variable \(x\)
+  - \((\exists x)X\) for any variable \(x\)
+- *(F3)* All *formulae* arise by *repeated application* of (F1) or (F2) a /finite/ number of times.
+
+** Example
+
+Suppose \(L\) has a *1-place* predicate \(P\) and two *2-place predicates* \(Q\) and \(T\).
+
+Then by the rules above we can construct:
+
+\[
+(\forall x)(Q(x, y) \rightarrow P(x)) \wedge \neg((\exists x)(P(x)) \wedge T(x, y))
+\]
+
+in the language \(L\).
+
+** Summary
+
+| Ingredient        | Notation                                                     | Notes                                 |
+|-------------------+--------------------------------------------------------------+---------------------------------------|
+| Constants         | \(a, b, c, \dots\)                                           | finite or infinite (even zero)        |
+| Variables         | \(x_1, x_2, \dots\) / \(x, y, z, \dots\)                     | placeholders                          |
+| Predicate symbols | \(A, B, C, \dots\)                                           | non-empty; each has arity \(n \ge 1\) |
+| Connectives       | \(\neg, \wedge, \vee, \rightarrow, \leftrightarrow, \oplus\) | same as PL                            |
+| Quantifiers       | \(\forall x\), \(\exists x\)                                 | must be applied to a variable         |
+| Term              | constant or variable                                         |                                       |

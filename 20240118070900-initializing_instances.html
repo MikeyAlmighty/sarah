@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-26 Mon 05:42 -->
+<!-- 2026-10-26 Mon 07:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Initializing Instances</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,9 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Initializing Instances</h1>
-<div id="outline-container-orgfc1b18e" class="outline-2">
-<h2 id="orgfc1b18e">Initializing Instances</h2>
-<div class="outline-text-2" id="text-orgfc1b18e">
+<div id="outline-container-orgb70b578" class="outline-2">
+<h2 id="orgb70b578">Initializing Instances</h2>
+<div class="outline-text-2" id="text-orgb70b578">
 <p>
 First, start at the <b>lowest-level</b> <code>constructor</code> where the <code>new</code> keyword is used.
 </p>
@@ -261,13 +262,13 @@ Then, progress <b>upward</b> and note the order of <code>constructors</code>.
 Finally, initialize each <code>class</code> starting with the <code>superclass</code>, processing each <code>instance initializer</code> and <code>constructor</code> in the reverse order in which it was called.
 </p>
 </div>
-<div id="outline-container-orgc235c58" class="outline-3">
-<h3 id="orgc235c58">We summarize the order of initialization for an instance as follows:</h3>
-<div class="outline-text-3" id="text-orgc235c58">
+<div id="outline-container-org9e22321" class="outline-3">
+<h3 id="org9e22321">We summarize the order of initialization for an instance as follows:</h3>
+<div class="outline-text-3" id="text-org9e22321">
 </div>
-<div id="outline-container-org983af0a" class="outline-4">
-<h4 id="org983af0a">Initialize Instance of <code>X</code></h4>
-<div class="outline-text-4" id="text-org983af0a">
+<div id="outline-container-orgcec2bac" class="outline-4">
+<h4 id="orgcec2bac">Initialize Instance of <code>X</code></h4>
+<div class="outline-text-4" id="text-orgcec2bac">
 <ol class="org-ol">
 <li>Initialize class <code>X</code> if it has not been previously initialized.</li>
 
@@ -281,7 +282,7 @@ Finally, initialize each <code>class</code> starting with the <code>superclass</
 </ol>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">ZooTickets</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">ZooTickets</span> {
     <span class="org-keyword">private</span> <span class="org-type">String</span> <span class="org-variable-name">name</span> = <span class="org-string">"BestZoo"</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">Line: 2
 </span>    { System.out.print(name + <span class="org-string">"-"</span>); } <span class="org-comment-delimiter">// </span><span class="org-comment">Line: 3
 </span>
@@ -298,7 +299,7 @@ Finally, initialize each <code>class</code> starting with the <code>superclass</
 </span>    }
 }
 <span class="org-comment-delimiter">//</span><span class="org-comment">Output: ~0-10&#173;BestZoo&#173;z-~</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -324,8 +325,8 @@ Finally, we run the constructor on <code>lines 8–10</code>, which outputs <cod
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="org1cfba5a"></a><span class="underline">Exam Trick</span><br />
-<div class="outline-text-5" id="text-org1cfba5a">
+<li><a id="org7ca4c59"></a><span class="underline">Exam Trick</span><br />
+<div class="outline-text-5" id="text-org7ca4c59">
 <ul class="org-ul">
 <li>A <code>class</code> is initialized at most once by the JVM before it is referenced or used.</li>
 

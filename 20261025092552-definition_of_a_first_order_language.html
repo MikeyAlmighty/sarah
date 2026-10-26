@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-26 Mon 05:42 -->
+<!-- 2026-10-26 Mon 07:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Definition of a First-Order Language</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -238,12 +239,237 @@
 
         ul { list-style-type: disc; padding-left: 2em; }
       </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 </head>
 <body>
 <div id="content" class="content">
 <h1 class="title">Definition of a First-Order Language</h1>
-<div id="outline-container-org3bcfdaf" class="outline-2">
-<h2 id="org3bcfdaf">Definition of a First-Order Language</h2>
+<div id="outline-container-org84d60fd" class="outline-2">
+<h2 id="org84d60fd">Definition of a First-Order Language</h2>
+<div class="outline-text-2" id="text-org84d60fd">
+</div>
+<div id="outline-container-org5d06b83" class="outline-3">
+<h3 id="org5d06b83">Overview</h3>
+<div class="outline-text-3" id="text-org5d06b83">
+<ul class="org-ul">
+<li><a href="20260928075044-propositional_logic_pl.html#ID-dc24ea52-d78b-4974-9768-5199afb26eee">Propositional Logic (PL)</a> is a very simple <b>formal language</b>:
+<ul class="org-ul">
+<li>Every <b>wff</b> is built from <a href="20260928075447-atomic_statements_and_connectives.html#ID-e0ff6703-537c-402c-b96c-fa44bfe42a66">atomic statements and connectives</a>, which limits what we <i>can</i> "say".</li>
+</ul></li>
+<li><b>First-order logic (FOL)</b> generalises <code>PL</code> by:
+<ul class="org-ul">
+<li>Replacing <b>atoms</b> with <b>Atomic Formulae</b></li>
+<li>Adding <b>Quantifiers</b></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4503b8e" class="outline-3">
+<h3 id="org4503b8e">Predicates</h3>
+<div class="outline-text-3" id="text-org4503b8e">
+<ul class="org-ul">
+<li>A <b>predicate</b> is a "template" for a statement.
+<ul class="org-ul">
+<li>Written with uppercase letters (\(P, T, H, \dots\))
+<ul class="org-ul">
+<li>With <b>variables</b> (\(x, y, z, \dots\)) as <b>slots</b>.</li>
+</ul></li>
+</ul></li>
+<li><b>Arity</b>:
+<ul class="org-ul">
+<li>Number of variables in a <b>predicate</b>.
+<ul class="org-ul">
+<li>\(H(x)\): one-place</li>
+<li>\(P(x, y)\): two-place</li>
+<li>\(T(x, y, z)\): three-place</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<div id="outline-container-orge999ea7" class="outline-4">
+<h4 id="orge999ea7">Example</h4>
+<div class="outline-text-4" id="text-orge999ea7">
+<ol class="org-ol">
+<li>\(H(x)\): "x is human"</li>
+<li>\(P(x, y)\): "x is a parent of y"</li>
+<li>\(T(x, y, z)\): "x is a parent of y and y is a parent of z"</li>
+
+<li>Variables are <b>placeholders</b>, with <i>no meaning</i> in themselves.
+<ol class="org-ol">
+<li>\(H(y)\) meaning "y is human" is the same predicate as \(H(x)\).</li>
+</ol></li>
+<li>Inserting names gives a statement that is <code>true</code> or <code>false</code>:
+<ul class="org-ul">
+<li>\(H(\text{Alice})\): "Alice is human"</li>
+<li>\(P(\text{Alice}, \text{Bob})\): "Alice is a parent of Bob"</li>
+<li>\(T(\text{Alice}, \text{Bob}, \text{Carol})\): "Alice is a parent of Bob and Bob is a parent of Carol"</li>
+</ul></li>
+<li>If Alice and Bob are <b>not</b> related, \(P(\text{Alice}, \text{Bob})\) is <code>false</code>.</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-org1a39bd1" class="outline-3">
+<h3 id="org1a39bd1">Constants and variables</h3>
+<div class="outline-text-3" id="text-org1a39bd1">
+</div>
+<div id="outline-container-orgad40803" class="outline-4">
+<h4 id="orgad40803">Constants (Names)</h4>
+<div class="outline-text-4" id="text-orgad40803">
+<ul class="org-ul">
+<li>Written \(a, b, c, \dots\) or \(a_1, a_2, a_3, \dots\).</li>
+</ul>
+
+<p>
+Chosen according to the objects we want to talk about, from a set \(U\).
+</p>
+</div>
+</div>
+<div id="outline-container-orgd3b2204" class="outline-4">
+<h4 id="orgd3b2204">Variables (Placeholders)</h4>
+<div class="outline-text-4" id="text-orgd3b2204">
+<ul class="org-ul">
+<li>Written \(x, y, z, \dots\) or \(x_1, x_2, x_3, \dots\).</li>
+</ul>
+
+<p>
+No fixed meaning; <b>placeholders</b> into which <b>constants</b> can be slotted.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb7b01a9" class="outline-3">
+<h3 id="orgb7b01a9">Atomic formulae</h3>
+<div class="outline-text-3" id="text-orgb7b01a9">
+<blockquote>
+<p>
+<b>Definition 6.1:</b> An <b>atomic formula</b> is a predicate whose slots are filled with either variables or constants.
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-org680c68a" class="outline-3">
+<h3 id="org680c68a">Quantifiers</h3>
+<div class="outline-text-3" id="text-org680c68a">
+<p>
+<b>Quantifiers</b> extend the statements we can make in <code>FOL</code>.
+</p>
+<ul class="org-ul">
+<li>Let \(M(x)\) = "x is mortal".</li>
+</ul>
+</div>
+<div id="outline-container-org6d217e5" class="outline-4">
+<h4 id="org6d217e5">Universal quantifier \(\forall\), "for all"</h4>
+<div class="outline-text-4" id="text-org6d217e5">
+<ul class="org-ul">
+<li>\((\forall x) M(x)\): "everything is mortal"</li>
+<li>Read: "for all x, x is mortal" / "for each x, x is mortal"</li>
+<li><b>Note:</b> \(\forall\) only makes sense applied to a variable (\(\forall x\)), never on its own.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc2c051a" class="outline-4">
+<h4 id="orgc2c051a">Existential quantifier \(\exists\), "there exists"</h4>
+<div class="outline-text-4" id="text-orgc2c051a">
+<ul class="org-ul">
+<li>\((\exists x) M(x)\): "there exists a mortal"</li>
+<li>Read: "for some x, x is mortal" / "there exists an x such that x is mortal" / "there is at least one x such that x is mortal"</li>
+<li><b>Note:</b> \(\exists\) only makes sense applied to a variable (\(\exists x\)), never on its own.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org8426bc2" class="outline-3">
+<h3 id="org8426bc2">Summary</h3>
+<div class="outline-text-3" id="text-org8426bc2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Concept</th>
+<th scope="col" class="org-left">Role</th>
+<th scope="col" class="org-left">Notation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Predicate</td>
+<td class="org-left">Template for a statement; has an arity</td>
+<td class="org-left">\(P(x,y)\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Variable</td>
+<td class="org-left">Placeholder / slot</td>
+<td class="org-left">\(x, y, z, \dots\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Constant</td>
+<td class="org-left">A "name" from \(U\)</td>
+<td class="org-left">\(a, b, c, \dots\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Atomic formula</td>
+<td class="org-left">Predicate filled with variables/constants</td>
+<td class="org-left">\(P(a, x)\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Universal q.</td>
+<td class="org-left">"for all"</td>
+<td class="org-left">\((\forall x)\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Existential q.</td>
+<td class="org-left">"there exists"</td>
+<td class="org-left">\((\exists x)\)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 </body>

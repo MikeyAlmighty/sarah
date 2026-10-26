@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-26 Mon 05:42 -->
+<!-- 2026-10-26 Mon 07:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Passing Objects</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,9 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Passing Objects</h1>
-<div id="outline-container-orgf7bb423" class="outline-2">
-<h2 id="orgf7bb423">Passing Objects</h2>
-<div class="outline-text-2" id="text-orgf7bb423">
+<div id="outline-container-orgfd3b767" class="outline-2">
+<h2 id="orgfd3b767">Passing Objects</h2>
+<div class="outline-text-2" id="text-orgfd3b767">
 <ul class="org-ul">
 <li>Assignments made in the method do <b>not</b> affect the caller.
 <ul class="org-ul">
@@ -252,11 +253,11 @@
 </ul></li>
 </ul>
 </div>
-<div id="outline-container-org5e358b4" class="outline-3">
-<h3 id="org5e358b4">Example</h3>
-<div class="outline-text-3" id="text-org5e358b4">
+<div id="outline-container-org437efce" class="outline-3">
+<h3 id="org437efce">Example</h3>
+<div class="outline-text-3" id="text-org437efce">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Dog</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Dog</span> {
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
         <span class="org-type">String</span> <span class="org-variable-name">name</span> = <span class="org-string">"Webby"</span>;
         speak(name);
@@ -266,20 +267,20 @@
         name = <span class="org-string">"Georgette"</span>;
     }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org0b2baee" class="outline-3">
-<h3 id="org0b2baee">Example</h3>
-<div class="outline-text-3" id="text-org0b2baee">
+<div id="outline-container-org2e5a74c" class="outline-3">
+<h3 id="org2e5a74c">Example</h3>
+<div class="outline-text-3" id="text-org2e5a74c">
 <ul class="org-ul">
 <li>The variable <code>sb</code> is a copy of the variable <code>name</code>.</li>
 <li>Both <b>point to the same</b> <code>StringBuilder</code>, which means that changes made to the <code>StringBuilder</code> are available to <b>both</b> references.</li>
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
     <span class="org-type">StringBuilder</span> <span class="org-variable-name">name</span> = <span class="org-keyword">new</span> <span class="org-type">StringBuilder</span>(<span class="org-string">"Webby"</span>);
     speak(name);
     System.out.println(name); <span class="org-comment-delimiter">// </span><span class="org-comment">WebbyGeorgette
@@ -288,19 +289,19 @@
 <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">speak</span>(<span class="org-type">StringBuilder</span> <span class="org-variable-name">sb</span>) {
     sb.append(<span class="org-string">"Georgette"</span>);
 }
-</pre>
+</code></pre>
 </div>
 
 
-<div id="org9b32485" class="figure">
+<div id="orgfe209e3" class="figure">
 <p><img src="./assets/copying_reference_by_value.png" alt="copying_reference_by_value.png" />
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgec494b9" class="outline-3">
-<h3 id="orgec494b9"><span class="underline">Exam Trick</span></h3>
-<div class="outline-text-3" id="text-orgec494b9">
+<div id="outline-container-org38924a5" class="outline-3">
+<h3 id="org38924a5"><span class="underline">Exam Trick</span></h3>
+<div class="outline-text-3" id="text-org38924a5">
 <p>
 Java uses <b>pass­by­value</b> to get <b>data</b> into a method.
 </p>

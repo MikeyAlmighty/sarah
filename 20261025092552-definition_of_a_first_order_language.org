@@ -4,3 +4,82 @@
 #+title: Definition of a First-Order Language
 
 * Definition of a First-Order Language
+
+** Overview
+
+- [[id:dc24ea52-d78b-4974-9768-5199afb26eee][Propositional Logic (PL)]] is a very simple *formal language*:
+  - Every *wff* is built from [[id:e0ff6703-537c-402c-b96c-fa44bfe42a66][atomic statements and connectives]], which limits what we /can/ "say".
+- *First-order logic (FOL)* generalises ~PL~ by:
+  - Replacing *atoms* with *Atomic Formulae*
+  - Adding *Quantifiers*
+
+** Predicates
+
+- A *predicate* is a "template" for a statement.
+  - Written with uppercase letters (\(P, T, H, \dots\))
+    - With *variables* (\(x, y, z, \dots\)) as *slots*.
+- *Arity*:
+  - Number of variables in a *predicate*.
+    - \(H(x)\): one-place
+    - \(P(x, y)\): two-place
+    - \(T(x, y, z)\): three-place
+
+*** Example
+
+1. \(H(x)\): "x is human"
+2. \(P(x, y)\): "x is a parent of y"
+3. \(T(x, y, z)\): "x is a parent of y and y is a parent of z"
+
+4. Variables are *placeholders*, with /no meaning/ in themselves.
+   1. \(H(y)\) meaning "y is human" is the same predicate as \(H(x)\).
+5. Inserting names gives a statement that is ~true~ or ~false~:
+   - \(H(\text{Alice})\): "Alice is human"
+   - \(P(\text{Alice}, \text{Bob})\): "Alice is a parent of Bob"
+   - \(T(\text{Alice}, \text{Bob}, \text{Carol})\): "Alice is a parent of Bob and Bob is a parent of Carol"
+6. If Alice and Bob are *not* related, \(P(\text{Alice}, \text{Bob})\) is ~false~.
+
+** Constants and variables
+
+*** Constants (Names)
+- Written \(a, b, c, \dots\) or \(a_1, a_2, a_3, \dots\).
+
+Chosen according to the objects we want to talk about, from a set \(U\).
+
+*** Variables (Placeholders)
+- Written \(x, y, z, \dots\) or \(x_1, x_2, x_3, \dots\).
+
+No fixed meaning; *placeholders* into which *constants* can be slotted.
+
+** Atomic formulae
+
+#+begin_quote
+*Definition 6.1:* An *atomic formula* is a predicate whose slots are filled with either variables or constants.
+#+end_quote
+
+** Quantifiers
+
+*Quantifiers* extend the statements we can make in ~FOL~.
+- Let \(M(x)\) = "x is mortal".
+
+*** Universal quantifier \(\forall\), "for all"
+
+- \((\forall x) M(x)\): "everything is mortal"
+- Read: "for all x, x is mortal" / "for each x, x is mortal"
+- *Note:* \(\forall\) only makes sense applied to a variable (\(\forall x\)), never on its own.
+
+*** Existential quantifier \(\exists\), "there exists"
+
+- \((\exists x) M(x)\): "there exists a mortal"
+- Read: "for some x, x is mortal" / "there exists an x such that x is mortal" / "there is at least one x such that x is mortal"
+- *Note:* \(\exists\) only makes sense applied to a variable (\(\exists x\)), never on its own.
+
+** Summary
+
+| Concept        | Role                                      | Notation           |
+|----------------+-------------------------------------------+--------------------|
+| Predicate      | Template for a statement; has an arity    | \(P(x,y)\)         |
+| Variable       | Placeholder / slot                        | \(x, y, z, \dots\) |
+| Constant       | A "name" from \(U\)                       | \(a, b, c, \dots\) |
+| Atomic formula | Predicate filled with variables/constants | \(P(a, x)\)        |
+| Universal q.   | "for all"                                 | \((\forall x)\)    |
+| Existential q. | "there exists"                            | \((\exists x)\)    |

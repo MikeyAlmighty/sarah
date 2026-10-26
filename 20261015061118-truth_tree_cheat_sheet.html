@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-26 Mon 05:42 -->
+<!-- 2026-10-26 Mon 07:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Truth Tree Cheat Sheet</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -274,13 +275,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Truth Tree Cheat Sheet</h1>
-<div id="outline-container-org60a705a" class="outline-2">
-<h2 id="org60a705a">Truth Tree Cheat Sheet</h2>
-<div class="outline-text-2" id="text-org60a705a">
+<div id="outline-container-orgd501f7e" class="outline-2">
+<h2 id="orgd501f7e">Truth Tree Cheat Sheet</h2>
+<div class="outline-text-2" id="text-orgd501f7e">
 </div>
-<div id="outline-container-org6efed2b" class="outline-3">
-<h3 id="org6efed2b">Quick idea</h3>
-<div class="outline-text-3" id="text-org6efed2b">
+<div id="outline-container-orgaee5b02" class="outline-3">
+<h3 id="orgaee5b02">Quick idea</h3>
+<div class="outline-text-3" id="text-orgaee5b02">
 <ul class="org-ul">
 <li>\(\alpha\) = "and": <b>non-branching</b>, stack both parts down the same branch.</li>
 <li>\(\beta\) = "or": <b>branching</b>, split into left and right branches.</li>
@@ -288,9 +289,9 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-org1fa2ee1" class="outline-3">
-<h3 id="org1fa2ee1">\(\alpha\)-rules (4, stack)</h3>
-<div class="outline-text-3" id="text-org1fa2ee1">
+<div id="outline-container-org20040f1" class="outline-3">
+<h3 id="org20040f1">\(\alpha\)-rules (4, stack)</h3>
+<div class="outline-text-3" id="text-org20040f1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -335,7 +336,7 @@
 </tbody>
 </table>
 
-<pre class="example" id="orge712074">
+<pre class="example" id="org2dd1bb5">
 X ∧ Y          ¬(X ∨ Y)         ¬(X → Y)          ¬¬X
   |               |                |                |
   X              ¬X                X                X
@@ -344,9 +345,9 @@ X ∧ Y          ¬(X ∨ Y)         ¬(X → Y)          ¬¬X
 </pre>
 </div>
 </div>
-<div id="outline-container-org54a9bd7" class="outline-3">
-<h3 id="org54a9bd7">\(\beta\)-rules (5, split)</h3>
-<div class="outline-text-3" id="text-org54a9bd7">
+<div id="outline-container-orga41fe1a" class="outline-3">
+<h3 id="orga41fe1a">\(\beta\)-rules (5, split)</h3>
+<div class="outline-text-3" id="text-orga41fe1a">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -397,7 +398,7 @@ X ∧ Y          ¬(X ∨ Y)         ¬(X → Y)          ¬¬X
 </tbody>
 </table>
 
-<pre class="example" id="org1666f35">
+<pre class="example" id="orgbaeb15d">
  X ∨ Y            ¬(X ∧ Y)           X → Y
  /   \             /    \            /   \
 X     Y          ¬X      ¬Y        ¬X     Y
@@ -410,9 +411,9 @@ X     Y          ¬X      ¬Y        ¬X     Y
 </pre>
 </div>
 </div>
-<div id="outline-container-orgaaca237" class="outline-3">
-<h3 id="orgaaca237">Rules of the game</h3>
-<div class="outline-text-3" id="text-orgaaca237">
+<div id="outline-container-org0c0ceed" class="outline-3">
+<h3 id="org0c0ceed">Rules of the game</h3>
+<div class="outline-text-3" id="text-org0c0ceed">
 <ul class="org-ul">
 <li>Tick (✓) a wff once used; work left to right.</li>
 <li>Close a branch (✗) as soon as an atom and its negation appear on it.</li>
@@ -421,9 +422,9 @@ X     Y          ¬X      ¬Y        ¬X     Y
 </ul>
 </div>
 </div>
-<div id="outline-container-org1761965" class="outline-3">
-<h3 id="org1761965">Reading the result</h3>
-<div class="outline-text-3" id="text-org1761965">
+<div id="outline-container-orgc4b8254" class="outline-3">
+<h3 id="orgc4b8254">Reading the result</h3>
+<div class="outline-text-3" id="text-orgc4b8254">
 <ul class="org-ul">
 <li>All branches closed: \(X\) is a <b>contradiction</b>.</li>
 <li>Some branch open: \(X\) is <b>satisfiable</b>. Set the literals on each open branch to \(T\); missing atoms are free.</li>
@@ -431,9 +432,9 @@ X     Y          ¬X      ¬Y        ¬X     Y
 </ul>
 </div>
 </div>
-<div id="outline-container-org9e078c6" class="outline-3">
-<h3 id="org9e078c6">Tautology check</h3>
-<div class="outline-text-3" id="text-org9e078c6">
+<div id="outline-container-org178cf64" class="outline-3">
+<h3 id="org178cf64">Tautology check</h3>
+<div class="outline-text-3" id="text-org178cf64">
 <p>
 To show \(A\) is a <b>tautology</b>, show \(\neg A\) is a <b>contradiction</b>:
 </p>

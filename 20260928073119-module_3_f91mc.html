@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-26 Mon 05:42 -->
+<!-- 2026-10-26 Mon 07:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Module 3</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,13 +243,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Module 3</h1>
-<div id="outline-container-org1550403" class="outline-2">
-<h2 id="org1550403">Module 3 - Propositional Logic Part 1</h2>
-<div class="outline-text-2" id="text-org1550403">
+<div id="outline-container-org7b4bda1" class="outline-2">
+<h2 id="org7b4bda1">Module 3 - Propositional Logic Part 1</h2>
+<div class="outline-text-2" id="text-org7b4bda1">
 </div>
-<div id="outline-container-orga5a9ce4" class="outline-3">
-<h3 id="orga5a9ce4">Key learning for this module:</h3>
-<div class="outline-text-3" id="text-orga5a9ce4">
+<div id="outline-container-orgc105587" class="outline-3">
+<h3 id="orgc105587">Key learning for this module:</h3>
+<div class="outline-text-3" id="text-orgc105587">
 <ul class="org-ul">
 <li>Understand <b>propositional logic</b> as a precise language for reasoning.</li>
 <li>Learn to build and interpret <b>truth tables</b>.</li>
@@ -256,9 +257,9 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc48b0f9" class="outline-3">
-<h3 id="orgc48b0f9">Key concepts for this module:</h3>
-<div class="outline-text-3" id="text-orgc48b0f9">
+<div id="outline-container-orgb4960e4" class="outline-3">
+<h3 id="orgb4960e4">Key concepts for this module:</h3>
+<div class="outline-text-3" id="text-orgb4960e4">
 <ul class="org-ul">
 <li><b>Atoms</b> or <b>basic statements</b> (<code>true</code> or <code>false</code>).</li>
 <li><b>Connectives</b></li>
@@ -269,21 +270,21 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-orge544462" class="outline-3">
-<h3 id="orge544462">Summary</h3>
-<div class="outline-text-3" id="text-orge544462">
+<div id="outline-container-org45a76ca" class="outline-3">
+<h3 id="org45a76ca">Summary</h3>
+<div class="outline-text-3" id="text-org45a76ca">
 </div>
-<div id="outline-container-org8717b9c" class="outline-4">
-<h4 id="org8717b9c"><a href="20260928074805-natural_languages_vs_artificial_languages.html#ID-e0c4adcb-1420-4489-9c23-96cbf16b67be">Natural Languages vs Artificial Languages</a></h4>
+<div id="outline-container-org76edf10" class="outline-4">
+<h4 id="org76edf10"><a href="20260928074805-natural_languages_vs_artificial_languages.html#ID-e0c4adcb-1420-4489-9c23-96cbf16b67be">Natural Languages vs Artificial Languages</a></h4>
 </div>
-<div id="outline-container-orgca6450a" class="outline-4">
-<h4 id="orgca6450a"><a href="20260928075447-atomic_statements_and_connectives.html#ID-e0ff6703-537c-402c-b96c-fa44bfe42a66">Atomic Statements and Connectives</a></h4>
+<div id="outline-container-org1568c0d" class="outline-4">
+<h4 id="org1568c0d"><a href="20260928075447-atomic_statements_and_connectives.html#ID-e0ff6703-537c-402c-b96c-fa44bfe42a66">Atomic Statements and Connectives</a></h4>
 </div>
-<div id="outline-container-orgd686f04" class="outline-4">
-<h4 id="orgd686f04"><a href="20260930064712-rules_for_constructing_statements_in_pl.html#ID-aecd0da0-a9f6-4f5e-9983-6cebd0298eaf">Rules for Constructing Statements in PL</a></h4>
+<div id="outline-container-org5299167" class="outline-4">
+<h4 id="org5299167"><a href="20260930064712-rules_for_constructing_statements_in_pl.html#ID-aecd0da0-a9f6-4f5e-9983-6cebd0298eaf">Rules for Constructing Statements in PL</a></h4>
 </div>
-<div id="outline-container-org14b5c61" class="outline-4">
-<h4 id="org14b5c61"><a href="20260930070927-the_satisfiability_problem_sat.html#ID-e239547b-f5cb-46e7-b322-5104d6d9b702">The Satisfiability Problem (SAT)</a></h4>
+<div id="outline-container-org323110f" class="outline-4">
+<h4 id="org323110f"><a href="20260930070927-the_satisfiability_problem_sat.html#ID-e239547b-f5cb-46e7-b322-5104d6d9b702">The Satisfiability Problem (SAT)</a></h4>
 </div>
 </div>
 </div>

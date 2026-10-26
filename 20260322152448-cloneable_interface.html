@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-26 Mon 05:42 -->
+<!-- 2026-10-26 Mon 07:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Cloneable Interface</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,9 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Cloneable Interface</h1>
-<div id="outline-container-org76fcad3" class="outline-2">
-<h2 id="org76fcad3">Cloneable Interface</h2>
-<div class="outline-text-2" id="text-org76fcad3">
+<div id="outline-container-orgbc2dd77" class="outline-2">
+<h2 id="orgbc2dd77">Cloneable Interface</h2>
+<div class="outline-text-2" id="text-orgbc2dd77">
 <p>
 The <code>Cloneable interface</code> specifies that an object can be <b>cloned</b>.
 </p>
@@ -261,17 +262,17 @@ To do this, you need to use the <code>clone method</code> and understand the <co
 An <a href="20240124071359-implementing_interfaces.html#ID-e1fb40df-c0b5-4c10-9704-39bac087c227">Interface</a> contains <b>constants</b> and <a href="20240120172537-declaring_abstract_methods.html#ID-3e6ed9f7-a719-4f68-94f0-29cb4914ebf2">abstract methods</a>, but the <code>Cloneable interface</code> is a <i>special case</i>.
 </p>
 </div>
-<div id="outline-container-orgdb1e3d6" class="outline-3">
-<h3 id="orgdb1e3d6">Definition</h3>
-<div class="outline-text-3" id="text-orgdb1e3d6">
+<div id="outline-container-orgfdf289f" class="outline-3">
+<h3 id="orgfdf289f">Definition</h3>
+<div class="outline-text-3" id="text-orgfdf289f">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">package</span> java.<span class="org-constant">lang</span>;
+<pre class="src src-java"><code><span class="org-keyword">package</span> java.<span class="org-constant">lang</span>;
 
 <span class="org-keyword">public</span> <span class="org-keyword">interface</span> <span class="org-type">Cloneable</span> {
 
 }
 
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -295,9 +296,9 @@ Thus, the <code>instances</code> of these <code>classes</code> can be <b>cloned<
 </p>
 </div>
 </div>
-<div id="outline-container-orgb8e81c9" class="outline-3">
-<h3 id="orgb8e81c9">Implementation</h3>
-<div class="outline-text-3" id="text-orgb8e81c9">
+<div id="outline-container-org4259cf2" class="outline-3">
+<h3 id="org4259cf2">Implementation</h3>
+<div class="outline-text-3" id="text-org4259cf2">
 <p>
 To properly implement <b>cloning</b>, follow these steps.
 </p>
@@ -309,11 +310,11 @@ To properly implement <b>cloning</b>, follow these steps.
 </ul>
 </div>
 </div>
-<div id="outline-container-org18ba6e8" class="outline-3">
-<h3 id="org18ba6e8">Example 1.</h3>
-<div class="outline-text-3" id="text-org18ba6e8">
+<div id="outline-container-orgd996c87" class="outline-3">
+<h3 id="orgd996c87">Example 1.</h3>
+<div class="outline-text-3" id="text-orgd996c87">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">class</span> <span class="org-type">Person</span> <span class="org-keyword">implements</span> <span class="org-type">Cloneable</span> {
+<pre class="src src-java"><code><span class="org-keyword">class</span> <span class="org-type">Person</span> <span class="org-keyword">implements</span> <span class="org-type">Cloneable</span> {
     <span class="org-type">String</span> <span class="org-variable-name">name</span>;
     <span class="org-type">int</span> <span class="org-variable-name">age</span>;
 
@@ -352,13 +353,13 @@ To properly implement <b>cloning</b>, follow these steps.
         }
     }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orga24607a" class="outline-3">
-<h3 id="orga24607a">When to Use</h3>
-<div class="outline-text-3" id="text-orga24607a">
+<div id="outline-container-org85b904e" class="outline-3">
+<h3 id="org85b904e">When to Use</h3>
+<div class="outline-text-3" id="text-org85b904e">
 <p>
 When to use <code>Cloneable</code>?
 </p>
@@ -369,11 +370,11 @@ When to use <code>Cloneable</code>?
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc952a48" class="outline-3">
-<h3 id="orgc952a48">Example 2.</h3>
-<div class="outline-text-3" id="text-orgc952a48">
+<div id="outline-container-orgbae5dfa" class="outline-3">
+<h3 id="orgbae5dfa">Example 2.</h3>
+<div class="outline-text-3" id="text-orgbae5dfa">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">House</span> <span class="org-keyword">implements</span> <span class="org-type">Cloneable</span>, <span class="org-type">Comparable</span>&lt;<span class="org-type">House</span>&gt; {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">House</span> <span class="org-keyword">implements</span> <span class="org-type">Cloneable</span>, <span class="org-type">Comparable</span>&lt;<span class="org-type">House</span>&gt; {
     <span class="org-keyword">private</span> <span class="org-type">int</span> <span class="org-variable-name">id</span>;
     <span class="org-keyword">private</span> <span class="org-type">double</span> <span class="org-variable-name">area</span>;
     <span class="org-keyword">private</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Date</span> <span class="org-variable-name">whenBuilt</span>;
@@ -421,7 +422,7 @@ When to use <code>Cloneable</code>?
     }
 }
 
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -433,8 +434,8 @@ The header for the <code>clone()</code> method defined in the Object class is:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">protected</span> <span class="org-keyword">native</span> <span class="org-type">Object</span> <span class="org-function-name">clone</span>() <span class="org-keyword">throws</span> <span class="org-type">CloneNotSupportedException</span>;
-</pre>
+<pre class="src src-java"><code><span class="org-keyword">protected</span> <span class="org-keyword">native</span> <span class="org-type">Object</span> <span class="org-function-name">clone</span>() <span class="org-keyword">throws</span> <span class="org-type">CloneNotSupportedException</span>;
+</code></pre>
 </div>
 
 <p>
@@ -470,9 +471,9 @@ You can now create an object of the <code>House</code> class and create an <i>id
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">House</span> <span class="org-variable-name">house1</span> = <span class="org-keyword">new</span> <span class="org-type">House</span>(1, 1750.50);
+<pre class="src src-java"><code><span class="org-type">House</span> <span class="org-variable-name">house1</span> = <span class="org-keyword">new</span> <span class="org-type">House</span>(1, 1750.50);
 <span class="org-type">House</span> <span class="org-variable-name">house2</span> = (<span class="org-type">House</span>)house1.clone();
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -483,9 +484,9 @@ You can now create an object of the <code>House</code> class and create an <i>id
 The <code>clone()</code> method in the <code>Object</code> class <b>copies</b> each field from the <i>original object</i> to the <i>target object</i>.
 </p>
 </div>
-<div id="outline-container-orgc8c4992" class="outline-4">
-<h4 id="orgc8c4992">Primitive</h4>
-<div class="outline-text-4" id="text-orgc8c4992">
+<div id="outline-container-org93cacc8" class="outline-4">
+<h4 id="org93cacc8">Primitive</h4>
+<div class="outline-text-4" id="text-org93cacc8">
 <p>
 If the field is of a <b>primitive type</b>, its <code>value</code> is <b>copied</b>.
 </p>
@@ -495,9 +496,9 @@ For example, the value of <code>area(double type)</code> is <b>copied</b> from <
 </p>
 </div>
 </div>
-<div id="outline-container-orgca95cf1" class="outline-4">
-<h4 id="orgca95cf1">Reference</h4>
-<div class="outline-text-4" id="text-orgca95cf1">
+<div id="outline-container-org97effce" class="outline-4">
+<h4 id="org97effce">Reference</h4>
+<div class="outline-text-4" id="text-org97effce">
 <p>
 If the field is of an <code>object</code>, the <b>reference</b> of the field is <b>copied</b>.
 </p>
@@ -511,9 +512,9 @@ Therefore,
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">house1.whenBuilt == house2.whenBuilt <span class="org-comment-delimiter">// </span><span class="org-comment">True although:
+<pre class="src src-java"><code>house1.whenBuilt == house2.whenBuilt <span class="org-comment-delimiter">// </span><span class="org-comment">True although:
 </span>house1 == house2 <span class="org-comment-delimiter">// </span><span class="org-comment">is false</span>
-</pre>
+</code></pre>
 </div>
 
 <p>

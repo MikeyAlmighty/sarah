@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-26 Mon 05:42 -->
+<!-- 2026-10-26 Mon 07:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Gates</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -274,13 +275,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Gates</h1>
-<div id="outline-container-org6944d9f" class="outline-2">
-<h2 id="org6944d9f">Gates</h2>
-<div class="outline-text-2" id="text-org6944d9f">
+<div id="outline-container-orgfce0f52" class="outline-2">
+<h2 id="orgfce0f52">Gates</h2>
+<div class="outline-text-2" id="text-orgfce0f52">
 </div>
-<div id="outline-container-org963e405" class="outline-3">
-<h3 id="org963e405">Overview</h3>
-<div class="outline-text-3" id="text-org963e405">
+<div id="outline-container-orgfbd585e" class="outline-3">
+<h3 id="orgfbd585e">Overview</h3>
+<div class="outline-text-3" id="text-orgfbd585e">
 <p>
 <b>Computer circuit</b> is a physical object consisting of the following powered by electricity:
 </p>
@@ -303,18 +304,18 @@ Computers use <b>binary logic</b> two values of some physical property (e.g. vol
 </ul>
 </div>
 </div>
-<div id="outline-container-orgcf9b2aa" class="outline-3">
-<h3 id="orgcf9b2aa">Circuits</h3>
-<div class="outline-text-3" id="text-orgcf9b2aa">
+<div id="outline-container-org76bfc9e" class="outline-3">
+<h3 id="org76bfc9e">Circuits</h3>
+<div class="outline-text-3" id="text-org76bfc9e">
 <ul class="org-ul">
 <li><b>Combinational circuits</b>: no internal memory. To a first approximation, just Boolean functions \(f : \mathbb{B}^m \to \mathbb{B}^n\).</li>
 <li><b>Sequential circuits</b>: have internal memory.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org625d0d7" class="outline-3">
-<h3 id="org625d0d7">How gates build circuits</h3>
-<div class="outline-text-3" id="text-org625d0d7">
+<div id="outline-container-orga192d25" class="outline-3">
+<h3 id="orga192d25">How gates build circuits</h3>
+<div class="outline-text-3" id="text-orga192d25">
 <p>
 Let \(C\) be a <b>combinational circuit</b> with \(m\) <i>input</i> wires and \(n\) <i>output</i> wires.
 </p>
@@ -331,9 +332,9 @@ It can be viewed as \(n\) <b>circuits</b> \(C_1, \dots, C_n\), each with \(m\) <
 <li>Such functions are described by an <b>input/output table</b>.</li>
 </ul>
 </div>
-<div id="outline-container-orgf8452db" class="outline-4">
-<h4 id="orgf8452db">Example:</h4>
-<div class="outline-text-4" id="text-orgf8452db">
+<div id="outline-container-orgc3ff72a" class="outline-4">
+<h4 id="orgc3ff72a">Example:</h4>
+<div class="outline-text-4" id="text-orgc3ff72a">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -414,9 +415,9 @@ It can be viewed as \(n\) <b>circuits</b> \(C_1, \dots, C_n\), each with \(m\) <
 </table>
 </div>
 </div>
-<div id="outline-container-org6d338b4" class="outline-4">
-<h4 id="org6d338b4">Goal</h4>
-<div class="outline-text-4" id="text-org6d338b4">
+<div id="outline-container-org1b0ec0b" class="outline-4">
+<h4 id="org1b0ec0b">Goal</h4>
+<div class="outline-text-4" id="text-org1b0ec0b">
 <p>
 Show that any such Boolean function can be constructed from simpler Boolean functions called <b>gates</b>.
 </p>
@@ -427,9 +428,9 @@ We begin with the three basic ones.
 </div>
 </div>
 </div>
-<div id="outline-container-orgced8635" class="outline-3">
-<h3 id="orgced8635">Basic gates</h3>
-<div class="outline-text-3" id="text-orgced8635">
+<div id="outline-container-org6d10416" class="outline-3">
+<h3 id="org6d10416">Basic gates</h3>
+<div class="outline-text-3" id="text-org6d10416">
 <ul class="org-ul">
 <li><b>and-gate</b>: \(\mathbb{B}^2 \to \mathbb{B}\), \((x, y) \mapsto x \cdot y\)</li>
 <li><b>or-gate</b>: \(\mathbb{B}^2 \to \mathbb{B}\), \((x, y) \mapsto x + y\)</li>

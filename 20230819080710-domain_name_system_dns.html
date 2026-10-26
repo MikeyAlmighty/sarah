@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-26 Mon 05:42 -->
+<!-- 2026-10-26 Mon 07:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Domain Name System (DNS)</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -257,22 +258,22 @@ This process is called <a href="20230822085135-name_resolution.html#ID-3e540e6d-
 <p>
 <a href="20230822092116-dns_ttl.html#ID-a1f5402c-78da-4b9a-b620-823327ff6c0b">DNS TTL</a>
 </p>
-<div id="outline-container-org6e55053" class="outline-2">
-<h2 id="org6e55053">Primary Types of DNS</h2>
-<div class="outline-text-2" id="text-org6e55053">
+<div id="outline-container-org30674b5" class="outline-2">
+<h2 id="org30674b5">Primary Types of DNS</h2>
+<div class="outline-text-2" id="text-org30674b5">
 </div>
-<div id="outline-container-orge44324d" class="outline-3">
-<h3 id="orge44324d">1. Caching Name Servers</h3>
-<div class="outline-text-3" id="text-orge44324d">
+<div id="outline-container-orga3e7309" class="outline-3">
+<h3 id="orga3e7309">1. Caching Name Servers</h3>
+<div class="outline-text-3" id="text-orga3e7309">
 <p>
 (Provided by ISP)
 Store known domain lookups for a certain amount of time.
 </p>
 </div>
 </div>
-<div id="outline-container-org5d1a7fc" class="outline-3">
-<h3 id="org5d1a7fc">2. Recursive Name Servers</h3>
-<div class="outline-text-3" id="text-org5d1a7fc">
+<div id="outline-container-orged7bed0" class="outline-3">
+<h3 id="orged7bed0">2. Recursive Name Servers</h3>
+<div class="outline-text-3" id="text-orged7bed0">
 <p>
 (Provided by ISP)
 Store known domain lookups for a certain amount of time.
@@ -280,36 +281,36 @@ Performs full <a href="20230819080710-domain_name_system_dns.html#ID-8af929df-ea
 </p>
 </div>
 </div>
-<div id="outline-container-orgdd429d2" class="outline-3">
-<h3 id="orgdd429d2">3. Root Name Servers</h3>
-<div class="outline-text-3" id="text-orgdd429d2">
+<div id="outline-container-org3bcafbd" class="outline-3">
+<h3 id="org3bcafbd">3. Root Name Servers</h3>
+<div class="outline-text-3" id="text-org3bcafbd">
 <p>
 A name server for the root zone of the Domain Name System of the Internet.
 </p>
 </div>
 </div>
-<div id="outline-container-org479fa2d" class="outline-3">
-<h3 id="org479fa2d">4. <a href="20230822090135-top_level_domain.html#ID-d038356e-bc16-4910-8e1e-22c65d774fda">Top-Level Domain (TLD)</a> Name Servers</h3>
-<div class="outline-text-3" id="text-org479fa2d">
+<div id="outline-container-orga30c202" class="outline-3">
+<h3 id="orga30c202">4. <a href="20230822090135-top_level_domain.html#ID-d038356e-bc16-4910-8e1e-22c65d774fda">Top-Level Domain (TLD)</a> Name Servers</h3>
+<div class="outline-text-3" id="text-orga30c202">
 <p>
 <a href="20230822090010-anycast.html#ID-e2102c67-5477-4920-bb3d-b9425718ad53">Anycast</a>
 </p>
 </div>
 </div>
-<div id="outline-container-org13f50b7" class="outline-3">
-<h3 id="org13f50b7">5. Authoritative Name Servers</h3>
+<div id="outline-container-org77701dd" class="outline-3">
+<h3 id="org77701dd">5. Authoritative Name Servers</h3>
 </div>
 </div>
-<div id="outline-container-orgafba6ca" class="outline-2">
-<h2 id="orgafba6ca"><a href="20230822182849-resource_record_types.html#ID-287e1cc3-52af-4aba-86b1-a378e725315a">Resource Record Types</a></h2>
+<div id="outline-container-orgee0bddf" class="outline-2">
+<h2 id="orgee0bddf"><a href="20230822182849-resource_record_types.html#ID-287e1cc3-52af-4aba-86b1-a378e725315a">Resource Record Types</a></h2>
 </div>
-<div id="outline-container-org78686c0" class="outline-2">
-<h2 id="org78686c0"><a href="20230822184138-dns_zones.html#ID-6b8967d4-8919-46d9-b8d8-49c24464be4a">DNS Zones</a></h2>
+<div id="outline-container-org8575489" class="outline-2">
+<h2 id="org8575489"><a href="20230822184138-dns_zones.html#ID-6b8967d4-8919-46d9-b8d8-49c24464be4a">DNS Zones</a></h2>
 </div>
 
-<div id="outline-container-org5a11f71" class="outline-2">
-<h2 id="org5a11f71"><a href="20230823180942-public_dns_server.html#ID-136b81b9-12d0-41d4-86f6-cfaa5af2b837">Public DNS Server</a></h2>
-<div class="outline-text-2" id="text-org5a11f71">
+<div id="outline-container-orgbf30b06" class="outline-2">
+<h2 id="orgbf30b06"><a href="20230823180942-public_dns_server.html#ID-136b81b9-12d0-41d4-86f6-cfaa5af2b837">Public DNS Server</a></h2>
+<div class="outline-text-2" id="text-orgbf30b06">
 <p>
 <a href="20230826074750-dns_setup.html#ID-3da99872-8673-4be1-87dd-12b40e5d9a4c">DNS Setup</a>
 </p>

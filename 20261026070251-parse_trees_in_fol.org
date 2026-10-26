@@ -1,0 +1,80 @@
+:PROPERTIES:
+:ID:       24b7e630-4f33-4201-bcd6-9fb0dc33bdd3
+:END:
+#+title: Parse trees in FOL
+
+* Parse trees in FOL
+
+** Overview
+
+*Parse trees* for ~FOL~ formulae use the same rules for parsing connectives as for *wff* in ~PL~, plus new rules for:
+- Parsing *atomic formulae*
+- Parsing \((\forall x)X\) and \((\exists x)X\)
+
+** Parsing atomic formulae
+
+- Draw a circle containing the *predicate letter*.
+- Attach a *leaf* to that circle for every *term* in the atomic formula.
+
+*** Example: \(P(x_1, x_2, a)\)
+
+#+begin_example
+        (P)
+       / | \
+      /  |  \
+   (x1) (x2) (a)
+#+end_example
+
+** Parsing quantified formulae
+
+Parsed the same way as \(\neg X\):
+- Put the quantifier in a circle and attach \(X\) below it with a vertical line.
+
+*** Universal: \((\forall x)X\)
+
+#+begin_example
+   (∀x)
+     |
+    (X)
+#+end_example
+
+*** Existential: \((\exists x)X\)
+
+#+begin_example
+   (∃x)
+     |
+    (X)
+#+end_example
+
+** Example
+
+Formula: \((\forall x)[(P(x) \rightarrow Q(x)) \wedge S(x, y)]\)
+
+#+begin_example
+          (∀x)
+            |
+           (∧)
+          /   \
+        (→)   (S)
+        / \   / \
+      (P) (Q)(x) (y)
+       |   |
+      (x) (x)
+#+end_example
+
+*** Reading the tree
+
+- Root is \(\forall x\), with a single child: the whole bracketed formula.
+- \(\wedge\) is the main connective inside the quantifier, splitting into \(P(x) \rightarrow Q(x)\) and \(S(x, y)\).
+- \(\rightarrow\) splits into the atomic formulae \(P(x)\) and \(Q(x)\).
+- *Atomic formulae* are circles with the *predicate letter*, each term hanging below as a *leaf*.
+
+** Summary
+
+| Formula             | Node             | Children                   |
+|---------------------+------------------+----------------------------|
+| Atomic              | predicate letter | one leaf per term          |
+| \((\forall x)X\)    | \(\forall x\)    | one child: \(X\)           |
+| \((\exists x)X\)    | \(\exists x\)    | one child: \(X\)           |
+| \(\neg X\)          | \(\neg\)         | one child: \(X\)           |
+| \(X \wedge Y\) etc. | connective       | two children: \(X\), \(Y\) |

@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-26 Mon 05:42 -->
+<!-- 2026-10-26 Mon 07:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Scanner under the hood</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,13 +243,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Scanner under the hood</h1>
-<div id="outline-container-org1d81d4b" class="outline-2">
-<h2 id="org1d81d4b">Scanner under the hood</h2>
-<div class="outline-text-2" id="text-org1d81d4b">
+<div id="outline-container-org62f9cb0" class="outline-2">
+<h2 id="org62f9cb0">Scanner under the hood</h2>
+<div class="outline-text-2" id="text-org62f9cb0">
 </div>
-<div id="outline-container-org4e8f9a2" class="outline-3">
-<h3 id="org4e8f9a2">Core Idea</h3>
-<div class="outline-text-3" id="text-org4e8f9a2">
+<div id="outline-container-orgec17c61" class="outline-3">
+<h3 id="orgec17c61">Core Idea</h3>
+<div class="outline-text-3" id="text-orgec17c61">
 <ul class="org-ul">
 <li>Scanner supports <b>token-based</b> and <b>line-based</b> input:
 <ul class="org-ul">
@@ -258,9 +259,9 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-orgffb365a" class="outline-3">
-<h3 id="orgffb365a">Token-Based Input Methods</h3>
-<div class="outline-text-3" id="text-orgffb365a">
+<div id="outline-container-orgfce6b78" class="outline-3">
+<h3 id="orgfce6b78">Token-Based Input Methods</h3>
+<div class="outline-text-3" id="text-orgfce6b78">
 <ul class="org-ul">
 <li>Methods:
 <ul class="org-ul">
@@ -284,9 +285,9 @@
 </ul></li>
 </ul>
 </div>
-<div id="outline-container-org0c6fea2" class="outline-4">
-<h4 id="org0c6fea2">Delimiters</h4>
-<div class="outline-text-4" id="text-org0c6fea2">
+<div id="outline-container-orgd79bdb1" class="outline-4">
+<h4 id="orgd79bdb1">Delimiters</h4>
+<div class="outline-text-4" id="text-orgd79bdb1">
 <ul class="org-ul">
 <li>Default: <b>whitespace</b></li>
 <li>Custom:
@@ -296,18 +297,18 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-org7e2b7ca" class="outline-4">
-<h4 id="org7e2b7ca">Exceptions</h4>
-<div class="outline-text-4" id="text-org7e2b7ca">
+<div id="outline-container-org45f811c" class="outline-4">
+<h4 id="org45f811c">Exceptions</h4>
+<div class="outline-text-4" id="text-org45f811c">
 <ul class="org-ul">
 <li>If token doesn't match expected type: <code>java.util.InputMismatchException</code></li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-org0242198" class="outline-3">
-<h3 id="org0242198">Line-Based Input</h3>
-<div class="outline-text-3" id="text-org0242198">
+<div id="outline-container-org9579b14" class="outline-3">
+<h3 id="org9579b14">Line-Based Input</h3>
+<div class="outline-text-3" id="text-org9579b14">
 <ul class="org-ul">
 <li><code>nextLine()</code>:
 <ul class="org-ul">
@@ -316,9 +317,9 @@
 </ul></li>
 </ul>
 </div>
-<div id="outline-container-org5f36c51" class="outline-4">
-<h4 id="org5f36c51">Line Separators</h4>
-<div class="outline-text-4" id="text-org5f36c51">
+<div id="outline-container-orgaabf8bf" class="outline-4">
+<h4 id="orgaabf8bf">Line Separators</h4>
+<div class="outline-text-4" id="text-orgaabf8bf">
 <ul class="org-ul">
 <li>Platform dependent:
 <ul class="org-ul">
@@ -332,9 +333,9 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-orgefc92e7" class="outline-4">
-<h4 id="orgefc92e7">Important Behavior</h4>
-<div class="outline-text-4" id="text-orgefc92e7">
+<div id="outline-container-orgb672aea" class="outline-4">
+<h4 id="orgb672aea">Important Behavior</h4>
+<div class="outline-text-4" id="text-orgb672aea">
 <ul class="org-ul">
 <li><b>Token-based</b> methods DO NOT consume the <code>delimiter</code>.</li>
 <li><code>nextLine()</code> reads:
@@ -345,17 +346,17 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-orgac51ad6" class="outline-4">
-<h4 id="orgac51ad6">Common Pitfall</h4>
-<div class="outline-text-4" id="text-orgac51ad6">
+<div id="outline-container-org0793b86" class="outline-4">
+<h4 id="org0793b86">Common Pitfall</h4>
+<div class="outline-text-4" id="text-org0793b86">
 <ul class="org-ul">
 <li>Mixing <code>nextInt()</code> (or other token methods) with <code>nextLine()</code></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org84b2e19" class="outline-4">
-<h4 id="org84b2e19">Example (File Input)</h4>
-<div class="outline-text-4" id="text-org84b2e19">
+<div id="outline-container-org946d212" class="outline-4">
+<h4 id="org946d212">Example (File Input)</h4>
+<div class="outline-text-4" id="text-org946d212">
 <ul class="org-ul">
 <li>File content:
 <code>34 567</code></li>
@@ -364,9 +365,9 @@
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">int</span> <span class="org-variable-name">intValue</span> = input.nextInt();
+<pre class="src src-java"><code><span class="org-type">int</span> <span class="org-variable-name">intValue</span> = input.nextInt();
 <span class="org-type">String</span> <span class="org-variable-name">line</span> = input.nextLine();
-</pre>
+</code></pre>
 </div>
 
 <ul class="org-ul">
@@ -374,15 +375,15 @@
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-shell">intValue = 34
-line = <span class="org-string">" 567"</span> (leading space included)
-</pre>
+<pre class="src src-shell"><code><span class="org-variable-name">intValue</span> = 34
+<span class="org-variable-name">line</span> = <span class="org-string">" 567"</span> (leading space included)
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgae02939" class="outline-4">
-<h4 id="orgae02939">Example (Keyboard Input)</h4>
-<div class="outline-text-4" id="text-orgae02939">
+<div id="outline-container-orgbc7ad33" class="outline-4">
+<h4 id="orgbc7ad33">Example (Keyboard Input)</h4>
+<div class="outline-text-4" id="text-orgbc7ad33">
 <ul class="org-ul">
 <li><p>
 Input:
@@ -397,15 +398,15 @@ Input:
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-shell">- intValue = 34
-- line = <span class="org-string">""</span> (empty string)
-</pre>
+<pre class="src src-shell"><code>- <span class="org-variable-name">intValue</span> = 34
+- <span class="org-variable-name">line</span> = <span class="org-string">""</span> (empty string)
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org12c747b" class="outline-4">
-<h4 id="org12c747b">Reason</h4>
-<div class="outline-text-4" id="text-org12c747b">
+<div id="outline-container-orgbee7144" class="outline-4">
+<h4 id="orgbee7144">Reason</h4>
+<div class="outline-text-4" id="text-orgbee7144">
 <ul class="org-ul">
 <li><code>nextInt()</code> stops at newline (<b>delimiter</b>)</li>
 <li><code>nextLine()</code> reads the leftover newline → returns <b>empty string</b></li>
@@ -413,18 +414,18 @@ Input:
 </div>
 </div>
 </div>
-<div id="outline-container-org0be4e0b" class="outline-3">
-<h3 id="org0be4e0b">Best Practice</h3>
-<div class="outline-text-3" id="text-org0be4e0b">
+<div id="outline-container-orgfad0819" class="outline-3">
+<h3 id="orgfad0819">Best Practice</h3>
+<div class="outline-text-3" id="text-orgfad0819">
 <ul class="org-ul">
 <li>Avoid mixing <b>token-based</b> and <b>line-based input</b></li>
 <li>Or consume leftover newline before calling <code>nextLine()</code></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org09a944f" class="outline-3">
-<h3 id="org09a944f">Additional Capability</h3>
-<div class="outline-text-3" id="text-org09a944f">
+<div id="outline-container-org266a041" class="outline-3">
+<h3 id="org266a041">Additional Capability</h3>
+<div class="outline-text-3" id="text-org266a041">
 <ul class="org-ul">
 <li>Scanner can read from:
 <ul class="org-ul">

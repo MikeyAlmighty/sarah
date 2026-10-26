@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-26 Mon 05:42 -->
+<!-- 2026-10-26 Mon 07:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Rules for Constructing Statements in PL</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -274,13 +275,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Rules for Constructing Statements in PL</h1>
-<div id="outline-container-org9192027" class="outline-2">
-<h2 id="org9192027">Rules for Constructing Statements in PL</h2>
-<div class="outline-text-2" id="text-org9192027">
+<div id="outline-container-orgae26c93" class="outline-2">
+<h2 id="orgae26c93">Rules for Constructing Statements in PL</h2>
+<div class="outline-text-2" id="text-orgae26c93">
 </div>
-<div id="outline-container-orge9c5a34" class="outline-3">
-<h3 id="orge9c5a34">Overview</h3>
-<div class="outline-text-3" id="text-orge9c5a34">
+<div id="outline-container-orgb093614" class="outline-3">
+<h3 id="orgb093614">Overview</h3>
+<div class="outline-text-3" id="text-orgb093614">
 <p>
 Not every sequence of <a href="20260928080520-atomic_statements.html#ID-1658d69f-1ee5-4ddd-bda3-f38cf1ab6d7f">Atoms</a> and <a href="20260928080440-connectives.html#ID-347dfbd0-6fb3-4cb9-ac7f-30efd593e008">Connectives</a> is grammatically correct.
 </p>
@@ -290,17 +291,17 @@ Grammatically correct statements in PL are <a href="20260930065009-well_formed_f
 </p>
 </div>
 </div>
-<div id="outline-container-orgfe8bed4" class="outline-3">
-<h3 id="orgfe8bed4">Terminology</h3>
-<div class="outline-text-3" id="text-orgfe8bed4">
+<div id="outline-container-orgdd78425" class="outline-3">
+<h3 id="orgdd78425">Terminology</h3>
+<div class="outline-text-3" id="text-orgdd78425">
 <ul class="org-ul">
 <li>A WFF that is <b>not</b> an <a href="20260928080520-atomic_statements.html#ID-1658d69f-1ee5-4ddd-bda3-f38cf1ab6d7f">atom</a> is said to be a <b>Compound statement</b>.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org00798ef" class="outline-3">
-<h3 id="org00798ef">Rules for wff</h3>
-<div class="outline-text-3" id="text-org00798ef">
+<div id="outline-container-org26e1ee1" class="outline-3">
+<h3 id="org26e1ee1">Rules for wff</h3>
+<div class="outline-text-3" id="text-org26e1ee1">
 <ul class="org-ul">
 <li><b>Rule 1:</b> All atoms are wff.</li>
 <li><b>Rule 2:</b> If \(X\) and \(Y\) are wff, then so are:
@@ -316,9 +317,9 @@ Grammatically correct statements in PL are <a href="20260930065009-well_formed_f
 </ul>
 </div>
 </div>
-<div id="outline-container-org383baa3" class="outline-3">
-<h3 id="org383baa3">Example: building a WFF</h3>
-<div class="outline-text-3" id="text-org383baa3">
+<div id="outline-container-orgf21b74f" class="outline-3">
+<h3 id="orgf21b74f">Example: building a WFF</h3>
+<div class="outline-text-3" id="text-orgf21b74f">
 <p>
 Show that \((\neg((p \lor q) \land r))\) is a WFF.
 </p>
@@ -330,9 +331,9 @@ Show that \((\neg((p \lor q) \land r))\) is a WFF.
 </ol>
 </div>
 </div>
-<div id="outline-container-orgef14c3e" class="outline-3">
-<h3 id="orgef14c3e">Bracket conventions</h3>
-<div class="outline-text-3" id="text-orgef14c3e">
+<div id="outline-container-org030815b" class="outline-3">
+<h3 id="org030815b">Bracket conventions</h3>
+<div class="outline-text-3" id="text-org030815b">
 <ul class="org-ul">
 <li>Brackets during step-by-step construction guarantee correct interpretation.</li>
 <li><b>Outer brackets are omitted</b> in this course:
@@ -345,9 +346,9 @@ Show that \((\neg((p \lor q) \land r))\) is a WFF.
 </ul>
 </div>
 </div>
-<div id="outline-container-org9d12de0" class="outline-3">
-<h3 id="org9d12de0">Size of a truth table</h3>
-<div class="outline-text-3" id="text-org9d12de0">
+<div id="outline-container-orgc9bd038" class="outline-3">
+<h3 id="orgc9bd038">Size of a truth table</h3>
+<div class="outline-text-3" id="text-orgc9bd038">
 <ul class="org-ul">
 <li>Let \(n\) be the number of atoms in a WFF.</li>
 <li>Each atom has 2 possible truth values (<code>T</code> or <code>F</code>).</li>
@@ -362,9 +363,9 @@ Show that \((\neg((p \lor q) \land r))\) is a WFF.
 </ul>
 </div>
 </div>
-<div id="outline-container-org531ba49" class="outline-3">
-<h3 id="org531ba49">Key points</h3>
-<div class="outline-text-3" id="text-org531ba49">
+<div id="outline-container-orga5a4790" class="outline-3">
+<h3 id="orga5a4790">Key points</h3>
+<div class="outline-text-3" id="text-orga5a4790">
 <ul class="org-ul">
 <li>Rule 3 is the closure rule: nothing is a WFF unless built by Rules 1 and 2.</li>
 <li>\(\neg\) binds tightest when brackets are dropped.</li>

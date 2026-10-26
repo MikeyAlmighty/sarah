@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-26 Mon 05:42 -->
+<!-- 2026-10-26 Mon 07:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Creating an Array of Primitives</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,23 +243,23 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Creating an Array of Primitives</h1>
-<div id="outline-container-orgfb2c110" class="outline-2">
-<h2 id="orgfb2c110">Creating an Array of Primitives</h2>
-<div class="outline-text-2" id="text-orgfb2c110">
+<div id="outline-container-org1f47586" class="outline-2">
+<h2 id="org1f47586">Creating an Array of Primitives</h2>
+<div class="outline-text-2" id="text-org1f47586">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">int - Type of Array
+<pre class="src src-java"><code><span class="org-comment-delimiter">// </span><span class="org-comment">int - Type of Array
 </span><span class="org-comment-delimiter">// </span><span class="org-comment">3 - size of array
 </span><span class="org-type">int</span>[] <span class="org-variable-name">numbers</span> = <span class="org-keyword">new</span> <span class="org-type">int</span>[3];
-</pre>
+</code></pre>
 </div>
 
 <p>
 When you use this form to <b>instantiate</b> an <code>array</code>, all elements are set to the <b>default value</b> for that <code>type</code>.
 </p>
 </div>
-<div id="outline-container-org9fb6cce" class="outline-3">
-<h3 id="org9fb6cce">Default Types</h3>
-<div class="outline-text-3" id="text-org9fb6cce">
+<div id="outline-container-org1cc3bc7" class="outline-3">
+<h3 id="org1cc3bc7">Default Types</h3>
+<div class="outline-text-3" id="text-org1cc3bc7">
 <ul class="org-ul">
 <li>Numeric = <code>0</code></li>
 <li>Char = <code>\u0000</code></li>
@@ -266,9 +267,9 @@ When you use this form to <b>instantiate</b> an <code>array</code>, all elements
 </ul>
 </div>
 </div>
-<div id="outline-container-org17c6dfd" class="outline-3">
-<h3 id="org17c6dfd">Anonymous Array (Array Initializer)</h3>
-<div class="outline-text-3" id="text-org17c6dfd">
+<div id="outline-container-org6435127" class="outline-3">
+<h3 id="org6435127">Anonymous Array (Array Initializer)</h3>
+<div class="outline-text-3" id="text-org6435127">
 <p>
 Java recognizes that this expression is redundant.
 </p>
@@ -277,20 +278,20 @@ Java recognizes that this expression is redundant.
 <li>And since you are specifying the <b>initial values</b>, it already knows the <code>size</code>.</li>
 </ul>
 </div>
-<div id="outline-container-org93ee6c8" class="outline-4">
-<h4 id="org93ee6c8">Example</h4>
-<div class="outline-text-4" id="text-org93ee6c8">
+<div id="outline-container-org0c9a779" class="outline-4">
+<h4 id="org0c9a779">Example</h4>
+<div class="outline-text-4" id="text-org0c9a779">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">int</span>[] <span class="org-variable-name">moreNumbers</span> = <span class="org-keyword">new</span> <span class="org-type">int</span>[] {42, 55, 99};
-</pre>
+<pre class="src src-java"><code><span class="org-type">int</span>[] <span class="org-variable-name">moreNumbers</span> = <span class="org-keyword">new</span> <span class="org-type">int</span>[] {42, 55, 99};
+</code></pre>
 </div>
 </div>
 <ul class="org-ul">
-<li><a id="org9606871"></a>Example<br />
-<div class="outline-text-5" id="text-org9606871">
+<li><a id="org664e1e3"></a>Example<br />
+<div class="outline-text-5" id="text-org664e1e3">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">int</span>[] <span class="org-variable-name">moreNumbers</span> = {42, 55, 99};
-</pre>
+<pre class="src src-java"><code><span class="org-type">int</span>[] <span class="org-variable-name">moreNumbers</span> = {42, 55, 99};
+</code></pre>
 </div>
 
 <p>
@@ -309,33 +310,33 @@ This approach is called an <code>anonymous array</code>, it is <b>anonymous</b> 
 </ul>
 </div>
 </div>
-<div id="outline-container-org8b0edae" class="outline-3">
-<h3 id="org8b0edae">Multiple Array Declaration</h3>
-<div class="outline-text-3" id="text-org8b0edae">
+<div id="outline-container-orge03ece8" class="outline-3">
+<h3 id="orge03ece8">Multiple Array Declaration</h3>
+<div class="outline-text-3" id="text-orge03ece8">
 </div>
-<div id="outline-container-org34a9b3d" class="outline-4">
-<h4 id="org34a9b3d">Example</h4>
-<div class="outline-text-4" id="text-org34a9b3d">
+<div id="outline-container-orgecb7fcd" class="outline-4">
+<h4 id="orgecb7fcd">Example</h4>
+<div class="outline-text-4" id="text-orgecb7fcd">
 <ul class="org-ul">
 <li><b>Two</b> <code>int</code> <code>Arrays</code></li>
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">int</span>[] <span class="org-variable-name">ids</span>, <span class="org-variable-name">types</span>;
-</pre>
+<pre class="src src-java"><code><span class="org-type">int</span>[] <span class="org-variable-name">ids</span>, <span class="org-variable-name">types</span>;
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org64a4e31" class="outline-4">
-<h4 id="org64a4e31"><span class="underline">Exam Trick</span></h4>
-<div class="outline-text-4" id="text-org64a4e31">
+<div id="outline-container-org9dbc868" class="outline-4">
+<h4 id="org9dbc868"><span class="underline">Exam Trick</span></h4>
+<div class="outline-text-4" id="text-org9dbc868">
 <ul class="org-ul">
 <li><b>One</b> <code>int</code> array and one type <code>int</code></li>
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">int</span> <span class="org-variable-name">ids</span>[], <span class="org-variable-name">types</span>;
-</pre>
+<pre class="src src-java"><code><span class="org-type">int</span> <span class="org-variable-name">ids</span>[], <span class="org-variable-name">types</span>;
+</code></pre>
 </div>
 
 <p>

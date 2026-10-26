@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-26 Mon 05:42 -->
+<!-- 2026-10-26 Mon 07:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Copying Arrays</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,15 +243,15 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Copying Arrays</h1>
-<div id="outline-container-orgcf5f820" class="outline-2">
-<h2 id="orgcf5f820">Copying Arrays</h2>
-<div class="outline-text-2" id="text-orgcf5f820">
+<div id="outline-container-orgceda554" class="outline-2">
+<h2 id="orgceda554">Copying Arrays</h2>
+<div class="outline-text-2" id="text-orgceda554">
 </div>
-<div id="outline-container-org6278298" class="outline-3">
-<h3 id="org6278298">1. Using a Loop</h3>
-<div class="outline-text-3" id="text-org6278298">
+<div id="outline-container-org7125c62" class="outline-3">
+<h3 id="org7125c62">1. Using a Loop</h3>
+<div class="outline-text-3" id="text-org7125c62">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) <span class="org-keyword">throws</span> <span class="org-type">Exception</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) <span class="org-keyword">throws</span> <span class="org-type">Exception</span> {
     <span class="org-type">int</span>[] <span class="org-variable-name">sourceArray</span> = { 2, 3, 1, 5, 10 };
     <span class="org-type">int</span>[] <span class="org-variable-name">targetArray</span> = <span class="org-keyword">new</span> <span class="org-type">int</span>[sourceArray.length];
 
@@ -258,23 +259,23 @@
         targetArray[i] = sourceArray[i];
     }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org46f1087" class="outline-3">
-<h3 id="org46f1087">2. Using arraycopy</h3>
-<div class="outline-text-3" id="text-org46f1087">
+<div id="outline-container-orgb8a5e57" class="outline-3">
+<h3 id="orgb8a5e57">2. Using arraycopy</h3>
+<div class="outline-text-3" id="text-orgb8a5e57">
 <ul class="org-ul">
 <li>Imported from <code>java.lang.System</code></li>
 </ul>
 </div>
-<div id="outline-container-orgc027918" class="outline-4">
-<h4 id="orgc027918">Syntax</h4>
-<div class="outline-text-4" id="text-orgc027918">
+<div id="outline-container-org58ea80b" class="outline-4">
+<h4 id="org58ea80b">Syntax</h4>
+<div class="outline-text-4" id="text-org58ea80b">
 <div class="org-src-container">
-<pre class="src src-java">arraycopy(<span class="org-type">sourceArray</span>, <span class="org-type">sourcePosition</span>, <span class="org-type">targetArray</span>, <span class="org-type">targetPosition</span>, <span class="org-type">length</span>);
-</pre>
+<pre class="src src-java"><code>arraycopy(<span class="org-type">sourceArray</span>, <span class="org-type">sourcePosition</span>, <span class="org-type">targetArray</span>, <span class="org-type">targetPosition</span>, <span class="org-type">length</span>);
+</code></pre>
 </div>
 
 <ul class="org-ul">
@@ -283,10 +284,10 @@
 </ul>
 </div>
 <ul class="org-ul">
-<li><a id="org120f9cb"></a>Example<br />
-<div class="outline-text-5" id="text-org120f9cb">
+<li><a id="orgad2a34c"></a>Example<br />
+<div class="outline-text-5" id="text-orgad2a34c">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Arrays</span>;
+<pre class="src src-java"><code><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">util</span>.<span class="org-type">Arrays</span>;
 
 <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) <span class="org-keyword">throws</span> <span class="org-type">Exception</span> {
     <span class="org-type">int</span>[] <span class="org-variable-name">sourceArray</span> = { 2, 3, 1, 5, 10 };
@@ -296,7 +297,7 @@
 
     System.out.println(Arrays.toString(targetArray));
 }
-</pre>
+</code></pre>
 </div>
 
 <ul class="org-ul">
@@ -309,9 +310,9 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-org3a05680" class="outline-3">
-<h3 id="org3a05680">3. Using Clone()</h3>
-<div class="outline-text-3" id="text-org3a05680">
+<div id="outline-container-org73b08c0" class="outline-3">
+<h3 id="org73b08c0">3. Using Clone()</h3>
+<div class="outline-text-3" id="text-org73b08c0">
 <p>
 The <code>clone()</code> method creates a <b>shallow</b> copy of the array.
 </p>
@@ -327,11 +328,11 @@ The <code>clone()</code> method creates a <b>shallow</b> copy of the array.
 <li>If the original array contains <code>objects</code>, both arrays will still reference the same <code>objects</code>.</li>
 </ul>
 </div>
-<div id="outline-container-orga7108ef" class="outline-4">
-<h4 id="orga7108ef">Example</h4>
-<div class="outline-text-4" id="text-orga7108ef">
+<div id="outline-container-org0692f7d" class="outline-4">
+<h4 id="org0692f7d">Example</h4>
+<div class="outline-text-4" id="text-org0692f7d">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
     <span class="org-type">int</span>[] <span class="org-variable-name">original</span> = {5, 10, 15, 20, 25};
 
     <span class="org-comment-delimiter">// </span><span class="org-comment">Cloning the array
@@ -344,16 +345,16 @@ The <code>clone()</code> method creates a <b>shallow</b> copy of the array.
 </span>    System.out.println(<span class="org-string">"Original array: "</span> + <span class="org-constant">java</span>.<span class="org-constant">util</span>.Arrays.toString(original));
     System.out.println(<span class="org-string">"Copied array: "</span> + <span class="org-constant">java</span>.<span class="org-constant">util</span>.Arrays.toString(copy));
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org8fe5b7d" class="outline-3">
-<h3 id="org8fe5b7d">4. Using copyOf()</h3>
-<div class="outline-text-3" id="text-org8fe5b7d">
+<div id="outline-container-org2780f28" class="outline-3">
+<h3 id="org2780f28">4. Using copyOf()</h3>
+<div class="outline-text-3" id="text-org2780f28">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
     <span class="org-type">int</span>[] <span class="org-variable-name">original</span> = { 10, 20, 30, 40, 50 };
     <span class="org-type">int</span>[] <span class="org-variable-name">copy</span> = Arrays.copyOf(original, original.length);
 
@@ -362,7 +363,7 @@ The <code>clone()</code> method creates a <b>shallow</b> copy of the array.
     System.out.println(<span class="org-string">"Original array: "</span> + Arrays.toString(original));
     System.out.println(<span class="org-string">"Copied array: "</span> + Arrays.toString(copy));
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>

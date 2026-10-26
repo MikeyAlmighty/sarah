@@ -1,0 +1,51 @@
+:PROPERTIES:
+:ID:       b1990fe1-8413-4ec9-8474-ae4d4dfdf3b8
+:END:
+#+title: Substitution in FOL
+
+* Substitution in FOL
+
+* Overview
+
+*Substitution* is like "search and replace" in a word processor, but in ~FOL~ it is applied only to *free variables* in a formula \(X\).
+
+** Substitution rules
+
+Let \(X\) be any formula and \(*\) a term (a *variable* or a *constant*).
+
+The operation \((x \leftarrow *)\) is read "replace \(x\) by \(*\)" or "\(*\) is substituted for \(x\)":
+
+- If \(x\) does *not* occur free in \(X\), then \((x \leftarrow *)(X) = X\).
+- If \(x\) *does* occur free in \(X\), then \((x \leftarrow *)(X)\) is obtained from \(X\) by replacing all *free* occurrences of \(x\) in \(X\) by \(*\).
+
+*** Notation
+
+If \(x\) occurs free in \(X\) we write \(X[x]\), so it is natural to write
+
+\[
+(x \leftarrow *)(X[x]) = X[*]
+\]
+
+for the result of replacing all free occurrences of \(x\) in \(X\) by \(*\).
+
+** Examples
+
+1. \(X = P(x) \wedge (\exists x)Q(x)\)
+
+   \((x \leftarrow a)(P(x) \wedge (\exists x)Q(x)) = P(a) \wedge (\exists x)Q(x)\)
+
+   Only the first \(x\) is free; the \(x\) in \((\exists x)Q(x)\) is bound, so it is unchanged.
+
+2. \(X = P(x) \wedge (\forall y)Q(x, y)\)
+
+   \((x \leftarrow z)(P(x) \wedge (\forall y)Q(x, y)) = P(z) \wedge (\forall y)Q(z, y)\)
+
+   Both occurrences of \(x\) are free, so both are replaced.
+
+** Summary
+
+| Case                       | Result of \((x \leftarrow *)(X)\)                 |
+|----------------------------+---------------------------------------------------|
+| \(x\) not free in \(X\)    | \(X\) (unchanged)                                 |
+| \(x\) free in \(X\)        | all *free* occurrences of \(x\) replaced by \(*\) |
+| Bound occurrences of \(x\) | never replaced                                    |

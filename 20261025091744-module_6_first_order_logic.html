@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-26 Mon 05:42 -->
+<!-- 2026-10-26 Mon 07:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Module 6 First-Order Logic</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,24 +243,24 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Module 6 First-Order Logic</h1>
-<div id="outline-container-orga6ab374" class="outline-2">
-<h2 id="orga6ab374">Module 6 First-Order Logic</h2>
-<div class="outline-text-2" id="text-orga6ab374">
+<div id="outline-container-orgd5feccf" class="outline-2">
+<h2 id="orgd5feccf">Module 6 First-Order Logic</h2>
+<div class="outline-text-2" id="text-orgd5feccf">
 </div>
-<div id="outline-container-orgce19b09" class="outline-3">
-<h3 id="orgce19b09">Key learnings for this module:</h3>
-<div class="outline-text-3" id="text-orgce19b09">
+<div id="outline-container-org98e9bc2" class="outline-3">
+<h3 id="org98e9bc2">Key learnings for this module:</h3>
+<div class="outline-text-3" id="text-org98e9bc2">
 <ul class="org-ul">
-<li>Understand the <b>syntax</b> ("<b>grammatical rules</b>")  of <code>FOL</code>, including the role of <b>quantifiers</b> and <b>variables</b>.</li>
+<li>Understand the <b>syntax</b> ("<b>grammatical rules</b>") of <code>FOL</code>, including the role of <b>quantifiers</b> and <b>variables</b>.</li>
 <li>Understand the <b>semantics</b> (<b>meaning</b>) of <code>FOL</code>, including the role of <b>quantifiers</b> and <b>variables</b>.</li>
 <li>Learn rules to construct formulae in <code>FOL</code>.</li>
 <li>Explore the expressive power of <code>FOL</code> compared to <code>PL</code>.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb396361" class="outline-3">
-<h3 id="orgb396361">Key concepts for this module:</h3>
-<div class="outline-text-3" id="text-orgb396361">
+<div id="outline-container-org8af50f1" class="outline-3">
+<h3 id="org8af50f1">Key concepts for this module:</h3>
+<div class="outline-text-3" id="text-org8af50f1">
 <ul class="org-ul">
 <li><b>First-order languages</b>:
 <ul class="org-ul">
@@ -276,12 +277,21 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc8e173b" class="outline-3">
-<h3 id="orgc8e173b">Summary</h3>
-<div class="outline-text-3" id="text-orgc8e173b">
+<div id="outline-container-org1449de3" class="outline-3">
+<h3 id="org1449de3">Summary</h3>
+<div class="outline-text-3" id="text-org1449de3">
 </div>
-<div id="outline-container-org9d914e0" class="outline-4">
-<h4 id="org9d914e0"><a href="20261025092552-definition_of_a_first_order_language.html#ID-f7b1600c-b168-49b1-af1d-10315e9270e7">Definition of a First-Order Language</a></h4>
+<div id="outline-container-org19e926e" class="outline-4">
+<h4 id="org19e926e">First-Order Language</h4>
+<div class="outline-text-4" id="text-org19e926e">
+</div>
+<ul class="org-ul">
+<li><a id="orgf873f5e"></a><a href="20261025092552-definition_of_a_first_order_language.html#ID-f7b1600c-b168-49b1-af1d-10315e9270e7">Definition of a First-Order Language</a><br /></li>
+<li><a id="org67c2b4c"></a><a href="20261026065348-specification_of_a_language_l.html#ID-5904e548-3d77-45eb-ab85-5ea3cba90838">Specification of a Language L</a><br /></li>
+<li><a id="org5fdd502"></a><a href="20261026070251-parse_trees_in_fol.html#ID-24b7e630-4f33-4201-bcd6-9fb0dc33bdd3">Parse trees in FOL</a><br /></li>
+<li><a id="org54c8770"></a><a href="20261026070831-sentences_in_fol.html#ID-bd4eca35-8b75-4ec2-a786-adc2c019dbdd">Sentences in FOL</a><br /></li>
+<li><a id="org787d86a"></a><a href="20261026071738-substitution_in_fol.html#ID-b1990fe1-8413-4ec9-8474-ae4d4dfdf3b8">Substitution in FOL</a><br /></li>
+</ul>
 </div>
 </div>
 </div>

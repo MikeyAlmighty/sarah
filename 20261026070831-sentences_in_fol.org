@@ -1,0 +1,90 @@
+:PROPERTIES:
+:ID:       bd4eca35-8b75-4ec2-a786-adc2c019dbdd
+:END:
+#+title: Sentences in FOL
+
+* Sentences in FOL
+
+* Overview
+
+Technical definitions needed for applications of ~FOL~.
+
+** Occurrence of a variable
+
+A variable /may/ occur several times in a formula; each *occurrence* is *counted separately*.
+
+Example: \((\forall x)(Q(x, y) \rightarrow P(x)) \wedge \neg((\exists x)(P(x)) \wedge T(x, y))\)
+- \(x\) occurs *six* times (including the \(x\) in \((\forall x)\) and in \((\exists x)\)).
+- \(y\) occurs *twice*.
+
+Each occurrence of a variable is in a /different/ environment.
+
+** Scope of a quantifier
+
+An occurrence of \((\forall x)\) or \((\exists x)\) determines a *subformula*, its *scope*:
+- The largest *subformula* over which the *quantifier* applies.
+
+In the example above:
+- \((Q(x, y) \rightarrow P(x))\) is the scope of \((\forall x)\)
+- \(P(x)\) is the scope of \((\exists x)\)
+
+*Note:* check the bracketing carefully. \(T(x, y)\) is not bracketed with \(P(x)\), so it is *not* in the scope of \((\exists x)\).
+
+** Bound and free variables
+
+For *each occurrence* of a variable \(x\):
+- *Bound*: the occurrence is in a quantifier \((\forall x)\) / \((\exists x)\) (In scope).
+- *Free*: any other occurrence.
+
+*Important:* a variable may have both *free* and *bound* occurrences in the /same/ formula.
+
+*** Example
+
+Formula: \((P(x) \rightarrow Q(y)) \rightarrow (\exists y)R(x, y)\)
+
+| Occurrence (left to right)   | Status | Reason                                         |
+|------------------------------+--------+------------------------------------------------|
+| 1st \(x\) (in \(P(x)\))      | free   | not in scope of \(\forall x\) or \(\exists x\) |
+| 1st \(y\) (in \(Q(y)\))      | free   | not in scope of \(\forall y\) or \(\exists y\) |
+| 2nd \(y\) (in \(\exists y\)) | bound  | inside the quantifier                          |
+| 2nd \(x\) (in \(R(x, y)\))   | free   | not in scope of \(\forall x\) or \(\exists x\) |
+| last \(y\) (in \(R(x, y)\))  | bound  | \(R(x, y)\) is in the scope of \((\exists y)\) |
+
+- \(x\) occurs *free* twice
+- \(y\) occurs *free* once and *bound* twice.
+
+** Open and closed formulae
+
+- *Open*: has a free occurrence of some variable.
+- *Closed*: otherwise.
+
+#+begin_quote
+*Definition 6.2:* A closed formula is called a *sentence*.
+#+end_quote
+
+*Note:* a sentence only requires *no free variables*.
+- There is no restriction on *constants*.
+
+*** Example:
+
+\((\exists x)(F(x) \wedge G(x)) \rightarrow ((\exists x)F(x) \wedge (\exists x)G(x))\) is a *sentence*, since /every/ occurrence of \(x\) is *bound*.
+
+*** In terms of parse trees
+
+A *formula* is a *sentence* if there is a path from /each/ variable \(x\) (as a *leaf*) up to a *vertex* labelled \(\forall x\) or \(\exists x\).
+
+** Notation
+
+If \(X\) has *free* variables \(x_1, \dots, x_n\) with \(n \geq 1\), write \(X[x_1, \dots, x_n]\) (square brackets) to highlight that the *formula* has *free* variables.
+
+** Summary
+
+| Term                 | Meaning                                                  |
+|----------------------+----------------------------------------------------------|
+| Occurrence           | each appearance of a variable, counted separately        |
+| Scope                | largest subformula a quantifier applies to               |
+| Bound                | occurrence in a quantifier or its scope                  |
+| Free                 | occurrence that is not bound                             |
+| Open formula         | has at least one free occurrence of a variable           |
+| Closed formula       | no free occurrences (= *sentence*)                       |
+| \(X[x_1,\dots,x_n]\) | notation for \(X\) with free variables \(x_1,\dots,x_n\) |

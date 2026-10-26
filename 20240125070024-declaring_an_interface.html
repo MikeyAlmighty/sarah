@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-26 Mon 05:42 -->
+<!-- 2026-10-26 Mon 07:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Declaring an Interface</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,34 +243,34 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Declaring an Interface</h1>
-<div id="outline-container-orgd0d7072" class="outline-2">
-<h2 id="orgd0d7072">Declaring an Interface</h2>
-<div class="outline-text-2" id="text-orgd0d7072">
+<div id="outline-container-org12a8b69" class="outline-2">
+<h2 id="org12a8b69">Declaring an Interface</h2>
+<div class="outline-text-2" id="text-org12a8b69">
 <p>
 Defined with the <code>interface</code> <a href="20231224102648-java_keywords.html#ID-5f2b572a-ec31-49de-ba13-95b0c5edb4c0">keyword</a>.
 </p>
 </div>
-<div id="outline-container-orgc0cd230" class="outline-4">
-<h4 id="orgc0cd230">Syntax</h4>
-<div class="outline-text-4" id="text-orgc0cd230">
+<div id="outline-container-org5ef525c" class="outline-4">
+<h4 id="org5ef525c">Syntax</h4>
+<div class="outline-text-4" id="text-org5ef525c">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">modifier</span> <span class="org-keyword">interface</span> InterfaceName {
+<pre class="src src-java"><code><span class="org-type">modifier</span> <span class="org-keyword">interface</span> InterfaceName {
     <span class="org-doc">/** Constant declarations */</span>
     <span class="org-doc">/** Abstract method signatures */</span>
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgf4a44bc" class="outline-4">
-<h4 id="orgf4a44bc">Example</h4>
-<div class="outline-text-4" id="text-orgf4a44bc">
+<div id="outline-container-org00e6713" class="outline-4">
+<h4 id="org00e6713">Example</h4>
+<div class="outline-text-4" id="text-org00e6713">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">interface</span> <span class="org-type">Animal</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">interface</span> <span class="org-type">Animal</span> {
     <span class="org-type">void</span> <span class="org-function-name">eat</span>();  <span class="org-comment-delimiter">// </span><span class="org-comment">Abstract method (no body)
 </span>    <span class="org-type">void</span> <span class="org-function-name">sleep</span>(); <span class="org-comment-delimiter">// </span><span class="org-comment">Abstract method (no body)
 </span>}
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -281,49 +282,49 @@ In <code>Figure 7.1</code>, our <code>interface</code> declaration <i>includes</
 </p>
 
 
-<div id="orgc2e06f5" class="figure">
+<div id="orge2e2001" class="figure">
 <p><img src="./assets/defining_an_interface.png" alt="defining_an_interface.png" />
 </p>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">abstract</span> <span class="org-keyword">interface</span> <span class="org-type">CanBurrow</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">abstract</span> <span class="org-keyword">interface</span> <span class="org-type">CanBurrow</span> {
   <span class="org-keyword">public</span> <span class="org-keyword">abstract</span> <span class="org-type">Float</span> <span class="org-function-name">getSpeed</span>(<span class="org-type">int</span> <span class="org-variable-name">age</span>); <span class="org-comment-delimiter">// </span><span class="org-comment">Abstract Interface Method
 </span>  <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-keyword">final</span> <span class="org-type">int</span> <span class="org-variable-name">MINIMUM_DEPTH</span> = 2; <span class="org-comment-delimiter">// </span><span class="org-comment">Constant
 </span>}
-</pre>
+</code></pre>
 </div>
 </div>
 <ul class="org-ul">
-<li><a id="org1cce65f"></a>Error Examples<br />
+<li><a id="org1426fdb"></a>Error Examples<br />
 <ul class="org-ul">
-<li><a id="org5c6f115"></a>Example<br />
-<div class="outline-text-6" id="text-org5c6f115">
+<li><a id="org4c088d3"></a>Example<br />
+<div class="outline-text-6" id="text-org4c088d3">
 <p>
 This example <b>doesn’t</b> compile, as <code>WalksOnTwoLegs</code> is an <b>interface</b> and <b>cannot</b> be <b>instantiated</b>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">abstract</span> <span class="org-keyword">interface</span> <span class="org-type">WalksOnTwoLegs</span> {}
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">abstract</span> <span class="org-keyword">interface</span> <span class="org-type">WalksOnTwoLegs</span> {}
 
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">Biped</span> {
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
-        <span class="org-type">var</span> <span class="org-variable-name">e</span> = <span class="org-keyword">new</span> <span class="org-type">WalksOnTwoLegs</span>(); <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
+        <span class="org-keyword">var</span> <span class="org-variable-name">e</span> = <span class="org-keyword">new</span> <span class="org-type">WalksOnTwoLegs</span>(); <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </li>
-<li><a id="orgaa0293d"></a>Example<br />
-<div class="outline-text-6" id="text-orgaa0293d">
+<li><a id="org5addd52"></a>Example<br />
+<div class="outline-text-6" id="text-org5addd52">
 <p>
 <code>WalksOnEightLegs</code>, <b>doesn’t</b> compile because <code>interfaces</code> <b>cannot</b> be <i>marked</i> as <code>final</code> for the same reason that <b>abstract classes</b> cannot be <i>marked</i> as <code>final</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">final</span> <span class="org-keyword">interface</span> <span class="org-type">WalksOnEightLegs</span> {} <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE</span>
-</pre>
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">final</span> <span class="org-keyword">interface</span> <span class="org-type">WalksOnEightLegs</span> {} <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE</span>
+</code></pre>
 </div>
 </div>
 </li>
@@ -331,22 +332,22 @@ This example <b>doesn’t</b> compile, as <code>WalksOnTwoLegs</code> is an <b>i
 </li>
 </ul>
 </div>
-<div id="outline-container-org7753696" class="outline-3">
-<h3 id="org7753696">Implementing an Interface</h3>
-<div class="outline-text-3" id="text-org7753696">
+<div id="outline-container-org89842c6" class="outline-3">
+<h3 id="org89842c6">Implementing an Interface</h3>
+<div class="outline-text-3" id="text-org89842c6">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">FieldMouse</span> <span class="org-keyword">implements</span> <span class="org-type">Climb</span>, <span class="org-type">CanBurrow</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">FieldMouse</span> <span class="org-keyword">implements</span> <span class="org-type">Climb</span>, <span class="org-type">CanBurrow</span> {
     <span class="org-keyword">public</span> <span class="org-type">Float</span> <span class="org-function-name">getSpeed</span>(<span class="org-type">int</span> <span class="org-variable-name">age</span>) {
         <span class="org-keyword">return</span> 11f;
     }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org0e06a2b" class="outline-3">
-<h3 id="org0e06a2b">Note</h3>
-<div class="outline-text-3" id="text-org0e06a2b">
+<div id="outline-container-org4ebddf5" class="outline-3">
+<h3 id="org4ebddf5">Note</h3>
+<div class="outline-text-3" id="text-org4ebddf5">
 <ul class="org-ul">
 <li>One aspect of an <code>interface</code> declaration that differs from an <a href="20240114162721-abstract_classes.html#ID-3893ce2e-cd85-4914-ba26-d7c7c732eb02">abstract class</a> is that it contains <a href="20240125070115-inserting_implicit_modifiers.html#ID-11cb5831-7123-44df-a020-cfd8f6646645">implicit modifiers</a>.</li>
 </ul>
