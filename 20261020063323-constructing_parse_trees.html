@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-10-26 Mon 07:25 -->
+<!-- 2026-10-27 Tue 07:58 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Constructing Parse Trees</title>
@@ -275,13 +275,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Constructing Parse Trees</h1>
-<div id="outline-container-org68ae72b" class="outline-2">
-<h2 id="org68ae72b">Constructing Parse Trees</h2>
-<div class="outline-text-2" id="text-org68ae72b">
+<div id="outline-container-orgd81622a" class="outline-2">
+<h2 id="orgd81622a">Constructing Parse Trees</h2>
+<div class="outline-text-2" id="text-orgd81622a">
 </div>
-<div id="outline-container-orga9611e4" class="outline-3">
-<h3 id="orga9611e4">Idea</h3>
-<div class="outline-text-3" id="text-orga9611e4">
+<div id="outline-container-org8c852ec" class="outline-3">
+<h3 id="org8c852ec">Idea</h3>
+<div class="outline-text-3" id="text-org8c852ec">
 <p>
 A <b>parse tree</b> is built step by step, mirroring how a <b>wff</b> is built by the <b>rules</b> for <b>wff</b>.
 </p>
@@ -295,25 +295,25 @@ A <b>parse tree</b> represents a <b>wff</b> without brackets.
 </p>
 </div>
 </div>
-<div id="outline-container-org8585d13" class="outline-3">
-<h3 id="org8585d13">Construction rules</h3>
-<div class="outline-text-3" id="text-org8585d13">
+<div id="outline-container-org5d1a0e9" class="outline-3">
+<h3 id="org5d1a0e9">Construction rules</h3>
+<div class="outline-text-3" id="text-org5d1a0e9">
 </div>
-<div id="outline-container-org360f555" class="outline-4">
-<h4 id="org360f555">Fact 1: atoms (analogue of <a href="20260930065009-well_formed_formulae_wff.html#ID-29ce4b76-3cfc-46ee-9ed9-74c2f91da633">WFF Rule 1</a>)</h4>
-<div class="outline-text-4" id="text-org360f555">
+<div id="outline-container-orgdc68a65" class="outline-4">
+<h4 id="orgdc68a65">Fact 1: atoms (analogue of <a href="20260930065009-well_formed_formulae_wff.html#ID-29ce4b76-3cfc-46ee-9ed9-74c2f91da633">WFF Rule 1</a>)</h4>
+<div class="outline-text-4" id="text-orgdc68a65">
 <p>
 The parse tree of an atom \(p\) is a single vertex labelled \(p\).
 </p>
 
-<pre class="example" id="org6fd55b4">
+<pre class="example" id="orgf778f10">
 (p)
 </pre>
 </div>
 </div>
-<div id="outline-container-orgbd5b6b8" class="outline-4">
-<h4 id="orgbd5b6b8">Fact 2: binary connectives (analogue of <a href="20260930065009-well_formed_formulae_wff.html#ID-29ce4b76-3cfc-46ee-9ed9-74c2f91da633">WFF Rule 2</a>)</h4>
-<div class="outline-text-4" id="text-orgbd5b6b8">
+<div id="outline-container-org9a90468" class="outline-4">
+<h4 id="org9a90468">Fact 2: binary connectives (analogue of <a href="20260930065009-well_formed_formulae_wff.html#ID-29ce4b76-3cfc-46ee-9ed9-74c2f91da633">WFF Rule 2</a>)</h4>
+<div class="outline-text-4" id="text-org9a90468">
 <p>
 Let \(X\), \(Y\) be <b>wff</b> with <b>parse trees</b> \(T_X\), \(T_Y\), and let \(*\) be any of the <i>five</i> <b>binary connectives</b>.
 </p>
@@ -326,7 +326,7 @@ Join the <b>roots</b> of \(T_X\) and \(T_Y\) to a new <b>vertex</b> labelled \(*
 The new <b>vertex</b> is the <b>root</b> of the <b>tree</b> for \(X * Y\).
 </p>
 
-<pre class="example" id="orgf671798">
+<pre class="example" id="orgfb4cfdc">
     (*)
    /   \
 (T_X) (T_Y)
@@ -336,16 +336,16 @@ The new <b>vertex</b> is the <b>root</b> of the <b>tree</b> for \(X * Y\).
 Example: tree for \(p \vee q\)
 </p>
 
-<pre class="example" id="org9127854">
+<pre class="example" id="orgd33db0b">
   (∨)
   /  \
 (p)  (q)
 </pre>
 </div>
 </div>
-<div id="outline-container-orgdc8bf15" class="outline-4">
-<h4 id="orgdc8bf15">Fact 3: negation</h4>
-<div class="outline-text-4" id="text-orgdc8bf15">
+<div id="outline-container-orgd17a971" class="outline-4">
+<h4 id="orgd17a971">Fact 3: negation</h4>
+<div class="outline-text-4" id="text-orgd17a971">
 <p>
 Attach the <b>root</b> of \(T_X\) to a new <b>vertex</b> labelled \(\neg\).
 </p>
@@ -354,7 +354,7 @@ Attach the <b>root</b> of \(T_X\) to a new <b>vertex</b> labelled \(\neg\).
 The new <b>vertex</b> is the <b>root</b> of the <b>tree</b> for \(\neg X\).
 </p>
 
-<pre class="example" id="orgea68ff6">
+<pre class="example" id="org63d6681">
 (¬)
  |
 (T_X)
@@ -362,9 +362,9 @@ The new <b>vertex</b> is the <b>root</b> of the <b>tree</b> for \(\neg X\).
 </div>
 </div>
 </div>
-<div id="outline-container-orgf4b5757" class="outline-3">
-<h3 id="orgf4b5757">Example 1: build the tree for \(\neg(p \vee q) \vee r\)</h3>
-<div class="outline-text-3" id="text-orgf4b5757">
+<div id="outline-container-org2651822" class="outline-3">
+<h3 id="org2651822">Example 1: build the tree for \(\neg(p \vee q) \vee r\)</h3>
+<div class="outline-text-3" id="text-org2651822">
 <p>
 Follow the order in which the wff is built.
 </p>
@@ -375,7 +375,7 @@ Follow the order in which the wff is built.
 <li>Form \(\neg(p \vee q) \vee r\) by joining that <b>tree</b> and the <b>tree</b> for \(r\) under a new \(\vee\) <b>root</b> (Fact 2).</li>
 </ol>
 
-<pre class="example" id="orgf0613cd">
+<pre class="example" id="orgd0d22d9">
      (∨)
      /  \
   (¬)   (r)
@@ -386,14 +386,14 @@ Follow the order in which the wff is built.
 </pre>
 </div>
 </div>
-<div id="outline-container-org415afd6" class="outline-3">
-<h3 id="org415afd6">Example 2: read a wff off a tree</h3>
-<div class="outline-text-3" id="text-org415afd6">
+<div id="outline-container-orgcb59db8" class="outline-3">
+<h3 id="orgcb59db8">Example 2: read a wff off a tree</h3>
+<div class="outline-text-3" id="text-orgcb59db8">
 <p>
 Read the <b>tree</b> <b>from the bottom up</b>, forming the <b>wff</b> as you move up.
 </p>
 
-<pre class="example" id="org023cfb3">
+<pre class="example" id="orgd7e5751">
  (¬)
   |
  (¬)
@@ -415,9 +415,9 @@ Bottom up:
 </ol>
 </div>
 </div>
-<div id="outline-container-org075c0dc" class="outline-3">
-<h3 id="org075c0dc">Notes</h3>
-<div class="outline-text-3" id="text-org075c0dc">
+<div id="outline-container-orgc1354c6" class="outline-3">
+<h3 id="orgc1354c6">Notes</h3>
+<div class="outline-text-3" id="text-orgc1354c6">
 <ul class="org-ul">
 <li>Building the <b>tree</b> and reading it off are inverse processes: build by <i>following</i> the <a href="20260930065009-well_formed_formulae_wff.html#ID-29ce4b76-3cfc-46ee-9ed9-74c2f91da633">WFF Rules</a>, read by <b>reversing</b> them.</li>
 <li><b>Binary connectives</b> give <i>two</i> children, \(\neg\) gives <i>one</i>, <b>atoms</b> are <b>leaves</b>.</li>

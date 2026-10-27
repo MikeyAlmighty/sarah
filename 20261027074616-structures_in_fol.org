@@ -1,0 +1,52 @@
+:PROPERTIES:
+:ID:       2011da90-4312-47ac-a638-7967a7fa6a35
+:END:
+#+title: Structures in FOL
+
+* Structures in FOL
+
+** Motivation
+
+- In ~PL~, meaning of a *wff* comes from defining each *atom* (e.g. \(p\) = "Alice likes ice cream", \(q\) = "Alice likes pizza"), then interpreting connectives (\(\land\) = "and").
+- In ~FOL~, a formula in a language \(L\) is just a string of symbols until we give it /meaning/.
+- To interpret a formula \(X\), we need the /meaning/ of its *atomic formulae*, which are built from the *predicates* and *constants* of \(L\).
+- Meaning is given by a correspondence between *predicates/constants* of \(L\) and the *relations* (and elements) of a mathematical *structure* \(\mathrm{D}\).
+
+** Definition of a structure \(\mathrm{D}\)
+
+A structure \(\mathrm{D}\) consists of:
+
+1. *Domain* \(D\): a set of objects.
+2. *Relations* on \(D\).
+3. *Distinguished elements* of \(D\): elements with some designated feature or quality (e.g. which people are parents).
+
+\[ \mathrm{D} = (D,\ \text{relations},\ \text{distinguished elements}) \]
+
+- Must include /at least/ *one relation*.
+- *Distinguished elements* are *not required*.
+
+*** Relations
+
+**** *Binary relation* \(R\): a set of ordered pairs \((a, b)\) with \(a, b \in D\).
+  - Shorthand: \(R(a,b)\) for "\(a\) is a parent of \(b\)" (if \(D\) is a set of people).
+**** *\(n\)-ary relation*:
+- a set of ordered \(n\)-tuples \((a_1, a_2, \ldots, a_n)\) with each \(a_i \in D\), \(i = 1, \ldots, n\).
+
+**** *Unary relation* (\(n = 1\)): a subset of \(D\).
+  - E.g. \(M \subseteq D\) = all the men; \(M(a)\) means "\(a\) is a man".
+- This section only uses *unary* and *binary relations*, but the \(n\)-ary framework is the general one.
+
+** Example: Birds
+
+Let \(D\) be the *set* of all birds.
+- \(R\) (binary): \((a,b) \in R\) iff "\(a\) /is a/ *parent* of \(b\)".
+- \(S\) (binary): \((a,b) \in S\) iff "\(a\) and \(b\) /share/ a *parent*".
+- \(F\) (unary): \(a \in F\) iff "\(a\) /can/ *fly*".
+
+Then \(\mathrm{D} = (D, R, S, F)\) is a structure (with /no/ *distinguished elements*).
+
+** Remark
+
+We need a language to "talk" to computers about structures.
+
+- This requires a *formal language* more complex than ~PL~, which motivates the development of ~FOL~.
