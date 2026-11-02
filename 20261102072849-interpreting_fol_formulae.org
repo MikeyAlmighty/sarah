@@ -1,0 +1,84 @@
+:PROPERTIES:
+:ID:       8ca6f663-b4d0-4ce5-abbe-a113fcfa0357
+:END:
+#+title: Interpreting FOL Formulae
+
+* Interpreting FOL Formulae
+
+** Setup
+
+Let \(L = (P, Q, a)\) be a simple first-order language with:
+- One *unary* predicate \(P\)
+- One *binary* predicate \(Q\)
+- One *constant* \(a\)
+
+Example: \((\exists x)(P(x) \land Q(x,a))\) is a *sentence* in \(L\) (its only variable \(x\) is bound).
+
+It only has a meaning once \(L\) is associated with a structure \(\mathrm{D}\):
+- Every *predicate* in \(L\) is associated with a *relation* in \(\mathrm{D}\)
+- Every *constant* in \(L\) is associated with a *distinguished element* of \(\mathrm{D}\)
+
+Then every formula in \(L\) is interpreted as either a *statement about* \(\mathrm{D}\) or a *relation on* \(\mathrm{D}\).
+
+** Example: People
+
+Structure \(\mathrm{D} = (D, \mathcal{P}, \mathcal{Q}, \text{Alice})\):
+- \(D\): a fixed set of people
+- \(\mathcal{P}\) (unary): \(x \in \mathcal{P}\) if "\(x\) is a man"
+- \(\mathcal{Q}\) (binary): \((x,y) \in \mathcal{Q}\) if "\(x\) is a child of \(y\)"
+- Alice: a distinguished element of \(D\)
+
+*** Interpretation \(I\)
+
+The correspondence between \(L\) and \(\mathrm{D}\):
+- \(P \mapsto \mathcal{P}\)
+- \(Q \mapsto \mathcal{Q}\)
+- \(a \mapsto \text{Alice}\)
+
+This correspondence \(I\) is an *interpretation of the language* \(L\).
+
+We use it to interpret /formulae/ in \(L\) in terms of \(\mathrm{D}\).
+
+*** Interpreting a sentence
+
+\((\exists x)(P(x) \land Q(x,a))\) becomes
+
+\[ \exists x \in D \text{ such that } (x \in \mathcal{P}) \land ((x,\text{Alice}) \in \mathcal{Q}) \]
+
+i.e. "there is a man in \(D\) who is Alice's son", or "Alice has a son".
+
+*** Interpreting an open formula
+
+\((P(x) \land Q(x,a))\) becomes
+
+\[ (x \in \mathcal{P}) \land ((x,\text{Alice}) \in \mathcal{Q}) \]
+
+i.e. "\(x\) is the son of Alice".
+
+*Note:* this describes a unary relation \(\mathcal{S}\) on \(D\), defined by
+
+\[ x \in \mathcal{S} \iff (x \in \mathcal{P}) \land ((x,\text{Alice}) \in \mathcal{Q}) \]
+
+** Remark 1: Interpretations are not unique
+
+The same \(L = (P, Q, a)\) can be interpreted in a different structure \(\mathrm{D}' = (D', \mathcal{P}, \mathcal{Q}, \text{Sun})\):
+- \(D'\): the set of all stars in the universe
+- \(\mathcal{P}\) (unary): \(\mathcal{P}(x)\) means "\(x\) is a white dwarf"
+- \(\mathcal{Q}\) (binary): \(\mathcal{Q}(x,y)\) means "\(x\) and \(y\) are part of the same galaxy"
+- Sun: a distinguished element of \(D'\)
+
+Interpretation \(I'\):
+- \(P \mapsto \mathcal{P}\)
+- \(Q \mapsto \mathcal{Q}\)
+- \(a \mapsto \text{Sun}\)
+
+*Key point:* when using a first-order language to "talk" about a structure, we must be clear about:
+- The correspondence between *predicates* in the language and *relations* in the structure
+- The correspondence between *constants* in the language and *distinguished elements* in the structure
+
+** Remark 2: Sentences vs Open Formulae
+
+| Formula type | Example                            | Interpretation                                      |
+|--------------+------------------------------------+-----------------------------------------------------|
+| Sentence     | \((\exists x)(P(x) \land Q(x,a))\) | A statement about \(\mathrm{D}\): *true* or *false* |
+| Open formula | \((P(x) \land Q(x,a))\)            | A *relation* on the domain \(D\)                    |

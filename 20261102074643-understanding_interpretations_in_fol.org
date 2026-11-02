@@ -1,0 +1,44 @@
+:PROPERTIES:
+:ID:       6ac5b12d-d201-4e42-9a6e-8f55c363d40b
+:END:
+#+title: Understanding Interpretations in FOL
+
+* Understanding Interpretations in FOL
+
+** Notation
+
+Let \(I\) be a /correspondence/ between a language \(L\) and a structure \(\mathrm{D}\).
+
+If \(X\) is a formula in \(L\), then
+- \(I(X)\) denotes the *interpretation* of \(X\) in \(\mathrm{D}\) based on \(I\).
+
+** Two important facts
+
+1. If \(X\) has \(n\) *free variables*, then \(I(X)\) describes a set of \(n\)-tuples of elements of \(D\), i.e. an \(n\)-ary relation \(\mathcal{X}\) on \(D\).
+   - \(X\) can be viewed as an \(n\)-place *predicate* in \(L\).
+   - The *relation* \(\mathcal{X}\) is the interpretation of \(X\).
+2. If \(X\) has *no free variables*, then \(I(X)\) is a statement about \(\mathrm{D}\) with a truth value: either *true* or *false*.
+
+*** Summary
+
+| Free variables in \(X\) | \(I(X)\)                                        |
+|-------------------------+-------------------------------------------------|
+| \(n \geq 1\)            | An \(n\)-ary relation \(\mathcal{X}\) on \(D\)  |
+| none (a sentence)       | A statement about \(\mathrm{D}\): true or false |
+
+** Using first-order languages in applications
+
+- In practice we usually already know the structure \(\mathrm{D}\) we want to "talk" about using FOL.
+- So we define a language \(L\) with enough predicates and constants to say what we need about \(\mathrm{D}\).
+
+
+** Interpreting quantifiers
+
+The *interpretation* of a formula \(X\) /can/ depend on the *order* in which its *quantifiers* are interpreted, so we need a convention.
+
+*** Convention
+
+A /sequence/ of *quantifiers* is always interpreted *from left-to-right* in a formula \(X\).
+
+- If /all/ *quantifiers* in a sequence are of the *same type* (all \(\forall\), e.g. \((\forall x), (\forall y)\), or all \(\exists\), e.g. \((\exists x), (\exists y)\)), then the interpretation of \(X\) is the *same regardless of their order*.
+- If the types are /mixed/, the *order can change the interpretation*.

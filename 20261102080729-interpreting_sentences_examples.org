@@ -1,0 +1,53 @@
+:PROPERTIES:
+:ID:       41a69f9e-7cf0-4004-b05b-d603b127e50a
+:END:
+#+title: Interpreting Sentences (Examples)
+
+* Interpreting Sentences (Examples)
+
+* Setup
+
+Sentences involving the *2*-place predicate symbol \(P\):
+
+| 1. \((\forall x)(\forall y)P(x,y)\) | 2. \((\forall x)(\exists y)P(x,y)\) |
+| 3. \((\exists x)(\forall y)P(x,y)\) | 4. \((\exists x)(\exists y)P(x,y)\) |
+| 5. \((\forall y)(\forall x)P(x,y)\) | 6. \((\exists y)(\forall x)P(x,y)\) |
+| 7. \((\forall y)(\exists x)P(x,y)\) | 8. \((\exists y)(\exists x)P(x,y)\) |
+
+Interpretation:
+- Domain \(D\): the set of all people
+- \(P(x,y)\): "\(x\) is the mother of \(y\)"
+
+** Shortcuts
+
+Quantifier order doesn't matter when all quantifiers are the same type (see [[id:6ac5b12d-d201-4e42-9a6e-8f55c363d40b][Understanding Interpretations in FOL]]):
+- Sentence 5 \(\equiv\) sentence 1, so only interpret 1.
+- Sentence 8 \(\equiv\) sentence 4, so only interpret 4.
+
+** Interpretations
+
+1. \((\forall x)(\forall y)P(x,y)\): for any two people \(a\) and \(b\), \(a\) is the mother of \(b\). *False*.
+2. \((\forall x)(\exists y)P(x,y)\): every \(a\) is the mother of /at least/ one person, i.e. everyone is a mother. *False*.
+3. \((\exists x)(\forall y)P(x,y)\): there is someone \(a\) who is the mother of every person. *False*.
+4. \((\exists x)(\exists y)P(x,y)\): there is a person \(a\) and a person \(b\) such that \(a\) is the mother of \(b\). *True*.
+5. \((\forall y)(\forall x)P(x,y)\): same as sentence 1 (order doesn't matter). *False*.
+6. \((\exists y)(\forall x)P(x,y)\): there is someone for whom everyone is a mother. *False*.
+7. \((\forall y)(\exists x)P(x,y)\): everyone has a mother. *True* (if \(D\) is not restricted to living people).
+8. \((\exists y)(\exists x)P(x,y)\): same as sentence 4 (order doesn't matter). *True*.
+
+** Summary
+
+| # | Sentence                         | Reads as                       | Truth |
+|---+----------------------------------+--------------------------------+-------|
+| 1 | \((\forall x)(\forall y)P(x,y)\) | everyone is everyone's mother  | F     |
+| 2 | \((\forall x)(\exists y)P(x,y)\) | everyone is a mother           | F     |
+| 3 | \((\exists x)(\forall y)P(x,y)\) | someone is everyone's mother   | F     |
+| 4 | \((\exists x)(\exists y)P(x,y)\) | someone is a mother            | T     |
+| 5 | \((\forall y)(\forall x)P(x,y)\) | same as 1                      | F     |
+| 6 | \((\exists y)(\forall x)P(x,y)\) | someone has everyone as mother | F     |
+| 7 | \((\forall y)(\exists x)P(x,y)\) | everyone has a mother          | T     |
+| 8 | \((\exists y)(\exists x)P(x,y)\) | same as 4                      | T     |
+
+*Takeaway:*
+- With mixed *quantifiers*, order matters.
+- Sentences 6 and 7 use the same quantifiers on the same variables, only swapped (\((\exists y)(\forall x)\) vs \((\forall y)(\exists x)\)), yet 6 is ~false~ and 7 is ~true~.
