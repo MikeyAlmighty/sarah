@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-11-02 Mon 08:14 -->
+<!-- 2026-11-02 Mon 19:51 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Constructing Truth Trees</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -275,13 +274,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Constructing Truth Trees</h1>
-<div id="outline-container-org7bce92a" class="outline-2">
-<h2 id="org7bce92a">Constructing Truth Trees</h2>
-<div class="outline-text-2" id="text-org7bce92a">
+<div id="outline-container-orgae5a273" class="outline-2">
+<h2 id="orgae5a273">Constructing Truth Trees</h2>
+<div class="outline-text-2" id="text-orgae5a273">
 </div>
-<div id="outline-container-org9a63d9e" class="outline-3">
-<h3 id="org9a63d9e">Overview</h3>
-<div class="outline-text-3" id="text-org9a63d9e">
+<div id="outline-container-orgc39fe8b" class="outline-3">
+<h3 id="orgc39fe8b">Overview</h3>
+<div class="outline-text-3" id="text-orgc39fe8b">
 <p>
 <b>Truth tables</b> blow up computationally (complex wff, many atoms).
 </p>
@@ -298,9 +297,9 @@ The <b>Truth Tree Algorithm</b> answers questions about wff much more efficientl
 </ul>
 </div>
 </div>
-<div id="outline-container-orge971dab" class="outline-3">
-<h3 id="orge971dab">Construction for a wff \(A\)</h3>
-<div class="outline-text-3" id="text-orge971dab">
+<div id="outline-container-org184e4cf" class="outline-3">
+<h3 id="org184e4cf">Construction for a wff \(A\)</h3>
+<div class="outline-text-3" id="text-org184e4cf">
 <ol class="org-ol">
 <li>Place \(A\) at the root.</li>
 <li>Apply rules according to the shape of \(A\):
@@ -311,9 +310,9 @@ The <b>Truth Tree Algorithm</b> answers questions about wff much more efficientl
 <li>Repeat on the smaller components until only literals remain.</li>
 </ol>
 </div>
-<div id="outline-container-org5c98e03" class="outline-4">
-<h4 id="org5c98e03">The nine possible shapes</h4>
-<div class="outline-text-4" id="text-org5c98e03">
+<div id="outline-container-org1f20bef" class="outline-4">
+<h4 id="org1f20bef">The nine possible shapes</h4>
+<div class="outline-text-4" id="text-org1f20bef">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -351,9 +350,9 @@ The <b>Truth Tree Algorithm</b> answers questions about wff much more efficientl
 </div>
 </div>
 </div>
-<div id="outline-container-orgfd6150e" class="outline-3">
-<h3 id="orgfd6150e">\(\alpha\)-rules (non-branching)</h3>
-<div class="outline-text-3" id="text-orgfd6150e">
+<div id="outline-container-org8eeac68" class="outline-3">
+<h3 id="org8eeac68">\(\alpha\)-rules (non-branching)</h3>
+<div class="outline-text-3" id="text-org8eeac68">
 <p>
 \(\alpha\) is satisfied precisely when both \(\alpha_1\) and \(\alpha_2\) are. Place them directly below \(\alpha\) on the same branch.
 </p>
@@ -402,10 +401,10 @@ The <b>Truth Tree Algorithm</b> answers questions about wff much more efficientl
 </tbody>
 </table>
 </div>
-<div id="outline-container-org073aaf6" class="outline-4">
-<h4 id="org073aaf6">\(\alpha\)-rule trees</h4>
-<div class="outline-text-4" id="text-org073aaf6">
-<pre class="example" id="org6cb995d">
+<div id="outline-container-orgbc1d2bb" class="outline-4">
+<h4 id="orgbc1d2bb">\(\alpha\)-rule trees</h4>
+<div class="outline-text-4" id="text-orgbc1d2bb">
+<pre class="example" id="org2b8524d">
 X ∧ Y          ¬(X ∨ Y)         ¬(X → Y)          ¬¬X
   |               |                |                |
   X              ¬X                X                X
@@ -415,9 +414,9 @@ X ∧ Y          ¬(X ∨ Y)         ¬(X → Y)          ¬¬X
 </div>
 </div>
 </div>
-<div id="outline-container-orgd6c0e5b" class="outline-3">
-<h3 id="orgd6c0e5b">\(\beta\)-rules (branching)</h3>
-<div class="outline-text-3" id="text-orgd6c0e5b">
+<div id="outline-container-orga7936e1" class="outline-3">
+<h3 id="orga7936e1">\(\beta\)-rules (branching)</h3>
+<div class="outline-text-3" id="text-orga7936e1">
 <p>
 \(\beta\) is satisfied precisely when \(\beta_1\) <b>or</b> \(\beta_2\) is. Left branch \(\beta_1\), right branch \(\beta_2\).
 </p>
@@ -472,16 +471,16 @@ X ∧ Y          ¬(X ∨ Y)         ¬(X → Y)          ¬¬X
 </tbody>
 </table>
 </div>
-<div id="outline-container-org0e2a92e" class="outline-4">
-<h4 id="org0e2a92e">\(\beta\)-rule trees</h4>
-<div class="outline-text-4" id="text-org0e2a92e">
-<pre class="example" id="orgdec92da">
+<div id="outline-container-org968a7ae" class="outline-4">
+<h4 id="org968a7ae">\(\beta\)-rule trees</h4>
+<div class="outline-text-4" id="text-org968a7ae">
+<pre class="example" id="orgde00c81">
  X ∨ Y            ¬(X ∧ Y)           X → Y
  /   \             /    \            /   \
 X     Y          ¬X      ¬Y        ¬X     Y
 </pre>
 
-<pre class="example" id="org1e026d2">
+<pre class="example" id="orgbb76dcd">
  X ↔ Y              ¬(X ↔ Y)
  /   \               /    \
 X     ¬X            X      ¬X
@@ -491,9 +490,9 @@ Y     ¬Y           ¬Y      Y
 </div>
 </div>
 </div>
-<div id="outline-container-orge7a775a" class="outline-3">
-<h3 id="orge7a775a">Bookkeeping</h3>
-<div class="outline-text-3" id="text-orge7a775a">
+<div id="outline-container-orga160714" class="outline-3">
+<h3 id="orga160714">Bookkeeping</h3>
+<div class="outline-text-3" id="text-orga160714">
 <ul class="org-ul">
 <li>Tick (✓) a wff once its occurrence has been used.</li>
 <li>Be systematic: work left to right.</li>
@@ -501,9 +500,9 @@ Y     ¬Y           ¬Y      Y
 </ul>
 </div>
 </div>
-<div id="outline-container-org3ba6478" class="outline-3">
-<h3 id="org3ba6478">Example</h3>
-<div class="outline-text-3" id="text-org3ba6478">
+<div id="outline-container-org6bc67a3" class="outline-3">
+<h3 id="org6bc67a3">Example</h3>
+<div class="outline-text-3" id="text-org6bc67a3">
 <p>
 Find all truth assignments making \(A = \neg p \to (q \wedge r)\) true.
 </p>
@@ -515,7 +514,7 @@ Find all truth assignments making \(A = \neg p \to (q \wedge r)\) true.
 <li>\(\wedge\) on the right: \(q \wedge r\) → \(q\), then \(r\) down the branch. Tick.</li>
 </ol>
 
-<pre class="example" id="org58c6ae4">
+<pre class="example" id="orgd46cf0d">
      ¬p → (q ∧ r) ✓
        /        \
 ✓ ¬(¬p)       q ∧ r ✓
@@ -540,9 +539,9 @@ This carries exactly the same information as the rows of the truth table of \(A\
 </p>
 </div>
 </div>
-<div id="outline-container-org68e2497" class="outline-3">
-<h3 id="org68e2497">Key takeaways</h3>
-<div class="outline-text-3" id="text-org68e2497">
+<div id="outline-container-org6bbde19" class="outline-3">
+<h3 id="org6bbde19">Key takeaways</h3>
+<div class="outline-text-3" id="text-org6bbde19">
 <ul class="org-ul">
 <li>\(\alpha\) = "and" (stack), \(\beta\) = "or" (split).</li>
 <li>Each branch of a finished tree is a (partial) assignment satisfying the root; the tree as a whole is the disjunction of its branches.</li>

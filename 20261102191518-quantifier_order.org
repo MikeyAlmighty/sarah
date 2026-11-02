@@ -1,0 +1,62 @@
+:PROPERTIES:
+:ID:       0fe00d93-b185-45a0-a143-c919c00a59a1
+:END:
+#+title: Quantifier Order
+
+* Quantifier Order
+
+** Rules
+- \((\forall x)\): the statement must hold for *every* element \(x\) of the domain \(D\).
+- \((\exists x)\): the statement must hold for *at least one* element \(x\) of \(D\).
+- *Quantifiers* are read *left to right*.
+  - A later quantifier *may depend on* earlier variables.
+  - An earlier one *cannot depend on* later variables.
+- Same type (\(\forall\forall\) or \(\exists\exists\)): order doesn't matter.
+- Mixed (\(\forall\) and \(\exists\)): order can change the truth value.
+
+** The key pair
+
+| Form           | Says                                   | Dependence                   |
+|----------------+----------------------------------------+------------------------------|
+| \((\forall x)(\exists y)\) | for each \(x\) there is some \(y\)     | \(y\) may depend on \(x\)    |
+| \((\exists y)(\forall x)\) | one single \(y\) works for every \(x\) | \(y\) cannot depend on \(x\) |
+
+The second is a much stronger claim.
+
+If \((\exists y)(\forall x)P(x,y)\) is ~true~, then \((\forall x)(\exists y)P(x,y)\) is ~true~, but not the other way round.
+
+** Worked example: \(\mathbb{N}\) with \(P(x,y)\): \(x \leq y\)
+
+*** \((\forall x)(\exists y)(x \leq y)\): True
+For each \(m\) there is an \(n\) with \(m \leq n\). Take \(n = m + 1\). There is no largest natural number.
+
+*** \((\exists y)(\forall x)(x \leq y)\): False
+There is a \(y\) that is at least as big as every \(x\), i.e. a largest natural number.
+
+Disproof: take any \(y\).
+
+Then \(x = y + 1\) is in \(\mathbb{N}\) and \(x \leq y\) fails.
+
+This works for every \(y\), so no \(y\) works.
+
+** Worked example: people with \(P(x,y)\): "\(x\) is the mother of \(y\)"
+
+*** \((\forall y)(\exists x)P(x,y)\): True
+Everyone has a mother. Each \(y\) gets its own \(x\) (if \(D\) isn't restricted to living people).
+
+*** \((\exists y)(\forall x)P(x,y)\): False
+There is one person whose mother is everyone. Impossible.
+
+** How to check a sentence
+
+1. Say it in words, left to right, using *"for every"* and *"there exists"*.
+2. For \(\forall\): try to find *one counterexample*. If you find one, the sentence is false.
+3. For \(\exists\): try to find *one witness*. If you find one, the sentence is true.
+4. If a witness comes *after* a \(\forall\), it is allowed to depend on that variable (e.g. \(y = x + 1\)).
+5. If a witness comes *before* a \(\forall\), it must work for all values (no dependence).
+
+** Common mistakes
+
+- Treating \((\forall x)(\exists y)\) and \((\exists y)(\forall x)\) as the same. They are not.
+- Forgetting that the *interpretation* decides truth: same sentence, different domain or relation, possibly different truth value.
+- Thinking constants are variables. Constants (like \(a\)) are never free or bound.

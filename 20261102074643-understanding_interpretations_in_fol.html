@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-11-02 Mon 08:14 -->
+<!-- 2026-11-02 Mon 19:50 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Understanding Interpretations in FOL</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -275,13 +274,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Understanding Interpretations in FOL</h1>
-<div id="outline-container-org7f5affd" class="outline-2">
-<h2 id="org7f5affd">Understanding Interpretations in FOL</h2>
-<div class="outline-text-2" id="text-org7f5affd">
+<div id="outline-container-org7fe5800" class="outline-2">
+<h2 id="org7fe5800">Understanding Interpretations in FOL</h2>
+<div class="outline-text-2" id="text-org7fe5800">
 </div>
-<div id="outline-container-org3c43d8c" class="outline-3">
-<h3 id="org3c43d8c">Notation</h3>
-<div class="outline-text-3" id="text-org3c43d8c">
+<div id="outline-container-org6ccc4ca" class="outline-3">
+<h3 id="org6ccc4ca">Notation</h3>
+<div class="outline-text-3" id="text-org6ccc4ca">
 <p>
 Let \(I\) be a <i>correspondence</i> between a language \(L\) and a structure \(\mathrm{D}\).
 </p>
@@ -294,9 +293,9 @@ If \(X\) is a formula in \(L\), then
 </ul>
 </div>
 </div>
-<div id="outline-container-org6815e6b" class="outline-3">
-<h3 id="org6815e6b">Two important facts</h3>
-<div class="outline-text-3" id="text-org6815e6b">
+<div id="outline-container-orgfa291f0" class="outline-3">
+<h3 id="orgfa291f0">Two important facts</h3>
+<div class="outline-text-3" id="text-orgfa291f0">
 <ol class="org-ol">
 <li>If \(X\) has \(n\) <b>free variables</b>, then \(I(X)\) describes a set of \(n\)-tuples of elements of \(D\), i.e. an \(n\)-ary relation \(\mathcal{X}\) on \(D\).
 <ul class="org-ul">
@@ -306,9 +305,9 @@ If \(X\) is a formula in \(L\), then
 <li>If \(X\) has <b>no free variables</b>, then \(I(X)\) is a statement about \(\mathrm{D}\) with a truth value: either <b>true</b> or <b>false</b>.</li>
 </ol>
 </div>
-<div id="outline-container-orgdd454d2" class="outline-4">
-<h4 id="orgdd454d2">Summary</h4>
-<div class="outline-text-4" id="text-orgdd454d2">
+<div id="outline-container-org83a4c8e" class="outline-4">
+<h4 id="org83a4c8e">Summary</h4>
+<div class="outline-text-4" id="text-org83a4c8e">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -338,25 +337,25 @@ If \(X\) is a formula in \(L\), then
 </div>
 </div>
 </div>
-<div id="outline-container-org624f6b1" class="outline-3">
-<h3 id="org624f6b1">Using first-order languages in applications</h3>
-<div class="outline-text-3" id="text-org624f6b1">
+<div id="outline-container-org51efb02" class="outline-3">
+<h3 id="org51efb02">Using first-order languages in applications</h3>
+<div class="outline-text-3" id="text-org51efb02">
 <ul class="org-ul">
 <li>In practice we usually already know the structure \(\mathrm{D}\) we want to "talk" about using FOL.</li>
 <li>So we define a language \(L\) with enough predicates and constants to say what we need about \(\mathrm{D}\).</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org3ff92af" class="outline-3">
-<h3 id="org3ff92af">Interpreting quantifiers</h3>
-<div class="outline-text-3" id="text-org3ff92af">
+<div id="outline-container-orgc408fe8" class="outline-3">
+<h3 id="orgc408fe8">Interpreting quantifiers</h3>
+<div class="outline-text-3" id="text-orgc408fe8">
 <p>
-The <b>interpretation</b> of a formula \(X\) <i>can</i> depend on the <b>order</b> in which its <b>quantifiers</b> are interpreted, so we need a convention.
+The <b>interpretation</b> of a formula \(X\) <i>can</i> depend on the <b>order</b> in which its <b>quantifiers</b> are interpreted, so we need a <b>convention</b>.
 </p>
 </div>
-<div id="outline-container-orgae5b064" class="outline-4">
-<h4 id="orgae5b064">Convention</h4>
-<div class="outline-text-4" id="text-orgae5b064">
+<div id="outline-container-org7d7a1e2" class="outline-4">
+<h4 id="org7d7a1e2">Convention</h4>
+<div class="outline-text-4" id="text-org7d7a1e2">
 <p>
 A <i>sequence</i> of <b>quantifiers</b> is always interpreted <b>from left-to-right</b> in a formula \(X\).
 </p>

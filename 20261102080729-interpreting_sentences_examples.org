@@ -5,7 +5,7 @@
 
 * Interpreting Sentences (Examples)
 
-* Setup
+** Setup
 
 Sentences involving the *2*-place predicate symbol \(P\):
 
@@ -20,7 +20,7 @@ Interpretation:
 
 ** Shortcuts
 
-Quantifier order doesn't matter when all quantifiers are the same type (see [[id:6ac5b12d-d201-4e42-9a6e-8f55c363d40b][Understanding Interpretations in FOL]]):
+*Quantifier* order doesn't matter when /all/ *quantifiers* are the same type (see [[id:6ac5b12d-d201-4e42-9a6e-8f55c363d40b][Understanding Interpretations in FOL]]):
 - Sentence 5 \(\equiv\) sentence 1, so only interpret 1.
 - Sentence 8 \(\equiv\) sentence 4, so only interpret 4.
 
@@ -51,3 +51,39 @@ Quantifier order doesn't matter when all quantifiers are the same type (see [[id
 *Takeaway:*
 - With mixed *quantifiers*, order matters.
 - Sentences 6 and 7 use the same quantifiers on the same variables, only swapped (\((\exists y)(\forall x)\) vs \((\forall y)(\exists x)\)), yet 6 is ~false~ and 7 is ~true~.
+
+** Second interpretation: Natural Numbers
+
+/Same/ eight sentences, /different/ interpretation:
+- Domain \(D'\): \(\mathbb{N}\), the set of *natural numbers*
+- \(P(x,y)\): "\(x \leq y\)"
+
+*** Interpretations
+
+1. \((\forall x)(\forall y)P(x,y)\) becomes \((\forall x)(\forall y)(x \leq y)\): for any two natural numbers \(m\) and \(n\), we always have \(m \leq n\). *False*, e.g. not true for \(m = 2\) and \(n = 1\).
+2. \((\forall x)(\exists y)P(x,y)\) becomes \((\forall x)(\exists y)(x \leq y)\): for each natural number \(m\) there is a natural number \(n\) with \(m \leq n\), i.e. there is no largest natural number. *True*.
+3. \((\exists x)(\forall y)P(x,y)\) becomes \((\exists x)(\forall y)(x \leq y)\): there is a smallest natural number. *True*, since \(0\) is the smallest (or \(1\), depending on the definition of \(\mathbb{N}\)).
+4. \((\exists x)(\exists y)P(x,y)\) becomes \((\exists x)(\exists y)(x \leq y)\): there are natural numbers \(m\) and \(n\) with \(m \leq n\). *True*, e.g. \(1 \leq 1\).
+5. \((\forall y)(\forall x)P(x,y)\): same as sentence 1 (order doesn't matter). *False*.
+6. \((\exists y)(\forall x)P(x,y)\) becomes \((\exists y)(\forall x)(x \leq y)\): there is a largest natural number. *False*.
+7. \((\forall y)(\exists x)P(x,y)\) becomes \((\forall y)(\exists x)(x \leq y)\): given any natural number \(n\) you can find a natural number \(m\) with \(m \leq n\). *True*, since \(n \leq n\).
+8. \((\exists y)(\exists x)P(x,y)\): same as sentence 4 (order doesn't matter). *True*.
+
+*** Comparison
+
+| # | Sentence                         | People (mother of) | \(\mathbb{N}\) (\(\leq\)) |
+|---+----------------------------------+--------------------+---------------------------|
+| 1 | \((\forall x)(\forall y)P(x,y)\) | F                  | F                         |
+| 2 | \((\forall x)(\exists y)P(x,y)\) | F                  | T                         |
+| 3 | \((\exists x)(\forall y)P(x,y)\) | F                  | T                         |
+| 4 | \((\exists x)(\exists y)P(x,y)\) | T                  | T                         |
+| 5 | \((\forall y)(\forall x)P(x,y)\) | F                  | F                         |
+| 6 | \((\exists y)(\forall x)P(x,y)\) | F                  | F                         |
+| 7 | \((\forall y)(\exists x)P(x,y)\) | T                  | T                         |
+| 8 | \((\exists y)(\exists x)P(x,y)\) | T                  | T                         |
+
+** Remarks
+
+Depending on the interpretation of our language \(L\), a sentence \(X\) which is ~true~ in one interpretation may be ~false~ in a different interpretation.
+
+For example, sentence 2 is ~false~ in the first interpretation (people, "mother of") but ~true~ in the second (\(\mathbb{N}\), \(\leq\)).

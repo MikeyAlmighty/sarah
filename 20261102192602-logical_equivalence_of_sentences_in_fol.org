@@ -1,0 +1,53 @@
+:PROPERTIES:
+:ID:       0e783d84-b56b-4983-a395-e1d932ca9634
+:END:
+#+title: Logical Equivalence of Sentences in FOL
+
+* Logical Equivalence of Sentences in FOL
+
+** Logical equivalence
+
+Let $L$ be a first-order language and $X, Y$ sentences in $L$.
+
+Then $X$ is *logically equivalent* to $Y$, written $X \equiv Y$, if for every interpretation $I$ of $L$ in a structure $\mathbf{D}$:
+1. if $I(X)$ is *true* then $I(Y)$ is *true*
+2. if $I(X)$ is *false* then $I(Y)$ is *false*
+
+Having defined *logical equivalence* for FOL, we can now state *De Morgan's laws* for FOL.
+
+** De Morgan's laws for Quantifiers
+
+*De Morgan's* laws are an important and useful example of a [[id:24cbbc6b-858b-4e55-963e-66fedd470bca][Logical Equivalence]] in PL.
+
+In PL, De Morgan *negates* conjunctions/disjunctions.
+
+In FOL, it tells us how to *negate* $(\forall x)$ and $(\exists x)$.
+
+*** Theorem 6.1 (De Morgan for quantifiers)
+
+Assume $\neg(\forall x)X$ and $\neg(\exists x)X$ are sentences.
+1. $\neg(\forall x)X \equiv (\exists x)\neg X$
+2. $\neg(\exists x)X \equiv (\forall x)\neg X$
+
+** Example: "all cows like grass"
+
+- Domain $D$ = the set of all animals.
+  - We want to say "all cows like grass".
+- $C(x)$: 1-place *predicate* symbol, interpreted as the *unary* relation "$x$ is a cow"
+- $G(x)$: 1-place *predicate* symbol, interpreted as the *unary* relation "$x$ likes grass"
+
+Formalisation: $(\forall x)(C(x) \to G(x))$
+
+Reads as "for every animal $x$, if $x$ is a cow then $x$ likes grass".
+
+In other words, there is no animal $x$ that is a cow but does not like grass.
+
+*** Negation:
+
+\begin{align*}
+\neg(\forall x)(C(x) \to G(x)) &\equiv (\exists x)\neg(C(x) \to G(x)) && \text{De Morgan for Quantifiers}\\
+&\equiv (\exists x)\neg(\neg C(x) \lor G(x)) && x \to y \equiv \neg x \lor y\\
+&\equiv (\exists x)(C(x) \land \neg G(x)) && \text{double negation + De Morgan}
+\end{align*}
+
+Reading: "there is a cow which does not like grass", the *negation* of "all cows like grass".
