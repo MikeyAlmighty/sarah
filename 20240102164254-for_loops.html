@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-11-02 Mon 19:50 -->
+<!-- 2026-11-03 Tue 07:58 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>For Loops</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,9 +243,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">For Loops</h1>
-<div id="outline-container-org7d149da" class="outline-2">
-<h2 id="org7d149da">For Loop (Basic)</h2>
-<div class="outline-text-2" id="text-org7d149da">
+<div id="outline-container-org4b7d229" class="outline-2">
+<h2 id="org4b7d229">For Loop (Basic)</h2>
+<div class="outline-text-2" id="text-org4b7d229">
 <p>
 The <b>for</b> <b>loop</b> statement starts with the keyword <code>for</code>, followed by a pair of parentheses enclosing the control structure of the loop.
 </p>
@@ -258,46 +259,46 @@ This structure consists of (Separated by <code>;</code>):
 <li><code>action-after-each-iteration</code></li>
 </ul>
 </div>
-<div id="outline-container-orga5cf776" class="outline-3">
-<h3 id="orga5cf776">Syntax</h3>
-<div class="outline-text-3" id="text-orga5cf776">
+<div id="outline-container-orgf44d815" class="outline-3">
+<h3 id="orgf44d815">Syntax</h3>
+<div class="outline-text-3" id="text-orgf44d815">
 <div class="org-src-container">
-<pre class="src src-java">
+<pre class="src src-java"><code>
 <span class="org-keyword">for</span> (initial-action; loop-continuation-condition; action-after-each-iteration) {
     <span class="org-comment-delimiter">// </span><span class="org-comment">Loop body;
 </span>    Statement(s);
 }
-</pre>
+</code></pre>
 </div>
 </div>
-<div id="outline-container-org7767007" class="outline-4">
-<h4 id="org7767007">Example</h4>
-<div class="outline-text-4" id="text-org7767007">
+<div id="outline-container-orgb0eda78" class="outline-4">
+<h4 id="orgb0eda78">Example</h4>
+<div class="outline-text-4" id="text-orgb0eda78">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; 5; i ++) {
+<pre class="src src-java"><code><span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; 5; i ++) {
     System.out.println(i);
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org1631432" class="outline-3">
-<h3 id="org1631432">Reverse</h3>
-<div class="outline-text-3" id="text-org1631432">
+<div id="outline-container-orgf895dad" class="outline-3">
+<h3 id="orgf895dad">Reverse</h3>
+<div class="outline-text-3" id="text-orgf895dad">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">for</span> (<span class="org-type">var</span> <span class="org-variable-name">counter</span> = 4; counter &gt;= 0; counter-&#173;) {
+<pre class="src src-java"><code><span class="org-keyword">for</span> (<span class="org-keyword">var</span> <span class="org-variable-name">counter</span> = 4; counter &gt;= 0; counter-&#173;) {
     System.out.print(counter + <span class="org-string">" "</span>);
 }
 
 <span class="org-comment-delimiter">// </span><span class="org-comment">4 3 2 1 0</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org1349513" class="outline-3">
-<h3 id="org1349513">1. Creating an infinite loop</h3>
-<div class="outline-text-3" id="text-org1349513">
+<div id="outline-container-org4069264" class="outline-3">
+<h3 id="org4069264">1. Creating an infinite loop</h3>
+<div class="outline-text-3" id="text-org4069264">
 <p>
 Although this <b>for</b> <b>loop</b> may look like it does not compile, it will in fact <b>compile</b> and <b>run</b> without issue.
 </p>
@@ -307,15 +308,15 @@ Although this <b>for</b> <b>loop</b> may look like it does not compile, it will 
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">for</span>( ; ; )
+<pre class="src src-java"><code><span class="org-keyword">for</span>( ; ; )
     System.out.println(<span class="org-string">"Hello World"</span>);
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org1b587d5" class="outline-3">
-<h3 id="org1b587d5">2. Multiple Terms</h3>
-<div class="outline-text-3" id="text-org1b587d5">
+<div id="outline-container-orgf1b6ddc" class="outline-3">
+<h3 id="orgf1b6ddc">2. Multiple Terms</h3>
+<div class="outline-text-3" id="text-orgf1b6ddc">
 <p>
 <code>initialization block</code> <b>requires</b> values to be of the same type.
 </p>
@@ -336,32 +337,32 @@ This code demonstrates three variations of the <code>for loop</code> you may not
 <li>Finally, the <code>update statement</code> can <b>modify</b> multiple variables.</li>
 </ul>
 </div>
-<div id="outline-container-org147055b" class="outline-4">
-<h4 id="org147055b">Example</h4>
-<div class="outline-text-4" id="text-org147055b">
+<div id="outline-container-org3858716" class="outline-4">
+<h4 id="org3858716">Example</h4>
+<div class="outline-text-4" id="text-org3858716">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">int</span> <span class="org-variable-name">x</span> = 0;
+<pre class="src src-java"><code><span class="org-type">int</span> <span class="org-variable-name">x</span> = 0;
 <span class="org-keyword">for</span>(<span class="org-type">long</span> <span class="org-variable-name">y</span> = 0, <span class="org-variable-name">z</span> = 4; x &lt; 5 &amp;&amp; y &lt; 10; x++, y++) {
     System.out.print(y + <span class="org-string">" "</span>); }
 System.out.print(x + <span class="org-string">" "</span>);
 
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org0460704" class="outline-3">
-<h3 id="org0460704">3. Redeclaring a variable in the Initialization Block</h3>
-<div class="outline-text-3" id="text-org0460704">
+<div id="outline-container-org3ef32fc" class="outline-3">
+<h3 id="org3ef32fc">3. Redeclaring a variable in the Initialization Block</h3>
+<div class="outline-text-3" id="text-org3ef32fc">
 </div>
-<div id="outline-container-orgd9e0d98" class="outline-4">
-<h4 id="orgd9e0d98">Does not compile</h4>
-<div class="outline-text-4" id="text-orgd9e0d98">
+<div id="outline-container-org049f01c" class="outline-4">
+<h4 id="org049f01c">Does not compile</h4>
+<div class="outline-text-4" id="text-org049f01c">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">int</span> <span class="org-variable-name">x</span> = 0;
+<pre class="src src-java"><code><span class="org-type">int</span> <span class="org-variable-name">x</span> = 0;
 <span class="org-keyword">for</span>(<span class="org-type">int</span> <span class="org-variable-name">x</span> = 4; x &lt; 5; x++) <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>    System.out.print(x + <span class="org-string">" "</span>);
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -369,44 +370,44 @@ We can fix this loop by removing the <code>declaration</code> of <code>x</code> 
 </p>
 </div>
 </div>
-<div id="outline-container-org3830bb5" class="outline-4">
-<h4 id="org3830bb5">Does compile</h4>
-<div class="outline-text-4" id="text-org3830bb5">
+<div id="outline-container-orgc1bcd20" class="outline-4">
+<h4 id="orgc1bcd20">Does compile</h4>
+<div class="outline-text-4" id="text-orgc1bcd20">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">int</span> <span class="org-variable-name">x</span> = 0;
+<pre class="src src-java"><code><span class="org-type">int</span> <span class="org-variable-name">x</span> = 0;
 <span class="org-keyword">for</span>(x = 0; x &lt; 5; x++)
     System.out.print(x + <span class="org-string">" "</span>);
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org5700ac1" class="outline-3">
-<h3 id="org5700ac1">4. Using incompatible Data Types in the Initialization Block</h3>
-<div class="outline-text-3" id="text-org5700ac1">
+<div id="outline-container-orgaddc418" class="outline-3">
+<h3 id="orgaddc418">4. Using incompatible Data Types in the Initialization Block</h3>
+<div class="outline-text-3" id="text-orgaddc418">
 <ul class="org-ul">
 <li>The variables in the <code>initialization block</code> <b>must</b> all be of the <b>same type</b>.</li>
 </ul>
 </div>
-<div id="outline-container-org5692f11" class="outline-4">
-<h4 id="org5692f11">Example</h4>
-<div class="outline-text-4" id="text-org5692f11">
+<div id="outline-container-org9c480b7" class="outline-4">
+<h4 id="org9c480b7">Example</h4>
+<div class="outline-text-4" id="text-org9c480b7">
 <p>
 <code>y</code> and <code>z</code> have different <b>types</b>, so the code will <b>not compile</b>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">int</span> <span class="org-variable-name">x</span> = 0;
+<pre class="src src-java"><code><span class="org-type">int</span> <span class="org-variable-name">x</span> = 0;
 <span class="org-keyword">for</span>(<span class="org-type">long</span> <span class="org-variable-name">y</span> = 0, <span class="org-type">int</span> <span class="org-variable-name">z</span> = 4; x &lt; 5; x++) <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>    System.out.print(y + <span class="org-string">" "</span>);
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org09d8065" class="outline-3">
-<h3 id="org09d8065">5. Using Loop variables outside the loop</h3>
-<div class="outline-text-3" id="text-org09d8065">
+<div id="outline-container-orgdb39137" class="outline-3">
+<h3 id="orgdb39137">5. Using Loop variables outside the loop</h3>
+<div class="outline-text-3" id="text-orgdb39137">
 <p>
 <code>x</code> is <i>defined</i> in the <code>initialization block</code> of the loop and then used <i>after</i> the <b>loop terminates</b>.
 </p>
@@ -416,10 +417,10 @@ We can fix this loop by removing the <code>declaration</code> of <code>x</code> 
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">for</span>(<span class="org-type">long</span> <span class="org-variable-name">y</span> = 0, <span class="org-variable-name">x</span> = 4; x &lt; 5 &amp;&amp; y &lt; 10; x++, y++)
+<pre class="src src-java"><code><span class="org-keyword">for</span>(<span class="org-type">long</span> <span class="org-variable-name">y</span> = 0, <span class="org-variable-name">x</span> = 4; x &lt; 5 &amp;&amp; y &lt; 10; x++, y++)
     System.out.print(y + <span class="org-string">" "</span>);
 System.out.print(x); <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>

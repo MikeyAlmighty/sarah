@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-11-02 Mon 19:50 -->
+<!-- 2026-11-03 Tue 07:58 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>7. Beyond Classes</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,17 +243,17 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">7. Beyond Classes</h1>
-<div id="outline-container-org78bba6e" class="outline-2">
-<h2 id="org78bba6e">Chapter 7. Beyond Classes</h2>
-<div class="outline-text-2" id="text-org78bba6e">
+<div id="outline-container-orga1050be" class="outline-2">
+<h2 id="orga1050be">Chapter 7. Beyond Classes</h2>
+<div class="outline-text-2" id="text-orga1050be">
 </div>
-<div id="outline-container-org932567c" class="outline-3">
-<h3 id="org932567c">Exam Objectives</h3>
-<div class="outline-text-3" id="text-org932567c">
+<div id="outline-container-orgca94410" class="outline-3">
+<h3 id="orgca94410">Exam Objectives</h3>
+<div class="outline-text-3" id="text-orgca94410">
 </div>
-<div id="outline-container-orgb4a7ea4" class="outline-4">
-<h4 id="orgb4a7ea4">Utilizing Java Object­Oriented Approach</h4>
-<div class="outline-text-4" id="text-orgb4a7ea4">
+<div id="outline-container-orgc99569e" class="outline-4">
+<h4 id="orgc99569e">Utilizing Java Object­Oriented Approach</h4>
+<div class="outline-text-4" id="text-orgc99569e">
 <ul class="org-ul">
 <li>Declare and instantiate Java objects including <a href="id:35043135-26f7-4da8-a4db-d717956c19d9">nested class objects</a>, and explain the <code>object life-cycle</code> including <b>creation</b>, <b>reassigning references</b>, and <a href="20231230181407-garbage_collection.html#ID-9ccc2e2b-e387-499a-aaef-790bb6c1caa3">Garbage Collection</a>.</li>
 
@@ -269,23 +270,23 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgbc7c0e2" class="outline-3">
-<h3 id="orgbc7c0e2">1. <a href="20240124071359-implementing_interfaces.html#ID-e1fb40df-c0b5-4c10-9704-39bac087c227">Implementing Interfaces</a></h3>
+<div id="outline-container-org60dd802" class="outline-3">
+<h3 id="org60dd802">1. <a href="20240124071359-implementing_interfaces.html#ID-e1fb40df-c0b5-4c10-9704-39bac087c227">Implementing Interfaces</a></h3>
 </div>
-<div id="outline-container-org9cd4d82" class="outline-3">
-<h3 id="org9cd4d82">2. <a href="20240124071414-working_with_enums.html#ID-8ad8f0cf-23e7-40ba-bf5a-2200a172f729">Working with Enums</a></h3>
+<div id="outline-container-orga8e75e3" class="outline-3">
+<h3 id="orga8e75e3">2. <a href="20240124071414-working_with_enums.html#ID-8ad8f0cf-23e7-40ba-bf5a-2200a172f729">Working with Enums</a></h3>
 </div>
-<div id="outline-container-org2970046" class="outline-3">
-<h3 id="org2970046">3. <a href="20240124071430-sealing_classes.html#ID-bfa3b933-a5ab-4bfa-9b32-689ab3d92410">Sealing Classes</a></h3>
+<div id="outline-container-orge739082" class="outline-3">
+<h3 id="orge739082">3. <a href="20240124071430-sealing_classes.html#ID-bfa3b933-a5ab-4bfa-9b32-689ab3d92410">Sealing Classes</a></h3>
 </div>
-<div id="outline-container-org5b630aa" class="outline-3">
-<h3 id="org5b630aa">4. <a href="20240124071446-encapsulating_data_with_records.html#ID-d0d2e115-43cb-43e6-9a6b-0238929b92ae">Encapsulating Data with Records</a></h3>
+<div id="outline-container-org2729b2c" class="outline-3">
+<h3 id="org2729b2c">4. <a href="20240124071446-encapsulating_data_with_records.html#ID-d0d2e115-43cb-43e6-9a6b-0238929b92ae">Encapsulating Data with Records</a></h3>
 </div>
-<div id="outline-container-orgce67f6d" class="outline-3">
-<h3 id="orgce67f6d">5. <a href="20240124071510-creating_nested_classes.html#ID-35043135-26f7-4da8-a4db-d717956c19d9">Creating Nested Classes</a></h3>
+<div id="outline-container-org9784304" class="outline-3">
+<h3 id="org9784304">5. <a href="20240124071510-creating_nested_classes.html#ID-35043135-26f7-4da8-a4db-d717956c19d9">Creating Nested Classes</a></h3>
 </div>
-<div id="outline-container-orgc0aa3d8" class="outline-3">
-<h3 id="orgc0aa3d8">6. <a href="20240124071557-understanding_polymorphism.html#ID-ecaa3f5f-3cd3-4ad3-93dc-1da93d3cf395">Understanding Polymorphism</a></h3>
+<div id="outline-container-org7b1d00b" class="outline-3">
+<h3 id="org7b1d00b">6. <a href="20240124071557-understanding_polymorphism.html#ID-ecaa3f5f-3cd3-4ad3-93dc-1da93d3cf395">Understanding Polymorphism</a></h3>
 </div>
 </div>
 </div>

@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-11-02 Mon 19:50 -->
+<!-- 2026-11-03 Tue 07:58 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Adequate Connective Worked Examples</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,13 +243,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Adequate Connective Worked Examples</h1>
-<div id="outline-container-orgc5f72cf" class="outline-2">
-<h2 id="orgc5f72cf">Adequate Connective Worked Examples</h2>
-<div class="outline-text-2" id="text-orgc5f72cf">
+<div id="outline-container-org573318e" class="outline-2">
+<h2 id="org573318e">Adequate Connective Worked Examples</h2>
+<div class="outline-text-2" id="text-org573318e">
 </div>
-<div id="outline-container-orgd68bc97" class="outline-3">
-<h3 id="orgd68bc97">Definitions used</h3>
-<div class="outline-text-3" id="text-orgd68bc97">
+<div id="outline-container-org071e439" class="outline-3">
+<h3 id="org071e439">Definitions used</h3>
+<div class="outline-text-3" id="text-org071e439">
 <ul class="org-ul">
 <li><b>NAND</b>: p | q ≡ ¬(p ∧ q)</li>
 <li><b>NOR</b>: p ↓ q ≡ ¬(p ∨ q)</li>
@@ -257,20 +258,20 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf87cb01" class="outline-3">
-<h3 id="orgf87cb01">Exercise 1: p ∧ q using NAND only</h3>
-<div class="outline-text-3" id="text-orgf87cb01">
-<pre class="example" id="org4381476">
+<div id="outline-container-org28eb6d7" class="outline-3">
+<h3 id="org28eb6d7">Exercise 1: p ∧ q using NAND only</h3>
+<div class="outline-text-3" id="text-org28eb6d7">
+<pre class="example" id="org75414cd">
 p ∧ q ≡ ¬(¬(p ∧ q))      double negation
       ≡ ¬(p | q)         definition of |
       ≡ (p | q) | (p | q)   since ¬x ≡ x | x
 </pre>
 </div>
 </div>
-<div id="outline-container-org3296269" class="outline-3">
-<h3 id="org3296269">Exercise 2: p → q using NAND only</h3>
-<div class="outline-text-3" id="text-org3296269">
-<pre class="example" id="orgcbef291">
+<div id="outline-container-org3c352d1" class="outline-3">
+<h3 id="org3c352d1">Exercise 2: p → q using NAND only</h3>
+<div class="outline-text-3" id="text-org3c352d1">
+<pre class="example" id="orgb2fdb86">
 p → q ≡ ¬p ∨ q           since x → y ≡ ¬x ∨ y
       ≡ ¬(p ∧ ¬q)        De Morgan
       ≡ p | ¬q           definition of |
@@ -278,19 +279,19 @@ p → q ≡ ¬p ∨ q           since x → y ≡ ¬x ∨ y
 </pre>
 </div>
 </div>
-<div id="outline-container-orgf340516" class="outline-3">
-<h3 id="orgf340516">Exercise 3: p ∨ q using NOR only</h3>
-<div class="outline-text-3" id="text-orgf340516">
-<pre class="example" id="org1ba33a4">
+<div id="outline-container-org13ca94a" class="outline-3">
+<h3 id="org13ca94a">Exercise 3: p ∨ q using NOR only</h3>
+<div class="outline-text-3" id="text-org13ca94a">
+<pre class="example" id="org578a4a6">
 p ∨ q ≡ ¬(¬(p ∨ q))      double negation
       ≡ ¬(p ↓ q)         definition of ↓
       ≡ (p ↓ q) ↓ (p ↓ q)   since ¬x ≡ x ↓ x
 </pre>
 </div>
 </div>
-<div id="outline-container-org73c63a0" class="outline-3">
-<h3 id="org73c63a0">Exercise 4: {¬, →} is adequate</h3>
-<div class="outline-text-3" id="text-org73c63a0">
+<div id="outline-container-org48085b4" class="outline-3">
+<h3 id="org48085b4">Exercise 4: {¬, →} is adequate</h3>
+<div class="outline-text-3" id="text-org48085b4">
 <ul class="org-ul">
 <li>Known: {∨, ¬} is adequate.</li>
 <li>Since p → q ≡ ¬p ∨ q, we get p ∨ q ≡ ¬p → q.</li>
@@ -298,16 +299,16 @@ p ∨ q ≡ ¬(¬(p ∨ q))      double negation
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb77c7dd" class="outline-3">
-<h3 id="orgb77c7dd">Exercise 5: properties of a single adequate connective *</h3>
-<div class="outline-text-3" id="text-orgb77c7dd">
+<div id="outline-container-org550c9cf" class="outline-3">
+<h3 id="org550c9cf">Exercise 5: properties of a single adequate connective *</h3>
+<div class="outline-text-3" id="text-org550c9cf">
 <p>
 Let * be a binary connective that is adequate on its own.
 </p>
 </div>
-<div id="outline-container-org81ff2a9" class="outline-4">
-<h4 id="org81ff2a9">1. T * T = F</h4>
-<div class="outline-text-4" id="text-org81ff2a9">
+<div id="outline-container-orgb751713" class="outline-4">
+<h4 id="orgb751713">1. T * T = F</h4>
+<div class="outline-text-4" id="text-orgb751713">
 <ul class="org-ul">
 <li>Suppose T * T = T. Then any wff using only the atom p, *, and brackets is true whenever p is true.</li>
 <li>So no such wff can have the truth table p=T → F (e.g. ¬p), contradicting adequacy.</li>
@@ -315,9 +316,9 @@ Let * be a binary connective that is adequate on its own.
 </ul>
 </div>
 </div>
-<div id="outline-container-org6d29455" class="outline-4">
-<h4 id="org6d29455">2. F * F = T</h4>
-<div class="outline-text-4" id="text-org6d29455">
+<div id="outline-container-org280fa82" class="outline-4">
+<h4 id="org280fa82">2. F * F = T</h4>
+<div class="outline-text-4" id="text-org280fa82">
 <ul class="org-ul">
 <li>Same argument: if F * F = F, any wff in one atom p is false whenever p is false.</li>
 <li>Then no wff can have the table p=F → T (e.g. ¬p), contradicting adequacy.</li>
@@ -325,9 +326,9 @@ Let * be a binary connective that is adequate on its own.
 </ul>
 </div>
 </div>
-<div id="outline-container-org2b95f04" class="outline-4">
-<h4 id="org2b95f04">3. Excluding the remaining tables</h4>
-<div class="outline-text-4" id="text-org2b95f04">
+<div id="outline-container-orgb89a6c6" class="outline-4">
+<h4 id="orgb89a6c6">3. Excluding the remaining tables</h4>
+<div class="outline-text-4" id="text-orgb89a6c6">
 <p>
 Fixing T*T = F and F*F = T leaves T*F and F*T free, giving four tables:
 </p>
@@ -449,18 +450,18 @@ Right case (p * q ≡ ¬q) follows by symmetry.
 </p>
 </div>
 </div>
-<div id="outline-container-org905f82f" class="outline-4">
-<h4 id="org905f82f">Takeaway</h4>
-<div class="outline-text-4" id="text-org905f82f">
+<div id="outline-container-org2d93844" class="outline-4">
+<h4 id="org2d93844">Takeaway</h4>
+<div class="outline-text-4" id="text-org2d93844">
 <p>
 Only <b>NAND</b> and <b>NOR</b> can be adequate alone.
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org3244d12" class="outline-3">
-<h3 id="org3244d12">Patterns</h3>
-<div class="outline-text-3" id="text-org3244d12">
+<div id="outline-container-orgc7da6e0" class="outline-3">
+<h3 id="orgc7da6e0">Patterns</h3>
+<div class="outline-text-3" id="text-orgc7da6e0">
 <ul class="org-ul">
 <li>Wrap in ¬¬, so one ¬ pairs with ∧ (or ∨) to form NAND (or NOR), and the other becomes x | x (or x ↓ x).</li>
 <li>If the wff has →, first rewrite as ¬p ∨ q, then use De Morgan to reach ¬(… ∧ …).</li>

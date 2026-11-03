@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-11-02 Mon 19:51 -->
+<!-- 2026-11-03 Tue 07:58 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ICMP Packet</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -245,39 +246,39 @@
 <p>
 It has a header with a few fields
 </p>
-<div id="outline-container-org635de8b" class="outline-2">
-<h2 id="org635de8b">Header</h2>
-<div class="outline-text-2" id="text-org635de8b">
+<div id="outline-container-org161e146" class="outline-2">
+<h2 id="org161e146">Header</h2>
+<div class="outline-text-2" id="text-org161e146">
 </div>
-<div id="outline-container-org30f0432" class="outline-3">
-<h3 id="org30f0432">Type Field</h3>
-<div class="outline-text-3" id="text-org30f0432">
+<div id="outline-container-orgcf6184c" class="outline-3">
+<h3 id="orgcf6184c">Type Field</h3>
+<div class="outline-text-3" id="text-orgcf6184c">
 <p>
 <b>8 bits</b>
 Specifies what type of message is being delivered (Destination not reachable)
 </p>
 </div>
 </div>
-<div id="outline-container-org770ecf9" class="outline-3">
-<h3 id="org770ecf9">Code Field</h3>
-<div class="outline-text-3" id="text-org770ecf9">
+<div id="outline-container-orgcb5959e" class="outline-3">
+<h3 id="orgcb5959e">Code Field</h3>
+<div class="outline-text-3" id="text-orgcb5959e">
 <p>
 <b>8 bits</b>
 Indicates specific code for error reason (Port unreachable, Destination unreachable etc.)
 </p>
 </div>
 </div>
-<div id="outline-container-orgb9d8209" class="outline-3">
-<h3 id="orgb9d8209">Checksum Field</h3>
-<div class="outline-text-3" id="text-orgb9d8209">
+<div id="outline-container-orgdc658f2" class="outline-3">
+<h3 id="orgdc658f2">Checksum Field</h3>
+<div class="outline-text-3" id="text-orgdc658f2">
 <p>
 <b>16 bits</b>
 </p>
 </div>
 </div>
-<div id="outline-container-org7e4caac" class="outline-3">
-<h3 id="org7e4caac">Rest of Header</h3>
-<div class="outline-text-3" id="text-org7e4caac">
+<div id="outline-container-org0c0f89a" class="outline-3">
+<h3 id="org0c0f89a">Rest of Header</h3>
+<div class="outline-text-3" id="text-org0c0f89a">
 <p>
 <b>32 bits</b>
 Optionally used by specific types/codes to send more data.
@@ -285,9 +286,9 @@ Optionally used by specific types/codes to send more data.
 </div>
 </div>
 </div>
-<div id="outline-container-org8bb2b01" class="outline-2">
-<h2 id="org8bb2b01">Payload</h2>
-<div class="outline-text-2" id="text-org8bb2b01">
+<div id="outline-container-org7d685cf" class="outline-2">
+<h2 id="org7d685cf">Payload</h2>
+<div class="outline-text-2" id="text-org7d685cf">
 <p>
 Exists entirely so that the recipient of the message knows which of their transmissions caused the error being reported
 It contains the entire <code>IP header</code> and the first <b>8 bytes</b> of the <code>data payload section</code> of the offending packet.

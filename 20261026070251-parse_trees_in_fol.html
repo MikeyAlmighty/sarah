@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-11-02 Mon 19:51 -->
+<!-- 2026-11-03 Tue 07:58 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Parse trees in FOL</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -274,13 +275,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Parse trees in FOL</h1>
-<div id="outline-container-orge8f2884" class="outline-2">
-<h2 id="orge8f2884">Parse trees in FOL</h2>
-<div class="outline-text-2" id="text-orge8f2884">
+<div id="outline-container-orgf9b3475" class="outline-2">
+<h2 id="orgf9b3475">Parse trees in FOL</h2>
+<div class="outline-text-2" id="text-orgf9b3475">
 </div>
-<div id="outline-container-orgde3b306" class="outline-3">
-<h3 id="orgde3b306">Overview</h3>
-<div class="outline-text-3" id="text-orgde3b306">
+<div id="outline-container-orgf38916f" class="outline-3">
+<h3 id="orgf38916f">Overview</h3>
+<div class="outline-text-3" id="text-orgf38916f">
 <p>
 <b>Parse trees</b> for <code>FOL</code> formulae use the <i>same</i> rules for parsing <b>connectives</b> as for <b>wff</b> in <code>PL</code>, plus new rules for:
 </p>
@@ -290,18 +291,18 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-org43f551d" class="outline-3">
-<h3 id="org43f551d">Parsing Atomic Formulae</h3>
-<div class="outline-text-3" id="text-org43f551d">
+<div id="outline-container-org31127e7" class="outline-3">
+<h3 id="org31127e7">Parsing Atomic Formulae</h3>
+<div class="outline-text-3" id="text-org31127e7">
 <ul class="org-ul">
 <li>Draw a circle containing the <b>predicate letter</b>.</li>
 <li>Attach a <b>leaf</b> to that circle for every <b>term</b> in the atomic formula.</li>
 </ul>
 </div>
-<div id="outline-container-org3c96e01" class="outline-4">
-<h4 id="org3c96e01">Example: \(P(x_1, x_2, a)\)</h4>
-<div class="outline-text-4" id="text-org3c96e01">
-<pre class="example" id="org417bf8d">
+<div id="outline-container-orgc3e5cb9" class="outline-4">
+<h4 id="orgc3e5cb9">Example: \(P(x_1, x_2, a)\)</h4>
+<div class="outline-text-4" id="text-orgc3e5cb9">
+<pre class="example" id="org0a6fd0e">
      (P)
     / | \
    /  |  \
@@ -310,9 +311,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org9011fa6" class="outline-3">
-<h3 id="org9011fa6">Parsing quantified formulae</h3>
-<div class="outline-text-3" id="text-org9011fa6">
+<div id="outline-container-orgc5cbfb2" class="outline-3">
+<h3 id="orgc5cbfb2">Parsing quantified formulae</h3>
+<div class="outline-text-3" id="text-orgc5cbfb2">
 <p>
 Parsed the same way as \(\neg X\):
 </p>
@@ -320,20 +321,20 @@ Parsed the same way as \(\neg X\):
 <li>Put the quantifier in a circle and attach \(X\) below it with a vertical line.</li>
 </ul>
 </div>
-<div id="outline-container-orgbd140bb" class="outline-4">
-<h4 id="orgbd140bb">Universal: \((\forall x)X\)</h4>
-<div class="outline-text-4" id="text-orgbd140bb">
-<pre class="example" id="org31e7ef1">
+<div id="outline-container-orgb0a0561" class="outline-4">
+<h4 id="orgb0a0561">Universal: \((\forall x)X\)</h4>
+<div class="outline-text-4" id="text-orgb0a0561">
+<pre class="example" id="org192c1fc">
 (∀x)
   |
  (X)
 </pre>
 </div>
 </div>
-<div id="outline-container-orga23524c" class="outline-4">
-<h4 id="orga23524c">Existential: \((\exists x)X\)</h4>
-<div class="outline-text-4" id="text-orga23524c">
-<pre class="example" id="orgb5e6b7d">
+<div id="outline-container-org92c798e" class="outline-4">
+<h4 id="org92c798e">Existential: \((\exists x)X\)</h4>
+<div class="outline-text-4" id="text-org92c798e">
+<pre class="example" id="org4bda121">
 (∃x)
   |
  (X)
@@ -341,14 +342,14 @@ Parsed the same way as \(\neg X\):
 </div>
 </div>
 </div>
-<div id="outline-container-org0e4b454" class="outline-3">
-<h3 id="org0e4b454">Example</h3>
-<div class="outline-text-3" id="text-org0e4b454">
+<div id="outline-container-org62fd539" class="outline-3">
+<h3 id="org62fd539">Example</h3>
+<div class="outline-text-3" id="text-org62fd539">
 <p>
 Formula: \((\forall x)[(P(x) \rightarrow Q(x)) \wedge S(x, y)]\)
 </p>
 
-<pre class="example" id="org725f992">
+<pre class="example" id="org4ed5cec">
     (∀x)
       |
      (∧)
@@ -360,9 +361,9 @@ Formula: \((\forall x)[(P(x) \rightarrow Q(x)) \wedge S(x, y)]\)
 (x) (x)
 </pre>
 </div>
-<div id="outline-container-orgbb01b09" class="outline-4">
-<h4 id="orgbb01b09">Reading the tree</h4>
-<div class="outline-text-4" id="text-orgbb01b09">
+<div id="outline-container-orgc06e443" class="outline-4">
+<h4 id="orgc06e443">Reading the tree</h4>
+<div class="outline-text-4" id="text-orgc06e443">
 <ul class="org-ul">
 <li>Root is \(\forall x\), with a single child: the whole bracketed formula.</li>
 <li>\(\wedge\) is the main connective inside the quantifier, splitting into \(P(x) \rightarrow Q(x)\) and \(S(x, y)\).</li>
@@ -372,9 +373,9 @@ Formula: \((\forall x)[(P(x) \rightarrow Q(x)) \wedge S(x, y)]\)
 </div>
 </div>
 </div>
-<div id="outline-container-org00e0a32" class="outline-3">
-<h3 id="org00e0a32">Summary</h3>
-<div class="outline-text-3" id="text-org00e0a32">
+<div id="outline-container-org563e45d" class="outline-3">
+<h3 id="org563e45d">Summary</h3>
+<div class="outline-text-3" id="text-org563e45d">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 

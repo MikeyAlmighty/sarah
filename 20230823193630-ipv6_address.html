@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-11-02 Mon 19:50 -->
+<!-- 2026-11-03 Tue 07:58 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>IPv6 address</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,27 +243,27 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">IPv6 address</h1>
-<div id="outline-container-orgcbcaeaf" class="outline-2">
-<h2 id="orgcbcaeaf">Shortening an <code>IPv6 address</code>:</h2>
-<div class="outline-text-2" id="text-orgcbcaeaf">
+<div id="outline-container-org7484485" class="outline-2">
+<h2 id="org7484485">Shortening an <code>IPv6 address</code>:</h2>
+<div class="outline-text-2" id="text-org7484485">
 <ol class="org-ol">
 <li>Remove any leading zeros from a group.</li>
 <li>Any number of consecutive groups composed of just zeros can be replaced with two colons <code>::</code>.</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-org8e05848" class="outline-2">
-<h2 id="org8e05848">Anatomy</h2>
-<div class="outline-text-2" id="text-org8e05848">
+<div id="outline-container-org98cbf0f" class="outline-2">
+<h2 id="org98cbf0f">Anatomy</h2>
+<div class="outline-text-2" id="text-org98cbf0f">
 <p>
 NetworkID: First <b>64 bits</b>
 HostID: Second <b>64 bits</b>
 </p>
 </div>
 </div>
-<div id="outline-container-orgef9f57b" class="outline-2">
-<h2 id="orgef9f57b">Reserved Address Spaces</h2>
-<div class="outline-text-2" id="text-orgef9f57b">
+<div id="outline-container-orgb0d5f98" class="outline-2">
+<h2 id="orgb0d5f98">Reserved Address Spaces</h2>
+<div class="outline-text-2" id="text-orgb0d5f98">
 <p>
 Documentation: Start with <code>2001:0db8</code>
 If it starts with <code>FF00:xxx</code> <a href="20230821054705-multicast.html#ID-c4309265-ff27-4592-85f6-3ed4ea47fc18">Multicast</a>
@@ -270,87 +271,87 @@ If it starts with <code>FE80:xxx</code> <a href="20230823194006-link_local_unica
 </p>
 </div>
 </div>
-<div id="outline-container-org07cde8c" class="outline-2">
-<h2 id="org07cde8c">Header</h2>
-<div class="outline-text-2" id="text-org07cde8c">
+<div id="outline-container-org734c7f8" class="outline-2">
+<h2 id="org734c7f8">Header</h2>
+<div class="outline-text-2" id="text-org734c7f8">
 </div>
-<div id="outline-container-org63a3756" class="outline-3">
-<h3 id="org63a3756">Version Field</h3>
-<div class="outline-text-3" id="text-org63a3756">
+<div id="outline-container-org33b4ca6" class="outline-3">
+<h3 id="org33b4ca6">Version Field</h3>
+<div class="outline-text-3" id="text-org33b4ca6">
 <p>
 <b>4 bit</b>
 Defines what version of IP is in use
 </p>
 </div>
 </div>
-<div id="outline-container-org273d7bb" class="outline-3">
-<h3 id="org273d7bb">Traffic Class Field</h3>
-<div class="outline-text-3" id="text-org273d7bb">
+<div id="outline-container-org8939716" class="outline-3">
+<h3 id="org8939716">Traffic Class Field</h3>
+<div class="outline-text-3" id="text-org8939716">
 <p>
 <b>8 bit</b>
 Defines type of traffic contained within datagram
 </p>
 </div>
 </div>
-<div id="outline-container-org127e018" class="outline-3">
-<h3 id="org127e018">Flow Label Field</h3>
-<div class="outline-text-3" id="text-org127e018">
+<div id="outline-container-org72d2006" class="outline-3">
+<h3 id="org72d2006">Flow Label Field</h3>
+<div class="outline-text-3" id="text-org72d2006">
 <p>
 <b>20 bit</b>
 Used in conjunction with <code>Traffic Class field</code> for <a href="20230819075407-router.html#ID-88dd44ee-b7ff-4a29-9048-10709d05bb8e">routers</a> to make decisions about the quality of service level for a specific datagram.
 </p>
 </div>
 </div>
-<div id="outline-container-org1ca8be4" class="outline-3">
-<h3 id="org1ca8be4">Payload Length Field</h3>
-<div class="outline-text-3" id="text-org1ca8be4">
+<div id="outline-container-org3d18be8" class="outline-3">
+<h3 id="org3d18be8">Payload Length Field</h3>
+<div class="outline-text-3" id="text-org3d18be8">
 <p>
 <b>16 bit</b>
 Defines how long data payload section of datagram is.
 </p>
 </div>
 </div>
-<div id="outline-container-org4a6dd61" class="outline-3">
-<h3 id="org4a6dd61">Next Header Field</h3>
-<div class="outline-text-3" id="text-org4a6dd61">
+<div id="outline-container-orgbdbe3ce" class="outline-3">
+<h3 id="orgbdbe3ce">Next Header Field</h3>
+<div class="outline-text-3" id="text-orgbdbe3ce">
 <p>
 <b>16 bit</b>
 Optional
 </p>
 </div>
 </div>
-<div id="outline-container-orgf6f3bf4" class="outline-3">
-<h3 id="orgf6f3bf4">Hop Limit Field</h3>
-<div class="outline-text-3" id="text-orgf6f3bf4">
+<div id="outline-container-org55705be" class="outline-3">
+<h3 id="org55705be">Hop Limit Field</h3>
+<div class="outline-text-3" id="text-org55705be">
 <p>
 <b>8 bit</b>
 Identical to TTL Field in IPv4 Header
 </p>
 </div>
 </div>
-<div id="outline-container-orgd080e17" class="outline-3">
-<h3 id="orgd080e17">Source Field</h3>
-<div class="outline-text-3" id="text-orgd080e17">
+<div id="outline-container-org8efb758" class="outline-3">
+<h3 id="org8efb758">Source Field</h3>
+<div class="outline-text-3" id="text-org8efb758">
 <p>
 <b>128 bit</b>
 </p>
 </div>
 </div>
-<div id="outline-container-orga956a5c" class="outline-3">
-<h3 id="orga956a5c">Destination Field</h3>
-<div class="outline-text-3" id="text-orga956a5c">
+<div id="outline-container-org388bc92" class="outline-3">
+<h3 id="org388bc92">Destination Field</h3>
+<div class="outline-text-3" id="text-org388bc92">
 <p>
 <b>128 bit</b>
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgb4c2f66" class="outline-2">
-<h2 id="orgb4c2f66">Payload</h2>
+<div id="outline-container-org16de080" class="outline-2">
+<h2 id="org16de080">Payload</h2>
 </div>
 
-<div id="outline-container-org50948c1" class="outline-2">
-<h2 id="org50948c1"><a href="20230823195003-ipv6_tunnels.html#ID-b08f93ee-0bc2-4f6b-badb-42eda2c958fd">IPv6 Tunnels</a></h2>
+<div id="outline-container-orgb13d2f7" class="outline-2">
+<h2 id="orgb13d2f7"><a href="20230823195003-ipv6_tunnels.html#ID-b08f93ee-0bc2-4f6b-badb-42eda2c958fd">IPv6 Tunnels</a></h2>
 </div>
 </div>
 </body>

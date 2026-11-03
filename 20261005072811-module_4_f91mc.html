@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-11-02 Mon 19:50 -->
+<!-- 2026-11-03 Tue 07:58 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Module 4 (F91MC)</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,13 +243,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Module 4 (F91MC)</h1>
-<div id="outline-container-org7e08c11" class="outline-2">
-<h2 id="org7e08c11">Module 4 - Propositional Logic Part 2</h2>
-<div class="outline-text-2" id="text-org7e08c11">
+<div id="outline-container-orgde5056d" class="outline-2">
+<h2 id="orgde5056d">Module 4 - Propositional Logic Part 2</h2>
+<div class="outline-text-2" id="text-orgde5056d">
 </div>
-<div id="outline-container-org92c9c65" class="outline-3">
-<h3 id="org92c9c65">Key learning for this module:</h3>
-<div class="outline-text-3" id="text-org92c9c65">
+<div id="outline-container-orgc14b9cd" class="outline-3">
+<h3 id="orgc14b9cd">Key learning for this module:</h3>
+<div class="outline-text-3" id="text-orgc14b9cd">
 <ul class="org-ul">
 <li>Understand logical equivalence and use it to simplify statements.</li>
 <li>Learn how to construct truth trees and apply them to analyse logical formulae efficiently.</li>
@@ -256,9 +257,9 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-orgea0d0bb" class="outline-3">
-<h3 id="orgea0d0bb">Key concepts for this module:</h3>
-<div class="outline-text-3" id="text-orgea0d0bb">
+<div id="outline-container-org66a249e" class="outline-3">
+<h3 id="org66a249e">Key concepts for this module:</h3>
+<div class="outline-text-3" id="text-org66a249e">
 <ul class="org-ul">
 <li><b>Logical equivalence</b> and <b>adequate sets of connectives</b>.</li>
 <li><b>Truth trees</b> or a branching method to test <b>satisfiability</b> and <b>logical properties</b>.</li>
@@ -267,60 +268,60 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-org46c13b9" class="outline-3">
-<h3 id="org46c13b9">Summary</h3>
-<div class="outline-text-3" id="text-org46c13b9">
+<div id="outline-container-org25033a7" class="outline-3">
+<h3 id="org25033a7">Summary</h3>
+<div class="outline-text-3" id="text-org25033a7">
 </div>
-<div id="outline-container-orga6bc184" class="outline-4">
-<h4 id="orga6bc184"><a href="20261005075204-definition_of_logical_equivalence.html#ID-6154da29-5742-4917-8eb7-63d279178435">Definition of Logical Equivalence</a></h4>
+<div id="outline-container-org3389f07" class="outline-4">
+<h4 id="org3389f07"><a href="20261005075204-definition_of_logical_equivalence.html#ID-6154da29-5742-4917-8eb7-63d279178435">Definition of Logical Equivalence</a></h4>
 </div>
 
-<div id="outline-container-org2958889" class="outline-4">
-<h4 id="org2958889"><a href="20261005080115-logical_constants_t_and_f.html#ID-0da5b793-c029-4ade-8875-cbd7a53aaf55">Logical Constants t and f</a></h4>
-<div class="outline-text-4" id="text-org2958889">
+<div id="outline-container-org1b4192a" class="outline-4">
+<h4 id="org1b4192a"><a href="20261005080115-logical_constants_t_and_f.html#ID-0da5b793-c029-4ade-8875-cbd7a53aaf55">Logical Constants t and f</a></h4>
+<div class="outline-text-4" id="text-org1b4192a">
 </div>
 <ul class="org-ul">
-<li><a id="org0c0fd23"></a><a href="20261005080428-logical_equivalance_and_tautologies.html#ID-c0706ef0-7934-4e17-b4ce-e16ff3f4d38a">Logical Equivalance and Tautologies</a><br /></li>
-<li><a id="org326a155"></a><a href="20261005080802-logical_constants_and_tautologies.html#ID-d9c7148b-787d-4ea7-87cd-12ae0c1b24f8">Logical Constants and Tautologies</a><br /></li>
+<li><a id="orgd6ab054"></a><a href="20261005080428-logical_equivalance_and_tautologies.html#ID-c0706ef0-7934-4e17-b4ce-e16ff3f4d38a">Logical Equivalance and Tautologies</a><br /></li>
+<li><a id="org17e6537"></a><a href="20261005080802-logical_constants_and_tautologies.html#ID-d9c7148b-787d-4ea7-87cd-12ae0c1b24f8">Logical Constants and Tautologies</a><br /></li>
 </ul>
 </div>
-<div id="outline-container-orgc4076ac" class="outline-4">
-<h4 id="orgc4076ac"><a href="20261005082022-important_logical_equivalences.html#ID-5d1cc05b-81cb-4d86-9817-6863539f72eb">Important Logical Equivalences</a></h4>
-<div class="outline-text-4" id="text-orgc4076ac">
+<div id="outline-container-org1cfa100" class="outline-4">
+<h4 id="org1cfa100"><a href="20261005082022-important_logical_equivalences.html#ID-5d1cc05b-81cb-4d86-9817-6863539f72eb">Important Logical Equivalences</a></h4>
+<div class="outline-text-4" id="text-org1cfa100">
 </div>
 <ul class="org-ul">
-<li><a id="orgeb05388"></a><a href="20261008070910-proving_logical_equivalences_without_truth_tables.html#ID-422d4df1-c3af-4f6e-8117-89941a3d237e">Proving Logical Equivalences Without Truth Tables</a><br />
+<li><a id="org0101100"></a><a href="20261008070910-proving_logical_equivalences_without_truth_tables.html#ID-422d4df1-c3af-4f6e-8117-89941a3d237e">Proving Logical Equivalences Without Truth Tables</a><br />
 <ul class="org-ul">
-<li><a id="orgf2960c0"></a><a href="20261010093627-logical_equivalence_cheat_sheet.html#ID-24cbbc6b-858b-4e55-963e-66fedd470bca">Logical Equivalence Cheat Sheet</a><br /></li>
-<li><a id="org52826c3"></a><a href="20261010095754-worked_examples_of_proving_logical_equivalences.html#ID-cb0838be-4c4c-45d2-81fb-5d534ef676c2">Worked Examples of Proving Logical Equivalences</a><br /></li>
+<li><a id="orgd49eef4"></a><a href="20261010093627-logical_equivalence_cheat_sheet.html#ID-24cbbc6b-858b-4e55-963e-66fedd470bca">Logical Equivalence Cheat Sheet</a><br /></li>
+<li><a id="org8130ddb"></a><a href="20261010095754-worked_examples_of_proving_logical_equivalences.html#ID-cb0838be-4c4c-45d2-81fb-5d534ef676c2">Worked Examples of Proving Logical Equivalences</a><br /></li>
 </ul>
 </li>
 </ul>
 </div>
-<div id="outline-container-org06a4cf7" class="outline-4">
-<h4 id="org06a4cf7"><a href="20261012072959-adequate_connectives.html#ID-ef50162e-9514-4a64-9119-b933b9d4c588">Adequate Connectives</a></h4>
-<div class="outline-text-4" id="text-org06a4cf7">
+<div id="outline-container-org917ce6b" class="outline-4">
+<h4 id="org917ce6b"><a href="20261012072959-adequate_connectives.html#ID-ef50162e-9514-4a64-9119-b933b9d4c588">Adequate Connectives</a></h4>
+<div class="outline-text-4" id="text-org917ce6b">
 </div>
 <ul class="org-ul">
-<li><a id="orga6a91d1"></a><a href="20261012073840-adequate_sets_with_two_connectives.html#ID-62a681e9-6b06-4d97-ab08-a96ba85f9dd2">Adequate Sets With Two Connectives</a><br /></li>
-<li><a id="org240ce9b"></a><a href="20261012073906-adequate_sets_with_one_connective.html#ID-60cfa20f-1ef7-498b-88ef-92a2bf833b53">Adequate Sets With One Connective</a><br /></li>
-<li><a id="org761e685"></a><a href="20261012081616-adequate_connectives_cheat_sheet.html#ID-f0e20431-0a2a-44e7-a952-5ef5e5053bdc">Adequate Connectives Cheat Sheet</a><br /></li>
+<li><a id="orgcd55dc0"></a><a href="20261012073840-adequate_sets_with_two_connectives.html#ID-62a681e9-6b06-4d97-ab08-a96ba85f9dd2">Adequate Sets With Two Connectives</a><br /></li>
+<li><a id="org8a6ee6b"></a><a href="20261012073906-adequate_sets_with_one_connective.html#ID-60cfa20f-1ef7-498b-88ef-92a2bf833b53">Adequate Sets With One Connective</a><br /></li>
+<li><a id="orgc1dffcc"></a><a href="20261012081616-adequate_connectives_cheat_sheet.html#ID-f0e20431-0a2a-44e7-a952-5ef5e5053bdc">Adequate Connectives Cheat Sheet</a><br /></li>
 
-<li><a id="org5f52fe5"></a><a href="20261013065140-adequate_connective_worked_examples.html#ID-9af4fc61-683b-446c-a400-af5bba087434">Adequate Connective Worked Examples</a><br /></li>
+<li><a id="orge44aae8"></a><a href="20261013065140-adequate_connective_worked_examples.html#ID-9af4fc61-683b-446c-a400-af5bba087434">Adequate Connective Worked Examples</a><br /></li>
 </ul>
 </div>
-<div id="outline-container-orgc34f84a" class="outline-4">
-<h4 id="orgc34f84a"><a href="20261013070218-constructing_truth_trees.html#ID-e156a6dd-1ad0-4b2b-bf5f-8fbdda60e01c">Constructing Truth Trees</a></h4>
-<div class="outline-text-4" id="text-orgc34f84a">
+<div id="outline-container-orgad858b7" class="outline-4">
+<h4 id="orgad858b7"><a href="20261013070218-constructing_truth_trees.html#ID-e156a6dd-1ad0-4b2b-bf5f-8fbdda60e01c">Constructing Truth Trees</a></h4>
+<div class="outline-text-4" id="text-orgad858b7">
 </div>
 <ul class="org-ul">
-<li><a id="org4d22d52"></a><a href="20261014082308-a_branch_of_a_truth_tree.html#ID-33c01d52-9777-4c3e-86cb-6a2f9895088f">A Branch of a Truth Tree</a><br /></li>
-<li><a id="org3753e03"></a><a href="20261014084904-the_truth_tree_algorithm_in_practice.html#ID-8d815474-b27e-4ff3-8ce0-fcf0116ad443">The Truth Tree Algorithm in Practice</a><br />
+<li><a id="org1d29122"></a><a href="20261014082308-a_branch_of_a_truth_tree.html#ID-33c01d52-9777-4c3e-86cb-6a2f9895088f">A Branch of a Truth Tree</a><br /></li>
+<li><a id="orga5cfa0f"></a><a href="20261014084904-the_truth_tree_algorithm_in_practice.html#ID-8d815474-b27e-4ff3-8ce0-fcf0116ad443">The Truth Tree Algorithm in Practice</a><br />
 <ul class="org-ul">
-<li><a id="org848fc0a"></a><a href="20261014085518-truth_tree_algorithm.html#ID-a1535dc0-815b-41e5-b287-f6fbaba539a0">Truth Tree Algorithm</a><br /></li>
+<li><a id="org6be60fa"></a><a href="20261014085518-truth_tree_algorithm.html#ID-a1535dc0-815b-41e5-b287-f6fbaba539a0">Truth Tree Algorithm</a><br /></li>
 </ul>
 </li>
-<li><a id="org7eeb013"></a><a href="20261015061118-truth_tree_cheat_sheet.html#ID-16fce724-47f5-42b8-98c7-bf7a254991c7">Truth Tree Cheat Sheet</a><br /></li>
+<li><a id="org78a68e5"></a><a href="20261015061118-truth_tree_cheat_sheet.html#ID-16fce724-47f5-42b8-98c7-bf7a254991c7">Truth Tree Cheat Sheet</a><br /></li>
 </ul>
 </div>
 </div>

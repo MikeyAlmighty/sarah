@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-11-02 Mon 19:50 -->
+<!-- 2026-11-03 Tue 07:58 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Initializing final Fields</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,18 +243,18 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Initializing final Fields</h1>
-<div id="outline-container-orgdcbca7f" class="outline-2">
-<h2 id="orgdcbca7f">Initializing final Fields</h2>
-<div class="outline-text-2" id="text-orgdcbca7f">
+<div id="outline-container-orgc250791" class="outline-2">
+<h2 id="orgc250791">Initializing final Fields</h2>
+<div class="outline-text-2" id="text-orgc250791">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">MouseHouse</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">MouseHouse</span> {
     <span class="org-keyword">private</span> <span class="org-keyword">final</span> <span class="org-type">int</span> <span class="org-variable-name">volume</span>;
     <span class="org-keyword">private</span> <span class="org-keyword">final</span> <span class="org-type">String</span> <span class="org-variable-name">name</span> = <span class="org-string">"The Mouse House"</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">Declaration assignment
 </span>    {
         volume = 10; <span class="org-comment-delimiter">// </span><span class="org-comment">Instance Initializer assignment
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -261,15 +262,15 @@ Unlike <code>static</code> class members, though, <code>final instance</code> fi
 The <code>constructor</code> is part of the <b>initialization</b> process, so it is allowed to assign <code>final instance variables</code>.
 </p>
 </div>
-<div id="outline-container-org189a2bd" class="outline-3">
-<h3 id="org189a2bd"><span class="underline">Exam Trick</span></h3>
-<div class="outline-text-3" id="text-org189a2bd">
+<div id="outline-container-org8e449b6" class="outline-3">
+<h3 id="org8e449b6"><span class="underline">Exam Trick</span></h3>
+<div class="outline-text-3" id="text-org8e449b6">
 <p>
 By the time the <code>constructor</code> completes, all <code>final instance variables</code> <b>must be assigned</b> a value <b>exactly once</b>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">MouseHouse</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">MouseHouse</span> {
     <span class="org-keyword">private</span> <span class="org-keyword">final</span> <span class="org-type">int</span> <span class="org-variable-name">volume</span>;
     <span class="org-keyword">private</span> <span class="org-keyword">final</span> <span class="org-type">String</span> <span class="org-variable-name">name</span>;
     <span class="org-keyword">public</span> <span class="org-function-name">MouseHouse</span>() {
@@ -279,7 +280,7 @@ By the time the <code>constructor</code> completes, all <code>final instance var
         volume = 10; <span class="org-comment-delimiter">// </span><span class="org-comment">Instance initializer assignment
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 
 <ul class="org-ul">
@@ -295,7 +296,7 @@ Failure to do so will result in a <b>compiler error</b> on the line that declare
 
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">MouseHouse</span> {
+<pre class="src src-java"><code><span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">MouseHouse</span> {
     <span class="org-keyword">private</span> <span class="org-keyword">final</span> <span class="org-type">int</span> <span class="org-variable-name">volume</span>;
     <span class="org-keyword">private</span> <span class="org-keyword">final</span> <span class="org-type">String</span> <span class="org-variable-name">type</span>;
 
@@ -311,12 +312,12 @@ Failure to do so will result in a <b>compiler error</b> on the line that declare
 </span>        <span class="org-keyword">this</span>.volume = 2; <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>    }
 }
-</pre>
+</code></pre>
 </div>
 </div>
-<div id="outline-container-orgab1a8ba" class="outline-4">
-<h4 id="orgab1a8ba"><span class="underline">Exam Trick</span></h4>
-<div class="outline-text-4" id="text-orgab1a8ba">
+<div id="outline-container-org16faa13" class="outline-4">
+<h4 id="org16faa13"><span class="underline">Exam Trick</span></h4>
+<div class="outline-text-4" id="text-org16faa13">
 <p>
 On the exam, be wary of any instance variables marked <code>final</code>.
 </p>

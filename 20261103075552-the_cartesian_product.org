@@ -1,0 +1,49 @@
+:PROPERTIES:
+:ID:       d27d88b0-d87a-477a-81c0-a772200c4fca
+:END:
+#+title: The Cartesian Product
+
+* The Cartesian Product
+
+- Used later to define relations, functions, and coordinate systems.
+
+** Definition 7.3: Ordered pair
+
+An *ordered pair* $(a, b)$ is a pair where $a$ comes before $b$.
+
+*** Equality:
+
+$(a, b) = (c, d) \iff a = c \land b = d$
+- $(3, 8) \neq (8, 3)$
+
+*** Pair vs set
+
+| Notation   | Order matters? | Example               |
+|------------+----------------+-----------------------|
+| $(a, b)$   | yes            | $(3, 8) \neq (8, 3)$  |
+| $\{a, b\}$ | no             | $\{3, 8\} = \{8, 3\}$ |
+
+** Definition 7.4: Cartesian product
+
+$A \times B = \{(a, b) \mid a \in A \land b \in B\}$
+
+** Example
+
+$A = \{1, 2, 3\}$, $B = \{x, y\}$
+$A \times B = \{(1,x), (1,y), (2,x), (2,y), (3,x), (3,y)\}$
+
+*** Method:
+
+- Fix each $a \in A$ in turn, pair it with every $b \in B$.
+
+** Properties
+
+Not in the course text yet, but follow from the definition:
+- Size :: $|A \times B| = |A| \cdot |B|$ (example: $3 \cdot 2 = 6$)
+- Not commutative :: $A \times B \neq B \times A$ in general ($(1,x) \in A \times B$, but $(1,x) \notin B \times A$)
+- With $\varnothing$ :: $A \times \varnothing = \varnothing$ (no $b$ to pair with)
+
+** CS link
+
+A nested loop: =for a in A: for b in B: yield (a, b)=.
+Same as a SQL =CROSS JOIN= or Python's =itertools.product(A, B)=.

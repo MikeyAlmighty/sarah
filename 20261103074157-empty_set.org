@@ -1,0 +1,69 @@
+:PROPERTIES:
+:ID:       6dac5d34-f354-46de-943d-0b48d299fe8b
+:END:
+#+title: Empty Set
+
+* Empty Set
+
+** Definition
+
+The *empty set* is the set with *no elements*.
+- Written $\varnothing$
+- Also $\{\}$, but $\varnothing$ is the convention
+
+*** Example:
+
+$D = \{\text{numbers between 0 and 10 divisible by both 3 and 5}\} = \varnothing$
+- "Between" excludes 0 and 10.
+- If 0 were included, $D = \{0\}$, since 0 is divisible by 15.
+
+** Uniqueness
+
+There is exactly *one empty set*.
+
+- Any two sets with no elements contain the same elements (none), so they are equal.
+
+** $\varnothing \subset A$ for every set $A$
+
+The course calls this a convention, but it follows from the [[id:3d9c6ff0-10f9-49a0-8966-65da266a2064][subset]] definition:
+$\varnothing \subset A \iff \forall x\,(x \in \varnothing \rightarrow x \in A)$
+- $x \in \varnothing$ is always false, so the implication is always true (vacuous truth)
+
+** $\varnothing$ vs $\{\varnothing\}$
+
+| Set                    | Elements      | Size |
+|------------------------+---------------+------|
+| $\varnothing$          | none          | 0    |
+| $\{\varnothing\}$      | $\varnothing$ | 1    |
+
+- $\varnothing \in \{\varnothing\}$ is true
+- $\varnothing \subset \{\varnothing\}$ is true (as for any set)
+- $\varnothing \in \varnothing$ is false
+
+** CS link
+
+- Like an empty list in a box: $\{\varnothing\}$ is a box holding an empty box, not an empty box.
+
+** Worked example (video)
+
+$S = \{\varnothing, \{\varnothing\}\}$, so $S$ has two elements: $\varnothing$ and $\{\varnothing\}$.
+
+| # | Statement                          | True? | Why                                               |
+|---+------------------------------------+-------+---------------------------------------------------|
+| 1 | $\varnothing \subset S$            | yes   | $\varnothing$ is a subset of every set            |
+| 2 | $\varnothing \in S$                | yes   | $\varnothing$ is listed as an element             |
+| 3 | $\{\varnothing\} \in S$            | yes   | $\{\varnothing\}$ is listed as an element         |
+| 4 | $\{\varnothing\} \subset S$        | yes   | its only element, $\varnothing$, is in $S$        |
+| 5 | $\{\{\varnothing\}\} \in S$        | *no*  | not one of the two listed elements                |
+| + | $\{\{\varnothing\}\} \subset S$    | yes   | its only element, $\{\varnothing\}$, is in $S$    |
+
+*** Method:
+
+- list the elements of $S$ first.
+
+  - $X \in S$ :: is $X$ literally one of them?
+  - $X \subset S$ :: is every element of $X$ one of them?
+
+The video writes $\phi$ for $\varnothing$.
+
+- Common in handwriting, but $\phi$ is the Greek letter phi.

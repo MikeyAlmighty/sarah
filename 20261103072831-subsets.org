@@ -1,0 +1,43 @@
+:PROPERTIES:
+:ID:       3d9c6ff0-10f9-49a0-8966-65da266a2064
+:END:
+#+title: Subsets
+
+* Subsets
+
+** Definition 7.2
+
+$B$ is a *subset* of $A$ if every element of $B$ is also an element of $A$.
+- Written $B \subset A$
+- Formally: $B \subset A \iff \forall x\,(x \in B \rightarrow x \in A)$
+
+*** Example:
+
+$A = \{1, 3, 5, 7\}$, $B = \{3, 7\}$ gives $B \subset A$.
+
+** Notation warning
+
+This course uses $\subset$ for "subset" (equality allowed).
+
+Many texts write this as $\subseteq$ and reserve $\subset$ for *proper* subset ($B \subseteq A$ and $B \neq A$).
+
+** $\subset$ vs $\in$
+
+- $B \subset A$ :: every element of $B$ is in $A$
+- $B \in A$ :: $B$ itself is one element of $A$
+
+*** Example:
+
+$A = \{1, \{3, 5\}, 3, 6, 7\}$
+
+| Statement            | True? | Why                                       |
+|----------------------+-------+-------------------------------------------|
+| $3 \in A$            | yes   | 3 is listed                               |
+| $\{3, 5\} \in A$     | yes   | the set $\{3,5\}$ is listed as an element |
+| $5 \notin A$         | yes   | 5 only appears inside $\{3,5\}$           |
+| $\{3, 6\} \subset A$ | yes   | $3 \in A$ and $6 \in A$                   |
+| $\{3\} \subset A$    | yes   | $3 \in A$                                 |
+| $\{3, 5\} \subset A$ | *no*  | $5 \notin A$                              |
+
+The last row isn't in the course text.
+- It's the trap: $\{3,5\}$ is an *element* of $A$, not a subset.
