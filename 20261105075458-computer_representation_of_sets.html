@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-11-05 Thu 08:14 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Computer Representation of Sets</title>
+<meta name="author" content="Michael Leibbrandt" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<style>
+        body {
+          font-family: sans-serif;
+          line-height: 1.5;
+          margin: 2em;
+          background-color: #ffffff;
+          color: #111111;
+        }
+
+        /* Code block styling */
+        pre.src {
+          padding: 1em;
+          border-radius: 6px;
+          overflow-x: auto;
+          background-color: #f0f0f0;
+          color: #222222;
+          border: 1px solid #ddd;
+          font-family: monospace;
+        }
+
+        /* Syntax highlighting for Org-generated classes */
+        span.org-keyword { color: #005999; font-weight: bold; }
+        span.org-string  { color: #aa3333; }
+        span.org-comment { color: #666666; font-style: italic; }
+        span.org-type    { color: #007700; font-weight: bold; }
+        span.org-variable { color: #993399; }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            pre.src {
+                background-color: #000000;
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
+
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
+        }
+
+        ul { list-style-type: disc; padding-left: 2em; }
+      </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Computer Representation of Sets</h1>
+<div id="outline-container-org6e384a8" class="outline-2">
+<h2 id="org6e384a8">Computer Representation of Sets</h2>
+<div class="outline-text-2" id="text-org6e384a8">
+<p>
+Storing sets <b>unordered</b> makes \(\cup\) and \(\cap\) slow, because each operation needs lots of <b>searching</b>.
+Use <b>bit strings</b> instead, so set operations become <b>bitwise</b> operations.
+</p>
+</div>
+<div id="outline-container-org43f45a9" class="outline-3">
+<h3 id="org43f45a9">Method</h3>
+<div class="outline-text-3" id="text-org43f45a9">
+<ol class="org-ol">
+<li><b>Order</b> a finite universal set: \(U = \{u_1, u_2, \dots, u_n\}\).</li>
+<li>Represent \(A \subseteq U\) by a bit string of length \(n\):
+\[ k\text{th bit} = \begin{cases} 1 & u_k \in A \\ 0 & u_k \notin A \end{cases} \]</li>
+</ol>
+</div>
+<div id="outline-container-orgf6bc340" class="outline-4">
+<h4 id="orgf6bc340">Example:</h4>
+<div class="outline-text-4" id="text-orgf6bc340">
+<p>
+\(U = \{1,2,3,4,5,6\}\)
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Set</th>
+<th scope="col" class="org-right">1</th>
+<th scope="col" class="org-right">2</th>
+<th scope="col" class="org-right">3</th>
+<th scope="col" class="org-right">4</th>
+<th scope="col" class="org-right">5</th>
+<th scope="col" class="org-right">6</th>
+<th scope="col" class="org-left">Bit string</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">\(A = \{2,3\}\)</td>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-left"><code>011000</code></td>
+</tr>
+
+<tr>
+<td class="org-left">\(B = \{3,4,5,6\}\)</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-left"><code>001111</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="outline-container-org42ffbaf" class="outline-3">
+<h3 id="org42ffbaf">Operations</h3>
+<div class="outline-text-3" id="text-org42ffbaf">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Set operation</th>
+<th scope="col" class="org-left">Bitwise</th>
+<th scope="col" class="org-left">Rule for \(k\)th bit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">\(\overline{A}\)</td>
+<td class="org-left">NOT (<code>~A</code>)</td>
+<td class="org-left"><b>Flip</b> every bit</td>
+</tr>
+
+<tr>
+<td class="org-left">\(A \cup B\)</td>
+<td class="org-left">OR (<code>A \vert B</code>)</td>
+<td class="org-left">1 if <b>either</b> (or both) bit is 1</td>
+</tr>
+
+<tr>
+<td class="org-left">\(A \cap B\)</td>
+<td class="org-left">AND (<code>A &amp; B</code>)</td>
+<td class="org-left">1 only if <b>both</b> bits are 1</td>
+</tr>
+
+<tr>
+<td class="org-left">\(A \setminus B\)</td>
+<td class="org-left"><code>A &amp; ~B</code></td>
+<td class="org-left">1 if in \(A\) and <b>not</b> in \(B\)</td>
+</tr>
+</tbody>
+</table>
+
+<ul class="org-ul">
+<li>Same parallel as before: \(\cup \to \lor\), \(\cap \to \land\), complement \(\to \neg\), now applied <b>bit by bit</b>.</li>
+</ul>
+</div>
+<div id="outline-container-org2cb4440" class="outline-4">
+<h4 id="org2cb4440">Example: Complement</h4>
+<div class="outline-text-4" id="text-org2cb4440">
+<p>
+\(A\) = <code>011000</code> \(\Rightarrow\) \(\overline{A}\) = <code>100111</code>
+</p>
+</div>
+</div>
+<div id="outline-container-orgaf765c1" class="outline-4">
+<h4 id="orgaf765c1">Example: Union and Intersection</h4>
+<div class="outline-text-4" id="text-orgaf765c1">
+<p>
+\(U = \{1,2,3,4,5\}\), \(A = \{1,3,5\}\), \(B = \{3,4\}\)
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&nbsp;</th>
+<th scope="col" class="org-left">Bit string</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">\(A\)</td>
+<td class="org-left"><code>10101</code></td>
+</tr>
+
+<tr>
+<td class="org-left">\(B\)</td>
+<td class="org-left"><code>00110</code></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">\(A \cup B\)</td>
+<td class="org-left"><code>10111</code></td>
+</tr>
+
+<tr>
+<td class="org-left">\(A \cap B\)</td>
+<td class="org-left"><code>00100</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>
+So \(A \cup B = \{1,3,4,5\}\) and \(A \cap B = \{3\}\).
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org286128b" class="outline-3">
+<h3 id="org286128b">In code</h3>
+<div class="outline-text-3" id="text-org286128b">
+<div class="org-src-container">
+<pre class="src src-python"><code><span class="org-variable-name">A</span>, <span class="org-variable-name">B</span> <span class="org-operator">=</span> 0b10101, 0b00110
+<span class="org-variable-name">mask</span> <span class="org-operator">=</span> 0b11111          <span class="org-comment-delimiter"># </span><span class="org-comment">n = 5 bits; needed so ~ doesn't flip bits outside U
+</span>
+f<span class="org-string">"</span>{A <span class="org-operator">|</span> B:05b}<span class="org-string">"</span>          <span class="org-comment-delimiter"># </span><span class="org-comment">'10111'  union
+</span>f<span class="org-string">"</span>{A <span class="org-operator">&amp;</span> B:05b}<span class="org-string">"</span>          <span class="org-comment-delimiter"># </span><span class="org-comment">'00100'  intersection
+</span>f<span class="org-string">"</span>{<span class="org-operator">~</span>A <span class="org-operator">&amp;</span> mask:05b}<span class="org-string">"</span>      <span class="org-comment-delimiter"># </span><span class="org-comment">'01010'  complement
+</span>f<span class="org-string">"</span>{A <span class="org-operator">&amp;</span> <span class="org-operator">~</span>B <span class="org-operator">&amp;</span> mask:05b}<span class="org-string">"</span>  <span class="org-comment-delimiter"># </span><span class="org-comment">'10001'  difference</span>
+</code></pre>
+</div>
+
+<ul class="org-ul">
+<li>Each operation is <b>one CPU instruction</b> per machine word, compared with searching an unordered list.</li>
+<li>Catch: needs a <b>finite, fixed, ordered</b> \(U\), and uses \(n\) bits even when \(A\) is small.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

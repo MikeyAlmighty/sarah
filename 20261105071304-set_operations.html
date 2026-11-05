@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-11-05 Thu 08:14 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Set Operations</title>
+<meta name="author" content="Michael Leibbrandt" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<style>
+        body {
+          font-family: sans-serif;
+          line-height: 1.5;
+          margin: 2em;
+          background-color: #ffffff;
+          color: #111111;
+        }
+
+        /* Code block styling */
+        pre.src {
+          padding: 1em;
+          border-radius: 6px;
+          overflow-x: auto;
+          background-color: #f0f0f0;
+          color: #222222;
+          border: 1px solid #ddd;
+          font-family: monospace;
+        }
+
+        /* Syntax highlighting for Org-generated classes */
+        span.org-keyword { color: #005999; font-weight: bold; }
+        span.org-string  { color: #aa3333; }
+        span.org-comment { color: #666666; font-style: italic; }
+        span.org-type    { color: #007700; font-weight: bold; }
+        span.org-variable { color: #993399; }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            pre.src {
+                background-color: #000000;
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
+
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
+        }
+
+        ul { list-style-type: disc; padding-left: 2em; }
+      </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Set Operations</h1>
+<div id="outline-container-orgb601bf0" class="outline-2">
+<h2 id="orgb601bf0">Set Operations</h2>
+<div class="outline-text-2" id="text-orgb601bf0">
+<p>
+Operations for <b>combining</b>, <b>comparing</b> and <b>manipulating</b> sets:
+</p>
+<ul class="org-ul">
+<li><b>Union</b></li>
+<li><b>Intersection</b></li>
+<li><b>Difference</b></li>
+<li><b>Complement</b></li>
+</ul>
+
+<p>
+\(:=\) means "equal by definition".
+</p>
+</div>
+<div id="outline-container-org5e0a8d0" class="outline-3">
+<h3 id="org5e0a8d0">Union (Def 7.5)</h3>
+<div class="outline-text-3" id="text-org5e0a8d0">
+<p>
+\[ A \cup B := \{ x \mid x \in A \text{ or } x \in B \} \]
+</p>
+<ul class="org-ul">
+<li><b>Inclusive "or"</b>: \(x\) may be in <b>both</b> \(A\) and \(B\).</li>
+</ul>
+</div>
+<div id="outline-container-org720c58d" class="outline-4">
+<h4 id="org720c58d">Example:</h4>
+<div class="outline-text-4" id="text-org720c58d">
+<ul class="org-ul">
+<li>\(\{1,3,5,7\} \cup \{2,5,7\} = \{1,2,3,5,7\}\)</li>
+</ul>
+
+
+<div id="org5919922" class="figure">
+<p><img src="./assets/set-ops-union-example.png" alt="set-ops-union-example.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org11828ee" class="outline-3">
+<h3 id="org11828ee">Intersection (Def 7.6)</h3>
+<div class="outline-text-3" id="text-org11828ee">
+<p>
+\[ A \cap B := \{ x \mid x \in A \text{ and } x \in B \} \]
+</p>
+</div>
+<div id="outline-container-org11c089b" class="outline-4">
+<h4 id="org11c089b">Example:</h4>
+<div class="outline-text-4" id="text-org11c089b">
+<ul class="org-ul">
+<li>\(\{1,3,5,7\} \cap \{2,5,7\} = \{5,7\}\)</li>
+</ul>
+
+
+<div id="orgb290972" class="figure">
+<p><img src="./assets/set-ops-intersection-example.png" alt="set-ops-intersection-example.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org5b160e8" class="outline-3">
+<h3 id="org5b160e8">Difference (Def 7.7)</h3>
+<div class="outline-text-3" id="text-org5b160e8">
+<p>
+\[ A \setminus B := \{ x \mid x \in A \text{ and } x \notin B \} \]
+</p>
+</div>
+<div id="outline-container-org78ead10" class="outline-4">
+<h4 id="org78ead10">Example:</h4>
+<div class="outline-text-4" id="text-org78ead10">
+<p>
+\(A = \{1,3,5,7\}\), \(B = \{4,5,6,7\}\) \(\Rightarrow\) \(A \setminus B = \{1,3\}\).
+</p>
+
+
+<div id="org5fde91f" class="figure">
+<p><img src="./assets/set-ops-difference-example.png" alt="set-ops-difference-example.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org18461bc" class="outline-3">
+<h3 id="org18461bc">Complement (Def 7.8)</h3>
+<div class="outline-text-3" id="text-org18461bc">
+<p>
+All sets under consideration are <b>subsets</b> of a <i>universal set</i> \(U\).
+\[ \overline{A} := U \setminus A = \{ x \in U \mid x \notin A \} \]
+</p>
+</div>
+<div id="outline-container-org423e560" class="outline-4">
+<h4 id="org423e560">Example:</h4>
+<div class="outline-text-4" id="text-org423e560">
+<ul class="org-ul">
+<li>Everything (in \(U\)) that is <b>not</b> in \(A\).</li>
+<li>Depends on the choice of \(U\).</li>
+</ul>
+
+
+<div id="org2c5d09b" class="figure">
+<p><img src="./assets/set-ops-complement.png" alt="set-ops-complement.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org00d4a02" class="outline-3">
+<h3 id="org00d4a02">Link to logic</h3>
+<div class="outline-text-3" id="text-org00d4a02">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Set operation</th>
+<th scope="col" class="org-left">Logical connective</th>
+<th scope="col" class="org-left">Reading</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Union \(\cup\)</td>
+<td class="org-left">Disjunction \(\lor\)</td>
+<td class="org-left">or</td>
+</tr>
+
+<tr>
+<td class="org-left">Intersection \(\cap\)</td>
+<td class="org-left">Conjunction \(\land\)</td>
+<td class="org-left">and</td>
+</tr>
+
+<tr>
+<td class="org-left">Complement \(\overline{A}\)</td>
+<td class="org-left">Negation \(\neg\)</td>
+<td class="org-left">not</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org12da452" class="outline-3">
+<h3 id="org12da452">Worked example</h3>
+<div class="outline-text-3" id="text-org12da452">
+<p>
+\(U = \{1,\dots,7\}\)
+</p>
+
+<p>
+\(A = \{1,2\}\)
+</p>
+
+<p>
+\(B = \{1,2,4\}\)
+</p>
+
+<p>
+\(C = \{2,3,5,7\}\)
+</p>
+
+<ol class="org-ol">
+<li><p>
+\(C \setminus A = \{3,5,7\}\)
+</p>
+
+
+<div id="org69b91de" class="figure">
+<p><img src="./assets/set-ops-worked-1.png" alt="set-ops-worked-1.png" />
+</p>
+</div></li>
+
+<li><p>
+\(\overline{B} = \{3,5,6,7\}\), so \(A \cap \overline{B} = \varnothing\)
+</p>
+
+
+<div id="org7b2c8a0" class="figure">
+<p><img src="./assets/set-ops-worked-2.png" alt="set-ops-worked-2.png" />
+</p>
+</div></li>
+
+<li><p>
+\(A \cap B = \{1,2\}\), \(\overline{C} = \{1,4,6\}\), so \((A \cap B) \cup \overline{C} = \{1,2,4,6\}\)
+</p>
+
+
+<div id="org82901b4" class="figure">
+<p><img src="./assets/set-ops-worked-3.png" alt="set-ops-worked-3.png" />
+</p>
+</div></li>
+
+<li><p>
+\(A \cup B = \{1,2,4\}\), so \(\overline{A \cup B} = \{3,5,6,7\}\)
+</p>
+
+
+<div id="org116fbae" class="figure">
+<p><img src="./assets/set-ops-worked-4.png" alt="set-ops-worked-4.png" />
+</p>
+</div></li>
+
+<li><p>
+\(\overline{C \setminus A} = \{1,2,4,6\}\), so \(\overline{(C \setminus A)} \cap B = \{1,2,4\}\)
+</p>
+
+
+<div id="orgab561c5" class="figure">
+<p><img src="./assets/set-ops-worked-5.png" alt="set-ops-worked-5.png" />
+</p>
+</div></li>
+</ol>
+
+<p>
+Tip: compute <b>inner</b> expressions first, then complement relative to \(U\).
+</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

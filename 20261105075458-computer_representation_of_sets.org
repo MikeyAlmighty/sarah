@@ -1,0 +1,68 @@
+:PROPERTIES:
+:ID:       7075637f-574a-4657-8888-5a3ecfe382d4
+:END:
+#+title: Computer Representation of Sets
+
+* Computer Representation of Sets
+
+Storing sets *unordered* makes \(\cup\) and \(\cap\) slow, because each operation needs lots of *searching*.
+Use *bit strings* instead, so set operations become *bitwise* operations.
+
+** Method
+
+1. *Order* a finite universal set: \(U = \{u_1, u_2, \dots, u_n\}\).
+2. Represent \(A \subseteq U\) by a bit string of length \(n\):
+   \[ k\text{th bit} = \begin{cases} 1 & u_k \in A \\ 0 & u_k \notin A \end{cases} \]
+
+*** Example:
+
+\(U = \{1,2,3,4,5,6\}\)
+
+| Set                 | 1 | 2 | 3 | 4 | 5 | 6 | Bit string |
+|---------------------+---+---+---+---+---+---+------------|
+| \(A = \{2,3\}\)     | 0 | 1 | 1 | 0 | 0 | 0 | =011000=   |
+| \(B = \{3,4,5,6\}\) | 0 | 0 | 1 | 1 | 1 | 1 | =001111=   |
+
+** Operations
+
+| Set operation     | Bitwise          | Rule for \(k\)th bit             |
+|-------------------+------------------+----------------------------------|
+| \(\overline{A}\)  | NOT (=~A=)       | *Flip* every bit                 |
+| \(A \cup B\)      | OR (=A \vert B=) | 1 if *either* (or both) bit is 1 |
+| \(A \cap B\)      | AND (=A & B=)    | 1 only if *both* bits are 1      |
+| \(A \setminus B\) | =A & ~B=         | 1 if in \(A\) and *not* in \(B\) |
+
+- Same parallel as before: \(\cup \to \lor\), \(\cap \to \land\), complement \(\to \neg\), now applied *bit by bit*.
+
+*** Example: Complement
+
+\(A\) = =011000= \(\Rightarrow\) \(\overline{A}\) = =100111=
+
+*** Example: Union and Intersection
+
+\(U = \{1,2,3,4,5\}\), \(A = \{1,3,5\}\), \(B = \{3,4\}\)
+
+|              | Bit string |
+|--------------+------------|
+| \(A\)        | =10101=    |
+| \(B\)        | =00110=    |
+|--------------+------------|
+| \(A \cup B\) | =10111=    |
+| \(A \cap B\) | =00100=    |
+
+So \(A \cup B = \{1,3,4,5\}\) and \(A \cap B = \{3\}\).
+
+** In code
+
+#+begin_src python
+A, B = 0b10101, 0b00110
+mask = 0b11111          # n = 5 bits; needed so ~ doesn't flip bits outside U
+
+f"{A | B:05b}"          # '10111'  union
+f"{A & B:05b}"          # '00100'  intersection
+f"{~A & mask:05b}"      # '01010'  complement
+f"{A & ~B & mask:05b}"  # '10001'  difference
+#+end_src
+
+- Each operation is *one CPU instruction* per machine word, compared with searching an unordered list.
+- Catch: needs a *finite, fixed, ordered* \(U\), and uses \(n\) bits even when \(A\) is small.
