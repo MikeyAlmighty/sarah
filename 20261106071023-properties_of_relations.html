@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-11-06 Fri 07:52 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Properties of Relations</title>
+<meta name="author" content="Michael Leibbrandt" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<style>
+        body {
+          font-family: sans-serif;
+          line-height: 1.5;
+          margin: 2em;
+          background-color: #ffffff;
+          color: #111111;
+        }
+
+        /* Code block styling */
+        pre.src {
+          padding: 1em;
+          border-radius: 6px;
+          overflow-x: auto;
+          background-color: #f0f0f0;
+          color: #222222;
+          border: 1px solid #ddd;
+          font-family: monospace;
+        }
+
+        /* Syntax highlighting for Org-generated classes */
+        span.org-keyword { color: #005999; font-weight: bold; }
+        span.org-string  { color: #aa3333; }
+        span.org-comment { color: #666666; font-style: italic; }
+        span.org-type    { color: #007700; font-weight: bold; }
+        span.org-variable { color: #993399; }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            pre.src {
+                background-color: #000000;
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
+
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
+        }
+
+        ul { list-style-type: disc; padding-left: 2em; }
+      </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Properties of Relations</h1>
+<div id="outline-container-org73805c4" class="outline-2">
+<h2 id="org73805c4">Properties of Relations</h2>
+<div class="outline-text-2" id="text-org73805c4">
+</div>
+<div id="outline-container-org21f1044" class="outline-3">
+<h3 id="org21f1044">Definition 7.9</h3>
+<div class="outline-text-3" id="text-org21f1044">
+<p>
+Let \(R\) be a <b>relation</b> on a set \(A\).
+</p>
+
+<p>
+\(R\) is
+</p>
+<ul class="org-ul">
+<li><b>Reflexive</b> if \((a,a) \in R\) for all \(a \in A\);</li>
+<li><b>Symmetric</b> if whenever \((a,b) \in R\) then \((b,a) \in R\);</li>
+<li><b>Antisymmetric</b> if whenever \((a,b) \in R\) and \((b,a) \in R\) then \(a = b\);</li>
+<li><b>Transitive</b> if whenever \((a,b) \in R\) and \((b,c) \in R\) then \((a,c) \in R\).</li>
+</ul>
+</div>
+<div id="outline-container-org5a06b92" class="outline-4">
+<h4 id="org5a06b92">Note</h4>
+<div class="outline-text-4" id="text-org5a06b92">
+<ul class="org-ul">
+<li>A relation can be <b>both</b> <b>symmetric</b> and <b>antisymmetric</b> (e.g. the equality relation \(\{(a,a) \mid a \in A\}\)), or <b>neither</b>.</li>
+<li><b>Antisymmetric</b> \(\neq\) "not symmetric".
+<ul class="org-ul">
+<li><b>Antisymmetric</b> means: no two <i>distinct</i> elements are <b>related</b> in <i>both directions</i>.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd1b553f" class="outline-3">
+<h3 id="orgd1b553f">Examples per property</h3>
+<div class="outline-text-3" id="text-orgd1b553f">
+<p>
+Let \(A = \{1,2,3\}\).
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Property</th>
+<th scope="col" class="org-left">Example</th>
+<th scope="col" class="org-left">Counterexample</th>
+<th scope="col" class="org-left">Reason for Counter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Reflexive</td>
+<td class="org-left">\(\{(1,1),(2,2),(3,3),(1,2)\}\)</td>
+<td class="org-left">\(\{(1,1),(2,2)\}\)</td>
+<td class="org-left">\((3,3)\) missing</td>
+</tr>
+
+<tr>
+<td class="org-left">Symmetric</td>
+<td class="org-left">\(\{(1,2),(2,1),(3,3)\}\)</td>
+<td class="org-left">\(\{(1,2)\}\)</td>
+<td class="org-left">\((2,1)\) missing</td>
+</tr>
+
+<tr>
+<td class="org-left">Antisymmetric</td>
+<td class="org-left">\(\{(1,1),(1,2),(2,3)\}\)</td>
+<td class="org-left">\(\{(1,2),(2,1)\}\)</td>
+<td class="org-left">\(1 \neq 2\), related both ways</td>
+</tr>
+
+<tr>
+<td class="org-left">Transitive</td>
+<td class="org-left">\(\{(1,2),(2,3),(1,3)\}\)</td>
+<td class="org-left">\(\{(1,2),(2,3)\}\)</td>
+<td class="org-left">\((1,3)\) missing</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="outline-container-org1fcdfde" class="outline-4">
+<h4 id="org1fcdfde">Edge cases</h4>
+<div class="outline-text-4" id="text-org1fcdfde">
+<ul class="org-ul">
+<li><b>Both</b> symmetric and antisymmetric: \(\{(1,1),(2,2)\}\)
+<ul class="org-ul">
+<li>Only pairs of the form \((a,a)\), so both conditions hold.</li>
+</ul></li>
+<li><b>Neither</b>: \(\{(1,2),(2,1),(2,3)\}\)
+<ul class="org-ul">
+<li>Not symmetric: \((3,2)\) missing.</li>
+<li>Not antisymmetric: \((1,2)\) and \((2,1)\) with \(1 \neq 2\).</li>
+</ul></li>
+<li><b>Transitivity trap</b>: \(\{(1,2),(2,1)\}\) is <b>not</b> transitive.
+<ul class="org-ul">
+<li>\((1,2),(2,1)\) requires \((1,1)\); \((2,1),(1,2)\) requires \((2,2)\).</li>
+</ul></li>
+<li><b>Empty relation</b> \(\varnothing\): symmetric, antisymmetric and transitive (vacuously, since there's no pair to break the rule), but <b>not</b> reflexive.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org0e98894" class="outline-3">
+<h3 id="org0e98894">Example 1: divisibility on \(\{1,2,3,4\}\)</h3>
+<div class="outline-text-3" id="text-org0e98894">
+<p>
+\(A = \{1,2,3,4\}\), \(R = \{(a,b) \mid a \text{ divides } b\}\).
+</p>
+
+<p>
+\[
+R = \{(1,1),(1,2),(1,3),(1,4),(2,2),(3,3),(4,4),(2,4)\}
+\]
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Property</th>
+<th scope="col" class="org-left">Holds?</th>
+<th scope="col" class="org-left">Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Reflexive</td>
+<td class="org-left">Yes</td>
+<td class="org-left">Contains \((1,1),(2,2),(3,3),(4,4)\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Symmetric</td>
+<td class="org-left">No</td>
+<td class="org-left">\((1,2) \in R\) but \((2,1) \notin R\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Antisymmetric</td>
+<td class="org-left">Yes</td>
+<td class="org-left">No \(a \neq b\) with both \((a,b)\) and \((b,a)\) in \(R\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Transitive</td>
+<td class="org-left">Yes</td>
+<td class="org-left">Only non-trivial chain is \((1,2),(2,4)\), and \((1,4) \in R\)</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<div class="note" id="orgb42b637">
+<p>
+Course page wrongly says "not antisymmetric"; its own reasoning shows it is.
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgb92ca8d" class="outline-3">
+<h3 id="orgb92ca8d">Example 2: "likes" on people</h3>
+<div class="outline-text-3" id="text-orgb92ca8d">
+<p>
+\(R = \{(a,b) \mid a \text{ likes } b\}\).
+</p>
+
+<ul class="org-ul">
+<li>Not <b>symmetric</b>:
+<ul class="org-ul">
+<li>\(a\) liking \(b\) doesn't mean \(b\) likes \(a\).</li>
+</ul></li>
+<li>Not <b>antisymmetric</b>:
+<ul class="org-ul">
+<li>two different people can like each other.</li>
+</ul></li>
+<li>Not <b>transitive</b>:
+<ul class="org-ul">
+<li>\(a\) likes \(b\) and \(b\) likes \(c\) doesn't mean \(a\) likes \(c\).</li>
+</ul></li>
+<li>Probably not <b>reflexive</b>: not everyone likes themselves.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

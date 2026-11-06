@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-11-05 Thu 08:14 -->
+<!-- 2026-11-06 Fri 07:52 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Computer Representation of Sets</title>
@@ -275,26 +275,29 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Computer Representation of Sets</h1>
-<div id="outline-container-org6e384a8" class="outline-2">
-<h2 id="org6e384a8">Computer Representation of Sets</h2>
-<div class="outline-text-2" id="text-org6e384a8">
+<div id="outline-container-orgb6caf3b" class="outline-2">
+<h2 id="orgb6caf3b">Computer Representation of Sets</h2>
+<div class="outline-text-2" id="text-orgb6caf3b">
 <p>
 Storing sets <b>unordered</b> makes \(\cup\) and \(\cap\) slow, because each operation needs lots of <b>searching</b>.
-Use <b>bit strings</b> instead, so set operations become <b>bitwise</b> operations.
 </p>
+
+<ul class="org-ul">
+<li>Use <b>bit strings</b> instead, so <b>set operations</b> become <b>bitwise operations</b>.</li>
+</ul>
 </div>
-<div id="outline-container-org43f45a9" class="outline-3">
-<h3 id="org43f45a9">Method</h3>
-<div class="outline-text-3" id="text-org43f45a9">
+<div id="outline-container-orga27a301" class="outline-3">
+<h3 id="orga27a301">Method</h3>
+<div class="outline-text-3" id="text-orga27a301">
 <ol class="org-ol">
 <li><b>Order</b> a finite universal set: \(U = \{u_1, u_2, \dots, u_n\}\).</li>
 <li>Represent \(A \subseteq U\) by a bit string of length \(n\):
 \[ k\text{th bit} = \begin{cases} 1 & u_k \in A \\ 0 & u_k \notin A \end{cases} \]</li>
 </ol>
 </div>
-<div id="outline-container-orgf6bc340" class="outline-4">
-<h4 id="orgf6bc340">Example:</h4>
-<div class="outline-text-4" id="text-orgf6bc340">
+<div id="outline-container-orgc30e493" class="outline-4">
+<h4 id="orgc30e493">Example:</h4>
+<div class="outline-text-4" id="text-orgc30e493">
 <p>
 \(U = \{1,2,3,4,5,6\}\)
 </p>
@@ -358,9 +361,9 @@ Use <b>bit strings</b> instead, so set operations become <b>bitwise</b> operatio
 </div>
 </div>
 </div>
-<div id="outline-container-org42ffbaf" class="outline-3">
-<h3 id="org42ffbaf">Operations</h3>
-<div class="outline-text-3" id="text-org42ffbaf">
+<div id="outline-container-org994696a" class="outline-3">
+<h3 id="org994696a">Operations</h3>
+<div class="outline-text-3" id="text-org994696a">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -409,17 +412,17 @@ Use <b>bit strings</b> instead, so set operations become <b>bitwise</b> operatio
 <li>Same parallel as before: \(\cup \to \lor\), \(\cap \to \land\), complement \(\to \neg\), now applied <b>bit by bit</b>.</li>
 </ul>
 </div>
-<div id="outline-container-org2cb4440" class="outline-4">
-<h4 id="org2cb4440">Example: Complement</h4>
-<div class="outline-text-4" id="text-org2cb4440">
+<div id="outline-container-org649d6ff" class="outline-4">
+<h4 id="org649d6ff">Example: Complement</h4>
+<div class="outline-text-4" id="text-org649d6ff">
 <p>
 \(A\) = <code>011000</code> \(\Rightarrow\) \(\overline{A}\) = <code>100111</code>
 </p>
 </div>
 </div>
-<div id="outline-container-orgaf765c1" class="outline-4">
-<h4 id="orgaf765c1">Example: Union and Intersection</h4>
-<div class="outline-text-4" id="text-orgaf765c1">
+<div id="outline-container-org03f9025" class="outline-4">
+<h4 id="org03f9025">Example: Union and Intersection</h4>
+<div class="outline-text-4" id="text-org03f9025">
 <p>
 \(U = \{1,2,3,4,5\}\), \(A = \{1,3,5\}\), \(B = \{3,4\}\)
 </p>
@@ -468,9 +471,9 @@ So \(A \cup B = \{1,3,4,5\}\) and \(A \cap B = \{3\}\).
 </div>
 </div>
 </div>
-<div id="outline-container-org286128b" class="outline-3">
-<h3 id="org286128b">In code</h3>
-<div class="outline-text-3" id="text-org286128b">
+<div id="outline-container-org1cfc1e7" class="outline-3">
+<h3 id="org1cfc1e7">In code</h3>
+<div class="outline-text-3" id="text-org1cfc1e7">
 <div class="org-src-container">
 <pre class="src src-python"><code><span class="org-variable-name">A</span>, <span class="org-variable-name">B</span> <span class="org-operator">=</span> 0b10101, 0b00110
 <span class="org-variable-name">mask</span> <span class="org-operator">=</span> 0b11111          <span class="org-comment-delimiter"># </span><span class="org-comment">n = 5 bits; needed so ~ doesn't flip bits outside U
@@ -483,7 +486,7 @@ f<span class="org-string">"</span>{A <span class="org-operator">|</span> B:05b}<
 </div>
 
 <ul class="org-ul">
-<li>Each operation is <b>one CPU instruction</b> per machine word, compared with searching an unordered list.</li>
+<li>Each operation is <b>one CPU instruction</b> per machine word, compared with <b>searching</b> an <b>unordered list</b>.</li>
 <li>Catch: needs a <b>finite, fixed, ordered</b> \(U\), and uses \(n\) bits even when \(A\) is small.</li>
 </ul>
 </div>
