@@ -1,0 +1,66 @@
+:PROPERTIES:
+:ID:       8c4cf041-18fc-4d5b-91c1-933a5437eb5d
+:END:
+#+title: Invertible Functions
+
+* Invertible Functions
+
+** Definition (Def 8.5)
+
+Let $f : A \to B$ and $g : B \to A$. If
+
+- $g \circ f : A \to A$ is the [[id:a8322b84-1bde-4853-b716-5c2ce6260bf6][Identity Function]] on $A$, and
+- $f \circ g : B \to B$ is the [[id:a8322b84-1bde-4853-b716-5c2ce6260bf6][Identity Function]] on $B$,
+
+Then $f$ is the *inverse* of $g$ (and $g$ is the inverse of $f$).
+
+A function that has an inverse is *invertible*. The inverse is written $f^{-1}$.
+
+*Both compositions* must give the *identity* — checking one direction is not enough.
+
+** Characterisation (Theorem 8.1)
+
+\[ f \text{ is invertible} \iff f \text{ is injective and surjective (bijective)} \]
+
+- *Injective (one-to-one):* each output comes from exactly one input.
+- *Surjective (onto):* every element of the codomain is hit.
+
+Invertible functions capture *reversibility* and are key to solving equations.
+
+** Diagram
+
+#+begin_example
+          A                        B
+       .-----.        f         .-----.
+      /       \  ----------->  /       \
+     |    x •  |               |  • f(x) |
+      \       /  <-----------  \       /
+       '-----'     g = f⁻¹      '-----'
+
+     g ∘ f = i_A                f ∘ g = i_B
+#+end_example
+
+** Example
+
+Let $f, g : \mathbb{R} \to \mathbb{R}$ with $f(x) = 3x + 1$ and $g(x) = \frac{x-1}{3}$.
+Show $f \circ g = i$ and $g \circ f = i$.
+
+\begin{align*}
+(f \circ g)(x) &= f(g(x)) \\
+               &= f\!\left(\tfrac{x-1}{3}\right) \\
+               &= 3\left(\tfrac{x-1}{3}\right) + 1 \\
+               &= (x-1) + 1 \\
+               &= x = i(x)
+\end{align*}
+
+\begin{align*}
+(g \circ f)(x) &= g(f(x)) \\
+               &= g(3x+1) \\
+               &= \frac{(3x+1) - 1}{3} \\
+               &= \frac{3x}{3} \\
+               &= x = i(x)
+\end{align*}
+
+where $i$ is the identity function on $\mathbb{R}$.
+
+By Def 8.5, $f$ is *invertible* with inverse $g$ (and $g$ is *invertible* with inverse $f$).

@@ -1,0 +1,48 @@
+:PROPERTIES:
+:ID:       314e7721-01ba-4b56-a911-c12442325aac
+:END:
+#+title: Function Composition
+
+* Function Composition
+
+** Definition
+
+Given functions $f : A \to B$ and $g : B \to C$, the *composition*
+
+$g \circ f : A \to C$ is defined by
+
+\[ (g \circ f)(x) = g(f(x)) \]
+
+Read $g \circ f$ *right to left*: apply $f$ first, then $g$.
+
+Composition models multi-step processes:
+- the *output* of one function becomes the *input* of the next.
+
+** Diagram
+
+#+begin_example
+        A          f          B          g          C
+     .-----.   -------->   .-----.   -------->   .-----.
+    /       \             /       \             /       \
+   |    x  •-|-----------|->• f(x) |-----------|->• g(f(x))
+   |       | |           |         |           |    ^    |
+    \      | /            \       /             \   |   /
+     '-----|'              '-----'               '--|--'
+           |                                        |
+           '------------------ g ∘ f ---------------'
+#+end_example
+
+** Example: Composition is Not Commutative
+
+Let $f, g : \mathbb{R} \to \mathbb{R}$ with $f(x) = 2x^2$ and $g(x) = 3x + 4$.
+
+\begin{align*}
+(f \circ g)(x) &= f(g(x)) = f(3x+4) = 2(3x+4)^2 \\
+               &= 2(9x^2 + 24x + 16) = 18x^2 + 48x + 32
+\end{align*}
+
+\begin{align*}
+(g \circ f)(x) &= g(f(x)) = g(2x^2) = 3(2x^2) + 4 = 6x^2 + 4
+\end{align*}
+
+So in general $f \circ g \neq g \circ f$ — order matters.

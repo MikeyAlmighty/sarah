@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-11-06 Fri 07:52 -->
+<!-- 2026-11-07 Sat 11:32 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Equivalence Classes</title>
@@ -239,12 +239,172 @@
 
         ul { list-style-type: disc; padding-left: 2em; }
       </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 </head>
 <body>
 <div id="content" class="content">
 <h1 class="title">Equivalence Classes</h1>
-<div id="outline-container-org8dbf9e7" class="outline-2">
-<h2 id="org8dbf9e7">Equivalence Classes</h2>
+<div id="outline-container-org61a0b49" class="outline-2">
+<h2 id="org61a0b49">Equivalence Classes</h2>
+<div class="outline-text-2" id="text-org61a0b49">
+</div>
+<div id="outline-container-org8e49cb1" class="outline-3">
+<h3 id="org8e49cb1">Prerequisite</h3>
+<div class="outline-text-3" id="text-org8e49cb1">
+<p>
+\(R\) must be an <b>equivalence relation</b> on \(A\): reflexive, symmetric and transitive.
+</p>
+</div>
+</div>
+<div id="outline-container-orgcd026e0" class="outline-3">
+<h3 id="orgcd026e0">Definition</h3>
+<div class="outline-text-3" id="text-orgcd026e0">
+<p>
+Given \(A\) with an equivalence relation \(R\), the elements of \(A\) split into
+<b>disjoint</b> groups (subsets of \(A\)) such that:
+</p>
+<ul class="org-ul">
+<li>within a group, every element is related to every other element, AND</li>
+<li>no two elements from different groups are related.</li>
+</ul>
+
+<p>
+These groups are the <b>equivalence classes</b> of \(R\). The class of \(a\):
+\[ [a]_R = \{\, x \in A \mid aRx \,\} \]
+</p>
+
+<p>
+Together the classes form a <b>partition</b> of \(A\):
+</p>
+<ul class="org-ul">
+<li>\(A = C_1 \cup C_2 \cup \dots \cup C_n\) (every element is in some class)</li>
+<li>\(C_i \cap C_j = \varnothing\) for \(i \neq j\) (no two classes share an element)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge18c54e" class="outline-3">
+<h3 id="orge18c54e">Procedure: finding the classes</h3>
+<div class="outline-text-3" id="text-orge18c54e">
+<ol class="org-ol">
+<li>Pick any element \(a \in A\) not yet in a class.</li>
+<li>Collect everything \(a\) is related to → that set is \([a]_R\).</li>
+<li>Repeat with an element not in any class found so far.</li>
+<li>Stop when every element is placed. A leftover element related only to itself is a class of its own.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org2c1b18f" class="outline-3">
+<h3 id="org2c1b18f">Example</h3>
+<div class="outline-text-3" id="text-org2c1b18f">
+<p>
+\(A = \{1, 3, 5, 9, 11, 18\}\) with \(R\) from the previous page.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Start</th>
+<th scope="col" class="org-left">Related to</th>
+<th scope="col" class="org-left">Class</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">\(1\)</td>
+<td class="org-left">\(5, 9\)</td>
+<td class="org-left">\(C_1 = \{1, 5, 9\}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">\(3\)</td>
+<td class="org-left">\(11\)</td>
+<td class="org-left">\(C_2 = \{3, 11\}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">\(18\)</td>
+<td class="org-left">only itself</td>
+<td class="org-left">\(C_3 = \{18\}\)</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Check:
+</p>
+<ul class="org-ul">
+<li><b>Union</b>: every element is in some class:
+\(A = C_1 \cup C_2 \cup C_3\) ✓</li>
+<li><b>Pairwise intersections</b> (\(\cap\) = elements in common): no element is in two classes:
+<ul class="org-ul">
+<li>\(C_1 \cap C_2 = \{1,5,9\} \cap \{3,11\} = \varnothing\)</li>
+<li>\(C_1 \cap C_3 = \{1,5,9\} \cap \{18\} = \varnothing\)</li>
+<li>\(C_2 \cap C_3 = \{3,11\} \cap \{18\} = \varnothing\) ✓</li>
+</ul></li>
+<li>Together: each element of \(A\) is in <b>exactly one</b> class, so \(\{C_1, C_2, C_3\}\) is a partition of \(A\).</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org22bf9b9" class="outline-3">
+<h3 id="org22bf9b9">Graphical view</h3>
+<div class="outline-text-3" id="text-org22bf9b9">
+<p>
+The equivalence classes are exactly the <b>connected components</b> of the
+graphical representation of \(R\) (here: three components).
+</p>
+
+<p>
+Schematic of \(A\) partitioned into its equivalence classes:
+</p>
+
+
+<div id="org1fdaf8f" class="figure">
+<p><img src="./assets/equivalence-classes.png" alt="equivalence-classes.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Set \(A\) partitioned into equivalence classes \(C_1, C_2, C_3\)</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 </body>

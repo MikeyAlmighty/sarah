@@ -1,0 +1,65 @@
+:PROPERTIES:
+:ID:       0645f149-85a5-4592-9ba7-9611932ba3e7
+:END:
+#+title: Range of a Function
+
+* Range of a Function
+
+** Definition
+
+If $f : X \to Y$ is any function, the set of images
+\[ \text{Range}(f) := \{ y \in Y \mid y = f(x) \text{ for some } x \in X \} \]
+is called the *range* of $f$.
+
+i.e. the outputs $f$ /actually produces/.
+
+** Codomain vs range
+
+- *Codomain* $Y$ — the set outputs are /allowed/ to come from (part of the
+  declaration $f : X \to Y$).
+- *Range* — the outputs that are /actually hit/.
+- Always $\text{Range}(f) \subseteq Y$; can be strictly smaller.
+
+** Examples
+
+*** Example 1
+
+$f(x) = x^2$, $f : \mathbb{R} \to \mathbb{R}$
+
+$\text{Range}(f) = \{ y \in \mathbb{R} \mid y \geq 0 \}$ — squares are never
+negative, and every $y \geq 0$ is $(\sqrt{y})^2$.
+
+*** Example 2
+
+$f(1) = 22,\ f(5) = 3,\ f(7) = 8$, $f : A \to B$
+
+- Codomain: $B = \{3, 8, 22, 30\}$.
+- Range: $\{3, 8, 22\}$ — $30 \in B$ is *not* in the range.
+
+*** Example 3 — Factorial
+
+$f : \mathbb{N} \to \mathbb{N}$
+
+$\text{Range}(f) = \{ n! \mid n \in \mathbb{N} \} = \{1, 2, 6, 24, 120, \dots\}$.
+
+*** Example 4 — McCarthy 91
+
+$f : \mathbb{N}_{\geq 1} \to \mathbb{Z}$
+
+$\text{Range}(f) = \{ y \in \mathbb{N} \mid y \geq 91 \}$.
+- $n \leq 100$ all give $91$;
+- $n \geq 101$ give $n - 10$, i.e. $91, 92, 93, \dots$
+
+*** Example 5 — Number of Heads
+
+$f : X \to \mathbb{Z}$
+
+$X = \{HH, HT, TH, TT\}$, $f(HH) = 2,\ f(HT) = f(TH) = 1,\ f(TT) = 0$.
+- Codomain: $\mathbb{Z}$.
+- Range: $\{0, 1, 2\}$.
+
+** Takeaway
+
+To find the *range*, ask: "which elements of the *codomain* does $f$ /actually/ output?"
+
+The *codomain* is a choice made when declaring $f$; the *range* is determined by the rule.

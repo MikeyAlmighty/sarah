@@ -1,0 +1,132 @@
+:PROPERTIES:
+:ID:       5554f731-9402-4f2f-9c7d-c9e40de1eccf
+:END:
+#+title: Examples of Functions
+
+* Examples of Functions
+
+** Example 1 — defined by a formula
+
+$f : \mathbb{R} \to \mathbb{R}$, $f(x) = x^2$.
+
+- A real-valued function, the kind studied in calculus.
+- Valid: every real $x$ has exactly one square $x^2 \in \mathbb{R}$.
+
+** Example 2 — defined by listing assignments
+
+$A = \{1, 5, 7\}$, $B = \{3, 8, 22, 30\}$, $f : A \to B$ with
+\[ f(1) = 22, \quad f(5) = 3, \quad f(7) = 8. \]
+
+- No formula needed: the assignments are *given* — they /are/ the definition.
+- The pairings are arbitrary; any choice works as long as each element of $A$
+  gets exactly one output in $B$.
+- As a relation: $f = \{(1, 22), (5, 3), (7, 8)\} \subseteq A \times B$.
+- $30 \in B$ is never an output — allowed; the codomain need not be "used up"
+  (relevant later for surjectivity).
+
+** Example 3 — defined recursively
+
+$f : \mathbb{N} \to \mathbb{N}$ with
+\[ f(0) = 1, \quad f(n+1) = (n+1)\,f(n) \quad \text{for all } n \geq 0. \]
+
+- *Base case* $f(0) = 1$ — given (the "starting value").
+- *Recurrence relation* $f(n+1) = (n+1)f(n)$ — gets the next value from the
+  previous one: multiply the previous output by $n+1$.
+
+*** Computing values
+
+To find $f(k)$, write $k = n + 1$ and apply the recurrence with that $n$.
+
+| $n$ | apply with | calculation             | $f(n)$ |
+|-----+------------+-------------------------+--------|
+|   0 | given      | —                       |      1 |
+|   1 | $n=0$      | $(0+1)f(0) = 1 \cdot 1$  |      1 |
+|   2 | $n=1$      | $(1+1)f(1) = 2 \cdot 1$  |      2 |
+|   3 | $n=2$      | $(2+1)f(2) = 3 \cdot 2$  |      6 |
+|   4 | $n=3$      | $(3+1)f(3) = 4 \cdot 6$  |     24 |
+|   5 | $n=4$      | $(4+1)f(4) = 5 \cdot 24$ |    120 |
+
+*** It's the factorial
+
+Unrolling:
+\[ f(4) = 4 f(3) = 4 \cdot 3 f(2) = 4 \cdot 3 \cdot 2 f(1)
+       = 4 \cdot 3 \cdot 2 \cdot 1 \cdot f(0) = 4! \]
+So $f(n) = n! = n \times (n-1) \times \dots \times 2 \times 1$, with $0! := 1$.
+
+*** Why the base case matters
+
+The recurrence alone never bottoms out — $f(n)$ just reduces to $f(n-1)$
+forever. Fixing $f(0)$ means every $n \in \mathbb{N}$ ends at exactly one
+value, so $f$ is a well-defined function $\mathbb{N} \to \mathbb{N}$.
+
+** Example 4 — McCarthy 91 function
+
+Given by John McCarthy (one of the founders of AI).
+
+$\mathbb{N}_{\geq 1} = \{1, 2, 3, \dots\}$, $f : \mathbb{N}_{\geq 1} \to \mathbb{Z}$,
+\[ f(n) = \begin{cases}
+  n - 10 & \text{if } n \geq 101 \\
+  f(f(n + 11)) & \text{if } n \leq 100
+\end{cases} \]
+
+*** Reading the notation
+- *Piecewise (case) definition*: the brace means "use whichever line's condition holds".
+
+Conditions cover every input with no overlap. (Exactly one output per $n$).
+
+- Equivalent to:
+  #+begin_src js
+function f(n) {
+  if (n >= 101) {
+    return n - 10;
+  } else { // n <= 100
+    return f(f(n + 11));
+  }
+}
+  #+end_src
+
+- $f(f(n+11))$ is a *nested* call — evaluate inside-out:
+  1. compute $n + 11$;
+  2. apply $f$ → some $m$;
+  3. apply $f$ again → $f(m)$.
+
+*** Working backwards
+
+Going forward from $f(1)$ is hopeless: $f(1)$ depends on $f(12)$, which depends on $f(23)$, …
+
+Instead, start at $n = 100$:
+
+- $f(100) = f(f(111)) = f(101) = 91$
+  (since $f(111) = 111 - 10 = 101$ and $f(101) = 101 - 10 = 91$)
+- $f(99) = f(f(110)) = f(100) = 91$
+  (since $f(110) = 100$)
+- $f(98) = f(f(109)) = f(99) = 91$
+- … each value reduces to the one just above it, all the way down to $f(1)$.
+
+*** Simplified form
+
+\[ f(n) = \begin{cases}
+  n - 10 & \text{if } n \geq 101 \\
+  91 & \text{if } n \leq 100
+\end{cases} \]
+
+** Example 5 — rule described in words
+
+Flip a coin twice, recording each outcome in order ($HT$ = Heads then Tails, $TH$ = Tails then Heads).
+
+$X = \{HH, HT, TH, TT\}$ (all outcomes of two flips),
+$f : X \to \mathbb{Z}$, $f(x) =$ number of Heads in $x$:
+\[ f(HH) = 2, \quad f(HT) = 1, \quad f(TH) = 1, \quad f(TT) = 0. \]
+
+- A function because there's a *rule* (count the Heads) giving exactly one output for every input.
+- *Domain:* $X = \{HH, HT, TH, TT\}$.
+- *Codomain:* $\mathbb{Z}$.
+- Inputs needn't be numbers — here they're sequences of outcomes.
+- $HT$ and $TH$ share output $1$ — allowed (two inputs, same output).
+- Most of $\mathbb{Z}$ (e.g. $-1$, $3$) is never an output — allowed; only $\{0, 1, 2\}$ is hit.
+
+** Takeaway
+
+A function can be specified by a *formula* (Ex. 1), an explicit *list of assignments* (Ex. 2), *recursively* via a base case + recurrence relation (Ex. 3), or *piecewise*, possibly with nested recursion (Ex. 4).
+
+Whatever the form, the definition must give every input exactly one output in the codomain.

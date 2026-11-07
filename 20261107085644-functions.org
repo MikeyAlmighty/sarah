@@ -1,0 +1,62 @@
+:PROPERTIES:
+:ID:       6f872ef1-d047-48d3-a45e-192f85923de2
+:END:
+#+title: Functions
+
+* Functions
+
+** Definition (8.1)
+
+Let $X$ and $Y$ be sets.
+
+A *function* from $X$ to $Y$ is a *rule* that assigns *exactly one* element of $Y$ to *each* element of $X$.
+
+Two requirements:
+- *Total* - every $x \in X$ gets an output.
+- *Single-valued* - no $x \in X$ gets more than one output.
+
+** Notation and terminology
+
+- $f : X \to Y$ — "$f$ is a function from $X$ to $Y$".
+- $f(x)$ — the element of $Y$ assigned to $x \in X$.
+- $X$ is the *domain* of $f$.
+- $Y$ is the *codomain* of $f$.
+- $x \in X$ is the *input*; $f(x) \in Y$ is the *output*.
+- If $y = f(x)$: "$f$ sends $x$ to $y$" / "$x$ is mapped to $y$ by $f$".
+
+Mental model: $f$ is a machine — feed in $x$, get out $f(x)$.
+
+#+begin_example
+  x ──▶ [ f ] ──▶ f(x)
+input            output
+#+end_example
+
+** Functions as relations
+
+A function $f : X \to Y$ is a special *relation* $R \subseteq X \times Y$ such that:
+1. *Existence:* $\forall x \in X,\ \exists y \in Y$ with $(x, y) \in R$.
+2. *Uniqueness:* $(x, y) \in R \text{ and } (x, z) \in R \implies y = z$.
+
+i.e. every input is related to a *unique* output.
+
+** Examples
+
+- $f : \mathbb{Z} \to \mathbb{Z}$, $f(n) = n^2$ — a function (every $n$ has one square).
+- $R = \{(1,a), (2,a), (3,b)\} \subseteq \{1,2,3\} \times \{a,b\}$ — a function
+  (two inputs sharing an output is fine).
+- $R = \{(1,a), (1,b), (2,a), (3,b)\}$ — *not* a function: $1$ has two outputs.
+- $R = \{(1,a), (2,b)\} \subseteq \{1,2,3\} \times \{a,b\}$ — *not* a function: $3$ has no output.
+
+** Mathematical vs programming functions
+
+We work with the *mathematical* notion. Some programming functions behave like
+this (input → compute → return output), but many don't (side effects, mutable
+state, non-determinism, may not terminate).
+
+** Coming up
+
+Key properties: injectivity, surjectivity, bijectivity.
+
+** Where they show up in CS
+
+Algorithm behaviour, hash tables, rules in formal systems.
