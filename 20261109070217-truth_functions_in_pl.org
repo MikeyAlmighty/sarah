@@ -1,0 +1,54 @@
+:PROPERTIES:
+:ID:       13b59854-77dc-4572-a114-0db15f2f7a3e
+:END:
+#+title: Truth Functions in PL
+
+* Truth Functions in PL
+
+** Overview
+
+- The connectives used to build PL look arbitrary, but the resulting language is *functionally complete*.
+- The particular /choice/ of connectives is arbitrary — we could have used more, fewer, or different ones.
+- Goal: define *truth functions* and set up a correspondence between *truth functions* and *wffs*.
+
+** Notation
+
+- $\mathbb{T} = \{T, F\}$ — the set of the two truth values.
+
+*** Cartesian products
+
+- $\mathbb{T} \times \mathbb{T}$ is the set of all ordered pairs from $\mathbb{T}$:
+  \[ \mathbb{T} \times \mathbb{T} = \{(T,T), (T,F), (F,T), (F,F)\} \]
+- $\mathbb{T} \times \mathbb{T} \times \mathbb{T}$ is the set of all ordered triples:
+  \[ \mathbb{T}^3 = \{(T,T,T), (T,T,F), (T,F,T), (F,T,T), (T,F,F), (F,T,F), (F,F,T), (F,F,F)\} \]
+
+*** Shorthand
+
+- $\mathbb{T}^2 := \mathbb{T} \times \mathbb{T}$
+- $\mathbb{T}^3 := \mathbb{T} \times \mathbb{T} \times \mathbb{T}$
+- In general, \(\mathbb{T}^n\) is the \(n\)-fold Cartesian product of \(\mathbb{T}\) with itself:
+  - The set of all ordered \(n\)-tuples of elements of \(\mathbb{T}\).
+
+** Definition
+
+A function $f : \mathbb{T}^n \to \mathbb{T}$ is called a *truth function*.
+
+- A truth function can be described by a *truth table* giving $f(t)$ for every $t \in \mathbb{T}^n$ (the *domain* of $f$).
+
+** Example
+
+The truth table below specifies a truth function $f : \mathbb{T}^3 \to \mathbb{T}$.
+
+|   |   |   | $f(t)$ |
+|---+---+---+--------|
+| T | T | T | T      |
+| T | T | F | F      |
+| T | F | T | F      |
+| T | F | F | T      |
+| F | T | T | T      |
+| F | T | F | F      |
+| F | F | T | F      |
+| F | F | F | F      |
+
+- Input $t = (T,F,F)$: read off the row $TFF$ to get $f(T,F,F) = T$.
+- Likewise, $f(F,F,F) = F$.

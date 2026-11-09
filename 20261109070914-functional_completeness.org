@@ -1,0 +1,61 @@
+:PROPERTIES:
+:ID:       8efaf8b6-432c-40a2-b1e8-0ebe4db069ae
+:END:
+#+title: Functional Completeness
+
+* Functional Completeness
+
+* Motivation
+- [[id:13b59854-77dc-4572-a114-0db15f2f7a3e][Truth Functions in PL]] were introduced in order to state a theorem about the range of expressions possible in the *language of PL*.
+
+* Theorem 8.2 (Functional completeness)
+
+For each truth function \(f : \mathbb{T}^n \to \mathbb{T}\) there is a wff with \(n\) distinct atoms whose truth table corresponds to the truth table of \(f\).
+
+- Additional connectives would *not* let us construct more truth functions as wffs.
+- They would not make PL more expressive - they would only provide more logically equivalent expressions.
+
+* Example
+
+Suppose \(f : \mathbb{T}^3 \to \mathbb{T}\) has the truth table:
+
+| Row |   |   |   | \(f(t)\) |
+|-----+---+---+---+----------|
+|   1 | T | T | T | T        |
+|   2 | T | T | F | F        |
+|   3 | T | F | T | F        |
+|   4 | T | F | F | T        |
+|   5 | F | T | T | T        |
+|   6 | F | T | F | F        |
+|   7 | F | F | T | F        |
+|   8 | F | F | F | F        |
+
+Goal: find a wff \(A\) with three atoms \(p\), \(q\), \(r\) with the same truth table:
+
+| Row | \(p\) | \(q\) | \(r\) | \(A\) |
+|-----+-------+-------+-------+-------|
+|   1 | T     | T     | T     | T     |
+|   2 | T     | T     | F     | F     |
+|   3 | T     | F     | T     | F     |
+|   4 | T     | F     | F     | T     |
+|   5 | F     | T     | T     | T     |
+|   6 | F     | T     | F     | F     |
+|   7 | F     | F     | T     | F     |
+|   8 | F     | F     | F     | F     |
+
+* Strategy for constructing \(A\)
+
+1. Consider only the rows where the truth value is \(T\) (rows 1, 4, 5).
+2. For each such row, form its *[[id:4d46fa7e-f04d-4e1e-82fa-f2cdb9de34d1][Conjunctive Clause]]*: *conjoin* each atom, *negated* if its value in that row is \(F\).
+   - *Row 1* \((T,T,T)\): \(p \land q \land r\) — true exactly when \(p, q, r\) are \(T, T, T\).
+   - *Row 4* \((T,F,F)\): \(p \land \lnot q \land \lnot r\) — true exactly when \(p, q, r\) are \(T, F, F\).
+   - *Row 5* \((F,T,T)\): \(\lnot p \land q \land r\) — true exactly when \(p, q, r\) are \(F, T, T\).
+3. Form the *disjunction* of these *[[id:4d46fa7e-f04d-4e1e-82fa-f2cdb9de34d1][Conjunctive Clause]]*:
+   \[ A = (p \land q \land r) \lor (p \land \lnot q \land \lnot r) \lor (\lnot p \land q \land r) \]
+   - \(A\) is the *full (canonical) Disjunctive Normal Form (DNF)* of \(f\):
+     - a *disjunction of conjunctive clauses*, each containing every atom exactly once, with one clause per \(T\) row.
+     - A *DNF* is not unique, e.g. merging rows 1 and 5 gives the shorter, equivalent DNF \((q \land r) \lor (p \land \lnot q \land \lnot r)\).
+
+The truth table of \(A\) matches that of \(f\).
+
+This construction also gives a good idea of how *Theorem 8.2* could be proved.
