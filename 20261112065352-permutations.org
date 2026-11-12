@@ -1,0 +1,75 @@
+:PROPERTIES:
+:ID:       7f49c34b-ea2d-4cbf-9705-5a2c2fbeeb20
+:END:
+#+title: Permutations
+
+* Permutations
+
+** Definition (8.6)
+
+A *permutation of $n$ objects taken $k$ at a time* is any *ordered* selection of $k$ *distinct* objects from a set of $n$ objects.
+
+- Order matters ::
+  - From $\{B, S, W, K, L\}$
+    - The lists $(B, W, K)$ and $(W, B, K)$ are /different/ *permutations* (as *sets* they're /equal/).
+
+- No repetitions ::
+  - $(B, B, L)$ is not a permutation.
+
+- Synonym ::
+  - "Ordered selection /without/ Repetitions".
+
+** Permutation rule (Theorem 8.3)
+
+The number of ordered selections of $k$ distinct objects from $n$ objects is
+
+\[
+P(n,k) = n(n-1)(n-2)\cdots(n-k+2)(n-k+1) = \frac{n!}{(n-k)!}
+\]
+
+where $n! = n \times (n-1) \times \cdots \times 2 \times 1$ and, by convention, $0! = 1$.
+
+- The convention $0! = 1$ makes the $\frac{n!}{(n-k)!}$ form agree with the product form when $k = n$.
+- Special case $k = n$: the number of ways to order $n$ objects is $n!$.
+
+*** Proof
+
+By the product rule:
+1. $n$ choices for the 1st object.
+2. $n-1$ choices for the 2nd.
+3. ... continue until the ~k~-th object, which has $n-k+1$ choices.
+
+Total: $n(n-1)\cdots(n-k+1)$. $\blacksquare$
+
+*** Why the last factors are $(n-k+2)(n-k+1)$
+
+Each pick has one fewer choice, because earlier picks are /used up/.
+
+| Pick # | Already used | Choices left      |
+|--------+--------------+-------------------|
+| 1st    |            0 | $n$               |
+| 2nd    |            1 | $n-1$             |
+| 3rd    |            2 | $n-2$             |
+| ...    |          ... | ...               |
+| $i$-th |        $i-1$ | $n-(i-1) = n-i+1$ |
+
+So the $i$-th pick has $n-i+1$ choices:
+
+- Last pick ($i = k$) ::
+  - $n-k+1$
+- Second-last pick ($i = k-1$) ::
+  - $n-(k-1)+1 = n-k+2$
+
+- Why write them out? ::
+  - They mark where the product /stops/: it runs from $n$ down to $n-k+1$, giving exactly $k$ factors (one per pick).
+
+- Check ($n=8$, $k=4$) ::
+  - $8 \times 7 \times \underbrace{6}_{8-4+2} \times \underbrace{5}_{8-4+1}$
+
+** Example
+
+Passcodes of 4 distinct characters from 8 distinct symbols:
+
+\[
+P(8,4) = 8 \times 7 \times 6 \times 5 = \frac{8!}{4!} = 1680
+\]

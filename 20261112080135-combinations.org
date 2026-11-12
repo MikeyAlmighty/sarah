@@ -1,0 +1,107 @@
+:PROPERTIES:
+:ID:       ff68fe41-ae59-49f1-bd96-1dbc0c15421e
+:END:
+#+title: Combinations
+
+* Combinations
+
+** Definition (8.7)
+
+A *combination of $n$ objects taken $k$ at a time* is any selection of $k$ *distinct* objects from a set of $n$ objects.
+
+- Order /doesn't/ matter ::
+
+  - $\{B, W, K\}$ and $\{W, B, K\}$ are the /same/ combination.
+
+- No repetitions ::
+
+  - Same as [[id:7f49c34b-ea2d-4cbf-9705-5a2c2fbeeb20][Permutations]].
+
+- Synonym ::
+  - "Unordered selection /without/ Repetitions".
+
+** Combination rule (Theorem 8.4)
+
+The number of unordered selections of $k$ objects from $n$ objects, without repetitions, is
+
+\[
+\binom{n}{k} = \frac{n(n-1)\cdots(n-k+1)}{k!} = \frac{n!}{(n-k)!\,k!}
+\]
+
+- Binomial coefficient ::
+  - $\binom{n}{k} := \frac{n!}{(n-k)!\,k!}$, read "$n$ choose $k$".
+
+*** Proof
+
+1. Number of /ordered/ selections ([[id:7f49c34b-ea2d-4cbf-9705-5a2c2fbeeb20][Permutations]]): $\frac{n!}{(n-k)!}$.
+2. An ordered selection = an /unordered/ selection, /then/ an order for it.
+3. There are $k!$ ways to order $k$ elements.
+4. By the product rule:
+   \[
+   \frac{n!}{(n-k)!} = \binom{n}{k} \times k!
+   \]
+5. Divide both sides by $k!$:
+   \[
+   \binom{n}{k} = \frac{n!}{(n-k)!\,k!} \quad \blacksquare
+   \]
+
+- Intuition ::
+  - Permutations over-count each combination $k!$ times (once per ordering), so divide it out.
+
+** Binomial formula
+
+\[
+(x+y)^n = \sum_{k=0}^{n} \binom{n}{k} x^k y^{n-k}
+\]
+
+- Example ($n = 5$) ::
+  \[
+  (x+y)^5 = y^5 + 5xy^4 + 10x^2y^3 + 10x^3y^2 + 5x^4y + x^5
+  \]
+  - Coefficients: $\binom{5}{0}, \binom{5}{1}, \ldots, \binom{5}{5} = 1, 5, 10, 10, 5, 1$.
+
+** Examples
+
+*** Card hands
+
+- Problem ::
+  - 13-card hand from a 52-card deck. How many hands?
+- Solution ::
+  - Unordered, no repetitions:
+    \[
+    \binom{52}{13} = 635\,013\,559\,600
+    \]
+
+*** Full house
+
+- Problem ::
+  - 5 cards: 3 of one denomination, 2 of another. 13 denominations, 4 cards each.
+- Solution ::
+  - Order doesn't matter, so pick in a convenient order:
+    1. Denomination for the triple: $13$
+    2. 3 cards of 4 from it: $\binom{4}{3} = 4$
+    3. Denomination for the pair: $12$ (one already used)
+    4. 2 cards of 4 from it: $\binom{4}{2} = 6$
+  - Product rule:
+    \[
+    13 \times 4 \times 12 \times 6 = 3744
+    \]
+
+*** Number of subsets of an $n$-element set
+
+Two approaches, both giving $2^n$.
+
+1. *Sum over sizes* ::
+   - Subsets of size $k$: $\binom{n}{k}$.
+   - A subset has size $0$ /or/ $1$ /or/ ... /or/ $n$:
+     \[
+     \sum_{k=0}^{n} \binom{n}{k} = (1+1)^n = 2^n
+     \]
+   - Uses the binomial formula with $x = y = 1$.
+
+2. *In or out* ::
+   - Each of the $n$ elements is either /in/ the subset or /not/: 2 choices.
+   - Every distinct set of $n$ choices gives a different subset:
+     \[
+     \underbrace{2 \times 2 \times \cdots \times 2}_{n} = 2^n
+     \]

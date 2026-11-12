@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-11-12 Thu 08:07 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Combinations</title>
+<meta name="author" content="Michael Leibbrandt" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<style>
+        body {
+          font-family: sans-serif;
+          line-height: 1.5;
+          margin: 2em;
+          background-color: #ffffff;
+          color: #111111;
+        }
+
+        /* Code block styling */
+        pre.src {
+          padding: 1em;
+          border-radius: 6px;
+          overflow-x: auto;
+          background-color: #f0f0f0;
+          color: #222222;
+          border: 1px solid #ddd;
+          font-family: monospace;
+        }
+
+        /* Syntax highlighting for Org-generated classes */
+        span.org-keyword { color: #005999; font-weight: bold; }
+        span.org-string  { color: #aa3333; }
+        span.org-comment { color: #666666; font-style: italic; }
+        span.org-type    { color: #007700; font-weight: bold; }
+        span.org-variable { color: #993399; }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            pre.src {
+                background-color: #000000;
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
+
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
+        }
+
+        ul { list-style-type: disc; padding-left: 2em; }
+      </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Combinations</h1>
+<div id="outline-container-orga2b40ca" class="outline-2">
+<h2 id="orga2b40ca">Combinations</h2>
+<div class="outline-text-2" id="text-orga2b40ca">
+</div>
+<div id="outline-container-org8b10383" class="outline-3">
+<h3 id="org8b10383">Definition (8.7)</h3>
+<div class="outline-text-3" id="text-org8b10383">
+<p>
+A <b>combination of \(n\) objects taken \(k\) at a time</b> is any selection of \(k\) <b>distinct</b> objects from a set of \(n\) objects.
+</p>
+
+<dl class="org-dl">
+<dt>Order <i>doesn't</i> matter</dt><dd><ul class="org-ul">
+<li>\(\{B, W, K\}\) and \(\{W, B, K\}\) are the <i>same</i> combination.</li>
+</ul></dd>
+
+<dt>No repetitions</dt><dd><ul class="org-ul">
+<li>Same as <a href="20261112065352-permutations.html#ID-7f49c34b-ea2d-4cbf-9705-5a2c2fbeeb20">Permutations</a>.</li>
+</ul></dd>
+
+<dt>Synonym</dt><dd><ul class="org-ul">
+<li>"Unordered selection <i>without</i> Repetitions".</li>
+</ul></dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-org95b15e1" class="outline-3">
+<h3 id="org95b15e1">Combination rule (Theorem 8.4)</h3>
+<div class="outline-text-3" id="text-org95b15e1">
+<p>
+The number of unordered selections of \(k\) objects from \(n\) objects, without repetitions, is
+</p>
+
+<p>
+\[
+\binom{n}{k} = \frac{n(n-1)\cdots(n-k+1)}{k!} = \frac{n!}{(n-k)!\,k!}
+\]
+</p>
+
+<dl class="org-dl">
+<dt>Binomial coefficient</dt><dd><ul class="org-ul">
+<li>\(\binom{n}{k} := \frac{n!}{(n-k)!\,k!}\), read "\(n\) choose \(k\)".</li>
+</ul></dd>
+</dl>
+</div>
+<div id="outline-container-org49ff111" class="outline-4">
+<h4 id="org49ff111">Proof</h4>
+<div class="outline-text-4" id="text-org49ff111">
+<ol class="org-ol">
+<li>Number of <i>ordered</i> selections (<a href="20261112065352-permutations.html#ID-7f49c34b-ea2d-4cbf-9705-5a2c2fbeeb20">Permutations</a>): \(\frac{n!}{(n-k)!}\).</li>
+<li>An ordered selection = an <i>unordered</i> selection, <i>then</i> an order for it.</li>
+<li>There are \(k!\) ways to order \(k\) elements.</li>
+<li>By the product rule:
+\[
+   \frac{n!}{(n-k)!} = \binom{n}{k} \times k!
+   \]</li>
+<li>Divide both sides by \(k!\):
+\[
+   \binom{n}{k} = \frac{n!}{(n-k)!\,k!} \quad \blacksquare
+   \]</li>
+
+<li value="Intuition"><ul class="org-ul">
+<li>Permutations over-count each combination \(k!\) times (once per ordering), so divide it out.</li>
+</ul></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-org974aa85" class="outline-3">
+<h3 id="org974aa85">Binomial formula</h3>
+<div class="outline-text-3" id="text-org974aa85">
+<p>
+\[
+(x+y)^n = \sum_{k=0}^{n} \binom{n}{k} x^k y^{n-k}
+\]
+</p>
+
+<dl class="org-dl">
+<dt>Example (\(n = 5\))</dt><dd>\[
+  (x+y)^5 = y^5 + 5xy^4 + 10x^2y^3 + 10x^3y^2 + 5x^4y + x^5
+  \]
+<ul class="org-ul">
+<li>Coefficients: \(\binom{5}{0}, \binom{5}{1}, \ldots, \binom{5}{5} = 1, 5, 10, 10, 5, 1\).</li>
+</ul></dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-orgedf755a" class="outline-3">
+<h3 id="orgedf755a">Examples</h3>
+<div class="outline-text-3" id="text-orgedf755a">
+</div>
+<div id="outline-container-org05be009" class="outline-4">
+<h4 id="org05be009">Card hands</h4>
+<div class="outline-text-4" id="text-org05be009">
+<dl class="org-dl">
+<dt>Problem</dt><dd><ul class="org-ul">
+<li>13-card hand from a 52-card deck. How many hands?</li>
+</ul></dd>
+<dt>Solution</dt><dd><ul class="org-ul">
+<li>Unordered, no repetitions:
+\[
+    \binom{52}{13} = 635\,013\,559\,600
+    \]</li>
+</ul></dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-orgcc89a3e" class="outline-4">
+<h4 id="orgcc89a3e">Full house</h4>
+<div class="outline-text-4" id="text-orgcc89a3e">
+<dl class="org-dl">
+<dt>Problem</dt><dd><ul class="org-ul">
+<li>5 cards: 3 of one denomination, 2 of another. 13 denominations, 4 cards each.</li>
+</ul></dd>
+<dt>Solution</dt><dd><ul class="org-ul">
+<li>Order doesn't matter, so pick in a convenient order:
+<ol class="org-ol">
+<li>Denomination for the triple: \(13\)</li>
+<li>3 cards of 4 from it: \(\binom{4}{3} = 4\)</li>
+<li>Denomination for the pair: \(12\) (one already used)</li>
+<li>2 cards of 4 from it: \(\binom{4}{2} = 6\)</li>
+</ol></li>
+<li>Product rule:
+\[
+    13 \times 4 \times 12 \times 6 = 3744
+    \]</li>
+</ul></dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-orgbb7992e" class="outline-4">
+<h4 id="orgbb7992e">Number of subsets of an $n$-element set</h4>
+<div class="outline-text-4" id="text-orgbb7992e">
+<p>
+Two approaches, both giving \(2^n\).
+</p>
+
+<ol class="org-ol">
+<li><b>Sum over sizes</b> ::
+<ul class="org-ul">
+<li>Subsets of size \(k\): \(\binom{n}{k}\).</li>
+<li>A subset has size \(0\) <i>or</i> \(1\) <i>or</i> &hellip; <i>or</i> \(n\):
+\[
+     \sum_{k=0}^{n} \binom{n}{k} = (1+1)^n = 2^n
+     \]</li>
+<li>Uses the binomial formula with \(x = y = 1\).</li>
+</ul></li>
+
+<li><b>In or out</b> ::
+<ul class="org-ul">
+<li>Each of the \(n\) elements is either <i>in</i> the subset or <i>not</i>: 2 choices.</li>
+<li>Every distinct set of \(n\) choices gives a different subset:
+\[
+     \underbrace{2 \times 2 \times \cdots \times 2}_{n} = 2^n
+     \]</li>
+</ul></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
