@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-11-16 Mon 08:15 -->
+<!-- 2026-11-16 Mon 19:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Closures of Relations</title>
-<meta name="author" content="Michael Leibbrandt" />
+<meta name="author" content="Mikey" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,7 +57,6 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -72,7 +71,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -275,13 +274,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Closures of Relations</h1>
-<div id="outline-container-org021bbfd" class="outline-2">
-<h2 id="org021bbfd">Closures of Relations</h2>
-<div class="outline-text-2" id="text-org021bbfd">
+<div id="outline-container-org8364d62" class="outline-2">
+<h2 id="org8364d62">Closures of Relations</h2>
+<div class="outline-text-2" id="text-org8364d62">
 </div>
-<div id="outline-container-orgef7fcf7" class="outline-3">
-<h3 id="orgef7fcf7">Idea</h3>
-<div class="outline-text-3" id="text-orgef7fcf7">
+<div id="outline-container-org3d45250" class="outline-3">
+<h3 id="org3d45250">Idea</h3>
+<div class="outline-text-3" id="text-org3d45250">
 <p>
 The <b>closure</b> of a relation \(R\) with respect to a property \(P\) is the <i>smallest</i> relation that
 </p>
@@ -299,18 +298,18 @@ In CS, closures answer <b>reachability</b> questions: can we get from node \(a\)
 </p>
 </div>
 </div>
-<div id="outline-container-org6fee020" class="outline-3">
-<h3 id="org6fee020">Reflexive closure</h3>
-<div class="outline-text-3" id="text-org6fee020">
+<div id="outline-container-org696241e" class="outline-3">
+<h3 id="org696241e">Reflexive closure</h3>
+<div class="outline-text-3" id="text-org696241e">
 <dl class="org-dl">
 <dt>Definition 7.11</dt><dd>The <b>reflexive closure</b> \(R_r\) of a relation \(R\) on \(A\) is the <i>smallest</i> relation on \(A\) that is reflexive and contains \(R\).</dd>
 <dt>Construction</dt><dd>Add every pair \((a,a)\) with \(a \in A\):
 \[ R_r = R \cup \{(a,a) \mid a \in A\} \]</dd>
 </dl>
 </div>
-<div id="outline-container-orgfba107c" class="outline-4">
-<h4 id="orgfba107c">Example</h4>
-<div class="outline-text-4" id="text-orgfba107c">
+<div id="outline-container-org46d5f57" class="outline-4">
+<h4 id="org46d5f57">Example</h4>
+<div class="outline-text-4" id="text-org46d5f57">
 <p>
 \(A = \{1,2,3,4\}\), \(R = \{(1,1),(1,2),(1,3),(2,3),(3,4)\}\)
 </p>
@@ -325,9 +324,9 @@ Missing loops: \((2,2), (3,3), (4,4)\).
 </div>
 </div>
 </div>
-<div id="outline-container-org7a5a111" class="outline-3">
-<h3 id="org7a5a111">Symmetric closure</h3>
-<div class="outline-text-3" id="text-org7a5a111">
+<div id="outline-container-org3cd5185" class="outline-3">
+<h3 id="org3cd5185">Symmetric closure</h3>
+<div class="outline-text-3" id="text-org3cd5185">
 <dl class="org-dl">
 <dt>Definition 7.12</dt><dd>The <b>symmetric closure</b> \(R_s\) of a relation \(R\) on \(A\) is the smallest relation on \(A\) that is symmetric and contains \(R\).</dd>
 <dt>Construction</dt><dd>For each \((a,b) \in R\) with \(a \neq b\), add the reverse pair \((b,a)\) (if not already present):
@@ -335,9 +334,9 @@ Missing loops: \((2,2), (3,3), (4,4)\).
 (The \(a \neq b\) condition is cosmetic: reversing \((a,a)\) gives \((a,a)\) again.)</dd>
 </dl>
 </div>
-<div id="outline-container-org1586b61" class="outline-4">
-<h4 id="org1586b61">Example</h4>
-<div class="outline-text-4" id="text-org1586b61">
+<div id="outline-container-orgcd59c49" class="outline-4">
+<h4 id="orgcd59c49">Example</h4>
+<div class="outline-text-4" id="text-orgcd59c49">
 <p>
 \(A = \{1,2,3,4\}\), \(R = \{(1,1),(1,2),(1,3),(2,3),(3,4)\}\)
 </p>
@@ -352,9 +351,9 @@ Reverses to add: \((2,1), (3,1), (3,2), (4,3)\).
 </div>
 </div>
 </div>
-<div id="outline-container-orgb4327d7" class="outline-3">
-<h3 id="orgb4327d7">Transitive closure</h3>
-<div class="outline-text-3" id="text-orgb4327d7">
+<div id="outline-container-org8b46736" class="outline-3">
+<h3 id="org8b46736">Transitive closure</h3>
+<div class="outline-text-3" id="text-org8b46736">
 <dl class="org-dl">
 <dt>Definition 7.13</dt><dd>The <b>transitive closure</b> \(R_t\) of a relation \(R\) on \(A\) is the smallest relation on \(A\) that is transitive and contains \(R\).</dd>
 <dt>Construction (iterative)</dt><dd><ol class="org-ol">
@@ -369,9 +368,9 @@ Reverses to add: \((2,1), (3,1), (3,2), (4,3)\).
 Unlike the other two, one pass is <b>not</b> always enough — new pairs can create new chains.
 </p>
 </div>
-<div id="outline-container-org55cb080" class="outline-4">
-<h4 id="org55cb080">Example</h4>
-<div class="outline-text-4" id="text-org55cb080">
+<div id="outline-container-org283cba1" class="outline-4">
+<h4 id="org283cba1">Example</h4>
+<div class="outline-text-4" id="text-org283cba1">
 <p>
 \(A = \{1,2,3\}\), \(R = \{(1,1),(1,2),(2,3),(3,2)\}\)
 </p>
@@ -429,9 +428,9 @@ Nothing new, so \(R_2 = R_1\).
 </div>
 </div>
 </div>
-<div id="outline-container-orge52f784" class="outline-3">
-<h3 id="orge52f784">Summary</h3>
-<div class="outline-text-3" id="text-orge52f784">
+<div id="outline-container-org48ddf0f" class="outline-3">
+<h3 id="org48ddf0f">Summary</h3>
+<div class="outline-text-3" id="text-org48ddf0f">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -477,9 +476,9 @@ Nothing new, so \(R_2 = R_1\).
 </table>
 </div>
 </div>
-<div id="outline-container-orgd5eb79f" class="outline-3">
-<h3 id="orgd5eb79f">Pitfalls</h3>
-<div class="outline-text-3" id="text-orgd5eb79f">
+<div id="outline-container-org53e5fcb" class="outline-3">
+<h3 id="org53e5fcb">Pitfalls</h3>
+<div class="outline-text-3" id="text-org53e5fcb">
 <ul class="org-ul">
 <li>Reflexive closure depends on \(A\), not just \(R\): elements of \(A\) that never appear in \(R\) still need their loop \((a,a)\).</li>
 <li>Transitive closure: don't stop after one pass - check that a further pass adds nothing.</li>

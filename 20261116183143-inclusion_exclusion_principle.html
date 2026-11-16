@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-11-16 Mon 19:44 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Inclusion-Exclusion Principle</title>
+<meta name="author" content="Mikey" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<style>
+        body {
+          font-family: sans-serif;
+          line-height: 1.5;
+          margin: 2em;
+          background-color: #ffffff;
+          color: #111111;
+        }
+
+        /* Code block styling */
+        pre.src {
+          padding: 1em;
+          border-radius: 6px;
+          overflow-x: auto;
+          background-color: #f0f0f0;
+          color: #222222;
+          border: 1px solid #ddd;
+          font-family: monospace;
+        }
+
+        /* Syntax highlighting for Org-generated classes */
+        span.org-keyword { color: #005999; font-weight: bold; }
+        span.org-string  { color: #aa3333; }
+        span.org-comment { color: #666666; font-style: italic; }
+        span.org-type    { color: #007700; font-weight: bold; }
+        span.org-variable { color: #993399; }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            pre.src {
+                background-color: #000000;
+                color: #f5f5f5;
+                border: 1px solid #555;
+            }
+
+            /* Syntax highlighting */
+            span.org-keyword { color: #6fb1ff; font-weight: bold; }
+            span.org-string  { color: #e6c07b; }
+            span.org-comment { color: #aaaaaa; font-style: italic; }
+            span.org-type    { color: #7bd88f; font-weight: bold; }
+            span.org-variable { color: #d4a5ff; }
+        }
+
+        ul { list-style-type: disc; padding-left: 2em; }
+      </style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Inclusion-Exclusion Principle</h1>
+<div id="outline-container-orgc022b00" class="outline-2">
+<h2 id="orgc022b00">Inclusion-Exclusion Principle</h2>
+<div class="outline-text-2" id="text-orgc022b00">
+</div>
+<div id="outline-container-orgc6cb6de" class="outline-3">
+<h3 id="orgc6cb6de">Summary</h3>
+<div class="outline-text-3" id="text-orgc6cb6de">
+<p>
+Counting the size of a union of <i>overlapping</i> <b>finite</b> sets.
+</p>
+
+<p>
+<b>Add</b> the sizes of the sets, then <b>subtract</b> the <i>overlaps</i> so that elements belonging to more than one set are <b>not</b> counted twice.
+</p>
+
+<ul class="org-ul">
+<li>For three sets, the triple <i>overlap</i> is added back at the end.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0f06816" class="outline-3">
+<h3 id="org0f06816">Notation</h3>
+<div class="outline-text-3" id="text-org0f06816">
+<ul class="org-ul">
+<li>A set is <i>finite</i> if it has <b>finitely</b> many elements.
+<ul class="org-ul">
+<li>Write |A| for the number of elements in A (its <i>cardinality</i>).</li>
+</ul></li>
+<li>An <i>infinite</i> set is one that is not finite.
+<ul class="org-ul">
+<li>I.e. the set of positive integers is <b>infinite</b>.</li>
+</ul></li>
+<li>Two sets A and B are <i>disjoint</i> if A ∩ B = ∅.
+<ul class="org-ul">
+<li>Disjoint pieces can be counted <i>separately</i> and their sizes <b>added</b>.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb5a7288" class="outline-3">
+<h3 id="orgb5a7288">Two sets</h3>
+<div class="outline-text-3" id="text-orgb5a7288">
+<p>
+If A and B are <b>finite</b> sets, then
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text">|A &#8746; B| = |A| + |B| - |A &#8745; B|
+</pre>
+</div>
+
+<p>
+The |A ∩ B| term <i>removes</i> the elements that were counted in <b>both</b> sets.
+</p>
+
+
+<div id="org7861db3" class="figure">
+<p><img src="./assets/venn-two-sets.svg" alt="venn-two-sets.svg" class="org-svg" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Two overlapping sets. The lens in the middle is A ∩ B.</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org5988ea2" class="outline-3">
+<h3 id="org5988ea2">Three sets</h3>
+<div class="outline-text-3" id="text-org5988ea2">
+<p>
+The same idea extends to three finite sets A, B, C:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text">|A &#8746; B &#8746; C| = |A| + |B| + |C| - |A &#8745; B| - |A &#8745; C| - |B &#8745; C| + |A &#8745; B &#8745; C|
+</pre>
+</div>
+
+<p>
+Subtracting the pairwise overlaps removes too much when an element lies in all three sets.
+</p>
+
+<p>
+That element was added three times and subtracted three times, so it must be added back once, which is the triple intersection term.
+</p>
+
+
+<div id="orgc3eb08e" class="figure">
+<p><img src="./assets/venn-three-sets.svg" alt="venn-three-sets.svg" class="org-svg" />
+</p>
+<p><span class="figure-number">Figure 2: </span>Three overlapping sets with every region labelled.</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org1483316" class="outline-3">
+<h3 id="org1483316">Method: splitting a set into disjoint pieces</h3>
+<div class="outline-text-3" id="text-org1483316">
+<p>
+Many problems ask for the size of a set that is only partly described.
+</p>
+
+<ul class="org-ul">
+<li>Split it into disjoint pieces, count each, then add.</li>
+</ul>
+
+<p>
+For example, let X = A ∩ M ∩ Ē (in A and M, not in E) and Y = A ∩ M ∩ E (in all three).
+</p>
+
+<p>
+Then X ∩ Y = ∅ and X ∪ Y = A ∩ M, so
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text">|A &#8745; M| = |X| + |Y|
+</pre>
+</div>
+
+<p>
+This is the basic move behind the <code>"exactly these sets"</code> questions in the examples below.
+</p>
+</div>
+</div>
+<div id="outline-container-org300ea39" class="outline-3">
+<h3 id="org300ea39">Example: Cards</h3>
+<div class="outline-text-3" id="text-org300ea39">
+<p>
+In an ordinary deck, let A be the aces and C the clubs. Then |A| = 4, |C| = 13, and |A ∩ C| = 1 (the ace of clubs). So
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text">|A &#8746; C| = 4 + 13 - 1 = 16
+</pre>
+</div>
+
+<p>
+There are 16 cards that are <b>aces</b> or <b>clubs</b>.
+</p>
+</div>
+</div>
+<div id="outline-container-org872b24d" class="outline-3">
+<h3 id="org872b24d">Example: Survey</h3>
+<div class="outline-text-3" id="text-org872b24d">
+<p>
+A survey in Scotland finds that 86% of the population have heard of product A, 80% have heard of product B, and 70% have heard of both.
+</p>
+
+<p>
+Let N be the <b>population size</b>, and let A and B be the sets of people who have heard of <i>each</i> product.
+</p>
+
+<p>
+Then
+</p>
+<ul class="org-ul">
+<li>|A| = 0.86N</li>
+<li>|B| = 0.8N</li>
+<li>|A ∩ B| = 0.7N</li>
+</ul>
+
+<p>
+So
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text">|A &#8746; B| = 0.86N + 0.8N - 0.7N = 0.96N
+</pre>
+</div>
+
+<p>
+So 96% have heard of <i>at least</i> <b>one</b> product, and 4% have heard of <b>neither</b>.
+</p>
+
+<p>
+Complementing the union gives the answer directly.
+</p>
+
+
+<div id="orga4f2242" class="figure">
+<p><img src="./assets/venn-two-sets.svg" alt="venn-two-sets.svg" class="org-svg" />
+</p>
+<p><span class="figure-number">Figure 3: </span>Survey regions as shares of the population. The outside region is the 4% who have heard of neither product.</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org8638e62" class="outline-3">
+<h3 id="org8638e62">Example: Divisibility (three sets)</h3>
+<div class="outline-text-3" id="text-org8638e62">
+<p>
+How many integers from 1 to 100 are divisible by 2, 3 or 5?
+</p>
+
+<p>
+Let U = {1, &#x2026;, 100}, and let
+</p>
+<ul class="org-ul">
+<li>A = {n ∈ U : 2 divides n}, so |A| = 50</li>
+<li>B = {n ∈ U : 3 divides n}, so |B| = 33 (the integer part of 100/3)</li>
+<li>C = {n ∈ U : 5 divides n}, so |C| = 20</li>
+</ul>
+
+<p>
+A number is divisible by two coprime numbers exactly when it is divisible by their product (equivalently, their least common multiple or "lcm").
+</p>
+
+<p>
+So the pairwise overlaps are:
+</p>
+<ul class="org-ul">
+<li>A ∩ B: divisible by lcm(2, 3) = 6, so |A ∩ B| = 16</li>
+<li>A ∩ C: divisible by lcm(2, 5) = 10, so |A ∩ C| = 10</li>
+<li>B ∩ C: divisible by lcm(3, 5) = 15, so |B ∩ C| = 6</li>
+</ul>
+
+<p>
+The triple overlap is divisible by 30, so |A ∩ B ∩ C| = 3.
+</p>
+
+<p>
+Then
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text">|A &#8746; B &#8746; C| = 50 + 33 + 20 - 16 - 10 - 6 + 3 = 74
+</pre>
+</div>
+
+<p>
+So 74 integers are divisible by 2, 3 or 5, and the other 26 are not.
+</p>
+
+
+<div id="orgcab067a" class="figure">
+<p><img src="./assets/venn-three-sets.svg" alt="venn-three-sets.svg" class="org-svg" />
+</p>
+<p><span class="figure-number">Figure 4: </span>Three-set regions for the divisibility example.</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orga58847a" class="outline-3">
+<h3 id="orga58847a">Example: University of Scabia (three sets)</h3>
+<div class="outline-text-3" id="text-orga58847a">
+<p>
+All first-year computer science students at the University of Scabia study at least one of three modules:
+</p>
+<ul class="org-ul">
+<li>Accounting (A)</li>
+<li>Ethics (E)</li>
+<li>mathematics (M)</li>
+</ul>
+
+<p>
+There are 237 students.
+</p>
+
+<ul class="org-ul">
+<li>120 study (A)ccounting</li>
+<li>100 study (E)thics</li>
+<li>150 study (M)aths</li>
+
+<li>50 study (A)ccounting <i>and</i> (M)aths</li>
+<li>20 study (A)ccounting <i>and</i> (E)thics</li>
+<li>and 70 study (M)aths <i>and</i> (E)thics</li>
+</ul>
+</div>
+<div id="outline-container-org59e7792" class="outline-4">
+<h4 id="org59e7792">Part 1: Students who study <i>all</i> three</h4>
+<div class="outline-text-4" id="text-org59e7792">
+<p>
+Since everyone is in <i>at least</i> <b>one</b> module, |A ∪ E ∪ M| = 237.
+</p>
+
+<p>
+The formula gives
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text">237 = 120 + 100 + 150 - 50 - 20 - 70 + |A &#8745; E &#8745; M|
+237 = 230 + |A &#8745; E &#8745; M|
+|A &#8745; E &#8745; M| = 7
+</pre>
+</div>
+
+<p>
+So 7 students study <b>all three</b> subjects.
+</p>
+</div>
+</div>
+<div id="outline-container-org6827e56" class="outline-4">
+<h4 id="org6827e56">Part 2: Accounting <i>and</i> Maths, but <i>not</i> Ethics</h4>
+<div class="outline-text-4" id="text-org6827e56">
+<p>
+Let X = A ∩ M ∩ Ē and Y = A ∩ M ∩ E.
+</p>
+
+<p>
+These are <b>disjoint</b>, and their union is A ∩ M.
+</p>
+
+<p>
+Then
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text">|A &#8745; M| = |X| + |Y|
+50 = |X| + 7
+|X| = 43
+</pre>
+</div>
+
+<p>
+So 43 students study (A)ccounting <i>and</i> (M)aths but <i>not</i> (E)thics.
+</p>
+
+
+<div id="orgff5a8ef" class="figure">
+<p><img src="./assets/scabia-three-sets.svg" alt="scabia-three-sets.svg" class="org-svg" />
+</p>
+<p><span class="figure-number">Figure 5: </span>Students in each region of the Scabia problem. The seven regions sum to 237, so no student falls outside the circles.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
