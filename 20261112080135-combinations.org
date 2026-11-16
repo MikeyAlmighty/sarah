@@ -50,13 +50,18 @@ The number of unordered selections of $k$ objects from $n$ objects, without repe
 
 ** Binomial formula
 
+The binomial coefficients appear in the binomial formula, which gives the coefficients for the expansion of a power:
+
 \[
 (x+y)^n = \sum_{k=0}^{n} \binom{n}{k} x^k y^{n-k}
 \]
 
 - Example ($n = 5$) ::
   \[
-  (x+y)^5 = y^5 + 5xy^4 + 10x^2y^3 + 10x^3y^2 + 5x^4y + x^5
+  (x+y)^5 = \binom{5}{0}x^0y^5 + \binom{5}{1}x^1y^4 + \binom{5}{2}x^2y^3 + \binom{5}{3}x^3y^2 + \binom{5}{4}x^4y^1 + \binom{5}{5}x^5y^0
+  \]
+  \[
+  = y^5 + 5xy^4 + 10x^2y^3 + 10x^3y^2 + 5x^4y + x^5
   \]
   - Coefficients: $\binom{5}{0}, \binom{5}{1}, \ldots, \binom{5}{5} = 1, 5, 10, 10, 5, 1$.
 
@@ -67,25 +72,38 @@ The number of unordered selections of $k$ objects from $n$ objects, without repe
 - Problem ::
   - 13-card hand from a 52-card deck. How many hands?
 - Solution ::
-  - Unordered, no repetitions:
+  - Unordered, no repetitions, so use $\binom{n}{k}$ with $n = 52$ and $k = 13$:
     \[
-    \binom{52}{13} = 635\,013\,559\,600
+    \binom{52}{13} = \frac{52!}{(52-13)!\,13!} = \frac{52!}{39!\,13!}
+    \]
+  - The $39!$ cancels with the bottom 39 factors of $52!$, leaving a product of 13 terms over $13!$:
+    \[
+    \binom{52}{13} = \frac{52 \cdot 51 \cdots 40}{13!} = 635\,013\,559\,600
     \]
 
 *** Full house
+- Full house ::
+  *Three of a kind* plus a *pair*.
 
 - Problem ::
-  - 5 cards: 3 of one denomination, 2 of another. 13 denominations, 4 cards each.
+  - *5-card* hand with *3 cards of* /one rank/ and *2 cards* of /another rank/.
+  - In a pack of cards there are *13 denominations (ranks)* (2, 3, ..., queen, king, ace), with *4 cards* of /each/ *denomination* (one per /suit/).
+
+  - Denomination Synonym ::
+    - "Rank" (also "face value").
+
 - Solution ::
-  - Order doesn't matter, so pick in a convenient order:
-    1. Denomination for the triple: $13$
-    2. 3 cards of 4 from it: $\binom{4}{3} = 4$
-    3. Denomination for the pair: $12$ (one already used)
-    4. 2 cards of 4 from it: $\binom{4}{2} = 6$
-  - Product rule:
-    \[
-    13 \times 4 \times 12 \times 6 = 3744
-    \]
+
+  - Order *doesn't* matter, so we fix a convenient order: choose the *triple* first, then the *pair*.
+    1. *Denomination (Rank)* for the triple: *13* choices.
+    2. Choose *3* of the *4* cards in that *denomination (rank)*: $\binom{4}{3} = \frac{4!}{(4-3)!\,3!} = 4$ choices.
+    3. *Denomination (Rank)* for the pair: *12* choices, since it must differ from the triple's *denomination (rank)*.
+    4. Choose *2* of the *4* cards in that *denomination (rank)*: $\binom{4}{2} = \frac{4!}{(4-2)!\,2!} = 6$ choices.
+       1. Product rule (each step's choices are independent of the others' values):
+          \[
+          13 \times 4 \times 12 \times 6 = 3744
+          \]
+       2. Each full house is counted exactly once, because its *triple* and *pair denominations (ranks)* are determined by the hand, so no further division is needed.
 
 *** Number of subsets of an $n$-element set
 
