@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-11-16 Mon 19:44 -->
+<!-- 2026-11-17 Tue 07:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>if/else Statement</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,48 +243,48 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">if/else Statement</h1>
-<div id="outline-container-orge47eab3" class="outline-2">
-<h2 id="orge47eab3">If/ Else Statement</h2>
-<div class="outline-text-2" id="text-orge47eab3">
+<div id="outline-container-orge6a40b8" class="outline-2">
+<h2 id="orge6a40b8">If/ Else Statement</h2>
+<div class="outline-text-2" id="text-orge6a40b8">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">if</span>(hourOfDay &lt; 11) {
+<pre class="src src-java"><code><span class="org-keyword">if</span>(hourOfDay &lt; 11) {
     System.out.println(<span class="org-string">"Good Morning"</span>);
 } <span class="org-keyword">else</span> <span class="org-keyword">if</span> (hourOfDay &lt; 15) {
     System.out.println(<span class="org-string">"Good Afternoon"</span>);
 } <span class="org-keyword">else</span> {
     System.out.println(<span class="org-string">"Good Evening"</span>);
 }
-</pre>
+</code></pre>
 </div>
 </div>
-<div id="outline-container-org2c3e83a" class="outline-3">
-<h3 id="org2c3e83a">Common Pitfalls</h3>
-<div class="outline-text-3" id="text-org2c3e83a">
+<div id="outline-container-orgb966dc1" class="outline-3">
+<h3 id="orgb966dc1">Common Pitfalls</h3>
+<div class="outline-text-3" id="text-orgb966dc1">
 </div>
-<div id="outline-container-org3324087" class="outline-4">
-<h4 id="org3324087">1. Forgetting Necessary Braces</h4>
-<div class="outline-text-4" id="text-org3324087">
+<div id="outline-container-orga0ca6db" class="outline-4">
+<h4 id="orga0ca6db">1. Forgetting Necessary Braces</h4>
+<div class="outline-text-4" id="text-orga0ca6db">
 <p>
 One area where the exam writers will try to trip you up is <b>If</b> <b>statements</b> without braces ({}):
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">if</span>(hourOfDay &lt; 11)
+<pre class="src src-java"><code><span class="org-keyword">if</span>(hourOfDay &lt; 11)
     System.out.println(<span class="org-string">"Good Morning"</span>);
     morningGreetingCount++;
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org58a4503" class="outline-4">
-<h4 id="org58a4503">2. Wrong Semicolon at the <b>If</b> line</h4>
-<div class="outline-text-4" id="text-org58a4503">
+<div id="outline-container-orgb8fa565" class="outline-4">
+<h4 id="orgb8fa565">2. Wrong Semicolon at the <b>If</b> line</h4>
+<div class="outline-text-4" id="text-orgb8fa565">
 <p>
 This mistake is hard to find, because it is neither a <b>compile</b> error nor a <b>runtime</b> error; it is a <b>logic</b> error.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">if</span> (radius &gt;= 0); <span class="org-comment-delimiter">// </span><span class="org-comment">Note semicolon
+<pre class="src src-java"><code><span class="org-keyword">if</span> (radius &gt;= 0); <span class="org-comment-delimiter">// </span><span class="org-comment">Note semicolon
 </span>{
     area = radius * radius * PI;
     System.out.println(<span class="org-string">"The area "</span> + <span class="org-string">" is "</span> + area);
@@ -296,30 +297,30 @@ This mistake is hard to find, because it is neither a <b>compile</b> error nor a
     area = radius * radius * PI;
     System.out.println(<span class="org-string">"The area "</span> + <span class="org-string">" is "</span> + area);
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgd35da6a" class="outline-4">
-<h4 id="orgd35da6a">3. Redundant Testing of Boolean Values</h4>
-<div class="outline-text-4" id="text-orgd35da6a">
+<div id="outline-container-orgef84ff0" class="outline-4">
+<h4 id="orgef84ff0">3. Redundant Testing of Boolean Values</h4>
+<div class="outline-text-4" id="text-orgef84ff0">
 <p>
 To test whether a <code>boolean</code> variable is <b>true</b> or <b>false</b> in a test condition, it is redundant to use the <a href="20231231063730-equality_operators.html#ID-700147ef-38e8-47dc-bdda-f675917ae802">equality</a> testing operator like the code in <code>(a)</code>:
 Instead, it is better to test the <code>boolean</code> variable <b>directly</b>, as shown in <code>(b)</code>.
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="org50ed448"></a>Example<br />
-<div class="outline-text-5" id="text-org50ed448">
+<li><a id="orgee61180"></a>Example<br />
+<div class="outline-text-5" id="text-orgee61180">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-comment-delimiter">// </span><span class="org-comment">(a)
+<pre class="src src-java"><code><span class="org-comment-delimiter">// </span><span class="org-comment">(a)
 </span><span class="org-keyword">if</span> (even == <span class="org-constant">true</span>)
 System.out.println(<span class="org-string">"It is even."</span>);
 
 <span class="org-comment-delimiter">// </span><span class="org-comment">(b)
 </span><span class="org-keyword">if</span> (even)
 System.out.println(<span class="org-string">"It is even."</span>);
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -335,12 +336,12 @@ It could lead to the following erroneous statement:
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="orgc43eaf5"></a>Example<br />
-<div class="outline-text-6" id="text-orgc43eaf5">
+<li><a id="org28d6842"></a>Example<br />
+<div class="outline-text-6" id="text-org28d6842">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">if</span> (even = <span class="org-constant">true</span>)
+<pre class="src src-java"><code><span class="org-keyword">if</span> (even = <span class="org-constant">true</span>)
 System.out.println(<span class="org-string">"It is even."</span>);
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -355,26 +356,26 @@ This statement does <b>not</b> have <b>compile</b> errors.
 </li>
 </ul>
 </div>
-<div id="outline-container-orge5ce33e" class="outline-4">
-<h4 id="orge5ce33e">4. Dangling Else ambiguity</h4>
-<div class="outline-text-4" id="text-orge5ce33e">
+<div id="outline-container-org8459009" class="outline-4">
+<h4 id="org8459009">4. Dangling Else ambiguity</h4>
+<div class="outline-text-4" id="text-org8459009">
 <p>
 The dangling <b>else</b> ambiguity happens when <b>nested</b> If statements don’t use braces, making it unclear which <b>if</b> an <b>else</b> belongs to.
 In Java, the <b>else</b> is always matched with the nearest unmatched <b>if</b>.
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="orgecc2e09"></a>Example<br />
-<div class="outline-text-5" id="text-orgecc2e09">
+<li><a id="org1c4a6b4"></a>Example<br />
+<div class="outline-text-5" id="text-org1c4a6b4">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">int</span> <span class="org-variable-name">x</span> = 5;
+<pre class="src src-java"><code><span class="org-type">int</span> <span class="org-variable-name">x</span> = 5;
 
 <span class="org-keyword">if</span> (x &gt; 0)
     <span class="org-keyword">if</span> (x &gt; 10)
         System.out.println(<span class="org-string">"Greater than 10"</span>);
     <span class="org-keyword">else</span>
         System.out.println(<span class="org-string">"Positive but not greater than 10"</span>);
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -386,25 +387,25 @@ Use braces to resolve ambiguity:
 </p>
 </div>
 </li>
-<li><a id="org173e5ff"></a>Example<br />
-<div class="outline-text-5" id="text-org173e5ff">
+<li><a id="orgfe42d5a"></a>Example<br />
+<div class="outline-text-5" id="text-orgfe42d5a">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">if</span> (x &gt; 0) {
+<pre class="src src-java"><code><span class="org-keyword">if</span> (x &gt; 0) {
     <span class="org-keyword">if</span> (x &gt; 10) {
         System.out.println(<span class="org-string">"Greater than 10"</span>);
     } <span class="org-keyword">else</span> {
         System.out.println(<span class="org-string">"Positive but not greater than 10"</span>);
     }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </li>
 </ul>
 </div>
-<div id="outline-container-org84bc3df" class="outline-4">
-<h4 id="org84bc3df">5. Equality Test of Two Floating-Point Values</h4>
-<div class="outline-text-4" id="text-org84bc3df">
+<div id="outline-container-org7bfaf9a" class="outline-4">
+<h4 id="org7bfaf9a">5. Equality Test of Two Floating-Point Values</h4>
+<div class="outline-text-4" id="text-org7bfaf9a">
 <p>
 Testing two <b>floating-point</b> values (<code>float</code> or <code>double</code>) for equality using <code>==</code> is <b>unreliable</b> because of <b>rounding</b> and <b>precision</b> errors in binary representation.
 </p>
@@ -414,14 +415,14 @@ Values that <b>should</b> be equal mathematically <b>may</b> <b>differ</b> <b>sl
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="orgdd5db7f"></a>Example<br />
-<div class="outline-text-5" id="text-orgdd5db7f">
+<li><a id="orgc5fcd44"></a>Example<br />
+<div class="outline-text-5" id="text-orgc5fcd44">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">double</span> <span class="org-variable-name">a</span> = 0.1 + 0.2;
+<pre class="src src-java"><code><span class="org-type">double</span> <span class="org-variable-name">a</span> = 0.1 + 0.2;
 <span class="org-type">double</span> <span class="org-variable-name">b</span> = 0.3;
 
 System.out.println(a == b); <span class="org-comment-delimiter">// </span><span class="org-comment">false</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -429,8 +430,8 @@ Numbers like <code>0.1</code> and <code>0.2</code> <b>cannot</b> be represented 
 </p>
 </div>
 </li>
-<li><a id="org1942b56"></a>Solution<br />
-<div class="outline-text-5" id="text-org1942b56">
+<li><a id="orga3c41e6"></a>Solution<br />
+<div class="outline-text-5" id="text-orga3c41e6">
 <p>
 You can compare whether they are close enough by testing whether the <b>difference</b> of the two numbers is less than some <b>threshold</b>.
 </p>
@@ -440,30 +441,30 @@ That is, two numbers <code>x</code> and <code>y</code> are very close if ∣x−
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="org9f49a9d"></a>Double<br />
-<div class="outline-text-6" id="text-org9f49a9d">
+<li><a id="orgcf19715"></a>Double<br />
+<div class="outline-text-6" id="text-orgcf19715">
 <p>
 e: <code>10^-14</code>
 </p>
 </div>
 </li>
-<li><a id="org73241a3"></a>Float<br />
-<div class="outline-text-6" id="text-org73241a3">
+<li><a id="orge2aae96"></a>Float<br />
+<div class="outline-text-6" id="text-orge2aae96">
 <p>
 e: <code>10^-7</code>
 </p>
 </div>
 </li>
-<li><a id="org299b8f1"></a>Example<br />
-<div class="outline-text-6" id="text-org299b8f1">
+<li><a id="org716cff6"></a>Example<br />
+<div class="outline-text-6" id="text-org716cff6">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">final</span> <span class="org-type">double</span> <span class="org-variable-name">EPSILON</span> = 1E&#8722;14;
+<pre class="src src-java"><code><span class="org-keyword">final</span> <span class="org-type">double</span> <span class="org-variable-name">EPSILON</span> = 1E&#8722;14;
 
 <span class="org-type">double</span> <span class="org-variable-name">x</span> = 1.0 &#8722; 0.1 &#8722; 0.1 &#8722; 0.1 &#8722; 0.1 &#8722; 0.1;
 
 <span class="org-keyword">if</span> (Math.abs(x &#8722; 0.5) &lt; EPSILON)
     System.out.println(x + <span class="org-string">" is approximately 0.5"</span>);
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -475,19 +476,19 @@ Will display <code>0.5000000000000001</code> is approximately <code>0.5</code>.
 </li>
 </ul>
 </div>
-<div id="outline-container-orga1c04e2" class="outline-4">
-<h4 id="orga1c04e2"><span class="underline">Exam Trick</span></h4>
-<div class="outline-text-4" id="text-orga1c04e2">
+<div id="outline-container-org421b6d8" class="outline-4">
+<h4 id="org421b6d8"><span class="underline">Exam Trick</span></h4>
+<div class="outline-text-4" id="text-org421b6d8">
 <p>
 Common way the exam may try to lead you astray is by providing code where the <code>boolean</code> expression inside the <code>if</code> statement is not actually a <code>boolean</code> expression:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">int</span> <span class="org-variable-name">hourOfDay</span> = 1;
+<pre class="src src-java"><code><span class="org-type">int</span> <span class="org-variable-name">hourOfDay</span> = 1;
 <span class="org-keyword">if</span>(hourOfDay) { <span class="org-comment-delimiter">// </span><span class="org-comment">DOES NOT COMPILE
 </span>...
 }
-</pre>
+</code></pre>
 </div>
 
 <p>

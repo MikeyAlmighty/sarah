@@ -1,0 +1,65 @@
+:PROPERTIES:
+:ID:       e916e0da-fe37-4342-883e-b1214364c2c3
+:END:
+#+title: Verifying a Solution to a Recurrence Relation
+
+* Verifying a Solution to a Recurrence Relation
+
+** The method
+
+Given a *recurrence* with initial condition(s) and a candidate closed form $a_n = f(n)$, check two things:
+1. *Initial values:* $f$ gives the correct value for each initial condition.
+2. *Recurrence:* substituting $f$ into the right-hand side of the recurrence gives $f(n)$.
+
+** Why Both Checks are Enough
+
+- The *recurrence* and its *initial conditions* determine exactly one sequence:
+  - The *initial values* are fixed, and every later term is computed from earlier ones.
+- If $f$ matches the *initial values* and *satisfies the recurrence*, it produces that same sequence, term by term.
+  - This is an induction argument: the *initial values* are the *base case* and the recurrence check is the *inductive step*.
+- Skipping check 1 only shows that $f$ is /some/ solution, not the one you want.
+  - For example, $a_n = 2^n$ satisfies $a_n = 2a_{n-1}$ but has $a_1 = 2$, not $a_1 = 1$.
+
+** Example 1: one initial condition
+
+*Claim*: $a_n = 2^n - 1$ solves $a_n = 2a_{n-1} + 1$, $n \geq 2$, with $a_1 = 1$.
+
+1. *Initial value*: $a_1 = 2^1 - 1 = 1$. ✓
+2. *Recurrence*: $a_{n-1} = 2^{n-1} - 1$, so
+   \[ 2a_{n-1} + 1 = 2(2^{n-1} - 1) + 1 = 2^n - 2 + 1 = 2^n - 1 = a_n. \]
+   ✓
+
+** Example 2: the general solution
+
+*Claim*: $a_n = a_1 \cdot 2^{n-1}$ solves $a_n = 2a_{n-1}$, $n \geq 2$, for any choice of $a_1$.
+
+1. *Initial value*: $a_1 \cdot 2^{1-1} = a_1 \cdot 1 = a_1$. ✓
+2. *Recurrence*: $2a_{n-1} = 2 \cdot a_1 \cdot 2^{n-2} = a_1 \cdot 2^{n-1} = a_n$. ✓
+
+** Example 3: two initial conditions
+
+*Claim*: $a_n = 3^n - 2^n$ solves $a_n = 5a_{n-1} - 6a_{n-2}$, $n \geq 3$, with $a_1 = 1$, $a_2 = 5$.
+
+1. *Initial values*: $a_1 = 3 - 2 = 1$ ✓ and $a_2 = 9 - 4 = 5$ ✓. Both must be checked.
+2. *Recurrence*:
+   \begin{align*}
+   5a_{n-1} - 6a_{n-2} &= 5(3^{n-1} - 2^{n-1}) - 6(3^{n-2} - 2^{n-2}) \\
+                       &= 15 \cdot 3^{n-2} - 10 \cdot 2^{n-2} - 6 \cdot 3^{n-2} + 6 \cdot 2^{n-2} \\
+                       &= 9 \cdot 3^{n-2} - 4 \cdot 2^{n-2} \\
+                       &= 3^n - 2^n = a_n.
+   \end{align*}
+   ✓
+
+Sanity check against the computed terms: $a_3 = 27 - 8 = 19$ and $a_4 = 81 - 16 = 65$.
+
+Tip: write every power in terms of the lowest one ($3^{n-2}$, $2^{n-2}$) so the terms can be collected.
+
+
+** Example 4: A Candidate That Fails
+
+*Claim*: $a_n = 2n - 1$ solves $a_n = 2a_{n-1} + 1$ with $a_1 = 1$.
+
+- First terms: $f(1) = 1$ ✓, $f(2) = 3$ ✓, $f(3) = 5$, but the recurrence gives $a_3 = 7$. ✗
+- Algebraically: $2a_{n-1} + 1 = 2(2(n-1) - 1) + 1 = 4n - 5 \neq 2n - 1$ in general.
+- Lesson: matching the first few terms proves nothing.
+  - The *recurrence check* /has/ to be done for *general* $n$.

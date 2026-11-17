@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-11-16 Mon 19:44 -->
+<!-- 2026-11-17 Tue 07:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Inclusion-Exclusion Principle</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,13 +243,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Inclusion-Exclusion Principle</h1>
-<div id="outline-container-orgc022b00" class="outline-2">
-<h2 id="orgc022b00">Inclusion-Exclusion Principle</h2>
-<div class="outline-text-2" id="text-orgc022b00">
+<div id="outline-container-orgc3c6a74" class="outline-2">
+<h2 id="orgc3c6a74">Inclusion-Exclusion Principle</h2>
+<div class="outline-text-2" id="text-orgc3c6a74">
 </div>
-<div id="outline-container-orgc6cb6de" class="outline-3">
-<h3 id="orgc6cb6de">Summary</h3>
-<div class="outline-text-3" id="text-orgc6cb6de">
+<div id="outline-container-org86ddbcc" class="outline-3">
+<h3 id="org86ddbcc">Summary</h3>
+<div class="outline-text-3" id="text-org86ddbcc">
 <p>
 Counting the size of a union of <i>overlapping</i> <b>finite</b> sets.
 </p>
@@ -262,9 +263,9 @@ Counting the size of a union of <i>overlapping</i> <b>finite</b> sets.
 </ul>
 </div>
 </div>
-<div id="outline-container-org0f06816" class="outline-3">
-<h3 id="org0f06816">Notation</h3>
-<div class="outline-text-3" id="text-org0f06816">
+<div id="outline-container-org7148d8b" class="outline-3">
+<h3 id="org7148d8b">Notation</h3>
+<div class="outline-text-3" id="text-org7148d8b">
 <ul class="org-ul">
 <li>A set is <i>finite</i> if it has <b>finitely</b> many elements.
 <ul class="org-ul">
@@ -281,16 +282,16 @@ Counting the size of a union of <i>overlapping</i> <b>finite</b> sets.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb5a7288" class="outline-3">
-<h3 id="orgb5a7288">Two sets</h3>
-<div class="outline-text-3" id="text-orgb5a7288">
+<div id="outline-container-org75a50b7" class="outline-3">
+<h3 id="org75a50b7">Two sets</h3>
+<div class="outline-text-3" id="text-org75a50b7">
 <p>
 If A and B are <b>finite</b> sets, then
 </p>
 
 <div class="org-src-container">
-<pre class="src src-text">|A &#8746; B| = |A| + |B| - |A &#8745; B|
-</pre>
+<pre class="src src-text"><code>|A &#8746; B| = |A| + |B| - |A &#8745; B|
+</code></pre>
 </div>
 
 <p>
@@ -298,23 +299,23 @@ The |A ∩ B| term <i>removes</i> the elements that were counted in <b>both</b> 
 </p>
 
 
-<div id="org7861db3" class="figure">
+<div id="orga615e15" class="figure">
 <p><img src="./assets/venn-two-sets.svg" alt="venn-two-sets.svg" class="org-svg" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Two overlapping sets. The lens in the middle is A ∩ B.</p>
 </div>
 </div>
 </div>
-<div id="outline-container-org5988ea2" class="outline-3">
-<h3 id="org5988ea2">Three sets</h3>
-<div class="outline-text-3" id="text-org5988ea2">
+<div id="outline-container-org9349597" class="outline-3">
+<h3 id="org9349597">Three sets</h3>
+<div class="outline-text-3" id="text-org9349597">
 <p>
 The same idea extends to three finite sets A, B, C:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-text">|A &#8746; B &#8746; C| = |A| + |B| + |C| - |A &#8745; B| - |A &#8745; C| - |B &#8745; C| + |A &#8745; B &#8745; C|
-</pre>
+<pre class="src src-text"><code>|A &#8746; B &#8746; C| = |A| + |B| + |C| - |A &#8745; B| - |A &#8745; C| - |B &#8745; C| + |A &#8745; B &#8745; C|
+</code></pre>
 </div>
 
 <p>
@@ -326,16 +327,16 @@ That element was added three times and subtracted three times, so it must be add
 </p>
 
 
-<div id="orgc3eb08e" class="figure">
+<div id="orgd73abd8" class="figure">
 <p><img src="./assets/venn-three-sets.svg" alt="venn-three-sets.svg" class="org-svg" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Three overlapping sets with every region labelled.</p>
 </div>
 </div>
 </div>
-<div id="outline-container-org1483316" class="outline-3">
-<h3 id="org1483316">Method: splitting a set into disjoint pieces</h3>
-<div class="outline-text-3" id="text-org1483316">
+<div id="outline-container-org76de831" class="outline-3">
+<h3 id="org76de831">Method: splitting a set into disjoint pieces</h3>
+<div class="outline-text-3" id="text-org76de831">
 <p>
 Many problems ask for the size of a set that is only partly described.
 </p>
@@ -353,8 +354,8 @@ Then X ∩ Y = ∅ and X ∪ Y = A ∩ M, so
 </p>
 
 <div class="org-src-container">
-<pre class="src src-text">|A &#8745; M| = |X| + |Y|
-</pre>
+<pre class="src src-text"><code>|A &#8745; M| = |X| + |Y|
+</code></pre>
 </div>
 
 <p>
@@ -362,16 +363,16 @@ This is the basic move behind the <code>"exactly these sets"</code> questions in
 </p>
 </div>
 </div>
-<div id="outline-container-org300ea39" class="outline-3">
-<h3 id="org300ea39">Example: Cards</h3>
-<div class="outline-text-3" id="text-org300ea39">
+<div id="outline-container-org4367bf4" class="outline-3">
+<h3 id="org4367bf4">Example: Cards</h3>
+<div class="outline-text-3" id="text-org4367bf4">
 <p>
 In an ordinary deck, let A be the aces and C the clubs. Then |A| = 4, |C| = 13, and |A ∩ C| = 1 (the ace of clubs). So
 </p>
 
 <div class="org-src-container">
-<pre class="src src-text">|A &#8746; C| = 4 + 13 - 1 = 16
-</pre>
+<pre class="src src-text"><code>|A &#8746; C| = 4 + 13 - 1 = 16
+</code></pre>
 </div>
 
 <p>
@@ -379,9 +380,9 @@ There are 16 cards that are <b>aces</b> or <b>clubs</b>.
 </p>
 </div>
 </div>
-<div id="outline-container-org872b24d" class="outline-3">
-<h3 id="org872b24d">Example: Survey</h3>
-<div class="outline-text-3" id="text-org872b24d">
+<div id="outline-container-org7242986" class="outline-3">
+<h3 id="org7242986">Example: Survey</h3>
+<div class="outline-text-3" id="text-org7242986">
 <p>
 A survey in Scotland finds that 86% of the population have heard of product A, 80% have heard of product B, and 70% have heard of both.
 </p>
@@ -404,8 +405,8 @@ So
 </p>
 
 <div class="org-src-container">
-<pre class="src src-text">|A &#8746; B| = 0.86N + 0.8N - 0.7N = 0.96N
-</pre>
+<pre class="src src-text"><code>|A &#8746; B| = 0.86N + 0.8N - 0.7N = 0.96N
+</code></pre>
 </div>
 
 <p>
@@ -417,22 +418,22 @@ Complementing the union gives the answer directly.
 </p>
 
 
-<div id="orga4f2242" class="figure">
+<div id="orgb474da9" class="figure">
 <p><img src="./assets/venn-two-sets.svg" alt="venn-two-sets.svg" class="org-svg" />
 </p>
 <p><span class="figure-number">Figure 3: </span>Survey regions as shares of the population. The outside region is the 4% who have heard of neither product.</p>
 </div>
 </div>
 </div>
-<div id="outline-container-org8638e62" class="outline-3">
-<h3 id="org8638e62">Example: Divisibility (three sets)</h3>
-<div class="outline-text-3" id="text-org8638e62">
+<div id="outline-container-org38466fb" class="outline-3">
+<h3 id="org38466fb">Example: Divisibility (three sets)</h3>
+<div class="outline-text-3" id="text-org38466fb">
 <p>
 How many integers from 1 to 100 are divisible by 2, 3 or 5?
 </p>
 
 <p>
-Let U = {1, &#x2026;, 100}, and let
+Let U = {1, &hellip;, 100}, and let
 </p>
 <ul class="org-ul">
 <li>A = {n ∈ U : 2 divides n}, so |A| = 50</li>
@@ -462,8 +463,8 @@ Then
 </p>
 
 <div class="org-src-container">
-<pre class="src src-text">|A &#8746; B &#8746; C| = 50 + 33 + 20 - 16 - 10 - 6 + 3 = 74
-</pre>
+<pre class="src src-text"><code>|A &#8746; B &#8746; C| = 50 + 33 + 20 - 16 - 10 - 6 + 3 = 74
+</code></pre>
 </div>
 
 <p>
@@ -471,23 +472,23 @@ So 74 integers are divisible by 2, 3 or 5, and the other 26 are not.
 </p>
 
 
-<div id="orgcab067a" class="figure">
-<p><img src="./assets/venn-three-sets.svg" alt="venn-three-sets.svg" class="org-svg" />
+<div id="orgbd10034" class="figure">
+<p><img src="./assets/divisibility-three-sets.svg" alt="divisibility-three-sets.svg" class="org-svg" />
 </p>
-<p><span class="figure-number">Figure 4: </span>Three-set regions for the divisibility example.</p>
+<p><span class="figure-number">Figure 4: </span>Count in each region for the divisibility example. The seven regions sum to 74.</p>
 </div>
 </div>
 </div>
-<div id="outline-container-orga58847a" class="outline-3">
-<h3 id="orga58847a">Example: University of Scabia (three sets)</h3>
-<div class="outline-text-3" id="text-orga58847a">
+<div id="outline-container-orgc0318fd" class="outline-3">
+<h3 id="orgc0318fd">Example: University of Scabia (three sets)</h3>
+<div class="outline-text-3" id="text-orgc0318fd">
 <p>
 All first-year computer science students at the University of Scabia study at least one of three modules:
 </p>
 <ul class="org-ul">
-<li>Accounting (A)</li>
-<li>Ethics (E)</li>
-<li>mathematics (M)</li>
+<li>(A)ccounting</li>
+<li>(E)thics</li>
+<li>(M)athematics</li>
 </ul>
 
 <p>
@@ -504,9 +505,9 @@ There are 237 students.
 <li>and 70 study (M)aths <i>and</i> (E)thics</li>
 </ul>
 </div>
-<div id="outline-container-org59e7792" class="outline-4">
-<h4 id="org59e7792">Part 1: Students who study <i>all</i> three</h4>
-<div class="outline-text-4" id="text-org59e7792">
+<div id="outline-container-orgea9c56c" class="outline-4">
+<h4 id="orgea9c56c">Part 1: Students who study <i>all</i> three</h4>
+<div class="outline-text-4" id="text-orgea9c56c">
 <p>
 Since everyone is in <i>at least</i> <b>one</b> module, |A ∪ E ∪ M| = 237.
 </p>
@@ -516,10 +517,10 @@ The formula gives
 </p>
 
 <div class="org-src-container">
-<pre class="src src-text">237 = 120 + 100 + 150 - 50 - 20 - 70 + |A &#8745; E &#8745; M|
+<pre class="src src-text"><code>237 = 120 + 100 + 150 - 50 - 20 - 70 + |A &#8745; E &#8745; M|
 237 = 230 + |A &#8745; E &#8745; M|
 |A &#8745; E &#8745; M| = 7
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -527,9 +528,9 @@ So 7 students study <b>all three</b> subjects.
 </p>
 </div>
 </div>
-<div id="outline-container-org6827e56" class="outline-4">
-<h4 id="org6827e56">Part 2: Accounting <i>and</i> Maths, but <i>not</i> Ethics</h4>
-<div class="outline-text-4" id="text-org6827e56">
+<div id="outline-container-orge2bd854" class="outline-4">
+<h4 id="orge2bd854">Part 2: Accounting <i>and</i> Maths, but <i>not</i> Ethics</h4>
+<div class="outline-text-4" id="text-orge2bd854">
 <p>
 Let X = A ∩ M ∩ Ē and Y = A ∩ M ∩ E.
 </p>
@@ -543,10 +544,10 @@ Then
 </p>
 
 <div class="org-src-container">
-<pre class="src src-text">|A &#8745; M| = |X| + |Y|
+<pre class="src src-text"><code>|A &#8745; M| = |X| + |Y|
 50 = |X| + 7
 |X| = 43
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -554,7 +555,7 @@ So 43 students study (A)ccounting <i>and</i> (M)aths but <i>not</i> (E)thics.
 </p>
 
 
-<div id="orgff5a8ef" class="figure">
+<div id="org4a2ace5" class="figure">
 <p><img src="./assets/scabia-three-sets.svg" alt="scabia-three-sets.svg" class="org-svg" />
 </p>
 <p><span class="figure-number">Figure 5: </span>Students in each region of the Scabia problem. The seven regions sum to 237, so no student falls outside the circles.</p>

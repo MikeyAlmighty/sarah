@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-11-16 Mon 19:44 -->
+<!-- 2026-11-17 Tue 07:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Satisfiability Problem (SAT)</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -274,13 +275,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">The Satisfiability Problem (SAT)</h1>
-<div id="outline-container-orga2ba1e4" class="outline-2">
-<h2 id="orga2ba1e4">The Satisfiability Problem (SAT)</h2>
-<div class="outline-text-2" id="text-orga2ba1e4">
+<div id="outline-container-org8df5c4f" class="outline-2">
+<h2 id="org8df5c4f">The Satisfiability Problem (SAT)</h2>
+<div class="outline-text-2" id="text-org8df5c4f">
 </div>
-<div id="outline-container-org94e78c0" class="outline-3">
-<h3 id="org94e78c0">Overview</h3>
-<div class="outline-text-3" id="text-org94e78c0">
+<div id="outline-container-orgcaf83a1" class="outline-3">
+<h3 id="orgcaf83a1">Overview</h3>
+<div class="outline-text-3" id="text-orgcaf83a1">
 <p>
 SAT is an important problem in both theoretical computer science and mathematics.
 </p>
@@ -290,9 +291,9 @@ Stating it requires some terminology first.
 </p>
 </div>
 </div>
-<div id="outline-container-orgad896bf" class="outline-3">
-<h3 id="orgad896bf">Satisfiable</h3>
-<div class="outline-text-3" id="text-orgad896bf">
+<div id="outline-container-org8f620b9" class="outline-3">
+<h3 id="org8f620b9">Satisfiable</h3>
+<div class="outline-text-3" id="text-org8f620b9">
 <ul class="org-ul">
 <li>A wff \(A\) built from atoms \(p_1, \dots, p_n\) is <b>satisfiable</b> if some assignment of truth values to its atoms makes \(A\) true.</li>
 <li>Example: \((p \lor q) \land \neg r\) is satisfiable, since it is true when \(p=T\), \(q=T\), \(r=F\).</li>
@@ -334,9 +335,9 @@ The full truth table is not always needed.
 </p>
 </div>
 </div>
-<div id="outline-container-org9dee14a" class="outline-3">
-<h3 id="org9dee14a">Jointly satisfiable</h3>
-<div class="outline-text-3" id="text-org9dee14a">
+<div id="outline-container-org365a3ab" class="outline-3">
+<h3 id="org365a3ab">Jointly satisfiable</h3>
+<div class="outline-text-3" id="text-org365a3ab">
 <ul class="org-ul">
 <li>wffs \(A_1, \dots, A_n\) are <b>(jointly) satisfiable</b> if one truth assignment makes all of them true simultaneously.</li>
 <li>Example: \((p \to q) \lor r\) and \((p \lor q) \land \neg r\) are jointly satisfiable, since \(p=T\), \(q=T\), \(r=F\) makes both true.</li>
@@ -407,9 +408,9 @@ The full truth table is not always needed.
 </table>
 </div>
 </div>
-<div id="outline-container-org5437d3e" class="outline-3">
-<h3 id="org5437d3e">Tautology</h3>
-<div class="outline-text-3" id="text-org5437d3e">
+<div id="outline-container-org4fe72c8" class="outline-3">
+<h3 id="org4fe72c8">Tautology</h3>
+<div class="outline-text-3" id="text-org4fe72c8">
 <p>
 If a wff is always true no matter what the truth values of its atoms, we say that it is a <b><a href="20260930071323-tautology.html#ID-869bd8ab-6a39-46d9-b51e-b3defd2a81c1">tautology</a></b>.
 </p>
@@ -479,9 +480,9 @@ If a wff is always true no matter what the truth values of its atoms, we say tha
 </table>
 </div>
 </div>
-<div id="outline-container-org9b3685b" class="outline-3">
-<h3 id="org9b3685b">Contradiction</h3>
-<div class="outline-text-3" id="text-org9b3685b">
+<div id="outline-container-org085694d" class="outline-3">
+<h3 id="org085694d">Contradiction</h3>
+<div class="outline-text-3" id="text-org085694d">
 <ul class="org-ul">
 <li>A wff that is <b>always false</b>.</li>
 <li>Notation: \(A \models\) (contradictions sit on the <b>left</b> of the turnstile).</li>
@@ -533,27 +534,27 @@ If a wff is always true no matter what the truth values of its atoms, we say tha
 </table>
 </div>
 </div>
-<div id="outline-container-orgae1c195" class="outline-3">
-<h3 id="orgae1c195">Satisfy / falsify</h3>
-<div class="outline-text-3" id="text-orgae1c195">
+<div id="outline-container-org30011a6" class="outline-3">
+<h3 id="org30011a6">Satisfy / falsify</h3>
+<div class="outline-text-3" id="text-org30011a6">
 <ul class="org-ul">
 <li>A truth assignment that makes a wff true <b>satisfies</b> it.</li>
 <li>Otherwise it <b>falsifies</b> it.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orga41cd19" class="outline-3">
-<h3 id="orga41cd19">The satisfiability problem</h3>
-<div class="outline-text-3" id="text-orga41cd19">
+<div id="outline-container-orgb64f177" class="outline-3">
+<h3 id="orgb64f177">The satisfiability problem</h3>
+<div class="outline-text-3" id="text-orgb64f177">
 <ul class="org-ul">
 <li><b>SAT:</b> given a wff in PL, decide whether some truth assignment to its atoms makes the wff true.</li>
 <li>A program that solves SAT is a <b>SAT solver</b>.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org91d8399" class="outline-3">
-<h3 id="org91d8399">Key points</h3>
-<div class="outline-text-3" id="text-org91d8399">
+<div id="outline-container-org8ce57d0" class="outline-3">
+<h3 id="org8ce57d0">Key points</h3>
+<div class="outline-text-3" id="text-org8ce57d0">
 <ul class="org-ul">
 <li>Satisfiable: true in <b>at least one</b> row.</li>
 <li>Tautology: true in <b>every</b> row.</li>

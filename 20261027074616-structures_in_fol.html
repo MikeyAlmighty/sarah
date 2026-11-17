@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-11-16 Mon 19:44 -->
+<!-- 2026-11-17 Tue 07:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Structures in FOL</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -274,13 +275,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Structures in FOL</h1>
-<div id="outline-container-orgece34ce" class="outline-2">
-<h2 id="orgece34ce">Structures in FOL</h2>
-<div class="outline-text-2" id="text-orgece34ce">
+<div id="outline-container-orgbf22273" class="outline-2">
+<h2 id="orgbf22273">Structures in FOL</h2>
+<div class="outline-text-2" id="text-orgbf22273">
 </div>
-<div id="outline-container-orga68f5dc" class="outline-3">
-<h3 id="orga68f5dc">Motivation</h3>
-<div class="outline-text-3" id="text-orga68f5dc">
+<div id="outline-container-org992f102" class="outline-3">
+<h3 id="org992f102">Motivation</h3>
+<div class="outline-text-3" id="text-org992f102">
 <ul class="org-ul">
 <li>In <code>PL</code>, meaning of a <b>wff</b> comes from defining each <b>atom</b> (e.g. \(p\) = "Alice likes ice cream", \(q\) = "Alice likes pizza"), then interpreting connectives (\(\land\) = "and").</li>
 <li>In <code>FOL</code>, a formula in a language \(L\) is just a string of symbols until we give it <i>meaning</i>.</li>
@@ -289,9 +290,9 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-org13eeffa" class="outline-3">
-<h3 id="org13eeffa">Definition of a structure \(\mathrm{D}\)</h3>
-<div class="outline-text-3" id="text-org13eeffa">
+<div id="outline-container-org6fec77e" class="outline-3">
+<h3 id="org6fec77e">Definition of a structure \(\mathrm{D}\)</h3>
+<div class="outline-text-3" id="text-org6fec77e">
 <p>
 A structure \(\mathrm{D}\) consists of:
 </p>
@@ -311,27 +312,27 @@ A structure \(\mathrm{D}\) consists of:
 <li><b>Distinguished elements</b> are <b>not required</b>.</li>
 </ul>
 </div>
-<div id="outline-container-org48c1450" class="outline-4">
-<h4 id="org48c1450">Relations</h4>
-<div class="outline-text-4" id="text-org48c1450">
+<div id="outline-container-orgd491162" class="outline-4">
+<h4 id="orgd491162">Relations</h4>
+<div class="outline-text-4" id="text-orgd491162">
 </div>
 <ul class="org-ul">
-<li><a id="orgd2a0823"></a><b>Binary relation</b> \(R\): a set of ordered pairs \((a, b)\) with \(a, b \in D\).<br />
-<div class="outline-text-5" id="text-orgd2a0823">
+<li><a id="org7e0bbac"></a><b>Binary relation</b> \(R\): a set of ordered pairs \((a, b)\) with \(a, b \in D\).<br />
+<div class="outline-text-5" id="text-org7e0bbac">
 <ul class="org-ul">
 <li>Shorthand: \(R(a,b)\) for "\(a\) is a parent of \(b\)" (if \(D\) is a set of people).</li>
 </ul>
 </div>
 </li>
-<li><a id="org8eae6ab"></a><b>\(n\)-ary relation</b>:<br />
-<div class="outline-text-5" id="text-org8eae6ab">
+<li><a id="org818fa28"></a><b>\(n\)-ary relation</b>:<br />
+<div class="outline-text-5" id="text-org818fa28">
 <ul class="org-ul">
 <li>a set of ordered \(n\)-tuples \((a_1, a_2, \ldots, a_n)\) with each \(a_i \in D\), \(i = 1, \ldots, n\).</li>
 </ul>
 </div>
 </li>
-<li><a id="orgae3476e"></a><b>Unary relation</b> (\(n = 1\)): a subset of \(D\).<br />
-<div class="outline-text-5" id="text-orgae3476e">
+<li><a id="orga8a405c"></a><b>Unary relation</b> (\(n = 1\)): a subset of \(D\).<br />
+<div class="outline-text-5" id="text-orga8a405c">
 <ul class="org-ul">
 <li>E.g. \(M \subseteq D\) = all the men; \(M(a)\) means "\(a\) is a man".</li>
 </ul>
@@ -343,9 +344,9 @@ A structure \(\mathrm{D}\) consists of:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf6d7fda" class="outline-3">
-<h3 id="orgf6d7fda">Example: Birds</h3>
-<div class="outline-text-3" id="text-orgf6d7fda">
+<div id="outline-container-org2b90e4b" class="outline-3">
+<h3 id="org2b90e4b">Example: Birds</h3>
+<div class="outline-text-3" id="text-org2b90e4b">
 <p>
 Let \(D\) be the <b>set</b> of all birds.
 </p>
@@ -360,9 +361,9 @@ Then \(\mathrm{D} = (D, R, S, F)\) is a structure (with <i>no</i> <b>distinguish
 </p>
 </div>
 </div>
-<div id="outline-container-org1819763" class="outline-3">
-<h3 id="org1819763">Remark</h3>
-<div class="outline-text-3" id="text-org1819763">
+<div id="outline-container-orgf9ecd80" class="outline-3">
+<h3 id="orgf9ecd80">Remark</h3>
+<div class="outline-text-3" id="text-orgf9ecd80">
 <p>
 We need a language to "talk" to computers about structures.
 </p>

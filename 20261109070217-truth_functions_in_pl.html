@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-11-16 Mon 19:44 -->
+<!-- 2026-11-17 Tue 07:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Truth Functions in PL</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -274,13 +275,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Truth Functions in PL</h1>
-<div id="outline-container-orgd6d6043" class="outline-2">
-<h2 id="orgd6d6043">Truth Functions in PL</h2>
-<div class="outline-text-2" id="text-orgd6d6043">
+<div id="outline-container-org171c377" class="outline-2">
+<h2 id="org171c377">Truth Functions in PL</h2>
+<div class="outline-text-2" id="text-org171c377">
 </div>
-<div id="outline-container-orgeeef3b1" class="outline-3">
-<h3 id="orgeeef3b1">Overview</h3>
-<div class="outline-text-3" id="text-orgeeef3b1">
+<div id="outline-container-orgefbb4ad" class="outline-3">
+<h3 id="orgefbb4ad">Overview</h3>
+<div class="outline-text-3" id="text-orgefbb4ad">
 <ul class="org-ul">
 <li>The connectives used to build PL look arbitrary, but the resulting language is <b>functionally complete</b>.</li>
 <li>The particular <i>choice</i> of connectives is arbitrary — we could have used more, fewer, or different ones.</li>
@@ -288,16 +289,16 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd4305ba" class="outline-3">
-<h3 id="orgd4305ba">Notation</h3>
-<div class="outline-text-3" id="text-orgd4305ba">
+<div id="outline-container-orgd5b9a30" class="outline-3">
+<h3 id="orgd5b9a30">Notation</h3>
+<div class="outline-text-3" id="text-orgd5b9a30">
 <ul class="org-ul">
 <li>\(\mathbb{T} = \{T, F\}\) — the set of the two truth values.</li>
 </ul>
 </div>
-<div id="outline-container-orgeb4f931" class="outline-4">
-<h4 id="orgeb4f931">Cartesian products</h4>
-<div class="outline-text-4" id="text-orgeb4f931">
+<div id="outline-container-orgf092860" class="outline-4">
+<h4 id="orgf092860">Cartesian products</h4>
+<div class="outline-text-4" id="text-orgf092860">
 <ul class="org-ul">
 <li>\(\mathbb{T} \times \mathbb{T}\) is the set of all ordered pairs from \(\mathbb{T}\):
 \[ \mathbb{T} \times \mathbb{T} = \{(T,T), (T,F), (F,T), (F,F)\} \]</li>
@@ -306,9 +307,9 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-orga9e1c3c" class="outline-4">
-<h4 id="orga9e1c3c">Shorthand</h4>
-<div class="outline-text-4" id="text-orga9e1c3c">
+<div id="outline-container-org7199f8d" class="outline-4">
+<h4 id="org7199f8d">Shorthand</h4>
+<div class="outline-text-4" id="text-org7199f8d">
 <ul class="org-ul">
 <li>\(\mathbb{T}^2 := \mathbb{T} \times \mathbb{T}\)</li>
 <li>\(\mathbb{T}^3 := \mathbb{T} \times \mathbb{T} \times \mathbb{T}\)</li>
@@ -320,9 +321,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orge4aaf28" class="outline-3">
-<h3 id="orge4aaf28">Definition</h3>
-<div class="outline-text-3" id="text-orge4aaf28">
+<div id="outline-container-org4aa3831" class="outline-3">
+<h3 id="org4aa3831">Definition</h3>
+<div class="outline-text-3" id="text-org4aa3831">
 <p>
 A function \(f : \mathbb{T}^n \to \mathbb{T}\) is called a <b>truth function</b>.
 </p>
@@ -332,9 +333,9 @@ A function \(f : \mathbb{T}^n \to \mathbb{T}\) is called a <b>truth function</b>
 </ul>
 </div>
 </div>
-<div id="outline-container-orga266634" class="outline-3">
-<h3 id="orga266634">Example</h3>
-<div class="outline-text-3" id="text-orga266634">
+<div id="outline-container-orgb942a1c" class="outline-3">
+<h3 id="orgb942a1c">Example</h3>
+<div class="outline-text-3" id="text-orgb942a1c">
 <p>
 The truth table below specifies a truth function \(f : \mathbb{T}^3 \to \mathbb{T}\).
 </p>
@@ -353,9 +354,9 @@ The truth table below specifies a truth function \(f : \mathbb{T}^3 \to \mathbb{
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">&#xa0;</th>
-<th scope="col" class="org-left">&#xa0;</th>
-<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">&nbsp;</th>
+<th scope="col" class="org-left">&nbsp;</th>
+<th scope="col" class="org-left">&nbsp;</th>
 <th scope="col" class="org-left">\(f(t)\)</th>
 </tr>
 </thead>

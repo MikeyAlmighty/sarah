@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-11-16 Mon 19:44 -->
+<!-- 2026-11-17 Tue 07:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Truth Tree Algorithm</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -274,21 +275,21 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Truth Tree Algorithm</h1>
-<div id="outline-container-org2a3c730" class="outline-2">
-<h2 id="org2a3c730">Truth Tree Algorithm</h2>
-<div class="outline-text-2" id="text-org2a3c730">
+<div id="outline-container-org033f57c" class="outline-2">
+<h2 id="org033f57c">Truth Tree Algorithm</h2>
+<div class="outline-text-2" id="text-org033f57c">
 </div>
-<div id="outline-container-org96c9825" class="outline-3">
-<h3 id="org96c9825">Input</h3>
-<div class="outline-text-3" id="text-org96c9825">
+<div id="outline-container-org781eeb7" class="outline-3">
+<h3 id="org781eeb7">Input</h3>
+<div class="outline-text-3" id="text-org781eeb7">
 <p>
 A wff \(X\).
 </p>
 </div>
 </div>
-<div id="outline-container-org3a175ae" class="outline-3">
-<h3 id="org3a175ae">Procedure</h3>
-<div class="outline-text-3" id="text-org3a175ae">
+<div id="outline-container-org9d41544" class="outline-3">
+<h3 id="org9d41544">Procedure</h3>
+<div class="outline-text-3" id="text-org9d41544">
 <ol class="org-ol">
 <li>Place \(X\) at the root of the truth tree.</li>
 <li>Depending on its shape, apply either an \(\alpha\)-rule or a \(\beta\)-rule.</li>
@@ -311,9 +312,9 @@ Now repeat the following:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgee0f64a" class="outline-3">
-<h3 id="orgee0f64a">Output</h3>
-<div class="outline-text-3" id="text-orgee0f64a">
+<div id="outline-container-org5b2d1f3" class="outline-3">
+<h3 id="org5b2d1f3">Output</h3>
+<div class="outline-text-3" id="text-org5b2d1f3">
 <ul class="org-ul">
 <li>Finished and <b>closed</b>: \(X\) is a <b>contradiction</b>.</li>
 <li>Finished and <b>open</b>: \(X\) is <b>satisfiable</b>.
@@ -327,9 +328,9 @@ Now repeat the following:
 </ul>
 </div>
 </div>
-<div id="outline-container-org69b5537" class="outline-3">
-<h3 id="org69b5537">Applications of truth trees</h3>
-<div class="outline-text-3" id="text-org69b5537">
+<div id="outline-container-orge09f554" class="outline-3">
+<h3 id="orge09f554">Applications of truth trees</h3>
+<div class="outline-text-3" id="text-orge09f554">
 <p>
 The algorithm can be used to:
 </p>
@@ -344,14 +345,14 @@ The algorithm can be used to:
 </ul>
 </div>
 </div>
-<div id="outline-container-org792feb7" class="outline-3">
-<h3 id="org792feb7">Example</h3>
-<div class="outline-text-3" id="text-org792feb7">
+<div id="outline-container-org15ce9b2" class="outline-3">
+<h3 id="org15ce9b2">Example</h3>
+<div class="outline-text-3" id="text-org15ce9b2">
 <p>
 Is \(A \equiv \neg((p \vee q) \to (p \wedge q))\) satisfiable? If so, find the satisfying assignments.
 </p>
 
-<pre class="example" id="org816049a">
+<pre class="example" id="org1fb17e4">
 ¬((p ∨ q) → (p ∧ q)) ✓
           |
       p ∨ q ✓

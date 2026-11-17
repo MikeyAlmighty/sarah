@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-11-16 Mon 19:44 -->
+<!-- 2026-11-17 Tue 07:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>IP Datagram</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -247,7 +248,7 @@ IP datagram is a highly structured series of fields that are strictly defined.
 </p>
 
 
-<div id="org8c0284d" class="figure">
+<div id="org110f5ce" class="figure">
 <p><img src="./assets/IPDatagram.png" alt="IPDatagram.png" />
 </p>
 </div>
@@ -259,30 +260,30 @@ The two primary sections of an IP datagram are the header and the payload:
 <p>
 The maximum size of a single datagram is the largest number you can represent with *16 bits: <code>65,535</code>.
 </p>
-<div id="outline-container-org5f2055b" class="outline-2">
-<h2 id="org5f2055b">Header</h2>
-<div class="outline-text-2" id="text-org5f2055b">
+<div id="outline-container-org25cb974" class="outline-2">
+<h2 id="org25cb974">Header</h2>
+<div class="outline-text-2" id="text-org25cb974">
 </div>
-<div id="outline-container-org1d733da" class="outline-3">
-<h3 id="org1d733da">1. Version</h3>
-<div class="outline-text-3" id="text-org1d733da">
+<div id="outline-container-org8568839" class="outline-3">
+<h3 id="org8568839">1. Version</h3>
+<div class="outline-text-3" id="text-org8568839">
 <p>
 <b>4 bits</b>
 Indicates what version of <a href="20230819075045-internet_protocol_ip.html#ID-9bf3b633-f396-4e1b-9b55-6c6b06d60bec">IP</a> is being used.
 </p>
 </div>
 </div>
-<div id="outline-container-org081d962" class="outline-3">
-<h3 id="org081d962">2. Header Length</h3>
-<div class="outline-text-3" id="text-org081d962">
+<div id="outline-container-org4682a54" class="outline-3">
+<h3 id="org4682a54">2. Header Length</h3>
+<div class="outline-text-3" id="text-org4682a54">
 <p>
 <b>4 bits</b>
 </p>
 </div>
 </div>
-<div id="outline-container-org0031dae" class="outline-3">
-<h3 id="org0031dae">3. Service Type</h3>
-<div class="outline-text-3" id="text-org0031dae">
+<div id="outline-container-orgfa6dc2b" class="outline-3">
+<h3 id="orgfa6dc2b">3. Service Type</h3>
+<div class="outline-text-3" id="text-orgfa6dc2b">
 <p>
 <b>8 bits</b>
 Can be used to specify details about quality of service or QoS.
@@ -293,44 +294,44 @@ The important takeaway about QoS is that there are services that allow routers t
 </p>
 </div>
 </div>
-<div id="outline-container-orgde930d5" class="outline-3">
-<h3 id="orgde930d5">4. Total Length</h3>
-<div class="outline-text-3" id="text-orgde930d5">
+<div id="outline-container-orge308c6a" class="outline-3">
+<h3 id="orge308c6a">4. Total Length</h3>
+<div class="outline-text-3" id="text-orge308c6a">
 <p>
 <b>16 bits</b>
 Indicates total length of IP Datagram
 </p>
 </div>
 </div>
-<div id="outline-container-orge489ec8" class="outline-3">
-<h3 id="orge489ec8">5. Identification Field</h3>
-<div class="outline-text-3" id="text-orge489ec8">
+<div id="outline-container-orgdf7f1c9" class="outline-3">
+<h3 id="orgdf7f1c9">5. Identification Field</h3>
+<div class="outline-text-3" id="text-orgdf7f1c9">
 <p>
 <b>16 bits</b>
 Used to group messages together
 </p>
 </div>
 </div>
-<div id="outline-container-org660b73d" class="outline-3">
-<h3 id="org660b73d">6. Flag Field</h3>
-<div class="outline-text-3" id="text-org660b73d">
+<div id="outline-container-org08b2bd4" class="outline-3">
+<h3 id="org08b2bd4">6. Flag Field</h3>
+<div class="outline-text-3" id="text-org08b2bd4">
 <p>
 Used to indicate if a datagram is allowed to be <a href="20230821065322-fragmented.html#ID-d7051400-f5c9-4cd7-888c-479c6fcd0a04">fragmented</a> or to indicate that the datagram has already been fragmented.
 </p>
 </div>
 </div>
-<div id="outline-container-org34585fb" class="outline-3">
-<h3 id="org34585fb">7. Time To Live (TTL) Field</h3>
-<div class="outline-text-3" id="text-org34585fb">
+<div id="outline-container-orgc709ec9" class="outline-3">
+<h3 id="orgc709ec9">7. Time To Live (TTL) Field</h3>
+<div class="outline-text-3" id="text-orgc709ec9">
 <p>
 This field is an <b>8 bit</b> field that indicates how many router hops a datagram can traverse before it's thrown away.
 <a href="20230821065714-time_to_live_ttl.html#ID-4bf28699-146b-4eba-8d34-b3f58a20b68d">Time To Live (TTL)</a>
 </p>
 </div>
 </div>
-<div id="outline-container-orgb4696e7" class="outline-3">
-<h3 id="orgb4696e7">8. Protocol Field</h3>
-<div class="outline-text-3" id="text-orgb4696e7">
+<div id="outline-container-orgef5ca69" class="outline-3">
+<h3 id="orgef5ca69">8. Protocol Field</h3>
+<div class="outline-text-3" id="text-orgef5ca69">
 <p>
 <b>8 bit</b>
 Contains data about what transport layer protocol is being used.
@@ -341,9 +342,9 @@ The most common transport layer protocols are <a href="20230819080017-transmissi
 </p>
 </div>
 </div>
-<div id="outline-container-org99dbb40" class="outline-3">
-<h3 id="org99dbb40">9. Header Checksum Field</h3>
-<div class="outline-text-3" id="text-org99dbb40">
+<div id="outline-container-orgb4ac201" class="outline-3">
+<h3 id="orgb4ac201">9. Header Checksum Field</h3>
+<div class="outline-text-3" id="text-orgb4ac201">
 <p>
 This field is a checksum of the <b>contents</b> of the entire IP datagram header.
 </p>
@@ -357,25 +358,25 @@ Since the <a href="20230821065714-time_to_live_ttl.html#ID-4bf28699-146b-4eba-8d
 </p>
 </div>
 </div>
-<div id="outline-container-org37feff9" class="outline-3">
-<h3 id="org37feff9">10. Source IP Address</h3>
-<div class="outline-text-3" id="text-org37feff9">
+<div id="outline-container-orge8a5500" class="outline-3">
+<h3 id="orge8a5500">10. Source IP Address</h3>
+<div class="outline-text-3" id="text-orge8a5500">
 <p>
 <b>32 bit</b>
 </p>
 </div>
 </div>
-<div id="outline-container-org3da8d14" class="outline-3">
-<h3 id="org3da8d14">11. Destination IP Address</h3>
-<div class="outline-text-3" id="text-org3da8d14">
+<div id="outline-container-org471f213" class="outline-3">
+<h3 id="org471f213">11. Destination IP Address</h3>
+<div class="outline-text-3" id="text-org471f213">
 <p>
 <b>32 bit</b>
 </p>
 </div>
 </div>
-<div id="outline-container-orgb4f8856" class="outline-3">
-<h3 id="orgb4f8856">12. IP Options</h3>
-<div class="outline-text-3" id="text-orgb4f8856">
+<div id="outline-container-org13a56c7" class="outline-3">
+<h3 id="org13a56c7">12. IP Options</h3>
+<div class="outline-text-3" id="text-org13a56c7">
 <p>
 Optional Field.
 </p>
@@ -385,18 +386,18 @@ Used to set special characteristics for datagrams primarily used for testing pur
 </p>
 </div>
 </div>
-<div id="outline-container-orga31efb8" class="outline-3">
-<h3 id="orga31efb8">12. Padding</h3>
-<div class="outline-text-3" id="text-orga31efb8">
+<div id="outline-container-org4826eb6" class="outline-3">
+<h3 id="org4826eb6">12. Padding</h3>
+<div class="outline-text-3" id="text-org4826eb6">
 <p>
 Series of <code>0</code>'s to the ensure header is correct <b>total</b> size.
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orga9ef6b4" class="outline-2">
-<h2 id="orga9ef6b4">Payload</h2>
-<div class="outline-text-2" id="text-orga9ef6b4">
+<div id="outline-container-org9dbf9fb" class="outline-2">
+<h2 id="org9dbf9fb">Payload</h2>
+<div class="outline-text-2" id="text-org9dbf9fb">
 <p>
 Contains the <a href="20230822073125-tcp_segment.html#ID-7b8d5356-7e98-4785-a78f-1cf30c9c2152">TCP Segment</a> within the payload.
 </p>

@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-11-16 Mon 19:44 -->
+<!-- 2026-11-17 Tue 07:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>File Handling Basics</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,13 +243,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">File Handling Basics</h1>
-<div id="outline-container-orgf224c2f" class="outline-2">
-<h2 id="orgf224c2f">File Handling Basics</h2>
-<div class="outline-text-2" id="text-orgf224c2f">
+<div id="outline-container-org79e2337" class="outline-2">
+<h2 id="org79e2337">File Handling Basics</h2>
+<div class="outline-text-2" id="text-org79e2337">
 </div>
-<div id="outline-container-org86481d6" class="outline-3">
-<h3 id="org86481d6">Check file existence</h3>
-<div class="outline-text-3" id="text-org86481d6">
+<div id="outline-container-org56a5373" class="outline-3">
+<h3 id="org56a5373">Check file existence</h3>
+<div class="outline-text-3" id="text-org56a5373">
 <p>
 Use the <code>exists()</code> method to check if a file <b>exists</b>.
 </p>
@@ -258,11 +259,11 @@ Use the <code>exists()</code> method to check if a file <b>exists</b>.
 <li>Does not exist: <code>false</code></li>
 </ul>
 </div>
-<div id="outline-container-orgaf5969b" class="outline-4">
-<h4 id="orgaf5969b">Example</h4>
-<div class="outline-text-4" id="text-orgaf5969b">
+<div id="outline-container-org281d804" class="outline-4">
+<h4 id="org281d804">Example</h4>
+<div class="outline-text-4" id="text-org281d804">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">io</span>.<span class="org-type">File</span>;
+<pre class="src src-java"><code><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">io</span>.<span class="org-type">File</span>;
 
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">FileExample</span> {
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
@@ -275,24 +276,24 @@ Use the <code>exists()</code> method to check if a file <b>exists</b>.
         }
     }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org8210458" class="outline-3">
-<h3 id="org8210458">Creating a New File</h3>
-<div class="outline-text-3" id="text-org8210458">
+<div id="outline-container-org83c3da8" class="outline-3">
+<h3 id="org83c3da8">Creating a New File</h3>
+<div class="outline-text-3" id="text-org83c3da8">
 <ul class="org-ul">
 <li><code>createNewFile()</code> is used to create a new <b>empty file</b>.</li>
 <li>(If the file already exists, it returns <code>false</code>)</li>
 </ul>
 </div>
-<div id="outline-container-org1ad30ea" class="outline-4">
-<h4 id="org1ad30ea">Example</h4>
-<div class="outline-text-4" id="text-org1ad30ea">
+<div id="outline-container-orgfa012b4" class="outline-4">
+<h4 id="orgfa012b4">Example</h4>
+<div class="outline-text-4" id="text-orgfa012b4">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">io</span>.<span class="org-type">File</span>;
+<pre class="src src-java"><code><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">io</span>.<span class="org-type">File</span>;
 <span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">io</span>.<span class="org-type">IOException</span>;
 
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">CreateFileExample</span> {
@@ -311,14 +312,14 @@ Use the <code>exists()</code> method to check if a file <b>exists</b>.
         }
     }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orge160b26" class="outline-3">
-<h3 id="orge160b26">Deleting a File</h3>
-<div class="outline-text-3" id="text-orge160b26">
+<div id="outline-container-org092b398" class="outline-3">
+<h3 id="org092b398">Deleting a File</h3>
+<div class="outline-text-3" id="text-org092b398">
 <ul class="org-ul">
 <li><code>delete()</code>:
 <ul class="org-ul">
@@ -327,11 +328,11 @@ Use the <code>exists()</code> method to check if a file <b>exists</b>.
 </ul></li>
 </ul>
 </div>
-<div id="outline-container-orgec59cbd" class="outline-4">
-<h4 id="orgec59cbd">Example</h4>
-<div class="outline-text-4" id="text-orgec59cbd">
+<div id="outline-container-org0b310b5" class="outline-4">
+<h4 id="org0b310b5">Example</h4>
+<div class="outline-text-4" id="text-org0b310b5">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">io</span>.<span class="org-type">File</span>;
+<pre class="src src-java"><code><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">io</span>.<span class="org-type">File</span>;
 
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">DeleteFileExample</span> {
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
@@ -345,18 +346,18 @@ Use the <code>exists()</code> method to check if a file <b>exists</b>.
         }
     }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org446a46b" class="outline-3">
-<h3 id="org446a46b">Utility Methods</h3>
-<div class="outline-text-3" id="text-org446a46b">
+<div id="outline-container-org57a0444" class="outline-3">
+<h3 id="org57a0444">Utility Methods</h3>
+<div class="outline-text-3" id="text-org57a0444">
 </div>
-<div id="outline-container-org90f13bb" class="outline-4">
-<h4 id="org90f13bb">Metadata</h4>
-<div class="outline-text-4" id="text-org90f13bb">
+<div id="outline-container-org211945d" class="outline-4">
+<h4 id="org211945d">Metadata</h4>
+<div class="outline-text-4" id="text-org211945d">
 <p>
 To get metadata information about the file:
 </p>
@@ -367,34 +368,34 @@ To get metadata information about the file:
 </ul>
 </div>
 <ul class="org-ul">
-<li><a id="org9750862"></a>Example<br />
-<div class="outline-text-5" id="text-org9750862">
+<li><a id="org9264164"></a>Example<br />
+<div class="outline-text-5" id="text-org9264164">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-type">File</span> <span class="org-variable-name">file</span> = <span class="org-keyword">new</span> <span class="org-type">File</span>(<span class="org-string">"example.txt"</span>);
+<pre class="src src-java"><code><span class="org-type">File</span> <span class="org-variable-name">file</span> = <span class="org-keyword">new</span> <span class="org-type">File</span>(<span class="org-string">"example.txt"</span>);
 
 <span class="org-keyword">if</span> (file.exists()) {
     System.out.println(<span class="org-string">"File name: "</span> + file.getName());
     System.out.println(<span class="org-string">"Absolute path: "</span> + file.getAbsolutePath());
     System.out.println(<span class="org-string">"File size: "</span> + file.length() + <span class="org-string">" bytes"</span>);
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </li>
 </ul>
 </div>
-<div id="outline-container-org6232a54" class="outline-4">
-<h4 id="org6232a54">Listing files</h4>
-<div class="outline-text-4" id="text-org6232a54">
+<div id="outline-container-orgb4f1f1c" class="outline-4">
+<h4 id="orgb4f1f1c">Listing files</h4>
+<div class="outline-text-4" id="text-orgb4f1f1c">
 <ul class="org-ul">
 <li><code>list()</code> returns the names of files / directories in the directory represented by the File object.</li>
 </ul>
 </div>
 <ul class="org-ul">
-<li><a id="org87220e6"></a>Example<br />
-<div class="outline-text-5" id="text-org87220e6">
+<li><a id="orgee6836c"></a>Example<br />
+<div class="outline-text-5" id="text-orgee6836c">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">io</span>.<span class="org-type">File</span>;
+<pre class="src src-java"><code><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">io</span>.<span class="org-type">File</span>;
 
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">ListFilesExample</span> {
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
@@ -415,25 +416,25 @@ To get metadata information about the file:
         }
     }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </li>
 </ul>
 </div>
-<div id="outline-container-org2f7e0b1" class="outline-4">
-<h4 id="org2f7e0b1">Checking File Type</h4>
-<div class="outline-text-4" id="text-org2f7e0b1">
+<div id="outline-container-org3712df9" class="outline-4">
+<h4 id="org3712df9">Checking File Type</h4>
+<div class="outline-text-4" id="text-org3712df9">
 <ul class="org-ul">
 <li><code>isDirectory()</code></li>
 <li><code>isFile()</code></li>
 </ul>
 </div>
 <ul class="org-ul">
-<li><a id="org119de51"></a>Example<br />
-<div class="outline-text-5" id="text-org119de51">
+<li><a id="org3e42903"></a>Example<br />
+<div class="outline-text-5" id="text-org3e42903">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">io</span>.<span class="org-type">File</span>;
+<pre class="src src-java"><code><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">io</span>.<span class="org-type">File</span>;
 
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">FileTypeExample</span> {
     <span class="org-keyword">public</span> <span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">main</span>(<span class="org-type">String</span>[] <span class="org-variable-name">args</span>) {
@@ -448,7 +449,7 @@ To get metadata information about the file:
         }
     }
 }
-</pre>
+</code></pre>
 </div>
 </div>
 </li>

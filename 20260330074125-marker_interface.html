@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-11-16 Mon 19:44 -->
+<!-- 2026-11-17 Tue 07:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Marker Interface</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,13 +243,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Marker Interface</h1>
-<div id="outline-container-org0d10cf6" class="outline-2">
-<h2 id="org0d10cf6">Marker Interface</h2>
-<div class="outline-text-2" id="text-org0d10cf6">
+<div id="outline-container-org4ec40f2" class="outline-2">
+<h2 id="org4ec40f2">Marker Interface</h2>
+<div class="outline-text-2" id="text-org4ec40f2">
 </div>
-<div id="outline-container-org1db0a82" class="outline-3">
-<h3 id="org1db0a82">Definition</h3>
-<div class="outline-text-3" id="text-org1db0a82">
+<div id="outline-container-org0fa167a" class="outline-3">
+<h3 id="org0fa167a">Definition</h3>
+<div class="outline-text-3" id="text-org0fa167a">
 <p>
 A <b>Marker Interface</b> in Java is an <b>empty</b> <b>interface</b> (contains no methods) that is <i>used</i> to <b>“mark”</b> a <code>class</code>.
 </p>
@@ -262,24 +263,24 @@ The presence of this <b>marker</b> is then checked at <code>runtime</code> (typi
 </p>
 </div>
 </div>
-<div id="outline-container-org8e8d0b2" class="outline-3">
-<h3 id="org8e8d0b2">Key Idea</h3>
-<div class="outline-text-3" id="text-org8e8d0b2">
+<div id="outline-container-orgbe9d34f" class="outline-3">
+<h3 id="orgbe9d34f">Key Idea</h3>
+<div class="outline-text-3" id="text-orgbe9d34f">
 <p>
 Instead of defining <b>behavior</b> through <code>methods</code>, a <b>marker</b> interface <b>signals metadata</b> about a <code>class</code> to the <b>JVM</b> or to <b>application</b> <b>logic</b>.
 </p>
 </div>
 </div>
-<div id="outline-container-org99802cd" class="outline-3">
-<h3 id="org99802cd">Example</h3>
-<div class="outline-text-3" id="text-org99802cd">
+<div id="outline-container-org22fe74c" class="outline-3">
+<h3 id="org22fe74c">Example</h3>
+<div class="outline-text-3" id="text-org22fe74c">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">io</span>.<span class="org-type">Serializable</span>;
+<pre class="src src-java"><code><span class="org-keyword">import</span> <span class="org-constant">java</span>.<span class="org-constant">io</span>.<span class="org-type">Serializable</span>;
 
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">User</span> <span class="org-keyword">implements</span> <span class="org-type">Serializable</span> {
     <span class="org-keyword">private</span> <span class="org-type">String</span> <span class="org-variable-name">name</span>;
 }
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -292,9 +293,9 @@ In this example:
 </ul>
 </div>
 </div>
-<div id="outline-container-org3974ca9" class="outline-3">
-<h3 id="org3974ca9">Common Marker Interfaces in Java</h3>
-<div class="outline-text-3" id="text-org3974ca9">
+<div id="outline-container-org71e2e31" class="outline-3">
+<h3 id="org71e2e31">Common Marker Interfaces in Java</h3>
+<div class="outline-text-3" id="text-org71e2e31">
 <ul class="org-ul">
 <li><code>Serializable</code> — indicates that an <code>object</code> can be <b>converted</b> into a <code>byte stream</code>.</li>
 <li><code>Cloneable</code> — allows object <b>cloning</b> via <code>Object.clone()</code>.</li>
@@ -302,14 +303,14 @@ In this example:
 </ul>
 </div>
 </div>
-<div id="outline-container-org995a968" class="outline-3">
-<h3 id="org995a968">How It Works</h3>
-<div class="outline-text-3" id="text-org995a968">
+<div id="outline-container-org81eed4d" class="outline-3">
+<h3 id="org81eed4d">How It Works</h3>
+<div class="outline-text-3" id="text-org81eed4d">
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-keyword">if</span> (obj <span class="org-keyword">instanceof</span> Serializable) {
+<pre class="src src-java"><code><span class="org-keyword">if</span> (obj <span class="org-keyword">instanceof</span> Serializable) {
     <span class="org-comment-delimiter">// </span><span class="org-comment">perform serialization
 </span>}
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -317,9 +318,9 @@ The system checks for the presence of the <b>marker</b> and <b>changes behavior<
 </p>
 </div>
 </div>
-<div id="outline-container-org7a8e74f" class="outline-3">
-<h3 id="org7a8e74f">Use Cases</h3>
-<div class="outline-text-3" id="text-org7a8e74f">
+<div id="outline-container-org0cc7d1e" class="outline-3">
+<h3 id="org0cc7d1e">Use Cases</h3>
+<div class="outline-text-3" id="text-org0cc7d1e">
 <ul class="org-ul">
 <li>Enabling/disabling features (e.g., serialization, cloning)</li>
 <li>Tagging classes for frameworks</li>
@@ -327,9 +328,9 @@ The system checks for the presence of the <b>marker</b> and <b>changes behavior<
 </ul>
 </div>
 </div>
-<div id="outline-container-org3d099da" class="outline-3">
-<h3 id="org3d099da">Advantages</h3>
-<div class="outline-text-3" id="text-org3d099da">
+<div id="outline-container-orgbc7ff7d" class="outline-3">
+<h3 id="orgbc7ff7d">Advantages</h3>
+<div class="outline-text-3" id="text-orgbc7ff7d">
 <ul class="org-ul">
 <li>Simple and lightweight</li>
 <li>No need to implement methods</li>
@@ -337,9 +338,9 @@ The system checks for the presence of the <b>marker</b> and <b>changes behavior<
 </ul>
 </div>
 </div>
-<div id="outline-container-org74b1ae5" class="outline-3">
-<h3 id="org74b1ae5">Disadvantages</h3>
-<div class="outline-text-3" id="text-org74b1ae5">
+<div id="outline-container-org9e73224" class="outline-3">
+<h3 id="org9e73224">Disadvantages</h3>
+<div class="outline-text-3" id="text-org9e73224">
 <ul class="org-ul">
 <li>Breaks encapsulation (logic depends on type checking)</li>
 <li>Not type-safe compared to annotations</li>
@@ -347,9 +348,9 @@ The system checks for the presence of the <b>marker</b> and <b>changes behavior<
 </ul>
 </div>
 </div>
-<div id="outline-container-org20f4917" class="outline-3">
-<h3 id="org20f4917">Marker Interface vs Annotation</h3>
-<div class="outline-text-3" id="text-org20f4917">
+<div id="outline-container-orga88532a" class="outline-3">
+<h3 id="orga88532a">Marker Interface vs Annotation</h3>
+<div class="outline-text-3" id="text-orga88532a">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -395,18 +396,18 @@ The system checks for the presence of the <b>marker</b> and <b>changes behavior<
 </table>
 </div>
 </div>
-<div id="outline-container-org10032ff" class="outline-3">
-<h3 id="org10032ff">Modern Alternative</h3>
-<div class="outline-text-3" id="text-org10032ff">
+<div id="outline-container-orge768735" class="outline-3">
+<h3 id="orge768735">Modern Alternative</h3>
+<div class="outline-text-3" id="text-orge768735">
 <p>
 <code>Annotations</code> are now preferred for most use cases:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java"><span class="org-c-annotation">@Serializable</span>
+<pre class="src src-java"><code><span class="org-c-annotation">@Serializable</span>
 <span class="org-keyword">public</span> <span class="org-keyword">class</span> <span class="org-type">User</span> {
 }
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -414,9 +415,9 @@ They provide more flexibility and better tooling support.
 </p>
 </div>
 </div>
-<div id="outline-container-org6f60111" class="outline-3">
-<h3 id="org6f60111">Summary</h3>
-<div class="outline-text-3" id="text-org6f60111">
+<div id="outline-container-org41e58c2" class="outline-3">
+<h3 id="org41e58c2">Summary</h3>
+<div class="outline-text-3" id="text-org41e58c2">
 <ul class="org-ul">
 <li>Marker interfaces are a legacy design pattern used to <b>“mark”</b> classes.</li>
 <li>They rely on <b>runtime</b> checks to <b>influence</b> <b>behavior</b>.</li>

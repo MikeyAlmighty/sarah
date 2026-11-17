@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-11-16 Mon 19:44 -->
+<!-- 2026-11-17 Tue 07:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Checked vs Unchecked Exceptions</title>
-<meta name="author" content="Mikey" />
+<meta name="author" content="Michael Leibbrandt" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -242,13 +243,13 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">Checked vs Unchecked Exceptions</h1>
-<div id="outline-container-org39ca91c" class="outline-2">
-<h2 id="org39ca91c">Checked vs Unchecked Exceptions</h2>
-<div class="outline-text-2" id="text-org39ca91c">
+<div id="outline-container-org15873ff" class="outline-2">
+<h2 id="org15873ff">Checked vs Unchecked Exceptions</h2>
+<div class="outline-text-2" id="text-org15873ff">
 </div>
-<div id="outline-container-org5ed104c" class="outline-4">
-<h4 id="org5ed104c">Checked Exceptions</h4>
-<div class="outline-text-4" id="text-org5ed104c">
+<div id="outline-container-orgf164862" class="outline-4">
+<h4 id="orgf164862">Checked Exceptions</h4>
+<div class="outline-text-4" id="text-orgf164862">
 <p>
 Must be <b>handled</b> at <b>compile time</b> using <code>try-catch blocks</code> or declared with the <code>throws</code> keyword.
 </p>
@@ -258,8 +259,8 @@ The compiler <i>forces</i> the programmer to <b>check and deal</b> with them in 
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="org93d0187"></a>Examples<br />
-<div class="outline-text-5" id="text-org93d0187">
+<li><a id="orged92e67"></a>Examples<br />
+<div class="outline-text-5" id="text-orged92e67">
 <ul class="org-ul">
 <li><code>IOException</code></li>
 <li><code>SQLException</code></li>
@@ -268,16 +269,16 @@ The compiler <i>forces</i> the programmer to <b>check and deal</b> with them in 
 </li>
 </ul>
 </div>
-<div id="outline-container-org7ff2e8d" class="outline-4">
-<h4 id="org7ff2e8d">Unchecked Exceptions</h4>
-<div class="outline-text-4" id="text-org7ff2e8d">
+<div id="outline-container-orga016c5c" class="outline-4">
+<h4 id="orga016c5c">Unchecked Exceptions</h4>
+<div class="outline-text-4" id="text-orga016c5c">
 <p>
 Also called <code>runtime exceptions</code>, result from <b>programming errors</b> (I.e. <code>null pointer dereferencing</code> or <code>out-of-bounds</code> array access).
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="orgdbc18bc"></a>Examples<br />
-<div class="outline-text-5" id="text-orgdbc18bc">
+<li><a id="orgd047a4b"></a>Examples<br />
+<div class="outline-text-5" id="text-orgd047a4b">
 <ul class="org-ul">
 <li><code>RuntimeException</code></li>
 <li><code>Error</code></li>
@@ -289,16 +290,16 @@ Also called <code>runtime exceptions</code>, result from <b>programming errors</
 </li>
 </ul>
 </div>
-<div id="outline-container-org54ad10a" class="outline-4">
-<h4 id="org54ad10a">Errors</h4>
-<div class="outline-text-4" id="text-org54ad10a">
+<div id="outline-container-org24c70f9" class="outline-4">
+<h4 id="org24c70f9">Errors</h4>
+<div class="outline-text-4" id="text-org24c70f9">
 <p>
 <b>Critical issues</b> that an application typically <b>cannot</b> recover from.
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="org8fd6148"></a>Examples<br />
-<div class="outline-text-5" id="text-org8fd6148">
+<li><a id="orgf2d9a9a"></a>Examples<br />
+<div class="outline-text-5" id="text-orgf2d9a9a">
 <ul class="org-ul">
 <li><code>OutOfMemoryError</code></li>
 <li><code>StackOverflowError</code></li>
@@ -307,16 +308,16 @@ Also called <code>runtime exceptions</code>, result from <b>programming errors</
 </li>
 </ul>
 </div>
-<div id="outline-container-orgbf8b7fc" class="outline-4">
-<h4 id="orgbf8b7fc">Summary</h4>
-<div class="outline-text-4" id="text-orgbf8b7fc">
+<div id="outline-container-org8de3f7a" class="outline-4">
+<h4 id="org8de3f7a">Summary</h4>
+<div class="outline-text-4" id="text-org8de3f7a">
 <p>
 In most cases, <b>unchecked exceptions</b> reflect <b>programming logic errors</b> that are <b>unrecoverable</b>.
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="org29b43bc"></a>Examples<br />
-<div class="outline-text-5" id="text-org29b43bc">
+<li><a id="org1dd40ee"></a>Examples<br />
+<div class="outline-text-5" id="text-org1dd40ee">
 <ul class="org-ul">
 <li>A <code>NullPointerException</code> is <i>thrown</i> if you access an object through a <code>reference variable</code> before an <code>object</code> is <b>assigned</b> to it.</li>
 <li>An <code>IndexOutOfBoundsException</code> is <i>thrown</i> if you <b>access an element</b> in an <code>array</code> <b>outside</b> the <b>bounds</b> of the <code>array</code>.</li>
