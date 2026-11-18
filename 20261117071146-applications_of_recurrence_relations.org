@@ -4,3 +4,111 @@
 #+title: Applications of Recurrence Relations
 
 * Applications of Recurrence Relations
+
+** Why recurrences appear in applications
+
+Many quantities *grow* or *shrink* one step at a time:
+- A savings balance after another year.
+- The number of moves needed after the problem has been reduced by one disc.
+- The number of ways to finish a staircase after the last move.
+
+A *recurrence* records this "*next* term from *earlier* terms" structure directly, and the *initial conditions* say where the process /starts/.
+
+Once a *closed form* is found, /any/ term can be computed /without/ working through all the earlier ones.
+
+** Example 1: Compound interest
+
+*Setup*: £100 is deposited in an account paying 4% interest, compounded annually.
+
+Let $a_n$ be the balance after $n$ years.
+
+- The balance after year $n$ is the balance after year $n-1$ plus 4% of that balance, so $a_n = 1.04\, a_{n-1}$ for $n \geq 1$.
+- *Initial condition*: $a_0 = 100$.
+  - Note that this sequence is indexed from $n = 0$.
+- Check: $a_1 = 1.04 \times 100 = 104$
+  - Which is the original £100 plus £4 of interest.
+- Unrolling the *recurrence* gives $a_n = 100(1.04)^n$
+- Verification with the method from [[id:e916e0da-fe37-4342-883e-b1214364c2c3][Verifying a Solution to a Recurrence Relation]]:
+  - *Initial value* (Task 1): $100(1.04)^0 = 100$. ✓
+  - *Recurrence* (Task 2): $1.04 \cdot 100(1.04)^{n-1} = 100(1.04)^n = a_n$. ✓
+
+| Year $n$ | Start of year (balance after year $n-1$) | Interest for year $n$ ($0.04\, a_{n-1}$) | Balance after year $n$ |
+|----------+------------------------------------------+------------------------------------------+------------------------|
+| $n = 1$  | £100.00 ($a_0$)                          | £4.00                                    | £104.00 ($a_1$)        |
+| $n = 2$  | £104.00 ($a_1$)                          | £4.16                                    | £108.16 ($a_2$)        |
+| $n = 3$  | £108.16 ($a_2$)                          | £4.33                                    | £112.49 ($a_3$)        |
+
+** Example 2: Tower of Hanoi
+
+*Setup*: Three pegs, and $n$ discs of different sizes stacked on peg 1 from largest at the bottom to smallest at the top.
+
+The goal is to move the whole stack to another peg, moving one disc at a time and never placing a larger disc on a smaller one.
+
+Let $T(n)$ be the number of moves used by the best strategy.
+
+- One disc needs one move, so $T(1) = 1$.
+- Recurrence, obtained by looking at the largest disc:
+  1. Move the top $n-1$ discs to the spare peg.
+     - This takes $T(n-1)$ moves.
+  2. Move the largest disc to the target peg.
+     - This takes one move.
+  3. Move the $n-1$ discs from the spare peg onto the largest disc.
+     - This takes $T(n-1)$ moves.
+
+  Hence $T(n) = 2T(n-1) + 1$ for $n \geq 2$.
+- Small values: $T(2) = 3$ and $T(3) = 7$, which matches the seven moves needed for three discs.
+- *Closed form*: $T(n) = 2^n - 1$. *Verification*:
+  - *Initial value* (Task 1): $2^1 - 1 = 1$. ✓
+  - *Recurrence* (Task 2): $2(2^{n-1} - 1) + 1 = 2^n - 1$. ✓
+- Caveat: the *recurrence* counts the moves of this particular strategy.
+  - Showing that no strategy can do better is a separate argument, which the course material develops elsewhere.
+
+** Example 3: Climbing stairs
+
+*Setup*: Each move climbs either one step or two steps.
+
+Let $a_n$ be the number of /different/ ways to climb $n$ steps.
+
+- $a_1 = 1$, since the only option is a single step.
+  - $a_2 = 2$, since the options are one step then one step, or one double step.
+- Consider the final move.
+  - It is either a single step from step $n-1$ or a double step from step $n-2$.
+  - These two cases cannot happen at the same time, so the counts add: $a_n = a_{n-1} + a_{n-2}$ for $n \geq 3$.
+- The first terms are $a_3 = 3$, $a_4 = 5$, $a_5 = 8$, $a_6 = 13$ and $a_7 = 21$.
+- The *recurrence* is the same as the one defining the Fibonacci numbers.
+  - Only the *initial* values differ, so the *sequence* is a shifted Fibonacci sequence.
+
+** Example 4 : Call Count of Naive Recursive Fibonacci
+
+Let $C(n)$ be the number of function calls made when the $n$ -th Fibonacci number is computed by the straightforward recursive definition.
+
+Each call with $n \geq 2$ makes one call for $n-1$ and one for $n-2$, and it counts itself. So:
+
+- $C(n) = C(n-1) + C(n-2) + 1$ for $n \geq 2$, with $C(0) = C(1) = 1$.
+- Values: $C(2) = 3$, $C(3) = 5$, $C(4) = 9$.
+  - These can be checked by drawing the call tree for each case.
+- The count grows exponentially.
+  - This is the kind of result that *complexity analysis* is designed to expose, and it is why storing previously computed values (memoisation, or computing bottom-up) is so much cheaper.
+
+** Complexity analysis
+
+*Recurrences* are central to /analysing/ algorithms.
+
+Suppose $f(n)$ is the complexity of an algorithm on an input of size $n$.
+
+Very often the work for size $n+1$ is expressed in terms of the work for smaller sizes, such as $f(n)$ and $f(n-1)$.
+
+Turning that relation into a *closed form* gives an explicit bound on the running time, which can then be compared across algorithms.
+
+- The Fibonacci example above follows this pattern.
+
+** Summary
+| Application       | Recurrence                | Initial condition(s) | Closed form              |
+|-------------------+---------------------------+----------------------+--------------------------|
+| Compound interest | $a_n = 1.04\, a_{n-1}$    | $a_0 = 100$          | $100(1.04)^n$            |
+| Tower of Hanoi    | $T(n) = 2T(n-1) + 1$      | $T(1) = 1$           | $2^n - 1$                |
+| Climbing stairs   | $a_n = a_{n-1} + a_{n-2}$ | $a_1 = 1$, $a_2 = 2$ | Not derived in this note |
+
+** Next
+
+- Solving linear recurrences systematically, including the climbing-stairs recurrence, which has no closed form derived here yet.

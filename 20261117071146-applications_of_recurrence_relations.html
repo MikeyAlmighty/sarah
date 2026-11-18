@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-11-17 Tue 07:13 -->
+<!-- 2026-11-18 Wed 07:55 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Applications of Recurrence Relations</title>
@@ -239,12 +239,325 @@
 
         ul { list-style-type: disc; padding-left: 2em; }
       </style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 </head>
 <body>
 <div id="content" class="content">
 <h1 class="title">Applications of Recurrence Relations</h1>
-<div id="outline-container-org5ba9ca1" class="outline-2">
-<h2 id="org5ba9ca1">Applications of Recurrence Relations</h2>
+<div id="outline-container-org4da27be" class="outline-2">
+<h2 id="org4da27be">Applications of Recurrence Relations</h2>
+<div class="outline-text-2" id="text-org4da27be">
+</div>
+<div id="outline-container-org7b61632" class="outline-3">
+<h3 id="org7b61632">Why recurrences appear in applications</h3>
+<div class="outline-text-3" id="text-org7b61632">
+<p>
+Many quantities <b>grow</b> or <b>shrink</b> one step at a time:
+</p>
+<ul class="org-ul">
+<li>A savings balance after another year.</li>
+<li>The number of moves needed after the problem has been reduced by one disc.</li>
+<li>The number of ways to finish a staircase after the last move.</li>
+</ul>
+
+<p>
+A <b>recurrence</b> records this "<b>next</b> term from <b>earlier</b> terms" structure directly, and the <b>initial conditions</b> say where the process <i>starts</i>.
+</p>
+
+<p>
+Once a <b>closed form</b> is found, <i>any</i> term can be computed <i>without</i> working through all the earlier ones.
+</p>
+</div>
+</div>
+<div id="outline-container-org0544916" class="outline-3">
+<h3 id="org0544916">Example 1: Compound interest</h3>
+<div class="outline-text-3" id="text-org0544916">
+<p>
+<b>Setup</b>: £100 is deposited in an account paying 4% interest, compounded annually.
+</p>
+
+<p>
+Let \(a_n\) be the balance after \(n\) years.
+</p>
+
+<ul class="org-ul">
+<li>The balance after year \(n\) is the balance after year \(n-1\) plus 4% of that balance, so \(a_n = 1.04\, a_{n-1}\) for \(n \geq 1\).</li>
+<li><b>Initial condition</b>: \(a_0 = 100\).
+<ul class="org-ul">
+<li>Note that this sequence is indexed from \(n = 0\).</li>
+</ul></li>
+<li>Check: \(a_1 = 1.04 \times 100 = 104\)
+<ul class="org-ul">
+<li>Which is the original £100 plus £4 of interest.</li>
+</ul></li>
+<li>Unrolling the <b>recurrence</b> gives \(a_n = 100(1.04)^n\)</li>
+<li>Verification with the method from <a href="20261117064028-verifying_a_solution_to_a_recurrence_relation.html#ID-e916e0da-fe37-4342-883e-b1214364c2c3">Verifying a Solution to a Recurrence Relation</a>:
+<ul class="org-ul">
+<li><b>Initial value</b> (Task 1): \(100(1.04)^0 = 100\). ✓</li>
+<li><b>Recurrence</b> (Task 2): \(1.04 \cdot 100(1.04)^{n-1} = 100(1.04)^n = a_n\). ✓</li>
+</ul></li>
+</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Year \(n\)</th>
+<th scope="col" class="org-left">Start of year (balance after year \(n-1\))</th>
+<th scope="col" class="org-left">Interest for year \(n\) (\(0.04\, a_{n-1}\))</th>
+<th scope="col" class="org-left">Balance after year \(n\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">\(n = 1\)</td>
+<td class="org-left">£100.00 (\(a_0\))</td>
+<td class="org-left">£4.00</td>
+<td class="org-left">£104.00 (\(a_1\))</td>
+</tr>
+
+<tr>
+<td class="org-left">\(n = 2\)</td>
+<td class="org-left">£104.00 (\(a_1\))</td>
+<td class="org-left">£4.16</td>
+<td class="org-left">£108.16 (\(a_2\))</td>
+</tr>
+
+<tr>
+<td class="org-left">\(n = 3\)</td>
+<td class="org-left">£108.16 (\(a_2\))</td>
+<td class="org-left">£4.33</td>
+<td class="org-left">£112.49 (\(a_3\))</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org948d79f" class="outline-3">
+<h3 id="org948d79f">Example 2: Tower of Hanoi</h3>
+<div class="outline-text-3" id="text-org948d79f">
+<p>
+<b>Setup</b>: Three pegs, and \(n\) discs of different sizes stacked on peg 1 from largest at the bottom to smallest at the top.
+</p>
+
+<p>
+The goal is to move the whole stack to another peg, moving one disc at a time and never placing a larger disc on a smaller one.
+</p>
+
+<p>
+Let \(T(n)\) be the number of moves used by the best strategy.
+</p>
+
+<ul class="org-ul">
+<li>One disc needs one move, so \(T(1) = 1\).</li>
+<li><p>
+Recurrence, obtained by looking at the largest disc:
+</p>
+<ol class="org-ol">
+<li>Move the top \(n-1\) discs to the spare peg.
+<ul class="org-ul">
+<li>This takes \(T(n-1)\) moves.</li>
+</ul></li>
+<li>Move the largest disc to the target peg.
+<ul class="org-ul">
+<li>This takes one move.</li>
+</ul></li>
+<li>Move the \(n-1\) discs from the spare peg onto the largest disc.
+<ul class="org-ul">
+<li>This takes \(T(n-1)\) moves.</li>
+</ul></li>
+</ol>
+
+<p>
+Hence \(T(n) = 2T(n-1) + 1\) for \(n \geq 2\).
+</p></li>
+<li>Small values: \(T(2) = 3\) and \(T(3) = 7\), which matches the seven moves needed for three discs.</li>
+<li><b>Closed form</b>: \(T(n) = 2^n - 1\). <b>Verification</b>:
+<ul class="org-ul">
+<li><b>Initial value</b> (Task 1): \(2^1 - 1 = 1\). ✓</li>
+<li><b>Recurrence</b> (Task 2): \(2(2^{n-1} - 1) + 1 = 2^n - 1\). ✓</li>
+</ul></li>
+<li>Caveat: the <b>recurrence</b> counts the moves of this particular strategy.
+<ul class="org-ul">
+<li>Showing that no strategy can do better is a separate argument, which the course material develops elsewhere.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org212ca8b" class="outline-3">
+<h3 id="org212ca8b">Example 3: Climbing stairs</h3>
+<div class="outline-text-3" id="text-org212ca8b">
+<p>
+<b>Setup</b>: Each move climbs either one step or two steps.
+</p>
+
+<p>
+Let \(a_n\) be the number of <i>different</i> ways to climb \(n\) steps.
+</p>
+
+<ul class="org-ul">
+<li>\(a_1 = 1\), since the only option is a single step.
+<ul class="org-ul">
+<li>\(a_2 = 2\), since the options are one step then one step, or one double step.</li>
+</ul></li>
+<li>Consider the final move.
+<ul class="org-ul">
+<li>It is either a single step from step \(n-1\) or a double step from step \(n-2\).</li>
+<li>These two cases cannot happen at the same time, so the counts add: \(a_n = a_{n-1} + a_{n-2}\) for \(n \geq 3\).</li>
+</ul></li>
+<li>The first terms are \(a_3 = 3\), \(a_4 = 5\), \(a_5 = 8\), \(a_6 = 13\) and \(a_7 = 21\).</li>
+<li>The <b>recurrence</b> is the same as the one defining the Fibonacci numbers.
+<ul class="org-ul">
+<li>Only the <b>initial</b> values differ, so the <b>sequence</b> is a shifted Fibonacci sequence.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgdef4862" class="outline-3">
+<h3 id="orgdef4862">Example 4 : Call Count of Naive Recursive Fibonacci</h3>
+<div class="outline-text-3" id="text-orgdef4862">
+<p>
+Let \(C(n)\) be the number of function calls made when the \(n\) -th Fibonacci number is computed by the straightforward recursive definition.
+</p>
+
+<p>
+Each call with \(n \geq 2\) makes one call for \(n-1\) and one for \(n-2\), and it counts itself. So:
+</p>
+
+<ul class="org-ul">
+<li>\(C(n) = C(n-1) + C(n-2) + 1\) for \(n \geq 2\), with \(C(0) = C(1) = 1\).</li>
+<li>Values: \(C(2) = 3\), \(C(3) = 5\), \(C(4) = 9\).
+<ul class="org-ul">
+<li>These can be checked by drawing the call tree for each case.</li>
+</ul></li>
+<li>The count grows exponentially.
+<ul class="org-ul">
+<li>This is the kind of result that <b>complexity analysis</b> is designed to expose, and it is why storing previously computed values (memoisation, or computing bottom-up) is so much cheaper.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgbf3645b" class="outline-3">
+<h3 id="orgbf3645b">Complexity analysis</h3>
+<div class="outline-text-3" id="text-orgbf3645b">
+<p>
+<b>Recurrences</b> are central to <i>analysing</i> algorithms.
+</p>
+
+<p>
+Suppose \(f(n)\) is the complexity of an algorithm on an input of size \(n\).
+</p>
+
+<p>
+Very often the work for size \(n+1\) is expressed in terms of the work for smaller sizes, such as \(f(n)\) and \(f(n-1)\).
+</p>
+
+<p>
+Turning that relation into a <b>closed form</b> gives an explicit bound on the running time, which can then be compared across algorithms.
+</p>
+
+<ul class="org-ul">
+<li>The Fibonacci example above follows this pattern.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf0f53dc" class="outline-3">
+<h3 id="orgf0f53dc">Summary</h3>
+<div class="outline-text-3" id="text-orgf0f53dc">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Application</th>
+<th scope="col" class="org-left">Recurrence</th>
+<th scope="col" class="org-left">Initial condition(s)</th>
+<th scope="col" class="org-left">Closed form</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Compound interest</td>
+<td class="org-left">\(a_n = 1.04\, a_{n-1}\)</td>
+<td class="org-left">\(a_0 = 100\)</td>
+<td class="org-left">\(100(1.04)^n\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Tower of Hanoi</td>
+<td class="org-left">\(T(n) = 2T(n-1) + 1\)</td>
+<td class="org-left">\(T(1) = 1\)</td>
+<td class="org-left">\(2^n - 1\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Climbing stairs</td>
+<td class="org-left">\(a_n = a_{n-1} + a_{n-2}\)</td>
+<td class="org-left">\(a_1 = 1\), \(a_2 = 2\)</td>
+<td class="org-left">Not derived in this note</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org5e2c622" class="outline-3">
+<h3 id="org5e2c622">Next</h3>
+<div class="outline-text-3" id="text-org5e2c622">
+<ul class="org-ul">
+<li>Solving linear recurrences systematically, including the climbing-stairs recurrence, which has no closed form derived here yet.</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 </body>

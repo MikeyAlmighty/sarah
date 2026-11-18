@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-11-17 Tue 07:13 -->
+<!-- 2026-11-18 Wed 07:55 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Truth Tree Algorithm in Practice</title>
@@ -275,21 +275,21 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">The Truth Tree Algorithm in Practice</h1>
-<div id="outline-container-org34405e9" class="outline-2">
-<h2 id="org34405e9">The Truth Tree Algorithm In Practice</h2>
-<div class="outline-text-2" id="text-org34405e9">
+<div id="outline-container-org87554ed" class="outline-2">
+<h2 id="org87554ed">The Truth Tree Algorithm In Practice</h2>
+<div class="outline-text-2" id="text-org87554ed">
 </div>
-<div id="outline-container-orgc227c4e" class="outline-3">
-<h3 id="orgc227c4e">Overview</h3>
-<div class="outline-text-3" id="text-orgc227c4e">
+<div id="outline-container-org05d384d" class="outline-3">
+<h3 id="org05d384d">Overview</h3>
+<div class="outline-text-3" id="text-org05d384d">
 <p>
 Rather than build the <i>whole</i> tree with the \(\alpha\)- and \(\beta\)-rules and <i>then</i> decide which branches are <b>open</b> or <b>closed</b>, decide <b>as we build the tree</b>.
 </p>
 </div>
 </div>
-<div id="outline-container-org0c74f7c" class="outline-3">
-<h3 id="org0c74f7c">Close branches early</h3>
-<div class="outline-text-3" id="text-org0c74f7c">
+<div id="outline-container-orgfa3fa07" class="outline-3">
+<h3 id="orgfa3fa07">Close branches early</h3>
+<div class="outline-text-3" id="text-orgfa3fa07">
 <ul class="org-ul">
 <li>It is enough to "grow" <b>open</b> branches only.</li>
 <li>As soon as an <b>atom</b> and <b>its negation</b> appear on a branch (even if the branch is not complete yet), the branch is <b>closed</b>.</li>
@@ -298,23 +298,23 @@ Rather than build the <i>whole</i> tree with the \(\alpha\)- and \(\beta\)-rules
 </ul>
 </div>
 </div>
-<div id="outline-container-org5dc8ca7" class="outline-3">
-<h3 id="org5dc8ca7">Prioritise \(\alpha\)-rules over \(\beta\)-rules</h3>
-<div class="outline-text-3" id="text-org5dc8ca7">
+<div id="outline-container-org709403a" class="outline-3">
+<h3 id="org709403a">Prioritise \(\alpha\)-rules over \(\beta\)-rules</h3>
+<div class="outline-text-3" id="text-org709403a">
 <ul class="org-ul">
 <li>If both rules could be applied and the order doesn't matter, apply the \(\alpha\)-rule first.</li>
 <li>Reason: an \(\alpha\)-rule does not branch, so the tree stays smaller.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org3862e41" class="outline-3">
-<h3 id="org3862e41">Example</h3>
-<div class="outline-text-3" id="text-org3862e41">
+<div id="outline-container-orgae9faa5" class="outline-3">
+<h3 id="orgae9faa5">Example</h3>
+<div class="outline-text-3" id="text-orgae9faa5">
 <p>
 Tree for \((p \vee q) \wedge \neg p\):
 </p>
 
-<pre class="example" id="org2e8f716">
+<pre class="example" id="org37cd5cf">
 (p ∨ q) ∧ ¬p ✓
       |
    p ∨ q ✓
@@ -333,9 +333,9 @@ closed  open
 </ul>
 </div>
 </div>
-<div id="outline-container-org1ac17e9" class="outline-3">
-<h3 id="org1ac17e9">Convention</h3>
-<div class="outline-text-3" id="text-org1ac17e9">
+<div id="outline-container-orgc33a0f0" class="outline-3">
+<h3 id="orgc33a0f0">Convention</h3>
+<div class="outline-text-3" id="text-orgc33a0f0">
 <p>
 Close branches as we build the tree whenever we detect an <b>atom</b> and <b>its negation</b> on a branch.
 </p>
